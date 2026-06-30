@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asclepius Ledger - GOD MODE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --glass-bg: rgba(30, 41, 59, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.5);
+            --success: #10b981;
+            --danger: #ef4444;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at top left, #1e293b, var(--bg-color));
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 2rem;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .header-sub {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .kpi-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px var(--accent-glow);
+            border-color: var(--accent);
+        }
+
+        .kpi-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #fff;
+            margin-top: 0.5rem;
+        }
+
+        .kpi-title {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            white-space: nowrap;
+        }
+
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        td {
+            font-size: 0.95rem;
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        input {
+            background: rgba(0,0,0,0.2);
+            border: 1px solid var(--glass-border);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 6px;
+            width: 100px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px var(--accent-glow);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px var(--accent-glow);
+        }
+
+        .btn:disabled {
+            background: #475569;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        #loading {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent);
+            backdrop-filter: blur(5px);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .header-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        .status-in { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+        .status-low { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+        .status-out { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+
+    </style>
+</head>
+<body>
+
+    <div id="loading">Initializing God Mode...</div>
+
+    <div class="header-actions">
+        <div>
+            <h1>Asclepius Ledger</h1>
+            <div class="header-sub" id="period-text">Loading...</div>
+        </div>
+        <button class="btn" id="save-btn" onclick="saveChanges()">Sync to Excel</button>
+    </div>
+
+    <div class="kpi-grid" id="kpi-container">
+        <!-- KPI Cards injected here -->
+    </div>
+
+    <div class="glass-panel">
+        <h2 style="margin-bottom: 1rem; color: var(--accent);">Inventory Master</h2>
+        <div class="table-container">
+            <table id="inventory-table">
+                <thead>
+                    <tr id="table-headers"></tr>
+                </thead>
+                <tbody id="table-body"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let inventoryData = [];
+        let pendingUpdates = {};
+
+        async function init() {
+            try {
+                await fetchKPIs();
+                await fetchInventory();
+                document.getElementById('loading').classList.add('hidden');
+            } catch (err) {
+                document.getElementById('loading').innerHTML = "Error loading data. Is Excel closed?";
+                document.getElementById('loading').style.color = "var(--danger)";
+            }
+        }
+
+        function formatCurrency(val) {
+            if (!val && val !== 0) return '-';
+            return '₹' + parseFloat(val).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits:2});
+        }
+
+        async function fetchKPIs() {
+            const res = await fetch('/api/kpi');
+            const data = await res.json();
+            
+            if(data['Reporting Period']) {
+                document.getElementById('period-text').innerText = data['Reporting Period'];
+            }
+
+            const kpiFields = [
+                { key: 'Total Stock Qty', label: 'Total Stock' },
+                { key: 'Gross Stock Value', label: 'Gross Value', isCurr: true },
+                { key: 'Week Sales Qty', label: 'Week Sold' },
+                { key: 'Week Sales Value', label: 'Week Revenue', isCurr: true },
+                { key: 'Monthly Sales Value', label: 'Monthly Rev', isCurr: true },
+                { key: 'WoW Growth %', label: 'WoW Growth', isPct: true }
+            ];
+
+            const container = document.getElementById('kpi-container');
+            container.innerHTML = '';
+
+            kpiFields.forEach(f => {
+                let val = data[f.key] || 0;
+                if (f.isCurr) val = formatCurrency(val);
+                else if (f.isPct) val = (parseFloat(val) * 100).toFixed(1) + '%';
+                else val = parseFloat(val).toLocaleString('en-IN');
+
+                container.innerHTML += `
+                    <div class="kpi-card">
+                        <div class="kpi-title">${f.label}</div>
+                        <div class="kpi-value">${val}</div>
+                    </div>
+                `;
+            });
+        }
+
+        async function fetchInventory() {
+            const res = await fetch('/api/inventory');
+            const data = await res.json();
+            
+            const headersRow = document.getElementById('table-headers');
+            headersRow.innerHTML = '';
+            
+            // Only show important columns in web view
+            const visibleCols = ["S.No.", "Product Name", "HSN Code", "Base Price", "Sold Qty (Jun 29-30)", "Remaining Qty", "Stock Status"];
+            
+            visibleCols.forEach(h => {
+                headersRow.innerHTML += `<th>${h}</th>`;
+            });
+
+            const tbody = document.getElementById('table-body');
+            tbody.innerHTML = '';
+
+            data.data.forEach((row, i) => {
+                let tr = document.createElement('tr');
+                
+                visibleCols.forEach(col => {
+                    let td = document.createElement('td');
+                    let val = row[col];
+                    
+                    if (col.startsWith('Sold Qty') || col === 'Base Price') {
+                        td.innerHTML = `<input type="number" step="any" value="${val}" data-row="${row.__row}" data-col="${col}" onchange="trackChange(this)">`;
+                    } else if (col === 'Stock Status') {
+                        let badgeClass = val === 'In Stock' ? 'status-in' : (val === 'Low Stock' ? 'status-low' : 'status-out');
+                        td.innerHTML = `<span class="status-badge ${badgeClass}">${val || '-'}</span>`;
+                    } else {
+                        td.innerText = val;
+                    }
+                    tr.appendChild(td);
+                });
+                tbody.appendChild(tr);
+            });
+        }
+
+        function trackChange(input) {
+            const r = input.getAttribute('data-row');
+            const c = input.getAttribute('data-col');
+            if(!pendingUpdates[r]) pendingUpdates[r] = { row: parseInt(r), changes: {} };
+            pendingUpdates[r].changes[c] = parseFloat(input.value) || 0;
+            document.getElementById('save-btn').innerText = "Sync to Excel *";
+            document.getElementById('save-btn').style.background = "linear-gradient(135deg, #f59e0b, #d97706)";
+        }
+
+        async function saveChanges() {
+            const updates = Object.values(pendingUpdates);
+            if(updates.length === 0) return;
+
+            const btn = document.getElementById('save-btn');
+            btn.disabled = true;
+            btn.innerText = "Syncing...";
+
+            try {
+                const res = await fetch('/api/update', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ updates })
+                });
+                
+                pendingUpdates = {};
+                btn.style.background = "linear-gradient(135deg, #10b981, #059669)";
+                btn.innerText = "Synced Successfully";
+                
+                setTimeout(() => {
+                    btn.disabled = false;
+                    btn.style.background = "linear-gradient(135deg, #3b82f6, #2563eb)";
+                    btn.innerText = "Sync to Excel";
+                    init(); // Reload all data
+                }, 2000);
+                
+            } catch (err) {
+                alert("Error saving data");
+                btn.disabled = false;
+                btn.innerText = "Sync to Excel *";
+            }
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
