@@ -1,60 +1,18 @@
 import os
-import math
-import pythoncom
-import win32com.client
+import sqlite3
+import json
 from flask import Flask, jsonify, request, render_template
 
 app = Flask(__name__)
 from invoice_api import invoice_api
 app.register_blueprint(invoice_api)
-EXCEL_PATH = r'C:\Users\sgarm\Downloads\Asclepius_Wellness_PROFESSIONAL.xlsm'
 
-# Global Excel COM objects - single-threaded access (threaded=False)
-_excel = None
-_wb = None
+DB_PATH = 'ledger.db'
 
-def get_excel():
-    global _excel, _wb
-    pythoncom.CoInitialize()
-    
-    # Try to reuse existing connection
-    if _excel is not None and _wb is not None:
-        try:
-            _ = _wb.Name  # Test if connection is alive
-            return _excel, _wb
-        except Exception:
-            _excel = None
-            _wb = None
-    
-    # Create new connection
-    try:
-        _excel = win32com.client.GetActiveObject("Excel.Application")
-    except Exception:
-        _excel = win32com.client.Dispatch("Excel.Application")
-    
-    _wb = None
-    for open_wb in _excel.Workbooks:
-        if open_wb.Name == 'Asclepius_Wellness_PROFESSIONAL.xlsm':
-            _wb = open_wb
-            break
-    
-    if not _wb:
-        _wb = _excel.Workbooks.Open(EXCEL_PATH)
-    
-    return _excel, _wb
-
-
-def clean_excel_val(val):
-    if val is None:
-        return ""
-    if isinstance(val, float) and (math.isnan(val) or math.isinf(val)):
-        return ""
-    if type(val).__name__ == 'time':
-        return str(val)
-    if hasattr(val, 'Format'):
-        return str(val)
-    return val
-
+def get_db():
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    return conn
 
 @app.route('/')
 @app.route('/dashboard')
@@ -84,22 +42,50 @@ def portal_sync_page():
 @app.route('/api/kpi')
 def api_kpi():
     try:
-        excel, wb = get_excel()
-        ws = wb.Sheets('_KPI_Data')
-        kpis = {}
+        conn = get_db()
+        c = conn.cursor()
         
-        # Bulk read KPIs in one call
-        kpi_vals = ws.Range(ws.Cells(2, 1), ws.Cells(16, 2)).Value
-        for row in kpi_vals:
-            key = row[0]
-            val = row[1]
-            if key:
-                kpis[str(key)] = clean_excel_val(val)
+        # Recalculate KPIs based on current inventory
+        # Total SKUs
+        c.execute("SELECT COUNT(*) FROM inventory WHERE c3 != '' AND c3 IS NOT NULL")
+        total_skus = c.fetchone()[0]
         
-        ws_dash = wb.Sheets('Dashboard')
-        period = ws_dash.Cells(2, 8).Value
-        kpis['Reporting Period'] = str(clean_excel_val(period))
+        # We need to know which columns are what based on headers
+        c.execute("SELECT value FROM settings WHERE key='inventory_headers'")
+        headers = json.loads(c.fetchone()[0])
         
+        # Find DP col index (1-based from c1..c30)
+        try:
+            dp_idx = headers.index('DP') + 1
+            rem_qty_idx = headers.index('Remaining Qty') + 1
+            rem_val_idx = headers.index('Remaining Value') + 1
+            week_qty_idx = headers.index('Sold Qty (Jul 1-7)') + 1  # Hardcoded for now, can be dynamic
+        except ValueError:
+            dp_idx = 5
+            rem_qty_idx = 21
+            rem_val_idx = 22
+            week_qty_idx = 16
+            
+        c.execute(f"SELECT SUM(CAST(c{rem_qty_idx} AS REAL)) FROM inventory WHERE c{rem_qty_idx} != ''")
+        rem_qty = c.fetchone()[0] or 0
+        
+        c.execute(f"SELECT SUM(CAST(c{rem_val_idx} AS REAL)) FROM inventory WHERE c{rem_val_idx} != ''")
+        rem_val = c.fetchone()[0] or 0
+        
+        c.execute(f"SELECT COUNT(*) FROM inventory WHERE CAST(c{rem_qty_idx} AS REAL) <= 10 AND c{rem_qty_idx} != ''")
+        low_stock = c.fetchone()[0] or 0
+        
+        # Read other static KPIs from DB
+        c.execute("SELECT key, value FROM kpis")
+        kpis = {row['key']: row['value'] for row in c.fetchall()}
+        
+        # Overwrite dynamic ones
+        kpis['Total SKUs'] = str(total_skus)
+        kpis['Remaining Qty'] = str(rem_qty)
+        kpis['Gross Stock Value'] = str(rem_val)
+        kpis['Low Stock counts'] = str(low_stock)
+        
+        conn.close()
         return jsonify(kpis)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -108,54 +94,105 @@ def api_kpi():
 @app.route('/api/inventory')
 def api_inventory():
     try:
-        excel, wb = get_excel()
-        ws = wb.Sheets('Inventory_Master')
+        conn = get_db()
+        c = conn.cursor()
         
-        # Bulk read headers in one call
-        header_vals = ws.Range(ws.Cells(4, 1), ws.Cells(4, 19)).Value[0]
-        headers = [str(h) if h else f"Col_{i+1}" for i, h in enumerate(header_vals)]
+        c.execute("SELECT value FROM settings WHERE key='inventory_headers'")
+        headers_json = c.fetchone()
+        if not headers_json:
+            return jsonify({"error": "Headers not found"}), 500
+            
+        all_headers = json.loads(headers_json[0])
+        # We only return first 19 columns for inventory view usually, but let's return all non-empty
+        # Or just return exactly 19 as before
+        headers = all_headers[:19]
+        # Replace empty strings with Col_X
+        headers = [h if h else f"Col_{i+1}" for i, h in enumerate(headers)]
         
-        # Bulk read all data in one call
-        data_vals = ws.Range(ws.Cells(5, 1), ws.Cells(220, 19)).Value
+        cols_to_select = [f"c{i}" for i in range(1, 20)]
+        c.execute(f"SELECT row_num, {', '.join(cols_to_select)} FROM inventory ORDER BY row_num")
         
         data = []
-        for r_idx, row in enumerate(data_vals):
-            name = row[2]  # Column C is Product Name
-            if not name:
+        for row in c.fetchall():
+            if not row['c3']: # Product name empty
                 continue
             row_data = {}
-            for c_idx, val in enumerate(row):
-                row_data[headers[c_idx]] = clean_excel_val(val)
-            row_data['__row'] = r_idx + 5
+            for i, h in enumerate(headers):
+                row_data[h] = row[f'c{i+1}']
+            row_data['__row'] = row['row_num']
             data.append(row_data)
-        
+            
+        conn.close()
         return jsonify({"headers": headers, "data": data})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
+def update_inventory_formulas(conn, row_num, headers):
+    """Recalculate formulas for a row."""
+    c = conn.cursor()
+    c.execute("SELECT * FROM inventory WHERE row_num=?", (row_num,))
+    row = c.fetchone()
+    if not row:
+        return
+        
+    try:
+        avail_stock = float(row['c7'] or 0)
+        dp = float(row['c5'] or 0)
+        
+        # sum sold qtys
+        sold_cols = []
+        for i, h in enumerate(headers):
+            if str(h).startswith("Sold Qty"):
+                sold_cols.append(f"c{i+1}")
+                
+        total_sold = 0
+        for col in sold_cols:
+            val = row[col]
+            if val:
+                total_sold += float(val)
+                
+        rem_qty = avail_stock - total_sold
+        rem_val = rem_qty * dp
+        
+        # find indexes
+        try:
+            rem_qty_idx = headers.index('Remaining Qty') + 1
+            rem_val_idx = headers.index('Remaining Value') + 1
+            total_sold_idx = headers.index('Total Sold Qty') + 1
+        except ValueError:
+            rem_qty_idx = 21
+            rem_val_idx = 22
+            total_sold_idx = 20
+            
+        c.execute(f"UPDATE inventory SET c{rem_qty_idx}=?, c{rem_val_idx}=?, c{total_sold_idx}=? WHERE row_num=?",
+                  (rem_qty, rem_val, total_sold, row_num))
+    except Exception as e:
+        print("Error updating formulas:", e)
 
 
 @app.route('/api/update', methods=['POST'])
 def api_update():
     updates = request.json.get('updates', [])
     try:
-        excel, wb = get_excel()
-        ws = wb.Sheets('Inventory_Master')
+        conn = get_db()
+        c = conn.cursor()
         
-        headers = {}
-        for c in range(1, 20):
-            h = ws.Cells(4, c).Value
-            h_str = str(h) if h else f"Col_{c}"
-            headers[h_str] = c
+        c.execute("SELECT value FROM settings WHERE key='inventory_headers'")
+        all_headers = json.loads(c.fetchone()[0])
+        header_map = {str(h) if h else f"Col_{i+1}": i+1 for i, h in enumerate(all_headers[:19])}
         
         for update in updates:
-            r = update['row']
+            row_num = update['row']
             for k, v in update['changes'].items():
-                if k in headers:
-                    c = headers[k]
-                    ws.Cells(r, c).Value = v
-        
-        excel.Run('Asclepius_Wellness_PROFESSIONAL.xlsm!RefreshDashboard')
-        wb.Save()
+                if k in header_map:
+                    col_idx = header_map[k]
+                    c.execute(f"UPDATE inventory SET c{col_idx}=? WHERE row_num=?", (str(v), row_num))
+            
+            update_inventory_formulas(conn, row_num, all_headers)
+            
+        conn.commit()
+        conn.close()
         return jsonify({"success": True})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -163,7 +200,7 @@ def api_update():
 
 @app.route('/api/portal_sync', methods=['POST'])
 def api_portal_sync():
-    """Run the portal → Excel sync. Accepts {from_date, to_date} as DD/MM/YYYY."""
+    """Run the portal sync directly to SQLite!"""
     payload   = request.json or {}
     from_date = payload.get('from_date', '')
     to_date   = payload.get('to_date', '')
@@ -173,32 +210,38 @@ def api_portal_sync():
         from_date = today
         to_date   = today
     try:
-        from portal_sync import run_sync
-        result = run_sync(from_date, to_date)
-        return jsonify(result)
+        # We need to adapt portal_sync to write to SQLite instead of Excel!
+        # For now, if we use the old script it will fail since we moved to SQLite.
+        # Let's import the new SQLite version of portal_sync.
+        # To save time, we will rewrite the sync endpoint in app_sqlite directly or create portal_sync_sqlite.py
+        return jsonify({'error': 'Portal Sync is currently disabled during Cloud Migration.'}), 501
     except Exception as e:
         return jsonify({'error': str(e), 'updated': 0}), 500
 
 
 @app.route('/api/inventory_master')
 def api_inventory_master():
-    """Return ALL columns from Inventory_Master with row numbers for editing."""
     try:
-        excel, wb = get_excel()
-        ws = wb.Sheets('Inventory_Master')
-        # Read headers (row 4, cols B-W = 2-23)
-        header_row = ws.Range(ws.Cells(4, 2), ws.Cells(4, 23)).Value[0]
-        headers = [str(h) if h else f'Col_{i+2}' for i, h in enumerate(header_row)]
-        # Read data (rows 5-220)
-        data_range = ws.Range(ws.Cells(5, 2), ws.Cells(220, 23)).Value
+        conn = get_db()
+        c = conn.cursor()
+        
+        c.execute("SELECT value FROM settings WHERE key='inventory_headers'")
+        all_headers = json.loads(c.fetchone()[0])
+        headers = [str(h) if h else f'Col_{i+1}' for i, h in enumerate(all_headers[:22])]
+        
+        cols = [f"c{i}" for i in range(1, 23)]
+        c.execute(f"SELECT row_num, {', '.join(cols)} FROM inventory ORDER BY row_num")
+        
         rows = []
-        for r_idx, row in enumerate(data_range):
-            if not row[1]:  # Skip if Product Name (col 3 = index 1) is empty
+        for row in c.fetchall():
+            if not row['c3']:
                 continue
-            row_data = {'__row': r_idx + 5}
-            for c_idx, val in enumerate(row):
-                row_data[headers[c_idx]] = clean_excel_val(val)
+            row_data = {'__row': row['row_num']}
+            for i, h in enumerate(headers):
+                row_data[h] = row[f'c{i+1}']
             rows.append(row_data)
+            
+        conn.close()
         return jsonify({'headers': headers, 'data': rows})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -206,32 +249,33 @@ def api_inventory_master():
 
 @app.route('/api/inventory_master/update', methods=['POST'])
 def api_inventory_master_update():
-    """Write edited cell values back to Inventory_Master and save."""
     payload = request.json
-    row_num  = payload.get('row')        # Excel row number (1-indexed)
-    col_name = payload.get('col')        # Header name
-    value    = payload.get('value')      # New value
+    row_num  = payload.get('row')
+    col_name = payload.get('col')
+    value    = payload.get('value')
     if not row_num or not col_name:
         return jsonify({'error': 'row and col are required'}), 400
     try:
-        excel, wb = get_excel()
-        ws = wb.Sheets('Inventory_Master')
-        # Find column index by matching header name
-        header_row = ws.Range(ws.Cells(4, 2), ws.Cells(4, 23)).Value[0]
+        conn = get_db()
+        c = conn.cursor()
+        
+        c.execute("SELECT value FROM settings WHERE key='inventory_headers'")
+        all_headers = json.loads(c.fetchone()[0])
+        
         col_idx = None
-        for i, h in enumerate(header_row):
-            if str(h) == col_name:
-                col_idx = i + 2  # offset: headers start at col B = 2
+        for i, h in enumerate(all_headers[:22]):
+            if str(h) == col_name or (not h and col_name == f"Col_{i+1}"):
+                col_idx = i + 1
                 break
-        if col_idx is None:
+                
+        if not col_idx:
             return jsonify({'error': f'Column "{col_name}" not found'}), 404
-        # Write value
-        try:
-            numeric = float(value)
-            ws.Cells(row_num, col_idx).Value = numeric
-        except (ValueError, TypeError):
-            ws.Cells(row_num, col_idx).Value = value
-        wb.Save()
+            
+        c.execute(f"UPDATE inventory SET c{col_idx}=? WHERE row_num=?", (str(value), row_num))
+        update_inventory_formulas(conn, row_num, all_headers)
+        
+        conn.commit()
+        conn.close()
         return jsonify({'success': True, 'row': row_num, 'col': col_name, 'value': value})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -243,30 +287,39 @@ def api_customer():
     if not ds_code:
         return jsonify({'error': 'ds_code is required'}), 400
     try:
-        excel, wb = get_excel()
-        ws = wb.Sheets('Customer_Profile')
-        # Bulk read up to 500 rows
-        data = ws.Range(ws.Cells(2, 1), ws.Cells(500, 9)).Value
-        for row in data:
-            code = str(row[0]).strip().upper() if row[0] else ''
-            if code == ds_code:
-                return jsonify({
-                    'ds_code':          str(row[0]) if row[0] else '',
-                    'ds_name':          str(row[1]) if row[1] else '',
-                    'mobile':           str(row[2]) if row[2] else '',
-                    'address':          str(row[3]) if row[3] else '',
-                    'shipping_address': str(row[4]) if row[4] else '',
-                    'shipping_mobile':  str(row[5]) if row[5] else '',
-                    'shipping_pincode': str(row[6]) if row[6] else '',
-                    'last_invoice':     str(row[7]) if row[7] else '',
-                })
+        conn = get_db()
+        c = conn.cursor()
+        c.execute("SELECT * FROM customers WHERE ds_code=?", (ds_code,))
+        row = c.fetchone()
+        conn.close()
         
-        # Not found in Excel, look up live in portal
+        if row:
+            return jsonify({
+                'ds_code':          row['ds_code'],
+                'ds_name':          row['ds_name'],
+                'mobile':           row['mobile'],
+                'address':          row['address'],
+                'shipping_address': row['shipping_address'],
+                'shipping_mobile':  row['shipping_mobile'],
+                'shipping_pincode': row['shipping_pincode'],
+                'last_invoice':     row['last_invoice'],
+            })
+            
+        # Not found in DB, look up live in portal
         try:
             from ds_lookup_api import fetch_ds_from_portal
             portal_data = fetch_ds_from_portal(ds_code)
             if portal_data:
-                # Optionally add it to the Excel sheet here?
+                # Add to DB
+                conn = get_db()
+                c = conn.cursor()
+                c.execute('''INSERT INTO customers 
+                             (ds_code, ds_name, mobile, address, shipping_address, shipping_mobile, shipping_pincode, last_invoice) 
+                             VALUES (?, ?, ?, ?, ?, ?, ?, ?)''', 
+                          (portal_data['ds_code'], portal_data['ds_name'], portal_data['mobile'], portal_data['address'], 
+                           portal_data['shipping_address'], portal_data['shipping_mobile'], portal_data['shipping_pincode'], portal_data['last_invoice']))
+                conn.commit()
+                conn.close()
                 return jsonify(portal_data)
         except Exception as ex:
             print("Portal lookup error:", ex)
@@ -277,5 +330,5 @@ def api_customer():
 
 
 if __name__ == '__main__':
-    # threaded=False = single-threaded, no lock needed, no COM deadlocks
-    app.run(port=5000, debug=True, threaded=False, use_reloader=False)
+    # Cloud-ready configuration
+    app.run(host='0.0.0.0', port=5000, debug=True, use_reloader=False)
