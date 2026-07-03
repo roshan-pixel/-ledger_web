@@ -47,7 +47,7 @@ def api_kpi():
         
         # Recalculate KPIs based on current inventory
         # Total SKUs
-        c.execute("SELECT COUNT(*) FROM inventory WHERE c3 != '' AND c3 IS NOT NULL")
+        c.execute("SELECT COUNT(*) FROM inventory WHERE c3 != '' AND c3 IS NOT NULL AND UPPER(c3) != 'TOTAL'")
         total_skus = c.fetchone()[0]
         
         # We need to know which columns are what based on headers
@@ -67,13 +67,17 @@ def api_kpi():
         if not rem_qty_idx: rem_qty_idx = 19
         if not rem_val_idx: rem_val_idx = 20
         
-        c.execute(f"SELECT SUM(CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL)) FROM inventory WHERE c{rem_qty_idx} != ''")
+        c.execute(f"SELECT SUM(CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL)) FROM inventory WHERE c{rem_qty_idx} != '' AND UPPER(c3) != 'TOTAL'")
         rem_qty = c.fetchone()[0] or 0
         
-        c.execute(f"SELECT SUM(CAST(REPLACE(c{rem_val_idx}, ',', '') AS REAL)) FROM inventory WHERE c{rem_val_idx} != ''")
+        c.execute(f"SELECT SUM(CAST(REPLACE(c{rem_val_idx}, ',', '') AS REAL)) FROM inventory WHERE c{rem_val_idx} != '' AND UPPER(c3) != 'TOTAL'")
         rem_val = c.fetchone()[0] or 0
         
-        c.execute(f"SELECT COUNT(*) FROM inventory WHERE CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) <= 10 AND c{rem_qty_idx} != ''")
+        # Calculate Gross Stock Value using c8 (Gross Value Rs.)
+        c.execute(f"SELECT SUM(CAST(REPLACE(c8, ',', '') AS REAL)) FROM inventory WHERE c8 != '' AND UPPER(c3) != 'TOTAL'")
+        gross_val = c.fetchone()[0] or 0
+        
+        c.execute(f"SELECT COUNT(*) FROM inventory WHERE CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) <= 10 AND c{rem_qty_idx} != '' AND UPPER(c3) != 'TOTAL'")
         low_stock = c.fetchone()[0] or 0
         
         # Read other static KPIs from DB
@@ -83,7 +87,8 @@ def api_kpi():
         # Overwrite dynamic ones
         kpis['Total SKUs'] = str(total_skus)
         kpis['Remaining Qty'] = str(rem_qty)
-        kpis['Gross Stock Value'] = str(rem_val)
+        kpis['Gross Stock Value'] = str(gross_val)
+        kpis['Remaining Value'] = str(rem_val)
         kpis['Low Stock counts'] = str(low_stock)
         
         conn.close()
