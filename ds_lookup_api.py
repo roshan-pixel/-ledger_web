@@ -6,7 +6,7 @@ def fetch_ds_from_portal(ds_code):
     Returns a dictionary with ds_name, mobile, address, shipping_mobile, shipping_pincode, shipping_address
     """
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
+        browser = p.chromium.launch(headless=True, args=['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'])
         ctx = browser.new_context()
         page = ctx.new_page()
         
