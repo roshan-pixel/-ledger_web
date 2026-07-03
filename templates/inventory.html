@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin">
+    <title>Inventory Management</title>
+    <!-- Use global.css as requested -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+    <style>
+        /* SPA Transition Classes */
+        @keyframes fadeInSPA {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        body {
+            animation: fadeInSPA 0.3s ease-out forwards;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8fafc;
+            margin: 0;
+            padding: 0;
+            color: #0f172a;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 0;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.025em;
+        }
+
+        .filters {
+            display: flex;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 0.75rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            flex-wrap: wrap;
+        }
+
+        .filter-input, .filter-select {
+            padding: 0.75rem 1.25rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            outline: none;
+            font-size: 0.95rem;
+            background: white;
+            color: #334155;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: inherit;
+        }
+
+        .filter-input::placeholder {
+            color: #94a3b8;
+        }
+
+        .filter-input:focus, .filter-select:focus {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.75rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            border: 1px solid #f1f5f9;
+        }
+
+        .card:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #e2e8f0;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .status {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .status.in-stock { background: #dcfce7; color: #15803d; }
+        .status.low-stock { background: #fef08a; color: #a16207; }
+        .status.out-of-stock { background: #fee2e2; color: #b91c1c; }
+
+        .item-name {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin: 0;
+            margin-right: 5rem;
+            line-height: 1.2;
+            color: #1e293b;
+        }
+
+        .item-category {
+            color: #64748b;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            background: #f1f5f9;
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            width: fit-content;
+        }
+
+        .item-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: auto;
+            padding-top: 1.25rem;
+            border-top: 1px dashed #e2e8f0;
+        }
+
+        .price-label, .stock-label {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin-bottom: 0.25rem;
+            display: block;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .stock {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 5rem 2rem;
+            color: #64748b;
+            font-size: 1.25rem;
+            background: white;
+            border-radius: 24px;
+            border: 2px dashed #cbd5e1;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+            font-weight: 500;
+        }
+
+        /* Loading animation for grid items */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        
+        .card:nth-child(1) { animation-delay: 0.05s; }
+        .card:nth-child(2) { animation-delay: 0.1s; }
+        .card:nth-child(3) { animation-delay: 0.15s; }
+        .card:nth-child(4) { animation-delay: 0.2s; }
+        .card:nth-child(5) { animation-delay: 0.25s; }
+        .card:nth-child(6) { animation-delay: 0.3s; }
+        .card:nth-child(7) { animation-delay: 0.35s; }
+        .card:nth-child(8) { animation-delay: 0.4s; }
+
+        /* Sidebar layout */
+        .sidebar {
+            width: 280px;
+            background: #0b0f19;
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .nav-item {
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            color: #94a3b8;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            transform: translateX(5px);
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        /* Skeleton Loader */
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .skeleton-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+            border: 1px solid #f1f5f9;
+            height: auto;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            position: relative;
+        }
+
+        .skeleton-line {
+            background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite linear;
+            border-radius: 4px;
+        }
+
+        .skeleton-title { height: 28px; width: 70%; margin-top: 0.25rem; }
+        .skeleton-badge { height: 24px; width: 80px; border-radius: 9999px; position: absolute; top: 1.5rem; right: 1.5rem; }
+        .skeleton-category { height: 24px; width: 80px; border-radius: 6px; }
+        .skeleton-details { display: flex; justify-content: space-between; align-items: flex-end; margin-top: auto; padding-top: 1.25rem; border-top: 1px dashed #e2e8f0; }
+        .skeleton-price { height: 28px; width: 80px; }
+        .skeleton-price-label { height: 14px; width: 60px; margin-bottom: 0.5rem;}
+        .skeleton-stock { height: 24px; width: 60px; }
+        .skeleton-stock-label { height: 14px; width: 80px; margin-bottom: 0.5rem;}
+
+        /* Dark Mode enhancements */
+        @media (prefers-color-scheme: dark) {
+            body { background-color: #0f172a; color: #f8fafc; }
+            .card, .skeleton-card {
+                background: rgba(30, 41, 59, 0.8);
+                backdrop-filter: blur(10px);
+                border-color: rgba(255, 255, 255, 0.05);
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+            }
+            .card:hover {
+                border-color: rgba(255, 255, 255, 0.1);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+            }
+            .item-name { color: #f8fafc; }
+            .item-category { background: rgba(51, 65, 85, 0.8); color: #94a3b8; }
+            .item-details, .skeleton-details { border-top-color: rgba(255, 255, 255, 0.1); }
+            .price { color: #f8fafc; }
+            .stock { color: #cbd5e1; }
+            .filters {
+                background: rgba(30, 41, 59, 0.7);
+                border-color: rgba(255, 255, 255, 0.1);
+            }
+            .filter-input, .filter-select {
+                background: rgba(15, 23, 42, 0.8);
+                border-color: rgba(255, 255, 255, 0.1);
+                color: #f8fafc;
+            }
+            .empty-state {
+                background: rgba(30, 41, 59, 0.8);
+                border-color: rgba(255, 255, 255, 0.1);
+                color: #94a3b8;
+            }
+            .status.in-stock { background: rgba(21, 128, 61, 0.2); color: #4ade80; }
+            .status.low-stock { background: rgba(161, 98, 7, 0.2); color: #fde047; }
+            .status.out-of-stock { background: rgba(185, 28, 28, 0.2); color: #f87171; }
+            
+            .skeleton-line {
+                background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+                background-size: 200% 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">Nexus Analytics</div>
+        <ul class="nav-menu">
+            <li class="nav-item" onclick="navigateTo('/')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+                Dashboard
+            </li>
+            <li class="nav-item active" onclick="navigateTo('/inventory')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+                Inventory Stock
+            </li>
+            <li class="nav-item" onclick="navigateTo('/inventory_master')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                Inventory Master
+            </li>
+            <li class="nav-item" onclick="navigateTo('/invoice')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                Invoice Generator
+            </li>
+            <li class="nav-item" onclick="navigateTo('/old_index')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                Legacy View
+            </li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <div class="header">
+        <div>
+            <h1 class="title">Inventory Stock</h1>
+        </div>
+        <div class="filters">
+            <input type="text" id="searchInput" class="filter-input" placeholder="Search products..." onkeyup="filterGrid()">
+            <select id="categoryFilter" class="filter-select" onchange="filterGrid()">
+                <option value="all">All Categories</option>
+                <option value="electronics">Electronics</option>
+                <option value="furniture">Furniture</option>
+                <option value="office">Office Supplies</option>
+                <option value="peripherals">Peripherals</option>
+            </select>
+            <select id="statusFilter" class="filter-select" onchange="filterGrid()">
+                <option value="all">All Status</option>
+                <option value="in-stock">In Stock</option>
+                <option value="low-stock">Low Stock</option>
+                <option value="out-of-stock">Out of Stock</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="grid" id="inventoryGrid">
+        <!-- Skeleton Loaders -->
+        <div class="skeleton-card">
+            <div class="skeleton-line skeleton-badge"></div>
+            <div class="skeleton-line skeleton-title"></div>
+            <div class="skeleton-line skeleton-category"></div>
+            <div class="skeleton-details">
+                <div>
+                    <div class="skeleton-line skeleton-price-label"></div>
+                    <div class="skeleton-line skeleton-price"></div>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                    <div class="skeleton-line skeleton-stock-label"></div>
+                    <div class="skeleton-line skeleton-stock"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skeleton-card">
+            <div class="skeleton-line skeleton-badge"></div>
+            <div class="skeleton-line skeleton-title"></div>
+            <div class="skeleton-line skeleton-category"></div>
+            <div class="skeleton-details">
+                <div>
+                    <div class="skeleton-line skeleton-price-label"></div>
+                    <div class="skeleton-line skeleton-price"></div>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                    <div class="skeleton-line skeleton-stock-label"></div>
+                    <div class="skeleton-line skeleton-stock"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skeleton-card">
+            <div class="skeleton-line skeleton-badge"></div>
+            <div class="skeleton-line skeleton-title"></div>
+            <div class="skeleton-line skeleton-category"></div>
+            <div class="skeleton-details">
+                <div>
+                    <div class="skeleton-line skeleton-price-label"></div>
+                    <div class="skeleton-line skeleton-price"></div>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                    <div class="skeleton-line skeleton-stock-label"></div>
+                    <div class="skeleton-line skeleton-stock"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skeleton-card">
+            <div class="skeleton-line skeleton-badge"></div>
+            <div class="skeleton-line skeleton-title"></div>
+            <div class="skeleton-line skeleton-category"></div>
+            <div class="skeleton-details">
+                <div>
+                    <div class="skeleton-line skeleton-price-label"></div>
+                    <div class="skeleton-line skeleton-price"></div>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                    <div class="skeleton-line skeleton-stock-label"></div>
+                    <div class="skeleton-line skeleton-stock"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skeleton-card">
+            <div class="skeleton-line skeleton-badge"></div>
+            <div class="skeleton-line skeleton-title"></div>
+            <div class="skeleton-line skeleton-category"></div>
+            <div class="skeleton-details">
+                <div>
+                    <div class="skeleton-line skeleton-price-label"></div>
+                    <div class="skeleton-line skeleton-price"></div>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                    <div class="skeleton-line skeleton-stock-label"></div>
+                    <div class="skeleton-line skeleton-stock"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skeleton-card">
+            <div class="skeleton-line skeleton-badge"></div>
+            <div class="skeleton-line skeleton-title"></div>
+            <div class="skeleton-line skeleton-category"></div>
+            <div class="skeleton-details">
+                <div>
+                    <div class="skeleton-line skeleton-price-label"></div>
+                    <div class="skeleton-line skeleton-price"></div>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                    <div class="skeleton-line skeleton-stock-label"></div>
+                    <div class="skeleton-line skeleton-stock"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="emptyState" class="empty-state" style="display: none;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto 1rem auto; display: block; color: #94a3b8;">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        No inventory items found matching your filters.
+    </div>
+
+    <script>
+        function navigateTo(url) {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.3s ease-out';
+            setTimeout(() => {
+                window.location.href = url;
+            }, 300);
+        }
+
+        let allData = [];
+
+        async function fetchInventory() {
+            try {
+                const res = await fetch('/api/inventory');
+                const json = await res.json();
+                allData = json.data || [];
+                renderGrid();
+            } catch (err) {
+                console.error("Error fetching inventory", err);
+            }
+        }
+
+        function renderGrid() {
+            const grid = document.getElementById('inventoryGrid');
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            const status = document.getElementById('statusFilter').value;
+            
+            grid.innerHTML = '';
+            let visibleCount = 0;
+
+            allData.forEach((item, index) => {
+                const name = (item['Product Name'] || '').toString();
+                const price = parseFloat(item['Price/Pc (Rs.)']) || 0;
+                const stock = parseFloat(item['Remaining Qty']) || 0;
+                
+                let itemStatus = 'in-stock';
+                let itemStatusText = 'In Stock';
+                if (stock <= 0) {
+                    itemStatus = 'out-of-stock';
+                    itemStatusText = 'Out of Stock';
+                } else if (stock < 10) {
+                    itemStatus = 'low-stock';
+                    itemStatusText = 'Low Stock';
+                }
+
+                const matchesSearch = name.toLowerCase().includes(search);
+                const matchesStatus = status === 'all' || itemStatus === status;
+
+                if (matchesSearch && matchesStatus) {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.style.animationDelay = `${(index % 10) * 0.05}s`;
+                    
+                    card.innerHTML = `
+                        <span class="status ${itemStatus}">${itemStatusText}</span>
+                        <h2 class="item-name">${name}</h2>
+                        <div class="item-category">Product</div>
+                        <div class="item-details">
+                            <div>
+                                <span class="price-label">Price/Pc (Rs.)</span>
+                                <span class="price">₹${price.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+                            </div>
+                            <div style="text-align: right;">
+                                <span class="stock-label">Remaining Qty</span>
+                                <span class="stock">${stock} units</span>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                    visibleCount++;
+                }
+            });
+            
+            document.getElementById('emptyState').style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+
+        function filterGrid() {
+            renderGrid();
+        }
+
+        // Init
+        fetchInventory();
+    </script>
+    </main>
+</body>
+</html>

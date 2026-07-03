@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Sync — Nexus Analytics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @keyframes fadeInSPA { from{opacity:0} to{opacity:1} }
+        @keyframes spin      { to{transform:rotate(360deg)} }
+        @keyframes pulse     { 0%,100%{opacity:1} 50%{opacity:.3} }
+        @keyframes slideUp   { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes glow      { 0%,100%{box-shadow:0 0 20px rgba(99,102,241,.4)} 50%{box-shadow:0 0 40px rgba(99,102,241,.8)} }
+
+        *, *::before, *::after { box-sizing:border-box; }
+
+        :root {
+            --bg:      #0b0f19;
+            --surface: rgba(255,255,255,0.04);
+            --surface2:rgba(255,255,255,0.07);
+            --border:  rgba(255,255,255,0.09);
+            --primary: #6366f1;
+            --pglow:   rgba(99,102,241,0.3);
+            --green:   #10b981;
+            --yellow:  #f59e0b;
+            --red:     #ef4444;
+            --text:    #ffffff;
+            --muted:   #94a3b8;
+            --blur:    blur(16px);
+        }
+
+        body {
+            margin:0; padding:0;
+            font-family:'Outfit',sans-serif;
+            background-color:var(--bg);
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(99,102,241,.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(236,72,153,.15),  transparent 25%);
+            background-attachment:fixed;
+            color:var(--text); min-height:100vh;
+            display:flex;
+            animation:fadeInSPA .3s ease-out forwards;
+        }
+
+        /* ── SIDEBAR ─────────────────────── */
+        .sidebar {
+            width:260px; flex-shrink:0;
+            background:var(--surface); border-right:1px solid var(--border);
+            backdrop-filter:var(--blur);
+            padding:2rem 1.5rem; display:flex; flex-direction:column; gap:2rem;
+            position:sticky; top:0; height:100vh;
+        }
+        .logo {
+            font-size:1.4rem; font-weight:700;
+            background:linear-gradient(to right,#fff,#94a3b8);
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+        }
+        .nav-menu { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.4rem; }
+        .nav-item {
+            padding:.85rem 1.2rem; border-radius:12px; color:var(--muted);
+            font-weight:500; cursor:pointer; transition:all .25s;
+            display:flex; align-items:center; gap:.85rem; font-size:.92rem;
+        }
+        .nav-item:hover { background:rgba(255,255,255,.08); color:var(--text); transform:translateX(4px); }
+        .nav-item.active { background:rgba(99,102,241,.15); color:var(--primary); transform:translateX(4px); }
+
+        /* ── MAIN ────────────────────────── */
+        .main { flex:1; padding:2.5rem; overflow-y:auto; display:flex; flex-direction:column; gap:2rem; }
+
+        /* ── PAGE HEADER ─────────────────── */
+        .page-header h1 { margin:0; font-size:2rem; font-weight:700; letter-spacing:-.5px; }
+        .page-header p  { margin:.3rem 0 0; color:var(--muted); }
+
+        /* ── STATUS BANNER ───────────────── */
+        .status-banner {
+            display:flex; align-items:center; gap:.75rem;
+            padding:.85rem 1.25rem; border-radius:14px;
+            border:1px solid; font-size:.9rem; font-weight:500;
+        }
+        .banner-connected { background:rgba(16,185,129,.08); border-color:rgba(16,185,129,.3); color:var(--green); }
+        .banner-idle      { background:rgba(99,102,241,.08);  border-color:rgba(99,102,241,.3); color:var(--primary); }
+        .banner-syncing   { background:rgba(245,158,11,.08);  border-color:rgba(245,158,11,.3); color:var(--yellow); animation:glow 1.5s infinite; }
+        .banner-error     { background:rgba(239,68,68,.08);   border-color:rgba(239,68,68,.3);  color:var(--red); }
+        .banner-dot { width:10px; height:10px; border-radius:50%; background:currentColor; flex-shrink:0; }
+        .banner-dot.pulse { animation:pulse 1.2s infinite; }
+
+        /* ── SYNC CARD ───────────────────── */
+        .sync-card {
+            background:var(--surface); border:1px solid var(--border);
+            border-radius:20px; backdrop-filter:var(--blur);
+            padding:2rem; display:flex; flex-direction:column; gap:1.5rem;
+        }
+        .sync-card h2 { margin:0; font-size:1.1rem; font-weight:600; }
+
+        /* date inputs */
+        .date-row { display:flex; gap:1rem; flex-wrap:wrap; align-items:flex-end; }
+        .date-field { display:flex; flex-direction:column; gap:.4rem; flex:1; min-width:160px; }
+        .date-field label { font-size:.75rem; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--muted); }
+        .glass-input {
+            background:rgba(255,255,255,.06); border:1px solid var(--border);
+            border-radius:10px; padding:.7rem 1rem;
+            color:var(--text); font-family:'Outfit',sans-serif;
+            font-size:.92rem; outline:none; width:100%;
+            transition:border-color .2s, box-shadow .2s;
+        }
+        .glass-input:focus { border-color:var(--primary); box-shadow:0 0 0 3px var(--pglow); }
+
+        /* quick presets */
+        .presets { display:flex; gap:.5rem; flex-wrap:wrap; }
+        .preset-btn {
+            padding:.4rem .9rem; border-radius:8px; border:1px solid var(--border);
+            background:var(--surface2); color:var(--muted); font-family:'Outfit',sans-serif;
+            font-size:.8rem; font-weight:500; cursor:pointer; transition:all .2s;
+        }
+        .preset-btn:hover { border-color:var(--primary); color:var(--primary); background:rgba(99,102,241,.1); }
+
+        /* sync button */
+        .sync-btn {
+            padding:.8rem 2rem; border-radius:12px; border:none;
+            background:linear-gradient(135deg,var(--primary),#8b5cf6);
+            color:#fff; font-family:'Outfit',sans-serif;
+            font-size:1rem; font-weight:700; cursor:pointer;
+            display:flex; align-items:center; gap:.6rem;
+            box-shadow:0 4px 20px rgba(99,102,241,.4);
+            transition:all .25s; align-self:flex-start;
+        }
+        .sync-btn:hover:not(:disabled) { transform:translateY(-2px); box-shadow:0 6px 28px rgba(99,102,241,.5); }
+        .sync-btn:disabled { opacity:.5; cursor:not-allowed; transform:none; }
+        .spinner { width:18px; height:18px; border:2.5px solid rgba(255,255,255,.3); border-top-color:#fff; border-radius:50%; animation:spin .7s linear infinite; display:none; }
+
+        /* ── RESULTS CARD ────────────────── */
+        .results-card {
+            background:var(--surface); border:1px solid var(--border);
+            border-radius:20px; backdrop-filter:var(--blur);
+            padding:2rem; display:none; flex-direction:column; gap:1.25rem;
+        }
+        .results-card.visible { display:flex; animation:slideUp .4s ease-out; }
+        .results-card h2 { margin:0; font-size:1.1rem; font-weight:600; }
+
+        /* stat grid */
+        .stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1rem; }
+        .stat-item {
+            background:var(--surface2); border:1px solid var(--border);
+            border-radius:14px; padding:1.2rem; text-align:center;
+        }
+        .stat-num { font-size:2.2rem; font-weight:700; line-height:1; }
+        .stat-label { font-size:.78rem; color:var(--muted); margin-top:.4rem; font-weight:500; text-transform:uppercase; letter-spacing:.5px; }
+        .green { color:var(--green); }
+        .yellow{ color:var(--yellow); }
+        .red   { color:var(--red); }
+        .blue  { color:var(--primary); }
+
+        /* not-found list */
+        .not-found-box {
+            background:rgba(239,68,68,.06); border:1px solid rgba(239,68,68,.2);
+            border-radius:12px; padding:1rem 1.2rem;
+        }
+        .not-found-box h3 { margin:0 0 .5rem; font-size:.9rem; color:var(--red); }
+        .not-found-box ul { margin:0; padding-left:1.25rem; color:var(--muted); font-size:.85rem; line-height:1.8; }
+
+        /* ── LOG CARD ────────────────────── */
+        .log-card {
+            background:rgba(0,0,0,.3); border:1px solid var(--border);
+            border-radius:16px; padding:1.25rem;
+            font-family:'Courier New', monospace; font-size:.82rem;
+            line-height:1.6; color:#64748b;
+            max-height:280px; overflow-y:auto;
+            display:none;
+        }
+        .log-card.visible { display:block; animation:slideUp .4s ease-out; }
+        .log-line { padding:.1rem 0; border-bottom:1px solid rgba(255,255,255,.03); }
+        .log-ok   { color:var(--green); }
+        .log-warn { color:var(--yellow); }
+        .log-err  { color:var(--red); }
+        .log-info { color:var(--primary); }
+
+        /* ── AUTO SYNC TOGGLE ─────────────── */
+        .auto-card {
+            background:var(--surface); border:1px solid var(--border);
+            border-radius:20px; backdrop-filter:var(--blur);
+            padding:1.75rem 2rem; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; flex-wrap:wrap;
+        }
+        .auto-info h3 { margin:0 0 .25rem; font-size:1rem; font-weight:600; }
+        .auto-info p  { margin:0; color:var(--muted); font-size:.88rem; }
+        .toggle-wrap { display:flex; align-items:center; gap:.75rem; }
+        .toggle-label { font-size:.88rem; color:var(--muted); font-weight:500; }
+        .toggle {
+            position:relative; width:52px; height:28px; cursor:pointer;
+        }
+        .toggle input { opacity:0; width:0; height:0; }
+        .toggle-slider {
+            position:absolute; inset:0; background:rgba(255,255,255,.1);
+            border:1px solid var(--border); border-radius:28px; transition:.3s;
+        }
+        .toggle-slider::before {
+            content:''; position:absolute; height:20px; width:20px;
+            left:3px; top:3px; border-radius:50%;
+            background:#fff; transition:.3s; box-shadow:0 2px 4px rgba(0,0,0,.3);
+        }
+        input:checked + .toggle-slider { background:var(--primary); border-color:var(--primary); }
+        input:checked + .toggle-slider::before { transform:translateX(24px); }
+        #autoInterval { font-size:.82rem; color:var(--muted); }
+    </style>
+</head>
+<body>
+
+<!-- ── SIDEBAR ──────────────────────────────── -->
+<aside class="sidebar">
+    <div class="logo">Nexus Analytics</div>
+    <ul class="nav-menu">
+        <li class="nav-item" onclick="navigateTo('/')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+            Dashboard
+        </li>
+        <li class="nav-item" onclick="navigateTo('/inventory')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            Inventory Stock
+        </li>
+        <li class="nav-item" onclick="navigateTo('/inventory_master')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            Inventory Master
+        </li>
+        <li class="nav-item" onclick="navigateTo('/invoice')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            Invoice Generator
+        </li>
+        <li class="nav-item active" onclick="navigateTo('/portal_sync')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+            Portal Sync
+        </li>
+        <li class="nav-item" onclick="navigateTo('/old_index')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Legacy View
+        </li>
+    </ul>
+</aside>
+
+<!-- ── MAIN ─────────────────────────────────── -->
+<main class="main">
+
+    <div class="page-header">
+        <h1>🔄 Portal Sync</h1>
+        <p>Pull approved orders from Asclepius C&amp;F Portal → update Inventory Master automatically</p>
+    </div>
+
+    <!-- Status Banner -->
+    <div class="status-banner banner-idle" id="statusBanner">
+        <div class="banner-dot" id="bannerDot"></div>
+        <span id="bannerText">Ready to sync — select a date range and click Sync Now</span>
+    </div>
+
+    <!-- Sync Control Card -->
+    <div class="sync-card">
+        <h2>📅 Select Date Range</h2>
+
+        <div class="presets">
+            <button class="preset-btn" onclick="setPreset(0)">Today</button>
+            <button class="preset-btn" onclick="setPreset(1)">Yesterday</button>
+            <button class="preset-btn" onclick="setPreset(7)">Last 7 Days</button>
+            <button class="preset-btn" onclick="setPreset(14)">Last 14 Days</button>
+            <button class="preset-btn" onclick="setPreset(30)">Last 30 Days</button>
+        </div>
+
+        <div class="date-row">
+            <div class="date-field">
+                <label>From Date</label>
+                <input type="date" class="glass-input" id="fromDate">
+            </div>
+            <div class="date-field">
+                <label>To Date</label>
+                <input type="date" class="glass-input" id="toDate">
+            </div>
+        </div>
+
+        <button class="sync-btn" id="syncBtn" onclick="runSync()">
+            <div class="spinner" id="syncSpinner"></div>
+            <svg id="syncIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+            <span id="syncBtnText">Sync Now</span>
+        </button>
+    </div>
+
+    <!-- Auto Sync Card -->
+    <div class="auto-card">
+        <div class="auto-info">
+            <h3>⚡ Auto Sync</h3>
+            <p>Automatically sync approved orders every <strong id="autoInterval">15 minutes</strong> in the background</p>
+        </div>
+        <div class="toggle-wrap">
+            <span class="toggle-label" id="autoLabel">Off</span>
+            <label class="toggle">
+                <input type="checkbox" id="autoToggle" onchange="toggleAuto()">
+                <span class="toggle-slider"></span>
+            </label>
+        </div>
+    </div>
+
+    <!-- Results Card -->
+    <div class="results-card" id="resultsCard">
+        <h2>📊 Sync Results</h2>
+        <div class="stat-grid">
+            <div class="stat-item">
+                <div class="stat-num green" id="rUpdated">0</div>
+                <div class="stat-label">Products Updated</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num yellow" id="rSkipped">0</div>
+                <div class="stat-label">Rows Skipped</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num red" id="rNotFound">0</div>
+                <div class="stat-label">Not Matched</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num blue" id="rTime">—</div>
+                <div class="stat-label">Time Taken</div>
+            </div>
+        </div>
+        <div class="not-found-box" id="notFoundBox" style="display:none;">
+            <h3>⚠ Products Not Matched in Inventory</h3>
+            <ul id="notFoundList"></ul>
+        </div>
+    </div>
+
+    <!-- Log Card -->
+    <div class="log-card" id="logCard"></div>
+
+</main>
+
+<script>
+    // ── Init dates ────────────────────────────────────────
+    const today = new Date();
+    document.getElementById('fromDate').value = today.toISOString().split('T')[0];
+    document.getElementById('toDate').value   = today.toISOString().split('T')[0];
+
+    function setPreset(days) {
+        const t = new Date();
+        const f = new Date();
+        if (days === 1) f.setDate(t.getDate() - 1);
+        else f.setDate(t.getDate() - days);
+        document.getElementById('fromDate').value = f.toISOString().split('T')[0];
+        document.getElementById('toDate').value   = t.toISOString().split('T')[0];
+    }
+
+    // ── Format date YYYY-MM-DD → DD/MM/YYYY ──────────────
+    function fmtPortal(iso) {
+        const [y, m, d] = iso.split('-');
+        return `${d}/${m}/${y}`;
+    }
+
+    // ── Logging ───────────────────────────────────────────
+    const logEl = document.getElementById('logCard');
+    function log(msg, type='') {
+        logEl.classList.add('visible');
+        const line = document.createElement('div');
+        line.className = 'log-line ' + (type ? 'log-'+type : '');
+        line.textContent = `[${new Date().toLocaleTimeString()}] ${msg}`;
+        logEl.prepend(line);
+    }
+
+    // ── Banner ────────────────────────────────────────────
+    function setBanner(state, text) {
+        const el  = document.getElementById('statusBanner');
+        const dot = document.getElementById('bannerDot');
+        el.className = 'status-banner banner-' + state;
+        dot.className = 'banner-dot' + (state === 'syncing' ? ' pulse' : '');
+        document.getElementById('bannerText').textContent = text;
+    }
+
+    // ── Main sync function ────────────────────────────────
+    let syncRunning = false;
+    async function runSync() {
+        if (syncRunning) return;
+        const from = document.getElementById('fromDate').value;
+        const to   = document.getElementById('toDate').value;
+        if (!from || !to) { alert('Please select dates'); return; }
+
+        syncRunning = true;
+        const btn  = document.getElementById('syncBtn');
+        btn.disabled = true;
+        document.getElementById('syncSpinner').style.display = 'block';
+        document.getElementById('syncIcon').style.display    = 'none';
+        document.getElementById('syncBtnText').textContent   = 'Syncing…';
+        setBanner('syncing', `Connecting to Asclepius portal & syncing ${fmtPortal(from)} → ${fmtPortal(to)}…`);
+        log(`Starting sync: ${fmtPortal(from)} → ${fmtPortal(to)}`, 'info');
+
+        const startTime = Date.now();
+        try {
+            const res  = await fetch('/api/portal_sync', {
+                method: 'POST',
+                headers: {'Content-Type':'application/json'},
+                body: JSON.stringify({ from_date: fmtPortal(from), to_date: fmtPortal(to) })
+            });
+            const data = await res.json();
+            const elapsed = ((Date.now() - startTime) / 1000).toFixed(1) + 's';
+
+            if (data.error) {
+                setBanner('error', '✗ Sync failed: ' + data.error);
+                log('Error: ' + data.error, 'err');
+            } else {
+                setBanner('connected', `✓ Sync complete — ${data.updated} products updated in Excel`);
+                log(`Sync done: ${data.updated} updated, ${data.skipped} skipped, ${(data.not_found||[]).length} unmatched`, 'ok');
+
+                // Show results
+                document.getElementById('rUpdated').textContent  = data.updated  || 0;
+                document.getElementById('rSkipped').textContent  = data.skipped  || 0;
+                document.getElementById('rNotFound').textContent = (data.not_found||[]).length;
+                document.getElementById('rTime').textContent     = elapsed;
+                document.getElementById('resultsCard').classList.add('visible');
+
+                // Not found list
+                const nf = data.not_found || [];
+                const nfBox = document.getElementById('notFoundBox');
+                if (nf.length > 0) {
+                    nfBox.style.display = 'block';
+                    document.getElementById('notFoundList').innerHTML =
+                        nf.map(n => `<li>${n}</li>`).join('');
+                } else {
+                    nfBox.style.display = 'none';
+                }
+            }
+        } catch(e) {
+            setBanner('error', '✗ Network error: ' + e.message);
+            log('Network error: ' + e.message, 'err');
+        }
+
+        syncRunning = false;
+        btn.disabled = false;
+        document.getElementById('syncSpinner').style.display = 'none';
+        document.getElementById('syncIcon').style.display    = 'block';
+        document.getElementById('syncBtnText').textContent   = 'Sync Now';
+    }
+
+    // ── Auto sync ─────────────────────────────────────────
+    let autoTimer = null;
+    const AUTO_INTERVAL_MS = 15 * 60 * 1000; // 15 minutes
+
+    function toggleAuto() {
+        const on = document.getElementById('autoToggle').checked;
+        document.getElementById('autoLabel').textContent = on ? 'On' : 'Off';
+        if (on) {
+            log('Auto-sync enabled every 15 minutes', 'info');
+            setBanner('idle', '⚡ Auto-sync active — will sync today every 15 minutes');
+            autoTimer = setInterval(() => {
+                // Always sync today for auto mode
+                const t = new Date().toISOString().split('T')[0];
+                document.getElementById('fromDate').value = t;
+                document.getElementById('toDate').value   = t;
+                log('Auto-sync triggered', 'info');
+                runSync();
+            }, AUTO_INTERVAL_MS);
+        } else {
+            clearInterval(autoTimer);
+            autoTimer = null;
+            log('Auto-sync disabled', 'warn');
+            setBanner('idle', 'Ready to sync');
+        }
+    }
+
+    // ── SPA nav ───────────────────────────────────────────
+    function navigateTo(url) {
+        clearInterval(autoTimer);
+        document.body.style.opacity    = '0';
+        document.body.style.transition = 'opacity .25s ease-out';
+        setTimeout(() => { window.location.href = url; }, 260);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Master — Nexus Analytics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @keyframes fadeInSPA { from{opacity:0} to{opacity:1} }
+        @keyframes shimmer  { 0%{background-position:-400px 0} 100%{background-position:400px 0} }
+        @keyframes spin     { to{transform:rotate(360deg)} }
+        @keyframes pop      { 0%{transform:scale(1)} 50%{transform:scale(1.05)} 100%{transform:scale(1)} }
+
+        *, *::before, *::after { box-sizing:border-box; }
+
+        :root {
+            --bg:       #0b0f19;
+            --surface:  rgba(255,255,255,0.04);
+            --surface2: rgba(255,255,255,0.07);
+            --border:   rgba(255,255,255,0.09);
+            --primary:  #6366f1;
+            --pglow:    rgba(99,102,241,0.3);
+            --green:    #10b981;
+            --yellow:   #f59e0b;
+            --red:      #ef4444;
+            --text:     #ffffff;
+            --muted:    #94a3b8;
+            --blur:     blur(16px);
+        }
+
+        body {
+            margin:0; padding:0;
+            font-family:'Outfit',sans-serif;
+            background-color:var(--bg);
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(99,102,241,.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(236,72,153,.15),  transparent 25%);
+            background-attachment:fixed;
+            color:var(--text); min-height:100vh;
+            display:flex;
+            animation:fadeInSPA .3s ease-out forwards;
+        }
+
+        /* ── SIDEBAR ─────────────────────── */
+        .sidebar {
+            width:260px; flex-shrink:0;
+            background:var(--surface); border-right:1px solid var(--border);
+            backdrop-filter:var(--blur);
+            padding:2rem 1.5rem; display:flex; flex-direction:column; gap:2rem;
+            position:sticky; top:0; height:100vh; overflow-y:auto;
+        }
+        .logo {
+            font-size:1.4rem; font-weight:700;
+            background:linear-gradient(to right,#fff,#94a3b8);
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            letter-spacing:-.5px;
+        }
+        .nav-menu { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.4rem; }
+        .nav-item {
+            padding:.85rem 1.2rem; border-radius:12px; color:var(--muted);
+            font-weight:500; cursor:pointer; transition:all .25s;
+            display:flex; align-items:center; gap:.85rem; font-size:.92rem;
+        }
+        .nav-item:hover { background:rgba(255,255,255,.08); color:var(--text); transform:translateX(4px); }
+        .nav-item.active { background:rgba(99,102,241,.15); color:var(--primary); transform:translateX(4px); }
+
+        /* ── MAIN ────────────────────────── */
+        .main { flex:1; padding:2rem; overflow:hidden; display:flex; flex-direction:column; gap:1.5rem; }
+
+        /* ── HEADER ──────────────────────── */
+        .page-header { display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; }
+        .page-header h1 { margin:0; font-size:1.9rem; font-weight:700; letter-spacing:-.5px; }
+        .page-header p  { margin:.25rem 0 0; color:var(--muted); font-size:.9rem; }
+        .header-actions { display:flex; align-items:center; gap:.75rem; }
+
+        /* ── SEARCH + FILTER BAR ─────────── */
+        .toolbar {
+            display:flex; align-items:center; gap:.75rem; flex-wrap:wrap;
+            background:var(--surface); border:1px solid var(--border);
+            border-radius:16px; padding:.85rem 1.25rem;
+            backdrop-filter:var(--blur);
+        }
+        .search-wrap { position:relative; flex:1; min-width:220px; }
+        .search-wrap svg { position:absolute; left:.9rem; top:50%; transform:translateY(-50%); color:var(--muted); pointer-events:none; }
+        .search-input {
+            width:100%; padding:.6rem .9rem .6rem 2.5rem;
+            background:rgba(255,255,255,.06); border:1px solid var(--border);
+            border-radius:10px; color:var(--text); font-family:'Outfit',sans-serif;
+            font-size:.9rem; outline:none; transition:border-color .2s, box-shadow .2s;
+        }
+        .search-input:focus { border-color:var(--primary); box-shadow:0 0 0 3px var(--pglow); }
+        .search-input::placeholder { color:var(--muted); }
+
+        .filter-btn {
+            padding:.55rem 1.1rem; border-radius:10px; font-family:'Outfit',sans-serif;
+            font-size:.82rem; font-weight:600; cursor:pointer; border:1px solid var(--border);
+            background:var(--surface2); color:var(--muted); transition:all .2s; white-space:nowrap;
+        }
+        .filter-btn:hover, .filter-btn.active { border-color:var(--primary); color:var(--primary); background:rgba(99,102,241,.1); }
+
+        .stat-chip {
+            padding:.4rem .9rem; border-radius:20px; font-size:.8rem; font-weight:600;
+            white-space:nowrap;
+        }
+        .chip-total   { background:rgba(99,102,241,.15); color:var(--primary); }
+        .chip-low     { background:rgba(245,158,11,.15);  color:var(--yellow); }
+        .chip-out     { background:rgba(239,68,68,.15);   color:var(--red); }
+
+        /* ── TABLE ───────────────────────── */
+        .table-container {
+            flex:1; overflow:auto; border-radius:16px;
+            border:1px solid var(--border); background:var(--surface);
+            backdrop-filter:var(--blur);
+        }
+        table { width:100%; border-collapse:collapse; min-width:1100px; }
+
+        thead { position:sticky; top:0; z-index:10; }
+        thead th {
+            background:#0d1220; border-bottom:1px solid var(--border);
+            padding:.8rem 1rem; text-align:left;
+            font-size:.75rem; font-weight:600; text-transform:uppercase;
+            letter-spacing:.8px; color:var(--muted); white-space:nowrap;
+        }
+        thead th.sortable { cursor:pointer; user-select:none; }
+        thead th.sortable:hover { color:var(--text); }
+        thead th .sort-icon { margin-left:4px; opacity:.4; font-size:.65rem; }
+        thead th.asc  .sort-icon { opacity:1; }
+        thead th.desc .sort-icon { opacity:1; }
+
+        tbody tr {
+            border-bottom:1px solid rgba(255,255,255,.04);
+            transition:background .15s;
+        }
+        tbody tr:hover { background:rgba(255,255,255,.04); }
+        tbody tr.editing { background:rgba(99,102,241,.06); }
+
+        tbody td {
+            padding:.55rem 1rem; font-size:.88rem;
+            white-space:nowrap; vertical-align:middle;
+        }
+        td.sno     { color:var(--muted); font-size:.8rem; width:48px; }
+        td.product { font-weight:600; max-width:220px; white-space:normal; line-height:1.3; }
+        td.numeric { text-align:right; font-variant-numeric:tabular-nums; }
+        td.editable-cell { cursor:pointer; }
+        td.editable-cell:hover { color:var(--primary); }
+
+        /* inline editor */
+        .cell-editor {
+            background:rgba(99,102,241,.12); border:1.5px solid var(--primary);
+            border-radius:6px; color:var(--text); font-family:'Outfit',sans-serif;
+            font-size:.88rem; padding:.25rem .5rem; width:100%; outline:none;
+            box-shadow:0 0 0 3px var(--pglow);
+            text-align:right;
+        }
+
+        /* stock status badge */
+        .badge {
+            padding:.2rem .65rem; border-radius:20px;
+            font-size:.75rem; font-weight:700; letter-spacing:.3px; display:inline-block;
+        }
+        .badge-in     { background:rgba(16,185,129,.15); color:var(--green); }
+        .badge-low    { background:rgba(245,158,11,.15);  color:var(--yellow); }
+        .badge-out    { background:rgba(239,68,68,.15);   color:var(--red); }
+
+        /* skeleton */
+        .skeleton-row td {
+            height:40px; padding:.4rem 1rem;
+        }
+        .skeleton-bar {
+            height:14px; border-radius:6px;
+            background:linear-gradient(90deg, rgba(255,255,255,.04) 25%, rgba(255,255,255,.1) 50%, rgba(255,255,255,.04) 75%);
+            background-size:400px 100%;
+            animation:shimmer 1.4s infinite linear;
+        }
+
+        /* ── SAVE INDICATOR ──────────────── */
+        #saveIndicator {
+            position:fixed; bottom:2rem; right:2rem;
+            padding:.9rem 1.5rem; border-radius:12px;
+            font-weight:600; font-size:.9rem; color:#fff;
+            display:flex; align-items:center; gap:.6rem;
+            opacity:0; transform:translateY(10px);
+            transition:all .3s; pointer-events:none; z-index:999;
+        }
+        #saveIndicator.saving  { opacity:1; transform:translateY(0); background:rgba(99,102,241,.9); }
+        #saveIndicator.saved   { opacity:1; transform:translateY(0); background:rgba(16,185,129,.9); }
+        #saveIndicator.error   { opacity:1; transform:translateY(0); background:rgba(239,68,68,.9); }
+        .spinner { width:16px; height:16px; border:2px solid rgba(255,255,255,.3); border-top-color:#fff; border-radius:50%; animation:spin .7s linear infinite; }
+
+        /* refresh btn */
+        .refresh-btn {
+            padding:.6rem 1.2rem; border-radius:10px; border:1px solid var(--border);
+            background:var(--surface2); color:var(--text); font-family:'Outfit',sans-serif;
+            font-size:.88rem; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:.5rem;
+            transition:all .2s;
+        }
+        .refresh-btn:hover { border-color:var(--primary); color:var(--primary); }
+        .refresh-btn svg { transition:transform .4s; }
+        .refresh-btn:hover svg { transform:rotate(180deg); }
+
+        /* rows count */
+        #rowCount { font-size:.85rem; color:var(--muted); }
+    </style>
+</head>
+<body>
+
+<!-- ── SIDEBAR ─────────────────────────────── -->
+<aside class="sidebar">
+    <div class="logo">Nexus Analytics</div>
+    <ul class="nav-menu">
+        <li class="nav-item" onclick="navigateTo('/')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+            Dashboard
+        </li>
+        <li class="nav-item" onclick="navigateTo('/inventory')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            Inventory Stock
+        </li>
+        <li class="nav-item active" onclick="navigateTo('/inventory_master')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            Inventory Master
+        </li>
+        <li class="nav-item" onclick="navigateTo('/invoice')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            Invoice Generator
+        </li>
+        <li class="nav-item" onclick="navigateTo('/old_index')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Legacy View
+        </li>
+    </ul>
+</aside>
+
+<!-- ── MAIN ────────────────────────────────── -->
+<main class="main">
+
+    <!-- Header -->
+    <div class="page-header">
+        <div>
+            <h1>Inventory Master</h1>
+            <p id="lastRefreshed">Fetching live data from Excel…</p>
+        </div>
+        <div class="header-actions">
+            <span id="rowCount"></span>
+            <button class="refresh-btn" onclick="loadData()">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.1"/></svg>
+                Refresh
+            </button>
+        </div>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <div class="search-wrap">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search product name, HSN, remarks…" oninput="filterTable()">
+        </div>
+        <button class="filter-btn active" id="f-all"    onclick="setFilter('all')">All</button>
+        <button class="filter-btn"        id="f-in"     onclick="setFilter('in')">In Stock</button>
+        <button class="filter-btn"        id="f-low"    onclick="setFilter('low')">Low Stock</button>
+        <button class="filter-btn"        id="f-out"    onclick="setFilter('out')">Out of Stock</button>
+        <span class="stat-chip chip-total" id="chipTotal">—</span>
+        <span class="stat-chip chip-low"   id="chipLow">—</span>
+        <span class="stat-chip chip-out"   id="chipOut">—</span>
+    </div>
+
+    <!-- Table -->
+    <div class="table-container">
+        <table>
+            <thead id="tableHead"></thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+
+</main>
+
+<!-- Save Indicator -->
+<div id="saveIndicator">
+    <div class="spinner" id="saveSpinner" style="display:none"></div>
+    <span id="saveText">Saving…</span>
+</div>
+
+<script>
+// ── State ────────────────────────────────────────
+let allRows    = [];
+let allHeaders = [];
+let filterMode = 'all';
+let sortCol    = null;
+let sortDir    = 1;
+
+// Columns the user is allowed to edit directly
+const EDITABLE_COLS = new Set([
+    'Product Name', 'HSN Code', 'Price/Pc (Rs.)', 'Box', 'Total Qty',
+    'Sold Qty (Jun 1-7)',  'Sold Qty (Jun 8-14)',
+    'Sold Qty (Jun 15-21)', 'Sold Qty (Jun 22-28)', 'Sold Qty (Jun 29-30)',
+    'Remarks'
+]);
+
+// Numeric columns (right-align)
+const NUM_COLS = new Set([
+    'HSN Code','Price/Pc (Rs.)','Box','Total Qty','Gross Value (Rs.)',
+    'Sold Qty (Jun 1-7)','Sale Value (Jun 1-7)',
+    'Sold Qty (Jun 8-14)','Sale Value (Jun 8-14)',
+    'Sold Qty (Jun 15-21)','Sale Value (Jun 15-21)',
+    'Sold Qty (Jun 22-28)','Sale Value (Jun 22-28)',
+    'Sold Qty (Jun 29-30)','Sale Value (Jun 29-30)',
+    'Remaining Qty','Remaining Value (Rs.)','Sales %',
+    'Tie-Breaker Sold Qty','Tie-Breaker Sale Value'
+]);
+
+// ── Load data ────────────────────────────────────
+async function loadData() {
+    showSkeletons();
+    try {
+        const res  = await fetch('/api/inventory_master');
+        const json = await res.json();
+        if (json.error) { alert('Error: ' + json.error); return; }
+        allHeaders = json.headers;
+        allRows    = json.data;
+        buildHeader();
+        renderTable();
+        updateChips();
+        document.getElementById('lastRefreshed').textContent =
+            'Last refreshed: ' + new Date().toLocaleTimeString('en-IN');
+    } catch(e) {
+        document.getElementById('lastRefreshed').textContent = 'Error loading data — is Flask running?';
+    }
+}
+
+// ── Build table header ────────────────────────────
+function buildHeader() {
+    const thead = document.getElementById('tableHead');
+    // Fixed columns: S.No + columns we want to show
+    const displayCols = ['S.No', ...allHeaders];
+    thead.innerHTML = '<tr>' + displayCols.map((h, i) => {
+        const isSortable = i > 0;
+        return `<th class="${isSortable ? 'sortable' : ''}" data-col="${h}"
+            onclick="${isSortable ? `sortBy('${h}')` : ''}" title="${h}">
+            ${h} ${isSortable ? '<span class="sort-icon">▲</span>' : ''}
+        </th>`;
+    }).join('') + '</tr>';
+}
+
+// ── Render rows ───────────────────────────────────
+function renderTable() {
+    const q   = document.getElementById('searchInput').value.toLowerCase();
+    let rows  = allRows.filter(r => {
+        // Status filter
+        const status = (r['Stock Status'] || '').toLowerCase();
+        if (filterMode === 'in'  && !status.includes('in stock')) return false;
+        if (filterMode === 'low' && !status.includes('low'))       return false;
+        if (filterMode === 'out' && !status.includes('out'))       return false;
+        // Search filter
+        if (q) {
+            const name    = (r['Product Name'] || '').toLowerCase();
+            const hsn     = String(r['HSN Code'] || '').toLowerCase();
+            const remarks = (r['Remarks'] || '').toLowerCase();
+            if (!name.includes(q) && !hsn.includes(q) && !remarks.includes(q)) return false;
+        }
+        return true;
+    });
+
+    // Sort
+    if (sortCol) {
+        rows.sort((a, b) => {
+            let av = a[sortCol] ?? '', bv = b[sortCol] ?? '';
+            const an = parseFloat(av), bn = parseFloat(bv);
+            if (!isNaN(an) && !isNaN(bn)) return (an - bn) * sortDir;
+            return String(av).localeCompare(String(bv)) * sortDir;
+        });
+    }
+
+    document.getElementById('rowCount').textContent = `${rows.length} / ${allRows.length} items`;
+
+    const tbody = document.getElementById('tableBody');
+    if (rows.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="${allHeaders.length + 1}" style="text-align:center; padding:3rem; color:var(--muted);">No matching rows</td></tr>`;
+        return;
+    }
+
+    tbody.innerHTML = rows.map(r => {
+        const status  = (r['Stock Status'] || '').toLowerCase();
+        const badgeCls = status.includes('out') ? 'badge-out' : status.includes('low') ? 'badge-low' : 'badge-in';
+        const badgeTxt = r['Stock Status'] || '—';
+
+        const cells = allHeaders.map(h => {
+            if (h === 'Stock Status') {
+                return `<td><span class="badge ${badgeCls}">${badgeTxt}</span></td>`;
+            }
+            const val   = r[h] ?? '';
+            const isNum = NUM_COLS.has(h);
+            const isEdit= EDITABLE_COLS.has(h);
+            const disp  = formatVal(val, h);
+            const cls   = [
+                isNum   ? 'numeric'       : '',
+                isEdit  ? 'editable-cell' : '',
+                h === 'Product Name' ? 'product' : '',
+            ].filter(Boolean).join(' ');
+            const editAttr = isEdit ? `ondblclick="startEdit(this, ${r.__row}, '${escQ(h)}')" title="Double-click to edit"` : '';
+            return `<td class="${cls}" ${editAttr} data-row="${r.__row}" data-col="${escQ(h)}">${disp}</td>`;
+        });
+
+        return `<tr data-row="${r.__row}">${'<td class="sno">' + (r['S.No'] || '') + '</td>'}${cells.join('')}</tr>`;
+    }).join('');
+}
+
+// ── Format cell value ─────────────────────────────
+function formatVal(val, col) {
+    if (val === '' || val === null || val === undefined) return '<span style="color:var(--muted)">—</span>';
+    if (NUM_COLS.has(col)) {
+        const n = parseFloat(val);
+        if (!isNaN(n)) {
+            if (col.includes('Value') || col.includes('Rs.') || col.includes('Price')) {
+                return '₹' + n.toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2});
+            }
+            if (col === 'Sales %') return (n * 100).toFixed(1) + '%';
+            if (col === 'HSN Code') return Math.round(n).toString();
+            return n.toLocaleString('en-IN', {maximumFractionDigits:2});
+        }
+    }
+    return String(val);
+}
+
+function escQ(s) { return s.replace(/'/g, "\\'"); }
+
+// ── Inline editing ────────────────────────────────
+function startEdit(td, rowNum, colName) {
+    if (td.querySelector('input')) return; // already editing
+    const rawVal = allRows.find(r => r.__row === rowNum)?.[colName] ?? '';
+    const numVal = NUM_COLS.has(colName) ? (parseFloat(rawVal) || 0) : rawVal;
+
+    const input = document.createElement('input');
+    input.className = 'cell-editor';
+    input.value     = numVal;
+    input.type      = NUM_COLS.has(colName) && colName !== 'Product Name' && colName !== 'Remarks' ? 'number' : 'text';
+
+    td.innerHTML = '';
+    td.appendChild(input);
+    td.closest('tr').classList.add('editing');
+    input.focus();
+    input.select();
+
+    function commit() {
+        const newVal = input.value.trim();
+        td.closest('tr').classList.remove('editing');
+        saveCell(rowNum, colName, newVal, td);
+    }
+    input.addEventListener('blur',  commit);
+    input.addEventListener('keydown', e => {
+        if (e.key === 'Enter')  { e.preventDefault(); input.blur(); }
+        if (e.key === 'Escape') { input.removeEventListener('blur', commit); renderTable(); }
+        if (e.key === 'Tab')    { e.preventDefault(); input.blur(); }
+    });
+}
+
+// ── Save cell to Excel ────────────────────────────
+async function saveCell(rowNum, colName, value, td) {
+    showSave('saving');
+    try {
+        const res  = await fetch('/api/inventory_master/update', {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({row: rowNum, col: colName, value: value})
+        });
+        const json = await res.json();
+        if (json.success) {
+            // Update local cache
+            const localRow = allRows.find(r => r.__row === rowNum);
+            if (localRow) localRow[colName] = value;
+            renderTable();
+            updateChips();
+            showSave('saved');
+        } else {
+            showSave('error', json.error || 'Save failed');
+            renderTable();
+        }
+    } catch(e) {
+        showSave('error', 'Network error');
+        renderTable();
+    }
+}
+
+// ── Save indicator ────────────────────────────────
+let saveTimer;
+function showSave(state, msg) {
+    const el  = document.getElementById('saveIndicator');
+    const txt = document.getElementById('saveText');
+    const sp  = document.getElementById('saveSpinner');
+    el.className = state;
+    if (state === 'saving') { txt.textContent = 'Saving to Excel…'; sp.style.display = 'block'; }
+    if (state === 'saved')  { txt.textContent = '✓ Saved to Excel'; sp.style.display = 'none'; }
+    if (state === 'error')  { txt.textContent = '✗ ' + (msg || 'Error'); sp.style.display = 'none'; }
+    clearTimeout(saveTimer);
+    if (state !== 'saving') saveTimer = setTimeout(() => { el.className = ''; }, 2500);
+}
+
+// ── Sort ──────────────────────────────────────────
+function sortBy(col) {
+    if (sortCol === col) sortDir *= -1;
+    else { sortCol = col; sortDir = 1; }
+    // Update icons
+    document.querySelectorAll('thead th .sort-icon').forEach(el => el.textContent = '▲');
+    document.querySelectorAll('thead th').forEach(th => {
+        th.classList.remove('asc','desc');
+        if (th.dataset.col === col) {
+            th.classList.add(sortDir === 1 ? 'asc' : 'desc');
+            th.querySelector('.sort-icon').textContent = sortDir === 1 ? '▲' : '▼';
+        }
+    });
+    renderTable();
+}
+
+// ── Filter ────────────────────────────────────────
+function setFilter(mode) {
+    filterMode = mode;
+    ['all','in','low','out'].forEach(f => {
+        document.getElementById('f-' + f).classList.toggle('active', f === mode);
+    });
+    renderTable();
+}
+
+function filterTable() { renderTable(); }
+
+// ── Chips ─────────────────────────────────────────
+function updateChips() {
+    const total = allRows.length;
+    const low   = allRows.filter(r => (r['Stock Status']||'').toLowerCase().includes('low')).length;
+    const out   = allRows.filter(r => (r['Stock Status']||'').toLowerCase().includes('out')).length;
+    document.getElementById('chipTotal').textContent = `${total} SKUs`;
+    document.getElementById('chipLow').textContent   = `${low} Low`;
+    document.getElementById('chipOut').textContent   = `${out} Out`;
+}
+
+// ── Skeletons ─────────────────────────────────────
+function showSkeletons() {
+    const tbody = document.getElementById('tableBody');
+    tbody.innerHTML = Array.from({length:12}, () =>
+        `<tr class="skeleton-row">${Array.from({length:8}, () =>
+            `<td><div class="skeleton-bar" style="width:${40+Math.random()*50}%"></div></td>`
+        ).join('')}</tr>`
+    ).join('');
+}
+
+// ── SPA nav ───────────────────────────────────────
+function navigateTo(url) {
+    document.body.style.opacity    = '0';
+    document.body.style.transition = 'opacity .25s ease-out';
+    setTimeout(() => { window.location.href = url; }, 260);
+}
+
+// ── Boot ──────────────────────────────────────────
+loadData();
+</script>
+</body>
+</html>
