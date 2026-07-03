@@ -54,25 +54,26 @@ def api_kpi():
         c.execute("SELECT value FROM settings WHERE key='inventory_headers'")
         headers = json.loads(c.fetchone()[0])
         
-        # Find DP col index (1-based from c1..c30)
-        try:
-            dp_idx = headers.index('DP') + 1
-            rem_qty_idx = headers.index('Remaining Qty') + 1
-            rem_val_idx = headers.index('Remaining Value') + 1
-            week_qty_idx = headers.index('Sold Qty (Jul 1-7)') + 1  # Hardcoded for now, can be dynamic
-        except ValueError:
-            dp_idx = 5
-            rem_qty_idx = 21
-            rem_val_idx = 22
-            week_qty_idx = 16
+        # Find indices (1-based)
+        dp_idx = None
+        rem_qty_idx = None
+        rem_val_idx = None
+        for i, h in enumerate(headers):
+            if h == 'Price/Pc (Rs.)': dp_idx = i + 1
+            elif h == 'Remaining Qty': rem_qty_idx = i + 1
+            elif h == 'Remaining Value (Rs.)': rem_val_idx = i + 1
+            elif h == 'Total Qty': avail_stock_idx = i + 1
             
-        c.execute(f"SELECT SUM(CAST(c{rem_qty_idx} AS REAL)) FROM inventory WHERE c{rem_qty_idx} != ''")
+        if not rem_qty_idx: rem_qty_idx = 19
+        if not rem_val_idx: rem_val_idx = 20
+        
+        c.execute(f"SELECT SUM(CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL)) FROM inventory WHERE c{rem_qty_idx} != ''")
         rem_qty = c.fetchone()[0] or 0
         
-        c.execute(f"SELECT SUM(CAST(c{rem_val_idx} AS REAL)) FROM inventory WHERE c{rem_val_idx} != ''")
+        c.execute(f"SELECT SUM(CAST(REPLACE(c{rem_val_idx}, ',', '') AS REAL)) FROM inventory WHERE c{rem_val_idx} != ''")
         rem_val = c.fetchone()[0] or 0
         
-        c.execute(f"SELECT COUNT(*) FROM inventory WHERE CAST(c{rem_qty_idx} AS REAL) <= 10 AND c{rem_qty_idx} != ''")
+        c.execute(f"SELECT COUNT(*) FROM inventory WHERE CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) <= 10 AND c{rem_qty_idx} != ''")
         low_stock = c.fetchone()[0] or 0
         
         # Read other static KPIs from DB
@@ -137,9 +138,18 @@ def update_inventory_formulas(conn, row_num, headers):
         return
         
     try:
-        avail_stock = float(row['c7'] or 0)
-        dp = float(row['c5'] or 0)
-        
+        try:
+            rem_qty_idx = headers.index('Remaining Qty') + 1
+            rem_val_idx = headers.index('Remaining Value (Rs.)') + 1
+            # "Total Sold Qty" is not in the array, let's just compute from sold columns
+            dp = float(str(row[f'c{headers.index("Price/Pc (Rs.)")+1}' ]).replace(',', '') or 0)
+            avail_stock = float(str(row[f'c{headers.index("Total Qty")+1}' ]).replace(',', '') or 0)
+        except ValueError:
+            rem_qty_idx = 19
+            rem_val_idx = 20
+            dp = float(str(row['c5']).replace(',', '') or 0)
+            avail_stock = float(str(row['c7']).replace(',', '') or 0)
+            
         # sum sold qtys
         sold_cols = []
         for i, h in enumerate(headers):
@@ -148,25 +158,15 @@ def update_inventory_formulas(conn, row_num, headers):
                 
         total_sold = 0
         for col in sold_cols:
-            val = row[col]
+            val = str(row[col]).replace(',', '')
             if val:
                 total_sold += float(val)
                 
         rem_qty = avail_stock - total_sold
         rem_val = rem_qty * dp
         
-        # find indexes
-        try:
-            rem_qty_idx = headers.index('Remaining Qty') + 1
-            rem_val_idx = headers.index('Remaining Value') + 1
-            total_sold_idx = headers.index('Total Sold Qty') + 1
-        except ValueError:
-            rem_qty_idx = 21
-            rem_val_idx = 22
-            total_sold_idx = 20
-            
-        c.execute(f"UPDATE inventory SET c{rem_qty_idx}=?, c{rem_val_idx}=?, c{total_sold_idx}=? WHERE row_num=?",
-                  (rem_qty, rem_val, total_sold, row_num))
+        c.execute(f"UPDATE inventory SET c{rem_qty_idx}=?, c{rem_val_idx}=? WHERE row_num=?",
+                  (rem_qty, rem_val, row_num))
     except Exception as e:
         print("Error updating formulas:", e)
 
