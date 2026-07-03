@@ -1,9 +1,20 @@
 import os
 import sqlite3
 import json
+import threading
 from flask import Flask, jsonify, request, render_template
 
+# Import Google Sheets Sync functions
+from restore_gsheets import restore_from_gsheets
+from init_gsheets import init_google_sheets
+
 app = Flask(__name__)
+
+# Run sync on startup (only if credentials exist, e.g. on Render or local with key)
+if os.path.exists('credentials.json'):
+    print("Starting initial sync from Google Sheets...")
+    restore_from_gsheets()
+
 from invoice_api import invoice_api
 app.register_blueprint(invoice_api)
 

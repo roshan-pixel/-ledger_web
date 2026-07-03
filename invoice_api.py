@@ -51,6 +51,12 @@ def create_invoice():
             'amount': amount,
             'date_created': date_created
         }), 201
+        
+        # Backup to Google Sheets in background
+        import threading
+        from init_gsheets import init_google_sheets
+        threading.Thread(target=init_google_sheets).start()
+        
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
