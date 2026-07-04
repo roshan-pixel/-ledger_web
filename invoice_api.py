@@ -94,15 +94,19 @@ def create_invoice():
                         # Recalculate remaining qty and value
                         update_inventory_formulas(conn, row_num, all_headers)
         
+        # Also update the TOTAL row
+        from app import update_totals_row
+        update_totals_row(conn)
+        
         conn.commit()
         conn.close()
         
         return jsonify({
+            'success': True,
             'message': 'Invoice created successfully',
             'invoice_id': invoice_id
-        }), 201
+        })
     except Exception as e:
-        print("Error saving invoice:", str(e))
         return jsonify({'error': str(e)}), 500
 
 @invoice_api.route('/api/invoice/list', methods=['GET'])
@@ -111,47 +115,42 @@ def list_invoices():
     try:
         conn = get_db()
         c = conn.cursor()
-        c.execute('SELECT id, invoice_no, ds_code, customer_name, amount, date_created, items, status FROM invoices ORDER BY id DESC')
+        c.execute('SELECT * FROM invoices ORDER BY id DESC')
         rows = c.fetchall()
-        conn.close()
         
         invoices = []
-        for row in rows:
+        for r in rows:
             invoices.append({
-                'id': row['id'],
-                'invoice_no': row['invoice_no'],
-                'ds_code': row['ds_code'],
-                'customer_name': row['customer_name'],
-                'amount': row['amount'],
-                'date_created': row['date_created'],
-                'items': json.loads(row['items'] or '[]'),
-                'status': row['status']
+                'id': r['id'],
+                'invoiceNo': r['invoice_no'],
+                'dsCode': r['ds_code'],
+                'customerName': r['customer_name'],
+                'amount': r['amount'],
+                'dateCreated': r['date_created'],
+                'items': json.loads(r['items'] or '[]')
             })
-        return jsonify({'invoices': invoices}), 200
+            
+        conn.close()
+        return jsonify({'invoices': invoices})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
 @invoice_api.route('/api/invoice/cancel/<int:invoice_id>', methods=['POST'])
 def cancel_invoice(invoice_id):
-    from app import get_db, update_inventory_formulas
+    from app import get_db, update_inventory_formulas, update_totals_row
     try:
         conn = get_db()
         c = conn.cursor()
         
-        # Check if already cancelled
-        c.execute("SELECT status, items FROM invoices WHERE id=?", (invoice_id,))
+        # 1. Get the invoice to know what to put back
+        c.execute('SELECT items FROM invoices WHERE id = ?', (invoice_id,))
         row = c.fetchone()
         if not row:
             return jsonify({'error': 'Invoice not found'}), 404
-        if row['status'] == 'cancelled':
-            return jsonify({'error': 'Invoice is already cancelled'}), 400
             
         items = json.loads(row['items'] or '[]')
         
-        # Mark as cancelled
-        c.execute("UPDATE invoices SET status='cancelled' WHERE id=?", (invoice_id,))
-        
-        # Reverse inventory (Subtract from Sold Qty)
+        # 2. Add back to inventory (Subtract from Sold Qty)
         c.execute("SELECT value FROM settings WHERE key='inventory_headers'")
         all_headers = json.loads(c.fetchone()[0])
         
@@ -167,17 +166,23 @@ def cancel_invoice(invoice_id):
                 qty_sold = float(item.get('qty', 0))
                 
                 if desc and qty_sold > 0:
-                    c.execute("SELECT row_num, c{} FROM inventory WHERE c3=? ".format(sold_qty_col_idx), (desc,))
+                    c.execute("SELECT row_num, c{} FROM inventory WHERE c3=?".format(sold_qty_col_idx), (desc,))
                     inv_row = c.fetchone()
                     if inv_row:
                         row_num = inv_row['row_num']
                         current_sold = float(inv_row[1] or 0)
-                        # Reverse it
+                        # We subtract because we are cancelling the invoice
                         new_sold = max(0, current_sold - qty_sold)
                         
                         c.execute(f"UPDATE inventory SET c{sold_qty_col_idx}=? WHERE row_num=?", (new_sold, row_num))
                         update_inventory_formulas(conn, row_num, all_headers)
-                        
+        
+        # 3. Delete the invoice from the DB
+        c.execute('DELETE FROM invoices WHERE id = ?', (invoice_id,))
+        
+        # 4. Update the TOTAL row
+        update_totals_row(conn)
+        
         conn.commit()
         conn.close()
         

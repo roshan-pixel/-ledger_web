@@ -88,8 +88,8 @@ def api_kpi():
         c.execute(f"SELECT SUM(CAST(REPLACE(c{rem_val_idx}, ',', '') AS REAL)) FROM inventory WHERE c{rem_val_idx} != '' AND UPPER(c3) != 'TOTAL'")
         rem_val = c.fetchone()[0] or 0
         
-        # Calculate Gross Stock Value using c8 (Gross Value Rs.)
-        c.execute(f"SELECT SUM(CAST(REPLACE(c8, ',', '') AS REAL)) FROM inventory WHERE c8 != '' AND UPPER(c3) != 'TOTAL'")
+        # Calculate Gross Stock Value using remaining value (which updates when invoices are made)
+        c.execute(f"SELECT SUM(CAST(REPLACE(c{rem_val_idx}, ',', '') AS REAL)) FROM inventory WHERE c{rem_val_idx} != '' AND UPPER(c3) != 'TOTAL'")
         gross_val = c.fetchone()[0] or 0
         
         c.execute(f"SELECT COUNT(*) FROM inventory WHERE CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) <= 10 AND c{rem_qty_idx} != '' AND UPPER(c3) != 'TOTAL'")
@@ -154,33 +154,40 @@ def update_inventory_formulas(conn, row_num, headers):
     c = conn.cursor()
     c.execute("SELECT * FROM inventory WHERE row_num=?", (row_num,))
     row = c.fetchone()
-    if not row:
+    if not row or str(row['c3']).upper() == 'TOTAL':
         return
         
     try:
         try:
+            dp_idx = headers.index('Price/Pc (Rs.)') + 1
+            tot_qty_idx = headers.index('Total Qty') + 1
+            gross_val_idx = headers.index('Gross Value (Rs.)') + 1
             rem_qty_idx = headers.index('Remaining Qty') + 1
             rem_val_idx = headers.index('Remaining Value (Rs.)') + 1
-            # "Total Sold Qty" is not in the array, let's just compute from sold columns
-            dp = float(str(row[f'c{headers.index("Price/Pc (Rs.)")+1}' ]).replace(',', '') or 0)
-            avail_stock = float(str(row[f'c{headers.index("Total Qty")+1}' ]).replace(',', '') or 0)
         except ValueError:
+            dp_idx = 5
+            tot_qty_idx = 7
+            gross_val_idx = 8
             rem_qty_idx = 19
             rem_val_idx = 20
-            dp = float(str(row['c5']).replace(',', '') or 0)
-            avail_stock = float(str(row['c7']).replace(',', '') or 0)
             
-        # sum sold qtys
-        sold_cols = []
+        dp = float(str(row[f'c{dp_idx}']).replace(',', '') or 0)
+        avail_stock = float(str(row[f'c{tot_qty_idx}']).replace(',', '') or 0)
+        
+        # update Gross Value
+        gross_val = avail_stock * dp
+        c.execute(f"UPDATE inventory SET c{gross_val_idx}=? WHERE row_num=?", (gross_val, row_num))
+            
+        # sum sold qtys and update sale values
+        total_sold = 0
         for i, h in enumerate(headers):
             if str(h).startswith("Sold Qty"):
-                sold_cols.append(f"c{i+1}")
-                
-        total_sold = 0
-        for col in sold_cols:
-            val = str(row[col]).replace(',', '')
-            if val:
-                total_sold += float(val)
+                qty_col = f"c{i+1}"
+                val_col = f"c{i+2}"
+                qty = float(str(row[qty_col]).replace(',', '') or 0)
+                total_sold += qty
+                sale_val = qty * dp
+                c.execute(f"UPDATE inventory SET c{i+2}=? WHERE row_num=?", (sale_val, row_num))
                 
         rem_qty = avail_stock - total_sold
         rem_val = rem_qty * dp
@@ -189,6 +196,31 @@ def update_inventory_formulas(conn, row_num, headers):
                   (rem_qty, rem_val, row_num))
     except Exception as e:
         print("Error updating formulas:", e)
+
+def update_totals_row(conn):
+    """Recalculate the TOTAL row at the bottom."""
+    try:
+        c = conn.cursor()
+        c.execute("SELECT row_num FROM inventory WHERE UPPER(c3) = 'TOTAL'")
+        total_row = c.fetchone()
+        if not total_row:
+            return
+        
+        row_id = total_row['row_num']
+        
+        # Sum columns 6 through 20
+        sums = {}
+        for col_idx in range(6, 21):
+            c.execute(f"SELECT SUM(CAST(REPLACE(c{col_idx}, ',', '') AS REAL)) FROM inventory WHERE UPPER(c3) != 'TOTAL' AND c{col_idx} != ''")
+            s = c.fetchone()[0] or 0
+            sums[f"c{col_idx}"] = s
+            
+        # Update the total row
+        updates = ", ".join([f"{k}=?" for k in sums.keys()])
+        values = list(sums.values()) + [row_id]
+        c.execute(f"UPDATE inventory SET {updates} WHERE row_num=?", values)
+    except Exception as e:
+        print("Error updating totals row:", e)
 
 
 @app.route('/api/update', methods=['POST'])
@@ -211,6 +243,7 @@ def api_update():
             
             update_inventory_formulas(conn, row_num, all_headers)
             
+        update_totals_row(conn)
         conn.commit()
         conn.close()
         return jsonify({"success": True})
@@ -294,6 +327,7 @@ def api_inventory_master_update():
         c.execute(f"UPDATE inventory SET c{col_idx}=? WHERE row_num=?", (str(value), row_num))
         update_inventory_formulas(conn, row_num, all_headers)
         
+        update_totals_row(conn)
         conn.commit()
         conn.close()
         return jsonify({'success': True, 'row': row_num, 'col': col_name, 'value': value})
