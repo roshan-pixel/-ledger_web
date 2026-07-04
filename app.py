@@ -38,6 +38,10 @@ def inventory():
 def invoice():
     return render_template('invoice.html')
 
+@app.route('/invoice_history')
+def invoice_history():
+    return render_template('invoice_history.html')
+
 @app.route('/old_index')
 def index():
     return render_template('index.html')

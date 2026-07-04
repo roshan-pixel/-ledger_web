@@ -230,6 +230,22 @@
         #toast.success { background:linear-gradient(135deg,#10b981,#059669); }
         #toast.error   { background:linear-gradient(135deg,#ef4444,#dc2626); }
 
+        /* ── HISTORY STATUS & BTNS ───────── */
+        .status {
+            font-size:.75rem; font-weight:600; padding:.25rem .6rem;
+            border-radius:20px; display:inline-block; letter-spacing:.5px; text-transform:uppercase;
+        }
+        .status.active { background:rgba(16,185,129,.15); color:var(--green); border:1px solid rgba(16,185,129,.3); }
+        .status.cancelled { background:rgba(239,68,68,.15); color:var(--red); border:1px solid rgba(239,68,68,.3); }
+
+        .btn-cancel {
+            background:rgba(239,68,68,.1); color:var(--red); border:1px solid rgba(239,68,68,.3);
+            padding:.4rem .8rem; border-radius:8px; font-family:'Outfit',sans-serif;
+            font-size:.8rem; font-weight:600; cursor:pointer; transition:all .2s;
+        }
+        .btn-cancel:hover { background:var(--red); color:#fff; }
+        .btn-cancel:disabled { opacity:.4; cursor:not-allowed; background:rgba(239,68,68,.1); color:var(--red); }
+
         /* ── PRINT ───────────────────────── */
         @media print {
             body { background:#fff; color:#000; animation:none; }
@@ -266,9 +282,9 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
             Invoice Generator
         </li>
-        <li class="nav-item" onclick="navigateTo('/old_index')">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            Legacy View
+        <li class="nav-item" onclick="navigateTo('/invoice_history')">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Recent Invoices
         </li>
     </ul>
 </aside>
@@ -389,9 +405,7 @@
         <button class="btn btn-primary" onclick="window.print()">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
             Print / PDF
-        </button>
     </div>
-
 </div><!-- /card -->
 </main>
 
@@ -402,6 +416,7 @@
     // ── Init ───────────────────────────────────────────
     document.getElementById('invoiceDate').valueAsDate = new Date();
     let inventoryData = [];
+    let customerFound = false;
 
     // ── Load inventory for autocomplete ───────────────
     async function loadInventory() {
@@ -442,6 +457,7 @@
             const data = await res.json();
 
             if (res.ok && !data.error) {
+                customerFound = true;
                 status.className = 'ds-status found';
                 status.textContent = '✓ Customer found';
 
@@ -453,11 +469,13 @@
                 document.getElementById('cLastInv').textContent = data.last_invoice    || '—';
                 box.classList.add('visible');
             } else {
+                customerFound = false;
                 status.className = 'ds-status notfound';
                 status.textContent = '✗ DS Code not found — please check and try again';
                 box.classList.remove('visible');
             }
         } catch(e) {
+            customerFound = false;
             status.className = 'ds-status notfound';
             status.textContent = '✗ Network error';
         }
@@ -544,6 +562,7 @@
         document.getElementById('invoiceDate').valueAsDate = new Date();
         document.getElementById('dsStatus').style.display = 'none';
         document.getElementById('custBox').classList.remove('visible');
+        customerFound = false;
         const tbody = document.getElementById('itemsBody');
         tbody.innerHTML = '';
         addRow();
@@ -553,6 +572,10 @@
 
     // ── Save ───────────────────────────────────────────
     async function saveInvoice() {
+        if (!customerFound) {
+            showToast('Please lookup and verify Customer before saving', 'error');
+            return;
+        }
         const items = [];
         document.querySelectorAll('#itemsBody tr').forEach(row => {
             const desc = row.querySelector('.item-desc').value;
@@ -580,7 +603,13 @@
                 headers:{'Content-Type':'application/json'},
                 body:JSON.stringify(payload),
             });
-            showToast(res.ok ? 'Invoice saved! ✓' : 'Save failed', res.ok ? 'success' : 'error');
+            if (res.ok) {
+                showToast('Invoice saved! ✓', 'success');
+                loadHistory(); // Refresh table
+                clearInvoice(); // Clear form
+            } else {
+                showToast('Save failed', 'error');
+            }
         } catch(e) { showToast('Network error', 'error'); }
     }
 
@@ -594,6 +623,69 @@
         toastTimer = setTimeout(() => { t.className = ''; }, 3200);
     }
 
+    // ── History Load & Cancel ────────────────────────
+    async function loadHistory() {
+        try {
+            const res = await fetch('/api/invoice/list');
+            const data = await res.json();
+            const tbody = document.getElementById('historyBody');
+            tbody.innerHTML = '';
+            
+            if (!data.invoices || data.invoices.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; color:var(--muted); padding:2rem;">No invoices generated yet.</td></tr>';
+                return;
+            }
+            
+            data.invoices.forEach(inv => {
+                const tr = document.createElement('tr');
+                const isCancelled = inv.status === 'cancelled';
+                
+                let dateStr = inv.date_created;
+                try {
+                    if (dateStr.includes('T')) {
+                        dateStr = new Date(dateStr).toLocaleDateString('en-IN');
+                    }
+                } catch(e) {}
+                
+                tr.innerHTML = `
+                    <td class="inv-no" style="color:var(--primary); font-weight:600;">${inv.invoice_no || '-'}</td>
+                    <td>${dateStr}</td>
+                    <td>${inv.ds_code || '-'}</td>
+                    <td>${inv.customer_name || '-'}</td>
+                    <td class="amt" style="font-family:monospace; font-size:1.05rem;">${parseFloat(inv.amount || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
+                    <td><span class="status ${inv.status || 'active'}">${inv.status || 'active'}</span></td>
+                    <td>
+                        <button class="btn-cancel" onclick="cancelInvoice(${inv.id})" ${isCancelled ? 'disabled' : ''}>
+                            ${isCancelled ? 'Cancelled' : 'Cancel Invoice'}
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        } catch (e) {
+            document.getElementById('historyBody').innerHTML = '<tr><td colspan="7" style="text-align:center; color:var(--red); padding:2rem;">Failed to load data.</td></tr>';
+        }
+    }
+    
+    async function cancelInvoice(id) {
+        if (!confirm('Are you sure you want to cancel this invoice? This will restore the items back into inventory.')) return;
+        
+        try {
+            const res = await fetch('/api/invoice/cancel/' + id, { method: 'POST' });
+            const data = await res.json();
+            
+            if (res.ok) {
+                showToast(data.message || 'Invoice cancelled successfully', 'success');
+                loadHistory();
+            } else {
+                showToast(data.error || 'Failed to cancel', 'error');
+            }
+        } catch(e) {
+            showToast('Network error', 'error');
+        }
+    }
+
+    loadHistory(); // Load on boot
     // ── SPA nav ────────────────────────────────────────
     function navigateTo(url) {
         document.body.style.opacity    = '0';
