@@ -397,7 +397,7 @@
 <body>
     <aside class="sidebar">
         <div class="logo" style="text-align: center; padding: 1rem 0;">
-        <img src="{{ url_for('static', filename='logo.png') }}" alt="Asclepius Wellness" style="max-width: 85%; height: auto; background: linear-gradient(135deg, rgba(255,255,255₹) 0%, rgba(220,225,235₹) 100%); border-radius: 16px; padding: 12px; box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15), inset 0 0 0 1px rgba(255,255,255,0.5);">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Asclepius Wellness" style="max-width: 85%; height: auto; background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(220,225,235,1) 100%); border-radius: 16px; padding: 12px; box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15), inset 0 0 0 1px rgba(255,255,255,0.5);">
     </div>
         <ul class="nav-menu">
             <li class="nav-item" onclick="navigateTo('/')">
@@ -608,7 +608,7 @@
                         <div class="item-details">
                             <div>
                                 <span class="price-label">Price/Pc (Rs.)</span>
-                                <span class="price">₹${price.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+                                <span class="price">â‚¹${price.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
                             </div>
                             <div style="text-align: right;">
                                 <span class="stock-label">Remaining Qty</span>
