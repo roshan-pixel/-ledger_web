@@ -254,7 +254,9 @@
 
 <!-- â”€â”€ SIDEBAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
 <aside class="sidebar">
-    <div class="logo" style="text-align: center; padding: 0.5rem 0;"><img src="{{ url_for('static', filename='logo.png') }}" alt="Asclepius Wellness" style="max-width: 85%; height: auto;"></div>
+    <div class="logo" style="text-align: center; padding: 1rem 0;">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Asclepius Wellness" style="max-width: 85%; height: auto; background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(220,225,235,1) 100%); border-radius: 16px; padding: 12px; box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15), inset 0 0 0 1px rgba(255,255,255,0.5);">
+    </div>
     <ul class="nav-menu">
         <li class="nav-item" onclick="navigateTo('/')">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>

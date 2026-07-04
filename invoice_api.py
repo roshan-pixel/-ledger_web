@@ -133,6 +133,10 @@ def list_invoices():
         
         invoices = []
         for r in rows:
+            # sqlite3.Row doesn't have .get(), so we check keys
+            keys = r.keys()
+            status_val = r['status'] if 'status' in keys else 'active'
+            
             invoices.append({
                 'id': r['id'],
                 'invoice_no': r['invoice_no'],
@@ -141,7 +145,7 @@ def list_invoices():
                 'amount': r['amount'],
                 'date_created': r['date_created'],
                 'items': json.loads(r['items'] or '[]'),
-                'status': r.get('status', 'active')
+                'status': status_val
             })
             
         conn.close()
