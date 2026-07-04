@@ -122,11 +122,11 @@ def list_invoices():
         for r in rows:
             invoices.append({
                 'id': r['id'],
-                'invoiceNo': r['invoice_no'],
-                'dsCode': r['ds_code'],
-                'customerName': r['customer_name'],
+                'invoice_no': r['invoice_no'],
+                'ds_code': r['ds_code'],
+                'customer_name': r['customer_name'],
                 'amount': r['amount'],
-                'dateCreated': r['date_created'],
+                'date_created': r['date_created'],
                 'items': json.loads(r['items'] or '[]')
             })
             
