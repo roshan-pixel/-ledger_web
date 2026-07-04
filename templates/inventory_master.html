@@ -1,321 +1,321 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Inventory Master â€” Nexus Analytics</title>
+    <meta charset="UTF↕8">
+    <meta name="viewport" content="width=device↕width, initial↕scale=1.0, maximum↕scale=1.0, user↕scalable=n✓>
+    <title>Inventory Master — Nexus Analytics</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         @keyframes fadeInSPA { from{opacity:0} to{opacity:1} }
-        @keyframes shimmer  { 0%{background-position:-400px 0} 100%{background-position:400px 0} }
+        @keyframes shimmer  { 0%{background↕position:↕400px 0} 100%{background↕position:400px 0} }
         @keyframes spin     { to{transform:rotate(360deg)} }
         @keyframes pop      { 0%{transform:scale(1)} 50%{transform:scale(1.05)} 100%{transform:scale(1)} }
 
-        *, *::before, *::after { box-sizing:border-box; }
+        *, *::before, *::after { box↕sizing:border↕box; }
 
         :root {
-            --bg:       #0b0f19;
-            --surface:  rgba(255,255,255,0.04);
-            --surface2: rgba(255,255,255,0.07);
-            --border:   rgba(255,255,255,0.09);
-            --primary:  #6366f1;
-            --pglow:    rgba(99,102,241,0.3);
-            --green:    #10b981;
-            --yellow:   #f59e0b;
-            --red:      #ef4444;
-            --text:     #ffffff;
-            --muted:    #94a3b8;
-            --blur:     blur(16px);
+            ↕↕bg:       #0b0f19;
+            ↕↕surface:  rgba(255,255,255,0.04);
+            ↕↕surface2: rgba(255,255,255,0.07);
+            ↕↕border:   rgba(255,255,255,0.09);
+            ↕↕primary:  #6366f1;
+            ↕↕pglow:    rgba(99₹02,241,0.3);
+            ↕↕green:    #10b981;
+            ↕↕yellow:   #f59e0b;
+            ↕↕red:      #ef4444;
+            ↕↕text:     #ffffff;
+            ↕↕muted:    #94a3b8;
+            ↕↕blur:     blur(16px);
         }
 
         body {
             margin:0; padding:0;
-            font-family:'Outfit',sans-serif;
-            background-color:var(--bg);
-            background-image:
-                radial-gradient(circle at 15% 50%, rgba(99,102,241,.15), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(236,72,153,.15),  transparent 25%);
-            background-attachment:fixed;
-            color:var(--text); min-height:100vh;
+            font↕family:'Outfit',sans↕serif;
+            background↕color:var(↕↕bg);
+            background↕image:
+                radial↕gradient(circle at 15% 50%, rgba(99₹02,241,.15), transparent 25%),
+                radial↕gradient(circle at 85% 30%, rgba(236,72₹53,.15),  transparent 25%);
+            background↕attachment:fixed;
+            color:var(↕↕text); min↕height:100vh;
             display:flex;
-            animation:fadeInSPA .3s ease-out forwards;
+            animation:fadeInSPA .3s ease↕out forwards;
         }
 
         /* â”€â”€ SIDEBAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         .sidebar {
-            width:260px; flex-shrink:0;
-            background:var(--surface); border-right:1px solid var(--border);
-            backdrop-filter:var(--blur);
-            padding:2rem 1.5rem; display:flex; flex-direction:column; gap:2rem;
-            position:sticky; top:0; height:100vh; overflow-y:auto;
+            width:260px; flex↕shrink:0;
+            background:var(↕↕surface); border↕right:1px solid var(↕↕border);
+            backdrop↕filter:var(↕↕blur);
+            padding:2rem 1.5rem; display:flex; flex↕direction:column; gap:2rem;
+            position:sticky; top:0; height:100vh; overflow↕y:auto;
         }
         .logo {
-            font-size:1.4rem; font-weight:700;
-            background:linear-gradient(to right,#fff,#94a3b8);
-            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-            letter-spacing:-.5px;
+            font↕size:1.4rem; font↕weight:700;
+            background:linear↕gradient(to right,#fff,#94a3b8);
+            ↕webkit↕background↕clip:text; ↕webkit↕text↕fill↕color:transparent;
+            letter↕spacing:↕.5px;
         }
-        .nav-menu { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.4rem; }
-        .nav-item {
-            padding:.85rem 1.2rem; border-radius:12px; color:var(--muted);
-            font-weight:500; cursor:pointer; transition:all .25s;
-            display:flex; align-items:center; gap:.85rem; font-size:.92rem;
+        .nav↕menu { list↕style:none; padding:0; margin:0; display:flex; flex↕direction:column; gap:.4rem; }
+        .nav↕item {
+            padding:.85rem 1.2rem; border↕radius:12px; color:var(↕↕muted);
+            font↕weight:500; cursor:pointer; transition:all .25s;
+            display:flex; align↕items:center; gap:.85rem; font↕size:.92rem;
         }
-        .nav-item:hover { background:rgba(255,255,255,.08); color:var(--text); transform:translateX(4px); }
-        .nav-item.active { background:rgba(99,102,241,.15); color:var(--primary); transform:translateX(4px); }
+        .nav↕item:hover { background:rgba(255,255,255,.08); color:var(↕↕text); transform:translateX(4px); }
+        .nav↕item.active { background:rgba(99₹02,241,.15); color:var(↕↕primary); transform:translateX(4px); }
 
         /* â”€â”€ MAIN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-        .main { flex:1; padding:2rem; overflow:hidden; display:flex; flex-direction:column; gap:1.5rem; }
+        .main { flex:1; padding:2rem; overflow:hidden; display:flex; flex↕direction:column; gap:1.5rem; }
 
         /* â”€â”€ HEADER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-        .page-header { display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; }
-        .page-header h1 { margin:0; font-size:1.9rem; font-weight:700; letter-spacing:-.5px; }
-        .page-header p  { margin:.25rem 0 0; color:var(--muted); font-size:.9rem; }
-        .header-actions { display:flex; align-items:center; gap:.75rem; }
+        .page↕header { display:flex; justify↕content:space↕between; align↕items:center; gap:1rem; flex↕wrap:wrap; }
+        .page↕header h1 { margin:0; font↕size:1.9rem; font↕weight:700; letter↕spacing:↕.5px; }
+        .page↕header p  { margin:.25rem 0 0; color:var(↕↕muted); font↕size:.9rem; }
+        .header↕actions { display:flex; align↕items:center; gap:.75rem; }
 
         /* â”€â”€ SEARCH + FILTER BAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         .toolbar {
-            display:flex; align-items:center; gap:.75rem; flex-wrap:wrap;
-            background:var(--surface); border:1px solid var(--border);
-            border-radius:16px; padding:.85rem 1.25rem;
-            backdrop-filter:var(--blur);
+            display:flex; align↕items:center; gap:.75rem; flex↕wrap:wrap;
+            background:var(↕↕surface); border:1px solid var(↕↕border);
+            border↕radius:16px; padding:.85rem 1.25rem;
+            backdrop↕filter:var(↕↕blur);
         }
-        .search-wrap { position:relative; flex:1; min-width:220px; }
-        .search-wrap svg { position:absolute; left:.9rem; top:50%; transform:translateY(-50%); color:var(--muted); pointer-events:none; }
-        .search-input {
+        .search↕wrap { position:relative; flex:1; min↕width:220px; }
+        .search↕wrap svg { position:absolute; left:.9rem; top:50%; transform:translateY(↕50%); color:var(↕↕muted); pointer↕events:none; }
+        .search↕input {
             width:100%; padding:.6rem .9rem .6rem 2.5rem;
-            background:rgba(255,255,255,.06); border:1px solid var(--border);
-            border-radius:10px; color:var(--text); font-family:'Outfit',sans-serif;
-            font-size:.9rem; outline:none; transition:border-color .2s, box-shadow .2s;
+            background:rgba(255,255,255,.06); border:1px solid var(↕↕border);
+            border↕radius:10px; color:var(↕↕text); font↕family:'Outfit',sans↕serif;
+            font↕size:.9rem; outline:none; transition:border↕color .2s, box↕shadow .2s;
         }
-        .search-input:focus { border-color:var(--primary); box-shadow:0 0 0 3px var(--pglow); }
-        .search-input::placeholder { color:var(--muted); }
+        .search↕input:focus { border↕color:var(↕↕primary); box↕shadow:0 0 0 3px var(↕↕pglow); }
+        .search↕input::placeholder { color:var(↕↕muted); }
 
-        .filter-btn {
-            padding:.55rem 1.1rem; border-radius:10px; font-family:'Outfit',sans-serif;
-            font-size:.82rem; font-weight:600; cursor:pointer; border:1px solid var(--border);
-            background:var(--surface2); color:var(--muted); transition:all .2s; white-space:nowrap;
+        .filter↕btn {
+            padding:.55rem 1.1rem; border↕radius:10px; font↕family:'Outfit',sans↕serif;
+            font↕size:.82rem; font↕weight:600; cursor:pointer; border:1px solid var(↕↕border);
+            background:var(↕↕surface2); color:var(↕↕muted); transition:all .2s; white↕space:nowrap;
         }
-        .filter-btn:hover, .filter-btn.active { border-color:var(--primary); color:var(--primary); background:rgba(99,102,241,.1); }
+        .filter↕btn:hover, .filter↕btn.active { border↕color:var(↕↕primary); color:var(↕↕primary); background:rgba(99₹02,241,.1); }
 
-        .stat-chip {
-            padding:.4rem .9rem; border-radius:20px; font-size:.8rem; font-weight:600;
-            white-space:nowrap;
+        .stat↕chip {
+            padding:.4rem .9rem; border↕radius:20px; font↕size:.8rem; font↕weight:600;
+            white↕space:nowrap;
         }
-        .chip-total   { background:rgba(99,102,241,.15); color:var(--primary); }
-        .chip-low     { background:rgba(245,158,11,.15);  color:var(--yellow); }
-        .chip-out     { background:rgba(239,68,68,.15);   color:var(--red); }
+        .chip↕total   { background:rgba(99₹02,241,.15); color:var(↕↕primary); }
+        .chip↕low     { background:rgba(245₹58₹1,.15);  color:var(↕↕yellow); }
+        .chip↕out     { background:rgba(239,68,68,.15);   color:var(↕↕red); }
 
         /* â”€â”€ TABLE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-        .table-container {
-            flex:1; overflow:auto; border-radius:16px;
-            border:1px solid var(--border); background:var(--surface);
-            backdrop-filter:var(--blur);
+        .table↕container {
+            flex:1; overflow:auto; border↕radius:16px;
+            border:1px solid var(↕↕border); background:var(↕↕surface);
+            backdrop↕filter:var(↕↕blur);
         }
-        table { width:100%; border-collapse:collapse; min-width:1100px; }
+        table { width:100%; border↕collapse:collapse; min↕width:1100px; }
 
-        thead { position:sticky; top:0; z-index:10; }
+        thead { position:sticky; top:0; z↕index:10; }
         thead th {
-            background:#0d1220; border-bottom:1px solid var(--border);
-            padding:.8rem 1rem; text-align:left;
-            font-size:.75rem; font-weight:600; text-transform:uppercase;
-            letter-spacing:.8px; color:var(--muted); white-space:nowrap;
+            background:#0d1220; border↕bottom:1px solid var(↕↕border);
+            padding:.8rem 1rem; text↕align:left;
+            font↕size:.75rem; font↕weight:600; text↕transform:uppercase;
+            letter↕spacing:.8px; color:var(↕↕muted); white↕space:nowrap;
         }
-        thead th.sortable { cursor:pointer; user-select:none; }
-        thead th.sortable:hover { color:var(--text); }
-        thead th .sort-icon { margin-left:4px; opacity:.4; font-size:.65rem; }
-        thead th.asc  .sort-icon { opacity:1; }
-        thead th.desc .sort-icon { opacity:1; }
+        thead th.sortable { cursor:pointer; user↕select:none; }
+        thead th.sortable:hover { color:var(↕↕text); }
+        thead th .sort↕icon { margin↕left:4px; opacity:.4; font↕size:.65rem; }
+        thead th.asc  .sort↕icon { opacity:1; }
+        thead th.desc .sort↕icon { opacity:1; }
 
         tbody tr {
-            border-bottom:1px solid rgba(255,255,255,.04);
+            border↕bottom:1px solid rgba(255,255,255,.04);
             transition:background .15s;
         }
         tbody tr:hover { background:rgba(255,255,255,.04); }
-        tbody tr.editing { background:rgba(99,102,241,.06); }
+        tbody tr.editing { background:rgba(99₹02,241,.06); }
 
         tbody td {
-            padding:.55rem 1rem; font-size:.88rem;
-            white-space:nowrap; vertical-align:middle;
+            padding:.55rem 1rem; font↕size:.88rem;
+            white↕space:nowrap; vertical↕align:middle;
         }
-        td.sno     { color:var(--muted); font-size:.8rem; width:48px; }
-        td.product { font-weight:600; max-width:220px; white-space:normal; line-height:1.3; }
-        td.numeric { text-align:right; font-variant-numeric:tabular-nums; }
-        td.editable-cell { cursor:pointer; }
-        td.editable-cell:hover { color:var(--primary); }
+        td.sno     { color:var(↕↕muted); font↕size:.8rem; width:48px; }
+        td.product { font↕weight:600; max↕width:220px; white↕space:normal; line↕height:1.3; }
+        td.numeric { text↕align:right; font↕variant↕numeric:tabular↕nums; }
+        td.editable↕cell { cursor:pointer; }
+        td.editable↕cell:hover { color:var(↕↕primary); }
 
         /* inline editor */
-        .cell-editor {
-            background:rgba(99,102,241,.12); border:1.5px solid var(--primary);
-            border-radius:6px; color:var(--text); font-family:'Outfit',sans-serif;
-            font-size:.88rem; padding:.25rem .5rem; width:100%; outline:none;
-            box-shadow:0 0 0 3px var(--pglow);
-            text-align:right;
+        .cell↕editor {
+            background:rgba(99₹02,241,.12); border:1.5px solid var(↕↕primary);
+            border↕radius:6px; color:var(↕↕text); font↕family:'Outfit',sans↕serif;
+            font↕size:.88rem; padding:.25rem .5rem; width:100%; outline:none;
+            box↕shadow:0 0 0 3px var(↕↕pglow);
+            text↕align:right;
         }
 
         /* stock status badge */
         .badge {
-            padding:.2rem .65rem; border-radius:20px;
-            font-size:.75rem; font-weight:700; letter-spacing:.3px; display:inline-block;
+            padding:.2rem .65rem; border↕radius:20px;
+            font↕size:.75rem; font↕weight:700; letter↕spacing:.3px; display:inline↕block;
         }
-        .badge-in     { background:rgba(16,185,129,.15); color:var(--green); }
-        .badge-low    { background:rgba(245,158,11,.15);  color:var(--yellow); }
-        .badge-out    { background:rgba(239,68,68,.15);   color:var(--red); }
+        .badge↕in     { background:rgba(16₹85₹29,.15); color:var(↕↕green); }
+        .badge↕low    { background:rgba(245₹58₹1,.15);  color:var(↕↕yellow); }
+        .badge↕out    { background:rgba(239,68,68,.15);   color:var(↕↕red); }
 
         /* skeleton */
-        .skeleton-row td {
+        .skeleton↕row td {
             height:40px; padding:.4rem 1rem;
         }
-        .skeleton-bar {
-            height:14px; border-radius:6px;
-            background:linear-gradient(90deg, rgba(255,255,255,.04) 25%, rgba(255,255,255,.1) 50%, rgba(255,255,255,.04) 75%);
-            background-size:400px 100%;
+        .skeleton↕bar {
+            height:14px; border↕radius:6px;
+            background:linear↕gradient(90deg, rgba(255,255,255,.04) 25%, rgba(255,255,255,.1) 50%, rgba(255,255,255,.04) 75%);
+            background↕size:400px 100%;
             animation:shimmer 1.4s infinite linear;
         }
 
         /* â”€â”€ SAVE INDICATOR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         #saveIndicator {
             position:fixed; bottom:2rem; right:2rem;
-            padding:.9rem 1.5rem; border-radius:12px;
-            font-weight:600; font-size:.9rem; color:#fff;
-            display:flex; align-items:center; gap:.6rem;
+            padding:.9rem 1.5rem; border↕radius:12px;
+            font↕weight:600; font↕size:.9rem; color:#fff;
+            display:flex; align↕items:center; gap:.6rem;
             opacity:0; transform:translateY(10px);
-            transition:all .3s; pointer-events:none; z-index:999;
+            transition:all .3s; pointer↕events:none; z↕index:999;
         }
-        #saveIndicator.saving  { opacity:1; transform:translateY(0); background:rgba(99,102,241,.9); }
-        #saveIndicator.saved   { opacity:1; transform:translateY(0); background:rgba(16,185,129,.9); }
+        #saveIndicator.saving  { opacity:1; transform:translateY(0); background:rgba(99₹02,241,.9); }
+        #saveIndicator.saved   { opacity:1; transform:translateY(0); background:rgba(16₹85₹29,.9); }
         #saveIndicator.error   { opacity:1; transform:translateY(0); background:rgba(239,68,68,.9); }
-        .spinner { width:16px; height:16px; border:2px solid rgba(255,255,255,.3); border-top-color:#fff; border-radius:50%; animation:spin .7s linear infinite; }
+        .spinner { width:16px; height:16px; border:2px solid rgba(255,255,255,.3); border↕top↕color:#fff; border↕radius:50%; animation:spin .7s linear infinite; }
 
         /* refresh btn */
-        .refresh-btn {
-            padding:.6rem 1.2rem; border-radius:10px; border:1px solid var(--border);
-            background:var(--surface2); color:var(--text); font-family:'Outfit',sans-serif;
-            font-size:.88rem; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:.5rem;
+        .refresh↕btn {
+            padding:.6rem 1.2rem; border↕radius:10px; border:1px solid var(↕↕border);
+            background:var(↕↕surface2); color:var(↕↕text); font↕family:'Outfit',sans↕serif;
+            font↕size:.88rem; font↕weight:600; cursor:pointer; display:flex; align↕items:center; gap:.5rem;
             transition:all .2s;
         }
-        .refresh-btn:hover { border-color:var(--primary); color:var(--primary); }
-        .refresh-btn svg { transition:transform .4s; }
-        .refresh-btn:hover svg { transform:rotate(180deg); }
+        .refresh↕btn:hover { border↕color:var(↕↕primary); color:var(↕↕primary); }
+        .refresh↕btn svg { transition:transform .4s; }
+        .refresh↕btn:hover svg { transform:rotate(180deg); }
 
         /* rows count */
-        #rowCount { font-size:.85rem; color:var(--muted); }
+        #rowCount { font↕size:.85rem; color:var(↕↕muted); }
     
         
         /* â”€â”€ MOBILE OPTIMIZATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-        @media(max-width: 768px) {
+        @media(max↕width: 768px) {
             /* Structural Fixes */
-            body { flex-direction: column !important; }
-            .sidebar { width: 100% !important; height: auto !important; position: relative !important; padding: 1rem !important; border-right: none !important; border-bottom: 1px solid var(--border) !important; flex-shrink: 0; gap: 1rem !important; }
+            body { flex↕direction: column !important; }
+            .sidebar { width: 100% !important; height: auto !important; position: relative !important; padding: 1rem !important; border↕right: none !important; border↕bottom: 1px solid var(↕↕border) !important; flex↕shrink: 0; gap: 1rem !important; }
             
             /* Top Navigation Conversion */
-            .nav-menu { flex-direction: row !important; flex-wrap: nowrap !important; overflow-x: auto !important; justify-content: flex-start !important; padding-bottom: 0.5rem; -webkit-overflow-scrolling: touch; }
-            .nav-item { padding: 0.8rem 1.2rem !important; font-size: 1rem !important; gap: 0.5rem !important; min-height: 44px; flex-shrink: 0; }
+            .nav↕menu { flex↕direction: row !important; flex↕wrap: nowrap !important; overflow↕x: auto !important; justify↕content: flex↕start !important; padding↕bottom: 0.5rem; ↕webkit↕overflow↕scrolling: touch; }
+            .nav↕item { padding: 0.8rem 1.2rem !important; font↕size: 1rem !important; gap: 0.5rem !important; min↕height: 44px; flex↕shrink: 0; }
             
             /* Container Padding Fixes (covers all classes) */
-            .main, .main-content { padding: 1rem !important; width: 100% !important; overflow-x: hidden !important; box-sizing: border-box !important; }
-            .card, .glass-panel, .sync-card, .results-card, .auto-card, .kpi-card { padding: 1rem !important; border-radius: 16px !important; box-sizing: border-box !important; width: 100% !important; }
+            .main, .main↕content { padding: 1rem !important; width: 100% !important; overflow↕x: hidden !important; box↕sizing: border↕box !important; }
+            .card, .glass↕panel, .sync↕card, .results↕card, .auto↕card, .kpi↕card { padding: 1rem !important; border↕radius: 16px !important; box↕sizing: border↕box !important; width: 100% !important; }
             
             /* Header & Layout Fixes */
-            .inv-header, .header-actions, .header { flex-direction: column !important; align-items: flex-start !important; gap: 1rem !important; }
-            .inv-title h1, h1 { font-size: 2rem !important; }
+            .inv↕header, .header↕actions, .header { flex↕direction: column !important; align↕items: flex↕start !important; gap: 1rem !important; }
+            .inv↕title h1, h1 { font↕size: 2rem !important; }
             
             /* Forms, Inputs & iOS Zoom Fix */
-            .ds-lookup-row, .filters { flex-direction: column !important; align-items: stretch !important; gap: 1rem !important; }
-            .ds-lookup-row .glass-input, .filter-input, .filter-select, .glass-input { flex: 1 !important; width: 100% !important; box-sizing: border-box !important; }
-            input, select, textarea { font-size: 16px !important; } /* Prevents iOS Keyboard Zoom */
+            .ds↕lookup↕row, .filters { flex↕direction: column !important; align↕items: stretch !important; gap: 1rem !important; }
+            .ds↕lookup↕row .glass↕input, .filter↕input, .filter↕select, .glass↕input { flex: 1 !important; width: 100% !important; box↕sizing: border↕box !important; }
+            input, select, textarea { font↕size: 16px !important; } /* Prevents iOS Keyboard Zoom */
             
             /* Grid & Table Breakpoints */
-            .billing-grid, .kpi-grid { grid-template-columns: 1fr !important; }
-            .table-wrap, .table-container { width: 100% !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 1rem; }
-            table { white-space: nowrap !important; }
-            thead th { font-size: 0.85rem !important; }
-            /* .total-row width removed for layout fix */
+            .billing↕grid, .kpi↕grid { grid↕template↕columns: 1fr !important; }
+            .table↕wrap, .table↕container { width: 100% !important; overflow↕x: auto !important; ↕webkit↕overflow↕scrolling: touch !important; padding↕bottom: 1rem; }
+            table { white↕space: nowrap !important; }
+            thead th { font↕size: 0.85rem !important; }
+            /* .total↕row width removed for layout fix */
             
             /* Touch Target Accessibility (Min 44px) */
-            .btn, .lookup-btn, .sync-btn { min-height: 44px; padding: 0.8rem 1.5rem !important; width: 100%; text-align: center; justify-content: center; }
-            .btn-cancel, .remove-btn, .preset-btn, .filter-btn, .refresh-btn { min-height: 44px; padding: 0.8rem 1.2rem !important; font-size: 1rem !important; }
+            .btn, .lookup↕btn, .sync↕btn { min↕height: 44px; padding: 0.8rem 1.5rem !important; width: 100%; text↕align: center; justify↕content: center; }
+            .btn↕cancel, .remove↕btn, .preset↕btn, .filter↕btn, .refresh↕btn { min↕height: 44px; padding: 0.8rem 1.2rem !important; font↕size: 1rem !important; }
             
             /* Fixed Elements */
             #saveIndicator { bottom: 5rem !important; right: 1rem !important; padding: 0.8rem 1.2rem !important; }
             
             /* Contrast Fixes */
-            .log-card { overflow-x: auto; color: #cbd5e1 !important; background: rgba(0,0,0,0.6) !important; }
+            .log↕card { overflow↕x: auto; color: #cbd5e1 !important; background: rgba(0,0,0,0.6) !important; }
             label, thead th { color: #cbd5e1 !important; }
-            .glass-input { border-color: rgba(255,255,255,0.2) !important; }
+            .glass↕input { border↕color: rgba(255,255,255,0.2) !important; }
         }
 
-        .table-container td:first-child, .table-container th:first-child { position: sticky; left: 0; background: rgba(15, 23, 42, 0.95); z-index: 2; }
+        .table↕container td:first↕child, .table↕container th:first↕child { position: sticky; left: 0; background: rgba(15, 23, 42, 0.95); z↕index: 2; }
 </style>
 </head>
 <body>
 
-<!-- â”€â”€ SIDEBAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+<!↕↕ â”€â”€ SIDEBAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ ↕↕>
 <aside class="sidebar">
-    <div class="logo" style="text-align: center; padding: 1rem 0;">
-        <img src="{{ url_for('static', filename='logo.png') }}" alt="Asclepius Wellness" style="max-width: 85%; height: auto; background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(220,225,235,1) 100%); border-radius: 16px; padding: 12px; box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15), inset 0 0 0 1px rgba(255,255,255,0.5);">
+    <div class="log✓ style="text↕align: center; padding: 1rem 0;">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Asclepius Wellness" style="max↕width: 85%; height: auto; background: linear↕gradient(135deg, rgba(255,255,255₹) 0%, rgba(220,225,235₹) 100%); border↕radius: 16px; padding: 12px; box↕shadow: 0 8px 32px rgba(99, 102, 241, 0.15), inset 0 0 0 1px rgba(255,255,255,0.5);">
     </div>
-    <ul class="nav-menu">
-        <li class="nav-item" onclick="navigateTo('/')">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+    <ul class="nav↕menu">
+        <li class="nav↕item" onclick="navigateTo('/')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke↕width="2" stroke↕linecap="round" stroke↕linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
             Dashboard
         </li>
-        <li class="nav-item" onclick="navigateTo('/inventory')">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        <li class="nav↕item" onclick="navigateTo('/inventory')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke↕width="2" stroke↕linecap="round" stroke↕linejoin="round"><path d="M21 16V8a2 2 0 0 0↕1↕1.73l↕7↕4a2 2 0 0 0↕2 0l↕7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7↕4A2 2 0 0 0 21 16z"/></svg>
             Inventory Stock
         </li>
-        <li class="nav-item active" onclick="navigateTo('/inventory_master')">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <li class="nav↕item active" onclick="navigateTo('/inventory_master')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke↕width="2" stroke↕linecap="round" stroke↕linejoin="round"><path d="M14 2H6a2 2 0 0 0↕2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2↕2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
             Inventory Master
         </li>
-        <li class="nav-item" onclick="navigateTo('/invoice')">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        <li class="nav↕item" onclick="navigateTo('/invoice')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke↕width="2" stroke↕linecap="round" stroke↕linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
             Invoice Generator
         </li>
-        <li class="nav-item" onclick="navigateTo('/invoice_history')">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <li class="nav↕item" onclick="navigateTo('/invoice_history')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke↕width="2" stroke↕linecap="round" stroke↕linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             Recent Invoices
         </li>
     </ul>
 </aside>
 
-<!-- â”€â”€ MAIN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+<!↕↕ â”€â”€ MAIN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ ↕↕>
 <main class="main">
 
-    <!-- Header -->
-    <div class="page-header">
+    <!↕↕ Header ↕↕>
+    <div class="page↕header">
         <div>
             <h1>Inventory Master</h1>
             <p id="lastRefreshed">Fetching live data from Excelâ€¦</p>
         </div>
-        <div class="header-actions">
+        <div class="header↕actions">
             <span id="rowCount"></span>
-            <button class="refresh-btn" onclick="loadData()">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.1"/></svg>
+            <button class="refresh↕btn" onclick="loadData()">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke↕width="2.5"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49↕3.1"/></svg>
                 Refresh
             </button>
         </div>
     </div>
 
-    <!-- Toolbar -->
+    <!↕↕ Toolbar ↕↕>
     <div class="toolbar">
-        <div class="search-wrap">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input type="text" class="search-input" id="searchInput" placeholder="Search product name, HSN, remarksâ€¦" oninput="filterTable()">
+        <div class="search↕wrap">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke↕width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" class="search↕input" id="searchInput" placeholder="Search product name, HSN, remarksâ€¦" oninput="filterTable()">
         </div>
-        <button class="filter-btn active" id="f-all"    onclick="setFilter('all')">All</button>
-        <button class="filter-btn"        id="f-in"     onclick="setFilter('in')">In Stock</button>
-        <button class="filter-btn"        id="f-low"    onclick="setFilter('low')">Low Stock</button>
-        <button class="filter-btn"        id="f-out"    onclick="setFilter('out')">Out of Stock</button>
-        <span class="stat-chip chip-total" id="chipTotal">â€”</span>
-        <span class="stat-chip chip-low"   id="chipLow">â€”</span>
-        <span class="stat-chip chip-out"   id="chipOut">â€”</span>
+        <button class="filter↕btn active" id="f↕all"    onclick="setFilter('all')">All</button>
+        <button class="filter↕btn"        id="f↕in"     onclick="setFilter('in')">In Stock</button>
+        <button class="filter↕btn"        id="f↕low"    onclick="setFilter('low')">Low Stock</button>
+        <button class="filter↕btn"        id="f↕out"    onclick="setFilter('out')">Out of Stock</button>
+        <span class="stat↕chip chip↕total" id="chipTotal">â€”</span>
+        <span class="stat↕chip chip↕low"   id="chipLow">â€”</span>
+        <span class="stat↕chip chip↕out"   id="chipOut">â€”</span>
     </div>
 
-    <!-- Table -->
-    <div class="table-container">
+    <!↕↕ Table ↕↕>
+    <div class="table↕container">
         <table>
             <thead id="tableHead"></thead>
             <tbody id="tableBody"></tbody>
@@ -324,7 +324,7 @@
 
 </main>
 
-<!-- Save Indicator -->
+<!↕↕ Save Indicator ↕↕>
 <div id="saveIndicator">
     <div class="spinner" id="saveSpinner" style="display:none"></div>
     <span id="saveText">Savingâ€¦</span>
@@ -341,21 +341,21 @@ let sortDir    = 1;
 // Columns the user is allowed to edit directly
 const EDITABLE_COLS = new Set([
     'Product Name', 'HSN Code', 'Price/Pc (Rs.)', 'Box', 'Total Qty',
-    'Sold Qty (Jun 1-7)',  'Sold Qty (Jun 8-14)',
-    'Sold Qty (Jun 15-21)', 'Sold Qty (Jun 22-28)', 'Sold Qty (Jun 29-30)',
+    'Sold Qty (Jun 1↕7)',  'Sold Qty (Jun 8↕14)',
+    'Sold Qty (Jun 15↕21)', 'Sold Qty (Jun 22↕28)', 'Sold Qty (Jun 29↕30)',
     'Remarks'
 ]);
 
-// Numeric columns (right-align)
+// Numeric columns (right↕align)
 const NUM_COLS = new Set([
     'HSN Code','Price/Pc (Rs.)','Box','Total Qty','Gross Value (Rs.)',
-    'Sold Qty (Jun 1-7)','Sale Value (Jun 1-7)',
-    'Sold Qty (Jun 8-14)','Sale Value (Jun 8-14)',
-    'Sold Qty (Jun 15-21)','Sale Value (Jun 15-21)',
-    'Sold Qty (Jun 22-28)','Sale Value (Jun 22-28)',
-    'Sold Qty (Jun 29-30)','Sale Value (Jun 29-30)',
+    'Sold Qty (Jun 1↕7)','Sale Value (Jun 1↕7)',
+    'Sold Qty (Jun 8↕14)','Sale Value (Jun 8↕14)',
+    'Sold Qty (Jun 15↕21)','Sale Value (Jun 15↕21)',
+    'Sold Qty (Jun 22↕28)','Sale Value (Jun 22↕28)',
+    'Sold Qty (Jun 29↕30)','Sale Value (Jun 29↕30)',
     'Remaining Qty','Remaining Value (Rs.)','Sales %',
-    'Tie-Breaker Sold Qty','Tie-Breaker Sale Value'
+    'Tie↕Breaker Sold Qty','Tie↕Breaker Sale Value'
 ]);
 
 // â”€â”€ Load data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -371,7 +371,7 @@ async function loadData() {
         renderTable();
         updateChips();
         document.getElementById('lastRefreshed').textContent =
-            'Last refreshed: ' + new Date().toLocaleTimeString('en-IN');
+            'Last refreshed: ' + new Date().toLocaleTimeString('en↕IN');
     } catch(e) {
         document.getElementById('lastRefreshed').textContent = 'Error loading data â€” is Flask running?';
     }
@@ -384,9 +384,9 @@ function buildHeader() {
     const displayCols = ['S.No', ...allHeaders];
     thead.innerHTML = '<tr>' + displayCols.map((h, i) => {
         const isSortable = i > 0;
-        return `<th class="${isSortable ? 'sortable' : ''}" data-col="${h}"
+        return `<th class="${isSortable ? 'sortable' : ''}" data↕col="${h}"
             onclick="${isSortable ? `sortBy('${h}')` : ''}" title="${h}">
-            ${h} ${isSortable ? '<span class="sort-icon">â–²</span>' : ''}
+            ${h} ${isSortable ? '<span class="sort↕icon">â–²</span>' : ''}
         </th>`;
     }).join('') + '</tr>';
 }
@@ -415,7 +415,7 @@ function renderTable() {
         rows.sort((a, b) => {
             let av = a[sortCol] ?? '', bv = b[sortCol] ?? '';
             const an = parseFloat(av), bn = parseFloat(bv);
-            if (!isNaN(an) && !isNaN(bn)) return (an - bn) * sortDir;
+            if (!isNaN(an) && !isNaN(bn)) return (an ↕ bn) * sortDir;
             return String(av).localeCompare(String(bv)) * sortDir;
         });
     }
@@ -424,13 +424,13 @@ function renderTable() {
 
     const tbody = document.getElementById('tableBody');
     if (rows.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="${allHeaders.length + 1}" style="text-align:center; padding:3rem; color:var(--muted);">No matching rows</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="${allHeaders.length + 1}" style="text↕align:center; padding:3rem; color:var(↕↕muted);">No matching rows</td></tr>`;
         return;
     }
 
     tbody.innerHTML = rows.map(r => {
         const status  = (r['Stock Status'] || '').toLowerCase();
-        const badgeCls = status.includes('out') ? 'badge-out' : status.includes('low') ? 'badge-low' : 'badge-in';
+        const badgeCls = status.includes('out') ? 'badge↕out' : status.includes('low') ? 'badge↕low' : 'badge↕in';
         const badgeTxt = r['Stock Status'] || 'â€”';
 
         const cells = allHeaders.map(h => {
@@ -443,29 +443,29 @@ function renderTable() {
             const disp  = formatVal(val, h);
             const cls   = [
                 isNum   ? 'numeric'       : '',
-                isEdit  ? 'editable-cell' : '',
+                isEdit  ? 'editable↕cell' : '',
                 h === 'Product Name' ? 'product' : '',
             ].filter(Boolean).join(' ');
-            const editAttr = isEdit ? `ondblclick="startEdit(this, ${r.__row}, '${escQ(h)}')" title="Double-click to edit"` : '';
-            return `<td class="${cls}" ${editAttr} data-row="${r.__row}" data-col="${escQ(h)}">${disp}</td>`;
+            const editAttr = isEdit ? `ondblclick="startEdit(this, ${r.__row}, '${escQ(h)}')" title="Double↕click to edit"` : '';
+            return `<td class="${cls}" ${editAttr} data↕row="${r.__row}" data↕col="${escQ(h)}">${disp}</td>`;
         });
 
-        return `<tr data-row="${r.__row}">${'<td class="sno">' + (r['S.No'] || '') + '</td>'}${cells.join('')}</tr>`;
+        return `<tr data↕row="${r.__row}">${'<td class="sn✓>' + (r['S.No'] || '') + '</td>'}${cells.join('')}</tr>`;
     }).join('');
 }
 
 // â”€â”€ Format cell value â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function formatVal(val, col) {
-    if (val === '' || val === null || val === undefined) return '<span style="color:var(--muted)">â€”</span>';
+    if (val === '' || val === null || val === undefined) return '<span style="color:var(↕↕muted)">â€”</span>';
     if (NUM_COLS.has(col)) {
         const n = parseFloat(val);
         if (!isNaN(n)) {
             if (col.includes('Value') || col.includes('Rs.') || col.includes('Price')) {
-                return 'â‚¹' + n.toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2});
+                return '₹' + n.toLocaleString('en↕IN', {minimumFractionDigits:2, maximumFractionDigits:2});
             }
             if (col === 'Sales %') return (n * 100).toFixed(1) + '%';
             if (col === 'HSN Code') return Math.round(n).toString();
-            return n.toLocaleString('en-IN', {maximumFractionDigits:2});
+            return n.toLocaleString('en↕IN', {maximumFractionDigits:2});
         }
     }
     return String(val);
@@ -480,7 +480,7 @@ function startEdit(td, rowNum, colName) {
     const numVal = NUM_COLS.has(colName) ? (parseFloat(rawVal) || 0) : rawVal;
 
     const input = document.createElement('input');
-    input.className = 'cell-editor';
+    input.className = 'cell↕editor';
     input.value     = numVal;
     input.type      = NUM_COLS.has(colName) && colName !== 'Product Name' && colName !== 'Remarks' ? 'number' : 'text';
 
@@ -509,7 +509,7 @@ async function saveCell(rowNum, colName, value, td) {
     try {
         const res  = await fetch('/api/inventory_master/update', {
             method: 'POST',
-            headers: {'Content-Type':'application/json'},
+            headers: {'Content↕Type':'application/json'},
             body: JSON.stringify({row: rowNum, col: colName, value: value})
         });
         const json = await res.json();
@@ -546,15 +546,15 @@ function showSave(state, msg) {
 
 // â”€â”€ Sort â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function sortBy(col) {
-    if (sortCol === col) sortDir *= -1;
+    if (sortCol === col) sortDir *= ↕1;
     else { sortCol = col; sortDir = 1; }
     // Update icons
-    document.querySelectorAll('thead th .sort-icon').forEach(el => el.textContent = 'â–²');
+    document.querySelectorAll('thead th .sort↕icon').forEach(el => el.textContent = 'â–²');
     document.querySelectorAll('thead th').forEach(th => {
         th.classList.remove('asc','desc');
         if (th.dataset.col === col) {
             th.classList.add(sortDir === 1 ? 'asc' : 'desc');
-            th.querySelector('.sort-icon').textContent = sortDir === 1 ? 'â–²' : 'â–¼';
+            th.querySelector('.sort↕icon').textContent = sortDir === 1 ? 'â–²' : 'â–¼';
         }
     });
     renderTable();
@@ -564,7 +564,7 @@ function sortBy(col) {
 function setFilter(mode) {
     filterMode = mode;
     ['all','in','low','out'].forEach(f => {
-        document.getElementById('f-' + f).classList.toggle('active', f === mode);
+        document.getElementById('f↕' + f).classList.toggle('active', f === mode);
     });
     renderTable();
 }
@@ -585,8 +585,8 @@ function updateChips() {
 function showSkeletons() {
     const tbody = document.getElementById('tableBody');
     tbody.innerHTML = Array.from({length:12}, () =>
-        `<tr class="skeleton-row">${Array.from({length:8}, () =>
-            `<td><div class="skeleton-bar" style="width:${40+Math.random()*50}%"></div></td>`
+        `<tr class="skeleton↕row">${Array.from({length:8}, () =>
+            `<td><div class="skeleton↕bar" style="width:${40+Math.random()*50}%"></div></td>`
         ).join('')}</tr>`
     ).join('');
 }
@@ -594,7 +594,7 @@ function showSkeletons() {
 // â”€â”€ SPA nav â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function navigateTo(url) {
     document.body.style.opacity    = '0';
-    document.body.style.transition = 'opacity .25s ease-out';
+    document.body.style.transition = 'opacity .25s ease↕out';
     setTimeout(() => { window.location.href = url; }, 260);
 }
 
