@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Portal Sync — Nexus Analytics</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -203,22 +203,48 @@
         input:checked + .toggle-slider::before { transform:translateX(24px); }
         #autoInterval { font-size:.82rem; color:var(--muted); }
     
+        
         /* ── MOBILE OPTIMIZATION ───────────────── */
         @media(max-width: 768px) {
+            /* Structural Fixes */
             body { flex-direction: column !important; }
-            .sidebar { width: 100% !important; height: auto !important; position: relative !important; padding: 1rem !important; border-right: none !important; border-bottom: 1px solid var(--border) !important; flex-shrink: 0; }
-            .nav-menu { flex-direction: row !important; flex-wrap: wrap !important; gap: 0.5rem !important; justify-content: center !important; }
-            .nav-item { padding: 0.5rem 0.8rem !important; font-size: 0.85rem !important; }
-            .main { padding: 1rem !important; width: 100% !important; overflow-x: hidden !important; }
-            .card, .glass-panel { padding: 1rem !important; border-radius: 16px !important; }
-            .inv-header, .header-actions { flex-direction: column !important; align-items: flex-start !important; gap: 1rem !important; }
-            .inv-title h1 { font-size: 2rem !important; }
-            .ds-lookup-row { flex-direction: column !important; align-items: stretch !important; }
-            .ds-lookup-row .glass-input { flex: 1 !important; width: 100% !important; }
-            .billing-grid { grid-template-columns: 1fr !important; }
-            .table-wrap, .table-container { width: 100% !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; }
+            .sidebar { width: 100% !important; height: auto !important; position: relative !important; padding: 1rem !important; border-right: none !important; border-bottom: 1px solid var(--border) !important; flex-shrink: 0; gap: 1rem !important; }
+            
+            /* Top Navigation Conversion */
+            .nav-menu { flex-direction: row !important; flex-wrap: nowrap !important; overflow-x: auto !important; justify-content: flex-start !important; padding-bottom: 0.5rem; -webkit-overflow-scrolling: touch; }
+            .nav-item { padding: 0.8rem 1.2rem !important; font-size: 1rem !important; gap: 0.5rem !important; min-height: 44px; flex-shrink: 0; }
+            
+            /* Container Padding Fixes (covers all classes) */
+            .main, .main-content { padding: 1rem !important; width: 100% !important; overflow-x: hidden !important; box-sizing: border-box !important; }
+            .card, .glass-panel, .sync-card, .results-card, .auto-card, .kpi-card { padding: 1rem !important; border-radius: 16px !important; box-sizing: border-box !important; width: 100% !important; }
+            
+            /* Header & Layout Fixes */
+            .inv-header, .header-actions, .header { flex-direction: column !important; align-items: flex-start !important; gap: 1rem !important; }
+            .inv-title h1, h1 { font-size: 2rem !important; }
+            
+            /* Forms, Inputs & iOS Zoom Fix */
+            .ds-lookup-row, .filters { flex-direction: column !important; align-items: stretch !important; gap: 1rem !important; }
+            .ds-lookup-row .glass-input, .filter-input, .filter-select, .glass-input { flex: 1 !important; width: 100% !important; box-sizing: border-box !important; }
+            input, select, textarea { font-size: 16px !important; } /* Prevents iOS Keyboard Zoom */
+            
+            /* Grid & Table Breakpoints */
+            .billing-grid, .kpi-grid { grid-template-columns: 1fr !important; }
+            .table-wrap, .table-container { width: 100% !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 1rem; }
             table { white-space: nowrap !important; }
-            .kpi-grid { grid-template-columns: 1fr !important; }
+            thead th { font-size: 0.85rem !important; }
+            .total-row { width: 100% !important; }
+            
+            /* Touch Target Accessibility (Min 44px) */
+            .btn, .lookup-btn, .sync-btn { min-height: 44px; padding: 0.8rem 1.5rem !important; width: 100%; text-align: center; justify-content: center; }
+            .btn-cancel, .remove-btn, .preset-btn, .filter-btn, .refresh-btn { min-height: 44px; padding: 0.8rem 1.2rem !important; font-size: 1rem !important; }
+            
+            /* Fixed Elements */
+            #saveIndicator { bottom: 5rem !important; right: 1rem !important; padding: 0.8rem 1.2rem !important; }
+            
+            /* Contrast Fixes */
+            .log-card { overflow-x: auto; color: #cbd5e1 !important; background: rgba(0,0,0,0.6) !important; }
+            label, thead th { color: #cbd5e1 !important; }
+            .glass-input { border-color: rgba(255,255,255,0.2) !important; }
         }
 
 </style>
