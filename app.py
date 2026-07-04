@@ -88,12 +88,24 @@ def api_kpi():
         c.execute(f"SELECT SUM(CAST(REPLACE(c{rem_val_idx}, ',', '') AS REAL)) FROM inventory WHERE c{rem_val_idx} != '' AND UPPER(c3) != 'TOTAL'")
         rem_val = c.fetchone()[0] or 0
         
-        # Calculate Gross Stock Value using remaining value (which updates when invoices are made)
-        c.execute(f"SELECT SUM(CAST(REPLACE(c{rem_val_idx}, ',', '') AS REAL)) FROM inventory WHERE c{rem_val_idx} != '' AND UPPER(c3) != 'TOTAL'")
+        # Calculate Gross Stock Value using c8 (Gross Value Rs.)
+        c.execute(f"SELECT SUM(CAST(REPLACE(c8, ',', '') AS REAL)) FROM inventory WHERE c8 != '' AND UPPER(c3) != 'TOTAL'")
         gross_val = c.fetchone()[0] or 0
         
         c.execute(f"SELECT COUNT(*) FROM inventory WHERE CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) <= 10 AND c{rem_qty_idx} != '' AND UPPER(c3) != 'TOTAL'")
         low_stock = c.fetchone()[0] or 0
+        
+        # Calculate Monthly Sales Value (Sum of all Sale Value columns)
+        monthly_sales = 0
+        sale_val_cols = []
+        for i, h in enumerate(headers):
+            if str(h).startswith("Sale Value"):
+                sale_val_cols.append(f"c{i+1}")
+                
+        for col in sale_val_cols:
+            c.execute(f"SELECT SUM(CAST(REPLACE({col}, ',', '') AS REAL)) FROM inventory WHERE {col} != '' AND UPPER(c3) != 'TOTAL'")
+            s = c.fetchone()[0] or 0
+            monthly_sales += s
         
         # Read other static KPIs from DB
         c.execute("SELECT key, value FROM kpis")
@@ -105,6 +117,8 @@ def api_kpi():
         kpis['Gross Stock Value'] = str(gross_val)
         kpis['Remaining Value'] = str(rem_val)
         kpis['Low Stock counts'] = str(low_stock)
+        kpis['Monthly Sales Value'] = str(monthly_sales)
+        kpis['Week Sales Value'] = str(monthly_sales) # Assuming all current sales represent this active period
         
         conn.close()
         return jsonify(kpis)
