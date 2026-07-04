@@ -61,7 +61,7 @@ def migrate():
         data = ws_inv.Range(ws_inv.Cells(5, 1), ws_inv.Cells(300, 30)).Value
         for i, row in enumerate(data):
             row_num = i + 5
-            cleaned_row = [str(clean_val(v)).strip() for v in row]
+            cleaned_row = [str(clean_val(v)).replace('\n', '').replace('\r', '').strip() for v in row]
             
             # skip completely empty rows (checking Product Name which is col 3, index 2)
             if not cleaned_row[2]:

@@ -42,7 +42,7 @@ def create_invoice():
     # Parse grandTotal which might have currency symbols, e.g. "₹1,468.23"
     amount_str = str(data.get('grandTotal', '0')).replace('₹', '').replace(',', '').strip()
     import json
-    from app_sqlite import get_db, update_inventory_formulas
+    from app import get_db, update_inventory_formulas
     
     try:
         amount = float(amount_str)
@@ -107,7 +107,7 @@ def create_invoice():
 
 @invoice_api.route('/api/invoice/list', methods=['GET'])
 def list_invoices():
-    from app_sqlite import get_db
+    from app import get_db
     try:
         conn = get_db()
         c = conn.cursor()
@@ -133,7 +133,7 @@ def list_invoices():
 
 @invoice_api.route('/api/invoice/cancel/<int:invoice_id>', methods=['POST'])
 def cancel_invoice(invoice_id):
-    from app_sqlite import get_db, update_inventory_formulas
+    from app import get_db, update_inventory_formulas
     try:
         conn = get_db()
         c = conn.cursor()
