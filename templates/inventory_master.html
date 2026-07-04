@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Inventory Master â€” Nexus Analytics</title>
+    <title>Inventory Master — Nexus Analytics</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -309,9 +309,9 @@
         <button class="filter-btn"        id="f-in"     onclick="setFilter('in')">In Stock</button>
         <button class="filter-btn"        id="f-low"    onclick="setFilter('low')">Low Stock</button>
         <button class="filter-btn"        id="f-out"    onclick="setFilter('out')">Out of Stock</button>
-        <span class="stat-chip chip-total" id="chipTotal">â€”</span>
-        <span class="stat-chip chip-low"   id="chipLow">â€”</span>
-        <span class="stat-chip chip-out"   id="chipOut">â€”</span>
+        <span class="stat-chip chip-total" id="chipTotal">—</span>
+        <span class="stat-chip chip-low"   id="chipLow">—</span>
+        <span class="stat-chip chip-out"   id="chipOut">—</span>
     </div>
 
     <!-- Table -->
@@ -386,7 +386,7 @@ function buildHeader() {
         const isSortable = i > 0;
         return `<th class="${isSortable ? 'sortable' : ''}" data-col="${h}"
             onclick="${isSortable ? `sortBy('${h}')` : ''}" title="${h}">
-            ${h} ${isSortable ? '<span class="sort-icon">â–²</span>' : ''}
+            ${h} ${isSortable ? '<span class="sort-icon">▲</span>' : ''}
         </th>`;
     }).join('') + '</tr>';
 }
@@ -431,7 +431,7 @@ function renderTable() {
     tbody.innerHTML = rows.map(r => {
         const status  = (r['Stock Status'] || '').toLowerCase();
         const badgeCls = status.includes('out') ? 'badge-out' : status.includes('low') ? 'badge-low' : 'badge-in';
-        const badgeTxt = r['Stock Status'] || 'â€”';
+        const badgeTxt = r['Stock Status'] || '—';
 
         const cells = allHeaders.map(h => {
             if (h === 'Stock Status') {
@@ -456,12 +456,12 @@ function renderTable() {
 
 // â”€â”€ Format cell value â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function formatVal(val, col) {
-    if (val === '' || val === null || val === undefined) return '<span style="color:var(--muted)">â€”</span>';
+    if (val === '' || val === null || val === undefined) return '<span style="color:var(--muted)">—</span>';
     if (NUM_COLS.has(col)) {
         const n = parseFloat(val);
         if (!isNaN(n)) {
             if (col.includes('Value') || col.includes('Rs.') || col.includes('Price')) {
-                return 'â‚¹' + n.toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2});
+                return '₹' + n.toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2});
             }
             if (col === 'Sales %') return (n * 100).toFixed(1) + '%';
             if (col === 'HSN Code') return Math.round(n).toString();
@@ -549,12 +549,12 @@ function sortBy(col) {
     if (sortCol === col) sortDir *= -1;
     else { sortCol = col; sortDir = 1; }
     // Update icons
-    document.querySelectorAll('thead th .sort-icon').forEach(el => el.textContent = 'â–²');
+    document.querySelectorAll('thead th .sort-icon').forEach(el => el.textContent = '▲');
     document.querySelectorAll('thead th').forEach(th => {
         th.classList.remove('asc','desc');
         if (th.dataset.col === col) {
             th.classList.add(sortDir === 1 ? 'asc' : 'desc');
-            th.querySelector('.sort-icon').textContent = sortDir === 1 ? 'â–²' : 'â–¼';
+            th.querySelector('.sort-icon').textContent = sortDir === 1 ? '▲' : '▼';
         }
     });
     renderTable();
