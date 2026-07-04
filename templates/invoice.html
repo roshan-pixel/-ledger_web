@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Invoice Generator â€” Nexus Analytics</title>
+    <title>Invoice Generator — Nexus Analytics</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -42,7 +42,7 @@
             animation:fadeInSPA .3s ease-out forwards;
         }
 
-        /* â”€â”€ SIDEBAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── SIDEBAR ─────────────────────── */
         .sidebar {
             width:260px; flex-shrink:0;
             background:var(--surface);
@@ -67,10 +67,10 @@
         .nav-item:hover { background:rgba(255,255,255,.08); color:var(--text); transform:translateX(4px); }
         .nav-item.active { background:rgba(99,102,241,.15); color:var(--primary); transform:translateX(4px); }
 
-        /* â”€â”€ MAIN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── MAIN ────────────────────────── */
         .main { flex:1; padding:2.5rem; overflow-y:auto; }
 
-        /* â”€â”€ INVOICE CARD â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── INVOICE CARD ────────────────── */
         .card {
             max-width:980px; margin:0 auto;
             background:var(--surface); border:1px solid var(--border);
@@ -78,7 +78,7 @@
             padding:2.5rem; display:flex; flex-direction:column; gap:2rem;
         }
 
-        /* â”€â”€ HEADER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── HEADER ──────────────────────── */
         .inv-header { display:flex; justify-content:space-between; align-items:flex-start; gap:2rem; flex-wrap:wrap; }
         .inv-title h1 {
             margin:0; font-size:3rem; font-weight:700; letter-spacing:-2px;
@@ -88,7 +88,7 @@
         .inv-title p { margin:.3rem 0 0; color:var(--muted); font-size:1rem; }
         .inv-meta { display:flex; flex-direction:column; gap:.75rem; }
 
-        /* â”€â”€ FIELD â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── FIELD ───────────────────────── */
         .field { display:flex; flex-direction:column; gap:.4rem; }
         .field label {
             font-size:.75rem; font-weight:600;
@@ -107,11 +107,11 @@
             background:rgba(255,255,255,.03);
         }
 
-        /* â”€â”€ BILLING GRID â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── BILLING GRID ────────────────── */
         .billing-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
         @media(max-width:640px){ .billing-grid{grid-template-columns:1fr;} }
 
-        /* â”€â”€ DS LOOKUP â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── DS LOOKUP ───────────────────── */
         .ds-lookup-row { display:flex; gap:.75rem; align-items:flex-end; }
         .ds-lookup-row .glass-input { flex:0 0 200px; }
         .lookup-btn {
@@ -143,7 +143,7 @@
         .cust-label { color:var(--muted); min-width:110px; font-weight:500; }
         .cust-val   { color:var(--text); }
 
-        /* â”€â”€ TABLE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── TABLE ───────────────────────── */
         .table-wrap { overflow-x:auto; }
         table { width:100%; border-collapse:separate; border-spacing:0 .45rem; }
         thead th {
@@ -173,7 +173,7 @@
         }
         .remove-btn:hover { background:rgba(239,68,68,.15); }
 
-        /* â”€â”€ ADD ROW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── ADD ROW ─────────────────────── */
         .add-row-btn {
             background:var(--surface2); border:1px dashed var(--border);
             border-radius:10px; color:var(--muted);
@@ -183,7 +183,7 @@
         }
         .add-row-btn:hover { border-color:var(--primary); color:var(--primary); background:rgba(99,102,241,.08); }
 
-        /* â”€â”€ TOTALS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── TOTALS ──────────────────────── */
         .totals { display:flex; flex-direction:column; align-items:flex-end; gap:.7rem; padding-top:1.5rem; border-top:1px solid var(--border); }
         .total-row { display:flex; justify-content:space-between; align-items:center; width:340px; font-size:1rem; color:var(--muted); }
         .total-row span:last-child { color:var(--text); font-weight:600; }
@@ -202,7 +202,7 @@
             -webkit-background-clip:text; -webkit-text-fill-color:transparent;
         }
 
-        /* â”€â”€ ACTIONS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── ACTIONS ─────────────────────── */
         .actions { display:flex; justify-content:flex-end; gap:1rem; flex-wrap:wrap; }
         .btn {
             padding:.75rem 1.75rem; border-radius:12px;
@@ -218,7 +218,7 @@
         }
         .btn-primary:hover { transform:translateY(-2px); box-shadow:0 6px 25px rgba(99,102,241,.5); }
 
-        /* â”€â”€ TOAST â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── TOAST ───────────────────────── */
         #toast {
             position:fixed; bottom:2rem; right:2rem;
             padding:1rem 1.75rem; border-radius:12px;
@@ -230,7 +230,7 @@
         #toast.success { background:linear-gradient(135deg,#10b981,#059669); }
         #toast.error   { background:linear-gradient(135deg,#ef4444,#dc2626); }
 
-        /* â”€â”€ HISTORY STATUS & BTNS â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── HISTORY STATUS & BTNS ───────── */
         .status {
             font-size:.75rem; font-weight:600; padding:.25rem .6rem;
             border-radius:20px; display:inline-block; letter-spacing:.5px; text-transform:uppercase;
@@ -246,7 +246,7 @@
         .btn-cancel:hover { background:var(--red); color:#fff; }
         .btn-cancel:disabled { opacity:.4; cursor:not-allowed; background:rgba(239,68,68,.1); color:var(--red); }
 
-        /* â”€â”€ PRINT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── PRINT ───────────────────────── */
         @media print {
             body { background:#fff; color:#000; animation:none; }
             .sidebar,.actions,.add-row-btn,.remove-btn,.no-print,.lookup-btn,.ds-lookup-row button { display:none!important; }
@@ -264,7 +264,7 @@
         }
     
         
-        /* â”€â”€ MOBILE OPTIMIZATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── MOBILE OPTIMIZATION ───────────────── */
         @media(max-width: 768px) {
             /* Structural Fixes */
             body { flex-direction: column !important; }
@@ -311,7 +311,7 @@
 </head>
 <body>
 
-<!-- â”€â”€ SIDEBAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+<!-- ── SIDEBAR ─────────────────────────────── -->
 <aside class="sidebar">
     <div class="logo" style="text-align: center; padding: 1rem 0;">
         <img src="{{ url_for('static', filename='logo.png') }}" alt="Asclepius Wellness" style="max-width: 85%; height: auto; background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(220,225,235,1) 100%); border-radius: 16px; padding: 12px; box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15), inset 0 0 0 1px rgba(255,255,255,0.5);">
@@ -336,7 +336,7 @@
     </ul>
 </aside>
 
-<!-- â”€â”€ MAIN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+<!-- ── MAIN ────────────────────────────────── -->
 <main class="main">
 <div class="card">
 
@@ -362,7 +362,7 @@
     <!-- BILLING -->
     <div class="billing-grid">
 
-        <!-- BILL FROM â€” fixed, read-only -->
+        <!-- BILL FROM — fixed, read-only -->
         <div class="field">
             <label>Bill From (Fixed)</label>
             <div style="background:rgba(255,255,255,.03); border:1px solid var(--border); border-radius:12px; padding:1.2rem 1.4rem; display:flex; flex-direction:column; gap:.35rem;">
@@ -376,9 +376,9 @@
             </div>
         </div>
 
-        <!-- BILL TO â€” DS ID lookup -->
+        <!-- BILL TO — DS ID lookup -->
         <div class="field">
-            <label>Bill To â€” Enter DS Code</label>
+            <label>Bill To — Enter DS Code</label>
             <div class="ds-lookup-row">
                 <input type="text" class="glass-input" id="dsCodeInput"
                     placeholder="e.g. 52B025F5"
@@ -461,12 +461,12 @@
 <div id="toast"></div>
 
 <script>
-    // â”€â”€ Init â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Init ───────────────────────────────────────────
     document.getElementById('invoiceDate').valueAsDate = new Date();
     let inventoryData = [];
     let customerFound = false;
 
-    // â”€â”€ Load inventory for autocomplete â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Load inventory for autocomplete ───────────────
     async function loadInventory() {
         try {
             const res  = await fetch('/api/inventory');
@@ -544,7 +544,7 @@
         btn.disabled = false;
     }
 
-    // â”€â”€ Auto-fill price when product selected â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Auto-fill price when product selected ─────────
     function handleProductSelect(input) {
         const name = input.value.trim();
         const product = inventoryData.find(p =>
@@ -561,7 +561,7 @@
         }
     }
 
-    // â”€â”€ Row math â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Row math ───────────────────────────────────────
     function calculateRow(row) {
         const qty   = parseFloat(row.querySelector('.item-qty').value)   || 0;
         const price = parseFloat(row.querySelector('.item-price').value) || 0;
@@ -580,12 +580,12 @@
         return n.toLocaleString('en-IN', { minimumFractionDigits:2, maximumFractionDigits:2 });
     }
 
-    // â”€â”€ Add / Remove rows â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Add / Remove rows ──────────────────────────────
     function makeRow() {
         const tr = document.createElement('tr');
         tr.innerHTML = `
             <td><input type="text" list="inventoryList" class="item-input item-desc"
-                placeholder="Type product nameâ€¦"
+                placeholder="Type product name..."
                 oninput="handleProductSelect(this)" onchange="handleProductSelect(this)"></td>
             <td><input type="number" class="item-input item-qty" value="1" min="1"
                 oninput="calculateRow(this.closest('tr'))"></td>
@@ -632,7 +632,7 @@
         showToast('Invoice cleared', 'success');
     }
 
-    // â”€â”€ Save â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Save ───────────────────────────────────────────
     let isSaving = false;
     async function saveInvoice() {
         if (isSaving) return;
@@ -692,7 +692,7 @@
         }
     }
 
-    // â”€â”€ Toast â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Toast ──────────────────────────────────────────
     let toastTimer;
     function showToast(msg, type='success') {
         const t = document.getElementById('toast');

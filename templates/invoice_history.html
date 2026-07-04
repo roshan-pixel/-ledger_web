@@ -42,7 +42,7 @@
             animation:fadeInSPA .3s ease-out forwards;
         }
 
-        /* â”€â”€ SIDEBAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── SIDEBAR ─────────────────────── */
         .sidebar {
             width:260px; flex-shrink:0;
             background:var(--surface);
@@ -67,7 +67,7 @@
         .nav-item:hover { background:rgba(255,255,255,.08); color:var(--text); transform:translateX(4px); }
         .nav-item.active { background:rgba(99,102,241,.15); color:var(--primary); transform:translateX(4px); }
 
-        /* â”€â”€ MAIN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── MAIN ────────────────────────── */
         .main { flex:1; padding:2.5rem; overflow-y:auto; }
         
         .header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:2rem; }
@@ -78,7 +78,7 @@
         }
         .title p { margin:.4rem 0 0; color:var(--muted); font-size:1.05rem; }
 
-        /* â”€â”€ TABLE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── TABLE ───────────────────────── */
         .card {
             background:var(--surface); border:1px solid var(--border);
             border-radius:20px; backdrop-filter:var(--blur);
@@ -115,7 +115,7 @@
         .btn-cancel:hover { background:var(--red); color:#fff; }
         .btn-cancel:disabled { opacity:.4; cursor:not-allowed; background:rgba(239,68,68,.1); color:var(--red); }
 
-        /* â”€â”€ TOAST â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── TOAST ───────────────────────── */
         #toast {
             position:fixed; bottom:2rem; right:2rem;
             padding:1rem 1.75rem; border-radius:12px;
@@ -128,7 +128,7 @@
         #toast.error   { background:linear-gradient(135deg,#ef4444,#dc2626); }
     
         
-        /* â”€â”€ MOBILE OPTIMIZATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── MOBILE OPTIMIZATION ───────────────── */
         @media(max-width: 768px) {
             /* Structural Fixes */
             body { flex-direction: column !important; }
@@ -175,7 +175,7 @@
 </head>
 <body>
 
-<!-- â”€â”€ SIDEBAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+<!-- ── SIDEBAR ─────────────────────────────── -->
 <aside class="sidebar">
     <div class="logo" style="text-align: center; padding: 1rem 0;">
         <img src="{{ url_for('static', filename='logo.png') }}" alt="Asclepius Wellness" style="max-width: 85%; height: auto; background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(220,225,235,1) 100%); border-radius: 16px; padding: 12px; box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15), inset 0 0 0 1px rgba(255,255,255,0.5);">
@@ -204,7 +204,7 @@
     </ul>
 </aside>
 
-<!-- â”€â”€ MAIN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+<!-- ── MAIN ────────────────────────────────── -->
 <main class="main">
     <div class="header">
         <div class="title">
@@ -297,7 +297,7 @@
         }
     }
 
-    // â”€â”€ Toast â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Toast ──────────────────────────────────────────
     let toastTimer;
     function showToast(msg, type='success') {
         const t = document.getElementById('toast');
@@ -307,7 +307,7 @@
         toastTimer = setTimeout(() => { t.className = ''; }, 3200);
     }
 
-    // â”€â”€ SPA nav â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── SPA nav ────────────────────────────────────────
     function navigateTo(url) {
         document.body.style.opacity    = '0';
         document.body.style.transition = 'opacity .25s ease-out';

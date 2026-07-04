@@ -43,7 +43,7 @@
             animation:fadeInSPA .3s ease-out forwards;
         }
 
-        /* â”€â”€ SIDEBAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── SIDEBAR ─────────────────────── */
         .sidebar {
             width:260px; flex-shrink:0;
             background:var(--surface); border-right:1px solid var(--border);
@@ -66,16 +66,16 @@
         .nav-item:hover { background:rgba(255,255,255,.08); color:var(--text); transform:translateX(4px); }
         .nav-item.active { background:rgba(99,102,241,.15); color:var(--primary); transform:translateX(4px); }
 
-        /* â”€â”€ MAIN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── MAIN ────────────────────────── */
         .main { flex:1; padding:2rem; overflow:hidden; display:flex; flex-direction:column; gap:1.5rem; }
 
-        /* â”€â”€ HEADER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── HEADER ──────────────────────── */
         .page-header { display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; }
         .page-header h1 { margin:0; font-size:1.9rem; font-weight:700; letter-spacing:-.5px; }
         .page-header p  { margin:.25rem 0 0; color:var(--muted); font-size:.9rem; }
         .header-actions { display:flex; align-items:center; gap:.75rem; }
 
-        /* â”€â”€ SEARCH + FILTER BAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── SEARCH + FILTER BAR ─────────── */
         .toolbar {
             display:flex; align-items:center; gap:.75rem; flex-wrap:wrap;
             background:var(--surface); border:1px solid var(--border);
@@ -108,7 +108,7 @@
         .chip-low     { background:rgba(245,158,11,.15);  color:var(--yellow); }
         .chip-out     { background:rgba(239,68,68,.15);   color:var(--red); }
 
-        /* â”€â”€ TABLE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── TABLE ───────────────────────── */
         .table-container {
             flex:1; overflow:auto; border-radius:16px;
             border:1px solid var(--border); background:var(--surface);
@@ -175,7 +175,7 @@
             animation:shimmer 1.4s infinite linear;
         }
 
-        /* â”€â”€ SAVE INDICATOR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── SAVE INDICATOR ──────────────── */
         #saveIndicator {
             position:fixed; bottom:2rem; right:2rem;
             padding:.9rem 1.5rem; border-radius:12px;
@@ -204,7 +204,7 @@
         #rowCount { font-size:.85rem; color:var(--muted); }
     
         
-        /* â”€â”€ MOBILE OPTIMIZATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── MOBILE OPTIMIZATION ───────────────── */
         @media(max-width: 768px) {
             /* Structural Fixes */
             body { flex-direction: column !important; }
@@ -252,7 +252,7 @@
 </head>
 <body>
 
-<!-- â”€â”€ SIDEBAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+<!-- ── SIDEBAR ─────────────────────────────── -->
 <aside class="sidebar">
     <div class="logo" style="text-align: center; padding: 1rem 0;">
         <img src="{{ url_for('static', filename='logo.png') }}" alt="Asclepius Wellness" style="max-width: 85%; height: auto; background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(220,225,235,1) 100%); border-radius: 16px; padding: 12px; box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15), inset 0 0 0 1px rgba(255,255,255,0.5);">
@@ -281,14 +281,14 @@
     </ul>
 </aside>
 
-<!-- â”€â”€ MAIN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+<!-- ── MAIN ────────────────────────────────── -->
 <main class="main">
 
     <!-- Header -->
     <div class="page-header">
         <div>
             <h1>Inventory Master</h1>
-            <p id="lastRefreshed">Fetching live data from Excelâ€¦</p>
+            <p id="lastRefreshed">Fetching live data from Excel...</p>
         </div>
         <div class="header-actions">
             <span id="rowCount"></span>
@@ -303,7 +303,7 @@
     <div class="toolbar">
         <div class="search-wrap">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input type="text" class="search-input" id="searchInput" placeholder="Search product name, HSN, remarksâ€¦" oninput="filterTable()">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search product name, HSN, remarks..." oninput="filterTable()">
         </div>
         <button class="filter-btn active" id="f-all"    onclick="setFilter('all')">All</button>
         <button class="filter-btn"        id="f-in"     onclick="setFilter('in')">In Stock</button>
@@ -327,11 +327,11 @@
 <!-- Save Indicator -->
 <div id="saveIndicator">
     <div class="spinner" id="saveSpinner" style="display:none"></div>
-    <span id="saveText">Savingâ€¦</span>
+    <span id="saveText">Saving...</span>
 </div>
 
 <script>
-// â”€â”€ State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── State ────────────────────────────────────────
 let allRows    = [];
 let allHeaders = [];
 let filterMode = 'all';
@@ -358,7 +358,7 @@ const NUM_COLS = new Set([
     'Tie-Breaker Sold Qty','Tie-Breaker Sale Value'
 ]);
 
-// â”€â”€ Load data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Load data ────────────────────────────────────
 async function loadData() {
     showSkeletons();
     try {
@@ -373,11 +373,11 @@ async function loadData() {
         document.getElementById('lastRefreshed').textContent =
             'Last refreshed: ' + new Date().toLocaleTimeString('en-IN');
     } catch(e) {
-        document.getElementById('lastRefreshed').textContent = 'Error loading data â€” is Flask running?';
+        document.getElementById('lastRefreshed').textContent = 'Error loading data — is Flask running?';
     }
 }
 
-// â”€â”€ Build table header â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Build table header ────────────────────────────
 function buildHeader() {
     const thead = document.getElementById('tableHead');
     // Fixed columns: S.No + columns we want to show
@@ -391,7 +391,7 @@ function buildHeader() {
     }).join('') + '</tr>';
 }
 
-// â”€â”€ Render rows â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Render rows ───────────────────────────────────
 function renderTable() {
     const q   = document.getElementById('searchInput').value.toLowerCase();
     let rows  = allRows.filter(r => {
@@ -454,7 +454,7 @@ function renderTable() {
     }).join('');
 }
 
-// â”€â”€ Format cell value â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Format cell value ─────────────────────────────
 function formatVal(val, col) {
     if (val === '' || val === null || val === undefined) return '<span style="color:var(--muted)">—</span>';
     if (NUM_COLS.has(col)) {
@@ -473,7 +473,7 @@ function formatVal(val, col) {
 
 function escQ(s) { return s.replace(/'/g, "\\'"); }
 
-// â”€â”€ Inline editing â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Inline editing ────────────────────────────────
 function startEdit(td, rowNum, colName) {
     if (td.querySelector('input')) return; // already editing
     const rawVal = allRows.find(r => r.__row === rowNum)?.[colName] ?? '';
@@ -503,7 +503,7 @@ function startEdit(td, rowNum, colName) {
     });
 }
 
-// â”€â”€ Save cell to Excel â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Save cell to Excel ────────────────────────────
 async function saveCell(rowNum, colName, value, td) {
     showSave('saving');
     try {
@@ -530,21 +530,21 @@ async function saveCell(rowNum, colName, value, td) {
     }
 }
 
-// â”€â”€ Save indicator â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Save indicator ────────────────────────────────
 let saveTimer;
 function showSave(state, msg) {
     const el  = document.getElementById('saveIndicator');
     const txt = document.getElementById('saveText');
     const sp  = document.getElementById('saveSpinner');
     el.className = state;
-    if (state === 'saving') { txt.textContent = 'Saving to Excelâ€¦'; sp.style.display = 'block'; }
-    if (state === 'saved')  { txt.textContent = 'âœ“ Saved to Excel'; sp.style.display = 'none'; }
-    if (state === 'error')  { txt.textContent = 'âœ— ' + (msg || 'Error'); sp.style.display = 'none'; }
+    if (state === 'saving') { txt.textContent = 'Saving to Excel...'; sp.style.display = 'block'; }
+    if (state === 'saved')  { txt.textContent = '✓ Saved to Excel'; sp.style.display = 'none'; }
+    if (state === 'error')  { txt.textContent = '❌ ' + (msg || 'Error'); sp.style.display = 'none'; }
     clearTimeout(saveTimer);
     if (state !== 'saving') saveTimer = setTimeout(() => { el.className = ''; }, 2500);
 }
 
-// â”€â”€ Sort â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Sort ──────────────────────────────────────────
 function sortBy(col) {
     if (sortCol === col) sortDir *= -1;
     else { sortCol = col; sortDir = 1; }
@@ -560,7 +560,7 @@ function sortBy(col) {
     renderTable();
 }
 
-// â”€â”€ Filter â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Filter ────────────────────────────────────────
 function setFilter(mode) {
     filterMode = mode;
     ['all','in','low','out'].forEach(f => {
@@ -571,7 +571,7 @@ function setFilter(mode) {
 
 function filterTable() { renderTable(); }
 
-// â”€â”€ Chips â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Chips ─────────────────────────────────────────
 function updateChips() {
     const total = allRows.length;
     const low   = allRows.filter(r => (r['Stock Status']||'').toLowerCase().includes('low')).length;
@@ -581,7 +581,7 @@ function updateChips() {
     document.getElementById('chipOut').textContent   = `${out} Out`;
 }
 
-// â”€â”€ Skeletons â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Skeletons ─────────────────────────────────────
 function showSkeletons() {
     const tbody = document.getElementById('tableBody');
     tbody.innerHTML = Array.from({length:12}, () =>
@@ -591,14 +591,14 @@ function showSkeletons() {
     ).join('');
 }
 
-// â”€â”€ SPA nav â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── SPA nav ───────────────────────────────────────
 function navigateTo(url) {
     document.body.style.opacity    = '0';
     document.body.style.transition = 'opacity .25s ease-out';
     setTimeout(() => { window.location.href = url; }, 260);
 }
 
-// â”€â”€ Boot â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Boot ──────────────────────────────────────────
 loadData();
 </script>
 </body>

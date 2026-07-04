@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Portal Sync â€” Nexus Analytics</title>
+    <title>Portal Sync — Nexus Analytics</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -44,7 +44,7 @@
             animation:fadeInSPA .3s ease-out forwards;
         }
 
-        /* â”€â”€ SIDEBAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── SIDEBAR ─────────────────────── */
         .sidebar {
             width:260px; flex-shrink:0;
             background:var(--surface); border-right:1px solid var(--border);
@@ -66,14 +66,14 @@
         .nav-item:hover { background:rgba(255,255,255,.08); color:var(--text); transform:translateX(4px); }
         .nav-item.active { background:rgba(99,102,241,.15); color:var(--primary); transform:translateX(4px); }
 
-        /* â”€â”€ MAIN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── MAIN ────────────────────────── */
         .main { flex:1; padding:2.5rem; overflow-y:auto; display:flex; flex-direction:column; gap:2rem; }
 
-        /* â”€â”€ PAGE HEADER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── PAGE HEADER ─────────────────── */
         .page-header h1 { margin:0; font-size:2rem; font-weight:700; letter-spacing:-.5px; }
         .page-header p  { margin:.3rem 0 0; color:var(--muted); }
 
-        /* â”€â”€ STATUS BANNER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── STATUS BANNER ───────────────── */
         .status-banner {
             display:flex; align-items:center; gap:.75rem;
             padding:.85rem 1.25rem; border-radius:14px;
@@ -86,7 +86,7 @@
         .banner-dot { width:10px; height:10px; border-radius:50%; background:currentColor; flex-shrink:0; }
         .banner-dot.pulse { animation:pulse 1.2s infinite; }
 
-        /* â”€â”€ SYNC CARD â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── SYNC CARD ───────────────────── */
         .sync-card {
             background:var(--surface); border:1px solid var(--border);
             border-radius:20px; backdrop-filter:var(--blur);
@@ -130,7 +130,7 @@
         .sync-btn:disabled { opacity:.5; cursor:not-allowed; transform:none; }
         .spinner { width:18px; height:18px; border:2.5px solid rgba(255,255,255,.3); border-top-color:#fff; border-radius:50%; animation:spin .7s linear infinite; display:none; }
 
-        /* â”€â”€ RESULTS CARD â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── RESULTS CARD ────────────────── */
         .results-card {
             background:var(--surface); border:1px solid var(--border);
             border-radius:20px; backdrop-filter:var(--blur);
@@ -160,7 +160,7 @@
         .not-found-box h3 { margin:0 0 .5rem; font-size:.9rem; color:var(--red); }
         .not-found-box ul { margin:0; padding-left:1.25rem; color:var(--muted); font-size:.85rem; line-height:1.8; }
 
-        /* â”€â”€ LOG CARD â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── LOG CARD ────────────────────── */
         .log-card {
             background:rgba(0,0,0,.3); border:1px solid var(--border);
             border-radius:16px; padding:1.25rem;
@@ -176,7 +176,7 @@
         .log-err  { color:var(--red); }
         .log-info { color:var(--primary); }
 
-        /* â”€â”€ AUTO SYNC TOGGLE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── AUTO SYNC TOGGLE ─────────────── */
         .auto-card {
             background:var(--surface); border:1px solid var(--border);
             border-radius:20px; backdrop-filter:var(--blur);
@@ -204,7 +204,7 @@
         #autoInterval { font-size:.82rem; color:var(--muted); }
     
         
-        /* â”€â”€ MOBILE OPTIMIZATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── MOBILE OPTIMIZATION ───────────────── */
         @media(max-width: 768px) {
             /* Structural Fixes */
             body { flex-direction: column !important; }
@@ -251,7 +251,7 @@
 </head>
 <body>
 
-<!-- â”€â”€ SIDEBAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+<!-- ── SIDEBAR ──────────────────────────────── -->
 <aside class="sidebar">
     <div class="logo" style="text-align: center; padding: 1rem 0;">
         <img src="{{ url_for('static', filename='logo.png') }}" alt="Asclepius Wellness" style="max-width: 85%; height: auto; background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(220,225,235,1) 100%); border-radius: 16px; padding: 12px; box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15), inset 0 0 0 1px rgba(255,255,255,0.5);">
@@ -284,18 +284,18 @@
     </ul>
 </aside>
 
-<!-- â”€â”€ MAIN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+<!-- ── MAIN ─────────────────────────────────── -->
 <main class="main">
 
     <div class="page-header">
         <h1>ðŸ”„ Portal Sync</h1>
-        <p>Pull approved orders from Asclepius C&amp;F Portal â†’ update Inventory Master automatically</p>
+        <p>Pull approved orders from Asclepius C&amp;F Portal → update Inventory Master automatically</p>
     </div>
 
     <!-- Status Banner -->
     <div class="status-banner banner-idle" id="statusBanner">
         <div class="banner-dot" id="bannerDot"></div>
-        <span id="bannerText">Ready to sync â€” select a date range and click Sync Now</span>
+        <span id="bannerText">Ready to sync — select a date range and click Sync Now</span>
     </div>
 
     <!-- Sync Control Card -->
@@ -331,7 +331,7 @@
     <!-- Auto Sync Card -->
     <div class="auto-card">
         <div class="auto-info">
-            <h3>âš¡ Auto Sync</h3>
+            <h3>⚡ Auto Sync</h3>
             <p>Automatically sync approved orders every <strong id="autoInterval">15 minutes</strong> in the background</p>
         </div>
         <div class="toggle-wrap">
@@ -360,12 +360,12 @@
                 <div class="stat-label">Not Matched</div>
             </div>
             <div class="stat-item">
-                <div class="stat-num blue" id="rTime">â€”</div>
+                <div class="stat-num blue" id="rTime">—</div>
                 <div class="stat-label">Time Taken</div>
             </div>
         </div>
         <div class="not-found-box" id="notFoundBox" style="display:none;">
-            <h3>âš  Products Not Matched in Inventory</h3>
+            <h3>⚠️ Products Not Matched in Inventory</h3>
             <ul id="notFoundList"></ul>
         </div>
     </div>
@@ -376,7 +376,7 @@
 </main>
 
 <script>
-    // â”€â”€ Init dates â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Init dates ────────────────────────────────────────
     const today = new Date();
     document.getElementById('fromDate').value = today.toISOString().split('T')[0];
     document.getElementById('toDate').value   = today.toISOString().split('T')[0];
@@ -390,13 +390,13 @@
         document.getElementById('toDate').value   = t.toISOString().split('T')[0];
     }
 
-    // â”€â”€ Format date YYYY-MM-DD â†’ DD/MM/YYYY â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Format date YYYY-MM-DD → DD/MM/YYYY ──────────────
     function fmtPortal(iso) {
         const [y, m, d] = iso.split('-');
         return `${d}/${m}/${y}`;
     }
 
-    // â”€â”€ Logging â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Logging ───────────────────────────────────────────
     const logEl = document.getElementById('logCard');
     function log(msg, type='') {
         logEl.classList.add('visible');
@@ -406,7 +406,7 @@
         logEl.prepend(line);
     }
 
-    // â”€â”€ Banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Banner ────────────────────────────────────────────
     function setBanner(state, text) {
         const el  = document.getElementById('statusBanner');
         const dot = document.getElementById('bannerDot');
@@ -415,7 +415,7 @@
         document.getElementById('bannerText').textContent = text;
     }
 
-    // â”€â”€ Main sync function â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Main sync function ────────────────────────────────
     let syncRunning = false;
     async function runSync() {
         if (syncRunning) return;
@@ -428,9 +428,9 @@
         btn.disabled = true;
         document.getElementById('syncSpinner').style.display = 'block';
         document.getElementById('syncIcon').style.display    = 'none';
-        document.getElementById('syncBtnText').textContent   = 'Syncingâ€¦';
-        setBanner('syncing', `Connecting to Asclepius portal & syncing ${fmtPortal(from)} â†’ ${fmtPortal(to)}â€¦`);
-        log(`Starting sync: ${fmtPortal(from)} â†’ ${fmtPortal(to)}`, 'info');
+        document.getElementById('syncBtnText').textContent   = 'Syncing...';
+        setBanner('syncing', `Connecting to Asclepius portal & syncing ${fmtPortal(from)} → ${fmtPortal(to)}...`);
+        log(`Starting sync: ${fmtPortal(from)} → ${fmtPortal(to)}`, 'info');
 
         const startTime = Date.now();
         try {
@@ -443,10 +443,10 @@
             const elapsed = ((Date.now() - startTime) / 1000).toFixed(1) + 's';
 
             if (data.error) {
-                setBanner('error', 'âœ— Sync failed: ' + data.error);
+                setBanner('error', '❌ Sync failed: ' + data.error);
                 log('Error: ' + data.error, 'err');
             } else {
-                setBanner('connected', `âœ“ Sync complete â€” ${data.updated} products updated in Excel`);
+                setBanner('connected', `✓ Sync complete — ${data.updated} products updated in Excel`);
                 log(`Sync done: ${data.updated} updated, ${data.skipped} skipped, ${(data.not_found||[]).length} unmatched`, 'ok');
 
                 // Show results
@@ -468,7 +468,7 @@
                 }
             }
         } catch(e) {
-            setBanner('error', 'âœ— Network error: ' + e.message);
+            setBanner('error', '❌ Network error: ' + e.message);
             log('Network error: ' + e.message, 'err');
         }
 
@@ -479,7 +479,7 @@
         document.getElementById('syncBtnText').textContent   = 'Sync Now';
     }
 
-    // â”€â”€ Auto sync â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Auto sync ─────────────────────────────────────────
     let autoTimer = null;
     const AUTO_INTERVAL_MS = 15 * 60 * 1000; // 15 minutes
 
@@ -488,7 +488,7 @@
         document.getElementById('autoLabel').textContent = on ? 'On' : 'Off';
         if (on) {
             log('Auto-sync enabled every 15 minutes', 'info');
-            setBanner('idle', 'âš¡ Auto-sync active â€” will sync today every 15 minutes');
+            setBanner('idle', '⚡ Auto-sync active — will sync today every 15 minutes');
             autoTimer = setInterval(() => {
                 // Always sync today for auto mode
                 const t = new Date().toISOString().split('T')[0];
@@ -505,7 +505,7 @@
         }
     }
 
-    // â”€â”€ SPA nav â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── SPA nav ───────────────────────────────────────────
     function navigateTo(url) {
         clearInterval(autoTimer);
         document.body.style.opacity    = '0';
