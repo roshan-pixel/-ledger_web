@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -431,9 +431,9 @@
                 const res = await fetch('/api/kpi');
                 const data = await res.json();
                 
-                document.getElementById('gross-stock-value').innerText = 'â‚¹' + parseFloat(data['Gross Stock Value']).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-                document.getElementById('monthly-sales').innerText = 'â‚¹' + parseFloat(data['Monthly Sales Value']).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-                document.getElementById('week-sales').innerText = 'â‚¹' + parseFloat(data['Week Sales Value']).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                document.getElementById('gross-stock-value').innerText = '₹' + parseFloat(data['Gross Stock Value']).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                document.getElementById('monthly-sales').innerText = '₹' + parseFloat(data['Monthly Sales Value']).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                document.getElementById('week-sales').innerText = '₹' + parseFloat(data['Week Sales Value']).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
                 document.getElementById('stock-alerts').innerText = Math.round(data['Low Stock Count']) + ' / ' + Math.round(data['Out of Stock Count']);
                 
                 // Update missing data
@@ -451,10 +451,10 @@
                     wowPill.style.display = 'inline-block';
                     if (wow > 0) {
                         wowPill.className = 'trend-pill trend-up';
-                        wowPill.innerHTML = 'â†‘ ' + wowPercent + '%';
+                        wowPill.innerHTML = '↑ ' + wowPercent + '%';
                     } else {
                         wowPill.className = 'trend-pill trend-down';
-                        wowPill.innerHTML = 'â†“ ' + Math.abs(wowPercent) + '%';
+                        wowPill.innerHTML = '↓ ' + Math.abs(wowPercent) + '%';
                     }
                 }
             } catch (err) {

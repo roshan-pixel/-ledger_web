@@ -409,8 +409,8 @@
                 <tr>
                     <th style="width:42%">Item Description</th>
                     <th style="width:10%">Qty</th>
-                    <th style="width:18%">Price (â‚¹)</th>
-                    <th style="width:20%">Total (â‚¹)</th>
+                    <th style="width:18%">Price (₹)</th>
+                    <th style="width:20%">Total (₹)</th>
                     <th style="width:5%" class="no-print"></th>
                 </tr>
             </thead>
@@ -428,15 +428,15 @@
     <div class="totals">
         <div class="total-row">
             <span>Subtotal</span>
-            <span id="subtotalAmt">â‚¹0.00</span>
+            <span id="subtotalAmt">₹0.00</span>
         </div>
         <div class="total-row">
             <span>Tax</span>
-            <span class="tax-badge">âœ“ Tax Included</span>
+            <span class="tax-badge">✓ Tax Included</span>
         </div>
         <div class="total-row grand">
             <span>Total Due</span>
-            <span id="grandTotal">â‚¹0.00</span>
+            <span id="grandTotal">₹0.00</span>
         </div>
     </div>
 
@@ -511,7 +511,7 @@
         btn.disabled = true;
         status.style.display = 'inline-block';
         status.className = 'ds-status loading';
-        status.textContent = 'Looking upâ€¦';
+        status.textContent = 'Looking up...';
         box.classList.remove('visible');
 
         try {
@@ -521,25 +521,25 @@
             if (res.ok && !data.error) {
                 customerFound = true;
                 status.className = 'ds-status found';
-                status.textContent = 'âœ“ Customer found';
+                status.textContent = '✓ Customer found';
 
-                document.getElementById('cDS').textContent      = data.ds_code   || 'â€”';
-                document.getElementById('cName').textContent    = data.ds_name   || 'â€”';
-                document.getElementById('cMobile').textContent  = data.mobile    || 'â€”';
-                document.getElementById('cAddress').textContent = data.address   || 'â€”';
-                document.getElementById('cShip').textContent    = data.shipping_address || 'â€”';
-                document.getElementById('cLastInv').textContent = data.last_invoice    || 'â€”';
+                document.getElementById('cDS').textContent      = data.ds_code   || '—';
+                document.getElementById('cName').textContent    = data.ds_name   || '—';
+                document.getElementById('cMobile').textContent  = data.mobile    || '—';
+                document.getElementById('cAddress').textContent = data.address   || '—';
+                document.getElementById('cShip').textContent    = data.shipping_address || '—';
+                document.getElementById('cLastInv').textContent = data.last_invoice    || '—';
                 box.classList.add('visible');
             } else {
                 customerFound = false;
                 status.className = 'ds-status notfound';
-                status.textContent = 'âœ— DS Code not found â€” please check and try again';
+                status.textContent = '❌ DS Code not found — please check and try again';
                 box.classList.remove('visible');
             }
         } catch(e) {
             customerFound = false;
             status.className = 'ds-status notfound';
-            status.textContent = 'âœ— Network error';
+            status.textContent = '❌ Network error';
         }
         btn.disabled = false;
     }
@@ -572,8 +572,8 @@
     function recalcTotals() {
         let sub = 0;
         document.querySelectorAll('.item-total').forEach(el => sub += parseFloat(el.value) || 0);
-        document.getElementById('subtotalAmt').textContent = 'â‚¹' + fmt(sub);
-        document.getElementById('grandTotal').textContent  = 'â‚¹' + fmt(sub);
+        document.getElementById('subtotalAmt').textContent = '₹' + fmt(sub);
+        document.getElementById('grandTotal').textContent  = '₹' + fmt(sub);
     }
 
     function fmt(n) {
