@@ -20,9 +20,16 @@ def init_db():
             customer_name TEXT,
             amount REAL,
             date_created TEXT,
-            items TEXT
+            items TEXT,
+            status TEXT DEFAULT 'active'
         )
     ''')
+    
+    # Try adding status column if it doesn't exist
+    try:
+        c.execute("ALTER TABLE invoices ADD COLUMN status TEXT DEFAULT 'active'")
+    except sqlite3.OperationalError:
+        pass
     conn.commit()
     conn.close()
 
@@ -56,6 +63,12 @@ def create_invoice():
         conn = get_db()
         c = conn.cursor()
         
+        # 0. Check for duplicate invoice_no
+        if invoice_no:
+            c.execute('SELECT id FROM invoices WHERE invoice_no = ?', (invoice_no,))
+            if c.fetchone():
+                return jsonify({'error': f'Invoice number {invoice_no} already exists!'}), 400
+                
         # 1. Save the invoice
         c.execute(
             'INSERT INTO invoices (invoice_no, ds_code, customer_name, amount, date_created, items) VALUES (?, ?, ?, ?, ?, ?)',
@@ -127,11 +140,38 @@ def list_invoices():
                 'customer_name': r['customer_name'],
                 'amount': r['amount'],
                 'date_created': r['date_created'],
-                'items': json.loads(r['items'] or '[]')
+                'items': json.loads(r['items'] or '[]'),
+                'status': r.get('status', 'active')
             })
             
         conn.close()
         return jsonify({'invoices': invoices})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@invoice_api.route('/api/invoice/next_no', methods=['GET'])
+def get_next_invoice_no():
+    from app import get_db
+    try:
+        conn = get_db()
+        c = conn.cursor()
+        c.execute('SELECT invoice_no FROM invoices ORDER BY id DESC LIMIT 1')
+        row = c.fetchone()
+        conn.close()
+        
+        if row and row['invoice_no']:
+            last_no = row['invoice_no']
+            import re
+            match = re.search(r'(\d+)$', last_no)
+            if match:
+                num_str = match.group(1)
+                next_num = int(num_str) + 1
+                next_no = last_no[:match.start()] + str(next_num).zfill(len(num_str))
+                return jsonify({'next_no': next_no})
+                
+        import datetime
+        year = datetime.datetime.now().year
+        return jsonify({'next_no': f'INV-{year}-001'})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
@@ -177,8 +217,8 @@ def cancel_invoice(invoice_id):
                         c.execute(f"UPDATE inventory SET c{sold_qty_col_idx}=? WHERE row_num=?", (new_sold, row_num))
                         update_inventory_formulas(conn, row_num, all_headers)
         
-        # 3. Delete the invoice from the DB
-        c.execute('DELETE FROM invoices WHERE id = ?', (invoice_id,))
+        # 3. Update the invoice status to cancelled in the DB
+        c.execute("UPDATE invoices SET status = 'cancelled' WHERE id = ?", (invoice_id,))
         
         # 4. Update the TOTAL row
         update_totals_row(conn)

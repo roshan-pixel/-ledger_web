@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -257,7 +257,7 @@
 
     
         
-        /* ── MOBILE OPTIMIZATION ───────────────── */
+        /* â”€â”€ MOBILE OPTIMIZATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         @media(max-width: 768px) {
             /* Structural Fixes */
             body { flex-direction: column !important; }
@@ -285,7 +285,7 @@
             .table-wrap, .table-container { width: 100% !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 1rem; }
             table { white-space: nowrap !important; }
             thead th { font-size: 0.85rem !important; }
-            .total-row { width: 100% !important; }
+            /* .total-row width removed for layout fix */
             
             /* Touch Target Accessibility (Min 44px) */
             .btn, .lookup-btn, .sync-btn { min-height: 44px; padding: 0.8rem 1.5rem !important; width: 100%; text-align: center; justify-content: center; }
@@ -305,7 +305,7 @@
 <body>
 
     <aside class="sidebar">
-        <div class="logo">Nexus Analytics</div>
+        <div class="logo" style="text-align: center; padding: 0.5rem 0;"><img src="{{ url_for('static', filename='logo.png') }}" alt="Asclepius Wellness" style="max-width: 85%; height: auto;"></div>
         <ul class="nav-menu">
             <li class="nav-item active" onclick="navigateTo('/')">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
@@ -429,9 +429,9 @@
                 const res = await fetch('/api/kpi');
                 const data = await res.json();
                 
-                document.getElementById('gross-stock-value').innerText = '₹' + parseFloat(data['Gross Stock Value']).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-                document.getElementById('monthly-sales').innerText = '₹' + parseFloat(data['Monthly Sales Value']).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-                document.getElementById('week-sales').innerText = '₹' + parseFloat(data['Week Sales Value']).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                document.getElementById('gross-stock-value').innerText = 'â‚¹' + parseFloat(data['Gross Stock Value']).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                document.getElementById('monthly-sales').innerText = 'â‚¹' + parseFloat(data['Monthly Sales Value']).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                document.getElementById('week-sales').innerText = 'â‚¹' + parseFloat(data['Week Sales Value']).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
                 document.getElementById('stock-alerts').innerText = Math.round(data['Low Stock Count']) + ' / ' + Math.round(data['Out of Stock Count']);
                 
                 // Update missing data
@@ -449,10 +449,10 @@
                     wowPill.style.display = 'inline-block';
                     if (wow > 0) {
                         wowPill.className = 'trend-pill trend-up';
-                        wowPill.innerHTML = '↑ ' + wowPercent + '%';
+                        wowPill.innerHTML = 'â†‘ ' + wowPercent + '%';
                     } else {
                         wowPill.className = 'trend-pill trend-down';
-                        wowPill.innerHTML = '↓ ' + Math.abs(wowPercent) + '%';
+                        wowPill.innerHTML = 'â†“ ' + Math.abs(wowPercent) + '%';
                     }
                 }
             } catch (err) {

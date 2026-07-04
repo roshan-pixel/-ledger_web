@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Invoice Generator — Nexus Analytics</title>
+    <title>Invoice Generator â€” Nexus Analytics</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -42,7 +42,7 @@
             animation:fadeInSPA .3s ease-out forwards;
         }
 
-        /* ── SIDEBAR ─────────────────────── */
+        /* â”€â”€ SIDEBAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         .sidebar {
             width:260px; flex-shrink:0;
             background:var(--surface);
@@ -67,10 +67,10 @@
         .nav-item:hover { background:rgba(255,255,255,.08); color:var(--text); transform:translateX(4px); }
         .nav-item.active { background:rgba(99,102,241,.15); color:var(--primary); transform:translateX(4px); }
 
-        /* ── MAIN ────────────────────────── */
+        /* â”€â”€ MAIN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         .main { flex:1; padding:2.5rem; overflow-y:auto; }
 
-        /* ── INVOICE CARD ────────────────── */
+        /* â”€â”€ INVOICE CARD â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         .card {
             max-width:980px; margin:0 auto;
             background:var(--surface); border:1px solid var(--border);
@@ -78,7 +78,7 @@
             padding:2.5rem; display:flex; flex-direction:column; gap:2rem;
         }
 
-        /* ── HEADER ──────────────────────── */
+        /* â”€â”€ HEADER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         .inv-header { display:flex; justify-content:space-between; align-items:flex-start; gap:2rem; flex-wrap:wrap; }
         .inv-title h1 {
             margin:0; font-size:3rem; font-weight:700; letter-spacing:-2px;
@@ -88,7 +88,7 @@
         .inv-title p { margin:.3rem 0 0; color:var(--muted); font-size:1rem; }
         .inv-meta { display:flex; flex-direction:column; gap:.75rem; }
 
-        /* ── FIELD ───────────────────────── */
+        /* â”€â”€ FIELD â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         .field { display:flex; flex-direction:column; gap:.4rem; }
         .field label {
             font-size:.75rem; font-weight:600;
@@ -107,11 +107,11 @@
             background:rgba(255,255,255,.03);
         }
 
-        /* ── BILLING GRID ────────────────── */
+        /* â”€â”€ BILLING GRID â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         .billing-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
         @media(max-width:640px){ .billing-grid{grid-template-columns:1fr;} }
 
-        /* ── DS LOOKUP ───────────────────── */
+        /* â”€â”€ DS LOOKUP â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         .ds-lookup-row { display:flex; gap:.75rem; align-items:flex-end; }
         .ds-lookup-row .glass-input { flex:0 0 200px; }
         .lookup-btn {
@@ -143,7 +143,7 @@
         .cust-label { color:var(--muted); min-width:110px; font-weight:500; }
         .cust-val   { color:var(--text); }
 
-        /* ── TABLE ───────────────────────── */
+        /* â”€â”€ TABLE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         .table-wrap { overflow-x:auto; }
         table { width:100%; border-collapse:separate; border-spacing:0 .45rem; }
         thead th {
@@ -173,7 +173,7 @@
         }
         .remove-btn:hover { background:rgba(239,68,68,.15); }
 
-        /* ── ADD ROW ─────────────────────── */
+        /* â”€â”€ ADD ROW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         .add-row-btn {
             background:var(--surface2); border:1px dashed var(--border);
             border-radius:10px; color:var(--muted);
@@ -183,7 +183,7 @@
         }
         .add-row-btn:hover { border-color:var(--primary); color:var(--primary); background:rgba(99,102,241,.08); }
 
-        /* ── TOTALS ──────────────────────── */
+        /* â”€â”€ TOTALS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         .totals { display:flex; flex-direction:column; align-items:flex-end; gap:.7rem; padding-top:1.5rem; border-top:1px solid var(--border); }
         .total-row { display:flex; justify-content:space-between; align-items:center; width:340px; font-size:1rem; color:var(--muted); }
         .total-row span:last-child { color:var(--text); font-weight:600; }
@@ -202,7 +202,7 @@
             -webkit-background-clip:text; -webkit-text-fill-color:transparent;
         }
 
-        /* ── ACTIONS ─────────────────────── */
+        /* â”€â”€ ACTIONS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         .actions { display:flex; justify-content:flex-end; gap:1rem; flex-wrap:wrap; }
         .btn {
             padding:.75rem 1.75rem; border-radius:12px;
@@ -218,7 +218,7 @@
         }
         .btn-primary:hover { transform:translateY(-2px); box-shadow:0 6px 25px rgba(99,102,241,.5); }
 
-        /* ── TOAST ───────────────────────── */
+        /* â”€â”€ TOAST â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         #toast {
             position:fixed; bottom:2rem; right:2rem;
             padding:1rem 1.75rem; border-radius:12px;
@@ -230,7 +230,7 @@
         #toast.success { background:linear-gradient(135deg,#10b981,#059669); }
         #toast.error   { background:linear-gradient(135deg,#ef4444,#dc2626); }
 
-        /* ── HISTORY STATUS & BTNS ───────── */
+        /* â”€â”€ HISTORY STATUS & BTNS â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         .status {
             font-size:.75rem; font-weight:600; padding:.25rem .6rem;
             border-radius:20px; display:inline-block; letter-spacing:.5px; text-transform:uppercase;
@@ -246,7 +246,7 @@
         .btn-cancel:hover { background:var(--red); color:#fff; }
         .btn-cancel:disabled { opacity:.4; cursor:not-allowed; background:rgba(239,68,68,.1); color:var(--red); }
 
-        /* ── PRINT ───────────────────────── */
+        /* â”€â”€ PRINT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         @media print {
             body { background:#fff; color:#000; animation:none; }
             .sidebar,.actions,.add-row-btn,.remove-btn,.no-print,.lookup-btn,.ds-lookup-row button { display:none!important; }
@@ -264,7 +264,7 @@
         }
     
         
-        /* ── MOBILE OPTIMIZATION ───────────────── */
+        /* â”€â”€ MOBILE OPTIMIZATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         @media(max-width: 768px) {
             /* Structural Fixes */
             body { flex-direction: column !important; }
@@ -292,7 +292,7 @@
             .table-wrap, .table-container { width: 100% !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 1rem; }
             table { white-space: nowrap !important; }
             thead th { font-size: 0.85rem !important; }
-            .total-row { width: 100% !important; }
+            /* .total-row width removed for layout fix */
             
             /* Touch Target Accessibility (Min 44px) */
             .btn, .lookup-btn, .sync-btn { min-height: 44px; padding: 0.8rem 1.5rem !important; width: 100%; text-align: center; justify-content: center; }
@@ -311,9 +311,9 @@
 </head>
 <body>
 
-<!-- ── SIDEBAR ─────────────────────────────── -->
+<!-- â”€â”€ SIDEBAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
 <aside class="sidebar">
-    <div class="logo">Nexus Analytics</div>
+    <div class="logo" style="text-align: center; padding: 0.5rem 0;"><img src="{{ url_for('static', filename='logo.png') }}" alt="Asclepius Wellness" style="max-width: 85%; height: auto;"></div>
     <ul class="nav-menu">
         <li class="nav-item" onclick="navigateTo('/')">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
@@ -334,13 +334,14 @@
     </ul>
 </aside>
 
-<!-- ── MAIN ────────────────────────────────── -->
+<!-- â”€â”€ MAIN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
 <main class="main">
 <div class="card">
 
     <!-- HEADER -->
     <div class="inv-header">
         <div class="inv-title">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Asclepius Wellness" style="max-height: 80px; margin-bottom: 10px;">
             <h1>INVOICE</h1>
             <p>Asclepius Wellness Pvt. Ltd.</p>
         </div>
@@ -359,7 +360,7 @@
     <!-- BILLING -->
     <div class="billing-grid">
 
-        <!-- BILL FROM — fixed, read-only -->
+        <!-- BILL FROM â€” fixed, read-only -->
         <div class="field">
             <label>Bill From (Fixed)</label>
             <div style="background:rgba(255,255,255,.03); border:1px solid var(--border); border-radius:12px; padding:1.2rem 1.4rem; display:flex; flex-direction:column; gap:.35rem;">
@@ -373,9 +374,9 @@
             </div>
         </div>
 
-        <!-- BILL TO — DS ID lookup -->
+        <!-- BILL TO â€” DS ID lookup -->
         <div class="field">
-            <label>Bill To — Enter DS Code</label>
+            <label>Bill To â€” Enter DS Code</label>
             <div class="ds-lookup-row">
                 <input type="text" class="glass-input" id="dsCodeInput"
                     placeholder="e.g. 52B025F5"
@@ -406,8 +407,8 @@
                 <tr>
                     <th style="width:42%">Item Description</th>
                     <th style="width:10%">Qty</th>
-                    <th style="width:18%">Price (₹)</th>
-                    <th style="width:20%">Total (₹)</th>
+                    <th style="width:18%">Price (â‚¹)</th>
+                    <th style="width:20%">Total (â‚¹)</th>
                     <th style="width:5%" class="no-print"></th>
                 </tr>
             </thead>
@@ -425,15 +426,15 @@
     <div class="totals">
         <div class="total-row">
             <span>Subtotal</span>
-            <span id="subtotalAmt">₹0.00</span>
+            <span id="subtotalAmt">â‚¹0.00</span>
         </div>
         <div class="total-row">
             <span>Tax</span>
-            <span class="tax-badge">✓ Tax Included</span>
+            <span class="tax-badge">âœ“ Tax Included</span>
         </div>
         <div class="total-row grand">
             <span>Total Due</span>
-            <span id="grandTotal">₹0.00</span>
+            <span id="grandTotal">â‚¹0.00</span>
         </div>
     </div>
 
@@ -458,12 +459,12 @@
 <div id="toast"></div>
 
 <script>
-    // ── Init ───────────────────────────────────────────
+    // â”€â”€ Init â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     document.getElementById('invoiceDate').valueAsDate = new Date();
     let inventoryData = [];
     let customerFound = false;
 
-    // ── Load inventory for autocomplete ───────────────
+    // â”€â”€ Load inventory for autocomplete â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     async function loadInventory() {
         try {
             const res  = await fetch('/api/inventory');
@@ -482,7 +483,21 @@
     }
     loadInventory();
 
-    // ── DS Lookup ──────────────────────────────────────
+    // ── Fetch next invoice number ────────────────
+    async function fetchNextInvoiceNo() {
+        try {
+            const res = await fetch('/api/invoice/next_no', { cache: 'no-store' });
+            const data = await res.json();
+            if (data.next_no) {
+                document.getElementById('invoiceNo').value = data.next_no;
+            }
+        } catch(e) {
+            console.error('Failed to fetch next invoice number', e);
+        }
+    }
+    fetchNextInvoiceNo();
+
+    // ── DS Lookup ────────────────────────────────
     async function lookupDS() {
         const code = document.getElementById('dsCodeInput').value.trim().toUpperCase();
         if (!code) { showToast('Enter a DS Code first', 'error'); return; }
@@ -494,7 +509,7 @@
         btn.disabled = true;
         status.style.display = 'inline-block';
         status.className = 'ds-status loading';
-        status.textContent = 'Looking up…';
+        status.textContent = 'Looking upâ€¦';
         box.classList.remove('visible');
 
         try {
@@ -504,30 +519,30 @@
             if (res.ok && !data.error) {
                 customerFound = true;
                 status.className = 'ds-status found';
-                status.textContent = '✓ Customer found';
+                status.textContent = 'âœ“ Customer found';
 
-                document.getElementById('cDS').textContent      = data.ds_code   || '—';
-                document.getElementById('cName').textContent    = data.ds_name   || '—';
-                document.getElementById('cMobile').textContent  = data.mobile    || '—';
-                document.getElementById('cAddress').textContent = data.address   || '—';
-                document.getElementById('cShip').textContent    = data.shipping_address || '—';
-                document.getElementById('cLastInv').textContent = data.last_invoice    || '—';
+                document.getElementById('cDS').textContent      = data.ds_code   || 'â€”';
+                document.getElementById('cName').textContent    = data.ds_name   || 'â€”';
+                document.getElementById('cMobile').textContent  = data.mobile    || 'â€”';
+                document.getElementById('cAddress').textContent = data.address   || 'â€”';
+                document.getElementById('cShip').textContent    = data.shipping_address || 'â€”';
+                document.getElementById('cLastInv').textContent = data.last_invoice    || 'â€”';
                 box.classList.add('visible');
             } else {
                 customerFound = false;
                 status.className = 'ds-status notfound';
-                status.textContent = '✗ DS Code not found — please check and try again';
+                status.textContent = 'âœ— DS Code not found â€” please check and try again';
                 box.classList.remove('visible');
             }
         } catch(e) {
             customerFound = false;
             status.className = 'ds-status notfound';
-            status.textContent = '✗ Network error';
+            status.textContent = 'âœ— Network error';
         }
         btn.disabled = false;
     }
 
-    // ── Auto-fill price when product selected ─────────
+    // â”€â”€ Auto-fill price when product selected â”€â”€â”€â”€â”€â”€â”€â”€â”€
     function handleProductSelect(input) {
         const name = input.value.trim();
         const product = inventoryData.find(p =>
@@ -544,7 +559,7 @@
         }
     }
 
-    // ── Row math ───────────────────────────────────────
+    // â”€â”€ Row math â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     function calculateRow(row) {
         const qty   = parseFloat(row.querySelector('.item-qty').value)   || 0;
         const price = parseFloat(row.querySelector('.item-price').value) || 0;
@@ -555,27 +570,27 @@
     function recalcTotals() {
         let sub = 0;
         document.querySelectorAll('.item-total').forEach(el => sub += parseFloat(el.value) || 0);
-        document.getElementById('subtotalAmt').textContent = '₹' + fmt(sub);
-        document.getElementById('grandTotal').textContent  = '₹' + fmt(sub);
+        document.getElementById('subtotalAmt').textContent = 'â‚¹' + fmt(sub);
+        document.getElementById('grandTotal').textContent  = 'â‚¹' + fmt(sub);
     }
 
     function fmt(n) {
         return n.toLocaleString('en-IN', { minimumFractionDigits:2, maximumFractionDigits:2 });
     }
 
-    // ── Add / Remove rows ──────────────────────────────
+    // â”€â”€ Add / Remove rows â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     function makeRow() {
         const tr = document.createElement('tr');
         tr.innerHTML = `
             <td><input type="text" list="inventoryList" class="item-input item-desc"
-                placeholder="Type product name…"
+                placeholder="Type product nameâ€¦"
                 oninput="handleProductSelect(this)" onchange="handleProductSelect(this)"></td>
             <td><input type="number" class="item-input item-qty" value="1" min="1"
                 oninput="calculateRow(this.closest('tr'))"></td>
             <td><input type="number" class="item-input item-price" value="0.00" min="0" step="0.01"
                 oninput="calculateRow(this.closest('tr'))"></td>
             <td><input type="text" class="item-input item-total" value="0.00" readonly></td>
-            <td class="no-print"><button class="remove-btn" onclick="removeRow(this)">×</button></td>
+            <td class="no-print"><button class="remove-btn" onclick="removeRow(this)">Ã—</button></td>
         `;
         return tr;
     }
@@ -600,10 +615,10 @@
 
     addRow(); // initial row
 
-    // ── Clear ──────────────────────────────────────────
+    // ── Clear ──────────────────────────────────────
     function clearInvoice() {
         document.getElementById('dsCodeInput').value = '';
-        document.getElementById('invoiceNo').value   = 'INV-2026-001';
+        fetchNextInvoiceNo();
         document.getElementById('invoiceDate').valueAsDate = new Date();
         document.getElementById('dsStatus').style.display = 'none';
         document.getElementById('custBox').classList.remove('visible');
@@ -615,12 +630,22 @@
         showToast('Invoice cleared', 'success');
     }
 
-    // ── Save ───────────────────────────────────────────
+    // â”€â”€ Save â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    let isSaving = false;
     async function saveInvoice() {
+        if (isSaving) return;
         if (!customerFound) {
             showToast('Please lookup and verify Customer before saving', 'error');
             return;
         }
+        
+        isSaving = true;
+        const saveBtn = document.querySelector('button[onclick="saveInvoice()"]');
+        if (saveBtn) {
+            saveBtn.disabled = true;
+            saveBtn.style.opacity = '0.5';
+        }
+        
         const items = [];
         document.querySelectorAll('#itemsBody tr').forEach(row => {
             const desc = row.querySelector('.item-desc').value;
@@ -650,15 +675,22 @@
             });
             if (res.ok) {
                 showToast('Invoice saved! ✓', 'success');
-                loadHistory(); // Refresh table
                 clearInvoice(); // Clear form
             } else {
                 showToast('Save failed', 'error');
             }
-        } catch(e) { showToast('Network error', 'error'); }
+        } catch(e) { 
+            showToast('Network error', 'error'); 
+        } finally {
+            isSaving = false;
+            if (saveBtn) {
+                saveBtn.disabled = false;
+                saveBtn.style.opacity = '1';
+            }
+        }
     }
 
-    // ── Toast ──────────────────────────────────────────
+    // â”€â”€ Toast â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     let toastTimer;
     function showToast(msg, type='success') {
         const t = document.getElementById('toast');
@@ -668,70 +700,7 @@
         toastTimer = setTimeout(() => { t.className = ''; }, 3200);
     }
 
-    // ── History Load & Cancel ────────────────────────
-    async function loadHistory() {
-        try {
-            const res = await fetch('/api/invoice/list');
-            const data = await res.json();
-            const tbody = document.getElementById('historyBody');
-            tbody.innerHTML = '';
-            
-            if (!data.invoices || data.invoices.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; color:var(--muted); padding:2rem;">No invoices generated yet.</td></tr>';
-                return;
-            }
-            
-            data.invoices.forEach(inv => {
-                const tr = document.createElement('tr');
-                const isCancelled = inv.status === 'cancelled';
-                
-                let dateStr = inv.date_created;
-                try {
-                    if (dateStr.includes('T')) {
-                        dateStr = new Date(dateStr).toLocaleDateString('en-IN');
-                    }
-                } catch(e) {}
-                
-                tr.innerHTML = `
-                    <td class="inv-no" style="color:var(--primary); font-weight:600;">${inv.invoice_no || '-'}</td>
-                    <td>${dateStr}</td>
-                    <td>${inv.ds_code || '-'}</td>
-                    <td>${inv.customer_name || '-'}</td>
-                    <td class="amt" style="font-family:monospace; font-size:1.05rem;">${parseFloat(inv.amount || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
-                    <td><span class="status ${inv.status || 'active'}">${inv.status || 'active'}</span></td>
-                    <td>
-                        <button class="btn-cancel" onclick="cancelInvoice(${inv.id})" ${isCancelled ? 'disabled' : ''}>
-                            ${isCancelled ? 'Cancelled' : 'Cancel Invoice'}
-                        </button>
-                    </td>
-                `;
-                tbody.appendChild(tr);
-            });
-        } catch (e) {
-            document.getElementById('historyBody').innerHTML = '<tr><td colspan="7" style="text-align:center; color:var(--red); padding:2rem;">Failed to load data.</td></tr>';
-        }
-    }
-    
-    async function cancelInvoice(id) {
-        if (!confirm('Are you sure you want to cancel this invoice? This will restore the items back into inventory.')) return;
-        
-        try {
-            const res = await fetch('/api/invoice/cancel/' + id, { method: 'POST' });
-            const data = await res.json();
-            
-            if (res.ok) {
-                showToast(data.message || 'Invoice cancelled successfully', 'success');
-                loadHistory();
-            } else {
-                showToast(data.error || 'Failed to cancel', 'error');
-            }
-        } catch(e) {
-            showToast('Network error', 'error');
-        }
-    }
-
-    loadHistory(); // Load on boot
-    // ── SPA nav ────────────────────────────────────────
+    // ── SPA nav ───────────────────────────────────────
     function navigateTo(url) {
         document.body.style.opacity    = '0';
         document.body.style.transition = 'opacity .25s ease-out';

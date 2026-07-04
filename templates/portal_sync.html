@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Portal Sync — Nexus Analytics</title>
+    <title>Portal Sync â€” Nexus Analytics</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -44,7 +44,7 @@
             animation:fadeInSPA .3s ease-out forwards;
         }
 
-        /* ── SIDEBAR ─────────────────────── */
+        /* â”€â”€ SIDEBAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         .sidebar {
             width:260px; flex-shrink:0;
             background:var(--surface); border-right:1px solid var(--border);
@@ -66,14 +66,14 @@
         .nav-item:hover { background:rgba(255,255,255,.08); color:var(--text); transform:translateX(4px); }
         .nav-item.active { background:rgba(99,102,241,.15); color:var(--primary); transform:translateX(4px); }
 
-        /* ── MAIN ────────────────────────── */
+        /* â”€â”€ MAIN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         .main { flex:1; padding:2.5rem; overflow-y:auto; display:flex; flex-direction:column; gap:2rem; }
 
-        /* ── PAGE HEADER ─────────────────── */
+        /* â”€â”€ PAGE HEADER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         .page-header h1 { margin:0; font-size:2rem; font-weight:700; letter-spacing:-.5px; }
         .page-header p  { margin:.3rem 0 0; color:var(--muted); }
 
-        /* ── STATUS BANNER ───────────────── */
+        /* â”€â”€ STATUS BANNER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         .status-banner {
             display:flex; align-items:center; gap:.75rem;
             padding:.85rem 1.25rem; border-radius:14px;
@@ -86,7 +86,7 @@
         .banner-dot { width:10px; height:10px; border-radius:50%; background:currentColor; flex-shrink:0; }
         .banner-dot.pulse { animation:pulse 1.2s infinite; }
 
-        /* ── SYNC CARD ───────────────────── */
+        /* â”€â”€ SYNC CARD â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         .sync-card {
             background:var(--surface); border:1px solid var(--border);
             border-radius:20px; backdrop-filter:var(--blur);
@@ -130,7 +130,7 @@
         .sync-btn:disabled { opacity:.5; cursor:not-allowed; transform:none; }
         .spinner { width:18px; height:18px; border:2.5px solid rgba(255,255,255,.3); border-top-color:#fff; border-radius:50%; animation:spin .7s linear infinite; display:none; }
 
-        /* ── RESULTS CARD ────────────────── */
+        /* â”€â”€ RESULTS CARD â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         .results-card {
             background:var(--surface); border:1px solid var(--border);
             border-radius:20px; backdrop-filter:var(--blur);
@@ -160,7 +160,7 @@
         .not-found-box h3 { margin:0 0 .5rem; font-size:.9rem; color:var(--red); }
         .not-found-box ul { margin:0; padding-left:1.25rem; color:var(--muted); font-size:.85rem; line-height:1.8; }
 
-        /* ── LOG CARD ────────────────────── */
+        /* â”€â”€ LOG CARD â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         .log-card {
             background:rgba(0,0,0,.3); border:1px solid var(--border);
             border-radius:16px; padding:1.25rem;
@@ -176,7 +176,7 @@
         .log-err  { color:var(--red); }
         .log-info { color:var(--primary); }
 
-        /* ── AUTO SYNC TOGGLE ─────────────── */
+        /* â”€â”€ AUTO SYNC TOGGLE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         .auto-card {
             background:var(--surface); border:1px solid var(--border);
             border-radius:20px; backdrop-filter:var(--blur);
@@ -204,7 +204,7 @@
         #autoInterval { font-size:.82rem; color:var(--muted); }
     
         
-        /* ── MOBILE OPTIMIZATION ───────────────── */
+        /* â”€â”€ MOBILE OPTIMIZATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         @media(max-width: 768px) {
             /* Structural Fixes */
             body { flex-direction: column !important; }
@@ -232,7 +232,7 @@
             .table-wrap, .table-container { width: 100% !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 1rem; }
             table { white-space: nowrap !important; }
             thead th { font-size: 0.85rem !important; }
-            .total-row { width: 100% !important; }
+            /* .total-row width removed for layout fix */
             
             /* Touch Target Accessibility (Min 44px) */
             .btn, .lookup-btn, .sync-btn { min-height: 44px; padding: 0.8rem 1.5rem !important; width: 100%; text-align: center; justify-content: center; }
@@ -251,9 +251,9 @@
 </head>
 <body>
 
-<!-- ── SIDEBAR ──────────────────────────────── -->
+<!-- â”€â”€ SIDEBAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
 <aside class="sidebar">
-    <div class="logo">Nexus Analytics</div>
+    <div class="logo" style="text-align: center; padding: 0.5rem 0;"><img src="{{ url_for('static', filename='logo.png') }}" alt="Asclepius Wellness" style="max-width: 85%; height: auto;"></div>
     <ul class="nav-menu">
         <li class="nav-item" onclick="navigateTo('/')">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
@@ -282,23 +282,23 @@
     </ul>
 </aside>
 
-<!-- ── MAIN ─────────────────────────────────── -->
+<!-- â”€â”€ MAIN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
 <main class="main">
 
     <div class="page-header">
-        <h1>🔄 Portal Sync</h1>
-        <p>Pull approved orders from Asclepius C&amp;F Portal → update Inventory Master automatically</p>
+        <h1>ðŸ”„ Portal Sync</h1>
+        <p>Pull approved orders from Asclepius C&amp;F Portal â†’ update Inventory Master automatically</p>
     </div>
 
     <!-- Status Banner -->
     <div class="status-banner banner-idle" id="statusBanner">
         <div class="banner-dot" id="bannerDot"></div>
-        <span id="bannerText">Ready to sync — select a date range and click Sync Now</span>
+        <span id="bannerText">Ready to sync â€” select a date range and click Sync Now</span>
     </div>
 
     <!-- Sync Control Card -->
     <div class="sync-card">
-        <h2>📅 Select Date Range</h2>
+        <h2>ðŸ“… Select Date Range</h2>
 
         <div class="presets">
             <button class="preset-btn" onclick="setPreset(0)">Today</button>
@@ -329,7 +329,7 @@
     <!-- Auto Sync Card -->
     <div class="auto-card">
         <div class="auto-info">
-            <h3>⚡ Auto Sync</h3>
+            <h3>âš¡ Auto Sync</h3>
             <p>Automatically sync approved orders every <strong id="autoInterval">15 minutes</strong> in the background</p>
         </div>
         <div class="toggle-wrap">
@@ -343,7 +343,7 @@
 
     <!-- Results Card -->
     <div class="results-card" id="resultsCard">
-        <h2>📊 Sync Results</h2>
+        <h2>ðŸ“Š Sync Results</h2>
         <div class="stat-grid">
             <div class="stat-item">
                 <div class="stat-num green" id="rUpdated">0</div>
@@ -358,12 +358,12 @@
                 <div class="stat-label">Not Matched</div>
             </div>
             <div class="stat-item">
-                <div class="stat-num blue" id="rTime">—</div>
+                <div class="stat-num blue" id="rTime">â€”</div>
                 <div class="stat-label">Time Taken</div>
             </div>
         </div>
         <div class="not-found-box" id="notFoundBox" style="display:none;">
-            <h3>⚠ Products Not Matched in Inventory</h3>
+            <h3>âš  Products Not Matched in Inventory</h3>
             <ul id="notFoundList"></ul>
         </div>
     </div>
@@ -374,7 +374,7 @@
 </main>
 
 <script>
-    // ── Init dates ────────────────────────────────────────
+    // â”€â”€ Init dates â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     const today = new Date();
     document.getElementById('fromDate').value = today.toISOString().split('T')[0];
     document.getElementById('toDate').value   = today.toISOString().split('T')[0];
@@ -388,13 +388,13 @@
         document.getElementById('toDate').value   = t.toISOString().split('T')[0];
     }
 
-    // ── Format date YYYY-MM-DD → DD/MM/YYYY ──────────────
+    // â”€â”€ Format date YYYY-MM-DD â†’ DD/MM/YYYY â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     function fmtPortal(iso) {
         const [y, m, d] = iso.split('-');
         return `${d}/${m}/${y}`;
     }
 
-    // ── Logging ───────────────────────────────────────────
+    // â”€â”€ Logging â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     const logEl = document.getElementById('logCard');
     function log(msg, type='') {
         logEl.classList.add('visible');
@@ -404,7 +404,7 @@
         logEl.prepend(line);
     }
 
-    // ── Banner ────────────────────────────────────────────
+    // â”€â”€ Banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     function setBanner(state, text) {
         const el  = document.getElementById('statusBanner');
         const dot = document.getElementById('bannerDot');
@@ -413,7 +413,7 @@
         document.getElementById('bannerText').textContent = text;
     }
 
-    // ── Main sync function ────────────────────────────────
+    // â”€â”€ Main sync function â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     let syncRunning = false;
     async function runSync() {
         if (syncRunning) return;
@@ -426,9 +426,9 @@
         btn.disabled = true;
         document.getElementById('syncSpinner').style.display = 'block';
         document.getElementById('syncIcon').style.display    = 'none';
-        document.getElementById('syncBtnText').textContent   = 'Syncing…';
-        setBanner('syncing', `Connecting to Asclepius portal & syncing ${fmtPortal(from)} → ${fmtPortal(to)}…`);
-        log(`Starting sync: ${fmtPortal(from)} → ${fmtPortal(to)}`, 'info');
+        document.getElementById('syncBtnText').textContent   = 'Syncingâ€¦';
+        setBanner('syncing', `Connecting to Asclepius portal & syncing ${fmtPortal(from)} â†’ ${fmtPortal(to)}â€¦`);
+        log(`Starting sync: ${fmtPortal(from)} â†’ ${fmtPortal(to)}`, 'info');
 
         const startTime = Date.now();
         try {
@@ -441,10 +441,10 @@
             const elapsed = ((Date.now() - startTime) / 1000).toFixed(1) + 's';
 
             if (data.error) {
-                setBanner('error', '✗ Sync failed: ' + data.error);
+                setBanner('error', 'âœ— Sync failed: ' + data.error);
                 log('Error: ' + data.error, 'err');
             } else {
-                setBanner('connected', `✓ Sync complete — ${data.updated} products updated in Excel`);
+                setBanner('connected', `âœ“ Sync complete â€” ${data.updated} products updated in Excel`);
                 log(`Sync done: ${data.updated} updated, ${data.skipped} skipped, ${(data.not_found||[]).length} unmatched`, 'ok');
 
                 // Show results
@@ -466,7 +466,7 @@
                 }
             }
         } catch(e) {
-            setBanner('error', '✗ Network error: ' + e.message);
+            setBanner('error', 'âœ— Network error: ' + e.message);
             log('Network error: ' + e.message, 'err');
         }
 
@@ -477,7 +477,7 @@
         document.getElementById('syncBtnText').textContent   = 'Sync Now';
     }
 
-    // ── Auto sync ─────────────────────────────────────────
+    // â”€â”€ Auto sync â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     let autoTimer = null;
     const AUTO_INTERVAL_MS = 15 * 60 * 1000; // 15 minutes
 
@@ -486,7 +486,7 @@
         document.getElementById('autoLabel').textContent = on ? 'On' : 'Off';
         if (on) {
             log('Auto-sync enabled every 15 minutes', 'info');
-            setBanner('idle', '⚡ Auto-sync active — will sync today every 15 minutes');
+            setBanner('idle', 'âš¡ Auto-sync active â€” will sync today every 15 minutes');
             autoTimer = setInterval(() => {
                 // Always sync today for auto mode
                 const t = new Date().toISOString().split('T')[0];
@@ -503,7 +503,7 @@
         }
     }
 
-    // ── SPA nav ───────────────────────────────────────────
+    // â”€â”€ SPA nav â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     function navigateTo(url) {
         clearInterval(autoTimer);
         document.body.style.opacity    = '0';
