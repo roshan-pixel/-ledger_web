@@ -212,11 +212,13 @@ def update_inventory_formulas(conn, row_num, headers):
         try:
             sp_pc_idx = headers.index('SP/Pc') + 1
             tot_sp_idx = headers.index('Total SP') + 1
-            sp_pc = float(str(row[f'c{sp_pc_idx}']).replace(',', '') or 0)
+            sp_val = row[f'c{sp_pc_idx}']
+            sp_pc = float(str(sp_val).replace(',', '') if sp_val not in (None, '', 'None') else 0)
             tot_sp = sp_pc * rem_qty
         except ValueError:
             # If headers not found, fallback to c27 and c28
-            sp_pc = float(str(row['c27']).replace(',', '') or 0)
+            sp_val = row['c27']
+            sp_pc = float(str(sp_val).replace(',', '') if sp_val not in (None, '', 'None') else 0)
             tot_sp = sp_pc * rem_qty
             tot_sp_idx = 28
             
@@ -309,19 +311,24 @@ def api_inventory_master():
         
         c.execute("SELECT value FROM settings WHERE key='inventory_headers'")
         all_headers = json.loads(c.fetchone()[0])
-        headers = [str(h) if h else f'Col_{i+1}' for i, h in enumerate(all_headers[:22])]
         
-        cols = [f"c{i}" for i in range(1, 23)]
+        headers = []
+        cols = []
+        for i, h in enumerate(all_headers):
+            if h:
+                headers.append(h)
+                cols.append(f"c{i+1}")
+        
         c.execute(f"SELECT row_num, {', '.join(cols)} FROM inventory ORDER BY row_num")
         
         rows = []
         for row in c.fetchall():
             if not row['c3']:
                 continue
-            row_data = {'__row': row['row_num']}
-            for i, h in enumerate(headers):
-                row_data[h] = row[f'c{i+1}']
-            rows.append(row_data)
+            r = {'__row': row['row_num']}
+            for h, col in zip(headers, cols):
+                r[h] = row[col]
+            rows.append(r)
             
         conn.close()
         return jsonify({'headers': headers, 'data': rows})

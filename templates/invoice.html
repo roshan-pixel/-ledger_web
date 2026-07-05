@@ -691,6 +691,8 @@
                 description: desc,
                 qty:   row.querySelector('.item-qty').value,
                 price: row.querySelector('.item-price').value,
+                unit_sp: row.querySelector('.item-sp').dataset.unitSp,
+                total_sp: row.querySelector('.item-sp').value,
                 total: row.querySelector('.item-total').value,
             });
         });
@@ -705,6 +707,7 @@
             orderType:  document.getElementById('orderType').value,
             taxNote:    'Tax Included',
             grandTotal: document.getElementById('grandTotal').textContent,
+            grandTotalSP: document.getElementById('grandTotalSP').textContent,
         };
         try {
             const res = await fetch('/api/invoice/create', {

@@ -597,6 +597,9 @@
                 const matchesStatus = status === 'all' || itemStatus === status;
 
                 if (matchesSearch && matchesStatus) {
+                    const spPc = parseFloat(item['SP/Pc']) || 0;
+                    const totalSp = parseFloat(item['Total SP']) || 0;
+                    
                     const card = document.createElement('div');
                     card.className = 'card';
                     card.style.animationDelay = `${(index % 10) * 0.05}s`;
@@ -614,6 +617,14 @@
                                 <span class="stock-label">Remaining Qty</span>
                                 <span class="stock">${stock} units</span>
                             </div>
+                            <div style="margin-top: 0.5rem">
+                                <span class="price-label">SP/Pc</span>
+                                <span class="price" style="color:var(--primary)">${spPc}</span>
+                            </div>
+                            <div style="text-align: right; margin-top: 0.5rem">
+                                <span class="stock-label">Total SP</span>
+                                <span class="stock" style="color:var(--primary)">${totalSp.toFixed(1)}</span>
+                            </div>
                         </div>
                     `;
                     grid.appendChild(card);
@@ -622,6 +633,20 @@
             });
             
             document.getElementById('emptyState').style.display = visibleCount === 0 ? 'block' : 'none';
+            
+            let footer = document.getElementById('inventoryFooter');
+            if (!footer) {
+                footer = document.createElement('div');
+                footer.id = 'inventoryFooter';
+                footer.style.cssText = 'position:sticky;bottom:0;background:var(--card);padding:1rem;border-top:1px solid var(--border);border-radius:12px;margin-top:1rem;display:flex;justify-content:space-between;align-items:center;box-shadow:0 -4px 12px rgba(0,0,0,0.05);';
+                grid.parentNode.appendChild(footer);
+            }
+            
+            const totalStockSp = allData.reduce((sum, item) => sum + (parseFloat(item['Total SP']) || 0), 0);
+            footer.innerHTML = `
+                <div style="font-weight:600;color:var(--text)">Showing ${visibleCount} Items</div>
+                <div style="font-weight:600;color:var(--primary);font-size:1.1rem">Total SP in Stock: ${totalStockSp.toFixed(1)}</div>
+            `;
         }
 
         function filterGrid() {
