@@ -34,9 +34,13 @@ def submit_order_to_portal(ds_code, items):
             # Wait for name and items to load via AJAX
             page.wait_for_timeout(4000)
             
-            # Select SAO sale group (usually required)
-            page.click('#ctl00_ContentPlaceHolder1_rbsao')
-            page.wait_for_timeout(1000)
+            # Select SAO sale group (usually required, but might be missing)
+            try:
+                if page.is_visible('#ctl00_ContentPlaceHolder1_rbsao', timeout=3000):
+                    page.click('#ctl00_ContentPlaceHolder1_rbsao')
+                    page.wait_for_timeout(1000)
+            except Exception:
+                pass
             
             # Check "Same As Profile Address" to auto-fill shipping details
             page.check('#ctl00_ContentPlaceHolder1_chkaddr')
