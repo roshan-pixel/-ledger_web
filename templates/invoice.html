@@ -592,7 +592,11 @@
             <td><input type="number" class="item-input item-price" value="0.00" min="0" step="0.01"
                 oninput="calculateRow(this.closest('tr'))"></td>
             <td><input type="text" class="item-input item-total" value="0.00" readonly></td>
-            <td class="no-print"><button class="remove-btn" onclick="removeRow(this)">Ã—</button></td>
+            <td class="no-print">
+                <button class="remove-btn" onclick="removeRow(this)" style="display:flex;align-items:center;justify-content:center;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </td>
         `;
         return tr;
     }
