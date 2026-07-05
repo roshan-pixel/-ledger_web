@@ -48,14 +48,44 @@ rows = c.fetchall()
 updated_count = 0
 for row in rows:
     row_num, raw_name = row
-    # Clean name: usually looks like "JOINT CURATOR OIL [4] -" or similar
-    # Remove anything after '['
+    # Clean name: remove after '['
     clean_name = raw_name.split('[')[0].strip().upper()
     
     # Try exact match first
     sp = sp_map.get(clean_name, None)
     
-    # Try fuzzy match if not found
+    # Fix for common differences (like VITMIN vs VITAMIN, spacing issues)
+    if sp is None:
+        clean_name_nospace = clean_name.replace(' ', '').replace('-', '')
+        for map_name, map_sp in sp_map.items():
+            map_nospace = map_name.replace(' ', '').replace('-', '')
+            if clean_name_nospace == map_nospace:
+                sp = map_sp
+                break
+            # Specific typo fixes
+            if 'VITMIN B12' in clean_name and 'VITAMIN B12' in map_name:
+                sp = map_sp
+                break
+            if 'BANANA EDGE' in clean_name and 'BANANA EDGE' in map_name:
+                sp = map_sp
+                break
+            if 'CAPPUCCINO' in clean_name and 'CAPPUCCINO' in map_name:
+                sp = map_sp
+                break
+            if 'CINNAMON' in clean_name and 'CINNAMON' in map_name:
+                sp = map_sp
+                break
+            if 'CARAMEL' in clean_name and 'CARAMEL' in map_name:
+                sp = map_sp
+                break
+            if 'STRAWBERRY FLUSH' in clean_name and 'STRAWBERRY FLUSH' in map_name:
+                sp = map_sp
+                break
+            if 'MAGIC BLOOM' in clean_name and 'MAGIC BLOOM' in map_name:
+                sp = map_sp
+                break
+                
+    # Try fuzzy match if still not found
     if sp is None:
         for map_name in sp_map:
             if map_name in clean_name or clean_name in map_name:

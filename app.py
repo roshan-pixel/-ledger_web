@@ -138,13 +138,14 @@ def api_inventory():
             return jsonify({"error": "Headers not found"}), 500
             
         all_headers = json.loads(headers_json[0])
-        # We only return first 19 columns for inventory view usually, but let's return all non-empty
-        # Or just return exactly 19 as before
-        headers = all_headers[:19]
-        # Replace empty strings with Col_X
-        headers = [h if h else f"Col_{i+1}" for i, h in enumerate(headers)]
         
-        cols_to_select = [f"c{i}" for i in range(1, 20)]
+        headers = []
+        cols_to_select = []
+        for i, h in enumerate(all_headers):
+            if h:  # only non-empty headers
+                headers.append(h)
+                cols_to_select.append(f"c{i+1}")
+                
         c.execute(f"SELECT row_num, {', '.join(cols_to_select)} FROM inventory ORDER BY row_num")
         
         data = []
@@ -153,8 +154,8 @@ def api_inventory():
             if not prod_name or prod_name == 'TOTAL':
                 continue
             row_data = {}
-            for i, h in enumerate(headers):
-                row_data[h] = row[f'c{i+1}']
+            for h, col in zip(headers, cols_to_select):
+                row_data[h] = row[col]
             row_data['__row'] = row['row_num']
             data.append(row_data)
             
