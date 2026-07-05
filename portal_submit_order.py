@@ -42,6 +42,21 @@ def submit_order_to_portal(ds_code, items):
             page.check('#ctl00_ContentPlaceHolder1_chkaddr')
             page.wait_for_timeout(1000)
             
+            # Copy mobile to shipping mobile
+            mobile = page.input_value('#ctl00_ContentPlaceHolder1_txtmobile')
+            if mobile:
+                page.fill('#ctl00_ContentPlaceHolder1_ShipMobile', mobile)
+                
+            # Extract pincode from address and fill
+            address = page.input_value('#ctl00_ContentPlaceHolder1_txtAddress')
+            if address:
+                import re
+                match = re.search(r'\b\d{6}\b', address)
+                if match:
+                    page.fill('#ctl00_ContentPlaceHolder1_txtshpingpincode', match.group(0))
+                else:
+                    page.fill('#ctl00_ContentPlaceHolder1_txtshpingpincode', '000000')
+                    
             name = page.input_value('#ctl00_ContentPlaceHolder1_txtname')
             if not name:
                 print(f"[{ds_code}] DS Code not found on portal.")
