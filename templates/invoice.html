@@ -204,7 +204,11 @@
         }
         .total-row.grand span:last-child {
             background:linear-gradient(135deg,var(--primary),#ec4899);
-            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            -webkit-background-clip:text;
+            background-clip:text;
+            -webkit-text-fill-color:transparent;
+            color:transparent;
+            display:inline-block;
         }
 
         /* ── ACTIONS ─────────────────────── */
@@ -286,6 +290,13 @@
             /* Header & Layout Fixes */
             .inv-header, .header-actions, .header { flex-direction: column !important; align-items: flex-start !important; gap: 1rem !important; }
             .inv-title h1, h1 { font-size: 2rem !important; }
+            
+            .total-row { width: 100% !important; }
+            .total-row.grand span:last-child {
+                background: none !important;
+                -webkit-text-fill-color: var(--primary) !important;
+                color: var(--primary) !important;
+            }
             
             /* Forms, Inputs & iOS Zoom Fix */
             .ds-lookup-row, .filters { flex-direction: column !important; align-items: stretch !important; gap: 1rem !important; }
