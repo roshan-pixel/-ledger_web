@@ -59,6 +59,14 @@ def submit_order_to_portal(ds_code, items, order_type='sao'):
             # Check "Same As Profile Address" to auto-fill shipping details
             page.check('#ctl00_ContentPlaceHolder1_chkaddr')
             page.wait_for_timeout(1000)
+
+            # Manually copy Mobile to ShipMobile because Red IDs sometimes fail to auto-fill it
+            try:
+                mobile_val = page.locator('#ctl00_ContentPlaceHolder1_txtmobile').input_value()
+                if mobile_val:
+                    page.fill('#ctl00_ContentPlaceHolder1_ShipMobile', mobile_val)
+            except Exception:
+                pass
             
             # Copy mobile to shipping mobile
             mobile = page.input_value('#ctl00_ContentPlaceHolder1_txtmobile')
