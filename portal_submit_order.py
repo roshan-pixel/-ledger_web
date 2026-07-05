@@ -95,9 +95,19 @@ def submit_order_to_portal(ds_code, items, order_type='sao'):
                 if not desc or qty <= 0:
                     continue
                     
+                # Extract product ID if it exists in brackets, e.g. "JC OIL [41] -" -> "41"
+                import re
+                match_id = re.search(r'\[(\d+)\]', desc)
+                target_val = match_id.group(1) if match_id else None
+                
                 # Find matching option
                 best_match = None
                 for opt in options:
+                    if target_val and opt['val'] == target_val:
+                        best_match = opt['val']
+                        break
+                    
+                    # Fallback to string matching
                     opt_text = opt['text'].strip().upper()
                     if desc in opt_text or opt_text in desc:
                         best_match = opt['val']
