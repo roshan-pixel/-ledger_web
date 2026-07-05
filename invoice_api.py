@@ -116,9 +116,10 @@ def create_invoice():
         
         # Automatically submit order to the C&F portal
         if ds_code and items:
+            order_type = data.get('orderType', 'sao')
             try:
                 from portal_submit_order import submit_order_async
-                submit_order_async(ds_code, items)
+                submit_order_async(ds_code, items, order_type)
             except Exception as ex:
                 print("Failed to start portal submission:", ex)
         

@@ -401,6 +401,14 @@
                 <div class="cust-row"><span class="cust-label">Address</span><span class="cust-val" id="cAddress"></span></div>
                 <div class="cust-row"><span class="cust-label">Ship Address</span><span class="cust-val" id="cShip"></span></div>
                 <div class="cust-row"><span class="cust-label">Last Invoice</span><span class="cust-val" id="cLastInv"></span></div>
+                <div class="cust-row" id="orderTypeRow" style="border-top:1px dashed var(--border); padding-top:8px; margin-top:5px; align-items:center;">
+                    <span class="cust-label">Order Action</span>
+                    <select id="orderType" class="glass-input" style="padding:.3rem .5rem; font-size:.85rem; width:180px; background:var(--surface2);">
+                        <option value="sao">Repurchase (SAO)</option>
+                        <option value="sgo">Repurchase (SGO)</option>
+                        <option value="approve">Approve First Purchase</option>
+                    </select>
+                </div>
             </div>
         </div>
 
@@ -674,6 +682,7 @@
             billedTo:   document.getElementById('cName').textContent,
             items,
             subtotal:   document.getElementById('subtotalAmt').textContent,
+            orderType:  document.getElementById('orderType').value,
             taxNote:    'Tax Included',
             grandTotal: document.getElementById('grandTotal').textContent,
         };

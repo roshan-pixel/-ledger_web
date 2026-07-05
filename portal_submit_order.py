@@ -3,10 +3,11 @@ import time
 import json
 import sqlite3
 
-def submit_order_to_portal(ds_code, items):
+def submit_order_to_portal(ds_code, items, order_type='sao'):
     """
     Submits an order to the C&F portal.
     items is a list of dicts: [{'description': 'ITEM NAME', 'qty': 2}, ...]
+    order_type can be 'sao', 'sgo', or 'approve'
     """
     try:
         with sync_playwright() as p:
@@ -34,13 +35,23 @@ def submit_order_to_portal(ds_code, items):
             # Wait for name and items to load via AJAX
             page.wait_for_timeout(4000)
             
-            # Select SAO sale group (usually required, but might be missing)
-            try:
-                if page.is_visible('#ctl00_ContentPlaceHolder1_rbsao', timeout=3000):
-                    page.click('#ctl00_ContentPlaceHolder1_rbsao')
-                    page.wait_for_timeout(1000)
-            except Exception:
-                pass
+            # Handle Sale Group (SAO / SGO) based on order_type
+            if order_type == 'sao':
+                try:
+                    if page.is_visible('#ctl00_ContentPlaceHolder1_rbsao', timeout=3000):
+                        page.click('#ctl00_ContentPlaceHolder1_rbsao')
+                        page.wait_for_timeout(1000)
+                except Exception:
+                    pass
+            elif order_type == 'sgo':
+                try:
+                    if page.is_visible('#ctl00_ContentPlaceHolder1_rbsgo', timeout=3000):
+                        page.click('#ctl00_ContentPlaceHolder1_rbsgo')
+                        page.wait_for_timeout(1000)
+                except Exception:
+                    pass
+            # If order_type == 'approve', we do not click any SAO/SGO radio button
+
             
             # Check "Same As Profile Address" to auto-fill shipping details
             page.check('#ctl00_ContentPlaceHolder1_chkaddr')
@@ -122,8 +133,8 @@ def submit_order_to_portal(ds_code, items):
         print(f"[{ds_code}] Error submitting order to portal: {e}")
         return False
 
-def submit_order_async(ds_code, items):
+def submit_order_async(ds_code, items, order_type='sao'):
     import threading
-    t = threading.Thread(target=submit_order_to_portal, args=(ds_code, items))
+    t = threading.Thread(target=submit_order_to_portal, args=(ds_code, items, order_type))
     t.daemon = True
     t.start()
