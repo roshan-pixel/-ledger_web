@@ -15,8 +15,11 @@ def submit_order_to_portal(ds_code, items, order_type='sao'):
             ctx = browser.new_context()
             page = ctx.new_page()
             
-            # Auto-accept any confirmation dialogs (like "Are Sure To Add this Product ." or "Are you sure to save?")
-            page.on("dialog", lambda dialog: dialog.accept())
+            # Auto-accept all alerts and confirmations (crucial for Save button)
+            def handle_dialog(dialog):
+                print(f"[PORTAL ALERT] {dialog.message}")
+                dialog.accept()
+            page.on("dialog", handle_dialog)
             
             # 1. Login
             page.goto('https://asclepiuswellness.com/login.aspx?webid=1', wait_until='networkidle')
@@ -35,23 +38,22 @@ def submit_order_to_portal(ds_code, items, order_type='sao'):
             # Wait for name and items to load via AJAX
             page.wait_for_timeout(4000)
             
-            # Handle Sale Group (SAO / SGO) based on order_type
-            if order_type == 'sao':
+            # 2. Select Order Type (SAO vs SGO)
+            if 'sao' in order_type:
                 try:
                     if page.is_visible('#ctl00_ContentPlaceHolder1_rbsao', timeout=3000):
                         page.click('#ctl00_ContentPlaceHolder1_rbsao')
-                        page.wait_for_timeout(1000)
-                except Exception:
-                    pass
-            elif order_type == 'sgo':
+                        print(f"[{ds_code}] Selected SAO radio button.")
+                except Exception as e:
+                    print(f"[{ds_code}] Could not select SAO: {e}")
+            elif 'sgo' in order_type:
                 try:
-                    if page.is_visible('#ctl00_ContentPlaceHolder1_rbsgo', timeout=3000):
-                        page.click('#ctl00_ContentPlaceHolder1_rbsgo')
-                        page.wait_for_timeout(1000)
-                except Exception:
-                    pass
-            # If order_type == 'approve', we do not click any SAO/SGO radio button
-
+                    if page.is_visible('#ctl00_ContentPlaceHolder1_rbSgo', timeout=3000):
+                        page.click('#ctl00_ContentPlaceHolder1_rbSgo')
+                        print(f"[{ds_code}] Selected SGO radio button.")
+                except Exception as e:
+                    print(f"[{ds_code}] Could not select SGO: {e}")
+            # Note: For Approve First Purchase, it's just 'approve_sao' or 'approve_sgo' which contains 'sao' or 'sgo'
             
             # Check "Same As Profile Address" to auto-fill shipping details
             page.check('#ctl00_ContentPlaceHolder1_chkaddr')
@@ -130,10 +132,12 @@ def submit_order_to_portal(ds_code, items, order_type='sao'):
                 page.click('#ctl00_ContentPlaceHolder1_btnadd')
                 page.wait_for_timeout(2500) # Wait for row to be added to grid
             
-            # 4. Click Save
             print(f"[{ds_code}] Saving order...")
             page.click('#ctl00_ContentPlaceHolder1_ButtonSave1')
             page.wait_for_timeout(3000)
+            
+            # Debug screenshot
+            page.screenshot(path=f'C:/Users/sgarm/Downloads/ledger_web/debug_{ds_code}.png', full_page=True)
             
             print(f"[{ds_code}] Order submitted successfully to portal!")
             browser.close()
