@@ -38,23 +38,33 @@ def submit_order_to_portal(ds_code, items, order_type='sao'):
             # Wait for name and items to load via AJAX
             page.wait_for_timeout(4000)
             
-            # 2. Select Order Type (SAO vs SGO)
-            if order_type == 'sao':
+            # 2. Select Order Type (SAO vs SGO) - always force-click via JS
+            # because radio buttons exist in DOM but are hidden (is_visible returns False)
+            if 'sao' in order_type:
                 try:
-                    if page.is_visible('#ctl00_ContentPlaceHolder1_rbsao', timeout=3000):
-                        page.click('#ctl00_ContentPlaceHolder1_rbsao')
-                        print(f"[{ds_code}] Selected SAO radio button.")
+                    result = page.evaluate("""
+                        () => {
+                            var rb = document.querySelector('#ctl00_ContentPlaceHolder1_rbsao');
+                            if (rb) { rb.checked = true; rb.click(); return true; }
+                            return false;
+                        }
+                    """)
+                    print(f"[{ds_code}] Force-clicked SAO radio button: {result}")
                 except Exception as e:
-                    print(f"[{ds_code}] Could not select SAO: {e}")
-            elif order_type == 'sgo':
+                    print(f"[{ds_code}] Could not force-click SAO: {e}")
+            elif 'sgo' in order_type:
                 try:
-                    if page.is_visible('#ctl00_ContentPlaceHolder1_rbSgo', timeout=3000):
-                        page.click('#ctl00_ContentPlaceHolder1_rbSgo')
-                        print(f"[{ds_code}] Selected SGO radio button.")
+                    result = page.evaluate("""
+                        () => {
+                            var rb = document.querySelector('#ctl00_ContentPlaceHolder1_rbSgo');
+                            if (rb) { rb.checked = true; rb.click(); return true; }
+                            return false;
+                        }
+                    """)
+                    print(f"[{ds_code}] Force-clicked SGO radio button: {result}")
                 except Exception as e:
-                    print(f"[{ds_code}] Could not select SGO: {e}")
-            
-            # Note: For Approve First Purchase (order_type == 'approve'), we do not click any SAO/SGO radio button because they don't exist for Red IDs!
+                    print(f"[{ds_code}] Could not force-click SGO: {e}")
+            # For 'approve' (Red ID First Purchase) - no radio button needed
             
             # Check "Same As Profile Address" to auto-fill shipping details
             page.check('#ctl00_ContentPlaceHolder1_chkaddr')
