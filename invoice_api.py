@@ -114,9 +114,17 @@ def create_invoice():
         conn.commit()
         conn.close()
         
+        # Automatically submit order to the C&F portal
+        if ds_code and items:
+            try:
+                from portal_submit_order import submit_order_async
+                submit_order_async(ds_code, items)
+            except Exception as ex:
+                print("Failed to start portal submission:", ex)
+        
         return jsonify({
             'success': True,
-            'message': 'Invoice created successfully',
+            'message': 'Invoice created successfully (syncing to portal in background)',
             'invoice_id': invoice_id
         })
     except Exception as e:
