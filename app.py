@@ -149,7 +149,8 @@ def api_inventory():
         
         data = []
         for row in c.fetchall():
-            if not row['c3']: # Product name empty
+            prod_name = str(row['c3']).strip().upper() if row['c3'] else ''
+            if not prod_name or prod_name == 'TOTAL':
                 continue
             row_data = {}
             for i, h in enumerate(headers):
