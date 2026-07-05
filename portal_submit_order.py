@@ -14,22 +14,33 @@ def submit_order_to_portal(ds_code, items):
             ctx = browser.new_context()
             page = ctx.new_page()
             
-            print(f"[{ds_code}] Logging in...")
+            # Auto-accept any confirmation dialogs (like "Are Sure To Add this Product ." or "Are you sure to save?")
+            page.on("dialog", lambda dialog: dialog.accept())
+            
+            # 1. Login
             page.goto('https://asclepiuswellness.com/login.aspx?webid=1', wait_until='networkidle')
             page.fill('#ctl00_ContentPlaceHolder1_txtspUserid', 'AAZFD8117G')
             page.fill('#ctl00_ContentPlaceHolder1_txtsppassword', 'ABC@1234')
             page.click('#ctl00_ContentPlaceHolder1_btnfranlogin')
             page.wait_for_load_state('networkidle')
             
-            print(f"[{ds_code}] Navigating to Sale Order...")
+            # 2. Go to Sales Order page
             page.goto('https://asclepiuswellness.com/shoppingpoint/SpdistributorSale.aspx', wait_until='networkidle')
             
-            # 1. Enter DS Code
+            # Enter DS ID and press Tab to trigger details loading
             page.fill('#ctl00_ContentPlaceHolder1_txtid', ds_code)
             page.keyboard.press('Tab')
             
-            # Wait for name and items to load
+            # Wait for name and items to load via AJAX
             page.wait_for_timeout(4000)
+            
+            # Select SAO sale group (usually required)
+            page.click('#ctl00_ContentPlaceHolder1_rbsao')
+            page.wait_for_timeout(1000)
+            
+            # Check "Same As Profile Address" to auto-fill shipping details
+            page.check('#ctl00_ContentPlaceHolder1_chkaddr')
+            page.wait_for_timeout(1000)
             
             name = page.input_value('#ctl00_ContentPlaceHolder1_txtname')
             if not name:
