@@ -21,13 +21,19 @@ def init_db():
             amount REAL,
             date_created TEXT,
             items TEXT,
-            status TEXT DEFAULT 'active'
+            status TEXT DEFAULT 'active',
+            total_sp REAL DEFAULT 0.0
         )
     ''')
     
     # Try adding status column if it doesn't exist
     try:
         c.execute("ALTER TABLE invoices ADD COLUMN status TEXT DEFAULT 'active'")
+    except sqlite3.OperationalError:
+        pass
+    # Try adding total_sp column if it doesn't exist
+    try:
+        c.execute("ALTER TABLE invoices ADD COLUMN total_sp REAL DEFAULT 0.0")
     except sqlite3.OperationalError:
         pass
     conn.commit()
@@ -56,6 +62,11 @@ def create_invoice():
     except:
         amount = 0.0
         
+    try:
+        total_sp = float(data.get('grandTotalSP', 0))
+    except:
+        total_sp = 0.0
+        
     date_created = data.get('date') or datetime.datetime.now().isoformat()
     items = data.get('items', [])
     
@@ -71,8 +82,8 @@ def create_invoice():
                 
         # 1. Save the invoice
         c.execute(
-            'INSERT INTO invoices (invoice_no, ds_code, customer_name, amount, date_created, items) VALUES (?, ?, ?, ?, ?, ?)',
-            (invoice_no, ds_code, customer_name, amount, date_created, json.dumps(items))
+            'INSERT INTO invoices (invoice_no, ds_code, customer_name, amount, date_created, items, total_sp) VALUES (?, ?, ?, ?, ?, ?, ?)',
+            (invoice_no, ds_code, customer_name, amount, date_created, json.dumps(items), total_sp)
         )
         invoice_id = c.lastrowid
         
@@ -154,7 +165,8 @@ def list_invoices():
                 'amount': r['amount'],
                 'date_created': r['date_created'],
                 'items': json.loads(r['items'] or '[]'),
-                'status': status_val
+                'status': status_val,
+                'grand_total_sp': r['total_sp'] if 'total_sp' in keys else 0.0
             })
             
         conn.close()
