@@ -262,7 +262,10 @@
     <div class="modal-content">
         <div class="modal-header">
             <div class="modal-title" id="modalTitle">Order Details</div>
-            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div>
+                <button class="btn-cancel" id="modalCancelBtn" style="margin-right: 1rem;">Cancel Invoice</button>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
         </div>
         <div id="modalBody">
             <table class="items-list">
@@ -333,7 +336,7 @@
         (inv.items || []).forEach(item => {
             tbody.innerHTML += `
                 <tr>
-                    <td>${item.name}</td>
+                    <td>${item.description || item.name}</td>
                     <td>${item.qty}</td>
                     <td class="amt">${parseFloat(item.price || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
                     <td class="amt">${parseFloat(item.total || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
@@ -341,7 +344,37 @@
             `;
         });
         
+        const cancelBtn = document.getElementById('modalCancelBtn');
+        if (inv.status === 'cancelled') {
+            cancelBtn.disabled = true;
+            cancelBtn.textContent = 'Cancelled';
+            cancelBtn.onclick = null;
+        } else {
+            cancelBtn.disabled = false;
+            cancelBtn.textContent = 'Cancel Invoice';
+            cancelBtn.onclick = () => cancelInvoice(inv.id);
+        }
+        
         document.getElementById('orderModal').classList.add('active');
+    }
+    
+    async function cancelInvoice(id) {
+        if (!confirm('Are you sure you want to cancel this invoice? This will restore the items back into inventory.')) return;
+        
+        try {
+            const res = await fetch('/api/invoice/cancel/' + id, { method: 'POST' });
+            const data = await res.json();
+            
+            if (res.ok) {
+                showToast(data.message || 'Invoice cancelled successfully', 'success');
+                closeModal();
+                loadHistory(); // reload table
+            } else {
+                showToast(data.error || 'Failed to cancel', 'error');
+            }
+        } catch(e) {
+            showToast('Network error', 'error');
+        }
     }
     
     function closeModal() {
