@@ -129,9 +129,8 @@
 
         /* KPI Grid */
         .kpi-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.5rem;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem; margin-bottom: 2rem;
         }
 
         .kpi-card {
@@ -261,10 +260,11 @@
         @media(max-width: 768px) {
             /* Structural Fixes */
             body { flex-direction: column !important; }
-            .sidebar { width: 100% !important; height: auto !important; position: relative !important; padding: 1rem !important; border-right: none !important; border-bottom: 1px solid var(--border) !important; flex-shrink: 0; gap: 1rem !important; }
+            .sidebar { width: 100% !important; height: auto !important; position: relative !important; padding: 1rem !important; border-right: none !important; border-bottom: 1px solid var(--surface-border) !important; flex-shrink: 0; gap: 1rem !important; box-sizing: border-box !important; }
             
             /* Top Navigation Conversion */
-            .nav-menu { flex-direction: row !important; flex-wrap: nowrap !important; overflow-x: auto !important; justify-content: flex-start !important; padding-bottom: 0.5rem; -webkit-overflow-scrolling: touch; }
+            .nav-menu { flex-direction: row !important; flex-wrap: nowrap !important; overflow-x: auto !important; justify-content: flex-start !important; padding-bottom: 0.5rem; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+            .nav-menu::-webkit-scrollbar { display: none; }
             .nav-item { padding: 0.8rem 1.2rem !important; font-size: 1rem !important; gap: 0.5rem !important; min-height: 44px; flex-shrink: 0; }
             
             /* Container Padding Fixes (covers all classes) */
@@ -282,6 +282,7 @@
             
             /* Grid & Table Breakpoints */
             .billing-grid, .kpi-grid { grid-template-columns: 1fr !important; }
+            .kpi-value { font-size: 2rem !important; }
             .table-wrap, .table-container { width: 100% !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 1rem; }
             table { white-space: nowrap !important; }
             thead th { font-size: 0.85rem !important; }

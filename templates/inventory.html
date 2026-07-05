@@ -141,9 +141,6 @@
             margin: 0;
             margin-right: 5rem;
             line-height: 1.2;
-            color: #1e293b;
-        }
-
         .item-category {
             color: #64748b;
             font-size: 0.875rem;
@@ -155,22 +152,22 @@
             border-radius: 6px;
             width: fit-content;
         }
-
+        
+        .item-name { font-weight: 700; font-size: 1.15rem; color: #fff; margin-bottom: 0.5rem; letter-spacing: 0.3px; word-wrap: break-word; overflow-wrap: anywhere; }
+        .item-code { font-size: 0.8rem; color: var(--muted); background: rgba(255,255,255,0.1); padding: 0.2rem 0.6rem; border-radius: 4px; display: inline-block; margin-bottom: 1rem; }
+        
         .item-details {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            align-items: end;
             margin-top: auto;
-            padding-top: 1.25rem;
-            border-top: 1px dashed #e2e8f0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 1rem;
         }
-
-        .price-label, .stock-label {
-            font-size: 0.75rem;
-            color: #94a3b8;
-            margin-bottom: 0.25rem;
-            display: block;
-        }
+        .item-details > div:nth-child(even) { text-align: right; }
+        
+        .detail-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.2rem; display: block; }
 
         .price {
             font-size: 1.5rem;
@@ -349,6 +346,14 @@
         }
     
         
+        #inventoryFooter {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px);
+            border-top: 1px solid var(--border);
+            padding: 1rem 2rem; z-index: 100;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
         /* ── MOBILE OPTIMIZATION ───────────────── */
         @media(max-width: 768px) {
             /* Structural Fixes */
@@ -369,11 +374,11 @@
             
             /* Forms, Inputs & iOS Zoom Fix */
             .ds-lookup-row, .filters { flex-direction: column !important; align-items: stretch !important; gap: 1rem !important; }
-            .ds-lookup-row .glass-input, .filter-input, .filter-select, .glass-input { flex: 1 !important; width: 100% !important; box-sizing: border-box !important; }
+            .ds-lookup-row .glass-input, .filter-input, .filter-select, .glass-input { flex: 1 !important; width: 100% !important; box-sizing: border-box !important; min-height: 44px; }
             input, select, textarea { font-size: 16px !important; } /* Prevents iOS Keyboard Zoom */
             
             /* Grid & Table Breakpoints */
-            .billing-grid, .kpi-grid { grid-template-columns: 1fr !important; }
+            .billing-grid, .kpi-grid, .grid { grid-template-columns: 1fr !important; }
             .table-wrap, .table-container { width: 100% !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 1rem; }
             table { white-space: nowrap !important; }
             thead th { font-size: 0.85rem !important; }
@@ -385,6 +390,7 @@
             
             /* Fixed Elements */
             #saveIndicator { bottom: 5rem !important; right: 1rem !important; padding: 0.8rem 1.2rem !important; }
+            #inventoryFooter { flex-direction: column !important; align-items: center !important; gap: 0.5rem; padding: 1rem !important; }
             
             /* Contrast Fixes */
             .log-card { overflow-x: auto; color: #cbd5e1 !important; background: rgba(0,0,0,0.6) !important; }
@@ -576,76 +582,63 @@
             const status = document.getElementById('statusFilter').value;
             
             grid.innerHTML = '';
-            let visibleCount = 0;
+            let visibleItems = [];
 
-            allData.forEach((item, index) => {
+            allData.forEach((item) => {
                 const name = (item['Product Name'] || '').toString();
-                const price = parseFloat(item['Price/Pc (Rs.)']) || 0;
                 const stock = parseFloat(item['Remaining Qty']) || 0;
                 
                 let itemStatus = 'in-stock';
-                let itemStatusText = 'In Stock';
-                if (stock <= 0) {
-                    itemStatus = 'out-of-stock';
-                    itemStatusText = 'Out of Stock';
-                } else if (stock < 10) {
-                    itemStatus = 'low-stock';
-                    itemStatusText = 'Low Stock';
-                }
+                if (stock <= 0) itemStatus = 'out-of-stock';
+                else if (stock < 10) itemStatus = 'low-stock';
 
-                const matchesSearch = name.toLowerCase().includes(search);
-                const matchesStatus = status === 'all' || itemStatus === status;
-
-                if (matchesSearch && matchesStatus) {
-                    const spPc = parseFloat(item['SP/Pc']) || 0;
-                    const totalSp = parseFloat(item['Total SP']) || 0;
-                    
-                    const card = document.createElement('div');
-                    card.className = 'card';
-                    card.style.animationDelay = `${(index % 10) * 0.05}s`;
-                    
-                    card.innerHTML = `
-                        <span class="status ${itemStatus}">${itemStatusText}</span>
-                        <h2 class="item-name">${name}</h2>
-                        <div class="item-category">Product</div>
-                        <div class="item-details">
-                            <div>
-                                <span class="price-label">Price/Pc (Rs.)</span>
-                                <span class="price">₹${price.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
-                            </div>
-                            <div style="text-align: right;">
-                                <span class="stock-label">Remaining Qty</span>
-                                <span class="stock">${stock} units</span>
-                            </div>
-                            <div style="margin-top: 0.5rem">
-                                <span class="price-label">SP/Pc</span>
-                                <span class="price" style="color:var(--primary)">${spPc}</span>
-                            </div>
-                            <div style="text-align: right; margin-top: 0.5rem">
-                                <span class="stock-label">Total SP</span>
-                                <span class="stock" style="color:var(--primary)">${totalSp.toFixed(1)}</span>
-                            </div>
-                        </div>
-                    `;
-                    grid.appendChild(card);
-                    visibleCount++;
+                if (name.toLowerCase().includes(search) && (status === 'all' || itemStatus === status)) {
+                    visibleItems.push(item);
                 }
             });
+
+            visibleItems.forEach((item, index) => {
+                const name = (item['Product Name'] || '').toString();
+                const price = parseFloat(item['Price/Pc (Rs.)']) || 0;
+                const stock = parseFloat(item['Remaining Qty']) || 0;
+                const spPc = parseFloat(item['SP/Pc']) || 0;
+                const totalSp = parseFloat(item['Total SP']) || 0;
+                
+                let itemStatus = 'in-stock';
+                let itemStatusText = 'In Stock';
+                if (stock <= 0) { itemStatus = 'out-of-stock'; itemStatusText = 'Out of Stock'; }
+                else if (stock < 10) { itemStatus = 'low-stock'; itemStatusText = 'Low Stock'; }
+
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.style.animationDelay = `${(index % 10) * 0.05}s`;
+                card.innerHTML = `
+                    <span class="status ${itemStatus}">${itemStatusText}</span>
+                    <h2 class="item-name">${name}</h2>
+                    <div class="item-category">Product</div>
+                    <div class="item-details">
+                        <div><span class="detail-label">Price/Pc</span><span class="price">₹${price.toLocaleString()}</span></div>
+                        <div><span class="detail-label">Stock</span><span class="stock">${stock}</span></div>
+                        <div><span class="detail-label">SP/Pc</span><span class="price">${spPc}</span></div>
+                        <div><span class="detail-label">Total SP</span><span class="stock">${totalSp.toFixed(1)}</span></div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
             
-            document.getElementById('emptyState').style.display = visibleCount === 0 ? 'block' : 'none';
+            document.getElementById('emptyState').style.display = visibleItems.length === 0 ? 'block' : 'none';
             
             let footer = document.getElementById('inventoryFooter');
             if (!footer) {
                 footer = document.createElement('div');
                 footer.id = 'inventoryFooter';
-                footer.style.cssText = 'position:sticky;bottom:0;background:var(--card);padding:1rem;border-top:1px solid var(--border);border-radius:12px;margin-top:1rem;display:flex;justify-content:space-between;align-items:center;box-shadow:0 -4px 12px rgba(0,0,0,0.05);';
-                grid.parentNode.appendChild(footer);
+                document.body.appendChild(footer);
             }
             
-            const totalStockSp = allData.reduce((sum, item) => sum + (parseFloat(item['Total SP']) || 0), 0);
+            const totalStockSp = visibleItems.reduce((sum, item) => sum + (parseFloat(item['Total SP']) || 0), 0);
             footer.innerHTML = `
-                <div style="font-weight:600;color:var(--text)">Showing ${visibleCount} Items</div>
-                <div style="font-weight:600;color:var(--primary);font-size:1.1rem">Total SP in Stock: ${totalStockSp.toFixed(1)}</div>
+                <div style="font-weight:600">Showing ${visibleItems.length} Items</div>
+                <div style="font-weight:600;color:#3b82f6">Total SP: ${totalStockSp.toFixed(1)}</div>
             `;
         }
 

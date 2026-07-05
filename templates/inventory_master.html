@@ -227,19 +227,25 @@
             .ds-lookup-row .glass-input, .filter-input, .filter-select, .glass-input { flex: 1 !important; width: 100% !important; box-sizing: border-box !important; }
             input, select, textarea { font-size: 16px !important; } /* Prevents iOS Keyboard Zoom */
             
-            /* Grid & Table Breakpoints */
-            .billing-grid, .kpi-grid { grid-template-columns: 1fr !important; }
+            /* Toolbar Filter Buttons wrapping */
+            .toolbar { flex-wrap: nowrap !important; overflow-x: auto !important; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding-bottom: 0.5rem; }
+            .toolbar::-webkit-scrollbar { display: none; }
+            
+            /* Table & Layout Breakpoints */
             .table-wrap, .table-container { width: 100% !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 1rem; }
             table { white-space: nowrap !important; }
             thead th { font-size: 0.85rem !important; }
-            /* .total-row width removed for layout fix */
+            
+            /* Make Product Name sticky on mobile too */
+            .table-container td:nth-child(2), .table-container th:nth-child(2) { position: sticky; left: 48px; z-index: 2; background: rgba(15, 23, 42, 0.95); }
             
             /* Touch Target Accessibility (Min 44px) */
             .btn, .lookup-btn, .sync-btn { min-height: 44px; padding: 0.8rem 1.5rem !important; width: 100%; text-align: center; justify-content: center; }
-            .btn-cancel, .remove-btn, .preset-btn, .filter-btn, .refresh-btn { min-height: 44px; padding: 0.8rem 1.2rem !important; font-size: 1rem !important; }
+            .btn-cancel, .remove-btn, .preset-btn, .filter-btn, .refresh-btn { min-height: 44px; padding: 0.8rem 1.2rem !important; font-size: 1rem !important; flex-shrink: 0; }
+            thead th, tbody td.editable-cell { padding: 1rem !important; }
             
             /* Fixed Elements */
-            #saveIndicator { bottom: 5rem !important; right: 1rem !important; padding: 0.8rem 1.2rem !important; }
+            #saveIndicator { bottom: 1.5rem !important; left: 1rem !important; right: 1rem !important; justify-content: center !important; }
             
             /* Contrast Fixes */
             .log-card { overflow-x: auto; color: #cbd5e1 !important; background: rgba(0,0,0,0.6) !important; }
@@ -247,7 +253,8 @@
             .glass-input { border-color: rgba(255,255,255,0.2) !important; }
         }
 
-        .table-container td:first-child, .table-container th:first-child { position: sticky; left: 0; background: rgba(15, 23, 42, 0.95); z-index: 2; }
+        .table-container td:first-child { font-weight:700; color:var(--text); position: sticky; left: 0; background: rgba(15, 23, 42, 0.95); z-index: 2; box-shadow: 2px 0 5px rgba(0,0,0,0.15); }
+        .table-container th:first-child { position: sticky; left: 0; background: rgba(15, 23, 42, 0.98); z-index: 3; box-shadow: 2px 0 5px rgba(0,0,0,0.15); }
 </style>
 </head>
 <body>
@@ -434,6 +441,7 @@ function renderTable() {
         const badgeCls = status.includes('out') ? 'badge-out' : status.includes('low') ? 'badge-low' : 'badge-in';
         const badgeTxt = r['Stock Status'] || '—';
 
+        const isMobile = window.matchMedia("(max-width: 768px)").matches;
         const cells = allHeaders.map(h => {
             if (h === 'Stock Status') {
                 return `<td><span class="badge ${badgeCls}">${badgeTxt}</span></td>`;
@@ -442,13 +450,22 @@ function renderTable() {
             const isNum = NUM_COLS.has(h);
             const isEdit= EDITABLE_COLS.has(h);
             const disp  = formatVal(val, h);
-            const cls   = [
+            
+            let tdAttrs = `data-row="${r.__row}" data-col="${escQ(h)}"`;
+            let tdCls = [
                 isNum   ? 'numeric'       : '',
                 isEdit  ? 'editable-cell' : '',
                 h === 'Product Name' ? 'product' : '',
             ].filter(Boolean).join(' ');
-            const editAttr = isEdit ? `ondblclick="startEdit(this, ${r.__row}, '${escQ(h)}')" title="Double-click to edit"` : '';
-            return `<td class="${cls}" ${editAttr} data-row="${r.__row}" data-col="${escQ(h)}">${disp}</td>`;
+
+            if (isEdit) {
+                if (isMobile) {
+                    tdAttrs += ` onclick="startEdit(this, ${r.__row}, '${escQ(h)}')"`;
+                } else {
+                    tdAttrs += ` ondblclick="startEdit(this, ${r.__row}, '${escQ(h)}')" title="Double-click to edit"`;
+                }
+            }
+            return `<td class="${tdCls}" ${tdAttrs}>${disp}</td>`;
         });
 
         return `<tr data-row="${r.__row}">${'<td class="sno">' + (r['S.No'] || '') + '</td>'}${cells.join('')}</tr>`;

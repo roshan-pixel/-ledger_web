@@ -57,6 +57,8 @@
             background:linear-gradient(to right,#fff,#94a3b8);
             -webkit-background-clip:text; -webkit-text-fill-color:transparent;
             letter-spacing:-0.5px;
+            line-height: 1.2;
+            padding-bottom: 0.05em;
         }
         .nav-menu { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.4rem; }
         .nav-item {
@@ -75,6 +77,8 @@
             margin:0; font-size:2.5rem; font-weight:700; letter-spacing:-1px;
             background:linear-gradient(135deg,#fff,#94a3b8);
             -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            line-height: 1.2;
+            padding-bottom: 0.05em;
         }
         .title p { margin:.4rem 0 0; color:var(--muted); font-size:1.05rem; }
 
@@ -135,7 +139,7 @@
         }
         .modal-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; }
         .modal-title { font-size:1.5rem; font-weight:700; }
-        .modal-close { background:none; border:none; color:var(--text); font-size:1.5rem; cursor:pointer; }
+        .modal-close { background:none; border:none; color:var(--text); font-size:1.5rem; cursor:pointer; min-width: 44px; min-height: 44px; padding: 0.5rem; display: inline-flex; align-items: center; justify-content: center; }
         .items-list { width:100%; border-collapse:collapse; margin-top:1rem; }
         .items-list th, .items-list td { padding:0.75rem; text-align:left; border-bottom:1px solid var(--border); }
         .items-list th { color:var(--muted); font-size:0.85rem; text-transform:uppercase; }
@@ -166,6 +170,10 @@
             /* Container Padding Fixes (covers all classes) */
             .main, .main-content { padding: 1rem !important; width: 100% !important; overflow-x: hidden !important; box-sizing: border-box !important; }
             .card, .glass-panel, .sync-card, .results-card, .auto-card, .kpi-card { padding: 1rem !important; border-radius: 16px !important; box-sizing: border-box !important; width: 100% !important; }
+            .modal-content { padding: 1rem !important; }
+            .modal-header { flex-direction: column !important; align-items: flex-start !important; gap: 1rem !important; }
+            .modal-header > div { width: 100%; display: flex; justify-content: space-between; align-items: center; }
+            #modalBody { overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; width: 100%; }
             
             /* Header & Layout Fixes */
             .inv-header, .header-actions, .header { flex-direction: column !important; align-items: flex-start !important; gap: 1rem !important; }
@@ -185,7 +193,7 @@
             
             /* Touch Target Accessibility (Min 44px) */
             .btn, .lookup-btn, .sync-btn { min-height: 44px; padding: 0.8rem 1.5rem !important; width: 100%; text-align: center; justify-content: center; }
-            .btn-cancel, .remove-btn, .preset-btn, .filter-btn, .refresh-btn { min-height: 44px; padding: 0.8rem 1.2rem !important; font-size: 1rem !important; }
+            .btn-cancel, .remove-btn, .preset-btn, .filter-btn, .refresh-btn, .btn-view { min-height: 44px; padding: 0.8rem 1.2rem !important; font-size: 1rem !important; }
             
             /* Fixed Elements */
             #saveIndicator { bottom: 5rem !important; right: 1rem !important; padding: 0.8rem 1.2rem !important; }
@@ -262,11 +270,11 @@
 <div class="modal-overlay" id="orderModal" onclick="if(event.target===this) closeModal()">
     <div class="modal-content">
         <div class="modal-header">
-            <div class="modal-title" id="modalTitle">Order Details</div>
-            <div>
-                <button class="btn-cancel" id="modalCancelBtn" style="margin-right: 1rem;">Cancel Invoice</button>
+            <div style="width:100%; display:flex; justify-content:space-between; align-items:center;">
+                <div class="modal-title" id="modalTitle" style="margin:0;">Order Details</div>
                 <button class="modal-close" onclick="closeModal()">&times;</button>
             </div>
+            <button class="btn-cancel" id="modalCancelBtn" style="margin-right: 1rem;">Cancel Invoice</button>
         </div>
         <div id="modalBody">
             <table class="items-list">

@@ -57,6 +57,8 @@
             background:linear-gradient(to right,#fff,#94a3b8);
             -webkit-background-clip:text; -webkit-text-fill-color:transparent;
             letter-spacing:-0.5px;
+            line-height: 1.2;
+            padding-bottom: 0.05em;
         }
         .nav-menu { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.4rem; }
         .nav-item {
@@ -84,6 +86,8 @@
             margin:0; font-size:3rem; font-weight:700; letter-spacing:-2px;
             background:linear-gradient(135deg,var(--primary),#ec4899);
             -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            line-height: 1.2;
+            padding-bottom: 0.05em;
         }
         .inv-title p { margin:.3rem 0 0; color:var(--muted); font-size:1rem; }
         .inv-meta { display:flex; flex-direction:column; gap:.75rem; }
@@ -209,6 +213,8 @@
             -webkit-text-fill-color:transparent;
             color:transparent;
             display:inline-block;
+            line-height: 1.2;
+            padding-bottom: 0.05em;
         }
 
         /* ── ACTIONS ─────────────────────── */
@@ -302,6 +308,8 @@
             .ds-lookup-row, .filters { flex-direction: column !important; align-items: stretch !important; gap: 1rem !important; }
             .ds-lookup-row .glass-input, .filter-input, .filter-select, .glass-input { flex: 1 !important; width: 100% !important; box-sizing: border-box !important; }
             input, select, textarea { font-size: 16px !important; } /* Prevents iOS Keyboard Zoom */
+            
+            #orderType { max-width: 100% !important; width: 100% !important; box-sizing: border-box !important; }
             
             /* Grid & Table Breakpoints */
             .billing-grid, .kpi-grid { grid-template-columns: 1fr !important; }
