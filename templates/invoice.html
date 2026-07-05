@@ -343,9 +343,9 @@
     <!-- HEADER -->
     <div class="inv-header">
         <div class="inv-title">
-            <img src="{{ url_for('static', filename='logo.png') }}" alt="Asclepius Wellness" style="max-height: 80px; margin-bottom: 10px;">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="DSR 7 Wellness Centre" style="max-height: 80px; margin-bottom: 10px;">
             <h1>INVOICE</h1>
-            <p>Asclepius Wellness Pvt. Ltd.</p>
+            <p>DSR 7 WELLNESS CENTRE</p>
         </div>
         <div class="inv-meta">
             <div class="field">
@@ -366,12 +366,12 @@
         <div class="field">
             <label>Bill From (Fixed)</label>
             <div style="background:rgba(255,255,255,.03); border:1px solid var(--border); border-radius:12px; padding:1.2rem 1.4rem; display:flex; flex-direction:column; gap:.35rem;">
-                <div style="font-weight:700; font-size:1.05rem; letter-spacing:.3px;">ASCLEPIUS WELLNESS PVT. LTD.</div>
+                <div style="font-weight:700; font-size:1.05rem; letter-spacing:.3px;">DSR 7 WELLNESS CENTRE</div>
                 <div style="color:var(--muted); font-size:.88rem; line-height:1.6;">
-                    Sales &amp; Tax Invoice<br>
-                    GSTIN: <span style="color:var(--text);">XXXXXXXXXXXX</span><br>
-                    PAN: <span style="color:var(--text);">XXXXXXXXXX</span><br>
-                    <span id="fromContact" style="color:var(--muted);">contact@asclepiuswellness.com</span>
+                    Phone No.: <span style="color:var(--text);">9549477444</span><br>
+                    PAN NO.: <span style="color:var(--text);">AAZFD8117G</span><br>
+                    GST No: <span style="color:var(--text);">15AAZFD8117G1Z3</span><br>
+                    FSSAI NO.: <span style="color:var(--text);">21826103000666</span>
                 </div>
             </div>
         </div>
@@ -661,7 +661,7 @@
         const payload = {
             invoiceNo:  document.getElementById('invoiceNo').value,
             date:       document.getElementById('invoiceDate').value,
-            billedFrom: 'ASCLEPIUS WELLNESS PVT. LTD.',
+            billedFrom: 'DSR 7 WELLNESS CENTRE',
             dsCode:     document.getElementById('dsCodeInput').value,
             billedTo:   document.getElementById('cName').textContent,
             items,
