@@ -114,6 +114,31 @@
         }
         .btn-cancel:hover { background:var(--red); color:#fff; }
         .btn-cancel:disabled { opacity:.4; cursor:not-allowed; background:rgba(239,68,68,.1); color:var(--red); }
+        
+        .btn-view {
+            background:rgba(99,102,241,.1); color:var(--primary); border:1px solid rgba(99,102,241,.3);
+            padding:.4rem .8rem; border-radius:8px; font-family:'Outfit',sans-serif;
+            font-size:.8rem; font-weight:600; cursor:pointer; transition:all .2s;
+        }
+        .btn-view:hover { background:var(--primary); color:#fff; }
+
+        /* ── MODAL ───────────────────────── */
+        .modal-overlay {
+            position:fixed; top:0; left:0; right:0; bottom:0;
+            background:rgba(0,0,0,0.6); backdrop-filter:blur(4px);
+            display:none; justify-content:center; align-items:center; z-index:9999;
+        }
+        .modal-overlay.active { display:flex; animation:fadeInSPA 0.2s ease-out forwards; }
+        .modal-content {
+            background:var(--bg); border:1px solid var(--border); border-radius:20px;
+            padding:2rem; width:100%; max-width:600px; max-height:80vh; overflow-y:auto;
+        }
+        .modal-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; }
+        .modal-title { font-size:1.5rem; font-weight:700; }
+        .modal-close { background:none; border:none; color:var(--text); font-size:1.5rem; cursor:pointer; }
+        .items-list { width:100%; border-collapse:collapse; margin-top:1rem; }
+        .items-list th, .items-list td { padding:0.75rem; text-align:left; border-bottom:1px solid var(--border); }
+        .items-list th { color:var(--muted); font-size:0.85rem; text-transform:uppercase; }
 
         /* ── TOAST ───────────────────────── */
         #toast {
@@ -223,18 +248,40 @@
                     <th>Customer Name</th>
                     <th>Amount (₹)</th>
                     <th>Status</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody id="historyBody">
-                <tr><td colspan="6" style="text-align:center; color:var(--muted); padding:2rem;">Loading history...</td></tr>
+                <tr><td colspan="7" style="text-align:center; color:var(--muted); padding:2rem;">Loading history...</td></tr>
             </tbody>
         </table>
     </div>
 </main>
 
+<div class="modal-overlay" id="orderModal" onclick="if(event.target===this) closeModal()">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title" id="modalTitle">Order Details</div>
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+        </div>
+        <div id="modalBody">
+            <table class="items-list">
+                <thead>
+                    <tr><th>Item</th><th>Qty</th><th>Price</th><th>Total</th></tr>
+                </thead>
+                <tbody id="modalItems"></tbody>
+            </table>
+            <div style="text-align:right; margin-top:1rem; font-size:1.2rem; font-weight:700;">
+                Grand Total: <span id="modalTotal" class="amt">0.00</span>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="toast"></div>
 
 <script>
+    let invoiceData = [];
     async function loadHistory() {
         try {
             const res = await fetch('/api/invoice/list');
@@ -243,11 +290,12 @@
             tbody.innerHTML = '';
             
             if (!data.invoices || data.invoices.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; color:var(--muted); padding:2rem;">No invoices generated yet.</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; color:var(--muted); padding:2rem;">No invoices generated yet.</td></tr>';
                 return;
             }
             
-            data.invoices.forEach(inv => {
+            invoiceData = data.invoices;
+            data.invoices.forEach((inv, index) => {
                 const tr = document.createElement('tr');
                 const isCancelled = inv.status === 'cancelled';
                 
@@ -265,12 +313,39 @@
                     <td>${inv.customer_name || '-'}</td>
                     <td class="amt">${parseFloat(inv.amount || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
                     <td><span class="status ${inv.status || 'active'}">${inv.status || 'active'}</span></td>
+                    <td><button class="btn-view" onclick="viewOrder(${index})">View Order</button></td>
                 `;
                 tbody.appendChild(tr);
             });
         } catch (e) {
-            document.getElementById('historyBody').innerHTML = '<tr><td colspan="6" style="text-align:center; color:var(--red); padding:2rem;">Failed to load data.</td></tr>';
+            document.getElementById('historyBody').innerHTML = '<tr><td colspan="7" style="text-align:center; color:var(--red); padding:2rem;">Failed to load data.</td></tr>';
         }
+    }
+
+    function viewOrder(index) {
+        const inv = invoiceData[index];
+        document.getElementById('modalTitle').textContent = `Order Details: ${inv.invoice_no}`;
+        document.getElementById('modalTotal').textContent = '₹' + parseFloat(inv.amount || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2});
+        
+        const tbody = document.getElementById('modalItems');
+        tbody.innerHTML = '';
+        
+        (inv.items || []).forEach(item => {
+            tbody.innerHTML += `
+                <tr>
+                    <td>${item.name}</td>
+                    <td>${item.qty}</td>
+                    <td class="amt">${parseFloat(item.price || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
+                    <td class="amt">${parseFloat(item.total || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
+                </tr>
+            `;
+        });
+        
+        document.getElementById('orderModal').classList.add('active');
+    }
+    
+    function closeModal() {
+        document.getElementById('orderModal').classList.remove('active');
     }
     // ── Toast ──────────────────────────────────────────
     let toastTimer;

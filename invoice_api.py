@@ -174,6 +174,18 @@ def get_next_invoice_no():
         if row and row['invoice_no']:
             last_no = row['invoice_no']
             import re
+            
+            # Match formats like DSR/000067/26-27
+            match_dsr = re.search(r'(DSR/)(\d+)(/.*)', last_no)
+            if match_dsr:
+                prefix = match_dsr.group(1)
+                num_str = match_dsr.group(2)
+                suffix = match_dsr.group(3)
+                next_num = int(num_str) + 1
+                next_no = f"{prefix}{str(next_num).zfill(len(num_str))}{suffix}"
+                return jsonify({'next_no': next_no})
+                
+            # Fallback for formats ending in digits
             match = re.search(r'(\d+)$', last_no)
             if match:
                 num_str = match.group(1)
@@ -183,7 +195,8 @@ def get_next_invoice_no():
                 
         import datetime
         year = datetime.datetime.now().year
-        return jsonify({'next_no': f'INV-{year}-001'})
+        # Default starting point if no previous invoice found
+        return jsonify({'next_no': f'DSR/000068/26-27'})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
