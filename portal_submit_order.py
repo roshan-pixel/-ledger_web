@@ -39,21 +39,22 @@ def submit_order_to_portal(ds_code, items, order_type='sao'):
             page.wait_for_timeout(4000)
             
             # 2. Select Order Type (SAO vs SGO)
-            if 'sao' in order_type:
+            if order_type == 'sao':
                 try:
                     if page.is_visible('#ctl00_ContentPlaceHolder1_rbsao', timeout=3000):
                         page.click('#ctl00_ContentPlaceHolder1_rbsao')
                         print(f"[{ds_code}] Selected SAO radio button.")
                 except Exception as e:
                     print(f"[{ds_code}] Could not select SAO: {e}")
-            elif 'sgo' in order_type:
+            elif order_type == 'sgo':
                 try:
                     if page.is_visible('#ctl00_ContentPlaceHolder1_rbSgo', timeout=3000):
                         page.click('#ctl00_ContentPlaceHolder1_rbSgo')
                         print(f"[{ds_code}] Selected SGO radio button.")
                 except Exception as e:
                     print(f"[{ds_code}] Could not select SGO: {e}")
-            # Note: For Approve First Purchase, it's just 'approve_sao' or 'approve_sgo' which contains 'sao' or 'sgo'
+            
+            # Note: For Approve First Purchase (order_type == 'approve'), we do not click any SAO/SGO radio button because they don't exist for Red IDs!
             
             # Check "Same As Profile Address" to auto-fill shipping details
             page.check('#ctl00_ContentPlaceHolder1_chkaddr')
