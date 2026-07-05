@@ -207,8 +207,20 @@ def update_inventory_formulas(conn, row_num, headers):
         rem_qty = avail_stock - total_sold
         rem_val = rem_qty * dp
         
-        c.execute(f"UPDATE inventory SET c{rem_qty_idx}=?, c{rem_val_idx}=? WHERE row_num=?",
-                  (rem_qty, rem_val, row_num))
+        # Calculate Total SP
+        try:
+            sp_pc_idx = headers.index('SP/Pc') + 1
+            tot_sp_idx = headers.index('Total SP') + 1
+            sp_pc = float(str(row[f'c{sp_pc_idx}']).replace(',', '') or 0)
+            tot_sp = sp_pc * rem_qty
+        except ValueError:
+            # If headers not found, fallback to c27 and c28
+            sp_pc = float(str(row['c27']).replace(',', '') or 0)
+            tot_sp = sp_pc * rem_qty
+            tot_sp_idx = 28
+            
+        c.execute(f"UPDATE inventory SET c{rem_qty_idx}=?, c{rem_val_idx}=?, c{tot_sp_idx}=? WHERE row_num=?",
+                  (rem_qty, rem_val, tot_sp, row_num))
     except Exception as e:
         print("Error updating formulas:", e)
 
@@ -223,9 +235,10 @@ def update_totals_row(conn):
         
         row_id = total_row['row_num']
         
-        # Sum columns 6 through 20
+        # Sum columns 6 through 20, and 28 (Total SP)
         sums = {}
-        for col_idx in range(6, 21):
+        cols_to_sum = list(range(6, 21)) + [28]
+        for col_idx in cols_to_sum:
             c.execute(f"SELECT SUM(CAST(REPLACE(c{col_idx}, ',', '') AS REAL)) FROM inventory WHERE UPPER(c3) != 'TOTAL' AND c{col_idx} != ''")
             s = c.fetchone()[0] or 0
             sums[f"c{col_idx}"] = s
