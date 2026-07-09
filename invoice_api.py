@@ -136,7 +136,7 @@ def create_invoice():
                 
         if sold_qty_col_idx:
             for item in items:
-                desc = item.get('description', '').strip()
+                desc = str(item.get('description') or item.get('name') or '').strip()
                 qty_sold = float(item.get('qty', 0))
                 
                 if desc and qty_sold > 0:
@@ -308,7 +308,7 @@ def cancel_invoice(invoice_id):
                 
         if sold_qty_col_idx:
             for item in items:
-                desc = item.get('description', '').strip()
+                desc = str(item.get('description') or item.get('name') or '').strip()
                 qty_sold = float(item.get('qty', 0))
                 
                 if desc and qty_sold > 0:
