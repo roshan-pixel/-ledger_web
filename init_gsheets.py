@@ -81,6 +81,10 @@ def init_google_sheets():
         keys = r.keys()
         status_val = r['status'] if 'status' in keys else 'active'
         total_sp_val = r['total_sp'] if 'total_sp' in keys else 0.0
+        
+        if status_val == 'cancelled':
+            continue
+        
         sheet_data.append([
             r['id'], 
             r['invoice_no'], 
