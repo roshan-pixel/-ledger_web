@@ -42,6 +42,22 @@
             animation:fadeInSPA .3s ease-out forwards;
         }
 
+        /* ── AUTOCOMPLETE ────────────────── */
+        .autocomplete-wrapper { position: relative; width: 100%; display: flex; align-items: center; }
+        .autocomplete-list {
+            position: absolute; top: 100%; left: 0; right: 0;
+            background: var(--surface); border: 1px solid var(--border);
+            max-height: 250px; overflow-y: auto; z-index: 999;
+            border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            display: none; backdrop-filter: var(--blur); margin-top: 4px;
+        }
+        .ac-item { padding: 0.75rem 1rem; cursor: pointer; border-bottom: 1px solid var(--border); font-size: 0.9rem; color: var(--text); }
+        .ac-item:hover { background: rgba(255,255,255,0.1); }
+        .ac-item:last-child { border-bottom: none; }
+        .autocomplete-arrow {
+            position: absolute; right: 8px; color: var(--muted); cursor: pointer; padding: 5px; font-size: 0.75rem;
+        }
+
         /* ── SIDEBAR ─────────────────────── */
         .sidebar {
             width:260px; flex-shrink:0;
@@ -505,7 +521,6 @@
     document.getElementById('invoiceDate').valueAsDate = new Date();
     let inventoryData = [];
     let customerFound = false;
-    let inventoryOptionsHtml = '<option value="" disabled selected>Select product...</option>';
 
     // ── Load inventory for autocomplete ───────────────
     async function loadInventory() {
@@ -513,23 +528,64 @@
             const res  = await fetch('/api/inventory');
             const json = await res.json();
             inventoryData = Array.isArray(json) ? json : (json.data || []);
-            
-            inventoryData.forEach(item => {
-                const name = item['Product Name'] || item.Product || item['Item Name'] || '';
-                if (name) {
-                    const safeName = name.replace(/"/g, '&quot;');
-                    inventoryOptionsHtml += `<option value="${safeName}">${safeName}</option>`;
-                }
-            });
-            // Update existing selects
-            document.querySelectorAll('.item-desc').forEach(select => {
-                const currentVal = select.value;
-                select.innerHTML = inventoryOptionsHtml;
-                if (currentVal) select.value = currentVal;
-            });
         } catch(e) { console.error('Inventory load failed', e); }
     }
     loadInventory();
+
+    // ── Custom Autocomplete Logic ───────────────
+    function renderAutocompleteList(list, val, showAll) {
+        list.innerHTML = '';
+        let count = 0;
+        const search = val ? val.toLowerCase() : '';
+        for (let i = 0; i < inventoryData.length; i++) {
+            const item = inventoryData[i];
+            const name = item['Product Name'] || item.Product || item['Item Name'] || '';
+            if (!name) continue;
+            if (showAll || search === '' || name.toLowerCase().includes(search)) {
+                const div = document.createElement('div');
+                div.textContent = name;
+                div.className = 'ac-item';
+                div.onmousedown = function(e) {
+                    e.preventDefault(); 
+                    const input = list.parentElement.querySelector('.item-desc');
+                    input.value = name;
+                    list.style.display = 'none';
+                    handleProductSelect(input);
+                };
+                list.appendChild(div);
+                count++;
+                if (count > 80) break;
+            }
+        }
+        list.style.display = count > 0 ? 'block' : 'none';
+    }
+
+    function showAutocomplete(input) {
+        const list = input.parentElement.querySelector('.autocomplete-list');
+        renderAutocompleteList(list, input.value, true);
+    }
+
+    function filterAutocomplete(input) {
+        const list = input.parentElement.querySelector('.autocomplete-list');
+        renderAutocompleteList(list, input.value, false);
+    }
+
+    function toggleAutocomplete(arrow) {
+        const input = arrow.parentElement.querySelector('.item-desc');
+        const list = arrow.parentElement.querySelector('.autocomplete-list');
+        if (list.style.display === 'block') {
+            list.style.display = 'none';
+        } else {
+            input.focus();
+            renderAutocompleteList(list, input.value, true);
+        }
+    }
+
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.autocomplete-wrapper')) {
+            document.querySelectorAll('.autocomplete-list').forEach(list => list.style.display = 'none');
+        }
+    });
 
     // ── Fetch next invoice number ────────────────
     async function fetchNextInvoiceNo() {
@@ -637,9 +693,13 @@
     function makeRow() {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td><select class="item-input item-desc" onchange="handleProductSelect(this)">
-                ${typeof inventoryOptionsHtml !== 'undefined' ? inventoryOptionsHtml : '<option value="" disabled selected>Select product...</option>'}
-            </select></td>
+            <td>
+                <div class="autocomplete-wrapper">
+                    <input type="text" class="item-input item-desc" placeholder="Search product..." autocomplete="off" onfocus="showAutocomplete(this)" oninput="filterAutocomplete(this)" onchange="handleProductSelect(this)">
+                    <div class="autocomplete-arrow" onclick="toggleAutocomplete(this)">▼</div>
+                    <div class="autocomplete-list"></div>
+                </div>
+            </td>
             <td><input type="number" class="item-input item-qty" value="1" min="1"
                 oninput="calculateRow(this.closest('tr'))"></td>
             <td><input type="number" class="item-input item-price" value="0.00" min="0" step="0.01"
