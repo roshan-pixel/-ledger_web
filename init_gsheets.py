@@ -1,10 +1,12 @@
 import sqlite3
 import gspread
 import json
+import os
 
 def init_google_sheets():
     print("Connecting to Google Sheets...")
-    gc = gspread.service_account(filename='credentials.json')
+    creds_path = '/etc/secrets/credentials.json' if os.path.exists('/etc/secrets/credentials.json') else 'credentials.json'
+    gc = gspread.service_account(filename=creds_path)
     sheet = gc.open('Ledger_Database')
     
     conn = sqlite3.connect('ledger.db')
