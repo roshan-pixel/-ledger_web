@@ -533,8 +533,14 @@
     loadInventory();
 
     // ── Custom Autocomplete Logic ───────────────
-    function renderAutocompleteList(list, val, showAll) {
-        list.innerHTML = '';
+    const globalAcList = document.createElement('div');
+    globalAcList.className = 'autocomplete-list';
+    document.body.appendChild(globalAcList);
+    let activeAcInput = null;
+
+    function renderAutocompleteList(val, showAll) {
+        if (!activeAcInput) return;
+        globalAcList.innerHTML = '';
         let count = 0;
         const search = val ? val.toLowerCase() : '';
         for (let i = 0; i < inventoryData.length; i++) {
@@ -547,45 +553,62 @@
                 div.className = 'ac-item';
                 div.onmousedown = function(e) {
                     e.preventDefault(); 
-                    const input = list.parentElement.querySelector('.item-desc');
-                    input.value = name;
-                    list.style.display = 'none';
-                    handleProductSelect(input);
+                    activeAcInput.value = name;
+                    globalAcList.style.display = 'none';
+                    handleProductSelect(activeAcInput);
                 };
-                list.appendChild(div);
+                globalAcList.appendChild(div);
                 count++;
                 if (count > 80) break;
             }
         }
-        list.style.display = count > 0 ? 'block' : 'none';
+        if (count > 0) {
+            positionAutocompleteList(activeAcInput);
+            globalAcList.style.display = 'block';
+        } else {
+            globalAcList.style.display = 'none';
+        }
+    }
+
+    function positionAutocompleteList(input) {
+        const rect = input.getBoundingClientRect();
+        globalAcList.style.top = (rect.bottom + window.scrollY) + 'px';
+        globalAcList.style.left = (rect.left + window.scrollX) + 'px';
+        globalAcList.style.width = rect.width + 'px';
     }
 
     function showAutocomplete(input) {
-        const list = input.parentElement.querySelector('.autocomplete-list');
-        renderAutocompleteList(list, input.value, true);
+        activeAcInput = input;
+        renderAutocompleteList(input.value, true);
     }
 
     function filterAutocomplete(input) {
-        const list = input.parentElement.querySelector('.autocomplete-list');
-        renderAutocompleteList(list, input.value, false);
+        activeAcInput = input;
+        renderAutocompleteList(input.value, false);
     }
 
     function toggleAutocomplete(arrow) {
         const input = arrow.parentElement.querySelector('.item-desc');
-        const list = arrow.parentElement.querySelector('.autocomplete-list');
-        if (list.style.display === 'block') {
-            list.style.display = 'none';
+        if (activeAcInput === input && globalAcList.style.display === 'block') {
+            globalAcList.style.display = 'none';
         } else {
+            activeAcInput = input;
             input.focus();
-            renderAutocompleteList(list, input.value, true);
+            renderAutocompleteList(input.value, true);
         }
     }
 
     document.addEventListener('click', function(e) {
-        if (!e.target.closest('.autocomplete-wrapper')) {
-            document.querySelectorAll('.autocomplete-list').forEach(list => list.style.display = 'none');
+        if (!e.target.closest('.autocomplete-wrapper') && e.target !== globalAcList && !globalAcList.contains(e.target)) {
+            globalAcList.style.display = 'none';
         }
     });
+
+    window.addEventListener('scroll', () => {
+        if (activeAcInput && globalAcList.style.display === 'block') {
+            positionAutocompleteList(activeAcInput);
+        }
+    }, true);
 
     // ── Fetch next invoice number ────────────────
     async function fetchNextInvoiceNo() {
@@ -697,7 +720,6 @@
                 <div class="autocomplete-wrapper">
                     <input type="text" class="item-input item-desc" placeholder="Search product..." autocomplete="off" onfocus="showAutocomplete(this)" oninput="filterAutocomplete(this)" onchange="handleProductSelect(this)">
                     <div class="autocomplete-arrow" onclick="toggleAutocomplete(this)">▼</div>
-                    <div class="autocomplete-list"></div>
                 </div>
             </td>
             <td><input type="number" class="item-input item-qty" value="1" min="1"
