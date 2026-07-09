@@ -240,9 +240,14 @@
 <!-- ── MAIN ────────────────────────────────── -->
 <main class="main">
     <div class="header">
-        <div class="title">
-            <h1>Recent Invoices</h1>
-            <p>Manage and cancel generated invoices.</p>
+        <div class="title" style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+            <div>
+                <h1>Recent Invoices</h1>
+                <p>Manage and cancel generated invoices.</p>
+            </div>
+            <button class="btn" onclick="forceSyncSheets(event)" style="width:auto; padding:0.5rem 1rem !important; min-height:0;">
+                Sync to Google Sheets
+            </button>
         </div>
     </div>
 
@@ -375,22 +380,41 @@
     }
     
     async function cancelInvoice(id) {
-        if (!confirm('Are you sure you want to cancel this invoice? This will restore the items back into inventory.')) return;
+        if (!confirm('Are you sure you want to cancel this invoice? The items will be returned to inventory.')) return;
         
         try {
-            const res = await fetch('/api/invoice/cancel/' + id, { method: 'POST' });
+            const res = await fetch(`/api/invoice/cancel/${id}`, { method: 'POST' });
             const data = await res.json();
-            
             if (res.ok) {
-                showToast(data.message || 'Invoice cancelled successfully', 'success');
-                closeModal();
-                loadHistory(); // reload table
+                alert('Invoice cancelled successfully!');
+                loadHistory(); // Reload table
             } else {
-                showToast(data.error || 'Failed to cancel', 'error');
+                alert('Error: ' + data.error);
+            }
+        } catch (e) {
+            console.error(e);
+            alert('Network error cancelling invoice.');
+        }
+    }
+
+    async function forceSyncSheets(event) {
+        if (!confirm('This will force upload all local invoices and inventory to Google Sheets. Continue?')) return;
+        const btn = event.target;
+        const originalText = btn.textContent;
+        btn.textContent = 'Syncing...';
+        btn.disabled = true;
+        try {
+            const res = await fetch('/api/invoice/sync_sheets', { method: 'POST' });
+            if (res.ok) {
+                alert('Sync successful! All data pushed to Google Sheets.');
+            } else {
+                alert('Failed to sync sheets');
             }
         } catch(e) {
-            showToast('Network error', 'error');
+            alert('Error: ' + e);
         }
+        btn.textContent = originalText;
+        btn.disabled = false;
     }
     
     function closeModal() {

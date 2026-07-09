@@ -35,6 +35,18 @@ def get_sold_qty_col_idx(all_headers, date_str):
 
 invoice_api = Blueprint('invoice_api', __name__)
 
+@invoice_api.route('/api/invoice/sync_sheets', methods=['POST'])
+def sync_sheets_api():
+    try:
+        from init_gsheets import init_google_sheets
+        import threading
+        t = threading.Thread(target=init_google_sheets)
+        t.daemon = True
+        t.start()
+        return jsonify({'success': True}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 DB_PATH = 'ledger.db'
 
 def init_db():
