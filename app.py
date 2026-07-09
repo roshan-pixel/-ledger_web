@@ -10,13 +10,13 @@ from init_gsheets import init_google_sheets
 
 app = Flask(__name__)
 
+from invoice_api import invoice_api
+app.register_blueprint(invoice_api)
+
 # Run sync on startup (only if credentials exist, e.g. on Render or local with key)
 if os.path.exists('credentials.json') or os.path.exists('/etc/secrets/credentials.json'):
     print("Starting initial sync from Google Sheets...")
     restore_from_gsheets()
-
-from invoice_api import invoice_api
-app.register_blueprint(invoice_api)
 
 DB_PATH = 'ledger.db'
 
