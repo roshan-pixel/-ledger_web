@@ -89,7 +89,7 @@ def init_google_sheets():
         
         sheet_data.append([
             r['id'], 
-            r['invoice_no'], 
+            f"'{r['invoice_no']}", 
             r['ds_code'], 
             r['customer_name'], 
             r['amount'], 
