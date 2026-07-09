@@ -54,6 +54,19 @@ def restore_from_gsheets():
         except Exception as e:
             print("Error restoring KPIs:", e)
             
+        # 4. Invoices
+        try:
+            inv_ws = sheet.worksheet('Invoices')
+            inv_data = inv_ws.get_all_values()
+            if len(inv_data) > 1:
+                c.execute("DELETE FROM invoices")
+                for row in inv_data[1:]:
+                    # ID, Invoice No, DS Code, Customer Name, Amount, Date Created, Items, Status, Total SP
+                    while len(row) < 9: row.append('')
+                    c.execute("INSERT INTO invoices (id, invoice_no, ds_code, customer_name, amount, date_created, items, status, total_sp) VALUES (?,?,?,?,?,?,?,?,?)", row)
+        except Exception as e:
+            print("Error restoring Invoices:", e)
+            
         conn.commit()
         conn.close()
         print("Restore complete!")

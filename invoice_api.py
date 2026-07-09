@@ -2,6 +2,8 @@ from flask import Blueprint, request, jsonify
 import sqlite3
 import datetime
 import json
+import threading
+from init_gsheets import init_google_sheets
 
 
 invoice_api = Blueprint('invoice_api', __name__)
@@ -135,6 +137,14 @@ def create_invoice():
             except Exception as ex:
                 print("Failed to start portal submission:", ex)
         
+        # Trigger background sync to Google Sheets so data survives Render restarts
+        try:
+            t = threading.Thread(target=init_google_sheets)
+            t.daemon = True
+            t.start()
+        except Exception as e:
+            print("Failed to start gsheets sync:", e)
+
         return jsonify({
             'success': True,
             'message': 'Invoice created successfully (syncing to portal in background)',
@@ -291,6 +301,14 @@ def cancel_invoice(invoice_id):
         
         conn.commit()
         conn.close()
+        
+        # Trigger background sync to Google Sheets
+        try:
+            t = threading.Thread(target=init_google_sheets)
+            t.daemon = True
+            t.start()
+        except Exception as e:
+            print("Failed to start gsheets sync:", e)
         
         return jsonify({'success': True, 'message': 'Invoice cancelled and inventory restored.'}), 200
     except Exception as e:

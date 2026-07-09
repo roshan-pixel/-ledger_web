@@ -76,9 +76,22 @@ def init_google_sheets():
         
     c.execute("SELECT * FROM invoices")
     rows = c.fetchall()
-    sheet_data = [['ID', 'Customer Name', 'Amount', 'Date Created', 'Customer ID']]
+    sheet_data = [['ID', 'Invoice No', 'DS Code', 'Customer Name', 'Amount', 'Date Created', 'Items', 'Status', 'Total SP']]
     for r in rows:
-        sheet_data.append([r['id'], r['customer_name'], r['amount'], r['date_created'], r['customer_id']])
+        keys = r.keys()
+        status_val = r['status'] if 'status' in keys else 'active'
+        total_sp_val = r['total_sp'] if 'total_sp' in keys else 0.0
+        sheet_data.append([
+            r['id'], 
+            r['invoice_no'], 
+            r['ds_code'], 
+            r['customer_name'], 
+            r['amount'], 
+            r['date_created'], 
+            r['items'], 
+            status_val, 
+            total_sp_val
+        ])
     inv_ws.clear()
     inv_ws.update(values=sheet_data, range_name='A1')
     
