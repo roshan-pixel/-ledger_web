@@ -149,6 +149,19 @@ def list_invoices():
     try:
         conn = get_db()
         c = conn.cursor()
+        
+        c.execute("SELECT c3, c27 FROM inventory WHERE c3 IS NOT NULL")
+        sp_map = {}
+        for r_inv in c.fetchall():
+            k = r_inv['c3']
+            v = r_inv['c27']
+            if k:
+                norm_k = str(k).replace(' -', '').strip().upper()
+                try:
+                    sp_map[norm_k] = float(str(v or '0').replace(',', '').strip())
+                except:
+                    pass
+                    
         c.execute('SELECT * FROM invoices ORDER BY id DESC')
         rows = c.fetchall()
         
@@ -161,7 +174,16 @@ def list_invoices():
             
             db_sp = r['total_sp'] if 'total_sp' in keys else 0.0
             if db_sp == 0.0 and items_json:
-                db_sp = sum(float(str(item.get('total_sp', '0')).replace(',', '')) for item in items_json)
+                calc_sp = 0.0
+                for item in items_json:
+                    if 'total_sp' in item:
+                        calc_sp += float(str(item.get('total_sp', '0')).replace(',', ''))
+                    else:
+                        name = str(item.get('name') or item.get('description') or '').replace(' -', '').strip().upper()
+                        qty = float(str(item.get('qty', 0)))
+                        unit_sp = sp_map.get(name, 0.0)
+                        calc_sp += qty * unit_sp
+                db_sp = calc_sp
                 
             invoices.append({
                 'id': r['id'],
