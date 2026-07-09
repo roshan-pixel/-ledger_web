@@ -39,13 +39,11 @@ invoice_api = Blueprint('invoice_api', __name__)
 def sync_sheets_api():
     try:
         from init_gsheets import init_google_sheets
-        import threading
-        t = threading.Thread(target=init_google_sheets)
-        t.daemon = True
-        t.start()
+        init_google_sheets()
         return jsonify({'success': True}), 200
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        import traceback
+        return jsonify({'error': str(e), 'traceback': traceback.format_exc()}), 500
 
 DB_PATH = 'ledger.db'
 
