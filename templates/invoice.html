@@ -498,7 +498,6 @@
 </div><!-- /card -->
 </main>
 
-<datalist id="inventoryList"></datalist>
 <div id="toast"></div>
 
 <script>
@@ -506,6 +505,7 @@
     document.getElementById('invoiceDate').valueAsDate = new Date();
     let inventoryData = [];
     let customerFound = false;
+    let inventoryOptionsHtml = '<option value="" disabled selected>Select product...</option>';
 
     // ── Load inventory for autocomplete ───────────────
     async function loadInventory() {
@@ -513,14 +513,19 @@
             const res  = await fetch('/api/inventory');
             const json = await res.json();
             inventoryData = Array.isArray(json) ? json : (json.data || []);
-            const dl = document.getElementById('inventoryList');
+            
             inventoryData.forEach(item => {
                 const name = item['Product Name'] || item.Product || item['Item Name'] || '';
                 if (name) {
-                    const opt = document.createElement('option');
-                    opt.value = name;
-                    dl.appendChild(opt);
+                    const safeName = name.replace(/"/g, '&quot;');
+                    inventoryOptionsHtml += `<option value="${safeName}">${safeName}</option>`;
                 }
+            });
+            // Update existing selects
+            document.querySelectorAll('.item-desc').forEach(select => {
+                const currentVal = select.value;
+                select.innerHTML = inventoryOptionsHtml;
+                if (currentVal) select.value = currentVal;
             });
         } catch(e) { console.error('Inventory load failed', e); }
     }
@@ -632,9 +637,9 @@
     function makeRow() {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td><input type="text" list="inventoryList" class="item-input item-desc"
-                placeholder="Type product name..."
-                oninput="handleProductSelect(this)" onchange="handleProductSelect(this)"></td>
+            <td><select class="item-input item-desc" onchange="handleProductSelect(this)">
+                ${typeof inventoryOptionsHtml !== 'undefined' ? inventoryOptionsHtml : '<option value="" disabled selected>Select product...</option>'}
+            </select></td>
             <td><input type="number" class="item-input item-qty" value="1" min="1"
                 oninput="calculateRow(this.closest('tr'))"></td>
             <td><input type="number" class="item-input item-price" value="0.00" min="0" step="0.01"
