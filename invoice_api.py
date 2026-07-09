@@ -63,7 +63,8 @@ def create_invoice():
         amount = 0.0
         
     try:
-        total_sp = float(data.get('grandTotalSP', 0))
+        sp_str = str(data.get('grandTotalSP', '0')).replace('₹', '').replace(',', '').strip()
+        total_sp = float(sp_str)
     except:
         total_sp = 0.0
         
@@ -156,7 +157,12 @@ def list_invoices():
             # sqlite3.Row doesn't have .get(), so we check keys
             keys = r.keys()
             status_val = r['status'] if 'status' in keys else 'active'
+            items_json = json.loads(r['items'] or '[]')
             
+            db_sp = r['total_sp'] if 'total_sp' in keys else 0.0
+            if db_sp == 0.0 and items_json:
+                db_sp = sum(float(str(item.get('total_sp', '0')).replace(',', '')) for item in items_json)
+                
             invoices.append({
                 'id': r['id'],
                 'invoice_no': r['invoice_no'],
@@ -164,9 +170,9 @@ def list_invoices():
                 'customer_name': r['customer_name'],
                 'amount': r['amount'],
                 'date_created': r['date_created'],
-                'items': json.loads(r['items'] or '[]'),
                 'status': status_val,
-                'grand_total_sp': r['total_sp'] if 'total_sp' in keys else 0.0
+                'items': items_json,
+                'grand_total_sp': db_sp
             })
             
         conn.close()
