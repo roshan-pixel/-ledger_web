@@ -140,19 +140,18 @@ def create_invoice():
                 qty_sold = float(item.get('qty', 0))
                 
                 if desc and qty_sold > 0:
-                    # Find the product in inventory
-                    c.execute("SELECT row_num, c{} FROM inventory WHERE c3=?".format(sold_qty_col_idx), (desc,))
-                    row = c.fetchone()
-                    if row:
-                        row_num = row['row_num']
-                        current_sold = float(row[1] or 0)
-                        new_sold = current_sold + qty_sold
-                        
-                        # Update the Sold Qty column
-                        c.execute(f"UPDATE inventory SET c{sold_qty_col_idx}=? WHERE row_num=?", (new_sold, row_num))
-                        
-                        # Recalculate remaining qty and value
-                        update_inventory_formulas(conn, row_num, all_headers)
+                    norm_desc = desc.replace(' -', '').strip().upper()
+                    c.execute(f"SELECT row_num, c3, c{sold_qty_col_idx} FROM inventory WHERE c3 IS NOT NULL AND c3 != ''")
+                    for inv_row in c.fetchall():
+                        c3_val = inv_row['c3'].replace(' -', '').strip().upper()
+                        if c3_val == norm_desc:
+                            row_num = inv_row['row_num']
+                            current_sold = float(inv_row[2] or 0)
+                            new_sold = current_sold + qty_sold
+                            
+                            c.execute(f"UPDATE inventory SET c{sold_qty_col_idx}=? WHERE row_num=?", (new_sold, row_num))
+                            update_inventory_formulas(conn, row_num, all_headers)
+                            break
         
         # Also update the TOTAL row
         from app import update_totals_row
@@ -312,16 +311,19 @@ def cancel_invoice(invoice_id):
                 qty_sold = float(item.get('qty', 0))
                 
                 if desc and qty_sold > 0:
-                    c.execute("SELECT row_num, c{} FROM inventory WHERE c3=?".format(sold_qty_col_idx), (desc,))
-                    inv_row = c.fetchone()
-                    if inv_row:
-                        row_num = inv_row['row_num']
-                        current_sold = float(inv_row[1] or 0)
-                        # We subtract because we are cancelling the invoice
-                        new_sold = max(0, current_sold - qty_sold)
-                        
-                        c.execute(f"UPDATE inventory SET c{sold_qty_col_idx}=? WHERE row_num=?", (new_sold, row_num))
-                        update_inventory_formulas(conn, row_num, all_headers)
+                    norm_desc = desc.replace(' -', '').strip().upper()
+                    c.execute(f"SELECT row_num, c3, c{sold_qty_col_idx} FROM inventory WHERE c3 IS NOT NULL AND c3 != ''")
+                    for inv_row in c.fetchall():
+                        c3_val = inv_row['c3'].replace(' -', '').strip().upper()
+                        if c3_val == norm_desc:
+                            row_num = inv_row['row_num']
+                            current_sold = float(inv_row[2] or 0)
+                            # We subtract because we are cancelling the invoice
+                            new_sold = max(0, current_sold - qty_sold)
+                            
+                            c.execute(f"UPDATE inventory SET c{sold_qty_col_idx}=? WHERE row_num=?", (new_sold, row_num))
+                            update_inventory_formulas(conn, row_num, all_headers)
+                            break
         
         # 3. Update the invoice status to cancelled in the DB
         c.execute("UPDATE invoices SET status = 'cancelled' WHERE id = ?", (invoice_id,))

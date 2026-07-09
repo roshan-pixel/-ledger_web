@@ -50,13 +50,19 @@ def fix_inventory():
             qty = float(item.get('qty', 0))
             
             if desc and qty > 0:
-                c.execute("SELECT row_num, c{} FROM inventory WHERE c3=?".format(sold_qty_col_idx), (desc,))
-                inv_row = c.fetchone()
-                if inv_row:
-                    row_num = inv_row['row_num']
-                    current_sold = float(inv_row[1] or 0)
-                    new_sold = current_sold + qty
-                    c.execute(f"UPDATE inventory SET c{sold_qty_col_idx}=? WHERE row_num=?", (new_sold, row_num))
+                # Normalise description for robust matching
+                norm_desc = desc.replace(' -', '').strip().upper()
+                
+                # We need to find the row where normalized c3 matches norm_desc
+                c.execute(f"SELECT row_num, c3, c{sold_qty_col_idx} FROM inventory WHERE c3 IS NOT NULL AND c3 != ''")
+                for inv_row in c.fetchall():
+                    c3_val = inv_row['c3'].replace(' -', '').strip().upper()
+                    if c3_val == norm_desc:
+                        row_num = inv_row['row_num']
+                        current_sold = float(inv_row[2] or 0)
+                        new_sold = current_sold + qty
+                        c.execute(f"UPDATE inventory SET c{sold_qty_col_idx}=? WHERE row_num=?", (new_sold, row_num))
+                        break
 
     # 3. Recalculate formulas for all rows
     c.execute("SELECT row_num FROM inventory WHERE UPPER(c3) != 'TOTAL' AND c3 != '' AND c3 IS NOT NULL")
