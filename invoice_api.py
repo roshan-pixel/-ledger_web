@@ -5,6 +5,33 @@ import json
 import threading
 from init_gsheets import init_google_sheets
 
+def get_sold_qty_col_idx(all_headers, date_str):
+    sold_cols = []
+    for i, h in enumerate(all_headers):
+        if str(h).startswith("Sold Qty"):
+            sold_cols.append(i + 1)
+    if not sold_cols:
+        return None
+        
+    try:
+        if 'T' in date_str:
+            dt = datetime.datetime.fromisoformat(date_str)
+        else:
+            dt = datetime.datetime.strptime(date_str[:10], '%Y-%m-%d')
+        day = dt.day
+    except:
+        day = datetime.datetime.now().day
+        
+    if day <= 7: week_idx = 0
+    elif day <= 14: week_idx = 1
+    elif day <= 21: week_idx = 2
+    elif day <= 28: week_idx = 3
+    else: week_idx = 4
+    
+    if week_idx < len(sold_cols):
+        return sold_cols[week_idx]
+    return sold_cols[-1]
+
 
 invoice_api = Blueprint('invoice_api', __name__)
 
@@ -94,12 +121,8 @@ def create_invoice():
         c.execute("SELECT value FROM settings WHERE key='inventory_headers'")
         all_headers = json.loads(c.fetchone()[0])
         
-        # Find the first 'Sold Qty' column
-        sold_qty_col_idx = None
-        for i, h in enumerate(all_headers):
-            if str(h).startswith("Sold Qty"):
-                sold_qty_col_idx = i + 1
-                break
+        # Find the appropriate 'Sold Qty' column based on invoice date
+        sold_qty_col_idx = get_sold_qty_col_idx(all_headers, date_created)
                 
         if sold_qty_col_idx:
             for item in items:
@@ -259,7 +282,7 @@ def cancel_invoice(invoice_id):
         c = conn.cursor()
         
         # 1. Get the invoice to know what to put back
-        c.execute('SELECT items FROM invoices WHERE id = ?', (invoice_id,))
+        c.execute('SELECT items, date_created FROM invoices WHERE id = ?', (invoice_id,))
         row = c.fetchone()
         if not row:
             return jsonify({'error': 'Invoice not found'}), 404
@@ -270,11 +293,8 @@ def cancel_invoice(invoice_id):
         c.execute("SELECT value FROM settings WHERE key='inventory_headers'")
         all_headers = json.loads(c.fetchone()[0])
         
-        sold_qty_col_idx = None
-        for i, h in enumerate(all_headers):
-            if str(h).startswith("Sold Qty"):
-                sold_qty_col_idx = i + 1
-                break
+        date_created = row['date_created'] if 'date_created' in row.keys() else ''
+        sold_qty_col_idx = get_sold_qty_col_idx(all_headers, date_created)
                 
         if sold_qty_col_idx:
             for item in items:
