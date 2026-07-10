@@ -122,9 +122,9 @@
           "how_to_take": "Take 15 ml twice a day with an equal amount of warm water."
         },
         {
-          "name": "Heart Safe Blend",
-          "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi (Mulethi-free)",
-          "dosage": "Take 10ml with 100ml warm water on an empty stomach, twice daily."
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Flaxseed and Omega-rich extracts",
+          "dosage": "1 capsule twice daily"
         },
         {
           "product": "THUNDERBLAST RAS",
@@ -145,7 +145,7 @@
         "Anulom Vilom Pranayama (without holding breath) for 10 minutes.",
         "Deep breathing exercises (Diaphragmatic breathing) while lying down or seated comfortably."
       ],
-      "how_to_take_products": "Take 15ml of CARDIODOC RAS mixed with 15ml warm water twice a day after meals. Take 10ml Heart Safe Blend PRAVAHI KWATH on an empty stomach.",
+      "how_to_take_products": "Take 15ml of CARDIODOC RAS mixed with 15ml warm water twice a day after meals. Take 10ml OMEGADOC CAPSULE PRAVAHI KWATH on an empty stomach.",
       "things_to_avoid": [
         "Avoid large volumes of fluids at once to prevent fluid overload.",
         "Avoid excessive physical exertion or exercising in extreme temperatures.",
@@ -161,9 +161,9 @@
           "how_to_take": "Take 15 ml twice a day with an equal amount of warm water."
         },
         {
-          "name": "Heart Safe Blend",
-          "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi (Mulethi-free)",
-          "dosage": "Take 10ml with 100ml warm water on an empty stomach, twice daily."
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Flaxseed and Omega-rich extracts",
+          "dosage": "1 capsule twice daily"
         },
         {
           "name": "ARJUN EXTRACT TABLET",
@@ -226,14 +226,14 @@
       "disease_name": "Atrial Fibrillation",
       "recommended_wellness_products": [
         {
-          "name": "Heart Safe Blend",
-          "ingredients": "Aloevera, Triphala, Arjuna, Ashoka, Jatamansi (Anti-platelet free)",
-          "dosage": "Take 15 ml twice a day with an equal amount of warm water on an empty stomach."
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Flaxseed and Omega-rich extracts",
+          "dosage": "1 capsule twice daily"
         },
         {
-          "name": "Brain Safe Blend",
-          "ingredients": "Honey, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi (Garlic/Turmeric-free)",
-          "dosage": "Take 15 ml twice daily to calm the nervous system and manage stress-induced arrhythmias."
+          "name": "BRAHMI EXTRACT TABLET",
+          "ingredients": "Brahmi leaf extract",
+          "dosage": "1 tablet twice daily"
         }
       ],
       "diet": [
@@ -249,7 +249,7 @@
         "Nadi Shodhana (Alternate Nostril Breathing) for 15 minutes to balance the mind.",
         "Very gentle, restorative stretching avoiding inverted poses."
       ],
-      "how_to_take_products": "Take 15ml of Heart Safe Blend RAS with warm water 30 minutes before breakfast. Take 15ml of Brain Safe Blend PRAVAHI KWATH with water 30 minutes after dinner.",
+      "how_to_take_products": "Take 15ml of OMEGADOC CAPSULE RAS with warm water 30 minutes before breakfast. Take 15ml of BRAHMI EXTRACT TABLET PRAVAHI KWATH with water 30 minutes after dinner.",
       "things_to_avoid": [
         "Strictly avoid caffeine, energy drinks, and excessive chocolate.",
         "Avoid alcohol, as it is a known trigger for atrial fibrillation episodes.",
@@ -261,14 +261,14 @@
       "ayurvedic_tip": "Massage the soles of your feet with warm sesame oil or Brahmi oil before sleeping to ground Vata dosha, reduce anxiety, and promote restful sleep.",
       "final_recommended_products": [
         {
-          "name": "Heart Safe Blend",
-          "ingredients": "Aloevera, Triphala, Arjuna, Ashoka, Jatamansi (Anti-platelet free)",
-          "dosage": "Take 15 ml twice a day with an equal amount of warm water on an empty stomach."
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Flaxseed and Omega-rich extracts",
+          "dosage": "1 capsule twice daily"
         },
         {
-          "name": "Brain Safe Blend",
-          "ingredients": "Honey, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi (Garlic/Turmeric-free)",
-          "dosage": "Take 15 ml twice daily to calm the nervous system and manage stress-induced arrhythmias."
+          "name": "BRAHMI EXTRACT TABLET",
+          "ingredients": "Brahmi leaf extract",
+          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -433,9 +433,9 @@
           "how_to_take": "Take 15 ml twice a day with an equal amount of warm water."
         },
         {
-          "name": "Heart Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Tulsi, Ginger (Mulethi-free)",
-          "dosage": "Take 15 ml once a day to boost immunity and prevent infections (like endocarditis)."
+          "name": "EXE PANCH TULSI OIL",
+          "ingredients": "5 types of Tulsi extract",
+          "dosage": "2-3 drops in warm water twice daily"
         }
       ],
       "diet": [
@@ -451,7 +451,7 @@
         "Gentle Yoga and stretching for flexibility.",
         "Breathing exercises like Anulom Vilom for 10-15 minutes."
       ],
-      "how_to_take_products": "Take 15ml of CARDIODOC RAS with 50ml warm water 30 minutes before breakfast. Take 15ml of Heart Safe Blend RAS before dinner.",
+      "how_to_take_products": "Take 15ml of CARDIODOC RAS with 50ml warm water 30 minutes before breakfast. Take 15ml of EXE PANCH TULSI OIL RAS before dinner.",
       "things_to_avoid": [
         "Avoid poor dental hygiene (brush and floss regularly to prevent endocarditis).",
         "Avoid strenuous physical exertion and heavy lifting.",
@@ -467,9 +467,9 @@
           "how_to_take": "Take 15 ml twice a day with an equal amount of warm water."
         },
         {
-          "name": "Heart Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Tulsi, Ginger (Mulethi-free)",
-          "dosage": "Take 15 ml once a day to boost immunity and prevent infections (like endocarditis)."
+          "name": "EXE PANCH TULSI OIL",
+          "ingredients": "5 types of Tulsi extract",
+          "dosage": "2-3 drops in warm water twice daily"
         }
       ]
     },
@@ -482,9 +482,9 @@
           "how_to_take": "Take 15 ml twice a day with an equal amount of warm water on an empty stomach."
         },
         {
-          "name": "Heart Safe Blend",
-          "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi (Mulethi-free)",
-          "dosage": "Take 10ml with 100ml warm water on an empty stomach, twice daily."
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Flaxseed and Omega-rich extracts",
+          "dosage": "1 capsule twice daily"
         }
       ],
       "diet": [
@@ -500,7 +500,7 @@
         "Gentle stretching and mobility exercises.",
         "Strictly avoid any exercise that involves bearing down (Valsalva maneuver), heavy lifting, or intense isometric holds."
       ],
-      "how_to_take_products": "Take 15ml of CARDIODOC RAS with warm water in the morning. Take 10ml of Heart Safe Blend PRAVAHI KWATH in the afternoon or evening.",
+      "how_to_take_products": "Take 15ml of CARDIODOC RAS with warm water in the morning. Take 10ml of OMEGADOC CAPSULE PRAVAHI KWATH in the afternoon or evening.",
       "things_to_avoid": [
         "Strictly avoid heavy lifting, straining, or intense weightlifting.",
         "Avoid straining during bowel movements (treat constipation promptly).",
@@ -516,9 +516,9 @@
           "how_to_take": "Take 15 ml twice a day with an equal amount of warm water on an empty stomach."
         },
         {
-          "name": "Heart Safe Blend",
-          "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi (Mulethi-free)",
-          "dosage": "Take 10ml with 100ml warm water on an empty stomach, twice daily."
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Flaxseed and Omega-rich extracts",
+          "dosage": "1 capsule twice daily"
         }
       ]
     },
@@ -526,14 +526,14 @@
       "disease_name": "Deep Vein Thrombosis",
       "recommended_wellness_products": [
         {
-          "name": "Vascular Safe Blend",
-          "ingredients": "Aloevera, Triphala, Arjuna, Ashoka, Jatamansi (Anti-platelet free)",
-          "dosage": "Take 15 ml twice a day with an equal amount of warm water."
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Flaxseed and Omega-rich extracts",
+          "dosage": "1 capsule twice daily"
         },
         {
-          "name": "Safe ADIDOC Blend",
-          "ingredients": "Contraindicated ingredients removed from ADIDOC",
-          "dosage": "As directed by physician"
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         }
       ],
       "diet": [
@@ -549,7 +549,7 @@
         "Leg elevation: Raise legs above heart level for 15-20 minutes, 3-4 times a day.",
         "Swimming or water aerobics (if cleared by the doctor)."
       ],
-      "how_to_take_products": "Take 15ml of Vascular Safe Blend RAS with warm water after breakfast. Take 10ml of Safe ADIDOC Blend PRAVAHI KWATH before dinner.",
+      "how_to_take_products": "Take 15ml of OMEGADOC CAPSULE RAS with warm water after breakfast. Take 10ml of GILOY TABLET PRAVAHI KWATH before dinner.",
       "things_to_avoid": [
         "Avoid prolonged sitting or standing; take breaks during long flights or car rides.",
         "Avoid crossing your legs while sitting.",
@@ -561,14 +561,14 @@
       "ayurvedic_tip": "Consume 2-3 cloves of crushed raw garlic on an empty stomach in the morning to leverage its natural anti-platelet and fibrinolytic properties.",
       "final_recommended_products": [
         {
-          "name": "Vascular Safe Blend",
-          "ingredients": "Aloevera, Triphala, Arjuna, Ashoka, Jatamansi (Anti-platelet free)",
-          "dosage": "Take 15 ml twice a day with an equal amount of warm water."
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Flaxseed and Omega-rich extracts",
+          "dosage": "1 capsule twice daily"
         },
         {
-          "name": "Safe ADIDOC Blend",
-          "ingredients": "Contraindicated ingredients removed from ADIDOC",
-          "dosage": "As directed by physician"
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         },
         {
           "name": "OMEGADOC CAPSULE",
@@ -586,9 +586,9 @@
           "how_to_take": "Take 15 ml twice a day with an equal amount of warm water."
         },
         {
-          "name": "Heart Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Tulsi, Ginger (Mulethi-free)",
-          "dosage": "Take 15 ml once daily to support lung function and overall immunity."
+          "name": "EXE PANCH TULSI OIL",
+          "ingredients": "5 types of Tulsi extract",
+          "dosage": "2-3 drops in warm water twice daily"
         }
       ],
       "diet": [
@@ -604,7 +604,7 @@
         "Gentle seated stretching to maintain joint flexibility.",
         "Avoid lifting heavy weights, straining, or intense cardiovascular exercise."
       ],
-      "how_to_take_products": "Take 15ml of CARDIODOC RAS with warm water 30 minutes before breakfast. Take 15ml of Heart Safe Blend RAS before lunch.",
+      "how_to_take_products": "Take 15ml of CARDIODOC RAS with warm water 30 minutes before breakfast. Take 15ml of EXE PANCH TULSI OIL RAS before lunch.",
       "things_to_avoid": [
         "Strictly avoid smoking and exposure to secondhand smoke.",
         "Avoid high altitudes and air travel unless approved by a physician.",
@@ -620,9 +620,9 @@
           "how_to_take": "Take 15 ml twice a day with an equal amount of warm water."
         },
         {
-          "name": "Heart Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Tulsi, Ginger (Mulethi-free)",
-          "dosage": "Take 15 ml once daily to support lung function and overall immunity."
+          "name": "EXE PANCH TULSI OIL",
+          "ingredients": "5 types of Tulsi extract",
+          "dosage": "2-3 drops in warm water twice daily"
         }
       ]
     },
@@ -635,9 +635,9 @@
           "how_to_take": "Take 15-20 ml twice a day with an equal amount of warm water on an empty stomach."
         },
         {
-          "name": "Heart Safe Blend",
-          "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi (Mulethi-free)",
-          "dosage": "Take 10ml with 100ml warm water on an empty stomach, twice daily."
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Flaxseed and Omega-rich extracts",
+          "dosage": "1 capsule twice daily"
         },
         {
           "product": "THUNDERBLAST RAS",
@@ -658,7 +658,7 @@
         "Pranayama (Anulom Vilom) for 15 minutes to improve oxygen delivery.",
         "Cycling or swimming at a moderate pace, stopping if any chest discomfort occurs."
       ],
-      "how_to_take_products": "Take 15ml of CARDIODOC RAS with warm water in the morning. Take 10ml of Heart Safe Blend PRAVAHI KWATH before dinner. Take 10ml THUNDERBLAST RAS at bedtime.",
+      "how_to_take_products": "Take 15ml of CARDIODOC RAS with warm water in the morning. Take 10ml of OMEGADOC CAPSULE PRAVAHI KWATH before dinner. Take 10ml THUNDERBLAST RAS at bedtime.",
       "things_to_avoid": [
         "Avoid sudden, intense physical exertion, especially in cold weather.",
         "Avoid large, heavy meals which divert blood away from the heart.",
@@ -674,9 +674,9 @@
           "how_to_take": "Take 15-20 ml twice a day with an equal amount of warm water on an empty stomach."
         },
         {
-          "name": "Heart Safe Blend",
-          "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi (Mulethi-free)",
-          "dosage": "Take 10ml with 100ml warm water on an empty stomach, twice daily."
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Flaxseed and Omega-rich extracts",
+          "dosage": "1 capsule twice daily"
         },
         {
           "name": "ARJUN EXTRACT TABLET",
@@ -753,9 +753,9 @@
           "dosage_instructions": "20-30ml twice daily, 30 minutes before meals with lukewarm water."
         },
         {
-          "name": "Safe Diabetic Blend",
-          "ingredients": "Aloevera, Triphala, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Apple-free)",
-          "dosage": "15-20ml twice daily, 1 hour after meals."
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "NONIDOC JUICE",
@@ -776,7 +776,7 @@
         "Pranayama (Kapalbhati, Anulom Vilom) for 15 minutes daily.",
         "Light aerobic exercises or cycling for 20 minutes."
       ],
-      "how_to_take_products": "Take  first thing in the morning. Take DIABODOC RAS 30 minutes before lunch and dinner. Take Safe Diabetic Blend RAS 1 hour after meals.",
+      "how_to_take_products": "Take  first thing in the morning. Take DIABODOC RAS 30 minutes before lunch and dinner. Take GILOY TABLET RAS 1 hour after meals.",
       "things_to_avoid": [
         "Sweets, chocolates, and sugar-sweetened beverages.",
         "Sedentary lifestyle and lack of physical activity.",
@@ -792,9 +792,9 @@
           "dosage_instructions": "20-30ml twice daily, 30 minutes before meals with lukewarm water."
         },
         {
-          "name": "Safe Diabetic Blend",
-          "ingredients": "Aloevera, Triphala, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Apple-free)",
-          "dosage": "15-20ml twice daily, 1 hour after meals."
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "NONIDOC JUICE",
@@ -822,9 +822,9 @@
           "dosage_instructions": "20-30ml twice daily, 30 minutes before meals."
         },
         {
-          "name": "Safe Diabetic Blend",
-          "ingredients": "Aloevera, Triphala, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Apple-free)",
-          "dosage": "15-20ml twice daily after meals for immunity and cellular support."
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "SEABUCKDOC JUICE",
@@ -845,7 +845,7 @@
         "Swimming or water aerobics for 30 minutes.",
         "Slow deep breathing exercises for 10 minutes to reduce stress."
       ],
-      "how_to_take_products": "Dilute all juices in an equal amount of lukewarm water. Take SEABUCKDOC JUICE in the morning. DIABODOC RAS should be taken 30 minutes before meals. Safe Diabetic Blend RAS after meals.",
+      "how_to_take_products": "Dilute all juices in an equal amount of lukewarm water. Take SEABUCKDOC JUICE in the morning. DIABODOC RAS should be taken 30 minutes before meals. GILOY TABLET RAS after meals.",
       "things_to_avoid": [
         "Erratic meal timings and skipping meals.",
         "Fasting without medical supervision.",
@@ -861,9 +861,9 @@
           "dosage_instructions": "20-30ml twice daily, 30 minutes before meals."
         },
         {
-          "name": "Safe Diabetic Blend",
-          "ingredients": "Aloevera, Triphala, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Apple-free)",
-          "dosage": "15-20ml twice daily after meals for immunity and cellular support."
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "SEABUCKDOC JUICE",
@@ -935,14 +935,9 @@
       "disease_name": "Hyperthyroidism (Graves' Disease)",
       "recommended_wellness_products": [
         {
-          "name": "Thyroid Safe Blend",
-          "ingredients": "Kanchnar, Guggulu, Ashwagandha, Brahmi, Punarnava, Triphala (Trikatu-free)",
-          "dosage": "15-20ml twice daily with normal water."
-        },
-        {
-          "name": "Thyroid Safe Blend",
-          "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana (Pitta-safe)",
-          "dosage": "15-20ml twice daily or at bedtime to reduce stress and anxiety."
+          "name": "BRAHMI EXTRACT TABLET",
+          "ingredients": "Brahmi leaf extract",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -963,7 +958,7 @@
         "Shavasana (Corpse Pose) for 15 minutes for deep relaxation.",
         "Gentle stretching and restorative Yoga for 15 minutes."
       ],
-      "how_to_take_products": "Take ALOEVERA SYRUP first thing in the morning. Take Thyroid Safe Blend with normal (not hot) water before meals. Take Thyroid Safe Blend at bedtime to ensure restful sleep.",
+      "how_to_take_products": "Take ALOEVERA SYRUP first thing in the morning. Take BRAHMI EXTRACT TABLET with normal (not hot) water before meals. Take BRAHMI EXTRACT TABLET at bedtime to ensure restful sleep.",
       "things_to_avoid": [
         "Spicy, pungent, and overly salty foods.",
         "Excessive exposure to heat and direct sunlight.",
@@ -974,14 +969,9 @@
       "ayurvedic_tip": "Use cooling herbs like coriander (dhaniya) and fennel (saunf) in your daily cooking to pacify the aggravated Pitta dosha.",
       "final_recommended_products": [
         {
-          "name": "Thyroid Safe Blend",
-          "ingredients": "Kanchnar, Guggulu, Ashwagandha, Brahmi, Punarnava, Triphala (Trikatu-free)",
-          "dosage": "15-20ml twice daily with normal water."
-        },
-        {
-          "name": "Thyroid Safe Blend",
-          "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana (Pitta-safe)",
-          "dosage": "15-20ml twice daily or at bedtime to reduce stress and anxiety."
+          "name": "BRAHMI EXTRACT TABLET",
+          "ingredients": "Brahmi leaf extract",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -1004,9 +994,9 @@
           "dosage_instructions": "15-20ml in the morning on an empty stomach."
         },
         {
-          "name": "Pure Fiber Blend",
-          "ingredients": "Natural Dietary Fibers (Fructose-free)",
-          "dosage": "1 scoop daily with a large glass of water before a meal."
+          "name": "DIGIDOC POWDER",
+          "ingredients": "Digestive herbs",
+          "dosage": "1 tsp twice daily after meals"
         }
       ],
       "diet": [
@@ -1022,7 +1012,7 @@
         "Kapalbhati Pranayama for 15 minutes to boost metabolism.",
         "Cycling or swimming for 30 minutes."
       ],
-      "how_to_take_products": "Take ALOEVERA SYRUP in the morning. Mix OBEODOC RAS with warm water and take 30 minutes before lunch and dinner. Take Pure Fiber Blend COMPLEX before meals with plenty of water to increase satiety.",
+      "how_to_take_products": "Take ALOEVERA SYRUP in the morning. Mix OBEODOC RAS with warm water and take 30 minutes before lunch and dinner. Take DIGIDOC POWDER COMPLEX before meals with plenty of water to increase satiety.",
       "things_to_avoid": [
         "Daytime sleeping (Divaswapna).",
         "Excessive consumption of sweet, salty, and sour foods.",
@@ -1038,9 +1028,9 @@
           "dosage_instructions": "20-30ml twice daily, 30 minutes before meals with warm water."
         },
         {
-          "name": "Pure Fiber Blend",
-          "ingredients": "Natural Dietary Fibers (Fructose-free)",
-          "dosage": "1 scoop daily with a large glass of water before a meal."
+          "name": "DIGIDOC POWDER",
+          "ingredients": "Digestive herbs",
+          "dosage": "1 tsp twice daily after meals"
         },
         {
           "name": "SLIMDOC POWDER",
@@ -1240,9 +1230,9 @@
           "dosage_instructions": "15-20ml twice daily for systemic balance."
         },
         {
-          "name": "Brain Safe Blend",
-          "ingredients": "Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi, Lahsoon (Honey-free)",
-          "dosage": "15ml twice daily to manage stress and high cortisol levels."
+          "name": "BRAHMI EXTRACT TABLET",
+          "ingredients": "Brahmi leaf extract",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "ASHWAGANDHA TABLET",
@@ -1263,7 +1253,7 @@
         "Deep breathing and meditation for 20 minutes to lower cortisol.",
         "Water aerobics or swimming for 30 minutes."
       ],
-      "how_to_take_products": "Take IMMUNODOC in the morning and evening. Take ASHWAGANDHA TABLET after meals. Take Brain Safe Blend at bedtime to ensure proper rest and stress relief.",
+      "how_to_take_products": "Take IMMUNODOC in the morning and evening. Take ASHWAGANDHA TABLET after meals. Take BRAHMI EXTRACT TABLET at bedtime to ensure proper rest and stress relief.",
       "things_to_avoid": [
         "High-sodium processed foods and table salt.",
         "Excessive sugar and sweets.",
@@ -1279,9 +1269,9 @@
           "dosage_instructions": "15-20ml twice daily for systemic balance."
         },
         {
-          "name": "Brain Safe Blend",
-          "ingredients": "Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi, Lahsoon (Honey-free)",
-          "dosage": "15ml twice daily to manage stress and high cortisol levels."
+          "name": "BRAHMI EXTRACT TABLET",
+          "ingredients": "Brahmi leaf extract",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "ASHWAGANDHA TABLET",
@@ -1535,14 +1525,14 @@
           "dosage_instructions": "20-30ml twice daily before meals."
         },
         {
-          "name": "Retina Safe Drops",
-          "ingredients": "Rose Petals, Punarnava, Bhringraj, Nirgundi, Harad, Haldi, Tulsi, Neem (Honey-free)",
-          "dosage": "1-2 drops in each eye twice daily."
+          "name": "VITADOC TABLET",
+          "ingredients": "Multivitamin botanical extracts",
+          "dosage": "1 tablet twice daily"
         },
         {
-          "name": "Safe Diabetic Blend",
-          "ingredients": "Aloevera, Triphala, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Apple-free)",
-          "dosage": "15-20ml twice daily after meals."
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         }
       ],
       "diet": [
@@ -1558,7 +1548,7 @@
         "Neck and shoulder stretches for 15 minutes to improve blood flow to the head.",
         "Avoid heavy lifting or straining."
       ],
-      "how_to_take_products": "Take DIABODOC before meals. Instill Retina Safe Drops DROP into clean eyes (ensure hands are washed). Take Safe Diabetic Blend after meals.",
+      "how_to_take_products": "Take DIABODOC before meals. Instill VITADOC TABLET DROP into clean eyes (ensure hands are washed). Take GILOY TABLET after meals.",
       "things_to_avoid": [
         "High sugar and high-glycemic foods.",
         "Strenuous heavy lifting and activities that increase intraocular pressure.",
@@ -1574,14 +1564,14 @@
           "dosage_instructions": "20-30ml twice daily before meals."
         },
         {
-          "name": "Retina Safe Drops",
-          "ingredients": "Rose Petals, Punarnava, Bhringraj, Nirgundi, Harad, Haldi, Tulsi, Neem (Honey-free)",
-          "dosage": "1-2 drops in each eye twice daily."
+          "name": "VITADOC TABLET",
+          "ingredients": "Multivitamin botanical extracts",
+          "dosage": "1 tablet twice daily"
         },
         {
-          "name": "Safe Diabetic Blend",
-          "ingredients": "Aloevera, Triphala, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Apple-free)",
-          "dosage": "15-20ml twice daily after meals."
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -2214,9 +2204,9 @@
           "specific_dosage": "15-20 ml twice daily before meals."
         },
         {
-          "name": "Acid Safe Blend",
-          "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
-          "dosage": "10ml twice daily"
+          "name": "EXE ALOEVERA SYRUP",
+          "ingredients": "Aloe vera juice",
+          "dosage": "15ml twice daily"
         },
         {
           "product_name": "ADIDOC PRAVAHI KWATH",
@@ -2253,9 +2243,9 @@
           "specific_dosage": "15-20 ml twice daily before meals."
         },
         {
-          "name": "Acid Safe Blend",
-          "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
-          "dosage": "10ml twice daily"
+          "name": "EXE ALOEVERA SYRUP",
+          "ingredients": "Aloe vera juice",
+          "dosage": "15ml twice daily"
         },
         {
           "product_name": "ADIDOC PRAVAHI KWATH",
@@ -2274,9 +2264,9 @@
           "specific_dosage": "15-20 ml twice daily before meals."
         },
         {
-          "name": "Acid Safe Blend",
-          "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
-          "dosage": "10ml twice daily"
+          "name": "EXE ALOEVERA SYRUP",
+          "ingredients": "Aloe vera juice",
+          "dosage": "15ml twice daily"
         },
         {
           "product_name": "ADIDOC PRAVAHI KWATH",
@@ -2313,9 +2303,9 @@
           "specific_dosage": "15-20 ml twice daily before meals."
         },
         {
-          "name": "Acid Safe Blend",
-          "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
-          "dosage": "10ml twice daily"
+          "name": "EXE ALOEVERA SYRUP",
+          "ingredients": "Aloe vera juice",
+          "dosage": "15ml twice daily"
         },
         {
           "product_name": "ADIDOC PRAVAHI KWATH",
@@ -2394,9 +2384,9 @@
           "specific_dosage": "15-20 ml twice daily before meals."
         },
         {
-          "name": "Gut Safe Blend",
-          "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
-          "dosage": "10ml twice daily"
+          "name": "EXE ALOEVERA SYRUP",
+          "ingredients": "Aloe vera juice",
+          "dosage": "15ml twice daily"
         },
         {
           "product_name": "ADIDOC PRAVAHI KWATH",
@@ -2433,9 +2423,9 @@
           "specific_dosage": "15-20 ml twice daily before meals."
         },
         {
-          "name": "Gut Safe Blend",
-          "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
-          "dosage": "10ml twice daily"
+          "name": "EXE ALOEVERA SYRUP",
+          "ingredients": "Aloe vera juice",
+          "dosage": "15ml twice daily"
         },
         {
           "product_name": "ADIDOC PRAVAHI KWATH",
@@ -2514,9 +2504,9 @@
           "specific_dosage": "15-20 ml twice daily before meals."
         },
         {
-          "name": "Acid Safe Blend",
-          "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
-          "dosage": "10ml twice daily"
+          "name": "EXE ALOEVERA SYRUP",
+          "ingredients": "Aloe vera juice",
+          "dosage": "15ml twice daily"
         },
         {
           "product_name": "ADIDOC PRAVAHI KWATH",
@@ -2553,9 +2543,9 @@
           "specific_dosage": "15-20 ml twice daily before meals."
         },
         {
-          "name": "Acid Safe Blend",
-          "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
-          "dosage": "10ml twice daily"
+          "name": "EXE ALOEVERA SYRUP",
+          "ingredients": "Aloe vera juice",
+          "dosage": "15ml twice daily"
         },
         {
           "product_name": "ADIDOC PRAVAHI KWATH",
@@ -3860,14 +3850,9 @@
       "category": "Musculoskeletal",
       "recommended_wellness_products": [
         {
-          "name": "Joint Safe Blend",
-          "ingredients": "Salai Guggal, Nirgundi, Malkagni, Rasna, Methi, Hadjod, Haldi (Aloevera-free)",
-          "dosage": "15-20 ml twice a day with equal amount of warm water after meals"
-        },
-        {
-          "name": "Joint Safe Blend",
-          "ingredients": "Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Aloevera/Kokum-free)",
-          "dosage": "15-20 ml twice a day on an empty stomach"
+          "name": "CURCIDOC TABLET",
+          "ingredients": "Curcumin extract (Haldi)",
+          "dosage": "1 tablet twice daily"
         }
       ],
       "diet": [
@@ -3883,7 +3868,7 @@
         "Water aerobics or swimming - 30 minutes, 3 times a week",
         "Yoga asanas like Tadasana (Mountain Pose) and Virabhadrasana (Warrior Pose) - 15 minutes daily"
       ],
-      "how_to_take_products": "Take Joint Safe Blend Ras on an empty stomach in the morning. Take Joint Safe Blend Pravahi Kwath after breakfast and dinner mixed with equal parts warm water. Use warm water to enhance the absorption of the herbs.",
+      "how_to_take_products": "Take CURCIDOC TABLET Ras on an empty stomach in the morning. Take CURCIDOC TABLET Pravahi Kwath after breakfast and dinner mixed with equal parts warm water. Use warm water to enhance the absorption of the herbs.",
       "things_to_avoid": [
         "Avoid cold, dry, and stale food that increases Vata dosha.",
         "Avoid high-impact exercises like jumping or heavy weightlifting.",
@@ -3894,14 +3879,9 @@
       "ayurvedic_tip": "Regularly massage the affected joints with warm sesame oil or Mahanarayan oil to balance Vata, reduce stiffness, and improve blood circulation.",
       "final_recommended_products": [
         {
-          "name": "Joint Safe Blend",
-          "ingredients": "Salai Guggal, Nirgundi, Malkagni, Rasna, Methi, Hadjod, Haldi (Aloevera-free)",
-          "dosage": "15-20 ml twice a day with equal amount of warm water after meals"
-        },
-        {
-          "name": "Joint Safe Blend",
-          "ingredients": "Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Aloevera/Kokum-free)",
-          "dosage": "15-20 ml twice a day on an empty stomach"
+          "name": "CURCIDOC TABLET",
+          "ingredients": "Curcumin extract (Haldi)",
+          "dosage": "1 tablet twice daily"
         },
         {
           "name": "JOINT CURATOR OIL",
@@ -3970,9 +3950,9 @@
           "dosage": "15-20 ml twice a day with equal amount of warm water after meals"
         },
         {
-          "name": "Autoimmune Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Mulethi, Tulsi, Ginger (Ashwagandha-free)",
-          "dosage": "15-20 ml twice a day on an empty stomach"
+          "name": "CURCIDOC TABLET",
+          "ingredients": "Curcumin extract (Haldi)",
+          "dosage": "1 tablet twice daily"
         }
       ],
       "diet": [
@@ -3988,7 +3968,7 @@
         "Swimming to maintain mobility without stress on joints - 30 minutes, 3-4 times a week",
         "Yoga asanas like Bhujangasana (Cobra Pose) and Marjaryasana (Cat-Cow Pose) - 20 minutes daily"
       ],
-      "how_to_take_products": "Take Autoimmune Safe Blend Ras early in the morning mixed with warm water to modulate the immune system. Take Orthodoc Pravahi Kwath 30 minutes after meals to manage pain and inflammation.",
+      "how_to_take_products": "Take CURCIDOC TABLET Ras early in the morning mixed with warm water to modulate the immune system. Take Orthodoc Pravahi Kwath 30 minutes after meals to manage pain and inflammation.",
       "things_to_avoid": [
         "Avoid pro-inflammatory foods like red meat and processed meats.",
         "Strictly avoid nightshades (tomatoes, eggplants, bell peppers) if they trigger symptoms.",
@@ -4004,9 +3984,9 @@
           "dosage": "15-20 ml twice a day with equal amount of warm water after meals"
         },
         {
-          "name": "Autoimmune Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Mulethi, Tulsi, Ginger (Ashwagandha-free)",
-          "dosage": "15-20 ml twice a day on an empty stomach"
+          "name": "CURCIDOC TABLET",
+          "ingredients": "Curcumin extract (Haldi)",
+          "dosage": "1 tablet twice daily"
         },
         {
           "name": "JOINT CURATOR OIL",
@@ -4020,14 +4000,9 @@
       "category": "Musculoskeletal",
       "recommended_wellness_products": [
         {
-          "name": "Vata Safe Blend",
-          "ingredients": "Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Aloevera-free)",
-          "dosage": "15-20 ml twice a day on an empty stomach"
-        },
-        {
-          "name": "Pain Relief Blend",
-          "ingredients": "Salai Guggal, Nirgundi, Malkagni, Rasna, Methi, Hadjod, Haldi (Aloevera-free)",
-          "dosage": "15-20 ml twice a day with equal amount of warm water after meals"
+          "name": "CURCIDOC TABLET",
+          "ingredients": "Curcumin extract (Haldi)",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "ADIDOC PRAVAHI KWATH",
@@ -4048,7 +4023,7 @@
         "Walking at a comfortable pace in nature - 20 minutes daily",
         "Deep relaxation techniques like Yoga Nidra - 15-20 minutes daily"
       ],
-      "how_to_take_products": "Take Vata Safe Blend Ras in the morning and Adidoc Pravahi Kwath in the evening on an empty stomach. Take Pain Relief Blend Pravahi Kwath after lunch and dinner to alleviate muscle pain. Ensure consistent timing.",
+      "how_to_take_products": "Take CURCIDOC TABLET Ras in the morning and Adidoc Pravahi Kwath in the evening on an empty stomach. Take CURCIDOC TABLET Pravahi Kwath after lunch and dinner to alleviate muscle pain. Ensure consistent timing.",
       "things_to_avoid": [
         "Avoid caffeine, alcohol, and sugary drinks which can disrupt sleep and increase pain sensitivity.",
         "Avoid artificial sweeteners and MSG.",
@@ -4059,14 +4034,9 @@
       "ayurvedic_tip": "Practice Abhyanga (self-massage) with warm Ashwagandha or Bala oil daily before showering to calm the nervous system, reduce muscle tension, and pacify Vata dosha.",
       "final_recommended_products": [
         {
-          "name": "Vata Safe Blend",
-          "ingredients": "Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Aloevera-free)",
-          "dosage": "15-20 ml twice a day on an empty stomach"
-        },
-        {
-          "name": "Pain Relief Blend",
-          "ingredients": "Salai Guggal, Nirgundi, Malkagni, Rasna, Methi, Hadjod, Haldi (Aloevera-free)",
-          "dosage": "15-20 ml twice a day with equal amount of warm water after meals"
+          "name": "CURCIDOC TABLET",
+          "ingredients": "Curcumin extract (Haldi)",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "ADIDOC PRAVAHI KWATH",
@@ -4080,14 +4050,14 @@
       "category": "Musculoskeletal",
       "recommended_wellness_products": [
         {
-          "name": "Joint Safe Blend",
-          "ingredients": "Salai Guggal, Nirgundi, Malkagni, Rasna, Methi, Hadjod, Haldi (Aloevera-free)",
-          "dosage": "15-20 ml twice a day with equal amount of warm water after meals"
+          "name": "CURCIDOC TABLET",
+          "ingredients": "Curcumin extract (Haldi)",
+          "dosage": "1 tablet twice daily"
         },
         {
-          "name": "Joint Safe Blend",
-          "ingredients": "Bhringraja, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Mulethi, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi (Amla-free)",
-          "dosage": "15-20 ml twice a day with water"
+          "name": "ORTHODOC PRAVAHI KWATH",
+          "ingredients": "Joint support herbs",
+          "dosage": "10ml twice daily"
         }
       ],
       "diet": [
@@ -4103,7 +4073,7 @@
         "Isometric neck exercises (pressing head against hands without moving) - 5 minutes daily",
         "Yoga asanas like Makarasana (Crocodile Pose) and Bhujangasana (Cobra Pose) - 15 minutes daily"
       ],
-      "how_to_take_products": "Take Joint Safe Blend Pravahi Kwath in the morning to support tissue healing. Take Joint Safe Blend Pravahi Kwath after meals to reduce neck pain and stiffness.",
+      "how_to_take_products": "Take ORTHODOC PRAVAHI KWATH Pravahi Kwath in the morning to support tissue healing. Take CURCIDOC TABLET Pravahi Kwath after meals to reduce neck pain and stiffness.",
       "things_to_avoid": [
         "Avoid using thick or multiple pillows while sleeping.",
         "Avoid prolonged looking down at mobile phones or laptops (text neck).",
@@ -4114,14 +4084,14 @@
       "ayurvedic_tip": "Apply warm Mahanarayan oil on the neck and shoulder area, followed by a hot compress or steam (Nadi Sweda) to relieve stiffness and pain.",
       "final_recommended_products": [
         {
-          "name": "Joint Safe Blend",
-          "ingredients": "Salai Guggal, Nirgundi, Malkagni, Rasna, Methi, Hadjod, Haldi (Aloevera-free)",
-          "dosage": "15-20 ml twice a day with equal amount of warm water after meals"
+          "name": "CURCIDOC TABLET",
+          "ingredients": "Curcumin extract (Haldi)",
+          "dosage": "1 tablet twice daily"
         },
         {
-          "name": "Joint Safe Blend",
-          "ingredients": "Bhringraja, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Mulethi, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi (Amla-free)",
-          "dosage": "15-20 ml twice a day with water"
+          "name": "ORTHODOC PRAVAHI KWATH",
+          "ingredients": "Joint support herbs",
+          "dosage": "10ml twice daily"
         },
         {
           "name": "JOINT CURATOR OIL",
@@ -4290,9 +4260,9 @@
       "category": "Musculoskeletal",
       "recommended_wellness_products": [
         {
-          "name": "Autoimmune Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Mulethi, Tulsi, Ginger (Ashwagandha-free)",
-          "dosage": "15-20 ml twice a day on an empty stomach"
+          "name": "CURCIDOC TABLET",
+          "ingredients": "Curcumin extract (Haldi)",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "ORTHODOC PRAVAHI KWATH",
@@ -4318,7 +4288,7 @@
         "Gentle stretching to maintain joint flexibility - 15 minutes daily",
         "Yoga and meditation for stress management - 20 minutes daily"
       ],
-      "how_to_take_products": "Take Autoimmune Safe Blend Ras and Alrgydoc Pravahi Kwath in the morning and evening on an empty stomach to detoxify blood and modulate immunity. Take Orthodoc Pravahi Kwath after meals for joint support.",
+      "how_to_take_products": "Take CURCIDOC TABLET Ras and Alrgydoc Pravahi Kwath in the morning and evening on an empty stomach to detoxify blood and modulate immunity. Take Orthodoc Pravahi Kwath after meals for joint support.",
       "things_to_avoid": [
         "Avoid nightshades (tomatoes, potatoes, eggplants) as they may trigger inflammation.",
         "Avoid red meat, processed foods, and refined sugars.",
@@ -4329,9 +4299,9 @@
       "ayurvedic_tip": "Since this involves both skin (Pitta/Rakta) and joints (Vata), apply Neem oil or a soothing herbal paste on skin lesions and avoid incompatible food combinations (Viruddha Ahara) like milk with fish or sour fruits.",
       "final_recommended_products": [
         {
-          "name": "Autoimmune Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Mulethi, Tulsi, Ginger (Ashwagandha-free)",
-          "dosage": "15-20 ml twice a day on an empty stomach"
+          "name": "CURCIDOC TABLET",
+          "ingredients": "Curcumin extract (Haldi)",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "ORTHODOC PRAVAHI KWATH",
@@ -4418,9 +4388,9 @@
           "dosage": "15-20 ml twice a day with water"
         },
         {
-          "name": "Autoimmune Safe Blend",
-          "ingredients": "Amla, Noni, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy (Trikatu-free)",
-          "dosage": "15-20 ml twice a day diluted with water"
+          "name": "CURCIDOC TABLET",
+          "ingredients": "Curcumin extract (Haldi)",
+          "dosage": "1 tablet twice daily"
         }
       ],
       "diet": [
@@ -4447,9 +4417,9 @@
       "ayurvedic_tip": "Lupus involves high Pitta and Ama affecting deeper tissues (Dhatus). Focus on cooling herbs, stress reduction, and maintaining a strict, clean diet to prevent flare-ups.",
       "final_recommended_products": [
         {
-          "name": "Autoimmune Safe Blend",
-          "ingredients": "Amla, Noni, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy (Trikatu-free)",
-          "dosage": "15-20 ml twice a day diluted with water"
+          "name": "CURCIDOC TABLET",
+          "ingredients": "Curcumin extract (Haldi)",
+          "dosage": "1 tablet twice daily"
         },
         {
           "name": "GILOY TABLET",
@@ -4464,14 +4434,9 @@
       "category": "Autoimmune",
       "recommended_wellness_products": [
         {
-          "name": "Dryness Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger-free)",
-          "dosage": "15-20 ml twice a day on an empty stomach"
-        },
-        {
-          "name": "Autoimmune Safe Blend",
-          "ingredients": "Amla, Noni, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy (Trikatu-free)",
-          "dosage": "15-20 ml twice a day diluted with water"
+          "name": "CURCIDOC TABLET",
+          "ingredients": "Curcumin extract (Haldi)",
+          "dosage": "1 tablet twice daily"
         }
       ],
       "diet": [
@@ -4487,7 +4452,7 @@
         "Swimming in non-chlorinated water (if possible) - 30 minutes, 2-3 times a week",
         "Eye exercises to reduce eye strain and promote tear production - 5 minutes daily"
       ],
-      "how_to_take_products": "Take Dryness Safe Blend Ras and  daily with plenty of water. The aloe vera and herbs in these products help internally moisturize and balance the immune system.",
+      "how_to_take_products": "Take CURCIDOC TABLET Ras and  daily with plenty of water. The aloe vera and herbs in these products help internally moisturize and balance the immune system.",
       "things_to_avoid": [
         "Avoid dry, crunchy, and hard-to-swallow foods.",
         "Avoid caffeine and alcohol, which are dehydrating.",
@@ -4498,14 +4463,9 @@
       "ayurvedic_tip": "Sjogren's involves severe aggravation of Vata (causing dryness) and Pitta (causing inflammation). Practice oil pulling (Gandusha) with sesame or coconut oil daily to relieve mouth dryness and maintain oral hygiene.",
       "final_recommended_products": [
         {
-          "name": "Dryness Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger-free)",
-          "dosage": "15-20 ml twice a day on an empty stomach"
-        },
-        {
-          "name": "Autoimmune Safe Blend",
-          "ingredients": "Amla, Noni, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy (Trikatu-free)",
-          "dosage": "15-20 ml twice a day diluted with water"
+          "name": "CURCIDOC TABLET",
+          "ingredients": "Curcumin extract (Haldi)",
+          "dosage": "1 tablet twice daily"
         }
       ],
       "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine. Do not stop immunosuppressants. NEVER replace standard DMARDs, biologics, or immunosuppressants. These are purely adjunctive."
@@ -4618,9 +4578,9 @@
           "dosage": "15-20 ml twice a day with equal amount of water, after meals."
         },
         {
-          "name": "Renal Safe Blend",
-          "ingredients": "Amla, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy, Black Pepper, Long Pepper, Ginger (Noni-free)",
-          "dosage": "15-20 ml twice a day on an empty stomach with warm water."
+          "name": "EXE PUNARNAVA KWATH",
+          "ingredients": "Punarnava extract",
+          "dosage": "10ml twice daily"
         },
         {
           "product_name": "IMMUNODOC RAS",
@@ -4641,7 +4601,7 @@
         "Anulom Vilom Pranayama (Alternate Nostril Breathing) for 10-15 minutes daily.",
         "Bhujangasana (Cobra Pose) for 3-5 minutes, with careful breathing."
       ],
-      "how_to_take_products": "Take Renal Safe Blend and Immunodoc on an empty stomach with warm water, keeping a gap of 15 minutes between the two. Take Stondoc Ras 30-45 minutes after meals with an equal amount of warm water.",
+      "how_to_take_products": "Take EXE PUNARNAVA KWATH and Immunodoc on an empty stomach with warm water, keeping a gap of 15 minutes between the two. Take Stondoc Ras 30-45 minutes after meals with an equal amount of warm water.",
       "things_to_avoid": [
         "Avoid high-sodium, canned, and processed foods.",
         "Avoid holding the urge to urinate (Vegas Dharana).",
@@ -4658,9 +4618,9 @@
           "dosage": "15-20 ml twice a day with equal amount of water, after meals."
         },
         {
-          "name": "Renal Safe Blend",
-          "ingredients": "Amla, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy, Black Pepper, Long Pepper, Ginger (Noni-free)",
-          "dosage": "15-20 ml twice a day on an empty stomach with warm water."
+          "name": "EXE PUNARNAVA KWATH",
+          "ingredients": "Punarnava extract",
+          "dosage": "10ml twice daily"
         },
         {
           "product_name": "IMMUNODOC RAS",
@@ -4684,9 +4644,9 @@
           "dosage": "15-20 ml twice a day with equal amount of water, after meals."
         },
         {
-          "name": "Renal Safe Blend",
-          "ingredients": "Amla, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy, Black Pepper, Long Pepper, Ginger (Noni-free)",
-          "dosage": "15-20 ml twice a day on an empty stomach with warm water."
+          "name": "EXE PUNARNAVA KWATH",
+          "ingredients": "Punarnava extract",
+          "dosage": "10ml twice daily"
         },
         {
           "product_name": "IMMUNODOC RAS",
@@ -4724,9 +4684,9 @@
           "dosage": "15-20 ml twice a day with equal amount of water, after meals."
         },
         {
-          "name": "Renal Safe Blend",
-          "ingredients": "Amla, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy, Black Pepper, Long Pepper, Ginger (Noni-free)",
-          "dosage": "15-20 ml twice a day on an empty stomach with warm water."
+          "name": "EXE PUNARNAVA KWATH",
+          "ingredients": "Punarnava extract",
+          "dosage": "10ml twice daily"
         },
         {
           "product_name": "IMMUNODOC RAS",
@@ -4815,9 +4775,9 @@
           "dosage": "15-20 ml twice a day with equal amount of water, after meals."
         },
         {
-          "name": "Renal Safe Blend",
-          "ingredients": "Amla, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy, Black Pepper, Long Pepper, Ginger (Noni-free)",
-          "dosage": "15-20 ml twice a day on an empty stomach."
+          "name": "EXE PUNARNAVA KWATH",
+          "ingredients": "Punarnava extract",
+          "dosage": "10ml twice daily"
         },
         {
           "product_name": "IMMUNODOC RAS",
@@ -4854,9 +4814,9 @@
           "dosage": "15-20 ml twice a day with equal amount of water, after meals."
         },
         {
-          "name": "Renal Safe Blend",
-          "ingredients": "Amla, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy, Black Pepper, Long Pepper, Ginger (Noni-free)",
-          "dosage": "15-20 ml twice a day on an empty stomach."
+          "name": "EXE PUNARNAVA KWATH",
+          "ingredients": "Punarnava extract",
+          "dosage": "10ml twice daily"
         },
         {
           "product_name": "IMMUNODOC RAS",
@@ -4870,14 +4830,14 @@
       "disease_name": "Benign Prostatic Hyperplasia (BPH)",
       "recommended_wellness_products": [
         {
-          "name": "Prostate Vitality Blend",
-          "ingredients": "Aloevera, Ashwagandha, Vidarikand, Safed Musli, Gokhru, Satawari, Kounch Beej, Shilajeet, Kesar (Pitta-safe)",
-          "dosage": "15-20 ml twice a day with warm water or milk, after meals."
+          "name": "ASHWAGANDHA TABLET",
+          "ingredients": "Ashwagandha root extract",
+          "dosage": "1 tablet twice daily"
         },
         {
-          "name": "Prostate Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger/Kokum-free)",
-          "dosage": "20 ml twice a day, 30 minutes before meals."
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         }
       ],
       "diet": [
@@ -4893,7 +4853,7 @@
         "Walking or swimming for 30-40 minutes daily.",
         "Vajrasana (Diamond Pose) for 5-10 minutes after meals to aid digestion and pelvic blood flow."
       ],
-      "how_to_take_products": "Take Prostate Safe Blend Ras on an empty stomach in the morning and evening. Take Prostate Vitality Blend Ras 30-45 minutes after breakfast and dinner.",
+      "how_to_take_products": "Take GILOY TABLET Ras on an empty stomach in the morning and evening. Take ASHWAGANDHA TABLET Ras 30-45 minutes after breakfast and dinner.",
       "things_to_avoid": [
         "Avoid drinking large amounts of fluids 2-3 hours before bedtime.",
         "Avoid caffeine, alcohol, and carbonated drinks which irritate the bladder.",
@@ -4904,14 +4864,14 @@
       "ayurvedic_tip": "Regularly practice Ashwini Mudra (contraction and relaxation of the anal sphincter) to improve blood circulation to the pelvic region and support prostate health.",
       "final_recommended_products": [
         {
-          "name": "Prostate Vitality Blend",
-          "ingredients": "Aloevera, Ashwagandha, Vidarikand, Safed Musli, Gokhru, Satawari, Kounch Beej, Shilajeet, Kesar (Pitta-safe)",
-          "dosage": "15-20 ml twice a day with warm water or milk, after meals."
+          "name": "ASHWAGANDHA TABLET",
+          "ingredients": "Ashwagandha root extract",
+          "dosage": "1 tablet twice daily"
         },
         {
-          "name": "Prostate Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger/Kokum-free)",
-          "dosage": "20 ml twice a day, 30 minutes before meals."
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         },
         {
           "name": "SHUDDH SHILAJIT CAPSULE",
@@ -4925,19 +4885,14 @@
       "disease_name": "Chronic Prostatitis",
       "recommended_wellness_products": [
         {
-          "name": "Prostate Vitality Blend",
-          "ingredients": "Aloevera, Ashwagandha, Vidarikand, Safed Musli, Gokhru, Satawari, Kounch Beej, Shilajeet, Kesar (Pitta-safe)",
-          "dosage": "15 ml twice a day with warm milk, after meals."
+          "name": "ASHWAGANDHA TABLET",
+          "ingredients": "Ashwagandha root extract",
+          "dosage": "1 tablet twice daily"
         },
         {
-          "name": "Prostate Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger-free)",
-          "dosage": "20 ml twice a day, 30 minutes before meals."
-        },
-        {
-          "name": "Safe PUNARNAVA Blend",
-          "ingredients": "Contraindicated ingredients removed from PUNARNAVA",
-          "dosage": "As directed by physician"
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         }
       ],
       "diet": [
@@ -4953,7 +4908,7 @@
         "Deep pelvic floor relaxation exercises.",
         "Meditation and deep belly breathing for 15-20 minutes daily."
       ],
-      "how_to_take_products": "Take Exe Safe PUNARNAVA Blend Kwath and Prostate Safe Blend Ras 30 mins before meals. Take Prostate Vitality Blend Ras 45 minutes after meals to support rejuvenation and reduce inflammation.",
+      "how_to_take_products": "Take Exe GILOY TABLET Kwath and GILOY TABLET Ras 30 mins before meals. Take ASHWAGANDHA TABLET Ras 45 minutes after meals to support rejuvenation and reduce inflammation.",
       "things_to_avoid": [
         "Avoid spicy, hot, and highly seasoned foods.",
         "Avoid caffeine, alcohol, and acidic drinks.",
@@ -4964,19 +4919,14 @@
       "ayurvedic_tip": "Maintain a balanced lifestyle, manage stress through meditation, and avoid activities that compress the perineum, such as prolonged cycling.",
       "final_recommended_products": [
         {
-          "name": "Prostate Vitality Blend",
-          "ingredients": "Aloevera, Ashwagandha, Vidarikand, Safed Musli, Gokhru, Satawari, Kounch Beej, Shilajeet, Kesar (Pitta-safe)",
-          "dosage": "15 ml twice a day with warm milk, after meals."
+          "name": "ASHWAGANDHA TABLET",
+          "ingredients": "Ashwagandha root extract",
+          "dosage": "1 tablet twice daily"
         },
         {
-          "name": "Prostate Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger-free)",
-          "dosage": "20 ml twice a day, 30 minutes before meals."
-        },
-        {
-          "name": "Safe PUNARNAVA Blend",
-          "ingredients": "Contraindicated ingredients removed from PUNARNAVA",
-          "dosage": "As directed by physician"
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         }
       ],
       "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain."
@@ -5225,14 +5175,14 @@
           "dosage": "15-20 ml twice a day with equal amount of water, after meals."
         },
         {
-          "name": "Urinary Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger/Kokum-free)",
-          "dosage": "20 ml twice a day, 30 minutes before meals."
+          "name": "EXE PUNARNAVA KWATH",
+          "ingredients": "Punarnava extract",
+          "dosage": "10ml twice daily"
         },
         {
-          "name": "Safe ALOEVERA SYRUP Blend",
-          "ingredients": "Contraindicated ingredients removed from ALOEVERA SYRUP",
-          "dosage": "As directed by physician"
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         }
       ],
       "diet": [
@@ -5248,7 +5198,7 @@
         "Shitali Pranayama (Cooling Breath) for 5-10 minutes.",
         "Avoid heavy exercises that generate excessive body heat and sweating."
       ],
-      "how_to_take_products": "Take Exe Safe ALOEVERA SYRUP Blend and Urinary Safe Blend Ras in the morning on an empty stomach. Take Stondoc Ras 30-45 minutes after meals with plenty of water.",
+      "how_to_take_products": "Take Exe GILOY TABLET and EXE PUNARNAVA KWATH Ras in the morning on an empty stomach. Take Stondoc Ras 30-45 minutes after meals with plenty of water.",
       "things_to_avoid": [
         "Avoid spicy, sour, and highly acidic foods.",
         "Avoid holding the urge to urinate.",
@@ -5264,14 +5214,14 @@
           "dosage": "15-20 ml twice a day with equal amount of water, after meals."
         },
         {
-          "name": "Urinary Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger/Kokum-free)",
-          "dosage": "20 ml twice a day, 30 minutes before meals."
+          "name": "EXE PUNARNAVA KWATH",
+          "ingredients": "Punarnava extract",
+          "dosage": "10ml twice daily"
         },
         {
-          "name": "Safe ALOEVERA SYRUP Blend",
-          "ingredients": "Contraindicated ingredients removed from ALOEVERA SYRUP",
-          "dosage": "As directed by physician"
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         }
       ],
       "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain."
@@ -5285,14 +5235,9 @@
           "dosage": "15-20 ml twice a day with equal amount of water, after meals."
         },
         {
-          "name": "Bladder Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger/Kokum-free)",
-          "dosage": "20 ml twice a day, 30 minutes before meals."
-        },
-        {
-          "name": "Bladder Safe Blend",
-          "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana (Non-acidic/Pitta-safe)",
-          "dosage": "10-15 ml twice a day, an hour after meals."
+          "name": "ASHWAGANDHA TABLET",
+          "ingredients": "Ashwagandha root extract",
+          "dosage": "1 tablet twice daily"
         }
       ],
       "diet": [
@@ -5308,7 +5253,7 @@
         "Ashwini Mudra (contracting and releasing the anal sphincter) for 5 minutes.",
         "Relaxation exercises like Yoga Nidra to calm the nervous system."
       ],
-      "how_to_take_products": "Take Bladder Safe Blend Ras before meals. Take Stondoc Ras after meals. Take Bladder Safe Blend Pravahi Kwath to support the nervous control of the bladder later in the day.",
+      "how_to_take_products": "Take ASHWAGANDHA TABLET Ras before meals. Take Stondoc Ras after meals. Take ASHWAGANDHA TABLET Pravahi Kwath to support the nervous control of the bladder later in the day.",
       "things_to_avoid": [
         "Avoid caffeine, alcohol, and artificial sweeteners.",
         "Avoid citrus fruits and tomato-based products.",
@@ -5324,14 +5269,9 @@
           "dosage": "15-20 ml twice a day with equal amount of water, after meals."
         },
         {
-          "name": "Bladder Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger/Kokum-free)",
-          "dosage": "20 ml twice a day, 30 minutes before meals."
-        },
-        {
-          "name": "Bladder Safe Blend",
-          "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana (Non-acidic/Pitta-safe)",
-          "dosage": "10-15 ml twice a day, an hour after meals."
+          "name": "ASHWAGANDHA TABLET",
+          "ingredients": "Ashwagandha root extract",
+          "dosage": "1 tablet twice daily"
         }
       ],
       "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain."
@@ -5683,14 +5623,9 @@
       "category": "HEMATOLOGICAL",
       "recommended_wellness_products": [
         {
-          "name": "Bleeding Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger-free)",
-          "dosage": "15-20 ml twice a day with equal water"
-        },
-        {
-          "name": "Bleeding Safe Blend",
-          "ingredients": "Amla, Noni, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy (Trikatu-free)",
-          "dosage": "15-20 ml twice a day with equal water"
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -5722,14 +5657,9 @@
       "ayurvedic_tip": "Papaya leaf juice and Giloy are extremely beneficial in naturally increasing the blood platelet count and enhancing immunity.",
       "final_recommended_products": [
         {
-          "name": "Bleeding Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger-free)",
-          "dosage": "15-20 ml twice a day with equal water"
-        },
-        {
-          "name": "Bleeding Safe Blend",
-          "ingredients": "Amla, Noni, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy (Trikatu-free)",
-          "dosage": "15-20 ml twice a day with equal water"
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -5750,9 +5680,9 @@
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
-          "name": "Pitta Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger/Kokum-free)",
-          "dosage": "15-20 ml twice a day with equal water"
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -5773,7 +5703,7 @@
         "Walking in fresh air (early morning or late evening) - 30 minutes daily",
         "Yoga Asanas (Trikonasana, Bhujangasana) - 20 minutes daily"
       ],
-      "how_to_take_products": "Consume the liquid products mixed with lukewarm water. Take ALRGYDOC 30 minutes before meals and Pitta Safe Blend after meals.",
+      "how_to_take_products": "Consume the liquid products mixed with lukewarm water. Take ALRGYDOC 30 minutes before meals and GILOY TABLET after meals.",
       "things_to_avoid": [
         "Avoid incompatible food combinations (Viruddha Ahara), especially milk with fish or sour fruits.",
         "Avoid excessively salty, sour, and spicy foods.",
@@ -5789,9 +5719,9 @@
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
-          "name": "Pitta Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger/Kokum-free)",
-          "dosage": "15-20 ml twice a day with equal water"
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -5870,9 +5800,9 @@
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
-          "name": "Pitta Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Kokum-free)",
-          "dosage": "15-20 ml twice a day with equal water"
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -5909,9 +5839,9 @@
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
-          "name": "Pitta Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Kokum-free)",
-          "dosage": "15-20 ml twice a day with equal water"
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -5990,9 +5920,9 @@
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
-          "name": "Pitta Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger/Kokum-free)",
-          "dosage": "15-20 ml twice a day with equal water"
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -6029,9 +5959,9 @@
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
-          "name": "Pitta Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger/Kokum-free)",
-          "dosage": "15-20 ml twice a day with equal water"
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -6050,9 +5980,9 @@
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
-          "name": "Pitta Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Kokum-free)",
-          "dosage": "15-20 ml twice a day with equal water"
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -6089,9 +6019,9 @@
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
-          "name": "Pitta Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Kokum-free)",
-          "dosage": "15-20 ml twice a day with equal water"
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -6110,9 +6040,9 @@
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
-          "name": "Hair Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger-free)",
-          "dosage": "15-20 ml twice a day with equal water"
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -6149,9 +6079,9 @@
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
-          "name": "Hair Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger-free)",
-          "dosage": "15-20 ml twice a day with equal water"
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -6170,9 +6100,9 @@
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
-          "name": "Pitta Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger/Kokum-free)",
-          "dosage": "15-20 ml twice a day with equal water"
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -6209,9 +6139,9 @@
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
-          "name": "Pitta Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger/Kokum-free)",
-          "dosage": "15-20 ml twice a day with equal water"
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -7161,9 +7091,9 @@
           "dosage": "1-2 drops in each eye twice daily"
         },
         {
-          "name": "Eye Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger-free)",
-          "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
+          "name": "VITADOC TABLET",
+          "ingredients": "Multivitamin botanical extracts",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -7184,7 +7114,7 @@
         "Focus shifting: Shift focus from near to far objects for 5 minutes daily.",
         "Anulom Vilom Pranayama (Alternate Nostril Breathing) for 10-15 minutes daily to improve oxygenation."
       ],
-      "how_to_take_products": "Take Eye Safe Blend RAS and EXE ALOEVERA SYRUP internally as directed on an empty stomach. EYEDOC DROP should be applied externally into the eyes using a clean dropper, avoiding contact between the dropper and the eye.",
+      "how_to_take_products": "Take VITADOC TABLET RAS and EXE ALOEVERA SYRUP internally as directed on an empty stomach. EYEDOC DROP should be applied externally into the eyes using a clean dropper, avoiding contact between the dropper and the eye.",
       "things_to_avoid": [
         "Avoid excessive exposure to bright sunlight or UV rays without protection.",
         "Avoid prolonged screen time without breaks.",
@@ -7200,9 +7130,9 @@
           "dosage": "1-2 drops in each eye twice daily"
         },
         {
-          "name": "Eye Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger-free)",
-          "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
+          "name": "VITADOC TABLET",
+          "ingredients": "Multivitamin botanical extracts",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -7401,9 +7331,9 @@
           "dosage": "2 drops in each eye 3 times daily"
         },
         {
-          "name": "Eye Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Kokum-free)",
-          "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
+          "name": "CURCIDOC DROP",
+          "ingredients": "Curcumin extract",
+          "dosage": "2-3 drops in warm water twice daily"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -7424,7 +7354,7 @@
         "Palming for 3-5 minutes, twice daily to rest the eyes.",
         "Avoid heavy physical exertion during active inflammation."
       ],
-      "how_to_take_products": "Use EYEDOC DROP strictly as advised to clear infection and soothe the eye. Take Eye Safe Blend RAS and EXE ALOEVERA SYRUP to boost systemic immunity against chronic infections.",
+      "how_to_take_products": "Use EYEDOC DROP strictly as advised to clear infection and soothe the eye. Take CURCIDOC DROP RAS and EXE ALOEVERA SYRUP to boost systemic immunity against chronic infections.",
       "things_to_avoid": [
         "Avoid touching or rubbing the eyes with unwashed hands.",
         "Avoid sharing towels, pillows, or eye makeup.",
@@ -7440,9 +7370,9 @@
           "dosage": "2 drops in each eye 3 times daily"
         },
         {
-          "name": "Eye Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Kokum-free)",
-          "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
+          "name": "CURCIDOC DROP",
+          "ingredients": "Curcumin extract",
+          "dosage": "2-3 drops in warm water twice daily"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -7456,14 +7386,14 @@
       "category": "OPHTHALMOLOGICAL",
       "recommended_wellness_products": [
         {
-          "name": "Retina Safe Drops",
-          "ingredients": "Rose Petals, Punarnava, Bhringraj, Nirgundi, Harad, Haldi, Tulsi, Neem (Honey-free)",
-          "dosage": "1-2 drops in each eye twice daily"
+          "name": "VITADOC TABLET",
+          "ingredients": "Multivitamin botanical extracts",
+          "dosage": "1 tablet twice daily"
         },
         {
-          "name": "Safe Diabetic Blend",
-          "ingredients": "Aloevera, Triphala, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Apple-free)",
-          "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -7484,7 +7414,7 @@
         "Anulom Vilom Pranayama for 15 minutes to improve microcirculation.",
         "Gentle eye tracking exercises for 3-5 minutes daily."
       ],
-      "how_to_take_products": "Safe Diabetic Blend RAS and EXE ALOEVERA SYRUP should be taken regularly to manage systemic metabolic health and immunity. Retina Safe Drops DROP helps maintain external eye health, but blood sugar control is paramount.",
+      "how_to_take_products": "GILOY TABLET RAS and EXE ALOEVERA SYRUP should be taken regularly to manage systemic metabolic health and immunity. VITADOC TABLET DROP helps maintain external eye health, but blood sugar control is paramount.",
       "things_to_avoid": [
         "Avoid all refined sugars, sweets, and high-carb processed foods.",
         "Avoid sedentary lifestyle and daytime sleeping.",
@@ -7495,14 +7425,14 @@
       "ayurvedic_tip": "A daily intake of Jamun seed powder or bitter gourd juice is highly recommended to keep blood sugar levels in check and protect the retina.",
       "final_recommended_products": [
         {
-          "name": "Retina Safe Drops",
-          "ingredients": "Rose Petals, Punarnava, Bhringraj, Nirgundi, Harad, Haldi, Tulsi, Neem (Honey-free)",
-          "dosage": "1-2 drops in each eye twice daily"
+          "name": "VITADOC TABLET",
+          "ingredients": "Multivitamin botanical extracts",
+          "dosage": "1 tablet twice daily"
         },
         {
-          "name": "Safe Diabetic Blend",
-          "ingredients": "Aloevera, Triphala, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Apple-free)",
-          "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -7521,9 +7451,9 @@
           "dosage": "1-2 drops in each eye twice daily (in conjunction with medical treatment)"
         },
         {
-          "name": "Eye Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Kokum-free)",
-          "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
+          "name": "CURCIDOC TABLET",
+          "ingredients": "Curcumin extract (Haldi)",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -7544,7 +7474,7 @@
         "Gentle breathing exercises (Pranayama) like Shitali and Sitkari for 10 minutes.",
         "Avoid any exercise that increases body heat or causes sweating."
       ],
-      "how_to_take_products": "Take Eye Safe Blend RAS to help modulate the immune system and reduce systemic inflammation. EYEDOC DROP can be used for its soothing herbs, but ensure it does not replace prescribed steroidal/anti-inflammatory drops.",
+      "how_to_take_products": "Take CURCIDOC TABLET RAS to help modulate the immune system and reduce systemic inflammation. EYEDOC DROP can be used for its soothing herbs, but ensure it does not replace prescribed steroidal/anti-inflammatory drops.",
       "things_to_avoid": [
         "Avoid all sour, salty, spicy, and fermented foods (Pitta-aggravating).",
         "Avoid exposure to bright sunlight and heat.",
@@ -7560,9 +7490,9 @@
           "dosage": "1-2 drops in each eye twice daily (in conjunction with medical treatment)"
         },
         {
-          "name": "Eye Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Kokum-free)",
-          "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
+          "name": "CURCIDOC TABLET",
+          "ingredients": "Curcumin extract (Haldi)",
+          "dosage": "1 tablet twice daily"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -7891,11 +7821,6 @@
           "product_name": "EXE PANCH TULSI OIL",
           "ingredients": "Each 10ml contains Rama Tulsi 2ml, Shyama Tulsi 2ml, Van Tulsi 2ml, Sweat Tulsi 2ml, Sri Tulsi 2ml",
           "dosage": "1-2 drops mixed in warm water for gargling and drinking, twice daily"
-        },
-        {
-          "name": "Throat Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Kokum-free)",
-          "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
         }
       ],
       "diet": [
@@ -7911,7 +7836,7 @@
         "Gentle neck stretches to relieve tension around the larynx.",
         "Bhramari Pranayama (Bee Breath) at a very low volume to gently massage the vocal cords."
       ],
-      "how_to_take_products": "Take Throat Safe Blend RAS and ALRGYDOC PRAVAHI KWATH to reduce inflammation and fight infection. Use EXE PANCH TULSI OIL in warm water for regular gargling to soothe the throat.",
+      "how_to_take_products": "Take EXE PANCH TULSI OIL RAS and ALRGYDOC PRAVAHI KWATH to reduce inflammation and fight infection. Use EXE PANCH TULSI OIL in warm water for regular gargling to soothe the throat.",
       "things_to_avoid": [
         "Avoid speaking loudly, shouting, or whispering.",
         "Avoid smoking and exposure to secondhand smoke.",
@@ -7930,11 +7855,6 @@
           "product_name": "EXE PANCH TULSI OIL",
           "ingredients": "Each 10ml contains Rama Tulsi 2ml, Shyama Tulsi 2ml, Van Tulsi 2ml, Sweat Tulsi 2ml, Sri Tulsi 2ml",
           "dosage": "1-2 drops mixed in warm water for gargling and drinking, twice daily"
-        },
-        {
-          "name": "Throat Safe Blend",
-          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Kokum-free)",
-          "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
         },
         {
           "name": "COUGHDOC PRAVAHI KWATH",
