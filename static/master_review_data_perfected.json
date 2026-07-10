@@ -142,9 +142,9 @@
           "how_to_take": "Take 15 ml twice a day with an equal amount of warm water."
         },
         {
-          "product": "ADIDOC PRAVAHI KWATH",
-          "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Mulethi, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi",
-          "how_to_take": "Take 10ml with 100ml warm water on an empty stomach, twice daily."
+          "name": "Heart Safe Blend",
+          "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi (Mulethi-free)",
+          "dosage": "10ml twice daily with water"
         },
         {
           "product": "THUNDERBLAST RAS",
@@ -181,9 +181,9 @@
           "how_to_take": "Take 15 ml twice a day with an equal amount of warm water."
         },
         {
-          "product": "ADIDOC PRAVAHI KWATH",
-          "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Mulethi, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi",
-          "how_to_take": "Take 10ml with 100ml warm water on an empty stomach, twice daily."
+          "name": "Heart Safe Blend",
+          "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi (Mulethi-free)",
+          "dosage": "10ml twice daily with water"
         },
         {
           "name": "NONIDOC JUICE",
@@ -200,7 +200,8 @@
           "ingredients": "Terminalia arjuna",
           "dosage": "1 tablet twice daily"
         }
-      ]
+      ],
+      "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine. Must be monitored by a cardiologist."
     },
     {
       "disease_name": "Rheumatic Heart Disease",
@@ -265,14 +266,14 @@
       "disease_name": "Atrial Fibrillation",
       "recommended_wellness_products": [
         {
-          "product": "CARDIODOC RAS",
-          "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "Take 15 ml twice a day with an equal amount of warm water on an empty stomach."
+          "name": "Heart Safe Blend",
+          "ingredients": "Aloevera, Triphala, Arjuna, Ashoka, Jatamansi (Anti-platelet free)",
+          "dosage": "10ml twice daily with water"
         },
         {
-          "product": "BRAINDOC PRAVAHI KWATH",
-          "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi, Lahsoon",
-          "how_to_take": "Take 15 ml twice daily to calm the nervous system and manage stress-induced arrhythmias."
+          "name": "Brain Safe Blend",
+          "ingredients": "Honey, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi (Garlic/Turmeric-free)",
+          "dosage": "10ml twice daily with water"
         }
       ],
       "diet": [
@@ -300,14 +301,14 @@
       "ayurvedic_tip": "Massage the soles of your feet with warm sesame oil or Brahmi oil before sleeping to ground Vata dosha, reduce anxiety, and promote restful sleep.",
       "final_recommended_products": [
         {
-          "product": "CARDIODOC RAS",
-          "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "Take 15 ml twice a day with an equal amount of warm water on an empty stomach."
+          "name": "Heart Safe Blend",
+          "ingredients": "Aloevera, Triphala, Arjuna, Ashoka, Jatamansi (Anti-platelet free)",
+          "dosage": "10ml twice daily with water"
         },
         {
-          "product": "BRAINDOC PRAVAHI KWATH",
-          "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi, Lahsoon",
-          "how_to_take": "Take 15 ml twice daily to calm the nervous system and manage stress-induced arrhythmias."
+          "name": "Brain Safe Blend",
+          "ingredients": "Honey, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi (Garlic/Turmeric-free)",
+          "dosage": "10ml twice daily with water"
         },
         {
           "name": "NONIDOC JUICE",
@@ -512,9 +513,9 @@
           "how_to_take": "Take 15 ml twice a day with an equal amount of warm water."
         },
         {
-          "product": "IMMUNODOC RAS",
-          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger",
-          "how_to_take": "Take 15 ml once a day to boost immunity and prevent infections (like endocarditis)."
+          "name": "Heart Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Tulsi, Ginger (Mulethi-free)",
+          "dosage": "10ml twice daily with water"
         }
       ],
       "diet": [
@@ -546,9 +547,9 @@
           "how_to_take": "Take 15 ml twice a day with an equal amount of warm water."
         },
         {
-          "product": "IMMUNODOC RAS",
-          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger",
-          "how_to_take": "Take 15 ml once a day to boost immunity and prevent infections (like endocarditis)."
+          "name": "Heart Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Tulsi, Ginger (Mulethi-free)",
+          "dosage": "10ml twice daily with water"
         },
         {
           "name": "NONIDOC JUICE",
@@ -571,9 +572,9 @@
           "how_to_take": "Take 15 ml twice a day with an equal amount of warm water on an empty stomach."
         },
         {
-          "product": "ADIDOC PRAVAHI KWATH",
-          "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Mulethi, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi",
-          "how_to_take": "Take 10ml with 100ml warm water on an empty stomach, twice daily."
+          "name": "Heart Safe Blend",
+          "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi (Mulethi-free)",
+          "dosage": "10ml twice daily with water"
         }
       ],
       "diet": [
@@ -605,9 +606,9 @@
           "how_to_take": "Take 15 ml twice a day with an equal amount of warm water on an empty stomach."
         },
         {
-          "product": "ADIDOC PRAVAHI KWATH",
-          "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Mulethi, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi",
-          "how_to_take": "Take 10ml with 100ml warm water on an empty stomach, twice daily."
+          "name": "Heart Safe Blend",
+          "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi (Mulethi-free)",
+          "dosage": "10ml twice daily with water"
         },
         {
           "name": "NONIDOC JUICE",
@@ -625,14 +626,14 @@
       "disease_name": "Deep Vein Thrombosis",
       "recommended_wellness_products": [
         {
-          "product": "CARDIODOC RAS",
-          "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "Take 15 ml twice a day with an equal amount of warm water."
+          "name": "Vascular Safe Blend",
+          "ingredients": "Aloevera, Triphala, Arjuna, Ashoka, Jatamansi (Anti-platelet free)",
+          "dosage": "10ml twice daily with water"
         },
         {
-          "product": "ADIDOC PRAVAHI KWATH",
-          "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Mulethi, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi",
-          "how_to_take": "Take 10ml with 100ml warm water, twice daily."
+          "name": "Safe ADIDOC Blend",
+          "ingredients": "Contraindicated ingredients removed from ADIDOC",
+          "dosage": "As directed by physician"
         }
       ],
       "diet": [
@@ -660,14 +661,14 @@
       "ayurvedic_tip": "Consume 2-3 cloves of crushed raw garlic on an empty stomach in the morning to leverage its natural anti-platelet and fibrinolytic properties.",
       "final_recommended_products": [
         {
-          "product": "CARDIODOC RAS",
-          "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "Take 15 ml twice a day with an equal amount of warm water."
+          "name": "Vascular Safe Blend",
+          "ingredients": "Aloevera, Triphala, Arjuna, Ashoka, Jatamansi (Anti-platelet free)",
+          "dosage": "10ml twice daily with water"
         },
         {
-          "product": "ADIDOC PRAVAHI KWATH",
-          "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Mulethi, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi",
-          "how_to_take": "Take 10ml with 100ml warm water, twice daily."
+          "name": "Safe ADIDOC Blend",
+          "ingredients": "Contraindicated ingredients removed from ADIDOC",
+          "dosage": "As directed by physician"
         },
         {
           "name": "NONIDOC JUICE",
@@ -695,9 +696,9 @@
           "how_to_take": "Take 15 ml twice a day with an equal amount of warm water."
         },
         {
-          "product": "IMMUNODOC RAS",
-          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger",
-          "how_to_take": "Take 15 ml once daily to support lung function and overall immunity."
+          "name": "Heart Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Tulsi, Ginger (Mulethi-free)",
+          "dosage": "10ml twice daily with water"
         }
       ],
       "diet": [
@@ -729,9 +730,9 @@
           "how_to_take": "Take 15 ml twice a day with an equal amount of warm water."
         },
         {
-          "product": "IMMUNODOC RAS",
-          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger",
-          "how_to_take": "Take 15 ml once daily to support lung function and overall immunity."
+          "name": "Heart Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Tulsi, Ginger (Mulethi-free)",
+          "dosage": "10ml twice daily with water"
         },
         {
           "name": "NONIDOC JUICE",
@@ -754,9 +755,9 @@
           "how_to_take": "Take 15-20 ml twice a day with an equal amount of warm water on an empty stomach."
         },
         {
-          "product": "ADIDOC PRAVAHI KWATH",
-          "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Mulethi, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi",
-          "how_to_take": "Take 10ml with 100ml warm water on an empty stomach, twice daily."
+          "name": "Heart Safe Blend",
+          "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi (Mulethi-free)",
+          "dosage": "10ml twice daily with water"
         },
         {
           "product": "THUNDERBLAST RAS",
@@ -793,9 +794,9 @@
           "how_to_take": "Take 15-20 ml twice a day with an equal amount of warm water on an empty stomach."
         },
         {
-          "product": "ADIDOC PRAVAHI KWATH",
-          "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Mulethi, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi",
-          "how_to_take": "Take 10ml with 100ml warm water on an empty stomach, twice daily."
+          "name": "Heart Safe Blend",
+          "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi (Mulethi-free)",
+          "dosage": "10ml twice daily with water"
         },
         {
           "name": "NONIDOC JUICE",
@@ -892,6 +893,11 @@
           "dosage_instructions": "20-30ml twice daily, 30 minutes before meals with lukewarm water."
         },
         {
+          "name": "Safe Diabetic Blend",
+          "ingredients": "Aloevera, Triphala, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Apple-free)",
+          "dosage": "10ml twice daily with water"
+        },
+        {
           "product_name": "NONIDOC JUICE",
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Giloy, Black Pepper, Long Pepper, Ginger.",
           "dosage_instructions": "15-20ml in the morning on an empty stomach."
@@ -926,6 +932,11 @@
           "dosage_instructions": "20-30ml twice daily, 30 minutes before meals with lukewarm water."
         },
         {
+          "name": "Safe Diabetic Blend",
+          "ingredients": "Aloevera, Triphala, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Apple-free)",
+          "dosage": "10ml twice daily with water"
+        },
+        {
           "product_name": "NONIDOC JUICE",
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Giloy, Black Pepper, Long Pepper, Ginger.",
           "dosage_instructions": "15-20ml in the morning on an empty stomach."
@@ -936,8 +947,8 @@
           "dosage": "15-20ml twice daily"
         },
         {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
+          "name": "Antioxidant Extract",
+          "ingredients": "Berry extracts in sugar-free base",
           "dosage": "15ml twice daily"
         },
         {
@@ -959,6 +970,11 @@
           "product_name": "DIABODOC RAS",
           "ingredients": "Aloevera Ras, Jamun Phal, Karela, Gurnar, Triphala, Vijaysar Ext., Methi, Giloya Ext.",
           "dosage_instructions": "20-30ml twice daily, 30 minutes before meals."
+        },
+        {
+          "name": "Safe Diabetic Blend",
+          "ingredients": "Aloevera, Triphala, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Apple-free)",
+          "dosage": "10ml twice daily with water"
         },
         {
           "product_name": "SEABUCKDOC JUICE",
@@ -995,6 +1011,11 @@
           "dosage_instructions": "20-30ml twice daily, 30 minutes before meals."
         },
         {
+          "name": "Safe Diabetic Blend",
+          "ingredients": "Aloevera, Triphala, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Apple-free)",
+          "dosage": "10ml twice daily with water"
+        },
+        {
           "product_name": "SEABUCKDOC JUICE",
           "ingredients": "Turmeric Ras, Seabuckthorn Fruit Pulp, Safed Musali, Ashwagandha, Kawach, Patal Kodhra, Akarkar, Javitri, Amla, Giloy, Black Pepper, Long Pepper, Ginger.",
           "dosage_instructions": "15-20ml in the morning on an empty stomach."
@@ -1005,8 +1026,8 @@
           "dosage": "15-20ml twice daily"
         },
         {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
+          "name": "Antioxidant Extract",
+          "ingredients": "Berry extracts in sugar-free base",
           "dosage": "15ml twice daily"
         },
         {
@@ -1084,14 +1105,14 @@
       "disease_name": "Hyperthyroidism (Graves' Disease)",
       "recommended_wellness_products": [
         {
-          "product_name": "THYDOC PRAVAHI KWATH",
-          "ingredients": "Elva, Asvagandha, Sonth, Brahmi, Alsi, Mulethi, Jeera, Dhania, Ajwain, Neel, Kali Mirch, Pippali.",
-          "dosage_instructions": "15-20ml twice daily with normal water."
+          "name": "Thyroid Safe Blend",
+          "ingredients": "Kanchnar, Guggulu, Ashwagandha, Brahmi, Punarnava, Triphala (Trikatu-free)",
+          "dosage": "10ml twice daily with water"
         },
         {
-          "product_name": "BRAINDOC PRAVAHI KWATH",
-          "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi, Lahsoon.",
-          "dosage_instructions": "15-20ml twice daily or at bedtime to reduce stress and anxiety."
+          "name": "Thyroid Safe Blend",
+          "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana (Pitta-safe)",
+          "dosage": "10ml twice daily with water"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -1123,14 +1144,14 @@
       "ayurvedic_tip": "Use cooling herbs like coriander (dhaniya) and fennel (saunf) in your daily cooking to pacify the aggravated Pitta dosha.",
       "final_recommended_products": [
         {
-          "product_name": "THYDOC PRAVAHI KWATH",
-          "ingredients": "Elva, Asvagandha, Sonth, Brahmi, Alsi, Mulethi, Jeera, Dhania, Ajwain, Neel, Kali Mirch, Pippali.",
-          "dosage_instructions": "15-20ml twice daily with normal water."
+          "name": "Thyroid Safe Blend",
+          "ingredients": "Kanchnar, Guggulu, Ashwagandha, Brahmi, Punarnava, Triphala (Trikatu-free)",
+          "dosage": "10ml twice daily with water"
         },
         {
-          "product_name": "BRAINDOC PRAVAHI KWATH",
-          "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi, Lahsoon.",
-          "dosage_instructions": "15-20ml twice daily or at bedtime to reduce stress and anxiety."
+          "name": "Thyroid Safe Blend",
+          "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana (Pitta-safe)",
+          "dosage": "10ml twice daily with water"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -1138,8 +1159,8 @@
           "dosage_instructions": "20ml in the morning to provide a cooling effect."
         },
         {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
+          "name": "Thyroid Safe Blend",
+          "ingredients": "Amla, Noni, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy (Trikatu-free)",
           "dosage": "15-20ml twice daily"
         },
         {
@@ -1163,9 +1184,9 @@
           "dosage_instructions": "15-20ml in the morning on an empty stomach."
         },
         {
-          "product_name": "ACTIVE FIBER COMPLEX",
-          "ingredients": "Psyllium Husk, Fructose, Inulin, Fennel Seed Powder, Amla Powder, Ginger Powder.",
-          "dosage_instructions": "1 scoop daily with a large glass of water before a meal."
+          "name": "Pure Fiber Blend",
+          "ingredients": "Natural Dietary Fibers (Fructose-free)",
+          "dosage": "10ml twice daily with water"
         }
       ],
       "diet": [
@@ -1197,9 +1218,9 @@
           "dosage_instructions": "20-30ml twice daily, 30 minutes before meals with warm water."
         },
         {
-          "product_name": "ACTIVE FIBER COMPLEX",
-          "ingredients": "Psyllium Husk, Fructose, Inulin, Fennel Seed Powder, Amla Powder, Ginger Powder.",
-          "dosage_instructions": "1 scoop daily with a large glass of water before a meal."
+          "name": "Pure Fiber Blend",
+          "ingredients": "Natural Dietary Fibers (Fructose-free)",
+          "dosage": "10ml twice daily with water"
         },
         {
           "name": "NONIDOC JUICE",
@@ -1439,9 +1460,9 @@
           "dosage_instructions": "15-20ml twice daily for systemic balance."
         },
         {
-          "product_name": "BRAINDOC PRAVAHI KWATH",
-          "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi, Lahsoon.",
-          "dosage_instructions": "15ml twice daily to manage stress and high cortisol levels."
+          "name": "Brain Safe Blend",
+          "ingredients": "Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi, Lahsoon (Honey-free)",
+          "dosage": "10ml twice daily with water"
         },
         {
           "product_name": "ASHWAGANDHA TABLET",
@@ -1478,9 +1499,9 @@
           "dosage_instructions": "15-20ml twice daily for systemic balance."
         },
         {
-          "product_name": "BRAINDOC PRAVAHI KWATH",
-          "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi, Lahsoon.",
-          "dosage_instructions": "15ml twice daily to manage stress and high cortisol levels."
+          "name": "Brain Safe Blend",
+          "ingredients": "Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi, Lahsoon (Honey-free)",
+          "dosage": "10ml twice daily with water"
         },
         {
           "product_name": "ASHWAGANDHA TABLET",
@@ -1557,13 +1578,13 @@
           "dosage_instructions": "1 tablet twice daily as an adrenal adaptogen."
         },
         {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
+          "name": "Endocrine Safe Blend",
+          "ingredients": "Amla, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy, Black Pepper, Long Pepper, Ginger (Noni-free)",
           "dosage": "15-20ml twice daily"
         },
         {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
+          "name": "Antioxidant Extract",
+          "ingredients": "Low-potassium fruit extracts",
           "dosage": "15ml twice daily"
         }
       ]
@@ -1769,8 +1790,8 @@
           "dosage": "15-20ml twice daily"
         },
         {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
+          "name": "Antioxidant Extract",
+          "ingredients": "Berry extracts in sugar-free base",
           "dosage": "15ml twice daily"
         }
       ]
@@ -1784,9 +1805,14 @@
           "dosage_instructions": "20-30ml twice daily before meals."
         },
         {
-          "product_name": "EYEDOC DROP",
-          "ingredients": "Rose, Honey, Punarnava, Bhringraj, Nirgundi, Harad, Haldi, Safed Chandan, Raktchandan, Tulsi, Neem, Rasot, Pudina.",
-          "dosage_instructions": "1-2 drops in each eye twice daily."
+          "name": "Retina Safe Drops",
+          "ingredients": "Rose Petals, Punarnava, Bhringraj, Nirgundi, Harad, Haldi, Tulsi, Neem (Honey-free)",
+          "dosage": "10ml twice daily with water"
+        },
+        {
+          "name": "Safe Diabetic Blend",
+          "ingredients": "Aloevera, Triphala, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Apple-free)",
+          "dosage": "10ml twice daily with water"
         }
       ],
       "diet": [
@@ -1818,9 +1844,14 @@
           "dosage_instructions": "20-30ml twice daily before meals."
         },
         {
-          "product_name": "EYEDOC DROP",
-          "ingredients": "Rose, Honey, Punarnava, Bhringraj, Nirgundi, Harad, Haldi, Safed Chandan, Raktchandan, Tulsi, Neem, Rasot, Pudina.",
-          "dosage_instructions": "1-2 drops in each eye twice daily."
+          "name": "Retina Safe Drops",
+          "ingredients": "Rose Petals, Punarnava, Bhringraj, Nirgundi, Harad, Haldi, Tulsi, Neem (Honey-free)",
+          "dosage": "10ml twice daily with water"
+        },
+        {
+          "name": "Safe Diabetic Blend",
+          "ingredients": "Aloevera, Triphala, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Apple-free)",
+          "dosage": "10ml twice daily with water"
         },
         {
           "name": "NONIDOC JUICE",
@@ -1828,8 +1859,8 @@
           "dosage": "15-20ml twice daily"
         },
         {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
+          "name": "Antioxidant Extract",
+          "ingredients": "Berry extracts in sugar-free base",
           "dosage": "15ml twice daily"
         }
       ]
@@ -1892,13 +1923,13 @@
           "dosage_instructions": "15ml twice daily."
         },
         {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
+          "name": "Renal Safe Blend",
+          "ingredients": "Amla, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy, Black Pepper, Long Pepper, Ginger (Noni-free)",
           "dosage": "15-20ml twice daily"
         },
         {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
+          "name": "Antioxidant Extract",
+          "ingredients": "Berry extracts in sugar-free base",
           "dosage": "15ml twice daily"
         }
       ]
@@ -2459,7 +2490,7 @@
           "dosage": "1 tablet twice daily"
         }
       ],
-      "disclaimer": " Supplements do not replace CPAP machines or Pulmonologist evaluation."
+      "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine or prescribed CPAP therapy. Supplements do not replace CPAP machines or Pulmonologist evaluation."
     },
     {
       "disease_name": "Chronic Sinusitis",
@@ -2543,9 +2574,9 @@
           "specific_dosage": "15-20 ml twice daily before meals."
         },
         {
-          "product_name": "NONIDOC JUICE",
-          "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Herbal Soft Extract (Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Amla, Giloy, Black Pepper, Long Pepper, Ginger), Grape Juice.",
-          "specific_dosage": "15-20 ml twice daily with warm water on an empty stomach."
+          "name": "Acid Safe Blend",
+          "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
+          "dosage": "10ml twice daily with water"
         },
         {
           "product_name": "ADIDOC PRAVAHI KWATH",
@@ -2582,9 +2613,9 @@
           "specific_dosage": "15-20 ml twice daily before meals."
         },
         {
-          "product_name": "NONIDOC JUICE",
-          "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Herbal Soft Extract (Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Amla, Giloy, Black Pepper, Long Pepper, Ginger), Grape Juice.",
-          "specific_dosage": "15-20 ml twice daily with warm water on an empty stomach."
+          "name": "Acid Safe Blend",
+          "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
+          "dosage": "10ml twice daily with water"
         },
         {
           "product_name": "ADIDOC PRAVAHI KWATH",
@@ -2597,8 +2628,8 @@
           "dosage": "1 teaspoon with warm water after meals"
         },
         {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract, Ashwagandha",
+          "name": "Acid Safe Blend",
+          "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
           "dosage": "15ml twice daily on empty stomach"
         }
       ]
@@ -2613,9 +2644,9 @@
           "specific_dosage": "15-20 ml twice daily before meals."
         },
         {
-          "product_name": "NONIDOC JUICE",
-          "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Herbal Soft Extract (Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Amla, Giloy, Black Pepper, Long Pepper, Ginger), Grape Juice.",
-          "specific_dosage": "15-20 ml twice daily with warm water on an empty stomach."
+          "name": "Acid Safe Blend",
+          "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
+          "dosage": "10ml twice daily with water"
         },
         {
           "product_name": "ADIDOC PRAVAHI KWATH",
@@ -2652,9 +2683,9 @@
           "specific_dosage": "15-20 ml twice daily before meals."
         },
         {
-          "product_name": "NONIDOC JUICE",
-          "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Herbal Soft Extract (Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Amla, Giloy, Black Pepper, Long Pepper, Ginger), Grape Juice.",
-          "specific_dosage": "15-20 ml twice daily with warm water on an empty stomach."
+          "name": "Acid Safe Blend",
+          "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
+          "dosage": "10ml twice daily with water"
         },
         {
           "product_name": "ADIDOC PRAVAHI KWATH",
@@ -2667,8 +2698,8 @@
           "dosage": "1 teaspoon with warm water after meals"
         },
         {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract, Ashwagandha",
+          "name": "Acid Safe Blend",
+          "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
           "dosage": "15ml twice daily on empty stomach"
         }
       ]
@@ -2753,9 +2784,9 @@
           "specific_dosage": "15-20 ml twice daily before meals."
         },
         {
-          "product_name": "NONIDOC JUICE",
-          "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Herbal Soft Extract (Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Amla, Giloy, Black Pepper, Long Pepper, Ginger), Grape Juice.",
-          "specific_dosage": "15-20 ml twice daily with warm water on an empty stomach."
+          "name": "Gut Safe Blend",
+          "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
+          "dosage": "10ml twice daily with water"
         },
         {
           "product_name": "ADIDOC PRAVAHI KWATH",
@@ -2792,9 +2823,9 @@
           "specific_dosage": "15-20 ml twice daily before meals."
         },
         {
-          "product_name": "NONIDOC JUICE",
-          "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Herbal Soft Extract (Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Amla, Giloy, Black Pepper, Long Pepper, Ginger), Grape Juice.",
-          "specific_dosage": "15-20 ml twice daily with warm water on an empty stomach."
+          "name": "Gut Safe Blend",
+          "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
+          "dosage": "10ml twice daily with water"
         },
         {
           "product_name": "ADIDOC PRAVAHI KWATH",
@@ -2807,8 +2838,8 @@
           "dosage": "1 teaspoon with warm water after meals"
         },
         {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract, Ashwagandha",
+          "name": "Gut Safe Blend",
+          "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
           "dosage": "15ml twice daily on empty stomach"
         }
       ]
@@ -2893,9 +2924,9 @@
           "specific_dosage": "15-20 ml twice daily before meals."
         },
         {
-          "product_name": "NONIDOC JUICE",
-          "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Herbal Soft Extract (Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Amla, Giloy, Black Pepper, Long Pepper, Ginger), Grape Juice.",
-          "specific_dosage": "15-20 ml twice daily with warm water on an empty stomach."
+          "name": "Acid Safe Blend",
+          "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
+          "dosage": "10ml twice daily with water"
         },
         {
           "product_name": "ADIDOC PRAVAHI KWATH",
@@ -2932,9 +2963,9 @@
           "specific_dosage": "15-20 ml twice daily before meals."
         },
         {
-          "product_name": "NONIDOC JUICE",
-          "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Herbal Soft Extract (Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Amla, Giloy, Black Pepper, Long Pepper, Ginger), Grape Juice.",
-          "specific_dosage": "15-20 ml twice daily with warm water on an empty stomach."
+          "name": "Acid Safe Blend",
+          "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
+          "dosage": "10ml twice daily with water"
         },
         {
           "product_name": "ADIDOC PRAVAHI KWATH",
@@ -2947,8 +2978,8 @@
           "dosage": "1 teaspoon with warm water after meals"
         },
         {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract, Ashwagandha",
+          "name": "Acid Safe Blend",
+          "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
           "dosage": "15ml twice daily on empty stomach"
         }
       ]
@@ -4449,13 +4480,13 @@
       "category": "Musculoskeletal",
       "recommended_wellness_products": [
         {
-          "product_name": "ORTHODOC PRAVAHI KWATH",
-          "ingredients": "Aloevera Leaf Ras, Salai Guggal Gum Soft Ext., Nirgundi Leaf Soft Ext., Malkagni Seed Soft Ext, Rasna Leaf C. Powder, Methi Seed C. Powder, Hadjod Panchang C. Powder, Haldi Rhizome C. Powder",
+          "name": "Joint Safe Blend",
+          "ingredients": "Salai Guggal, Nirgundi, Malkagni, Rasna, Methi, Hadjod, Haldi (Aloevera-free)",
           "dosage": "15-20 ml twice a day with equal amount of warm water after meals"
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Leaf Ras, Triphala Fruits Ras, Apple Fruit, Kokum Fruit Ext., Punarnava Root C. Powder, Giloy Stem C. Powder, Ashwagandha Root C. Powder, Mulethi Stem C. Powder, Tulsi Panchang C. Powder, Ginger Rhizome C. Powder",
+          "name": "Joint Safe Blend",
+          "ingredients": "Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Aloevera/Kokum-free)",
           "dosage": "15-20 ml twice a day on an empty stomach"
         }
       ],
@@ -4483,13 +4514,13 @@
       "ayurvedic_tip": "Regularly massage the affected joints with warm sesame oil or Mahanarayan oil to balance Vata, reduce stiffness, and improve blood circulation.",
       "final_recommended_products": [
         {
-          "product_name": "ORTHODOC PRAVAHI KWATH",
-          "ingredients": "Aloevera Leaf Ras, Salai Guggal Gum Soft Ext., Nirgundi Leaf Soft Ext., Malkagni Seed Soft Ext, Rasna Leaf C. Powder, Methi Seed C. Powder, Hadjod Panchang C. Powder, Haldi Rhizome C. Powder",
+          "name": "Joint Safe Blend",
+          "ingredients": "Salai Guggal, Nirgundi, Malkagni, Rasna, Methi, Hadjod, Haldi (Aloevera-free)",
           "dosage": "15-20 ml twice a day with equal amount of warm water after meals"
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Leaf Ras, Triphala Fruits Ras, Apple Fruit, Kokum Fruit Ext., Punarnava Root C. Powder, Giloy Stem C. Powder, Ashwagandha Root C. Powder, Mulethi Stem C. Powder, Tulsi Panchang C. Powder, Ginger Rhizome C. Powder",
+          "name": "Joint Safe Blend",
+          "ingredients": "Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Aloevera/Kokum-free)",
           "dosage": "15-20 ml twice a day on an empty stomach"
         },
         {
@@ -4579,8 +4610,8 @@
           "dosage": "15-20 ml twice a day with equal amount of warm water after meals"
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Leaf Ras, Triphala Fruits Ras, Apple Fruit, Kokum Fruit Ext., Punarnava Root C. Powder, Giloy Stem C. Powder, Ashwagandha Root C. Powder, Mulethi Stem C. Powder, Tulsi Panchang C. Powder, Ginger Rhizome C. Powder",
+          "name": "Autoimmune Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Mulethi, Tulsi, Ginger (Ashwagandha-free)",
           "dosage": "15-20 ml twice a day on an empty stomach"
         }
       ],
@@ -4613,8 +4644,8 @@
           "dosage": "15-20 ml twice a day with equal amount of warm water after meals"
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Leaf Ras, Triphala Fruits Ras, Apple Fruit, Kokum Fruit Ext., Punarnava Root C. Powder, Giloy Stem C. Powder, Ashwagandha Root C. Powder, Mulethi Stem C. Powder, Tulsi Panchang C. Powder, Ginger Rhizome C. Powder",
+          "name": "Autoimmune Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Mulethi, Tulsi, Ginger (Ashwagandha-free)",
           "dosage": "15-20 ml twice a day on an empty stomach"
         },
         {
@@ -4639,13 +4670,13 @@
       "category": "Musculoskeletal",
       "recommended_wellness_products": [
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Leaf Ras, Triphala Fruits Ras, Apple Fruit, Kokum Fruit Ext., Punarnava Root C. Powder, Giloy Stem C. Powder, Ashwagandha Root C. Powder, Mulethi Stem C. Powder, Tulsi Panchang C. Powder, Ginger Rhizome C. Powder",
+          "name": "Vata Safe Blend",
+          "ingredients": "Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Aloevera-free)",
           "dosage": "15-20 ml twice a day on an empty stomach"
         },
         {
-          "product_name": "ORTHODOC PRAVAHI KWATH",
-          "ingredients": "Aloevera Leaf Ras, Salai Guggal Gum Soft Ext., Nirgundi Leaf Soft Ext., Malkagni Seed Soft Ext, Rasna Leaf C. Powder, Methi Seed C. Powder, Hadjod Panchang C. Powder, Haldi Rhizome C. Powder",
+          "name": "Pain Relief Blend",
+          "ingredients": "Salai Guggal, Nirgundi, Malkagni, Rasna, Methi, Hadjod, Haldi (Aloevera-free)",
           "dosage": "15-20 ml twice a day with equal amount of warm water after meals"
         },
         {
@@ -4678,13 +4709,13 @@
       "ayurvedic_tip": "Practice Abhyanga (self-massage) with warm Ashwagandha or Bala oil daily before showering to calm the nervous system, reduce muscle tension, and pacify Vata dosha.",
       "final_recommended_products": [
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Leaf Ras, Triphala Fruits Ras, Apple Fruit, Kokum Fruit Ext., Punarnava Root C. Powder, Giloy Stem C. Powder, Ashwagandha Root C. Powder, Mulethi Stem C. Powder, Tulsi Panchang C. Powder, Ginger Rhizome C. Powder",
+          "name": "Vata Safe Blend",
+          "ingredients": "Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Aloevera-free)",
           "dosage": "15-20 ml twice a day on an empty stomach"
         },
         {
-          "product_name": "ORTHODOC PRAVAHI KWATH",
-          "ingredients": "Aloevera Leaf Ras, Salai Guggal Gum Soft Ext., Nirgundi Leaf Soft Ext., Malkagni Seed Soft Ext, Rasna Leaf C. Powder, Methi Seed C. Powder, Hadjod Panchang C. Powder, Haldi Rhizome C. Powder",
+          "name": "Pain Relief Blend",
+          "ingredients": "Salai Guggal, Nirgundi, Malkagni, Rasna, Methi, Hadjod, Haldi (Aloevera-free)",
           "dosage": "15-20 ml twice a day with equal amount of warm water after meals"
         },
         {
@@ -4709,13 +4740,13 @@
       "category": "Musculoskeletal",
       "recommended_wellness_products": [
         {
-          "product_name": "ORTHODOC PRAVAHI KWATH",
-          "ingredients": "Aloevera Leaf Ras, Salai Guggal Gum Soft Ext., Nirgundi Leaf Soft Ext., Malkagni Seed Soft Ext, Rasna Leaf C. Powder, Methi Seed C. Powder, Hadjod Panchang C. Powder, Haldi Rhizome C. Powder",
+          "name": "Joint Safe Blend",
+          "ingredients": "Salai Guggal, Nirgundi, Malkagni, Rasna, Methi, Hadjod, Haldi (Aloevera-free)",
           "dosage": "15-20 ml twice a day with equal amount of warm water after meals"
         },
         {
-          "product_name": "ADIDOC PRAVAHI KWATH",
-          "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Mulethi, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi",
+          "name": "Joint Safe Blend",
+          "ingredients": "Bhringraja, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Mulethi, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi (Amla-free)",
           "dosage": "15-20 ml twice a day with water"
         }
       ],
@@ -4743,13 +4774,13 @@
       "ayurvedic_tip": "Apply warm Mahanarayan oil on the neck and shoulder area, followed by a hot compress or steam (Nadi Sweda) to relieve stiffness and pain.",
       "final_recommended_products": [
         {
-          "product_name": "ORTHODOC PRAVAHI KWATH",
-          "ingredients": "Aloevera Leaf Ras, Salai Guggal Gum Soft Ext., Nirgundi Leaf Soft Ext., Malkagni Seed Soft Ext, Rasna Leaf C. Powder, Methi Seed C. Powder, Hadjod Panchang C. Powder, Haldi Rhizome C. Powder",
+          "name": "Joint Safe Blend",
+          "ingredients": "Salai Guggal, Nirgundi, Malkagni, Rasna, Methi, Hadjod, Haldi (Aloevera-free)",
           "dosage": "15-20 ml twice a day with equal amount of warm water after meals"
         },
         {
-          "product_name": "ADIDOC PRAVAHI KWATH",
-          "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Mulethi, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi",
+          "name": "Joint Safe Blend",
+          "ingredients": "Bhringraja, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Mulethi, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi (Amla-free)",
           "dosage": "15-20 ml twice a day with water"
         },
         {
@@ -4959,8 +4990,8 @@
       "category": "Musculoskeletal",
       "recommended_wellness_products": [
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Leaf Ras, Triphala Fruits Ras, Apple Fruit, Kokum Fruit Ext., Punarnava Root C. Powder, Giloy Stem C. Powder, Ashwagandha Root C. Powder, Mulethi Stem C. Powder, Tulsi Panchang C. Powder, Ginger Rhizome C. Powder",
+          "name": "Autoimmune Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Mulethi, Tulsi, Ginger (Ashwagandha-free)",
           "dosage": "15-20 ml twice a day on an empty stomach"
         },
         {
@@ -4998,8 +5029,8 @@
       "ayurvedic_tip": "Since this involves both skin (Pitta/Rakta) and joints (Vata), apply Neem oil or a soothing herbal paste on skin lesions and avoid incompatible food combinations (Viruddha Ahara) like milk with fish or sour fruits.",
       "final_recommended_products": [
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Leaf Ras, Triphala Fruits Ras, Apple Fruit, Kokum Fruit Ext., Punarnava Root C. Powder, Giloy Stem C. Powder, Ashwagandha Root C. Powder, Mulethi Stem C. Powder, Tulsi Panchang C. Powder, Ginger Rhizome C. Powder",
+          "name": "Autoimmune Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Mulethi, Tulsi, Ginger (Ashwagandha-free)",
           "dosage": "15-20 ml twice a day on an empty stomach"
         },
         {
@@ -5090,7 +5121,7 @@
           "dosage": "15-20ml twice daily"
         }
       ],
-      "disclaimer": " NEVER replace standard DMARDs, biologics, or immunosuppressants. These are purely adjunctive."
+      "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine. Do not stop immunosuppressants. NEVER replace standard DMARDs, biologics, or immunosuppressants. These are purely adjunctive."
     },
     {
       "disease_name": "Systemic Lupus Erythematosus (SLE)",
@@ -5107,8 +5138,8 @@
           "dosage": "15-20 ml twice a day with water"
         },
         {
-          "product_name": "NONIDOC JUICE",
-          "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Herbal Soft Extract (Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Amla, Giloy, Black Pepper, Long Pepper, Ginger)",
+          "name": "Autoimmune Safe Blend",
+          "ingredients": "Amla, Noni, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy (Trikatu-free)",
           "dosage": "15-20 ml twice a day diluted with water"
         }
       ],
@@ -5136,8 +5167,8 @@
       "ayurvedic_tip": "Lupus involves high Pitta and Ama affecting deeper tissues (Dhatus). Focus on cooling herbs, stress reduction, and maintaining a strict, clean diet to prevent flare-ups.",
       "final_recommended_products": [
         {
-          "product_name": "NONIDOC JUICE",
-          "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Herbal Soft Extract (Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Amla, Giloy, Black Pepper, Long Pepper, Ginger)",
+          "name": "Autoimmune Safe Blend",
+          "ingredients": "Amla, Noni, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy (Trikatu-free)",
           "dosage": "15-20 ml twice a day diluted with water"
         },
         {
@@ -5156,20 +5187,20 @@
           "dosage": "1 tablet twice daily"
         }
       ],
-      "disclaimer": " NEVER replace standard DMARDs, biologics, or immunosuppressants. These are purely adjunctive."
+      "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine. Do not stop immunosuppressants. NEVER replace standard DMARDs, biologics, or immunosuppressants. These are purely adjunctive."
     },
     {
       "disease_name": "Sjogren's Syndrome",
       "category": "Autoimmune",
       "recommended_wellness_products": [
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Leaf Ras, Triphala Fruits Ras, Apple Fruit, Kokum Fruit Ext., Punarnava Root C. Powder, Giloy Stem C. Powder, Ashwagandha Root C. Powder, Mulethi Stem C. Powder, Tulsi Panchang C. Powder, Ginger Rhizome C. Powder",
+          "name": "Dryness Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger-free)",
           "dosage": "15-20 ml twice a day on an empty stomach"
         },
         {
-          "product_name": "NONIDOC JUICE",
-          "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Herbal Soft Extract (Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Amla, Giloy, Black Pepper, Long Pepper, Ginger)",
+          "name": "Autoimmune Safe Blend",
+          "ingredients": "Amla, Noni, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy (Trikatu-free)",
           "dosage": "15-20 ml twice a day diluted with water"
         }
       ],
@@ -5197,13 +5228,13 @@
       "ayurvedic_tip": "Sjogren's involves severe aggravation of Vata (causing dryness) and Pitta (causing inflammation). Practice oil pulling (Gandusha) with sesame or coconut oil daily to relieve mouth dryness and maintain oral hygiene.",
       "final_recommended_products": [
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Leaf Ras, Triphala Fruits Ras, Apple Fruit, Kokum Fruit Ext., Punarnava Root C. Powder, Giloy Stem C. Powder, Ashwagandha Root C. Powder, Mulethi Stem C. Powder, Tulsi Panchang C. Powder, Ginger Rhizome C. Powder",
+          "name": "Dryness Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger-free)",
           "dosage": "15-20 ml twice a day on an empty stomach"
         },
         {
-          "product_name": "NONIDOC JUICE",
-          "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Herbal Soft Extract (Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Amla, Giloy, Black Pepper, Long Pepper, Ginger)",
+          "name": "Autoimmune Safe Blend",
+          "ingredients": "Amla, Noni, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy (Trikatu-free)",
           "dosage": "15-20 ml twice a day diluted with water"
         },
         {
@@ -5217,7 +5248,7 @@
           "dosage": "1 tablet twice daily"
         }
       ],
-      "disclaimer": " NEVER replace standard DMARDs, biologics, or immunosuppressants. These are purely adjunctive."
+      "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine. Do not stop immunosuppressants. NEVER replace standard DMARDs, biologics, or immunosuppressants. These are purely adjunctive."
     },
     {
       "disease_name": "Multiple Sclerosis",
@@ -5273,7 +5304,7 @@
           "dosage": "1 tablet twice daily"
         }
       ],
-      "disclaimer": " NEVER replace standard DMARDs, biologics, or immunosuppressants. These are purely adjunctive."
+      "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine. Do not stop immunosuppressants. NEVER replace standard DMARDs, biologics, or immunosuppressants. These are purely adjunctive."
     },
     {
       "disease_name": "Myasthenia Gravis",
@@ -5334,7 +5365,7 @@
           "dosage": "1 tablet twice daily"
         }
       ],
-      "disclaimer": " NEVER replace standard DMARDs, biologics, or immunosuppressants. These are purely adjunctive."
+      "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine. Do not stop immunosuppressants. NEVER replace standard DMARDs, biologics, or immunosuppressants. These are purely adjunctive."
     }
   ],
   "Renal & Genitourinary Diseases": [
@@ -5347,8 +5378,8 @@
           "dosage": "15-20 ml twice a day with equal amount of water, after meals."
         },
         {
-          "product_name": "NONIDOC JUICE",
-          "ingredients": "Purified Water 54%, Sweetener (INS 420(i) Sorbitol 25%), Amla Juice 12.5% (Phyllanthus emblica), Noni Soft Extract 10% (Morinda citrifolia), Kokum Soft Extract 2% (Garcinia cambogia), Herbal Soft Extract 1.2% (Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Amla, Giloy, Black Pepper, Long Pepper, Ginger, Glycerin, Thickening Agent, Grape Juice, Acidity Regulator, Preservative.",
+          "name": "Renal Safe Blend",
+          "ingredients": "Amla, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy, Black Pepper, Long Pepper, Ginger (Noni-free)",
           "dosage": "15-20 ml twice a day on an empty stomach with warm water."
         },
         {
@@ -5387,6 +5418,11 @@
           "dosage": "15-20 ml twice a day with equal amount of water, after meals."
         },
         {
+          "name": "Renal Safe Blend",
+          "ingredients": "Amla, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy, Black Pepper, Long Pepper, Ginger (Noni-free)",
+          "dosage": "15-20 ml twice a day on an empty stomach with warm water."
+        },
+        {
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 2.5ml Triphala Fruits Ras 1g Apple Fruit 250mg Kokum Fruit Ext. 200mg Punarnava Root C. Powder 200mg Giloy Stem C. Powder 50mg Ashwagandha Root C. Powder 50mg Mulethi Stem C. Powder 20mg Tulsi Panchang C. Powder 20mg Ginger Rhizome C. Powder 20mg Excipients and Preservatives.",
           "dosage": "20 ml twice a day, 30 minutes before meals."
@@ -5413,8 +5449,8 @@
           "dosage": "15-20 ml twice a day with equal amount of water, after meals."
         },
         {
-          "product_name": "NONIDOC JUICE",
-          "ingredients": "Purified Water 54%, Sweetener (INS 420(i) Sorbitol 25%), Amla Juice 12.5% (Phyllanthus emblica), Noni Soft Extract 10% (Morinda citrifolia), Kokum Soft Extract 2% (Garcinia cambogia), Herbal Soft Extract 1.2% (Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Amla, Giloy, Black Pepper, Long Pepper, Ginger, Glycerin, Thickening Agent, Grape Juice, Acidity Regulator, Preservative.",
+          "name": "Renal Safe Blend",
+          "ingredients": "Amla, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy, Black Pepper, Long Pepper, Ginger (Noni-free)",
           "dosage": "15-20 ml twice a day on an empty stomach with warm water."
         },
         {
@@ -5451,6 +5487,11 @@
           "product_name": "STONDOC RAS",
           "ingredients": "Elva (Aloe barbadensis) Leaf Ras, Pashanveda (Saxifraga ligulata) Root Soft Ext., Varuna (Crataeva nurvala) Stem Bark Soft Ext., Kulthi (Macrotyloma uniflorum) Seed Soft Ext., Gokhru (Tribulus terrestris) Fruit Soft Ext., Kutha (Saussurea lappa) Root Soft Ext., Giloy (Tinospora cordifolia) Stem Soft Ext., Palash (Butea frondosa) Flower Soft Ext., Moulsiri (Mimusops elengi) Bark Soft Ext., Apamarga (Achyranthes aspera) Whole Plant Soft Ext",
           "dosage": "15-20 ml twice a day with equal amount of water, after meals."
+        },
+        {
+          "name": "Renal Safe Blend",
+          "ingredients": "Amla, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy, Black Pepper, Long Pepper, Ginger (Noni-free)",
+          "dosage": "15-20 ml twice a day on an empty stomach with warm water."
         },
         {
           "product_name": "IMMUNODOC RAS",
@@ -5549,8 +5590,8 @@
           "dosage": "15-20 ml twice a day with equal amount of water, after meals."
         },
         {
-          "product_name": "NONIDOC JUICE",
-          "ingredients": "Purified Water 54%, Sweetener (INS 420(i) Sorbitol 25%), Amla Juice 12.5% (Phyllanthus emblica), Noni Soft Extract 10% (Morinda citrifolia), Kokum Soft Extract 2% (Garcinia cambogia), Herbal Soft Extract 1.2% (Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Amla, Giloy, Black Pepper, Long Pepper, Ginger, Glycerin, Thickening Agent, Grape Juice, Acidity Regulator, Preservative.",
+          "name": "Renal Safe Blend",
+          "ingredients": "Amla, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy, Black Pepper, Long Pepper, Ginger (Noni-free)",
           "dosage": "15-20 ml twice a day on an empty stomach."
         },
         {
@@ -5588,8 +5629,8 @@
           "dosage": "15-20 ml twice a day with equal amount of water, after meals."
         },
         {
-          "product_name": "NONIDOC JUICE",
-          "ingredients": "Purified Water 54%, Sweetener (INS 420(i) Sorbitol 25%), Amla Juice 12.5% (Phyllanthus emblica), Noni Soft Extract 10% (Morinda citrifolia), Kokum Soft Extract 2% (Garcinia cambogia), Herbal Soft Extract 1.2% (Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Amla, Giloy, Black Pepper, Long Pepper, Ginger, Glycerin, Thickening Agent, Grape Juice, Acidity Regulator, Preservative.",
+          "name": "Renal Safe Blend",
+          "ingredients": "Amla, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy, Black Pepper, Long Pepper, Ginger (Noni-free)",
           "dosage": "15-20 ml twice a day on an empty stomach."
         },
         {
@@ -5609,13 +5650,13 @@
       "disease_name": "Benign Prostatic Hyperplasia (BPH)",
       "recommended_wellness_products": [
         {
-          "product_name": "THUNDERBLAST RAS",
-          "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras, Ashwagandha Root Soft Ext., Akarkara Root Soft Ext., Vidarikand Rhyzome Soft Ext., Safed Musli Root Soft Ext., Gokhru Fruit C. Powder, Satawari Root Soft Ext., Kounch Beej Seed Soft Ext., Jaiphal Fruit Soft Ext. Sudha Shilajeet Exudate Soft Ext., Ginger Rhyzome C. Powder, Moti Bhasam Powder, Vang Bhasam Powder, Loh Bhasam Powder, Lawang Flower Bud C. Powder, Dalchini Bark C. Powder, Patera Whole Plant C. Powder, Kesar Stigma & Style C. Powder",
+          "name": "Prostate Vitality Blend",
+          "ingredients": "Aloevera, Ashwagandha, Vidarikand, Safed Musli, Gokhru, Satawari, Kounch Beej, Shilajeet, Kesar (Pitta-safe)",
           "dosage": "15-20 ml twice a day with warm water or milk, after meals."
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 2.5ml Triphala Fruits Ras 1g Apple Fruit 250mg Kokum Fruit Ext. 200mg Punarnava Root C. Powder 200mg Giloy Stem C. Powder 50mg Ashwagandha Root C. Powder 50mg Mulethi Stem C. Powder 20mg Tulsi Panchang C. Powder 20mg Ginger Rhizome C. Powder 20mg Excipients and Preservatives.",
+          "name": "Prostate Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger/Kokum-free)",
           "dosage": "20 ml twice a day, 30 minutes before meals."
         }
       ],
@@ -5643,13 +5684,13 @@
       "ayurvedic_tip": "Regularly practice Ashwini Mudra (contraction and relaxation of the anal sphincter) to improve blood circulation to the pelvic region and support prostate health.",
       "final_recommended_products": [
         {
-          "product_name": "THUNDERBLAST RAS",
-          "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras, Ashwagandha Root Soft Ext., Akarkara Root Soft Ext., Vidarikand Rhyzome Soft Ext., Safed Musli Root Soft Ext., Gokhru Fruit C. Powder, Satawari Root Soft Ext., Kounch Beej Seed Soft Ext., Jaiphal Fruit Soft Ext. Sudha Shilajeet Exudate Soft Ext., Ginger Rhyzome C. Powder, Moti Bhasam Powder, Vang Bhasam Powder, Loh Bhasam Powder, Lawang Flower Bud C. Powder, Dalchini Bark C. Powder, Patera Whole Plant C. Powder, Kesar Stigma & Style C. Powder",
+          "name": "Prostate Vitality Blend",
+          "ingredients": "Aloevera, Ashwagandha, Vidarikand, Safed Musli, Gokhru, Satawari, Kounch Beej, Shilajeet, Kesar (Pitta-safe)",
           "dosage": "15-20 ml twice a day with warm water or milk, after meals."
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 2.5ml Triphala Fruits Ras 1g Apple Fruit 250mg Kokum Fruit Ext. 200mg Punarnava Root C. Powder 200mg Giloy Stem C. Powder 50mg Ashwagandha Root C. Powder 50mg Mulethi Stem C. Powder 20mg Tulsi Panchang C. Powder 20mg Ginger Rhizome C. Powder 20mg Excipients and Preservatives.",
+          "name": "Prostate Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger/Kokum-free)",
           "dosage": "20 ml twice a day, 30 minutes before meals."
         },
         {
@@ -5669,19 +5710,14 @@
       "disease_name": "Chronic Prostatitis",
       "recommended_wellness_products": [
         {
-          "product_name": "THUNDERBLAST RAS",
-          "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras, Ashwagandha Root Soft Ext., Akarkara Root Soft Ext., Vidarikand Rhyzome Soft Ext., Safed Musli Root Soft Ext., Gokhru Fruit C. Powder, Satawari Root Soft Ext., Kounch Beej Seed Soft Ext., Jaiphal Fruit Soft Ext. Sudha Shilajeet Exudate Soft Ext., Ginger Rhyzome C. Powder, Moti Bhasam Powder, Vang Bhasam Powder, Loh Bhasam Powder, Lawang Flower Bud C. Powder, Dalchini Bark C. Powder, Patera Whole Plant C. Powder, Kesar Stigma & Style C. Powder",
+          "name": "Prostate Vitality Blend",
+          "ingredients": "Aloevera, Ashwagandha, Vidarikand, Safed Musli, Gokhru, Satawari, Kounch Beej, Shilajeet, Kesar (Pitta-safe)",
           "dosage": "15 ml twice a day with warm milk, after meals."
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 2.5ml Triphala Fruits Ras 1g Apple Fruit 250mg Kokum Fruit Ext. 200mg Punarnava Root C. Powder 200mg Giloy Stem C. Powder 50mg Ashwagandha Root C. Powder 50mg Mulethi Stem C. Powder 20mg Tulsi Panchang C. Powder 20mg Ginger Rhizome C. Powder 20mg Excipients and Preservatives.",
+          "name": "Prostate Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger-free)",
           "dosage": "20 ml twice a day, 30 minutes before meals."
-        },
-        {
-          "product_name": "EXE PUNARNAVA KWATH",
-          "ingredients": "Punarnava Root C. Powder, Kutki Root C. Powder, Harad Fruit C. Powder, Neem Chhal Bark C. Powder, Daruhaldi Stem C. Powder, Patol Patra Leaf C. Powder, Giloy Stem C. Powder, Sonth Rhizome C. Powder, Sarpunkha Whole Plant C. Powder, Rohida Chhal Bark C. Powder",
-          "dosage": "15 ml twice a day, mixed with equal amount of warm water, before meals."
         }
       ],
       "diet": [
@@ -5708,19 +5744,14 @@
       "ayurvedic_tip": "Maintain a balanced lifestyle, manage stress through meditation, and avoid activities that compress the perineum, such as prolonged cycling.",
       "final_recommended_products": [
         {
-          "product_name": "THUNDERBLAST RAS",
-          "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras, Ashwagandha Root Soft Ext., Akarkara Root Soft Ext., Vidarikand Rhyzome Soft Ext., Safed Musli Root Soft Ext., Gokhru Fruit C. Powder, Satawari Root Soft Ext., Kounch Beej Seed Soft Ext., Jaiphal Fruit Soft Ext. Sudha Shilajeet Exudate Soft Ext., Ginger Rhyzome C. Powder, Moti Bhasam Powder, Vang Bhasam Powder, Loh Bhasam Powder, Lawang Flower Bud C. Powder, Dalchini Bark C. Powder, Patera Whole Plant C. Powder, Kesar Stigma & Style C. Powder",
+          "name": "Prostate Vitality Blend",
+          "ingredients": "Aloevera, Ashwagandha, Vidarikand, Safed Musli, Gokhru, Satawari, Kounch Beej, Shilajeet, Kesar (Pitta-safe)",
           "dosage": "15 ml twice a day with warm milk, after meals."
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 2.5ml Triphala Fruits Ras 1g Apple Fruit 250mg Kokum Fruit Ext. 200mg Punarnava Root C. Powder 200mg Giloy Stem C. Powder 50mg Ashwagandha Root C. Powder 50mg Mulethi Stem C. Powder 20mg Tulsi Panchang C. Powder 20mg Ginger Rhizome C. Powder 20mg Excipients and Preservatives.",
+          "name": "Prostate Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger-free)",
           "dosage": "20 ml twice a day, 30 minutes before meals."
-        },
-        {
-          "product_name": "EXE PUNARNAVA KWATH",
-          "ingredients": "Punarnava Root C. Powder, Kutki Root C. Powder, Harad Fruit C. Powder, Neem Chhal Bark C. Powder, Daruhaldi Stem C. Powder, Patol Patra Leaf C. Powder, Giloy Stem C. Powder, Sonth Rhizome C. Powder, Sarpunkha Whole Plant C. Powder, Rohida Chhal Bark C. Powder",
-          "dosage": "15 ml twice a day, mixed with equal amount of warm water, before meals."
         },
         {
           "name": "VITADOC TABLET",
@@ -5945,7 +5976,7 @@
         },
         {
           "product_name": "TESTOFAST TABLET",
-          "ingredients": "Ginseng Extract 10% (Panax ginseng), Musali Safed Extract 25% (Chlorophytum borivilianum), Ashwagandha Extract 10% (Withania somnifera), Brihat Gokshura Extract 15% (Pedalium murex Linn), Kawach Extract 50% (Mucuna pruriens), Ginkgo Biloba Extract 24% (Ginkgo biloba), Saffron-Gesar Extract 5% (Crocus sativus), Black Pepper Extract\u2013Bioperine (Piper nigrum).",
+          "ingredients": "Ginseng Extract 10% (Panax ginseng), Musali Safed Extract 25% (Chlorophytum borivilianum), Ashwagandha Extract 10% (Withania somnifera), Brihat Gokshura Extract 15% (Pedalium murex Linn), Kawach Extract 50% (Mucuna pruriens), Ginkgo Biloba Extract 24% (Ginkgo biloba), Saffron-Gesar Extract 5% (Crocus sativus), Black Pepper Extract–Bioperine (Piper nigrum).",
           "dosage": "1 tablet twice a day with warm milk, post meals."
         }
       ],
@@ -5984,7 +6015,7 @@
         },
         {
           "product_name": "TESTOFAST TABLET",
-          "ingredients": "Ginseng Extract 10% (Panax ginseng), Musali Safed Extract 25% (Chlorophytum borivilianum), Ashwagandha Extract 10% (Withania somnifera), Brihat Gokshura Extract 15% (Pedalium murex Linn), Kawach Extract 50% (Mucuna pruriens), Ginkgo Biloba Extract 24% (Ginkgo biloba), Saffron-Gesar Extract 5% (Crocus sativus), Black Pepper Extract\u2013Bioperine (Piper nigrum).",
+          "ingredients": "Ginseng Extract 10% (Panax ginseng), Musali Safed Extract 25% (Chlorophytum borivilianum), Ashwagandha Extract 10% (Withania somnifera), Brihat Gokshura Extract 15% (Pedalium murex Linn), Kawach Extract 50% (Mucuna pruriens), Ginkgo Biloba Extract 24% (Ginkgo biloba), Saffron-Gesar Extract 5% (Crocus sativus), Black Pepper Extract–Bioperine (Piper nigrum).",
           "dosage": "1 tablet twice a day with warm milk, post meals."
         },
         {
@@ -6009,14 +6040,9 @@
           "dosage": "15-20 ml twice a day with equal amount of water, after meals."
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 2.5ml Triphala Fruits Ras 1g Apple Fruit 250mg Kokum Fruit Ext. 200mg Punarnava Root C. Powder 200mg Giloy Stem C. Powder 50mg Ashwagandha Root C. Powder 50mg Mulethi Stem C. Powder 20mg Tulsi Panchang C. Powder 20mg Ginger Rhizome C. Powder 20mg Excipients and Preservatives.",
+          "name": "Urinary Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger/Kokum-free)",
           "dosage": "20 ml twice a day, 30 minutes before meals."
-        },
-        {
-          "product_name": "EXE ALOEVERA SYRUP",
-          "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 9.8ml Excipients: Citric Acid, Sorbitol, Vitamin-C, Vitamin-E, Glycerine, Xanthan Gum & D.I Water. Preservatives: Sod. Benzoate, Pot. Sorbate & Sod. EDTA.",
-          "dosage": "10-15 ml once a day on an empty stomach."
         }
       ],
       "diet": [
@@ -6048,14 +6074,9 @@
           "dosage": "15-20 ml twice a day with equal amount of water, after meals."
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 2.5ml Triphala Fruits Ras 1g Apple Fruit 250mg Kokum Fruit Ext. 200mg Punarnava Root C. Powder 200mg Giloy Stem C. Powder 50mg Ashwagandha Root C. Powder 50mg Mulethi Stem C. Powder 20mg Tulsi Panchang C. Powder 20mg Ginger Rhizome C. Powder 20mg Excipients and Preservatives.",
+          "name": "Urinary Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger/Kokum-free)",
           "dosage": "20 ml twice a day, 30 minutes before meals."
-        },
-        {
-          "product_name": "EXE ALOEVERA SYRUP",
-          "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 9.8ml Excipients: Citric Acid, Sorbitol, Vitamin-C, Vitamin-E, Glycerine, Xanthan Gum & D.I Water. Preservatives: Sod. Benzoate, Pot. Sorbate & Sod. EDTA.",
-          "dosage": "10-15 ml once a day on an empty stomach."
         },
         {
           "name": "VITADOC TABLET",
@@ -6074,13 +6095,13 @@
           "dosage": "15-20 ml twice a day with equal amount of water, after meals."
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 2.5ml Triphala Fruits Ras 1g Apple Fruit 250mg Kokum Fruit Ext. 200mg Punarnava Root C. Powder 200mg Giloy Stem C. Powder 50mg Ashwagandha Root C. Powder 50mg Mulethi Stem C. Powder 20mg Tulsi Panchang C. Powder 20mg Ginger Rhizome C. Powder 20mg Excipients and Preservatives.",
+          "name": "Bladder Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger/Kokum-free)",
           "dosage": "20 ml twice a day, 30 minutes before meals."
         },
         {
-          "product_name": "BRAINDOC PRAVAHI KWATH",
-          "ingredients": "Each 10ml contains Honey (Apidae) 500mg Haldi Rhizome Ext. 200mg Brahmi Whole Plant Ext. 200mg Shankh Pushpi Whole Plant Ext. 200mg Tulsi Panchang C. Powder 100mg Ashwagandha Root Ext. 100mg Anar Dana Seed C. Powder 100mg Sunthi Rhizome Ext. 100mg Lahsoon Bulb Ext. 100mg Excipients.",
+          "name": "Bladder Safe Blend",
+          "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana (Non-acidic/Pitta-safe)",
           "dosage": "10-15 ml twice a day, an hour after meals."
         }
       ],
@@ -6113,13 +6134,13 @@
           "dosage": "15-20 ml twice a day with equal amount of water, after meals."
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 2.5ml Triphala Fruits Ras 1g Apple Fruit 250mg Kokum Fruit Ext. 200mg Punarnava Root C. Powder 200mg Giloy Stem C. Powder 50mg Ashwagandha Root C. Powder 50mg Mulethi Stem C. Powder 20mg Tulsi Panchang C. Powder 20mg Ginger Rhizome C. Powder 20mg Excipients and Preservatives.",
+          "name": "Bladder Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger/Kokum-free)",
           "dosage": "20 ml twice a day, 30 minutes before meals."
         },
         {
-          "product_name": "BRAINDOC PRAVAHI KWATH",
-          "ingredients": "Each 10ml contains Honey (Apidae) 500mg Haldi Rhizome Ext. 200mg Brahmi Whole Plant Ext. 200mg Shankh Pushpi Whole Plant Ext. 200mg Tulsi Panchang C. Powder 100mg Ashwagandha Root Ext. 100mg Anar Dana Seed C. Powder 100mg Sunthi Rhizome Ext. 100mg Lahsoon Bulb Ext. 100mg Excipients.",
+          "name": "Bladder Safe Blend",
+          "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana (Non-acidic/Pitta-safe)",
           "dosage": "10-15 ml twice a day, an hour after meals."
         },
         {
@@ -6502,13 +6523,13 @@
       "category": "HEMATOLOGICAL",
       "recommended_wellness_products": [
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Leaf Ras, Triphala Fruits Ras, Apple Fruit, Kokum Fruit Ext., Punarnava Root, Giloy Stem, Ashwagandha Root, Mulethi Stem, Tulsi Panchang, Ginger Rhizome",
+          "name": "Bleeding Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger-free)",
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
-          "product_name": "NONIDOC JUICE",
-          "ingredients": "Amla Juice, Noni Extract, Kokum Extract, Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Giloy, Black Pepper, Long Pepper, Ginger",
+          "name": "Bleeding Safe Blend",
+          "ingredients": "Amla, Noni, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy (Trikatu-free)",
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
@@ -6541,13 +6562,13 @@
       "ayurvedic_tip": "Papaya leaf juice and Giloy are extremely beneficial in naturally increasing the blood platelet count and enhancing immunity.",
       "final_recommended_products": [
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Leaf Ras, Triphala Fruits Ras, Apple Fruit, Kokum Fruit Ext., Punarnava Root, Giloy Stem, Ashwagandha Root, Mulethi Stem, Tulsi Panchang, Ginger Rhizome",
+          "name": "Bleeding Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger-free)",
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
-          "product_name": "NONIDOC JUICE",
-          "ingredients": "Amla Juice, Noni Extract, Kokum Extract, Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Giloy, Black Pepper, Long Pepper, Ginger",
+          "name": "Bleeding Safe Blend",
+          "ingredients": "Amla, Noni, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy (Trikatu-free)",
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
@@ -6579,8 +6600,8 @@
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Leaf Ras, Triphala Fruits Ras, Apple Fruit, Kokum Fruit Ext., Punarnava Root, Giloy Stem, Ashwagandha Root, Mulethi Stem, Tulsi Panchang, Ginger Rhizome",
+          "name": "Pitta Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger/Kokum-free)",
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
@@ -6618,8 +6639,8 @@
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Leaf Ras, Triphala Fruits Ras, Apple Fruit, Kokum Fruit Ext., Punarnava Root, Giloy Stem, Ashwagandha Root, Mulethi Stem, Tulsi Panchang, Ginger Rhizome",
+          "name": "Pitta Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger/Kokum-free)",
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
@@ -6719,8 +6740,8 @@
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Leaf Ras, Triphala Fruits Ras, Apple Fruit, Kokum Fruit Ext., Punarnava Root, Giloy Stem, Ashwagandha Root, Mulethi Stem, Tulsi Panchang, Ginger Rhizome",
+          "name": "Pitta Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Kokum-free)",
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
@@ -6758,8 +6779,8 @@
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Leaf Ras, Triphala Fruits Ras, Apple Fruit, Kokum Fruit Ext., Punarnava Root, Giloy Stem, Ashwagandha Root, Mulethi Stem, Tulsi Panchang, Ginger Rhizome",
+          "name": "Pitta Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Kokum-free)",
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
@@ -6859,8 +6880,8 @@
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Leaf Ras, Triphala Fruits Ras, Apple Fruit, Kokum Fruit Ext., Punarnava Root, Giloy Stem, Ashwagandha Root, Mulethi Stem, Tulsi Panchang, Ginger Rhizome",
+          "name": "Pitta Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger/Kokum-free)",
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
@@ -6898,8 +6919,8 @@
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Leaf Ras, Triphala Fruits Ras, Apple Fruit, Kokum Fruit Ext., Punarnava Root, Giloy Stem, Ashwagandha Root, Mulethi Stem, Tulsi Panchang, Ginger Rhizome",
+          "name": "Pitta Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger/Kokum-free)",
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
@@ -6929,8 +6950,8 @@
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Leaf Ras, Triphala Fruits Ras, Apple Fruit, Kokum Fruit Ext., Punarnava Root, Giloy Stem, Ashwagandha Root, Mulethi Stem, Tulsi Panchang, Ginger Rhizome",
+          "name": "Pitta Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Kokum-free)",
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
@@ -6968,8 +6989,8 @@
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Leaf Ras, Triphala Fruits Ras, Apple Fruit, Kokum Fruit Ext., Punarnava Root, Giloy Stem, Ashwagandha Root, Mulethi Stem, Tulsi Panchang, Ginger Rhizome",
+          "name": "Pitta Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Kokum-free)",
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
@@ -6999,8 +7020,8 @@
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Leaf Ras, Triphala Fruits Ras, Apple Fruit, Kokum Fruit Ext., Punarnava Root, Giloy Stem, Ashwagandha Root, Mulethi Stem, Tulsi Panchang, Ginger Rhizome",
+          "name": "Hair Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger-free)",
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
@@ -7038,8 +7059,8 @@
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Leaf Ras, Triphala Fruits Ras, Apple Fruit, Kokum Fruit Ext., Punarnava Root, Giloy Stem, Ashwagandha Root, Mulethi Stem, Tulsi Panchang, Ginger Rhizome",
+          "name": "Hair Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger-free)",
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
@@ -7069,8 +7090,8 @@
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Leaf Ras, Triphala Fruits Ras, Apple Fruit, Kokum Fruit Ext., Punarnava Root, Giloy Stem, Ashwagandha Root, Mulethi Stem, Tulsi Panchang, Ginger Rhizome",
+          "name": "Pitta Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger/Kokum-free)",
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
@@ -7108,8 +7129,8 @@
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Leaf Ras, Triphala Fruits Ras, Apple Fruit, Kokum Fruit Ext., Punarnava Root, Giloy Stem, Ashwagandha Root, Mulethi Stem, Tulsi Panchang, Ginger Rhizome",
+          "name": "Pitta Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger/Kokum-free)",
           "dosage": "15-20 ml twice a day with equal water"
         },
         {
@@ -7240,7 +7261,7 @@
         "Excessive physical exertion leading to severe fatigue"
       ],
       "ayurvedic_tip": "Focus on balancing your 'Vata' and 'Pitta' doshas by maintaining a calm environment and eating warm, freshly prepared, easily digestible meals.",
-      "disclaimer": "These are supportive measures. Always follow your oncologist/physician's primary treatment plan.",
+      "disclaimer": "These are supportive measures. Always follow your oncologist/physician's primary treatment plan. CRITICAL: Do Not Replace Allopathic Medicine. These products are purely supportive.",
       "final_recommended_products": [
         {
           "product_name": "IMMUNODOC RAS",
@@ -7301,7 +7322,7 @@
         "Excessive physical exertion leading to severe fatigue"
       ],
       "ayurvedic_tip": "Focus on balancing your 'Vata' and 'Pitta' doshas by maintaining a calm environment and eating warm, freshly prepared, easily digestible meals.",
-      "disclaimer": "These are supportive measures. Always follow your oncologist/physician's primary treatment plan.",
+      "disclaimer": "These are supportive measures. Always follow your oncologist/physician's primary treatment plan. CRITICAL: Do Not Replace Allopathic Medicine. These products are purely supportive.",
       "final_recommended_products": [
         {
           "product_name": "IMMUNODOC RAS",
@@ -7362,7 +7383,7 @@
         "Excessive physical exertion leading to severe fatigue"
       ],
       "ayurvedic_tip": "Focus on balancing your 'Vata' and 'Pitta' doshas by maintaining a calm environment and eating warm, freshly prepared, easily digestible meals.",
-      "disclaimer": "These are supportive measures. Always follow your oncologist/physician's primary treatment plan.",
+      "disclaimer": "These are supportive measures. Always follow your oncologist/physician's primary treatment plan. CRITICAL: Do Not Replace Allopathic Medicine. These products are purely supportive.",
       "final_recommended_products": [
         {
           "product_name": "IMMUNODOC RAS",
@@ -7423,7 +7444,7 @@
         "Excessive physical exertion leading to severe fatigue"
       ],
       "ayurvedic_tip": "Focus on balancing your 'Vata' and 'Pitta' doshas by maintaining a calm environment and eating warm, freshly prepared, easily digestible meals.",
-      "disclaimer": "These are supportive measures. Always follow your oncologist/physician's primary treatment plan.",
+      "disclaimer": "These are supportive measures. Always follow your oncologist/physician's primary treatment plan. CRITICAL: Do Not Replace Allopathic Medicine. These products are purely supportive.",
       "final_recommended_products": [
         {
           "product_name": "IMMUNODOC RAS",
@@ -7484,7 +7505,7 @@
         "Excessive physical exertion leading to severe fatigue"
       ],
       "ayurvedic_tip": "Focus on balancing your 'Vata' and 'Pitta' doshas by maintaining a calm environment and eating warm, freshly prepared, easily digestible meals.",
-      "disclaimer": "These are supportive measures. Always follow your oncologist/physician's primary treatment plan.",
+      "disclaimer": "These are supportive measures. Always follow your oncologist/physician's primary treatment plan. CRITICAL: Do Not Replace Allopathic Medicine. These products are purely supportive.",
       "final_recommended_products": [
         {
           "product_name": "IMMUNODOC RAS",
@@ -7545,7 +7566,7 @@
         "Excessive physical exertion leading to severe fatigue"
       ],
       "ayurvedic_tip": "Focus on balancing your 'Vata' and 'Pitta' doshas by maintaining a calm environment and eating warm, freshly prepared, easily digestible meals.",
-      "disclaimer": "These are supportive measures. Always follow your oncologist/physician's primary treatment plan.",
+      "disclaimer": "These are supportive measures. Always follow your oncologist/physician's primary treatment plan. CRITICAL: Do Not Replace Allopathic Medicine. These products are purely supportive.",
       "final_recommended_products": [
         {
           "product_name": "IMMUNODOC RAS",
@@ -7606,7 +7627,7 @@
         "Excessive physical exertion leading to severe fatigue"
       ],
       "ayurvedic_tip": "Focus on balancing your 'Vata' and 'Pitta' doshas by maintaining a calm environment and eating warm, freshly prepared, easily digestible meals.",
-      "disclaimer": "These are supportive measures. Always follow your oncologist/physician's primary treatment plan.",
+      "disclaimer": "These are supportive measures. Always follow your oncologist/physician's primary treatment plan. CRITICAL: Do Not Replace Allopathic Medicine. These products are purely supportive.",
       "final_recommended_products": [
         {
           "product_name": "IMMUNODOC RAS",
@@ -7677,7 +7698,7 @@
         "Excessive physical exertion leading to severe fatigue"
       ],
       "ayurvedic_tip": "Focus on balancing your 'Vata' and 'Pitta' doshas by maintaining a calm environment and eating warm, freshly prepared, easily digestible meals.",
-      "disclaimer": "These are supportive measures. Always follow your oncologist/physician's primary treatment plan.",
+      "disclaimer": "These are supportive measures. Always follow your oncologist/physician's primary treatment plan. CRITICAL: Do Not Replace Allopathic Medicine. These products are purely supportive.",
       "final_recommended_products": [
         {
           "product_name": "LIVODOC RAS",
@@ -7700,8 +7721,8 @@
           "dosage": "15ml twice daily"
         },
         {
-          "name": "SPIRADOC TABLET",
-          "ingredients": "Spirulina, rich in proteins and vitamins",
+          "name": "Spirulina Extract",
+          "ingredients": "Iron-reduced Spirulina",
           "dosage": "1 tablet twice daily"
         }
       ]
@@ -7743,7 +7764,7 @@
         "Excessive physical exertion leading to severe fatigue"
       ],
       "ayurvedic_tip": "Focus on balancing your 'Vata' and 'Pitta' doshas by maintaining a calm environment and eating warm, freshly prepared, easily digestible meals.",
-      "disclaimer": "These are supportive measures. Always follow your oncologist/physician's primary treatment plan.",
+      "disclaimer": "These are supportive measures. Always follow your oncologist/physician's primary treatment plan. CRITICAL: Do Not Replace Allopathic Medicine. These products are purely supportive.",
       "final_recommended_products": [
         {
           "product_name": "IMMUNODOC RAS",
@@ -8240,8 +8261,8 @@
           "dosage": "1-2 drops in each eye twice daily"
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Each 10ml contains Aloevera Leaf Ras 2.5ml, Triphala Fruits Ras 1g, Apple Fruit 250mg, Kokum Fruit Ext 200mg, Punarnava Root Powder 200mg, Giloy Stem Powder 50mg, Ashwagandha Root Powder 50mg, Mulethi Stem Powder 20mg, Tulsi Panchang Powder 20mg, Ginger Rhizome Powder 20mg",
+          "name": "Eye Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger-free)",
           "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
         },
         {
@@ -8279,8 +8300,8 @@
           "dosage": "1-2 drops in each eye twice daily"
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Each 10ml contains Aloevera Leaf Ras 2.5ml, Triphala Fruits Ras 1g, Apple Fruit 250mg, Kokum Fruit Ext 200mg, Punarnava Root Powder 200mg, Giloy Stem Powder 50mg, Ashwagandha Root Powder 50mg, Mulethi Stem Powder 20mg, Tulsi Panchang Powder 20mg, Ginger Rhizome Powder 20mg",
+          "name": "Eye Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger-free)",
           "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
         },
         {
@@ -8520,8 +8541,8 @@
           "dosage": "2 drops in each eye 3 times daily"
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Each 10ml contains Aloevera Leaf Ras 2.5ml, Triphala Fruits Ras 1g, Apple Fruit 250mg, Kokum Fruit Ext 200mg, Punarnava Root Powder 200mg, Giloy Stem Powder 50mg, Ashwagandha Root Powder 50mg, Mulethi Stem Powder 20mg, Tulsi Panchang Powder 20mg, Ginger Rhizome Powder 20mg",
+          "name": "Eye Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Kokum-free)",
           "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
         },
         {
@@ -8559,8 +8580,8 @@
           "dosage": "2 drops in each eye 3 times daily"
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Each 10ml contains Aloevera Leaf Ras 2.5ml, Triphala Fruits Ras 1g, Apple Fruit 250mg, Kokum Fruit Ext 200mg, Punarnava Root Powder 200mg, Giloy Stem Powder 50mg, Ashwagandha Root Powder 50mg, Mulethi Stem Powder 20mg, Tulsi Panchang Powder 20mg, Ginger Rhizome Powder 20mg",
+          "name": "Eye Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Kokum-free)",
           "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
         },
         {
@@ -8585,9 +8606,14 @@
       "category": "OPHTHALMOLOGICAL",
       "recommended_wellness_products": [
         {
-          "product_name": "EYEDOC DROP",
-          "ingredients": "Rose (Rosa centifolia) Flower Petals, Honey (Apidae), Punarnava (Boerhaavia diffusa) Whole Plant Herbs, Bhringraj (Eclipta alba) Whole Plant Herbs, Nirgundi (Vitex negundo) Root Herbs, Harad (Terminalia chebula) Fruit Herbs, Haldi (Curcuma longa) Rhizome Herbs, Safed Chandan (Santalum album) Heart Wood Herbs, Raktchandan (Pterocarpus santalinus) Heart Wood Herbs, Tulsi (Ocimum sanctum) Whole Plant Herbs, Neem (Azadirachta indica) Leaf Herbs, Rasot (Extractum berberis) Panchang Herbs, Pudina Sat (Mentha spicata) Whole Plant Herbs",
+          "name": "Retina Safe Drops",
+          "ingredients": "Rose Petals, Punarnava, Bhringraj, Nirgundi, Harad, Haldi, Tulsi, Neem (Honey-free)",
           "dosage": "1-2 drops in each eye twice daily"
+        },
+        {
+          "name": "Safe Diabetic Blend",
+          "ingredients": "Aloevera, Triphala, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Apple-free)",
+          "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -8619,9 +8645,14 @@
       "ayurvedic_tip": "A daily intake of Jamun seed powder or bitter gourd juice is highly recommended to keep blood sugar levels in check and protect the retina.",
       "final_recommended_products": [
         {
-          "product_name": "EYEDOC DROP",
-          "ingredients": "Rose (Rosa centifolia) Flower Petals, Honey (Apidae), Punarnava (Boerhaavia diffusa) Whole Plant Herbs, Bhringraj (Eclipta alba) Whole Plant Herbs, Nirgundi (Vitex negundo) Root Herbs, Harad (Terminalia chebula) Fruit Herbs, Haldi (Curcuma longa) Rhizome Herbs, Safed Chandan (Santalum album) Heart Wood Herbs, Raktchandan (Pterocarpus santalinus) Heart Wood Herbs, Tulsi (Ocimum sanctum) Whole Plant Herbs, Neem (Azadirachta indica) Leaf Herbs, Rasot (Extractum berberis) Panchang Herbs, Pudina Sat (Mentha spicata) Whole Plant Herbs",
+          "name": "Retina Safe Drops",
+          "ingredients": "Rose Petals, Punarnava, Bhringraj, Nirgundi, Harad, Haldi, Tulsi, Neem (Honey-free)",
           "dosage": "1-2 drops in each eye twice daily"
+        },
+        {
+          "name": "Safe Diabetic Blend",
+          "ingredients": "Aloevera, Triphala, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Apple-free)",
+          "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -8634,8 +8665,8 @@
           "dosage": "15-20ml twice daily"
         },
         {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
+          "name": "Antioxidant Extract",
+          "ingredients": "Berry extracts in sugar-free base",
           "dosage": "15ml twice daily"
         }
       ]
@@ -8650,8 +8681,8 @@
           "dosage": "1-2 drops in each eye twice daily (in conjunction with medical treatment)"
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Each 10ml contains Aloevera Leaf Ras 2.5ml, Triphala Fruits Ras 1g, Apple Fruit 250mg, Kokum Fruit Ext 200mg, Punarnava Root Powder 200mg, Giloy Stem Powder 50mg, Ashwagandha Root Powder 50mg, Mulethi Stem Powder 20mg, Tulsi Panchang Powder 20mg, Ginger Rhizome Powder 20mg",
+          "name": "Eye Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Kokum-free)",
           "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
         },
         {
@@ -8689,8 +8720,8 @@
           "dosage": "1-2 drops in each eye twice daily (in conjunction with medical treatment)"
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Each 10ml contains Aloevera Leaf Ras 2.5ml, Triphala Fruits Ras 1g, Apple Fruit 250mg, Kokum Fruit Ext 200mg, Punarnava Root Powder 200mg, Giloy Stem Powder 50mg, Ashwagandha Root Powder 50mg, Mulethi Stem Powder 20mg, Tulsi Panchang Powder 20mg, Ginger Rhizome Powder 20mg",
+          "name": "Eye Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Kokum-free)",
           "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
         },
         {
@@ -9082,8 +9113,8 @@
           "dosage": "1-2 drops mixed in warm water for gargling and drinking, twice daily"
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Each 10ml contains Aloevera Leaf Ras 2.5ml, Triphala Fruits Ras 1g, Apple Fruit 250mg, Kokum Fruit Ext 200mg, Punarnava Root Powder 200mg, Giloy Stem Powder 50mg, Ashwagandha Root Powder 50mg, Mulethi Stem Powder 20mg, Tulsi Panchang Powder 20mg, Ginger Rhizome Powder 20mg",
+          "name": "Throat Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Kokum-free)",
           "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
         }
       ],
@@ -9121,8 +9152,8 @@
           "dosage": "1-2 drops mixed in warm water for gargling and drinking, twice daily"
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Each 10ml contains Aloevera Leaf Ras 2.5ml, Triphala Fruits Ras 1g, Apple Fruit 250mg, Kokum Fruit Ext 200mg, Punarnava Root Powder 200mg, Giloy Stem Powder 50mg, Ashwagandha Root Powder 50mg, Mulethi Stem Powder 20mg, Tulsi Panchang Powder 20mg, Ginger Rhizome Powder 20mg",
+          "name": "Throat Safe Blend",
+          "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Kokum-free)",
           "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
         },
         {
