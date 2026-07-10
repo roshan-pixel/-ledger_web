@@ -199,11 +199,22 @@
             display: flex;
             gap: 0.8rem;
             overflow-x: auto;
-            padding-bottom: 0.5rem;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
+            padding-bottom: 0.8rem; /* slight padding for scrollbar */
         }
-        .category-scroll::-webkit-scrollbar { display: none; }
+        .category-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+        .category-scroll::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+        }
+        .category-scroll::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+        }
+        .category-scroll::-webkit-scrollbar-thumb:hover {
+            background: rgba(99, 102, 241, 0.5);
+        }
         .cat-btn {
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.1);
