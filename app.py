@@ -29,7 +29,7 @@ _DISEASE_CACHE_LOCK = threading.Lock()
 
 # Fields returned in the list endpoint (heavy ingredient lists excluded)
 _LIST_FIELDS = {
-    'disease_name', 'category_name',
+    'id', 'disease_name', 'category_name',
     'final_recommended_products', 'recommended_wellness_products',
     'diet', 'exercise', 'ayurvedic_tip', 'things_to_avoid', 'disclaimer',
 }
@@ -51,6 +51,7 @@ def _load_disease_cache():
             for disease in diseases:
                 entry = dict(disease)          # shallow copy
                 entry['category_name'] = category_name
+                entry['id'] = len(flat)        # Store backend index permanently
                 flat.append(entry)
         _DISEASE_CACHE = flat
         return _DISEASE_CACHE

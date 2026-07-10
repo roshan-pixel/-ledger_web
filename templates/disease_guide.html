@@ -742,7 +742,8 @@
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
             const sortVal = document.getElementById('sortSelect').value;
 
-            let filtered = allDiseases;
+            // Use a shallow copy to prevent mutating the original `allDiseases` array!
+            let filtered = [...allDiseases];
             
             if (currentFilter) {
                 filtered = filtered.filter(d => d.category_name === currentFilter);
@@ -811,9 +812,8 @@
 
                 const delay = Math.min(idx * 0.04, 1.5).toFixed(2);
                 
-                // We stringify the entire disease object to pass to modal
-                // But careful with quotes, store index and lookup from allDiseases is safer
-                const globalIdx = allDiseases.findIndex(x => x.disease_name === name);
+                // Use the exact backend ID to ensure the correct full data is fetched
+                const globalIdx = d.id !== undefined ? d.id : idx;
 
                 const cardHtml = `
                     <div class="disease-card" style="animation-delay: ${delay}s; --card-accent: rgb(${colorRGB}); --card-accent-rgb: ${colorRGB};" onclick="openModal(${globalIdx})">
@@ -849,15 +849,17 @@
             return `<ul class="modal-list ${icon === '⚠️' ? 'avoid' : (icon === '🥗' ? 'diet' : 'exercise')}">` + arr.map(i => `<li>${i}</li>`).join('') + '</ul>';
         }
 
-        async function openModal(idx) {
-            const d = allDiseases[idx];
+        async function openModal(globalIdx) {
+            // Find the disease in our local list by its backend ID
+            const d = allDiseases.find(x => x.id === globalIdx) || allDiseases[globalIdx];
             if (!d) return;
 
             // Fetch full details if needed, but we have most in memory now.
             // Using API to get full disease object to ensure we have ingredients if any.
             let fullData = d;
             try {
-                const res = await fetch('/api/disease_guide/' + idx);
+                // Fetch using the exact backend ID
+                const res = await fetch('/api/disease_guide/' + globalIdx);
                 if(res.ok) fullData = await res.json();
             } catch(e) { console.warn("Could not fetch full details, using cached."); }
 
@@ -947,8 +949,8 @@
             setTimeout(() => toast.classList.remove('show'), 2500);
         }
 
-        function copyProtocol(idx) {
-            const d = allDiseases[idx];
+        function copyProtocol(globalIdx) {
+            const d = allDiseases.find(x => x.id === globalIdx) || allDiseases[globalIdx];
             if(!d) return;
             const prods = d.final_recommended_products || d.recommended_wellness_products || [];
             let txt = `Protocol for ${d.disease_name || 'Disease'}:\n\n`;
@@ -985,8 +987,8 @@
             setTimeout(updateArrowState, 100);
         }
 
-        function shareProtocol(idx) {
-            const d = allDiseases[idx];
+        function shareProtocol(globalIdx) {
+            const d = allDiseases.find(x => x.id === globalIdx) || allDiseases[globalIdx];
             if(!d) return;
             const url = window.location.origin + window.location.pathname + '?q=' + encodeURIComponent(d.disease_name);
             if (navigator.share) {
