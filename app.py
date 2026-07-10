@@ -54,6 +54,10 @@ def inventory_master():
 def portal_sync_page():
     return render_template('portal_sync.html')
 
+@app.route('/disease_guide')
+def disease_guide():
+    return render_template('disease_guide.html')
+
 @app.route('/api/kpi')
 def api_kpi():
     try:
