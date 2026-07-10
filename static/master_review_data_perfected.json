@@ -590,7 +590,7 @@
         "Gentle stretching and mobility exercises.",
         "Strictly avoid any exercise that involves bearing down (Valsalva maneuver), heavy lifting, or intense isometric holds."
       ],
-      "how_to_take_products": "Take 15ml of CARDIODOC RAS with warm water in the morning. Take 10ml of ADIDOC PRAVAHI KWATH in the afternoon or evening.",
+      "how_to_take_products": "Take 15ml of CARDIODOC RAS with warm water in the morning. Take 10ml of Heart Safe Blend in the afternoon or evening.",
       "things_to_avoid": [
         "Strictly avoid heavy lifting, straining, or intense weightlifting.",
         "Avoid straining during bowel movements (treat constipation promptly).",
@@ -609,18 +609,9 @@
           "name": "Heart Safe Blend",
           "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi (Mulethi-free)",
           "dosage": "10ml twice daily with water"
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
         }
-      ]
+      ],
+      "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine. Natural blood thinners must be approved by a cardiologist to prevent interaction with anticoagulants."
     },
     {
       "disease_name": "Deep Vein Thrombosis",
