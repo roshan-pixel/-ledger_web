@@ -195,26 +195,44 @@
         .sort-select option { background: var(--bg-color); color: white; }
 
         /* Category Pills Scroll */
+        .category-nav {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+        }
+        .cat-arrow {
+            flex-shrink: 0;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: white;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s;
+            z-index: 2;
+        }
+        .cat-arrow:hover {
+            background: rgba(99,102,241,0.3);
+            border-color: rgba(99,102,241,0.5);
+            box-shadow: 0 0 10px rgba(99,102,241,0.3);
+        }
+        .cat-arrow:disabled {
+            opacity: 0.2;
+            cursor: default;
+        }
         .category-scroll {
             display: flex;
             gap: 0.8rem;
             overflow-x: auto;
-            padding-bottom: 0.8rem; /* slight padding for scrollbar */
+            flex: 1;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-behavior: smooth;
+            padding: 4px 2px;
         }
-        .category-scroll::-webkit-scrollbar {
-            height: 6px;
-        }
-        .category-scroll::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 10px;
-        }
-        .category-scroll::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 10px;
-        }
-        .category-scroll::-webkit-scrollbar-thumb:hover {
-            background: rgba(99, 102, 241, 0.5);
-        }
+        .category-scroll::-webkit-scrollbar { display: none; }
         .cat-btn {
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.1);
@@ -597,9 +615,17 @@
             <div class="stat-pill text-green">🌿 <span class="stat-val">Ayurvedic</span> Protocol</div>
         </div>
 
-        <div class="category-scroll" id="catScroll">
-            <button class="cat-btn active" onclick="setCategory('', this)">All</button>
-            <!-- Categories injected here -->
+        <div class="category-nav">
+            <button class="cat-arrow" id="catPrev" onclick="scrollCats(-1)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <div class="category-scroll" id="catScroll">
+                <button class="cat-btn active" onclick="setCategory('', this)">All</button>
+                <!-- Categories injected here -->
+            </div>
+            <button class="cat-arrow" id="catNext" onclick="scrollCats(1)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
         </div>
 
         <div class="tools-row">
@@ -932,6 +958,31 @@
                 txt += `- ${pName} (${pDose})\n`;
             });
             navigator.clipboard.writeText(txt).then(() => showToast('Protocol copied to clipboard!'));
+        }
+
+        // Category Scrolling Logic
+        const catScrollEl = document.getElementById('catScroll');
+        const prevBtn = document.getElementById('catPrev');
+        const nextBtn = document.getElementById('catNext');
+
+        function updateArrowState() {
+            if (!catScrollEl || !prevBtn || !nextBtn) return;
+            prevBtn.disabled = catScrollEl.scrollLeft <= 0;
+            // Allow 1px tolerance for rounding issues
+            nextBtn.disabled = Math.ceil(catScrollEl.scrollLeft + catScrollEl.clientWidth) >= catScrollEl.scrollWidth - 1;
+        }
+
+        function scrollCats(direction) {
+            if (!catScrollEl) return;
+            const scrollAmount = 300;
+            catScrollEl.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+        }
+
+        if (catScrollEl) {
+            catScrollEl.addEventListener('scroll', updateArrowState);
+            window.addEventListener('resize', updateArrowState);
+            // Delay initial check to ensure DOM is fully rendered
+            setTimeout(updateArrowState, 100);
         }
 
         function shareProtocol(idx) {
