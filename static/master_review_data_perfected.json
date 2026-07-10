@@ -59,6 +59,12 @@
         },
         {
           "name": "OMEGADOC CAPSULE",
+          "ingredients": "Omega-rich extracts",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Highly synergistic for cardiovascular health."
+        },
+        {
+          "name": "OMEGADOC CAPSULE",
           "ingredients": "Flaxseed oil",
           "dosage": "1 capsule daily"
         }
@@ -166,6 +172,12 @@
           "dosage": "1 capsule twice daily"
         },
         {
+          "name": "VITADOC TABLET",
+          "ingredients": "Multivitamin botanical extracts",
+          "dosage": "1 tablet daily",
+          "rationale": "Synergistic multivitamin to help address general weakness and cardiac cachexia."
+        },
+        {
           "name": "ARJUN EXTRACT TABLET",
           "ingredients": "Terminalia arjuna",
           "dosage": "1 tablet twice daily"
@@ -219,6 +231,12 @@
           "product": "IMMUNODOC RAS",
           "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger",
           "how_to_take": "Take 15-20 ml twice daily with warm water to boost immunity and fight infections."
+        },
+        {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Omega fatty acids",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Highly synergistic for cardiovascular health and managing inflammation."
         }
       ]
     },
@@ -318,6 +336,12 @@
           "product": "ADIDOC PRAVAHI KWATH",
           "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Mulethi, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi",
           "how_to_take": "Take 10ml with 100ml warm water, twice daily."
+        },
+        {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Omega-rich extracts",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Highly synergistic for cardiovascular health."
         },
         {
           "name": "OMEGADOC CAPSULE",
@@ -421,6 +445,12 @@
           "product": "BRAINDOC PRAVAHI KWATH",
           "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi, Lahsoon",
           "how_to_take": "Take 15 ml twice daily after meals to help manage sympathetic nervous system overdrive."
+        },
+        {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Flaxseed and Omega-rich extracts",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Highly synergistic for supporting overall cardiovascular health."
         }
       ]
     },
@@ -470,6 +500,12 @@
           "name": "EXE PANCH TULSI OIL",
           "ingredients": "5 types of Tulsi extract",
           "dosage": "2-3 drops in warm water twice daily"
+        },
+        {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Omega fatty acids",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Supports overall cardiovascular health and heart function."
         }
       ]
     },
@@ -741,6 +777,12 @@
           "product": "THUNDERBLAST RAS",
           "ingredients": "Aloevera, Ashwagandha, Akarkara, Vidarikand, Safed Musli, Gokhru, Satawari, Kounch Beej, Jaiphal, Shilajeet, Ginger, Bhasamas",
           "how_to_take": "Take 10ml with warm milk at night to rebuild physical strength and overcome fatigue."
+        },
+        {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Omega fatty acids",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Highly synergistic for both brain recovery and underlying cardiovascular health."
         }
       ]
     },
@@ -1277,6 +1319,12 @@
           "product_name": "ASHWAGANDHA TABLET",
           "ingredients": "Ashwagandha Extract (Withania Somnifera).",
           "dosage_instructions": "1 tablet twice daily."
+        },
+        {
+          "name": "CALCIUM TABLET & VITAMIN D2 TABLET",
+          "ingredients": "Calcium and Vitamin D2",
+          "dosage": "1 tablet daily",
+          "rationale": "Essential for preventing and managing severe bone loss and osteoporosis caused by excess cortisol."
         }
       ]
     },
@@ -1572,6 +1620,12 @@
           "name": "GILOY TABLET",
           "ingredients": "Giloy extract",
           "dosage": "1 tablet twice daily"
+        },
+        {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Flaxseed and Omega-rich extracts",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Synergistic for supporting eye health and microcirculation."
         }
       ]
     },
@@ -1883,6 +1937,12 @@
           "product_name": "ALRGYDOC PRAVAHI KWATH",
           "ingredients": "Giloy Stem C. Powder, Neem Leaf C. Powder, Tulsi Panchang C.Powder, Brahmi Whole Plant C. Powder, Haldi Rhizome C. Powder.",
           "specific_dosage": "15-20 ml twice a day with equal amount of water."
+        },
+        {
+          "name": "VITADOC TABLET",
+          "ingredients": "Multivitamin botanical extracts",
+          "dosage": "1 tablet daily",
+          "rationale": "Provides multivitamin support for general weakness and chronic disease."
         }
       ]
     },
@@ -2189,6 +2249,12 @@
           "product_name": "ALRGYDOC PRAVAHI KWATH",
           "ingredients": "Giloy Stem C. Powder, Neem Leaf C. Powder, Tulsi Panchang C.Powder, Brahmi Whole Plant C. Powder, Haldi Rhizome C. Powder.",
           "specific_dosage": "15-20 ml twice a day with equal amount of water."
+        },
+        {
+          "name": "ZINC TABLET",
+          "ingredients": "Zinc",
+          "dosage": "1 tablet daily",
+          "rationale": "Synergistic for supporting immunity against chronic infections."
         }
       ]
     }
@@ -2251,6 +2317,12 @@
           "product_name": "ADIDOC PRAVAHI KWATH",
           "ingredients": "Bhringraja Whole Plant C. Powder, Amla Fruit C. Powder, Brahmi Whole Plant C. Powder, Bhui Amla Whole Plant C. Powder, Giloy Stem C. Powder, Nagakesar Flower C. Powder, Punarnava Root C. Powder, Mulethi Stem C. Powder, Vidarikanda Rhizome C. Powder, Tulsi Panchang C. Powder, Arjuna Stem Bark C. Powder, Neem Leaf C. Powder, Laung Flower Bud C. Powder, Haldi Rhizome C. Powder.",
           "specific_dosage": "15-20 ml twice daily with equal amount of water after meals."
+        },
+        {
+          "name": "SEABUCKDOC JUICE",
+          "ingredients": "Sea buckthorn extract",
+          "dosage": "15ml twice daily",
+          "rationale": "Excellent for soothing and healing the mucosal lining of the esophagus and stomach."
         }
       ]
     },
@@ -2311,6 +2383,12 @@
           "product_name": "ADIDOC PRAVAHI KWATH",
           "ingredients": "Bhringraja Whole Plant C. Powder, Amla Fruit C. Powder, Brahmi Whole Plant C. Powder, Bhui Amla Whole Plant C. Powder, Giloy Stem C. Powder, Nagakesar Flower C. Powder, Punarnava Root C. Powder, Mulethi Stem C. Powder, Vidarikanda Rhizome C. Powder, Tulsi Panchang C. Powder, Arjuna Stem Bark C. Powder, Neem Leaf C. Powder, Laung Flower Bud C. Powder, Haldi Rhizome C. Powder.",
           "specific_dosage": "15-20 ml twice daily with equal amount of water after meals."
+        },
+        {
+          "name": "SEABUCKDOC JUICE",
+          "ingredients": "Omega 7 rich extracts",
+          "dosage": "15ml twice daily",
+          "rationale": "Highly synergistic for healing mucosal dryness and stomach ulcers."
         }
       ]
     },
@@ -2491,6 +2569,12 @@
           "product_name": "ADIDOC PRAVAHI KWATH",
           "ingredients": "Bhringraja Whole Plant C. Powder, Amla Fruit C. Powder, Brahmi Whole Plant C. Powder, Bhui Amla Whole Plant C. Powder, Giloy Stem C. Powder, Nagakesar Flower C. Powder, Punarnava Root C. Powder, Mulethi Stem C. Powder, Vidarikanda Rhizome C. Powder, Tulsi Panchang C. Powder, Arjuna Stem Bark C. Powder, Neem Leaf C. Powder, Laung Flower Bud C. Powder, Haldi Rhizome C. Powder.",
           "specific_dosage": "15-20 ml twice daily with equal amount of water after meals."
+        },
+        {
+          "name": "SEABUCKDOC JUICE",
+          "ingredients": "Omega 7 rich extracts",
+          "dosage": "15ml twice daily",
+          "rationale": "Synergistic for healing ulcers and soothing gastrointestinal mucous membranes."
         }
       ]
     },
@@ -2551,6 +2635,12 @@
           "product_name": "ADIDOC PRAVAHI KWATH",
           "ingredients": "Bhringraja Whole Plant C. Powder, Amla Fruit C. Powder, Brahmi Whole Plant C. Powder, Bhui Amla Whole Plant C. Powder, Giloy Stem C. Powder, Nagakesar Flower C. Powder, Punarnava Root C. Powder, Mulethi Stem C. Powder, Vidarikanda Rhizome C. Powder, Tulsi Panchang C. Powder, Arjuna Stem Bark C. Powder, Neem Leaf C. Powder, Laung Flower Bud C. Powder, Haldi Rhizome C. Powder.",
           "specific_dosage": "15-20 ml twice daily with equal amount of water after meals."
+        },
+        {
+          "name": "SEABUCKDOC JUICE",
+          "ingredients": "Sea buckthorn extract",
+          "dosage": "15ml twice daily",
+          "rationale": "Highly effective for healing intestinal ulcers and supporting the mucous membranes."
         }
       ]
     },
@@ -2611,6 +2701,12 @@
           "product_name": "ADIDOC PRAVAHI KWATH",
           "ingredients": "Bhringraja Whole Plant C. Powder, Amla Fruit C. Powder, Brahmi Whole Plant C. Powder, Bhui Amla Whole Plant C. Powder, Giloy Stem C. Powder, Nagakesar Flower C. Powder, Punarnava Root C. Powder, Mulethi Stem C. Powder, Vidarikanda Rhizome C. Powder, Tulsi Panchang C. Powder, Arjuna Stem Bark C. Powder, Neem Leaf C. Powder, Laung Flower Bud C. Powder, Haldi Rhizome C. Powder.",
           "specific_dosage": "15-20 ml twice daily with equal amount of water after meals."
+        },
+        {
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily",
+          "rationale": "Provides excellent support for liver and spleen function and boosts immunity."
         }
       ]
     },
@@ -2672,6 +2768,12 @@
           "product_name": "ADIDOC PRAVAHI KWATH",
           "ingredients": "Bhringraja Whole Plant C. Powder, Amla Fruit C. Powder, Brahmi Whole Plant C. Powder, Bhui Amla Whole Plant C. Powder, Giloy Stem C. Powder, Nagakesar Flower C. Powder, Punarnava Root C. Powder, Mulethi Stem C. Powder, Vidarikanda Rhizome C. Powder, Tulsi Panchang C. Powder, Arjuna Stem Bark C. Powder, Neem Leaf C. Powder, Laung Flower Bud C. Powder, Haldi Rhizome C. Powder.",
           "specific_dosage": "15-20 ml twice daily with equal amount of water after meals."
+        },
+        {
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily",
+          "rationale": "Indicated for liver/spleen health and immunity."
         }
       ]
     },
@@ -2856,6 +2958,18 @@
           "dosage": "1 tablet twice a day with warm milk"
         },
         {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Omega fatty acids",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Specifically indicated for brain health and conditions like Alzheimer's."
+        },
+        {
+          "name": "IRON TABLET & VITAMIN B12",
+          "ingredients": "Iron and Vitamin B12",
+          "dosage": "1 tablet daily",
+          "rationale": "Essential for preventing nerve degeneration and supporting cognitive function."
+        },
+        {
           "name": "THUNDERBLAST RAS",
           "ingredients": "Shilajit, Safed Musli",
           "dosage": "15-20ml twice daily"
@@ -2920,6 +3034,18 @@
           "product_name": "ASHWAGANDHA TABLET",
           "ingredients": "Ashwagandha Extract (Withania Somnifera)",
           "dosage": "1 tablet twice a day with warm milk"
+        },
+        {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Omega-rich extracts",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Supports brain health and provides neuroprotection."
+        },
+        {
+          "name": "IRON TABLET & VITAMIN B12",
+          "ingredients": "Iron and Vitamin B12",
+          "dosage": "1 tablet daily",
+          "rationale": "Crucial for preventing and managing nerve degeneration."
         },
         {
           "name": "THUNDERBLAST RAS",
@@ -2991,6 +3117,12 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger",
           "dosage": "20 ml twice a day on an empty stomach"
+        },
+        {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Omega-rich extracts",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Supports brain health."
         }
       ]
     },
@@ -3111,6 +3243,12 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger",
           "dosage": "20 ml twice a day on an empty stomach"
+        },
+        {
+          "name": "IRON TABLET & VITAMIN B12",
+          "ingredients": "Iron and Vitamin B12",
+          "dosage": "1 tablet daily",
+          "rationale": "Essential for addressing nerve degeneration and supporting overall nerve health."
         }
       ]
     },
@@ -3171,6 +3309,18 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger",
           "dosage": "20 ml twice a day on an empty stomach"
+        },
+        {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Omega fatty acids",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Provides essential fatty acids beneficial for brain health and dementia."
+        },
+        {
+          "name": "IRON TABLET & VITAMIN B12",
+          "ingredients": "Iron and Vitamin B12",
+          "dosage": "1 tablet daily",
+          "rationale": "Helps prevent further nerve degeneration associated with dementia."
         }
       ],
       "disclaimer": " MUST NOT replace prescribed neurological medications. Consult your neurologist."
@@ -3227,6 +3377,18 @@
           "product_name": "ASHWAGANDHA TABLET",
           "ingredients": "Ashwagandha Extract (Withania Somnifera)",
           "dosage": "1 tablet twice a day with warm milk"
+        },
+        {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Omega-rich extracts",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Supports brain health and neurological function."
+        },
+        {
+          "name": "IRON TABLET & VITAMIN B12",
+          "ingredients": "Iron and Vitamin B12",
+          "dosage": "1 tablet daily",
+          "rationale": "Crucial for preventing and managing nerve degeneration."
         },
         {
           "name": "THUNDERBLAST RAS",
@@ -3417,6 +3579,12 @@
           "dosage": "15-20 ml twice a day before meals"
         },
         {
+          "name": "ASHWAGANDHA TABLET",
+          "ingredients": "Ashwagandha Extract",
+          "dosage": "1 tablet twice daily",
+          "rationale": "Highly synergistic for managing severe stress and neurological fatigue."
+        },
+        {
           "name": "BRAHMI EXTRACT TABLET",
           "ingredients": "Pure Brahmi",
           "dosage": "1 tablet twice daily"
@@ -3540,6 +3708,12 @@
           "product_name": "THUNDERBLAST RAS",
           "ingredients": "Aloevera, Ashwagandha, Safed Musli, Gokhru, Shilajeet, Kesar",
           "dosage": "20 ml twice a day after meals"
+        },
+        {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Omega-rich extracts",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Provides essential fatty acids necessary for optimal brain function."
         }
       ]
     },
@@ -3600,6 +3774,18 @@
           "product_name": "THUNDERBLAST RAS",
           "ingredients": "Aloevera, Ashwagandha, Safed Musli, Gokhru, Shilajeet, Kesar",
           "dosage": "20 ml twice a day after meals"
+        },
+        {
+          "name": "ASHWAGANDHA TABLET",
+          "ingredients": "Ashwagandha extract",
+          "dosage": "1 tablet twice daily",
+          "rationale": "Indicated for severe stress and neurological fatigue."
+        },
+        {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Omega-rich extracts",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Supports brain health."
         }
       ]
     },
@@ -3718,6 +3904,12 @@
         },
         {
           "name": "ASHWAGANDHA TABLET",
+          "ingredients": "Ashwagandha Extract",
+          "dosage": "1 tablet twice daily",
+          "rationale": "Highly synergistic for relieving severe stress and promoting relaxation."
+        },
+        {
+          "name": "ASHWAGANDHA TABLET",
           "ingredients": "Pure Ashwagandha Root",
           "dosage": "1 tablet with warm milk at bedtime"
         }
@@ -3775,6 +3967,12 @@
           "product_name": "NONIDOC JUICE",
           "ingredients": "Noni Extract, Kokum, Safed Musali, Ashwagandha, Amla, Giloy",
           "dosage": "15-20 ml twice a day before meals"
+        },
+        {
+          "name": "ASHWAGANDHA TABLET",
+          "ingredients": "Ashwagandha extract",
+          "dosage": "1 tablet twice daily",
+          "rationale": "Acts as an adaptogen to manage severe stress and calm the nervous system."
         },
         {
           "name": "BRAHMI EXTRACT TABLET",
@@ -3837,6 +4035,12 @@
           "dosage": "15-20 ml twice a day before meals"
         },
         {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Omega-rich extracts",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Provides essential fatty acids necessary for optimal brain function."
+        },
+        {
           "name": "BRAHMI EXTRACT TABLET",
           "ingredients": "Pure Brahmi",
           "dosage": "1 tablet twice daily"
@@ -3882,6 +4086,18 @@
           "name": "CURCIDOC TABLET",
           "ingredients": "Curcumin extract (Haldi)",
           "dosage": "1 tablet twice daily"
+        },
+        {
+          "name": "CALCIUM TABLET & VITAMIN D2 TABLET",
+          "ingredients": "Calcium and Vitamin D2",
+          "dosage": "1 tablet daily",
+          "rationale": "Indicated for arthritis and bone health."
+        },
+        {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Omega-rich extracts",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Helps reduce joint inflammation."
         },
         {
           "name": "JOINT CURATOR OIL",
@@ -3989,6 +4205,18 @@
           "dosage": "1 tablet twice daily"
         },
         {
+          "name": "CALCIUM TABLET & VITAMIN D2 TABLET",
+          "ingredients": "Calcium and Vitamin D2",
+          "dosage": "1 tablet daily",
+          "rationale": "Supports bone health and helps manage arthritis symptoms."
+        },
+        {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Flaxseed and Omega-rich extracts",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Highly synergistic for reducing joint inflammation."
+        },
+        {
           "name": "JOINT CURATOR OIL",
           "ingredients": "Nilgiri, Kapoor, Til Oil",
           "dosage": "Massage externally on affected joints"
@@ -4042,6 +4270,12 @@
           "product_name": "ADIDOC PRAVAHI KWATH",
           "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Mulethi, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi",
           "dosage": "15-20 ml twice a day with water"
+        },
+        {
+          "name": "ASHWAGANDHA TABLET",
+          "ingredients": "Ashwagandha extract",
+          "dosage": "1 tablet twice daily",
+          "rationale": "Helps manage severe stress and neurological fatigue common in fibromyalgia."
         }
       ]
     },
@@ -4092,6 +4326,18 @@
           "name": "ORTHODOC PRAVAHI KWATH",
           "ingredients": "Joint support herbs",
           "dosage": "10ml twice daily"
+        },
+        {
+          "name": "CALCIUM TABLET & VITAMIN D2 TABLET",
+          "ingredients": "Calcium and Vitamin D2",
+          "dosage": "1 tablet daily",
+          "rationale": "Supports bone density and manages arthritis-related bone loss."
+        },
+        {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Omega-rich extracts",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Helps reduce joint inflammation associated with cervical spondylosis."
         },
         {
           "name": "JOINT CURATOR OIL",
@@ -4252,6 +4498,12 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera Leaf Ras, Triphala Fruits Ras, Apple Fruit, Kokum Fruit Ext., Punarnava Root C. Powder, Giloy Stem C. Powder, Ashwagandha Root C. Powder, Mulethi Stem C. Powder, Tulsi Panchang C. Powder, Ginger Rhizome C. Powder",
           "dosage": "15-20 ml twice a day on an empty stomach"
+        },
+        {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Flaxseed and Omega-rich extracts",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Synergistic for reducing joint inflammation associated with arthritis."
         }
       ]
     },
@@ -4312,6 +4564,24 @@
           "product_name": "ALRGYDOC PRAVAHI KWATH",
           "ingredients": "Giloy Stem C. Powder, Neem Leaf C. Powder, Tulsi Panchang C.Powder, Brahmi Whole Plant C. Powder, Haldi Rhizome C. Powder",
           "dosage": "15-20 ml twice a day with water"
+        },
+        {
+          "name": "CALCIUM TABLET & VITAMIN D2 TABLET",
+          "ingredients": "Calcium and Vitamin D2",
+          "dosage": "1 tablet daily",
+          "rationale": "Supports bone health and helps manage arthritis."
+        },
+        {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Omega fatty acids",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Helps reduce joint inflammation associated with psoriatic arthritis."
+        },
+        {
+          "name": "SEABUCKDOC JUICE",
+          "ingredients": "Sea buckthorn extract",
+          "dosage": "15ml twice daily",
+          "rationale": "Highly synergistic for supporting skin health and mucous membranes."
         }
       ]
     }
@@ -4364,6 +4634,18 @@
           "product_name": "ORTHODOC PRAVAHI KWATH",
           "ingredients": "Aloevera Leaf Ras, Salai Guggal Gum Soft Ext., Nirgundi Leaf Soft Ext., Malkagni Seed Soft Ext, Rasna Leaf C. Powder, Methi Seed C. Powder, Hadjod Panchang C. Powder, Haldi Rhizome C. Powder",
           "dosage": "15-20 ml twice a day with equal amount of warm water after meals"
+        },
+        {
+          "name": "CALCIUM TABLET & VITAMIN D2 TABLET",
+          "ingredients": "Calcium and Vitamin D2",
+          "dosage": "1 tablet daily",
+          "rationale": "Supports bone structure and mitigates arthritis-related bone degradation."
+        },
+        {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Omega-rich extracts",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Provides strong anti-inflammatory effects for joints."
         },
         {
           "name": "ORTHODOC PRAVAHI KWATH",
@@ -4512,6 +4794,18 @@
           "product_name": "NONIDOC JUICE",
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Herbal Soft Extract (Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Amla, Giloy, Black Pepper, Long Pepper, Ginger)",
           "dosage": "15-20 ml twice a day diluted with water"
+        },
+        {
+          "name": "IRON TABLET & VITAMIN B12",
+          "ingredients": "Iron and Vitamin B12",
+          "dosage": "1 tablet daily",
+          "rationale": "Highly synergistic for addressing nerve degeneration."
+        },
+        {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Flaxseed and Omega-rich extracts",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Supports brain health and reduces central nervous system inflammation."
         }
       ],
       "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine. Do not stop immunosuppressants. NEVER replace standard DMARDs, biologics, or immunosuppressants. These are purely adjunctive."
@@ -4563,6 +4857,12 @@
           "product_name": "NONIDOC JUICE",
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Herbal Soft Extract (Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Amla, Giloy, Black Pepper, Long Pepper, Ginger)",
           "dosage": "15-20 ml twice a day diluted with water"
+        },
+        {
+          "name": "ASHWAGANDHA TABLET",
+          "ingredients": "Ashwagandha extract",
+          "dosage": "1 tablet twice daily",
+          "rationale": "Synergistic for combating muscle wasting and neurological fatigue."
         }
       ],
       "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine. Do not stop immunosuppressants. NEVER replace standard DMARDs, biologics, or immunosuppressants. These are purely adjunctive."
@@ -4626,6 +4926,18 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 2.5ml Triphala Fruits Ras 1g Apple Fruit 250mg Kokum Fruit Ext. 200mg Punarnava Root C. Powder 200mg Giloy Stem C. Powder 50mg Ashwagandha Root C. Powder 50mg Mulethi Stem C. Powder 20mg Tulsi Panchang C. Powder 20mg Ginger Rhizome C. Powder 20mg Excipients and Preservatives.",
           "dosage": "20 ml twice a day, 30 minutes before meals."
+        },
+        {
+          "name": "IRON TABLET & VITAMIN B12",
+          "ingredients": "Iron and Vitamin B12",
+          "dosage": "1 tablet daily",
+          "rationale": "Addresses anemia commonly associated with chronic kidney disease."
+        },
+        {
+          "name": "VITADOC TABLET",
+          "ingredients": "Multivitamins",
+          "dosage": "1 tablet daily",
+          "rationale": "Provides essential multivitamins to combat general weakness in chronic diseases."
         },
         {
           "name": "EXE PUNARNAVA KWATH",
@@ -4874,6 +5186,12 @@
           "dosage": "1 tablet twice daily"
         },
         {
+          "name": "ZINC TABLET",
+          "ingredients": "Zinc extract",
+          "dosage": "1 tablet daily",
+          "rationale": "Specifically supports prostate health and immune function."
+        },
+        {
           "name": "SHUDDH SHILAJIT CAPSULE",
           "ingredients": "Pure Shilajit",
           "dosage": "1 capsule daily"
@@ -4927,6 +5245,12 @@
           "name": "GILOY TABLET",
           "ingredients": "Giloy extract",
           "dosage": "1 tablet twice daily"
+        },
+        {
+          "name": "ZINC TABLET",
+          "ingredients": "Zinc",
+          "dosage": "1 tablet daily",
+          "rationale": "Highly synergistic for supporting prostate health and immunity."
         }
       ],
       "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain."
@@ -5222,6 +5546,12 @@
           "name": "GILOY TABLET",
           "ingredients": "Giloy extract",
           "dosage": "1 tablet twice daily"
+        },
+        {
+          "name": "NEEM EXTRACT TABLET",
+          "ingredients": "Neem extract",
+          "dosage": "1 tablet twice daily",
+          "rationale": "Provides powerful support against systemic infections and purifies the blood."
         }
       ],
       "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain."
@@ -5727,6 +6057,24 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras",
           "dosage": "10-15 ml twice a day with equal water"
+        },
+        {
+          "name": "ZINC TABLET",
+          "ingredients": "Zinc",
+          "dosage": "1 tablet daily",
+          "rationale": "Highly synergistic for managing severe skin conditions."
+        },
+        {
+          "name": "SEABUCKDOC JUICE",
+          "ingredients": "Omega 7 rich extracts",
+          "dosage": "15ml twice daily",
+          "rationale": "Excellent for supporting skin healing and hydration."
+        },
+        {
+          "name": "NEEM EXTRACT TABLET",
+          "ingredients": "Neem extract",
+          "dosage": "1 tablet twice daily",
+          "rationale": "Provides blood purification to help clear skin conditions."
         }
       ]
     },
@@ -5787,6 +6135,18 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras",
           "dosage": "10-15 ml twice a day with equal water"
+        },
+        {
+          "name": "ZINC TABLET",
+          "ingredients": "Zinc extract",
+          "dosage": "1 tablet daily",
+          "rationale": "Highly beneficial for severe skin conditions like eczema."
+        },
+        {
+          "name": "SEABUCKDOC JUICE",
+          "ingredients": "Sea buckthorn extract",
+          "dosage": "15ml twice daily",
+          "rationale": "Nourishes the skin and supports healing of dermal tissues."
         }
       ]
     },
@@ -5847,6 +6207,18 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras",
           "dosage": "10-15 ml twice a day with equal water"
+        },
+        {
+          "name": "ZINC TABLET",
+          "ingredients": "Zinc",
+          "dosage": "1 tablet daily",
+          "rationale": "Supports immunity and manages severe skin conditions; fulfills dietary zinc needs."
+        },
+        {
+          "name": "IRON TABLET & VITAMIN B12",
+          "ingredients": "Iron and Vitamin B12",
+          "dosage": "1 tablet daily",
+          "rationale": "Matches the dietary recommendation for B12 supplementation in Vitiligo."
         }
       ]
     },
@@ -5907,6 +6279,18 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras",
           "dosage": "10-15 ml twice a day with equal water"
+        },
+        {
+          "name": "ZINC TABLET",
+          "ingredients": "Zinc",
+          "dosage": "1 tablet daily",
+          "rationale": "Effective for severe skin conditions such as acne."
+        },
+        {
+          "name": "NEEM EXTRACT TABLET",
+          "ingredients": "Neem extract",
+          "dosage": "1 tablet twice daily",
+          "rationale": "Provides blood purification and is indicated for severe acne."
         }
       ]
     },
@@ -6027,6 +6411,18 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras",
           "dosage": "10-15 ml twice a day with equal water"
+        },
+        {
+          "name": "NEEM EXTRACT TABLET",
+          "ingredients": "Neem extract",
+          "dosage": "1 tablet twice daily",
+          "rationale": "Helps with blood purification and systemic inflammatory responses."
+        },
+        {
+          "name": "ZINC TABLET",
+          "ingredients": "Zinc",
+          "dosage": "1 tablet daily",
+          "rationale": "Supports immunity and skin health."
         }
       ]
     },
@@ -6147,6 +6543,18 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras",
           "dosage": "10-15 ml twice a day with equal water"
+        },
+        {
+          "name": "SEABUCKDOC JUICE",
+          "ingredients": "Omega 7 rich extracts",
+          "dosage": "15ml twice daily",
+          "rationale": "Highly effective for treating mucous membrane conditions and mucosal dryness."
+        },
+        {
+          "name": "ZINC TABLET",
+          "ingredients": "Zinc",
+          "dosage": "1 tablet daily",
+          "rationale": "Supports immunity and aids in healing severe skin conditions."
         }
       ],
       "disclaimer": " Seek standard medical intervention for severe or acute flare-ups."
@@ -6208,6 +6616,12 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras",
           "dosage": "10-15 ml twice a day with equal water"
+        },
+        {
+          "name": "ZINC TABLET",
+          "ingredients": "Zinc",
+          "dosage": "1 tablet daily",
+          "rationale": "Effective for severe skin conditions and eczema."
         }
       ],
       "disclaimer": " Seek standard medical intervention for severe or acute flare-ups."
@@ -6313,6 +6727,12 @@
           "product_name": "NONIDOC JUICE",
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Safed Musali, Asgandh",
           "dosage": "15-30 ml diluted in water twice a day before meals"
+        },
+        {
+          "name": "VITADOC TABLET",
+          "ingredients": "Multivitamin botanical extracts",
+          "dosage": "1 tablet daily",
+          "rationale": "Synergistic multivitamin for addressing general weakness and cachexia."
         }
       ]
     },
@@ -6415,6 +6835,12 @@
           "product_name": "NONIDOC JUICE",
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Safed Musali, Asgandh",
           "dosage": "15-30 ml diluted in water twice a day before meals"
+        },
+        {
+          "name": "VITADOC TABLET",
+          "ingredients": "Multivitamins",
+          "dosage": "1 tablet daily",
+          "rationale": "Helps manage general weakness and cachexia in oncological conditions."
         }
       ]
     },
@@ -6466,6 +6892,12 @@
           "product_name": "NONIDOC JUICE",
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Safed Musali, Asgandh",
           "dosage": "15-30 ml diluted in water twice a day before meals"
+        },
+        {
+          "name": "VITADOC TABLET",
+          "ingredients": "Multivitamins",
+          "dosage": "1 tablet daily",
+          "rationale": "Provides support for general weakness, cachexia, and chronic diseases."
         }
       ]
     },
@@ -6568,6 +7000,18 @@
           "product_name": "NONIDOC JUICE",
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Safed Musali, Asgandh",
           "dosage": "15-30 ml diluted in water twice a day before meals"
+        },
+        {
+          "name": "ZINC TABLET",
+          "ingredients": "Zinc",
+          "dosage": "1 tablet daily",
+          "rationale": "Directly supports prostate health."
+        },
+        {
+          "name": "VITADOC TABLET",
+          "ingredients": "Multivitamin botanical extracts",
+          "dosage": "1 tablet daily",
+          "rationale": "Addresses general weakness and cachexia."
         },
         {
           "name": "SHUDDH SHILAJIT CAPSULE",
@@ -6685,6 +7129,12 @@
           "product_name": "NONIDOC JUICE",
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Safed Musali, Asgandh",
           "dosage": "15-30 ml diluted in water twice a day before meals"
+        },
+        {
+          "name": "VITADOC TABLET",
+          "ingredients": "Multivitamins",
+          "dosage": "1 tablet daily",
+          "rationale": "Helps manage general weakness and cachexia in oncological conditions."
         }
       ]
     }
@@ -6749,6 +7199,18 @@
           "product_name": "THUNDERBLAST RAS",
           "ingredients": "Aloevera, Ashwagandha, Akarkara, Vidarikand, Safed Musli, Gokhru",
           "dosage": "15-20 ml twice a day after meals"
+        },
+        {
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily",
+          "rationale": "Supports immunity and helps manage chronic fevers."
+        },
+        {
+          "name": "VITADOC TABLET",
+          "ingredients": "Multivitamins",
+          "dosage": "1 tablet daily",
+          "rationale": "Indicated for general weakness, cachexia, and chronic diseases."
         },
         {
           "name": "COUGHDOC PRAVAHI KWATH",
@@ -6856,6 +7318,12 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha",
           "dosage": "15-20 ml twice a day with equal amount of water"
+        },
+        {
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily",
+          "rationale": "Synergistic for boosting immunity and supporting liver health."
         }
       ]
     },
@@ -6907,6 +7375,12 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha",
           "dosage": "15-20 ml twice a day with equal amount of water"
+        },
+        {
+          "name": "GILOY TABLET",
+          "ingredients": "Giloy extract",
+          "dosage": "1 tablet twice daily",
+          "rationale": "Supports liver health and boosts immunity against chronic infections."
         }
       ]
     },
@@ -6968,6 +7442,12 @@
           "product_name": "THUNDERBLAST RAS",
           "ingredients": "Aloevera, Ashwagandha, Akarkara, Vidarikand, Safed Musli, Gokhru",
           "dosage": "15-20 ml twice a day after meals"
+        },
+        {
+          "name": "VITADOC TABLET",
+          "ingredients": "Multivitamins",
+          "dosage": "1 tablet daily",
+          "rationale": "Helps overcome general weakness and fatigue from chronic infectious recovery."
         }
       ]
     },
@@ -7138,6 +7618,12 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 9.8ml",
           "dosage": "15-20 ml twice a day with equal quantity of warm water before meals"
+        },
+        {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Flaxseed and Omega-rich extracts",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Synergistic for supporting eye health."
         }
       ]
     },
@@ -7198,6 +7684,12 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 9.8ml",
           "dosage": "15-20 ml twice a day with equal quantity of warm water before meals"
+        },
+        {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Omega fatty acids",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Synergistic for eye health and protecting visual function."
         }
       ]
     },
@@ -7258,6 +7750,18 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 9.8ml",
           "dosage": "15-20 ml twice a day with equal quantity of warm water before meals"
+        },
+        {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Omega-rich extracts",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Crucial for maintaining eye health and mitigating macular degeneration."
+        },
+        {
+          "name": "ZINC TABLET",
+          "ingredients": "Zinc",
+          "dosage": "1 tablet daily",
+          "rationale": "Directly supports the AMD diet requirement for zinc-rich intake to protect the macula."
         }
       ]
     },
@@ -7318,6 +7822,18 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 9.8ml",
           "dosage": "15-20 ml twice a day with equal quantity of warm water before meals"
+        },
+        {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Omega-rich extracts",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Beneficial for eye health."
+        },
+        {
+          "name": "SEABUCKDOC JUICE",
+          "ingredients": "Seabuckthorn (Omega 7)",
+          "dosage": "15ml twice daily",
+          "rationale": "Highly effective for mucosal dryness and skin/mucous membranes."
         }
       ]
     },
@@ -7438,6 +7954,12 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 9.8ml",
           "dosage": "15-20 ml twice a day with equal quantity of warm water before meals"
+        },
+        {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Flaxseed and Omega-rich extracts",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Synergistic for supporting eye health and microcirculation."
         }
       ]
     },
@@ -7498,6 +8020,12 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 9.8ml",
           "dosage": "15-20 ml twice a day with equal quantity of warm water before meals"
+        },
+        {
+          "name": "OMEGADOC CAPSULE",
+          "ingredients": "Omega fatty acids",
+          "dosage": "1 capsule twice daily",
+          "rationale": "Provides anti-inflammatory support and promotes eye health."
         }
       ]
     }
@@ -7560,6 +8088,12 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Each 10ml contains Aloevera Leaf Ras 2.5ml, Triphala Fruits Ras 1g, Apple Fruit 250mg, Kokum Fruit Ext 200mg, Punarnava Root Powder 200mg, Giloy Stem Powder 50mg, Ashwagandha Root Powder 50mg, Mulethi Stem Powder 20mg, Tulsi Panchang Powder 20mg, Ginger Rhizome Powder 20mg",
           "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
+        },
+        {
+          "name": "NEEM EXTRACT TABLET",
+          "ingredients": "Neem extract",
+          "dosage": "1 tablet twice daily",
+          "rationale": "Fights systemic infections and purifies the blood to clear chronic ear infections."
         }
       ],
       "disclaimer": " Ensure tympanic membrane (eardrum) is intact before attempting any oil-based ear drops."
@@ -7621,6 +8155,12 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Each 10ml contains Aloevera Leaf Ras 2.5ml, Triphala Fruits Ras 1g, Apple Fruit 250mg, Kokum Fruit Ext 200mg, Punarnava Root Powder 200mg, Giloy Stem Powder 50mg, Ashwagandha Root Powder 50mg, Mulethi Stem Powder 20mg, Tulsi Panchang Powder 20mg, Ginger Rhizome Powder 20mg",
           "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
+        },
+        {
+          "name": "IRON TABLET & VITAMIN B12",
+          "ingredients": "Iron and Vitamin B12",
+          "dosage": "1 tablet daily",
+          "rationale": "Essential for preventing nerve degeneration and directly indicated for tinnitus."
         }
       ],
       "disclaimer": " Ensure tympanic membrane (eardrum) is intact before attempting any oil-based ear drops."
@@ -7743,6 +8283,12 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Each 10ml contains Aloevera Leaf Ras 2.5ml, Triphala Fruits Ras 1g, Apple Fruit 250mg, Kokum Fruit Ext 200mg, Punarnava Root Powder 200mg, Giloy Stem Powder 50mg, Ashwagandha Root Powder 50mg, Mulethi Stem Powder 20mg, Tulsi Panchang Powder 20mg, Ginger Rhizome Powder 20mg",
           "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
+        },
+        {
+          "name": "ZINC TABLET",
+          "ingredients": "Zinc",
+          "dosage": "1 tablet daily",
+          "rationale": "Synergistic for supporting immunity against chronic infections."
         }
       ],
       "disclaimer": " Ensure tympanic membrane (eardrum) is intact before attempting any oil-based ear drops."
@@ -7857,6 +8403,12 @@
           "dosage": "1-2 drops mixed in warm water for gargling and drinking, twice daily"
         },
         {
+          "name": "SEABUCKDOC JUICE",
+          "ingredients": "Omega 7 rich extracts",
+          "dosage": "15ml twice daily",
+          "rationale": "Soothes and heals the mucous membranes of the larynx."
+        },
+        {
           "name": "COUGHDOC PRAVAHI KWATH",
           "ingredients": "Throat soothing herbs",
           "dosage": "15-20ml twice daily"
@@ -7921,6 +8473,12 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Each 10ml contains Aloevera Leaf Ras 2.5ml, Triphala Fruits Ras 1g, Apple Fruit 250mg, Kokum Fruit Ext 200mg, Punarnava Root Powder 200mg, Giloy Stem Powder 50mg, Ashwagandha Root Powder 50mg, Mulethi Stem Powder 20mg, Tulsi Panchang Powder 20mg, Ginger Rhizome Powder 20mg",
           "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
+        },
+        {
+          "name": "IRON TABLET & VITAMIN B12",
+          "ingredients": "Iron and Vitamin B12",
+          "dosage": "1 tablet daily",
+          "rationale": "Essential for auditory nerve health and preventing age-related nerve degeneration."
         }
       ],
       "disclaimer": " Ensure tympanic membrane (eardrum) is intact before attempting any oil-based ear drops."
