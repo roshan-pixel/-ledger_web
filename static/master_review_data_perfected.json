@@ -892,11 +892,6 @@
           "dosage_instructions": "20-30ml twice daily, 30 minutes before meals with lukewarm water."
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Ras, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger.",
-          "dosage_instructions": "15-20ml twice daily, 1 hour after meals."
-        },
-        {
           "product_name": "NONIDOC JUICE",
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Giloy, Black Pepper, Long Pepper, Ginger.",
           "dosage_instructions": "15-20ml in the morning on an empty stomach."
@@ -929,11 +924,6 @@
           "product_name": "DIABODOC RAS",
           "ingredients": "Aloevera Ras, Jamun Phal, Karela, Gurnar, Triphala, Vijaysar Ext., Methi, Giloya Ext.",
           "dosage_instructions": "20-30ml twice daily, 30 minutes before meals with lukewarm water."
-        },
-        {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Ras, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger.",
-          "dosage_instructions": "15-20ml twice daily, 1 hour after meals."
         },
         {
           "product_name": "NONIDOC JUICE",
@@ -971,11 +961,6 @@
           "dosage_instructions": "20-30ml twice daily, 30 minutes before meals."
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Ras, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger.",
-          "dosage_instructions": "15-20ml twice daily after meals for immunity and cellular support."
-        },
-        {
           "product_name": "SEABUCKDOC JUICE",
           "ingredients": "Turmeric Ras, Seabuckthorn Fruit Pulp, Safed Musali, Ashwagandha, Kawach, Patal Kodhra, Akarkar, Javitri, Amla, Giloy, Black Pepper, Long Pepper, Ginger.",
           "dosage_instructions": "15-20ml in the morning on an empty stomach."
@@ -1008,11 +993,6 @@
           "product_name": "DIABODOC RAS",
           "ingredients": "Aloevera Ras, Jamun Phal, Karela, Gurnar, Triphala, Vijaysar Ext., Methi, Giloya Ext.",
           "dosage_instructions": "20-30ml twice daily, 30 minutes before meals."
-        },
-        {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Ras, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger.",
-          "dosage_instructions": "15-20ml twice daily after meals for immunity and cellular support."
         },
         {
           "product_name": "SEABUCKDOC JUICE",
@@ -1807,11 +1787,6 @@
           "product_name": "EYEDOC DROP",
           "ingredients": "Rose, Honey, Punarnava, Bhringraj, Nirgundi, Harad, Haldi, Safed Chandan, Raktchandan, Tulsi, Neem, Rasot, Pudina.",
           "dosage_instructions": "1-2 drops in each eye twice daily."
-        },
-        {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Ras, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger.",
-          "dosage_instructions": "15-20ml twice daily after meals."
         }
       ],
       "diet": [
@@ -1846,11 +1821,6 @@
           "product_name": "EYEDOC DROP",
           "ingredients": "Rose, Honey, Punarnava, Bhringraj, Nirgundi, Harad, Haldi, Safed Chandan, Raktchandan, Tulsi, Neem, Rasot, Pudina.",
           "dosage_instructions": "1-2 drops in each eye twice daily."
-        },
-        {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Aloevera Ras, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger.",
-          "dosage_instructions": "15-20ml twice daily after meals."
         },
         {
           "name": "NONIDOC JUICE",
@@ -5975,7 +5945,7 @@
         },
         {
           "product_name": "TESTOFAST TABLET",
-          "ingredients": "Ginseng Extract 10% (Panax ginseng), Musali Safed Extract 25% (Chlorophytum borivilianum), Ashwagandha Extract 10% (Withania somnifera), Brihat Gokshura Extract 15% (Pedalium murex Linn), Kawach Extract 50% (Mucuna pruriens), Ginkgo Biloba Extract 24% (Ginkgo biloba), Saffron-Gesar Extract 5% (Crocus sativus), Black Pepper Extract–Bioperine (Piper nigrum).",
+          "ingredients": "Ginseng Extract 10% (Panax ginseng), Musali Safed Extract 25% (Chlorophytum borivilianum), Ashwagandha Extract 10% (Withania somnifera), Brihat Gokshura Extract 15% (Pedalium murex Linn), Kawach Extract 50% (Mucuna pruriens), Ginkgo Biloba Extract 24% (Ginkgo biloba), Saffron-Gesar Extract 5% (Crocus sativus), Black Pepper Extract\u2013Bioperine (Piper nigrum).",
           "dosage": "1 tablet twice a day with warm milk, post meals."
         }
       ],
@@ -6014,7 +5984,7 @@
         },
         {
           "product_name": "TESTOFAST TABLET",
-          "ingredients": "Ginseng Extract 10% (Panax ginseng), Musali Safed Extract 25% (Chlorophytum borivilianum), Ashwagandha Extract 10% (Withania somnifera), Brihat Gokshura Extract 15% (Pedalium murex Linn), Kawach Extract 50% (Mucuna pruriens), Ginkgo Biloba Extract 24% (Ginkgo biloba), Saffron-Gesar Extract 5% (Crocus sativus), Black Pepper Extract–Bioperine (Piper nigrum).",
+          "ingredients": "Ginseng Extract 10% (Panax ginseng), Musali Safed Extract 25% (Chlorophytum borivilianum), Ashwagandha Extract 10% (Withania somnifera), Brihat Gokshura Extract 15% (Pedalium murex Linn), Kawach Extract 50% (Mucuna pruriens), Ginkgo Biloba Extract 24% (Ginkgo biloba), Saffron-Gesar Extract 5% (Crocus sativus), Black Pepper Extract\u2013Bioperine (Piper nigrum).",
           "dosage": "1 tablet twice a day with warm milk, post meals."
         },
         {
@@ -8620,11 +8590,6 @@
           "dosage": "1-2 drops in each eye twice daily"
         },
         {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Each 10ml contains Aloevera Leaf Ras 2.5ml, Triphala Fruits Ras 1g, Apple Fruit 250mg, Kokum Fruit Ext 200mg, Punarnava Root Powder 200mg, Giloy Stem Powder 50mg, Ashwagandha Root Powder 50mg, Mulethi Stem Powder 20mg, Tulsi Panchang Powder 20mg, Ginger Rhizome Powder 20mg",
-          "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
-        },
-        {
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 9.8ml",
           "dosage": "15-20 ml twice a day with equal quantity of warm water before meals"
@@ -8657,11 +8622,6 @@
           "product_name": "EYEDOC DROP",
           "ingredients": "Rose (Rosa centifolia) Flower Petals, Honey (Apidae), Punarnava (Boerhaavia diffusa) Whole Plant Herbs, Bhringraj (Eclipta alba) Whole Plant Herbs, Nirgundi (Vitex negundo) Root Herbs, Harad (Terminalia chebula) Fruit Herbs, Haldi (Curcuma longa) Rhizome Herbs, Safed Chandan (Santalum album) Heart Wood Herbs, Raktchandan (Pterocarpus santalinus) Heart Wood Herbs, Tulsi (Ocimum sanctum) Whole Plant Herbs, Neem (Azadirachta indica) Leaf Herbs, Rasot (Extractum berberis) Panchang Herbs, Pudina Sat (Mentha spicata) Whole Plant Herbs",
           "dosage": "1-2 drops in each eye twice daily"
-        },
-        {
-          "product_name": "IMMUNODOC RAS",
-          "ingredients": "Each 10ml contains Aloevera Leaf Ras 2.5ml, Triphala Fruits Ras 1g, Apple Fruit 250mg, Kokum Fruit Ext 200mg, Punarnava Root Powder 200mg, Giloy Stem Powder 50mg, Ashwagandha Root Powder 50mg, Mulethi Stem Powder 20mg, Tulsi Panchang Powder 20mg, Ginger Rhizome Powder 20mg",
-          "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
