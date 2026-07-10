@@ -3,38 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Asclepius Disease Guide</title>
+    <title>Asclepius Master Disease Guide</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
     <style>
-        @keyframes fadeInSPA { from { opacity: 0; } to { opacity: 1; } }
-        body {
-            animation: fadeInSPA 0.3s ease-out forwards;
-            margin: 0;
-            font-family: 'Outfit', sans-serif;
-            background-color: #0b0f19;
-            color: #ffffff;
-            display: flex;
-            min-height: 100vh;
+        /* 10/10 Premium Styling */
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --accent: #6366f1;
+            --accent-glow: rgba(99, 102, 241, 0.4);
         }
 
+        body {
+            margin: 0;
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
+            animation: fadeInSPA 0.4s ease-out forwards;
+        }
+
+        @keyframes fadeInSPA { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Sidebar Styles (identical to dashboard) */
         .sidebar {
             width: 280px;
-            background: rgba(255, 255, 255, 0.03);
-            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.02);
+            border-right: 1px solid var(--card-border);
             padding: 2rem;
             display: flex;
             flex-direction: column;
             gap: 2rem;
             backdrop-filter: blur(16px);
+            z-index: 10;
         }
-
         .nav-menu { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
         .nav-item {
             padding: 1rem 1.5rem;
             border-radius: 12px;
-            color: #94a3b8;
+            color: var(--text-muted);
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -44,112 +57,484 @@
         }
         .nav-item:hover, .nav-item.active {
             background: rgba(255, 255, 255, 0.08);
-            color: #ffffff;
+            color: var(--text-main);
             transform: translateX(5px);
         }
 
+        /* Main Content */
         .main-content {
             flex: 1;
-            padding: 3rem;
+            padding: 2.5rem 3rem;
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 1.5rem;
+            height: 100vh;
             overflow-y: auto;
-            max-height: 100vh;
+            box-sizing: border-box;
+            position: relative;
         }
 
-        .header { display: flex; justify-content: space-between; align-items: center; }
-        .header-title h1 { margin: 0; font-size: 2.25rem; font-weight: 600; }
-        
-        /* Search Bar */
-        .search-container {
-            width: 100%;
-            max-width: 600px;
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .hero h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #818cf8, #c084fc, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+        .hero p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        .stat-pill {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s;
+        }
+        .stat-pill:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        .stat-val { font-weight: 700; color: #fff; }
+        .text-green { color: #34d399; }
+        .text-gold { color: #fbbf24; }
+
+        /* Tools Row */
+        .tools-row {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
             position: relative;
+            z-index: 5;
+        }
+        .search-wrapper {
+            position: relative;
+            flex: 1;
+            min-width: 300px;
+        }
+        .search-icon {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            transition: color 0.3s;
         }
         .search-input {
             width: 100%;
-            padding: 1rem 1.5rem;
-            padding-left: 3rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 1.2rem 1.2rem 1.2rem 3.5rem;
             color: white;
             font-size: 1.1rem;
             font-family: 'Outfit', sans-serif;
             outline: none;
-            transition: border-color 0.3s;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
         }
-        .search-input:focus { border-color: #6366f1; }
-        .search-icon {
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #94a3b8;
+        .search-input:focus {
+            background: rgba(255,255,255,0.08);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-glow);
+        }
+        .search-input:focus + .search-icon { color: var(--accent); }
+
+        .sort-select {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            outline: none;
+            cursor: pointer;
+            appearance: none;
+            min-width: 160px;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 16px;
+        }
+        .sort-select option { background: var(--bg-color); color: white; }
+
+        /* Category Pills Scroll */
+        .category-scroll {
+            display: flex;
+            gap: 0.8rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .category-scroll::-webkit-scrollbar { display: none; }
+        .cat-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-muted);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            font-family: 'Outfit', sans-serif;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s;
+        }
+        .cat-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+        .cat-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+            box-shadow: 0 4px 12px var(--accent-glow);
         }
 
-        /* Results Grid */
-        .results-container {
+        /* Results Counter */
+        .result-meta {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: -0.5rem;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        @keyframes cardFadeUp {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         .disease-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
             border-radius: 16px;
             padding: 1.5rem;
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            transition: transform 0.2s, background 0.2s;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            animation: cardFadeUp 0.5s ease-out forwards;
+        }
+        .disease-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--card-accent, var(--accent));
+            opacity: 0.8;
         }
         .disease-card:hover {
-            transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(255,255,255,0.15);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3), 0 0 20px rgba(var(--card-accent-rgb, 99, 102, 241), 0.15);
         }
 
-        .d-cat { font-size: 0.8rem; color: #6366f1; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
-        .d-name { font-size: 1.5rem; font-weight: 600; margin: 0; color: #fff; }
-        
-        .section-title { font-size: 0.9rem; color: #94a3b8; text-transform: uppercase; margin-bottom: 0.5rem; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.25rem;}
-        .products-list, .tips-list { list-style: none; padding: 0; margin: 0; font-size: 0.95rem; color: #cbd5e1; }
-        .products-list li { margin-bottom: 0.5rem; background: rgba(0,0,0,0.2); padding: 0.5rem; border-radius: 8px; }
-        .p-name { font-weight: 600; color: #10b981; }
-        .p-dose { font-size: 0.85rem; color: #94a3b8; display: block;}
-        
-        .disclaimer {
-            background: rgba(244, 63, 94, 0.1);
-            color: #fb7185;
-            padding: 0.75rem;
-            border-radius: 8px;
-            font-size: 0.85rem;
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        .card-title {
+            margin: 0;
+            font-size: 1.4rem;
+            font-weight: 600;
+            line-height: 1.2;
+            color: white;
+        }
+        .card-cat-badge {
+            background: rgba(255,255,255,0.1);
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--card-accent, #a5b4fc);
+            white-space: nowrap;
+        }
+
+        .products-preview {
+            background: rgba(0,0,0,0.2);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-top: 0.5rem;
+        }
+        .section-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .product-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .product-item:last-child { margin-bottom: 0; }
+        .p-icon { font-size: 1.1rem; }
+        .p-details { display: flex; flex-direction: column; }
+        .p-name { color: #34d399; font-weight: 500; }
+        .p-dose { color: #94a3b8; font-size: 0.8rem; font-style: italic; }
+
+        .card-footer {
             margin-top: auto;
-            border: 1px solid rgba(244, 63, 94, 0.2);
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        
-        .avoid {
-            color: #fb7185;
-            font-size: 0.9rem;
+        .click-hint {
+            font-size: 0.85rem;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
         }
 
-        @media(max-width: 768px) {
+        /* Action Buttons */
+        .action-btns {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .icon-btn {
+            width: 34px; height: 34px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s;
+        }
+        .icon-btn:hover { background: rgba(255,255,255,0.15); color: white; transform: scale(1.05); }
+
+        /* Shimmer Skeletons */
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .skeleton {
+            background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 8px;
+        }
+        .skel-card { height: 280px; border-radius: 16px; border: 1px solid var(--card-border); }
+
+        /* Full Screen Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-content {
+            background: #111827;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.95) translateY(20px);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+        }
+        .modal-overlay.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+        
+        .modal-header {
+            padding: 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: sticky;
+            top: 0;
+            background: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+        .modal-close {
+            position: absolute;
+            top: 1.5rem; right: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s;
+        }
+        .modal-close:hover { background: rgba(255,255,255,0.2); }
+        .modal-title { font-size: 2.2rem; margin: 0.5rem 0 0 0; color: white; }
+        
+        .modal-body { padding: 2rem; display: flex; flex-direction: column; gap: 2rem; }
+        
+        .info-section {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+        .info-section h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1.2rem;
+            color: var(--accent);
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .modal-list {
+            list-style: none; padding: 0; margin: 0;
+            display: flex; flex-direction: column; gap: 0.8rem;
+        }
+        .modal-list li {
+            display: flex; gap: 1rem; align-items: flex-start;
+            color: #cbd5e1; line-height: 1.5;
+        }
+        .modal-list li::before {
+            content: '•';
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        .modal-list.avoid li::before { content: '⚠️'; font-size: 1.1rem; }
+        .modal-list.diet li::before { content: '🥗'; font-size: 1.1rem; }
+        .modal-list.exercise li::before { content: '🧘'; font-size: 1.1rem; }
+
+        .tip-box {
+            background: rgba(45, 212, 191, 0.1);
+            border-left: 4px solid #2dd4bf;
+            padding: 1rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            color: #ccfbf1;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+        .disclaimer-box {
+            background: rgba(244, 63, 94, 0.1);
+            border: 1px solid rgba(244, 63, 94, 0.2);
+            padding: 1rem;
+            border-radius: 12px;
+            color: #fda4af;
+            font-size: 0.9rem;
+            display: flex; gap: 0.8rem; align-items: flex-start;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 2rem; right: 2rem;
+            background: #10b981;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 9999;
+        }
+        .toast.show { transform: translateY(0); opacity: 1; }
+
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem; right: 2rem;
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: white;
+            border: none;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px var(--accent-glow);
+            opacity: 0; visibility: hidden;
+            transition: all 0.3s;
+            z-index: 900;
+        }
+        .back-to-top.visible { opacity: 1; visibility: visible; }
+        .back-to-top:hover { transform: translateY(-3px); background: #4f46e5; }
+
+        @media (max-width: 768px) {
             body { flex-direction: column; }
-            .sidebar { width: 100%; padding: 1rem; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); gap: 1rem; box-sizing: border-box; }
-            .nav-menu { flex-direction: row; overflow-x: auto; }
-            .nav-item { padding: 0.8rem; flex-shrink: 0; }
-            .main-content { padding: 1rem; width: 100%; box-sizing: border-box; }
-            .results-container { grid-template-columns: 1fr; }
+            .sidebar { width: 100%; padding: 1rem; border-right: none; border-bottom: 1px solid var(--card-border); flex-direction: row; align-items: center; overflow-x: auto; position: sticky; top: 0; z-index: 100; gap: 0.5rem; background: rgba(11, 15, 25, 0.95); }
+            .sidebar .logo { display: none; }
+            .nav-menu { flex-direction: row; gap: 0.5rem; }
+            .nav-item { padding: 0.8rem 1rem; white-space: nowrap; font-size: 0.9rem; }
+            .main-content { padding: 1.5rem 1rem; }
+            .hero h1 { font-size: 2rem; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .tools-row { flex-direction: column; align-items: stretch; }
+            .modal-overlay { padding: 0; align-items: flex-end; }
+            .modal-content { max-height: 85vh; border-radius: 24px 24px 0 0; }
         }
     </style>
 </head>
 <body>
 
     <aside class="sidebar">
-        <div class="logo" style="text-align: center; padding: 1rem 0;">
-            <img src="{{ url_for('static', filename='logo.png') }}" alt="Asclepius Wellness" style="max-width: 85%; height: auto; background: linear-gradient(135deg, #fff 0%, #dce1eb 100%); border-radius: 16px; padding: 12px;">
+        <div class="logo" style="text-align: center; padding: 0.5rem 0;">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Asclepius Wellness" style="max-width: 80%; background: linear-gradient(135deg, #fff 0%, #dce1eb 100%); border-radius: 12px; padding: 10px;">
         </div>
         <ul class="nav-menu">
             <li class="nav-item" onclick="navigateTo('/')">
@@ -179,117 +564,382 @@
         </ul>
     </aside>
 
-    <main class="main-content">
-        <header class="header">
-            <div class="header-title">
-                <h1>Master Disease Guide</h1>
-            </div>
-        </header>
-
-        <div class="search-container">
-            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            <input type="text" id="searchInput" class="search-input" placeholder="Search for a disease or condition (e.g. Asthma, Diabetes)..." onkeyup="filterDiseases()">
+    <main class="main-content" id="mainScroll">
+        <div class="hero">
+            <h1>Asclepius Master Disease Guide</h1>
+            <p>Medically verified Ayurvedic protocols • Expert curated</p>
         </div>
 
-        <div class="results-container" id="resultsContainer">
-            <!-- Cards injected via JS -->
+        <div class="stats-bar">
+            <div class="stat-pill"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> <span class="stat-val" id="countDiseases">-</span> Diseases</div>
+            <div class="stat-pill"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg> <span class="stat-val" id="countCats">-</span> Categories</div>
+            <div class="stat-pill text-gold">⭐ <span class="stat-val">10/10</span> Expert Rated</div>
+            <div class="stat-pill text-green">🌿 <span class="stat-val">Ayurvedic</span> Protocol</div>
+        </div>
+
+        <div class="category-scroll" id="catScroll">
+            <button class="cat-btn active" onclick="setCategory('', this)">All</button>
+            <!-- Categories injected here -->
+        </div>
+
+        <div class="tools-row">
+            <div class="search-wrapper">
+                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search diseases, protocols..." oninput="handleSearch()">
+            </div>
+            <select class="sort-select" id="sortSelect" onchange="handleSearch()">
+                <option value="az">Sort: A-Z</option>
+                <option value="za">Sort: Z-A</option>
+                <option value="products">Most Products First</option>
+            </select>
+        </div>
+        
+        <div class="result-meta" id="resultMeta">Loading data...</div>
+
+        <div class="cards-grid" id="cardsGrid">
+            <!-- Skeletons -->
+            <div class="skeleton skel-card"></div><div class="skeleton skel-card"></div>
+            <div class="skeleton skel-card"></div><div class="skeleton skel-card"></div>
+            <div class="skeleton skel-card"></div><div class="skeleton skel-card"></div>
         </div>
     </main>
 
+    <!-- Modal -->
+    <div class="modal-overlay" id="diseaseModal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeModal(true)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+                <span class="card-cat-badge" id="modalCat" style="background: rgba(255,255,255,0.1); color: #fff;">Category</span>
+                <h2 class="modal-title" id="modalTitle">Disease Name</h2>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Content injected here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toastMsg">Copied to clipboard!</div>
+
+    <button class="back-to-top" id="btnTop" onclick="scrollToTop()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+
     <script>
+        // Constants & Colors
+        const CAT_COLORS = {
+            'General': '139, 92, 246', // violet
+            'Respiratory': '6, 182, 212', // cyan
+            'Gastrointestinal': '245, 158, 11', // amber
+            'NEUROLOGICAL': '168, 85, 247', // purple
+            'PSYCHIATRIC': '236, 72, 153', // pink
+            'Musculoskeletal': '249, 115, 22', // orange
+            'Autoimmune': '239, 68, 68', // red
+            'Renal & Genitourinary Diseases': '59, 130, 246', // blue
+            'HEMATOLOGICAL': '220, 38, 38', // crimson
+            'DERMATOLOGICAL': '132, 204, 22', // lime
+            'ONCOLOGICAL (supportive/complementary care)': '124, 58, 237', // deep purple
+            'INFECTIOUS (CHRONIC)': '22, 163, 74', // green
+            'OPHTHALMOLOGICAL': '8, 145, 178', // teal
+            'OTOLARYNGOLOGICAL': '217, 119, 6', // dark amber
+            'default': '99, 102, 241' // indigo
+        };
+
+        // State
+        let allDiseases = [];
+        let currentFilter = '';
+        
         function navigateTo(url) {
             document.body.style.opacity = '0';
             document.body.style.transition = 'opacity 0.3s ease-out';
             setTimeout(() => { window.location.href = url; }, 300);
         }
 
-        let allDiseases = [];
-
-        async function loadData() {
+        async function init() {
             try {
-                const res = await fetch('/static/master_review_data_perfected.json');
+                // Check URL params
+                const urlParams = new URLSearchParams(window.location.search);
+                const q = urlParams.get('q');
+                if (q) document.getElementById('searchInput').value = q;
+
+                const res = await fetch('/api/disease_guide');
                 const data = await res.json();
+                allDiseases = data.diseases || [];
                 
-                // Flatten the categories into a single array
-                for (const [category, diseases] of Object.entries(data)) {
-                    diseases.forEach(d => {
-                        d.category_name = category;
-                        allDiseases.push(d);
-                    });
-                }
-                renderCards(allDiseases);
-            } catch(e) {
-                console.error("Failed to load disease data", e);
-                document.getElementById('resultsContainer').innerHTML = "<p>Error loading data.</p>";
+                document.getElementById('countDiseases').textContent = allDiseases.length;
+                document.getElementById('countCats').textContent = (data.categories || []).length;
+
+                renderCategoryPills(data.categories || []);
+                handleSearch();
+            } catch (err) {
+                console.error(err);
+                document.getElementById('cardsGrid').innerHTML = '<p style="color:#ef4444;">Failed to load data. Ensure API is running.</p>';
             }
         }
 
-        function renderCards(list) {
-            const container = document.getElementById('resultsContainer');
-            container.innerHTML = '';
+        function renderCategoryPills(cats) {
+            const container = document.getElementById('catScroll');
+            let html = `<button class="cat-btn active" onclick="setCategory('', this)">All</button>`;
+            cats.forEach(c => {
+                html += `<button class="cat-btn" onclick="setCategory('${c.replace(/'/g,"\\'")}', this)">${c}</button>`;
+            });
+            container.innerHTML = html;
+        }
+
+        function setCategory(cat, btnElem) {
+            currentFilter = cat;
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            if(btnElem) btnElem.classList.add('active');
+            handleSearch();
+        }
+
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const sortVal = document.getElementById('sortSelect').value;
+
+            let filtered = allDiseases;
             
-            if(list.length === 0) {
-                container.innerHTML = '<p style="color: #94a3b8; font-size: 1.1rem;">No matching diseases found.</p>';
+            if (currentFilter) {
+                filtered = filtered.filter(d => d.category_name === currentFilter);
+            }
+            if (query) {
+                filtered = filtered.filter(d => 
+                    (d.disease_name||'').toLowerCase().includes(query) || 
+                    (d.category_name||'').toLowerCase().includes(query)
+                );
+            }
+
+            // Sort
+            filtered.sort((a, b) => {
+                const nameA = a.disease_name || '';
+                const nameB = b.disease_name || '';
+                if (sortVal === 'az') return nameA.localeCompare(nameB);
+                if (sortVal === 'za') return nameB.localeCompare(nameA);
+                if (sortVal === 'products') {
+                    const lenA = (a.final_recommended_products||a.recommended_wellness_products||[]).length;
+                    const lenB = (b.final_recommended_products||b.recommended_wellness_products||[]).length;
+                    return lenB - lenA;
+                }
+                return 0;
+            });
+
+            renderCards(filtered, query);
+        }
+
+        function renderCards(list, query) {
+            const grid = document.getElementById('cardsGrid');
+            const meta = document.getElementById('resultMeta');
+            
+            grid.innerHTML = '';
+            
+            if (list.length === 0) {
+                meta.textContent = query ? `No results for "${query}"` : 'No results found.';
                 return;
             }
+            
+            meta.textContent = query ? `Showing ${list.length} results for "${query}"` : `Showing all ${list.length} diseases`;
 
-            list.forEach(d => {
-                const name = d.disease_name || d.name || 'Unknown';
-                const cat = d.category_name;
-                const products = d.final_recommended_products || d.recommended_wellness_products || [];
-                const disclaimer = d.disclaimer || '';
-                const avoid = Array.isArray(d.things_to_avoid) ? d.things_to_avoid.join(' | ') : (d.things_to_avoid || '');
-                const tip = d.ayurvedic_tip || '';
-                const diet = Array.isArray(d.diet) ? d.diet.map(item => `<li>• ${item}</li>`).join('') : (d.diet || '');
-                const exercise = Array.isArray(d.exercise) ? d.exercise.map(item => `<li>• ${item}</li>`).join('') : (d.exercise || '');
-
-                let prodsHtml = products.map(p => {
+            list.forEach((d, idx) => {
+                const name = d.disease_name || 'Unknown';
+                const cat = d.category_name || 'General';
+                const colorRGB = CAT_COLORS[cat] || CAT_COLORS['default'];
+                const prods = d.final_recommended_products || d.recommended_wellness_products || [];
+                
+                let prodsHtml = prods.slice(0, 3).map(p => {
                     const pName = typeof p === 'string' ? p : (p.product || p.name || p.product_name);
                     const pDose = p.dosage || p.how_to_take || 'As directed';
-                    return `<li><span class="p-name">${pName}</span><span class="p-dose">${pDose}</span></li>`;
+                    return `
+                        <div class="product-item">
+                            <span class="p-icon">💊</span>
+                            <div class="p-details">
+                                <span class="p-name">${pName}</span>
+                                <span class="p-dose">${pDose}</span>
+                            </div>
+                        </div>
+                    `;
                 }).join('');
+                
+                if (prods.length > 3) {
+                    prodsHtml += `<div class="product-item" style="color:#94a3b8; font-size:0.85rem; margin-top: 0.5rem; justify-content:center;">+ ${prods.length - 3} more products (click to view)</div>`;
+                }
+                if (prods.length === 0) prodsHtml = '<div style="color:#94a3b8; font-size:0.9rem;">No products listed.</div>';
 
-                if(!prodsHtml) prodsHtml = '<li>No specific products listed.</li>';
+                const delay = Math.min(idx * 0.04, 1.5).toFixed(2);
+                
+                // We stringify the entire disease object to pass to modal
+                // But careful with quotes, store index and lookup from allDiseases is safer
+                const globalIdx = allDiseases.findIndex(x => x.disease_name === name);
 
-                let dietHtml = diet ? `<div><div class="section-title">Recommended Diet</div><ul style="list-style:none; padding:0; margin:0; font-size:0.9rem; color:#cbd5e1; margin-bottom: 0.5rem;">${diet}</ul></div>` : '';
-                let exerciseHtml = exercise ? `<div><div class="section-title">Exercise Protocol</div><ul style="list-style:none; padding:0; margin:0; font-size:0.9rem; color:#cbd5e1; margin-bottom: 0.5rem;">${exercise}</ul></div>` : '';
-
-                let discHtml = disclaimer ? `<div class="disclaimer">⚠️ ${disclaimer}</div>` : '';
-                let avoidHtml = avoid ? `<div><div class="section-title">Things to Avoid</div><div class="avoid">${avoid}</div></div>` : '';
-                let tipHtml = tip ? `<div><div class="section-title">Ayurvedic Tip</div><div style="font-size:0.9rem; color: #38bdf8;">${tip}</div></div>` : '';
-
-                const card = document.createElement('div');
-                card.className = 'disease-card';
-                card.innerHTML = `
-                    <div>
-                        <div class="d-cat">${cat}</div>
-                        <h3 class="d-name">${name}</h3>
+                const cardHtml = `
+                    <div class="disease-card" style="animation-delay: ${delay}s; --card-accent: rgb(${colorRGB}); --card-accent-rgb: ${colorRGB};" onclick="openModal(${globalIdx})">
+                        <div class="card-header">
+                            <h3 class="card-title">${name}</h3>
+                            <span class="card-cat-badge" style="background: rgba(${colorRGB}, 0.15); color: rgb(${colorRGB}); border: 1px solid rgba(${colorRGB},0.3);">${cat}</span>
+                        </div>
+                        <div class="products-preview">
+                            <div class="section-label">Recommended Products</div>
+                            ${prodsHtml}
+                        </div>
+                        <div class="card-footer">
+                            <span class="click-hint">View full protocol →</span>
+                            <div class="action-btns" onclick="event.stopPropagation()">
+                                <button class="icon-btn" onclick="copyProtocol(${globalIdx})" title="Copy to clipboard">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                </button>
+                                <button class="icon-btn" onclick="shareProtocol(${globalIdx})" title="Share link">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <div class="section-title">Recommended Products</div>
-                        <ul class="products-list">${prodsHtml}</ul>
-                    </div>
-                    ${dietHtml}
-                    ${exerciseHtml}
-                    ${tipHtml}
-                    ${avoidHtml}
-                    ${discHtml}
                 `;
-                container.appendChild(card);
+                grid.insertAdjacentHTML('beforeend', cardHtml);
             });
         }
 
-        function filterDiseases() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const filtered = allDiseases.filter(d => {
-                const name = (d.disease_name || d.name || '').toLowerCase();
-                const cat = (d.category_name || '').toLowerCase();
-                return name.includes(query) || cat.includes(query);
-            });
-            renderCards(filtered);
+        function formatList(arr, icon = '•') {
+            if (!arr) return '';
+            if (!Array.isArray(arr)) arr = [arr];
+            if (arr.length === 0) return '';
+            return `<ul class="modal-list ${icon === '⚠️' ? 'avoid' : (icon === '🥗' ? 'diet' : 'exercise')}">` + arr.map(i => `<li>${i}</li>`).join('') + '</ul>';
         }
 
-        loadData();
+        async function openModal(idx) {
+            const d = allDiseases[idx];
+            if (!d) return;
+
+            // Fetch full details if needed, but we have most in memory now.
+            // Using API to get full disease object to ensure we have ingredients if any.
+            let fullData = d;
+            try {
+                const res = await fetch('/api/disease_guide/' + idx);
+                if(res.ok) fullData = await res.json();
+            } catch(e) { console.warn("Could not fetch full details, using cached."); }
+
+            const name = fullData.disease_name || 'Unknown';
+            const cat = fullData.category_name || 'General';
+            const colorRGB = CAT_COLORS[cat] || CAT_COLORS['default'];
+            
+            document.getElementById('modalTitle').textContent = name;
+            const catBadge = document.getElementById('modalCat');
+            catBadge.textContent = cat;
+            catBadge.style.background = `rgba(${colorRGB}, 0.2)`;
+            catBadge.style.color = `rgb(${colorRGB})`;
+            catBadge.style.borderColor = `rgba(${colorRGB}, 0.5)`;
+
+            const prods = fullData.final_recommended_products || fullData.recommended_wellness_products || [];
+            let prodsHtml = prods.map(p => {
+                const pName = typeof p === 'string' ? p : (p.product || p.name || p.product_name);
+                const pDose = p.dosage || p.how_to_take || 'As directed';
+                const pIngs = (p.key_ingredients && p.key_ingredients.length) ? `<div style="color:#64748b; font-size:0.85rem; margin-top:0.3rem;">Contains: ${p.key_ingredients.join(', ')}</div>` : '';
+                return `
+                    <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                        <div style="color: #34d399; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.2rem;">${pName}</div>
+                        <div style="color: #94a3b8; font-size: 0.95rem; font-style: italic;">${pDose}</div>
+                        ${pIngs}
+                    </div>
+                `;
+            }).join('');
+            if(!prodsHtml) prodsHtml = '<p>No specific products listed.</p>';
+
+            let html = `
+                <div class="info-section">
+                    <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg> Protocol Products</h3>
+                    <div style="display:flex; flex-direction:column; gap:1rem;">${prodsHtml}</div>
+                </div>
+            `;
+
+            if (fullData.ayurvedic_tip) {
+                html += `<div class="tip-box"><strong>🌿 Ayurvedic Tip:</strong><br>${fullData.ayurvedic_tip}</div>`;
+            }
+
+            const dietHtml = formatList(fullData.diet, '🥗');
+            if (dietHtml) {
+                html += `<div class="info-section"><h3>🥗 Recommended Diet</h3>${dietHtml}</div>`;
+            }
+
+            const exHtml = formatList(fullData.exercise, '🧘');
+            if (exHtml) {
+                html += `<div class="info-section"><h3>🧘 Exercise Protocol</h3>${exHtml}</div>`;
+            }
+
+            const avoidHtml = formatList(fullData.things_to_avoid, '⚠️');
+            if (avoidHtml) {
+                html += `<div class="info-section" style="border-color: rgba(244,63,94,0.3);">
+                    <h3 style="color:#fb7185;">⚠️ Things to Avoid</h3>${avoidHtml}
+                </div>`;
+            }
+
+            if (fullData.disclaimer) {
+                html += `<div class="disclaimer-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    <div><strong>Medical Disclaimer:</strong> ${fullData.disclaimer}</div>
+                </div>`;
+            }
+
+            document.getElementById('modalBody').innerHTML = html;
+            document.getElementById('diseaseModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(force=false) {
+            // if event target is the overlay background, close it
+            if (force === true || (event && event.target.id === 'diseaseModal')) {
+                document.getElementById('diseaseModal').classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal(true);
+        });
+
+        function showToast(msg) {
+            const toast = document.getElementById('toastMsg');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        function copyProtocol(idx) {
+            const d = allDiseases[idx];
+            if(!d) return;
+            const prods = d.final_recommended_products || d.recommended_wellness_products || [];
+            let txt = `Protocol for ${d.disease_name || 'Disease'}:\n\n`;
+            prods.forEach(p => {
+                const pName = typeof p === 'string' ? p : (p.product || p.name || p.product_name);
+                const pDose = p.dosage || p.how_to_take || 'As directed';
+                txt += `- ${pName} (${pDose})\n`;
+            });
+            navigator.clipboard.writeText(txt).then(() => showToast('Protocol copied to clipboard!'));
+        }
+
+        function shareProtocol(idx) {
+            const d = allDiseases[idx];
+            if(!d) return;
+            const url = window.location.origin + window.location.pathname + '?q=' + encodeURIComponent(d.disease_name);
+            if (navigator.share) {
+                navigator.share({
+                    title: `Asclepius Protocol: ${d.disease_name}`,
+                    url: url
+                }).catch(err => console.log(err));
+            } else {
+                navigator.clipboard.writeText(url).then(() => showToast('Link copied to clipboard!'));
+            }
+        }
+
+        // Scroll to top button logic
+        const mainScroll = document.getElementById('mainScroll');
+        const btnTop = document.getElementById('btnTop');
+        mainScroll.addEventListener('scroll', () => {
+            if (mainScroll.scrollTop > 300) btnTop.classList.add('visible');
+            else btnTop.classList.remove('visible');
+        });
+        function scrollToTop() {
+            mainScroll.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.onload = init;
     </script>
 </body>
 </html>

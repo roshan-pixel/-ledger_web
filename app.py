@@ -2,6 +2,7 @@ import os
 import sqlite3
 import json
 import threading
+from pathlib import Path
 from flask import Flask, jsonify, request, render_template
 
 # Import Google Sheets Sync functions
@@ -19,6 +20,86 @@ if os.path.exists('credentials.json') or os.path.exists('/etc/secrets/credential
     restore_from_gsheets()
 
 DB_PATH = 'ledger.db'
+
+# ---------------------------------------------------------------------------
+# Disease Guide – in-memory cache
+# ---------------------------------------------------------------------------
+_DISEASE_CACHE = None          # list of dicts (flattened, all fields)
+_DISEASE_CACHE_LOCK = threading.Lock()
+
+# Fields returned in the list endpoint (heavy ingredient lists excluded)
+_LIST_FIELDS = {
+    'disease_name', 'category_name',
+    'final_recommended_products', 'recommended_wellness_products',
+    'diet', 'exercise', 'ayurvedic_tip', 'things_to_avoid', 'disclaimer',
+}
+
+DISEASE_JSON_PATH = Path(__file__).parent / 'static' / 'master_review_data_perfected.json'
+
+
+def _load_disease_cache():
+    """Load and flatten the disease JSON into the module-level cache.
+    Thread-safe; reads the file only once per process lifetime."""
+    global _DISEASE_CACHE
+    with _DISEASE_CACHE_LOCK:
+        if _DISEASE_CACHE is not None:
+            return _DISEASE_CACHE
+        with open(DISEASE_JSON_PATH, 'r', encoding='utf-8') as fh:
+            raw = json.load(fh)
+        flat = []
+        for category_name, diseases in raw.items():
+            for disease in diseases:
+                entry = dict(disease)          # shallow copy
+                entry['category_name'] = category_name
+                flat.append(entry)
+        _DISEASE_CACHE = flat
+        return _DISEASE_CACHE
+
+
+@app.route('/api/disease_guide')
+def api_disease_guide():
+    """Return a lightweight list of diseases, optionally filtered.
+
+    Query params:
+      ?q=<term>         – case-insensitive search on disease_name
+      ?category=<name>  – exact-match (case-insensitive) on category_name
+    """
+    try:
+        diseases = _load_disease_cache()
+
+        q        = (request.args.get('q', '') or '').strip().lower()
+        category = (request.args.get('category', '') or '').strip().lower()
+
+        results = diseases
+        if q:
+            results = [d for d in results
+                       if q in (d.get('disease_name') or '').lower()]
+        if category:
+            results = [d for d in results
+                       if (d.get('category_name') or '').lower() == category]
+
+        # Strip heavy fields – return only _LIST_FIELDS
+        slim = [{k: v for k, v in d.items() if k in _LIST_FIELDS}
+                for d in results]
+
+        categories = sorted({d.get('category_name', '') for d in diseases})
+
+        return jsonify({'categories': categories, 'diseases': slim, 'total': len(slim)})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/disease_guide/<int:idx>')
+def api_disease_guide_detail(idx):
+    """Return the full record for a single disease by its 0-based index
+    in the flattened list (stable within a process lifetime)."""
+    try:
+        diseases = _load_disease_cache()
+        if idx < 0 or idx >= len(diseases):
+            return jsonify({'error': 'Index out of range'}), 404
+        return jsonify(diseases[idx])
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 def get_db():
     conn = sqlite3.connect(DB_PATH)
