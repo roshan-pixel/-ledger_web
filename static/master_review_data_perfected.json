@@ -6,17 +6,17 @@
         {
           "product": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "product": "ADIDOC PRAVAHI KWATH",
           "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Mulethi, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "product": "THUNDERBLAST RAS",
           "ingredients": "Aloevera, Ashwagandha, Akarkara, Vidarikand, Safed Musli, Gokhru, Satawari, Kounch Beej, Jaiphal, Shilajeet, Ginger, Bhasamas",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
       ],
       "diet": [
@@ -45,17 +45,17 @@
         {
           "product": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "product": "ADIDOC PRAVAHI KWATH",
           "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Mulethi, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "product": "THUNDERBLAST RAS",
           "ingredients": "Aloevera, Ashwagandha, Akarkara, Vidarikand, Safed Musli, Gokhru, Satawari, Kounch Beej, Jaiphal, Shilajeet, Ginger, Bhasamas",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "name": "OMEGADOC CAPSULE",
@@ -76,12 +76,12 @@
         {
           "product": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "product": "BRAINDOC PRAVAHI KWATH",
           "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi, Lahsoon",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
       ],
       "diet": [
@@ -110,12 +110,12 @@
         {
           "product": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "product": "BRAINDOC PRAVAHI KWATH",
           "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi, Lahsoon",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
       ]
     },
@@ -125,7 +125,7 @@
         {
           "product": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "1 capsule (or 15ml) twice daily after meals to optimize lipid-based absorption for cardiovascular endothelial repair."
+          "dosage": "1 capsule (or 15ml) twice daily after meals to optimize lipid-based absorption for cardiovascular endothelial repair."
         },
         {
           "name": "OMEGADOC CAPSULE",
@@ -135,7 +135,7 @@
         {
           "product": "THUNDERBLAST RAS",
           "ingredients": "Aloevera, Ashwagandha, Akarkara, Vidarikand, Safed Musli, Gokhru, Satawari, Kounch Beej, Jaiphal, Shilajeet, Ginger, Bhasamas",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
       ],
       "diet": [
@@ -164,7 +164,7 @@
         {
           "product": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "1 capsule (or 15ml) twice daily after meals to optimize lipid-based absorption for cardiovascular endothelial repair."
+          "dosage": "1 capsule (or 15ml) twice daily after meals to optimize lipid-based absorption for cardiovascular endothelial repair."
         },
         {
           "name": "OMEGADOC CAPSULE",
@@ -191,12 +191,12 @@
         {
           "product": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "1 capsule (or 15ml) twice daily after meals to optimize lipid-based absorption for cardiovascular endothelial repair."
+          "dosage": "1 capsule (or 15ml) twice daily after meals to optimize lipid-based absorption for cardiovascular endothelial repair."
         },
         {
           "product": "IMMUNODOC RAS",
           "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
       ],
       "diet": [
@@ -225,12 +225,12 @@
         {
           "product": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "1 capsule (or 15ml) twice daily after meals to optimize lipid-based absorption for cardiovascular endothelial repair."
+          "dosage": "1 capsule (or 15ml) twice daily after meals to optimize lipid-based absorption for cardiovascular endothelial repair."
         },
         {
           "product": "IMMUNODOC RAS",
           "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "name": "OMEGADOC CAPSULE",
@@ -296,12 +296,12 @@
         {
           "product": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "product": "ADIDOC PRAVAHI KWATH",
           "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Mulethi, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
       ],
       "diet": [
@@ -330,12 +330,12 @@
         {
           "product": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "product": "ADIDOC PRAVAHI KWATH",
           "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Mulethi, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "name": "OMEGADOC CAPSULE",
@@ -356,12 +356,12 @@
         {
           "product": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "product": "THUNDERBLAST RAS",
           "ingredients": "Aloevera, Ashwagandha, Akarkara, Vidarikand, Safed Musli, Gokhru, Satawari, Kounch Beej, Jaiphal, Shilajeet, Ginger, Bhasamas",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
       ],
       "diet": [
@@ -390,7 +390,7 @@
         {
           "product": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "name": "ARJUN EXTRACT TABLET",
@@ -405,12 +405,12 @@
         {
           "product": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "product": "BRAINDOC PRAVAHI KWATH",
           "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi, Lahsoon",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
       ],
       "diet": [
@@ -439,12 +439,12 @@
         {
           "product": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "product": "BRAINDOC PRAVAHI KWATH",
           "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi, Lahsoon",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "name": "OMEGADOC CAPSULE",
@@ -460,7 +460,7 @@
         {
           "product": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "1 capsule (or 15ml) twice daily after meals to optimize lipid-based absorption for cardiovascular endothelial repair."
+          "dosage": "1 capsule (or 15ml) twice daily after meals to optimize lipid-based absorption for cardiovascular endothelial repair."
         },
         {
           "name": "EXE PANCH TULSI OIL",
@@ -494,7 +494,7 @@
         {
           "product": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "1 capsule (or 15ml) twice daily after meals to optimize lipid-based absorption for cardiovascular endothelial repair."
+          "dosage": "1 capsule (or 15ml) twice daily after meals to optimize lipid-based absorption for cardiovascular endothelial repair."
         },
         {
           "name": "EXE PANCH TULSI OIL",
@@ -515,7 +515,7 @@
         {
           "product": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "1 capsule (or 15ml) twice daily after meals to optimize lipid-based absorption for cardiovascular endothelial repair."
+          "dosage": "1 capsule (or 15ml) twice daily after meals to optimize lipid-based absorption for cardiovascular endothelial repair."
         },
         {
           "name": "OMEGADOC CAPSULE",
@@ -549,7 +549,7 @@
         {
           "product": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "1 capsule (or 15ml) twice daily after meals to optimize lipid-based absorption for cardiovascular endothelial repair."
+          "dosage": "1 capsule (or 15ml) twice daily after meals to optimize lipid-based absorption for cardiovascular endothelial repair."
         },
         {
           "name": "OMEGADOC CAPSULE",
@@ -619,7 +619,7 @@
         {
           "product": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "name": "EXE PANCH TULSI OIL",
@@ -653,7 +653,7 @@
         {
           "product": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "name": "EXE PANCH TULSI OIL",
@@ -668,7 +668,7 @@
         {
           "product": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "1 capsule (or 15ml) twice daily after meals to optimize lipid-based absorption for cardiovascular endothelial repair."
+          "dosage": "1 capsule (or 15ml) twice daily after meals to optimize lipid-based absorption for cardiovascular endothelial repair."
         },
         {
           "name": "OMEGADOC CAPSULE",
@@ -678,7 +678,7 @@
         {
           "product": "THUNDERBLAST RAS",
           "ingredients": "Aloevera, Ashwagandha, Akarkara, Vidarikand, Safed Musli, Gokhru, Satawari, Kounch Beej, Jaiphal, Shilajeet, Ginger, Bhasamas",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
       ],
       "diet": [
@@ -707,7 +707,7 @@
         {
           "product": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "1 capsule (or 15ml) twice daily after meals to optimize lipid-based absorption for cardiovascular endothelial repair."
+          "dosage": "1 capsule (or 15ml) twice daily after meals to optimize lipid-based absorption for cardiovascular endothelial repair."
         },
         {
           "name": "OMEGADOC CAPSULE",
@@ -727,17 +727,17 @@
         {
           "product": "BRAINDOC PRAVAHI KWATH",
           "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi, Lahsoon",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "product": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "product": "THUNDERBLAST RAS",
           "ingredients": "Aloevera, Ashwagandha, Akarkara, Vidarikand, Safed Musli, Gokhru, Satawari, Kounch Beej, Jaiphal, Shilajeet, Ginger, Bhasamas",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
       ],
       "diet": [
@@ -766,17 +766,17 @@
         {
           "product": "BRAINDOC PRAVAHI KWATH",
           "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi, Lahsoon",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "product": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "product": "THUNDERBLAST RAS",
           "ingredients": "Aloevera, Ashwagandha, Akarkara, Vidarikand, Safed Musli, Gokhru, Satawari, Kounch Beej, Jaiphal, Shilajeet, Ginger, Bhasamas",
-          "how_to_take": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "name": "OMEGADOC CAPSULE",
@@ -792,7 +792,7 @@
         {
           "product_name": "DIABODOC RAS",
           "ingredients": "Aloevera Ras, Jamun Phal, Karela, Gurnar, Triphala, Vijaysar Ext., Methi, Giloya Ext.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "name": "GILOY TABLET",
@@ -802,7 +802,7 @@
         {
           "product_name": "NONIDOC JUICE",
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Giloy, Black Pepper, Long Pepper, Ginger.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         }
       ],
       "diet": [
@@ -831,7 +831,7 @@
         {
           "product_name": "DIABODOC RAS",
           "ingredients": "Aloevera Ras, Jamun Phal, Karela, Gurnar, Triphala, Vijaysar Ext., Methi, Giloya Ext.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "name": "GILOY TABLET",
@@ -841,7 +841,7 @@
         {
           "product_name": "NONIDOC JUICE",
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Giloy, Black Pepper, Long Pepper, Ginger.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "name": "STEVIADOC DROP",
@@ -861,7 +861,7 @@
         {
           "product_name": "DIABODOC RAS",
           "ingredients": "Aloevera Ras, Jamun Phal, Karela, Gurnar, Triphala, Vijaysar Ext., Methi, Giloya Ext.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "name": "GILOY TABLET",
@@ -871,7 +871,7 @@
         {
           "product_name": "SEABUCKDOC JUICE",
           "ingredients": "Turmeric Ras, Seabuckthorn Fruit Pulp, Safed Musali, Ashwagandha, Kawach, Patal Kodhra, Akarkar, Javitri, Amla, Giloy, Black Pepper, Long Pepper, Ginger.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         }
       ],
       "diet": [
@@ -900,7 +900,7 @@
         {
           "product_name": "DIABODOC RAS",
           "ingredients": "Aloevera Ras, Jamun Phal, Karela, Gurnar, Triphala, Vijaysar Ext., Methi, Giloya Ext.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "name": "GILOY TABLET",
@@ -910,7 +910,7 @@
         {
           "product_name": "SEABUCKDOC JUICE",
           "ingredients": "Turmeric Ras, Seabuckthorn Fruit Pulp, Safed Musali, Ashwagandha, Kawach, Patal Kodhra, Akarkar, Javitri, Amla, Giloy, Black Pepper, Long Pepper, Ginger.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "name": "STEVIADOC DROP",
@@ -930,12 +930,12 @@
         {
           "product_name": "THYDOC PRAVAHI KWATH",
           "ingredients": "Elva, Asvagandha, Sonth, Brahmi, Alsi, Mulethi, Jeera, Dhania, Ajwain, Neel, Kali Mirch, Pippali.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera Ras, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         }
       ],
       "diet": [
@@ -964,12 +964,12 @@
         {
           "product_name": "THYDOC PRAVAHI KWATH",
           "ingredients": "Elva, Asvagandha, Sonth, Brahmi, Alsi, Mulethi, Jeera, Dhania, Ajwain, Neel, Kali Mirch, Pippali.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera Ras, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         }
       ]
     },
@@ -984,7 +984,7 @@
         {
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Aloevera Leaf Ras.",
-          "dosage_instructions": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
       ],
       "diet": [
@@ -1018,7 +1018,7 @@
         {
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Aloevera Leaf Ras.",
-          "dosage_instructions": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
       ]
     },
@@ -1028,12 +1028,12 @@
         {
           "product_name": "OBEODOC RAS",
           "ingredients": "Aloevera Leaf Ras, Green Tea Leaf Soft Ext., Guggal Gum Soft Ext., Garlic Bulb Soft Ext., Kokum Fruit Soft Ext.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Aloevera Leaf Ras.",
-          "dosage_instructions": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "name": "DIGIDOC POWDER",
@@ -1067,7 +1067,7 @@
         {
           "product_name": "OBEODOC RAS",
           "ingredients": "Aloevera Leaf Ras, Green Tea Leaf Soft Ext., Guggal Gum Soft Ext., Garlic Bulb Soft Ext., Kokum Fruit Soft Ext.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "name": "DIGIDOC POWDER",
@@ -1087,17 +1087,17 @@
         {
           "product_name": "GYNEDOC RAS",
           "ingredients": "Ashoka, Shatavari, Dashmool, Musta, Jamun, Harad, Lodhra, Amla, Ashwagandha, Kamal, Bahera, Jatamansi, Bala, Mango Seed, Bad Chhal, Shalmali, Bael, Catechu, Ginger, Bhringraj, Jeera, Devdaru, Nagkesar, Clove, Tejpat, Pippali, Guduchi, Vidanga.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "OBEODOC RAS",
           "ingredients": "Aloevera Leaf Ras, Green Tea, Guggal, Garlic, Kokum.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera Ras, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         }
       ],
       "diet": [
@@ -1126,17 +1126,17 @@
         {
           "product_name": "GYNEDOC RAS",
           "ingredients": "Ashoka, Shatavari, Dashmool, Musta, Jamun, Harad, Lodhra, Amla, Ashwagandha, Kamal, Bahera, Jatamansi, Bala, Mango Seed, Bad Chhal, Shalmali, Bael, Catechu, Ginger, Bhringraj, Jeera, Devdaru, Nagkesar, Clove, Tejpat, Pippali, Guduchi, Vidanga.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "OBEODOC RAS",
           "ingredients": "Aloevera Leaf Ras, Green Tea, Guggal, Garlic, Kokum.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera Ras, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "name": "DIABODOC RAS",
@@ -1151,17 +1151,17 @@
         {
           "product_name": "OBEODOC RAS",
           "ingredients": "Aloevera Leaf Ras, Green Tea, Guggal, Garlic, Kokum.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal, Ashoka chhal, Dalchini, Guggal, Jatamansi.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "DIABODOC RAS",
           "ingredients": "Aloevera Ras, Jamun Phal, Karela, Gurnar, Triphala, Vijaysar Ext., Methi, Giloya Ext.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         }
       ],
       "diet": [
@@ -1190,17 +1190,17 @@
         {
           "product_name": "OBEODOC RAS",
           "ingredients": "Aloevera Leaf Ras, Green Tea, Guggal, Garlic, Kokum.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal, Ashoka chhal, Dalchini, Guggal, Jatamansi.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "DIABODOC RAS",
           "ingredients": "Aloevera Ras, Jamun Phal, Karela, Gurnar, Triphala, Vijaysar Ext., Methi, Giloya Ext.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         }
       ]
     },
@@ -1210,17 +1210,17 @@
         {
           "product_name": "THYDOC PRAVAHI KWATH",
           "ingredients": "Elva, Asvagandha, Sonth, Brahmi, Alsi, Mulethi, Jeera, Dhania, Ajwain, Neel, Kali Mirch, Pippali.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera Ras, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "OMEGADOC CAPSULE",
           "ingredients": "Flax Seed Oil.",
-          "dosage_instructions": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
+          "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
         }
       ],
       "diet": [
@@ -1249,17 +1249,17 @@
         {
           "product_name": "THYDOC PRAVAHI KWATH",
           "ingredients": "Elva, Asvagandha, Sonth, Brahmi, Alsi, Mulethi, Jeera, Dhania, Ajwain, Neel, Kali Mirch, Pippali.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera Ras, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "OMEGADOC CAPSULE",
           "ingredients": "Flax Seed Oil.",
-          "dosage_instructions": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
+          "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
         }
       ]
     },
@@ -1269,7 +1269,7 @@
         {
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera Ras, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger.",
-          "dosage_instructions": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "name": "BRAHMI EXTRACT TABLET",
@@ -1279,7 +1279,7 @@
         {
           "product_name": "ASHWAGANDHA TABLET",
           "ingredients": "Ashwagandha Extract (Withania Somnifera).",
-          "dosage_instructions": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
+          "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
         }
       ],
       "diet": [
@@ -1308,7 +1308,7 @@
         {
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera Ras, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger.",
-          "dosage_instructions": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "name": "BRAHMI EXTRACT TABLET",
@@ -1318,7 +1318,7 @@
         {
           "product_name": "ASHWAGANDHA TABLET",
           "ingredients": "Ashwagandha Extract (Withania Somnifera).",
-          "dosage_instructions": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
+          "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
         },
         {
           "name": "CALCIUM TABLET & VITAMIN D2 TABLET",
@@ -1334,17 +1334,17 @@
         {
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera Ras, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger.",
-          "dosage_instructions": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "product_name": "THUNDERBLAST RAS",
           "ingredients": "Aloevera, Ashwagandha, Akarkara, Vidarikand, Safed Musli, Gokhru, Satawari, Kounch Beej, Shilajeet, Ginger, Moti Bhasam, Vang Bhasam, Loh Bhasam, Kesar.",
-          "dosage_instructions": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "product_name": "ASHWAGANDHA TABLET",
           "ingredients": "Ashwagandha Extract (Withania Somnifera).",
-          "dosage_instructions": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
+          "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
         }
       ],
       "diet": [
@@ -1373,17 +1373,17 @@
         {
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera Ras, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger.",
-          "dosage_instructions": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "product_name": "THUNDERBLAST RAS",
           "ingredients": "Aloevera, Ashwagandha, Akarkara, Vidarikand, Safed Musli, Gokhru, Satawari, Kounch Beej, Shilajeet, Ginger, Moti Bhasam, Vang Bhasam, Loh Bhasam, Kesar.",
-          "dosage_instructions": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "product_name": "ASHWAGANDHA TABLET",
           "ingredients": "Ashwagandha Extract (Withania Somnifera).",
-          "dosage_instructions": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
+          "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
         }
       ]
     },
@@ -1393,17 +1393,17 @@
         {
           "product_name": "ORTHODOC PRAVAHI KWATH",
           "ingredients": "Aloevera Ras, Salai Guggal, Nirgundi, Malkagni, Rasna, Methi, Hadjod, Haldi.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera Ras, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "STONDOC RAS",
           "ingredients": "Elva, Pashanveda, Varuna, Kulthi, Gokhru, Kutha, Giloy, Palash, Moulsiri, Apamarga.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         }
       ],
       "diet": [
@@ -1432,17 +1432,17 @@
         {
           "product_name": "ORTHODOC PRAVAHI KWATH",
           "ingredients": "Aloevera Ras, Salai Guggal, Nirgundi, Malkagni, Rasna, Methi, Hadjod, Haldi.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera Ras, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "STONDOC RAS",
           "ingredients": "Elva, Pashanveda, Varuna, Kulthi, Gokhru, Kutha, Giloy, Palash, Moulsiri, Apamarga.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         }
       ]
     },
@@ -1452,17 +1452,17 @@
         {
           "product_name": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal, Ashoka chhal, Dalchini, Guggal, Jatamansi.",
-          "dosage_instructions": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "product_name": "OBEODOC RAS",
           "ingredients": "Aloevera Leaf Ras, Green Tea, Guggal, Garlic, Kokum.",
-          "dosage_instructions": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "product_name": "OMEGADOC CAPSULE",
           "ingredients": "Flax Seed Oil.",
-          "dosage_instructions": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
+          "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
         }
       ],
       "diet": [
@@ -1491,17 +1491,17 @@
         {
           "product_name": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal, Ashoka chhal, Dalchini, Guggal, Jatamansi.",
-          "dosage_instructions": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "product_name": "OBEODOC RAS",
           "ingredients": "Aloevera Leaf Ras, Green Tea, Guggal, Garlic, Kokum.",
-          "dosage_instructions": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
+          "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         },
         {
           "product_name": "OMEGADOC CAPSULE",
           "ingredients": "Flax Seed Oil.",
-          "dosage_instructions": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
+          "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
         }
       ]
     },
@@ -1511,17 +1511,17 @@
         {
           "product_name": "DIABODOC RAS",
           "ingredients": "Aloevera Ras, Jamun Phal, Karela, Gurnar, Triphala, Vijaysar Ext., Methi, Giloya Ext.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "THUNDERBLAST RAS",
           "ingredients": "Aloevera, Ashwagandha, Akarkara, Vidarikand, Safed Musli, Gokhru, Satawari, Kounch Beej, Shilajeet, Ginger, Moti Bhasam, Vang Bhasam, Loh Bhasam, Kesar.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "EXE VEINDOC OIL",
           "ingredients": "Til Seed Oil, Lavender Flower Oil, Ginger Rhizome Oil.",
-          "dosage_instructions": "2-3 drops diluted in 50ml of warm water, twice daily to ensure optimal systemic distribution."
+          "dosage": "2-3 drops diluted in 50ml of warm water, twice daily to ensure optimal systemic distribution."
         }
       ],
       "diet": [
@@ -1550,17 +1550,17 @@
         {
           "product_name": "DIABODOC RAS",
           "ingredients": "Aloevera Ras, Jamun Phal, Karela, Gurnar, Triphala, Vijaysar Ext., Methi, Giloya Ext.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "THUNDERBLAST RAS",
           "ingredients": "Aloevera, Ashwagandha, Akarkara, Vidarikand, Safed Musli, Gokhru, Satawari, Kounch Beej, Shilajeet, Ginger, Moti Bhasam, Vang Bhasam, Loh Bhasam, Kesar.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "EXE VEINDOC OIL",
           "ingredients": "Til Seed Oil, Lavender Flower Oil, Ginger Rhizome Oil.",
-          "dosage_instructions": "2-3 drops diluted in 50ml of warm water, twice daily to ensure optimal systemic distribution."
+          "dosage": "2-3 drops diluted in 50ml of warm water, twice daily to ensure optimal systemic distribution."
         }
       ]
     },
@@ -1570,7 +1570,7 @@
         {
           "product_name": "DIABODOC RAS",
           "ingredients": "Aloevera Ras, Jamun Phal, Karela, Gurnar, Triphala, Vijaysar Ext., Methi, Giloya Ext.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "name": "VITADOC TABLET",
@@ -1609,7 +1609,7 @@
         {
           "product_name": "DIABODOC RAS",
           "ingredients": "Aloevera Ras, Jamun Phal, Karela, Gurnar, Triphala, Vijaysar Ext., Methi, Giloya Ext.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "name": "VITADOC TABLET",
@@ -1635,17 +1635,17 @@
         {
           "product_name": "DIABODOC RAS",
           "ingredients": "Aloevera Ras, Jamun Phal, Karela, Gurnar, Triphala, Vijaysar Ext., Methi, Giloya Ext.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "STONDOC RAS",
           "ingredients": "Elva, Pashanveda, Varuna, Kulthi, Gokhru, Kutha, Giloy, Palash, Moulsiri, Apamarga.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "EXE PUNARNAVA KWATH",
           "ingredients": "Punarnava, Kutki, Harad, Neem Chhal, Daruhaldi, Patol Patra, Giloy, Sonth, Sarpunkha, Rohida Chhal.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         }
       ],
       "diet": [
@@ -1674,17 +1674,17 @@
         {
           "product_name": "DIABODOC RAS",
           "ingredients": "Aloevera Ras, Jamun Phal, Karela, Gurnar, Triphala, Vijaysar Ext., Methi, Giloya Ext.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "STONDOC RAS",
           "ingredients": "Elva, Pashanveda, Varuna, Kulthi, Gokhru, Kutha, Giloy, Palash, Moulsiri, Apamarga.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         },
         {
           "product_name": "EXE PUNARNAVA KWATH",
           "ingredients": "Punarnava, Kutki, Harad, Neem Chhal, Daruhaldi, Patol Patra, Giloy, Sonth, Sarpunkha, Rohida Chhal.",
-          "dosage_instructions": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
+          "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         }
       ]
     }
