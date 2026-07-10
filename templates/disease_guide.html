@@ -160,6 +160,18 @@
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
                 Inventory Stock
             </li>
+            <li class="nav-item" onclick="navigateTo('/inventory_master')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                Inventory Master
+            </li>
+            <li class="nav-item" onclick="navigateTo('/invoice')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                Invoice Generator
+            </li>
+            <li class="nav-item" onclick="navigateTo('/invoice_history')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Recent Invoices
+            </li>
             <li class="nav-item active" onclick="navigateTo('/disease_guide')">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
                 Disease Guide
@@ -224,18 +236,23 @@
             list.forEach(d => {
                 const name = d.disease_name || d.name || 'Unknown';
                 const cat = d.category_name;
-                const products = d.final_recommended_products || [];
+                const products = d.final_recommended_products || d.recommended_wellness_products || [];
                 const disclaimer = d.disclaimer || '';
                 const avoid = Array.isArray(d.things_to_avoid) ? d.things_to_avoid.join(' | ') : (d.things_to_avoid || '');
                 const tip = d.ayurvedic_tip || '';
+                const diet = Array.isArray(d.diet) ? d.diet.map(item => `<li>• ${item}</li>`).join('') : (d.diet || '');
+                const exercise = Array.isArray(d.exercise) ? d.exercise.map(item => `<li>• ${item}</li>`).join('') : (d.exercise || '');
 
                 let prodsHtml = products.map(p => {
-                    const pName = typeof p === 'string' ? p : (p.name || p.product_name);
-                    const pDose = p.dosage || 'As directed';
+                    const pName = typeof p === 'string' ? p : (p.product || p.name || p.product_name);
+                    const pDose = p.dosage || p.how_to_take || 'As directed';
                     return `<li><span class="p-name">${pName}</span><span class="p-dose">${pDose}</span></li>`;
                 }).join('');
 
                 if(!prodsHtml) prodsHtml = '<li>No specific products listed.</li>';
+
+                let dietHtml = diet ? `<div><div class="section-title">Recommended Diet</div><ul style="list-style:none; padding:0; margin:0; font-size:0.9rem; color:#cbd5e1; margin-bottom: 0.5rem;">${diet}</ul></div>` : '';
+                let exerciseHtml = exercise ? `<div><div class="section-title">Exercise Protocol</div><ul style="list-style:none; padding:0; margin:0; font-size:0.9rem; color:#cbd5e1; margin-bottom: 0.5rem;">${exercise}</ul></div>` : '';
 
                 let discHtml = disclaimer ? `<div class="disclaimer">⚠️ ${disclaimer}</div>` : '';
                 let avoidHtml = avoid ? `<div><div class="section-title">Things to Avoid</div><div class="avoid">${avoid}</div></div>` : '';
@@ -252,6 +269,8 @@
                         <div class="section-title">Recommended Products</div>
                         <ul class="products-list">${prodsHtml}</ul>
                     </div>
+                    ${dietHtml}
+                    ${exerciseHtml}
                     ${tipHtml}
                     ${avoidHtml}
                     ${discHtml}
