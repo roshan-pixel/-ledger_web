@@ -58,16 +58,6 @@
           "how_to_take": "Take 10ml with lukewarm milk at night after meals."
         },
         {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
-        },
-        {
           "name": "OMEGADOC CAPSULE",
           "ingredients": "Flaxseed oil",
           "dosage": "1 capsule daily"
@@ -120,16 +110,6 @@
           "product": "BRAINDOC PRAVAHI KWATH",
           "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi, Lahsoon",
           "how_to_take": "Take 15 ml twice daily after meals with water."
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
         }
       ]
     },
@@ -144,7 +124,7 @@
         {
           "name": "Heart Safe Blend",
           "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi (Mulethi-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "Take 10ml with 100ml warm water on an empty stomach, twice daily."
         },
         {
           "product": "THUNDERBLAST RAS",
@@ -165,7 +145,7 @@
         "Anulom Vilom Pranayama (without holding breath) for 10 minutes.",
         "Deep breathing exercises (Diaphragmatic breathing) while lying down or seated comfortably."
       ],
-      "how_to_take_products": "Take 15ml of CARDIODOC RAS mixed with 15ml warm water twice a day after meals. Take 10ml ADIDOC PRAVAHI KWATH on an empty stomach.",
+      "how_to_take_products": "Take 15ml of CARDIODOC RAS mixed with 15ml warm water twice a day after meals. Take 10ml Heart Safe Blend PRAVAHI KWATH on an empty stomach.",
       "things_to_avoid": [
         "Avoid large volumes of fluids at once to prevent fluid overload.",
         "Avoid excessive physical exertion or exercising in extreme temperatures.",
@@ -183,17 +163,7 @@
         {
           "name": "Heart Safe Blend",
           "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi (Mulethi-free)",
-          "dosage": "10ml twice daily with water"
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
+          "dosage": "Take 10ml with 100ml warm water on an empty stomach, twice daily."
         },
         {
           "name": "ARJUN EXTRACT TABLET",
@@ -249,16 +219,6 @@
           "product": "IMMUNODOC RAS",
           "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger",
           "how_to_take": "Take 15-20 ml twice daily with warm water to boost immunity and fight infections."
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
         }
       ]
     },
@@ -268,12 +228,12 @@
         {
           "name": "Heart Safe Blend",
           "ingredients": "Aloevera, Triphala, Arjuna, Ashoka, Jatamansi (Anti-platelet free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "Take 15 ml twice a day with an equal amount of warm water on an empty stomach."
         },
         {
           "name": "Brain Safe Blend",
           "ingredients": "Honey, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi (Garlic/Turmeric-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "Take 15 ml twice daily to calm the nervous system and manage stress-induced arrhythmias."
         }
       ],
       "diet": [
@@ -289,7 +249,7 @@
         "Nadi Shodhana (Alternate Nostril Breathing) for 15 minutes to balance the mind.",
         "Very gentle, restorative stretching avoiding inverted poses."
       ],
-      "how_to_take_products": "Take 15ml of CARDIODOC RAS with warm water 30 minutes before breakfast. Take 15ml of BRAINDOC PRAVAHI KWATH with water 30 minutes after dinner.",
+      "how_to_take_products": "Take 15ml of Heart Safe Blend RAS with warm water 30 minutes before breakfast. Take 15ml of Brain Safe Blend PRAVAHI KWATH with water 30 minutes after dinner.",
       "things_to_avoid": [
         "Strictly avoid caffeine, energy drinks, and excessive chocolate.",
         "Avoid alcohol, as it is a known trigger for atrial fibrillation episodes.",
@@ -303,22 +263,12 @@
         {
           "name": "Heart Safe Blend",
           "ingredients": "Aloevera, Triphala, Arjuna, Ashoka, Jatamansi (Anti-platelet free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "Take 15 ml twice a day with an equal amount of warm water on an empty stomach."
         },
         {
           "name": "Brain Safe Blend",
           "ingredients": "Honey, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi (Garlic/Turmeric-free)",
-          "dosage": "10ml twice daily with water"
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
+          "dosage": "Take 15 ml twice daily to calm the nervous system and manage stress-induced arrhythmias."
         }
       ]
     },
@@ -370,16 +320,6 @@
           "how_to_take": "Take 10ml with 100ml warm water, twice daily."
         },
         {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
-        },
-        {
           "name": "OMEGADOC CAPSULE",
           "ingredients": "Flaxseed oil",
           "dosage": "1 capsule daily"
@@ -427,16 +367,6 @@
           "product": "CARDIODOC RAS",
           "ingredients": "Aloevera ras, Triphala ras, Arjuna chhal (Terminalia arjuna), Ashoka chhal, Dalchini, Guggal, Jatamansi",
           "how_to_take": "Take 15 ml twice a day with an equal amount of warm water on an empty stomach."
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
         },
         {
           "name": "ARJUN EXTRACT TABLET",
@@ -491,16 +421,6 @@
           "product": "BRAINDOC PRAVAHI KWATH",
           "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi, Lahsoon",
           "how_to_take": "Take 15 ml twice daily after meals to help manage sympathetic nervous system overdrive."
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
         }
       ]
     },
@@ -515,7 +435,7 @@
         {
           "name": "Heart Safe Blend",
           "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Tulsi, Ginger (Mulethi-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "Take 15 ml once a day to boost immunity and prevent infections (like endocarditis)."
         }
       ],
       "diet": [
@@ -531,7 +451,7 @@
         "Gentle Yoga and stretching for flexibility.",
         "Breathing exercises like Anulom Vilom for 10-15 minutes."
       ],
-      "how_to_take_products": "Take 15ml of CARDIODOC RAS with 50ml warm water 30 minutes before breakfast. Take 15ml of IMMUNODOC RAS before dinner.",
+      "how_to_take_products": "Take 15ml of CARDIODOC RAS with 50ml warm water 30 minutes before breakfast. Take 15ml of Heart Safe Blend RAS before dinner.",
       "things_to_avoid": [
         "Avoid poor dental hygiene (brush and floss regularly to prevent endocarditis).",
         "Avoid strenuous physical exertion and heavy lifting.",
@@ -549,17 +469,7 @@
         {
           "name": "Heart Safe Blend",
           "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Tulsi, Ginger (Mulethi-free)",
-          "dosage": "10ml twice daily with water"
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
+          "dosage": "Take 15 ml once a day to boost immunity and prevent infections (like endocarditis)."
         }
       ]
     },
@@ -574,7 +484,7 @@
         {
           "name": "Heart Safe Blend",
           "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi (Mulethi-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "Take 10ml with 100ml warm water on an empty stomach, twice daily."
         }
       ],
       "diet": [
@@ -590,7 +500,7 @@
         "Gentle stretching and mobility exercises.",
         "Strictly avoid any exercise that involves bearing down (Valsalva maneuver), heavy lifting, or intense isometric holds."
       ],
-      "how_to_take_products": "Take 15ml of CARDIODOC RAS with warm water in the morning. Take 10ml of Heart Safe Blend in the afternoon or evening.",
+      "how_to_take_products": "Take 15ml of CARDIODOC RAS with warm water in the morning. Take 10ml of Heart Safe Blend PRAVAHI KWATH in the afternoon or evening.",
       "things_to_avoid": [
         "Strictly avoid heavy lifting, straining, or intense weightlifting.",
         "Avoid straining during bowel movements (treat constipation promptly).",
@@ -608,10 +518,9 @@
         {
           "name": "Heart Safe Blend",
           "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi (Mulethi-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "Take 10ml with 100ml warm water on an empty stomach, twice daily."
         }
-      ],
-      "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine. Natural blood thinners must be approved by a cardiologist to prevent interaction with anticoagulants."
+      ]
     },
     {
       "disease_name": "Deep Vein Thrombosis",
@@ -619,7 +528,7 @@
         {
           "name": "Vascular Safe Blend",
           "ingredients": "Aloevera, Triphala, Arjuna, Ashoka, Jatamansi (Anti-platelet free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "Take 15 ml twice a day with an equal amount of warm water."
         },
         {
           "name": "Safe ADIDOC Blend",
@@ -640,7 +549,7 @@
         "Leg elevation: Raise legs above heart level for 15-20 minutes, 3-4 times a day.",
         "Swimming or water aerobics (if cleared by the doctor)."
       ],
-      "how_to_take_products": "Take 15ml of CARDIODOC RAS with warm water after breakfast. Take 10ml of ADIDOC PRAVAHI KWATH before dinner.",
+      "how_to_take_products": "Take 15ml of Vascular Safe Blend RAS with warm water after breakfast. Take 10ml of Safe ADIDOC Blend PRAVAHI KWATH before dinner.",
       "things_to_avoid": [
         "Avoid prolonged sitting or standing; take breaks during long flights or car rides.",
         "Avoid crossing your legs while sitting.",
@@ -654,22 +563,12 @@
         {
           "name": "Vascular Safe Blend",
           "ingredients": "Aloevera, Triphala, Arjuna, Ashoka, Jatamansi (Anti-platelet free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "Take 15 ml twice a day with an equal amount of warm water."
         },
         {
           "name": "Safe ADIDOC Blend",
           "ingredients": "Contraindicated ingredients removed from ADIDOC",
           "dosage": "As directed by physician"
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
         },
         {
           "name": "OMEGADOC CAPSULE",
@@ -689,7 +588,7 @@
         {
           "name": "Heart Safe Blend",
           "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Tulsi, Ginger (Mulethi-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "Take 15 ml once daily to support lung function and overall immunity."
         }
       ],
       "diet": [
@@ -705,7 +604,7 @@
         "Gentle seated stretching to maintain joint flexibility.",
         "Avoid lifting heavy weights, straining, or intense cardiovascular exercise."
       ],
-      "how_to_take_products": "Take 15ml of CARDIODOC RAS with warm water 30 minutes before breakfast. Take 15ml of IMMUNODOC RAS before lunch.",
+      "how_to_take_products": "Take 15ml of CARDIODOC RAS with warm water 30 minutes before breakfast. Take 15ml of Heart Safe Blend RAS before lunch.",
       "things_to_avoid": [
         "Strictly avoid smoking and exposure to secondhand smoke.",
         "Avoid high altitudes and air travel unless approved by a physician.",
@@ -723,17 +622,7 @@
         {
           "name": "Heart Safe Blend",
           "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Tulsi, Ginger (Mulethi-free)",
-          "dosage": "10ml twice daily with water"
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
+          "dosage": "Take 15 ml once daily to support lung function and overall immunity."
         }
       ]
     },
@@ -748,7 +637,7 @@
         {
           "name": "Heart Safe Blend",
           "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi (Mulethi-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "Take 10ml with 100ml warm water on an empty stomach, twice daily."
         },
         {
           "product": "THUNDERBLAST RAS",
@@ -769,7 +658,7 @@
         "Pranayama (Anulom Vilom) for 15 minutes to improve oxygen delivery.",
         "Cycling or swimming at a moderate pace, stopping if any chest discomfort occurs."
       ],
-      "how_to_take_products": "Take 15ml of CARDIODOC RAS with warm water in the morning. Take 10ml of ADIDOC PRAVAHI KWATH before dinner. Take 10ml THUNDERBLAST RAS at bedtime.",
+      "how_to_take_products": "Take 15ml of CARDIODOC RAS with warm water in the morning. Take 10ml of Heart Safe Blend PRAVAHI KWATH before dinner. Take 10ml THUNDERBLAST RAS at bedtime.",
       "things_to_avoid": [
         "Avoid sudden, intense physical exertion, especially in cold weather.",
         "Avoid large, heavy meals which divert blood away from the heart.",
@@ -787,17 +676,7 @@
         {
           "name": "Heart Safe Blend",
           "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi (Mulethi-free)",
-          "dosage": "10ml twice daily with water"
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
+          "dosage": "Take 10ml with 100ml warm water on an empty stomach, twice daily."
         },
         {
           "name": "ARJUN EXTRACT TABLET",
@@ -862,16 +741,6 @@
           "product": "THUNDERBLAST RAS",
           "ingredients": "Aloevera, Ashwagandha, Akarkara, Vidarikand, Safed Musli, Gokhru, Satawari, Kounch Beej, Jaiphal, Shilajeet, Ginger, Bhasamas",
           "how_to_take": "Take 10ml with warm milk at night to rebuild physical strength and overcome fatigue."
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
         }
       ]
     },
@@ -886,7 +755,7 @@
         {
           "name": "Safe Diabetic Blend",
           "ingredients": "Aloevera, Triphala, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Apple-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "15-20ml twice daily, 1 hour after meals."
         },
         {
           "product_name": "NONIDOC JUICE",
@@ -907,7 +776,7 @@
         "Pranayama (Kapalbhati, Anulom Vilom) for 15 minutes daily.",
         "Light aerobic exercises or cycling for 20 minutes."
       ],
-      "how_to_take_products": "Take NONIDOC JUICE first thing in the morning. Take DIABODOC RAS 30 minutes before lunch and dinner. Take IMMUNODOC RAS 1 hour after meals.",
+      "how_to_take_products": "Take  first thing in the morning. Take DIABODOC RAS 30 minutes before lunch and dinner. Take Safe Diabetic Blend RAS 1 hour after meals.",
       "things_to_avoid": [
         "Sweets, chocolates, and sugar-sweetened beverages.",
         "Sedentary lifestyle and lack of physical activity.",
@@ -925,22 +794,12 @@
         {
           "name": "Safe Diabetic Blend",
           "ingredients": "Aloevera, Triphala, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Apple-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "15-20ml twice daily, 1 hour after meals."
         },
         {
           "product_name": "NONIDOC JUICE",
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Giloy, Black Pepper, Long Pepper, Ginger.",
           "dosage_instructions": "15-20ml in the morning on an empty stomach."
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "Antioxidant Extract",
-          "ingredients": "Berry extracts in sugar-free base",
-          "dosage": "15ml twice daily"
         },
         {
           "name": "STEVIADOC DROP",
@@ -965,7 +824,7 @@
         {
           "name": "Safe Diabetic Blend",
           "ingredients": "Aloevera, Triphala, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Apple-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "15-20ml twice daily after meals for immunity and cellular support."
         },
         {
           "product_name": "SEABUCKDOC JUICE",
@@ -986,7 +845,7 @@
         "Swimming or water aerobics for 30 minutes.",
         "Slow deep breathing exercises for 10 minutes to reduce stress."
       ],
-      "how_to_take_products": "Dilute all juices in an equal amount of lukewarm water. Take SEABUCKDOC JUICE in the morning. DIABODOC RAS should be taken 30 minutes before meals. IMMUNODOC RAS after meals.",
+      "how_to_take_products": "Dilute all juices in an equal amount of lukewarm water. Take SEABUCKDOC JUICE in the morning. DIABODOC RAS should be taken 30 minutes before meals. Safe Diabetic Blend RAS after meals.",
       "things_to_avoid": [
         "Erratic meal timings and skipping meals.",
         "Fasting without medical supervision.",
@@ -1004,22 +863,12 @@
         {
           "name": "Safe Diabetic Blend",
           "ingredients": "Aloevera, Triphala, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Apple-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "15-20ml twice daily after meals for immunity and cellular support."
         },
         {
           "product_name": "SEABUCKDOC JUICE",
           "ingredients": "Turmeric Ras, Seabuckthorn Fruit Pulp, Safed Musali, Ashwagandha, Kawach, Patal Kodhra, Akarkar, Javitri, Amla, Giloy, Black Pepper, Long Pepper, Ginger.",
           "dosage_instructions": "15-20ml in the morning on an empty stomach."
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "Antioxidant Extract",
-          "ingredients": "Berry extracts in sugar-free base",
-          "dosage": "15ml twice daily"
         },
         {
           "name": "STEVIADOC DROP",
@@ -1079,16 +928,6 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera Ras, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger.",
           "dosage_instructions": "15-20ml twice daily after meals."
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
         }
       ]
     },
@@ -1098,12 +937,12 @@
         {
           "name": "Thyroid Safe Blend",
           "ingredients": "Kanchnar, Guggulu, Ashwagandha, Brahmi, Punarnava, Triphala (Trikatu-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "15-20ml twice daily with normal water."
         },
         {
           "name": "Thyroid Safe Blend",
           "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana (Pitta-safe)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "15-20ml twice daily or at bedtime to reduce stress and anxiety."
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
@@ -1124,7 +963,7 @@
         "Shavasana (Corpse Pose) for 15 minutes for deep relaxation.",
         "Gentle stretching and restorative Yoga for 15 minutes."
       ],
-      "how_to_take_products": "Take ALOEVERA SYRUP first thing in the morning. Take THYDOC with normal (not hot) water before meals. Take BRAINDOC at bedtime to ensure restful sleep.",
+      "how_to_take_products": "Take ALOEVERA SYRUP first thing in the morning. Take Thyroid Safe Blend with normal (not hot) water before meals. Take Thyroid Safe Blend at bedtime to ensure restful sleep.",
       "things_to_avoid": [
         "Spicy, pungent, and overly salty foods.",
         "Excessive exposure to heat and direct sunlight.",
@@ -1137,27 +976,17 @@
         {
           "name": "Thyroid Safe Blend",
           "ingredients": "Kanchnar, Guggulu, Ashwagandha, Brahmi, Punarnava, Triphala (Trikatu-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "15-20ml twice daily with normal water."
         },
         {
           "name": "Thyroid Safe Blend",
           "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana (Pitta-safe)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "15-20ml twice daily or at bedtime to reduce stress and anxiety."
         },
         {
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Aloevera Leaf Ras.",
           "dosage_instructions": "20ml in the morning to provide a cooling effect."
-        },
-        {
-          "name": "Thyroid Safe Blend",
-          "ingredients": "Amla, Noni, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy (Trikatu-free)",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
         }
       ]
     },
@@ -1177,7 +1006,7 @@
         {
           "name": "Pure Fiber Blend",
           "ingredients": "Natural Dietary Fibers (Fructose-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "1 scoop daily with a large glass of water before a meal."
         }
       ],
       "diet": [
@@ -1193,7 +1022,7 @@
         "Kapalbhati Pranayama for 15 minutes to boost metabolism.",
         "Cycling or swimming for 30 minutes."
       ],
-      "how_to_take_products": "Take ALOEVERA SYRUP in the morning. Mix OBEODOC RAS with warm water and take 30 minutes before lunch and dinner. Take ACTIVE FIBER COMPLEX before meals with plenty of water to increase satiety.",
+      "how_to_take_products": "Take ALOEVERA SYRUP in the morning. Mix OBEODOC RAS with warm water and take 30 minutes before lunch and dinner. Take Pure Fiber Blend COMPLEX before meals with plenty of water to increase satiety.",
       "things_to_avoid": [
         "Daytime sleeping (Divaswapna).",
         "Excessive consumption of sweet, salty, and sour foods.",
@@ -1211,17 +1040,7 @@
         {
           "name": "Pure Fiber Blend",
           "ingredients": "Natural Dietary Fibers (Fructose-free)",
-          "dosage": "10ml twice daily with water"
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
+          "dosage": "1 scoop daily with a large glass of water before a meal."
         },
         {
           "name": "SLIMDOC POWDER",
@@ -1288,16 +1107,6 @@
           "dosage_instructions": "15ml daily to balance immunity and reduce inflammation."
         },
         {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
-        },
-        {
           "name": "DIABODOC RAS",
           "ingredients": "Metabolic and insulin support",
           "dosage": "15-20ml twice daily"
@@ -1360,16 +1169,6 @@
           "product_name": "DIABODOC RAS",
           "ingredients": "Aloevera Ras, Jamun Phal, Karela, Gurnar, Triphala, Vijaysar Ext., Methi, Giloya Ext.",
           "dosage_instructions": "15-20ml twice daily before meals."
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
         }
       ]
     },
@@ -1429,16 +1228,6 @@
           "product_name": "OMEGADOC CAPSULE",
           "ingredients": "Flax Seed Oil.",
           "dosage_instructions": "1 capsule daily after a meal."
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
         }
       ]
     },
@@ -1453,7 +1242,7 @@
         {
           "name": "Brain Safe Blend",
           "ingredients": "Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi, Lahsoon (Honey-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "15ml twice daily to manage stress and high cortisol levels."
         },
         {
           "product_name": "ASHWAGANDHA TABLET",
@@ -1474,7 +1263,7 @@
         "Deep breathing and meditation for 20 minutes to lower cortisol.",
         "Water aerobics or swimming for 30 minutes."
       ],
-      "how_to_take_products": "Take IMMUNODOC in the morning and evening. Take ASHWAGANDHA TABLET after meals. Take BRAINDOC at bedtime to ensure proper rest and stress relief.",
+      "how_to_take_products": "Take IMMUNODOC in the morning and evening. Take ASHWAGANDHA TABLET after meals. Take Brain Safe Blend at bedtime to ensure proper rest and stress relief.",
       "things_to_avoid": [
         "High-sodium processed foods and table salt.",
         "Excessive sugar and sweets.",
@@ -1492,22 +1281,12 @@
         {
           "name": "Brain Safe Blend",
           "ingredients": "Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi, Lahsoon (Honey-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "15ml twice daily to manage stress and high cortisol levels."
         },
         {
           "product_name": "ASHWAGANDHA TABLET",
           "ingredients": "Ashwagandha Extract (Withania Somnifera).",
           "dosage_instructions": "1 tablet twice daily."
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
         }
       ]
     },
@@ -1567,16 +1346,6 @@
           "product_name": "ASHWAGANDHA TABLET",
           "ingredients": "Ashwagandha Extract (Withania Somnifera).",
           "dosage_instructions": "1 tablet twice daily as an adrenal adaptogen."
-        },
-        {
-          "name": "Endocrine Safe Blend",
-          "ingredients": "Amla, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy, Black Pepper, Long Pepper, Ginger (Noni-free)",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "Antioxidant Extract",
-          "ingredients": "Low-potassium fruit extracts",
-          "dosage": "15ml twice daily"
         }
       ]
     },
@@ -1636,16 +1405,6 @@
           "product_name": "STONDOC RAS",
           "ingredients": "Elva, Pashanveda, Varuna, Kulthi, Gokhru, Kutha, Giloy, Palash, Moulsiri, Apamarga.",
           "dosage_instructions": "20ml twice daily (if kidney stones are a complication)."
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
         }
       ]
     },
@@ -1705,16 +1464,6 @@
           "product_name": "OMEGADOC CAPSULE",
           "ingredients": "Flax Seed Oil.",
           "dosage_instructions": "1 capsule daily."
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
         }
       ]
     },
@@ -1774,16 +1523,6 @@
           "product_name": "EXE VEINDOC OIL",
           "ingredients": "Til Seed Oil, Lavender Flower Oil, Ginger Rhizome Oil.",
           "dosage_instructions": "Apply gently on affected areas (feet/legs) without deep pressure."
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "Antioxidant Extract",
-          "ingredients": "Berry extracts in sugar-free base",
-          "dosage": "15ml twice daily"
         }
       ]
     },
@@ -1798,12 +1537,12 @@
         {
           "name": "Retina Safe Drops",
           "ingredients": "Rose Petals, Punarnava, Bhringraj, Nirgundi, Harad, Haldi, Tulsi, Neem (Honey-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "1-2 drops in each eye twice daily."
         },
         {
           "name": "Safe Diabetic Blend",
           "ingredients": "Aloevera, Triphala, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Apple-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "15-20ml twice daily after meals."
         }
       ],
       "diet": [
@@ -1819,7 +1558,7 @@
         "Neck and shoulder stretches for 15 minutes to improve blood flow to the head.",
         "Avoid heavy lifting or straining."
       ],
-      "how_to_take_products": "Take DIABODOC before meals. Instill EYEDOC DROP into clean eyes (ensure hands are washed). Take IMMUNODOC after meals.",
+      "how_to_take_products": "Take DIABODOC before meals. Instill Retina Safe Drops DROP into clean eyes (ensure hands are washed). Take Safe Diabetic Blend after meals.",
       "things_to_avoid": [
         "High sugar and high-glycemic foods.",
         "Strenuous heavy lifting and activities that increase intraocular pressure.",
@@ -1837,22 +1576,12 @@
         {
           "name": "Retina Safe Drops",
           "ingredients": "Rose Petals, Punarnava, Bhringraj, Nirgundi, Harad, Haldi, Tulsi, Neem (Honey-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "1-2 drops in each eye twice daily."
         },
         {
           "name": "Safe Diabetic Blend",
           "ingredients": "Aloevera, Triphala, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Apple-free)",
-          "dosage": "10ml twice daily with water"
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "Antioxidant Extract",
-          "ingredients": "Berry extracts in sugar-free base",
-          "dosage": "15ml twice daily"
+          "dosage": "15-20ml twice daily after meals."
         }
       ]
     },
@@ -1912,16 +1641,6 @@
           "product_name": "EXE PUNARNAVA KWATH",
           "ingredients": "Punarnava, Kutki, Harad, Neem Chhal, Daruhaldi, Patol Patra, Giloy, Sonth, Sarpunkha, Rohida Chhal.",
           "dosage_instructions": "15ml twice daily."
-        },
-        {
-          "name": "Renal Safe Blend",
-          "ingredients": "Amla, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy, Black Pepper, Long Pepper, Ginger (Noni-free)",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "Antioxidant Extract",
-          "ingredients": "Berry extracts in sugar-free base",
-          "dosage": "15ml twice daily"
         }
       ]
     }
@@ -1984,16 +1703,6 @@
           "product_name": "ALRGYDOC PRAVAHI KWATH",
           "ingredients": "Giloy Stem C. Powder, Neem Leaf C. Powder, Tulsi Panchang C.Powder, Brahmi Whole Plant C. Powder, Haldi Rhizome C. Powder.",
           "specific_dosage": "15-20 ml twice a day with equal amount of water."
-        },
-        {
-          "name": "CURCIDOC DROP",
-          "ingredients": "Curcumin, Black Pepper extract",
-          "dosage": "5 drops in warm water twice daily"
-        },
-        {
-          "name": "GILOY TABLET",
-          "ingredients": "Giloy (Tinospora cordifolia) Extract",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -2124,16 +1833,6 @@
           "product_name": "ALRGYDOC PRAVAHI KWATH",
           "ingredients": "Giloy Stem C. Powder, Neem Leaf C. Powder, Tulsi Panchang C.Powder, Brahmi Whole Plant C. Powder, Haldi Rhizome C. Powder.",
           "specific_dosage": "15-20 ml twice a day with equal amount of water."
-        },
-        {
-          "name": "CURCIDOC DROP",
-          "ingredients": "Curcumin, Black Pepper extract",
-          "dosage": "5 drops in warm water twice daily"
-        },
-        {
-          "name": "GILOY TABLET",
-          "ingredients": "Giloy (Tinospora cordifolia) Extract",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -2194,16 +1893,6 @@
           "product_name": "ALRGYDOC PRAVAHI KWATH",
           "ingredients": "Giloy Stem C. Powder, Neem Leaf C. Powder, Tulsi Panchang C.Powder, Brahmi Whole Plant C. Powder, Haldi Rhizome C. Powder.",
           "specific_dosage": "15-20 ml twice a day with equal amount of water."
-        },
-        {
-          "name": "CURCIDOC DROP",
-          "ingredients": "Curcumin, Black Pepper extract",
-          "dosage": "5 drops in warm water twice daily"
-        },
-        {
-          "name": "GILOY TABLET",
-          "ingredients": "Giloy (Tinospora cordifolia) Extract",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -2264,16 +1953,6 @@
           "product_name": "ALRGYDOC PRAVAHI KWATH",
           "ingredients": "Giloy Stem C. Powder, Neem Leaf C. Powder, Tulsi Panchang C.Powder, Brahmi Whole Plant C. Powder, Haldi Rhizome C. Powder.",
           "specific_dosage": "15-20 ml twice a day with equal amount of water."
-        },
-        {
-          "name": "CURCIDOC DROP",
-          "ingredients": "Curcumin, Black Pepper extract",
-          "dosage": "5 drops in warm water twice daily"
-        },
-        {
-          "name": "GILOY TABLET",
-          "ingredients": "Giloy (Tinospora cordifolia) Extract",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -2404,16 +2083,6 @@
           "product_name": "ALRGYDOC PRAVAHI KWATH",
           "ingredients": "Giloy Stem C. Powder, Neem Leaf C. Powder, Tulsi Panchang C.Powder, Brahmi Whole Plant C. Powder, Haldi Rhizome C. Powder.",
           "specific_dosage": "15-20 ml twice a day with equal amount of water."
-        },
-        {
-          "name": "CURCIDOC DROP",
-          "ingredients": "Curcumin, Black Pepper extract",
-          "dosage": "5 drops in warm water twice daily"
-        },
-        {
-          "name": "GILOY TABLET",
-          "ingredients": "Giloy (Tinospora cordifolia) Extract",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -2464,16 +2133,6 @@
           "product_name": "EXE PANCH TULSI OIL",
           "ingredients": "Rama Tulsi 2 ml, Shyama Tulsi 2 ml, Van Tulsi 2 ml, Sweat Tulsi 2 ml, Sri Tulsi 2 ml, Other D.M. Water.",
           "specific_dosage": "1-2 drops in a glass of warm water, twice daily."
-        },
-        {
-          "name": "CURCIDOC DROP",
-          "ingredients": "Curcumin, Black Pepper extract",
-          "dosage": "5 drops in warm water twice daily"
-        },
-        {
-          "name": "GILOY TABLET",
-          "ingredients": "Giloy (Tinospora cordifolia) Extract",
-          "dosage": "1 tablet twice daily"
         },
         {
           "name": "GILOY TABLET",
@@ -2540,16 +2199,6 @@
           "product_name": "ALRGYDOC PRAVAHI KWATH",
           "ingredients": "Giloy Stem C. Powder, Neem Leaf C. Powder, Tulsi Panchang C.Powder, Brahmi Whole Plant C. Powder, Haldi Rhizome C. Powder.",
           "specific_dosage": "15-20 ml twice a day with equal amount of water."
-        },
-        {
-          "name": "CURCIDOC DROP",
-          "ingredients": "Curcumin, Black Pepper extract",
-          "dosage": "5 drops in warm water twice daily"
-        },
-        {
-          "name": "GILOY TABLET",
-          "ingredients": "Giloy (Tinospora cordifolia) Extract",
-          "dosage": "1 tablet twice daily"
         }
       ]
     }
@@ -2567,7 +2216,7 @@
         {
           "name": "Acid Safe Blend",
           "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "10ml twice daily"
         },
         {
           "product_name": "ADIDOC PRAVAHI KWATH",
@@ -2588,7 +2237,7 @@
         "Vajrasana (Thunderbolt Pose) after meals (5-10 mins daily).",
         "Pawanmuktasana (Wind-Relieving Pose) (5 mins daily)."
       ],
-      "how_to_take_products": "Take LIVODOC RAS and NONIDOC JUICE on an empty stomach in the morning and evening with equal amount of water. Take ADIDOC PRAVAHI KWATH 30 minutes after meals.",
+      "how_to_take_products": "Take LIVODOC RAS and  on an empty stomach in the morning and evening with equal amount of water. Take ADIDOC PRAVAHI KWATH 30 minutes after meals.",
       "things_to_avoid": [
         "Spicy, sour, and fermented foods.",
         "Tomatoes, citrus fruits, and raw onions.",
@@ -2606,22 +2255,12 @@
         {
           "name": "Acid Safe Blend",
           "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "10ml twice daily"
         },
         {
           "product_name": "ADIDOC PRAVAHI KWATH",
           "ingredients": "Bhringraja Whole Plant C. Powder, Amla Fruit C. Powder, Brahmi Whole Plant C. Powder, Bhui Amla Whole Plant C. Powder, Giloy Stem C. Powder, Nagakesar Flower C. Powder, Punarnava Root C. Powder, Mulethi Stem C. Powder, Vidarikanda Rhizome C. Powder, Tulsi Panchang C. Powder, Arjuna Stem Bark C. Powder, Neem Leaf C. Powder, Laung Flower Bud C. Powder, Haldi Rhizome C. Powder.",
           "specific_dosage": "15-20 ml twice daily with equal amount of water after meals."
-        },
-        {
-          "name": "DIGIDOC POWDER",
-          "ingredients": "Digestive herbs, Triphala, Ajwain, Fennel",
-          "dosage": "1 teaspoon with warm water after meals"
-        },
-        {
-          "name": "Acid Safe Blend",
-          "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
-          "dosage": "15ml twice daily on empty stomach"
         }
       ]
     },
@@ -2637,7 +2276,7 @@
         {
           "name": "Acid Safe Blend",
           "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "10ml twice daily"
         },
         {
           "product_name": "ADIDOC PRAVAHI KWATH",
@@ -2658,7 +2297,7 @@
         "Slow walking in a cool environment (20 mins daily).",
         "Meditation for stress reduction (15 mins daily)."
       ],
-      "how_to_take_products": "Take LIVODOC RAS and NONIDOC JUICE with lukewarm water on an empty stomach. Consume ADIDOC PRAVAHI KWATH after meals.",
+      "how_to_take_products": "Take LIVODOC RAS and  with lukewarm water on an empty stomach. Consume ADIDOC PRAVAHI KWATH after meals.",
       "things_to_avoid": [
         "Hot, spicy, and deep-fried foods.",
         "Acidic foods, including citrus fruits, tomatoes, and vinegar.",
@@ -2676,22 +2315,12 @@
         {
           "name": "Acid Safe Blend",
           "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "10ml twice daily"
         },
         {
           "product_name": "ADIDOC PRAVAHI KWATH",
           "ingredients": "Bhringraja Whole Plant C. Powder, Amla Fruit C. Powder, Brahmi Whole Plant C. Powder, Bhui Amla Whole Plant C. Powder, Giloy Stem C. Powder, Nagakesar Flower C. Powder, Punarnava Root C. Powder, Mulethi Stem C. Powder, Vidarikanda Rhizome C. Powder, Tulsi Panchang C. Powder, Arjuna Stem Bark C. Powder, Neem Leaf C. Powder, Laung Flower Bud C. Powder, Haldi Rhizome C. Powder.",
           "specific_dosage": "15-20 ml twice daily with equal amount of water after meals."
-        },
-        {
-          "name": "DIGIDOC POWDER",
-          "ingredients": "Digestive herbs, Triphala, Ajwain, Fennel",
-          "dosage": "1 teaspoon with warm water after meals"
-        },
-        {
-          "name": "Acid Safe Blend",
-          "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
-          "dosage": "15ml twice daily on empty stomach"
         }
       ]
     },
@@ -2728,7 +2357,7 @@
         "Gentle Yoga asanas like Pawanmuktasana and Bhujangasana (15 mins daily).",
         "Walking in nature for stress relief (30 mins daily)."
       ],
-      "how_to_take_products": "Take LIVODOC RAS and NONIDOC JUICE on an empty stomach in the morning and evening with equal amount of water. Take ADIDOC PRAVAHI KWATH 30 minutes after meals.",
+      "how_to_take_products": "Take LIVODOC RAS and  on an empty stomach in the morning and evening with equal amount of water. Take ADIDOC PRAVAHI KWATH 30 minutes after meals.",
       "things_to_avoid": [
         "Processed, canned, and stale foods.",
         "Excess consumption of caffeine and alcohol.",
@@ -2752,16 +2381,6 @@
           "product_name": "ADIDOC PRAVAHI KWATH",
           "ingredients": "Bhringraja Whole Plant C. Powder, Amla Fruit C. Powder, Brahmi Whole Plant C. Powder, Bhui Amla Whole Plant C. Powder, Giloy Stem C. Powder, Nagakesar Flower C. Powder, Punarnava Root C. Powder, Mulethi Stem C. Powder, Vidarikanda Rhizome C. Powder, Tulsi Panchang C. Powder, Arjuna Stem Bark C. Powder, Neem Leaf C. Powder, Laung Flower Bud C. Powder, Haldi Rhizome C. Powder.",
           "specific_dosage": "15-20 ml twice daily with equal amount of water after meals."
-        },
-        {
-          "name": "DIGIDOC POWDER",
-          "ingredients": "Digestive herbs, Triphala, Ajwain, Fennel",
-          "dosage": "1 teaspoon with warm water after meals"
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract, Ashwagandha",
-          "dosage": "15ml twice daily on empty stomach"
         }
       ]
     },
@@ -2777,7 +2396,7 @@
         {
           "name": "Gut Safe Blend",
           "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "10ml twice daily"
         },
         {
           "product_name": "ADIDOC PRAVAHI KWATH",
@@ -2798,7 +2417,7 @@
         "Slow, mindful walking (15-20 mins daily).",
         "Meditation and deep relaxation techniques (15 mins daily)."
       ],
-      "how_to_take_products": "Take LIVODOC RAS and NONIDOC JUICE with lukewarm water on an empty stomach. Consume ADIDOC PRAVAHI KWATH after meals.",
+      "how_to_take_products": "Take LIVODOC RAS and  with lukewarm water on an empty stomach. Consume ADIDOC PRAVAHI KWATH after meals.",
       "things_to_avoid": [
         "Spicy, sour, and acidic foods.",
         "Dairy products (except ghee and buttermilk, if tolerated).",
@@ -2816,22 +2435,12 @@
         {
           "name": "Gut Safe Blend",
           "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "10ml twice daily"
         },
         {
           "product_name": "ADIDOC PRAVAHI KWATH",
           "ingredients": "Bhringraja Whole Plant C. Powder, Amla Fruit C. Powder, Brahmi Whole Plant C. Powder, Bhui Amla Whole Plant C. Powder, Giloy Stem C. Powder, Nagakesar Flower C. Powder, Punarnava Root C. Powder, Mulethi Stem C. Powder, Vidarikanda Rhizome C. Powder, Tulsi Panchang C. Powder, Arjuna Stem Bark C. Powder, Neem Leaf C. Powder, Laung Flower Bud C. Powder, Haldi Rhizome C. Powder.",
           "specific_dosage": "15-20 ml twice daily with equal amount of water after meals."
-        },
-        {
-          "name": "DIGIDOC POWDER",
-          "ingredients": "Digestive herbs, Triphala, Ajwain, Fennel",
-          "dosage": "1 teaspoon with warm water after meals"
-        },
-        {
-          "name": "Gut Safe Blend",
-          "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
-          "dosage": "15ml twice daily on empty stomach"
         }
       ]
     },
@@ -2868,7 +2477,7 @@
         "Gentle walking (20 mins daily).",
         "Yoga Nidra for deep systemic rest (20 mins daily)."
       ],
-      "how_to_take_products": "Take LIVODOC RAS and NONIDOC JUICE on an empty stomach in the morning and evening with equal amount of water. Take ADIDOC PRAVAHI KWATH 30 minutes after meals.",
+      "how_to_take_products": "Take LIVODOC RAS and  on an empty stomach in the morning and evening with equal amount of water. Take ADIDOC PRAVAHI KWATH 30 minutes after meals.",
       "things_to_avoid": [
         "All processed and fast foods.",
         "Gluten and dairy (often trigger symptoms).",
@@ -2892,16 +2501,6 @@
           "product_name": "ADIDOC PRAVAHI KWATH",
           "ingredients": "Bhringraja Whole Plant C. Powder, Amla Fruit C. Powder, Brahmi Whole Plant C. Powder, Bhui Amla Whole Plant C. Powder, Giloy Stem C. Powder, Nagakesar Flower C. Powder, Punarnava Root C. Powder, Mulethi Stem C. Powder, Vidarikanda Rhizome C. Powder, Tulsi Panchang C. Powder, Arjuna Stem Bark C. Powder, Neem Leaf C. Powder, Laung Flower Bud C. Powder, Haldi Rhizome C. Powder.",
           "specific_dosage": "15-20 ml twice daily with equal amount of water after meals."
-        },
-        {
-          "name": "DIGIDOC POWDER",
-          "ingredients": "Digestive herbs, Triphala, Ajwain, Fennel",
-          "dosage": "1 teaspoon with warm water after meals"
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract, Ashwagandha",
-          "dosage": "15ml twice daily on empty stomach"
         }
       ]
     },
@@ -2917,7 +2516,7 @@
         {
           "name": "Acid Safe Blend",
           "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "10ml twice daily"
         },
         {
           "product_name": "ADIDOC PRAVAHI KWATH",
@@ -2938,7 +2537,7 @@
         "Walking in nature, especially near water or in cool environments (20 mins daily).",
         "Meditation for stress management (15 mins daily)."
       ],
-      "how_to_take_products": "Take LIVODOC RAS and NONIDOC JUICE with lukewarm water on an empty stomach. Consume ADIDOC PRAVAHI KWATH after meals.",
+      "how_to_take_products": "Take LIVODOC RAS and  with lukewarm water on an empty stomach. Consume ADIDOC PRAVAHI KWATH after meals.",
       "things_to_avoid": [
         "Spicy, sour, and fermented foods.",
         "Red meat and heavy proteins.",
@@ -2956,22 +2555,12 @@
         {
           "name": "Acid Safe Blend",
           "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
-          "dosage": "10ml twice daily with water"
+          "dosage": "10ml twice daily"
         },
         {
           "product_name": "ADIDOC PRAVAHI KWATH",
           "ingredients": "Bhringraja Whole Plant C. Powder, Amla Fruit C. Powder, Brahmi Whole Plant C. Powder, Bhui Amla Whole Plant C. Powder, Giloy Stem C. Powder, Nagakesar Flower C. Powder, Punarnava Root C. Powder, Mulethi Stem C. Powder, Vidarikanda Rhizome C. Powder, Tulsi Panchang C. Powder, Arjuna Stem Bark C. Powder, Neem Leaf C. Powder, Laung Flower Bud C. Powder, Haldi Rhizome C. Powder.",
           "specific_dosage": "15-20 ml twice daily with equal amount of water after meals."
-        },
-        {
-          "name": "DIGIDOC POWDER",
-          "ingredients": "Digestive herbs, Triphala, Ajwain, Fennel",
-          "dosage": "1 teaspoon with warm water after meals"
-        },
-        {
-          "name": "Acid Safe Blend",
-          "ingredients": "Amla, Noni, Safed Musali, Ashwagandha, Kawach, Giloy (Kokum/Trikatu-free)",
-          "dosage": "15ml twice daily on empty stomach"
         }
       ]
     },
@@ -3008,7 +2597,7 @@
         "Kapalabhati Pranayama (10-15 mins daily).",
         "Yoga asanas like Ardha Matsyendrasana (Half Spinal Twist) and Dhanurasana (Bow Pose) (15 mins daily)."
       ],
-      "how_to_take_products": "Take LIVODOC RAS and NONIDOC JUICE on an empty stomach in the morning and evening with equal amount of water. Take ADIDOC PRAVAHI KWATH 30 minutes after meals.",
+      "how_to_take_products": "Take LIVODOC RAS and  on an empty stomach in the morning and evening with equal amount of water. Take ADIDOC PRAVAHI KWATH 30 minutes after meals.",
       "things_to_avoid": [
         "Refined sugars and high-fructose corn syrup.",
         "Fried foods and saturated fats.",
@@ -3032,16 +2621,6 @@
           "product_name": "ADIDOC PRAVAHI KWATH",
           "ingredients": "Bhringraja Whole Plant C. Powder, Amla Fruit C. Powder, Brahmi Whole Plant C. Powder, Bhui Amla Whole Plant C. Powder, Giloy Stem C. Powder, Nagakesar Flower C. Powder, Punarnava Root C. Powder, Mulethi Stem C. Powder, Vidarikanda Rhizome C. Powder, Tulsi Panchang C. Powder, Arjuna Stem Bark C. Powder, Neem Leaf C. Powder, Laung Flower Bud C. Powder, Haldi Rhizome C. Powder.",
           "specific_dosage": "15-20 ml twice daily with equal amount of water after meals."
-        },
-        {
-          "name": "DIGIDOC POWDER",
-          "ingredients": "Digestive herbs, Triphala, Ajwain, Fennel",
-          "dosage": "1 teaspoon with warm water after meals"
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract, Ashwagandha",
-          "dosage": "15ml twice daily on empty stomach"
         }
       ]
     },
@@ -3078,7 +2657,7 @@
         "Restorative Yoga asanas (10 mins daily).",
         "Deep relaxation techniques to reduce metabolic stress (15 mins daily)."
       ],
-      "how_to_take_products": "Take LIVODOC RAS and NONIDOC JUICE with lukewarm water on an empty stomach. Consume ADIDOC PRAVAHI KWATH after meals.",
+      "how_to_take_products": "Take LIVODOC RAS and  with lukewarm water on an empty stomach. Consume ADIDOC PRAVAHI KWATH after meals.",
       "things_to_avoid": [
         "Alcohol (strictly prohibited).",
         "Excessive sodium/salt intake.",
@@ -3103,16 +2682,6 @@
           "product_name": "ADIDOC PRAVAHI KWATH",
           "ingredients": "Bhringraja Whole Plant C. Powder, Amla Fruit C. Powder, Brahmi Whole Plant C. Powder, Bhui Amla Whole Plant C. Powder, Giloy Stem C. Powder, Nagakesar Flower C. Powder, Punarnava Root C. Powder, Mulethi Stem C. Powder, Vidarikanda Rhizome C. Powder, Tulsi Panchang C. Powder, Arjuna Stem Bark C. Powder, Neem Leaf C. Powder, Laung Flower Bud C. Powder, Haldi Rhizome C. Powder.",
           "specific_dosage": "15-20 ml twice daily with equal amount of water after meals."
-        },
-        {
-          "name": "DIGIDOC POWDER",
-          "ingredients": "Digestive herbs, Triphala, Ajwain, Fennel",
-          "dosage": "1 teaspoon with warm water after meals"
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract, Ashwagandha",
-          "dosage": "15ml twice daily on empty stomach"
         }
       ]
     },
@@ -3149,7 +2718,7 @@
         "Brisk walking (30 mins daily).",
         "Trikonasana (Triangle Pose) (5 mins daily)."
       ],
-      "how_to_take_products": "Take LIVODOC RAS and NONIDOC JUICE on an empty stomach in the morning and evening with equal amount of water. Take ADIDOC PRAVAHI KWATH 30 minutes after meals.",
+      "how_to_take_products": "Take LIVODOC RAS and  on an empty stomach in the morning and evening with equal amount of water. Take ADIDOC PRAVAHI KWATH 30 minutes after meals.",
       "things_to_avoid": [
         "High-fat, fried, and greasy foods.",
         "Refined carbohydrates and sugars.",
@@ -3173,16 +2742,6 @@
           "product_name": "ADIDOC PRAVAHI KWATH",
           "ingredients": "Bhringraja Whole Plant C. Powder, Amla Fruit C. Powder, Brahmi Whole Plant C. Powder, Bhui Amla Whole Plant C. Powder, Giloy Stem C. Powder, Nagakesar Flower C. Powder, Punarnava Root C. Powder, Mulethi Stem C. Powder, Vidarikanda Rhizome C. Powder, Tulsi Panchang C. Powder, Arjuna Stem Bark C. Powder, Neem Leaf C. Powder, Laung Flower Bud C. Powder, Haldi Rhizome C. Powder.",
           "specific_dosage": "15-20 ml twice daily with equal amount of water after meals."
-        },
-        {
-          "name": "DIGIDOC POWDER",
-          "ingredients": "Digestive herbs, Triphala, Ajwain, Fennel",
-          "dosage": "1 teaspoon with warm water after meals"
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract, Ashwagandha",
-          "dosage": "15ml twice daily on empty stomach"
         }
       ]
     },
@@ -3219,7 +2778,7 @@
         "Regular walking to improve circulation (30 mins daily).",
         "Vajrasana (Thunderbolt Pose) after meals (5 mins daily)."
       ],
-      "how_to_take_products": "Take LIVODOC RAS and NONIDOC JUICE with lukewarm water on an empty stomach. Consume ADIDOC PRAVAHI KWATH after meals.",
+      "how_to_take_products": "Take LIVODOC RAS and  with lukewarm water on an empty stomach. Consume ADIDOC PRAVAHI KWATH after meals.",
       "things_to_avoid": [
         "Spicy, hot, and highly seasoned foods.",
         "Sitting on hard surfaces for prolonged periods.",
@@ -3307,16 +2866,6 @@
           "dosage": "1 tablet twice a day with warm milk"
         },
         {
-          "name": "BRAHMI EXTRACT TABLET",
-          "ingredients": "Pure Brahmi (Bacopa monnieri) Extract",
-          "dosage": "1 tablet twice daily after meals"
-        },
-        {
-          "name": "ASHWAGANDHA TABLET",
-          "ingredients": "Pure Ashwagandha Root Extract",
-          "dosage": "1 tablet with warm milk at bedtime"
-        },
-        {
           "name": "THUNDERBLAST RAS",
           "ingredients": "Shilajit, Safed Musli",
           "dosage": "15-20ml twice daily"
@@ -3381,16 +2930,6 @@
           "product_name": "ASHWAGANDHA TABLET",
           "ingredients": "Ashwagandha Extract (Withania Somnifera)",
           "dosage": "1 tablet twice a day with warm milk"
-        },
-        {
-          "name": "BRAHMI EXTRACT TABLET",
-          "ingredients": "Pure Brahmi (Bacopa monnieri) Extract",
-          "dosage": "1 tablet twice daily after meals"
-        },
-        {
-          "name": "ASHWAGANDHA TABLET",
-          "ingredients": "Pure Ashwagandha Root Extract",
-          "dosage": "1 tablet with warm milk at bedtime"
         },
         {
           "name": "THUNDERBLAST RAS",
@@ -3462,16 +3001,6 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger",
           "dosage": "20 ml twice a day on an empty stomach"
-        },
-        {
-          "name": "BRAHMI EXTRACT TABLET",
-          "ingredients": "Pure Brahmi (Bacopa monnieri) Extract",
-          "dosage": "1 tablet twice daily after meals"
-        },
-        {
-          "name": "ASHWAGANDHA TABLET",
-          "ingredients": "Pure Ashwagandha Root Extract",
-          "dosage": "1 tablet with warm milk at bedtime"
         }
       ]
     },
@@ -3532,16 +3061,6 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger",
           "dosage": "20 ml twice a day on an empty stomach"
-        },
-        {
-          "name": "BRAHMI EXTRACT TABLET",
-          "ingredients": "Pure Brahmi (Bacopa monnieri) Extract",
-          "dosage": "1 tablet twice daily after meals"
-        },
-        {
-          "name": "ASHWAGANDHA TABLET",
-          "ingredients": "Pure Ashwagandha Root Extract",
-          "dosage": "1 tablet with warm milk at bedtime"
         }
       ]
     },
@@ -3602,16 +3121,6 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger",
           "dosage": "20 ml twice a day on an empty stomach"
-        },
-        {
-          "name": "BRAHMI EXTRACT TABLET",
-          "ingredients": "Pure Brahmi (Bacopa monnieri) Extract",
-          "dosage": "1 tablet twice daily after meals"
-        },
-        {
-          "name": "ASHWAGANDHA TABLET",
-          "ingredients": "Pure Ashwagandha Root Extract",
-          "dosage": "1 tablet with warm milk at bedtime"
         }
       ]
     },
@@ -3672,16 +3181,6 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger",
           "dosage": "20 ml twice a day on an empty stomach"
-        },
-        {
-          "name": "BRAHMI EXTRACT TABLET",
-          "ingredients": "Pure Brahmi (Bacopa monnieri) Extract",
-          "dosage": "1 tablet twice daily after meals"
-        },
-        {
-          "name": "ASHWAGANDHA TABLET",
-          "ingredients": "Pure Ashwagandha Root Extract",
-          "dosage": "1 tablet with warm milk at bedtime"
         }
       ],
       "disclaimer": " MUST NOT replace prescribed neurological medications. Consult your neurologist."
@@ -3738,16 +3237,6 @@
           "product_name": "ASHWAGANDHA TABLET",
           "ingredients": "Ashwagandha Extract (Withania Somnifera)",
           "dosage": "1 tablet twice a day with warm milk"
-        },
-        {
-          "name": "BRAHMI EXTRACT TABLET",
-          "ingredients": "Pure Brahmi (Bacopa monnieri) Extract",
-          "dosage": "1 tablet twice daily after meals"
-        },
-        {
-          "name": "ASHWAGANDHA TABLET",
-          "ingredients": "Pure Ashwagandha Root Extract",
-          "dosage": "1 tablet with warm milk at bedtime"
         },
         {
           "name": "THUNDERBLAST RAS",
@@ -3819,16 +3308,6 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger",
           "dosage": "20 ml twice a day on an empty stomach"
-        },
-        {
-          "name": "BRAHMI EXTRACT TABLET",
-          "ingredients": "Pure Brahmi (Bacopa monnieri) Extract",
-          "dosage": "1 tablet twice daily after meals"
-        },
-        {
-          "name": "ASHWAGANDHA TABLET",
-          "ingredients": "Pure Ashwagandha Root Extract",
-          "dosage": "1 tablet with warm milk at bedtime"
         }
       ]
     }
@@ -3891,16 +3370,6 @@
           "product_name": "THUNDERBLAST RAS",
           "ingredients": "Aloevera, Ashwagandha, Safed Musli, Gokhru, Shilajeet, Kesar",
           "dosage": "20 ml twice a day after meals"
-        },
-        {
-          "name": "BRAHMI EXTRACT TABLET",
-          "ingredients": "Pure Brahmi (Bacopa monnieri) Extract",
-          "dosage": "1 tablet twice daily after meals"
-        },
-        {
-          "name": "ASHWAGANDHA TABLET",
-          "ingredients": "Pure Ashwagandha Root Extract",
-          "dosage": "1 tablet with warm milk at bedtime"
         }
       ]
     },
@@ -3956,16 +3425,6 @@
           "product_name": "NONIDOC JUICE",
           "ingredients": "Noni Extract, Kokum, Safed Musali, Ashwagandha, Amla, Giloy",
           "dosage": "15-20 ml twice a day before meals"
-        },
-        {
-          "name": "BRAHMI EXTRACT TABLET",
-          "ingredients": "Pure Brahmi (Bacopa monnieri) Extract",
-          "dosage": "1 tablet twice daily after meals"
-        },
-        {
-          "name": "ASHWAGANDHA TABLET",
-          "ingredients": "Pure Ashwagandha Root Extract",
-          "dosage": "1 tablet with warm milk at bedtime"
         },
         {
           "name": "BRAHMI EXTRACT TABLET",
@@ -4031,16 +3490,6 @@
           "product_name": "THUNDERBLAST RAS",
           "ingredients": "Aloevera, Ashwagandha, Safed Musli, Gokhru, Shilajeet, Kesar",
           "dosage": "20 ml twice a day after meals"
-        },
-        {
-          "name": "BRAHMI EXTRACT TABLET",
-          "ingredients": "Pure Brahmi (Bacopa monnieri) Extract",
-          "dosage": "1 tablet twice daily after meals"
-        },
-        {
-          "name": "ASHWAGANDHA TABLET",
-          "ingredients": "Pure Ashwagandha Root Extract",
-          "dosage": "1 tablet with warm milk at bedtime"
         }
       ]
     },
@@ -4101,16 +3550,6 @@
           "product_name": "THUNDERBLAST RAS",
           "ingredients": "Aloevera, Ashwagandha, Safed Musli, Gokhru, Shilajeet, Kesar",
           "dosage": "20 ml twice a day after meals"
-        },
-        {
-          "name": "BRAHMI EXTRACT TABLET",
-          "ingredients": "Pure Brahmi (Bacopa monnieri) Extract",
-          "dosage": "1 tablet twice daily after meals"
-        },
-        {
-          "name": "ASHWAGANDHA TABLET",
-          "ingredients": "Pure Ashwagandha Root Extract",
-          "dosage": "1 tablet with warm milk at bedtime"
         }
       ]
     },
@@ -4171,16 +3610,6 @@
           "product_name": "THUNDERBLAST RAS",
           "ingredients": "Aloevera, Ashwagandha, Safed Musli, Gokhru, Shilajeet, Kesar",
           "dosage": "20 ml twice a day after meals"
-        },
-        {
-          "name": "BRAHMI EXTRACT TABLET",
-          "ingredients": "Pure Brahmi (Bacopa monnieri) Extract",
-          "dosage": "1 tablet twice daily after meals"
-        },
-        {
-          "name": "ASHWAGANDHA TABLET",
-          "ingredients": "Pure Ashwagandha Root Extract",
-          "dosage": "1 tablet with warm milk at bedtime"
         }
       ]
     },
@@ -4236,16 +3665,6 @@
           "product_name": "NONIDOC JUICE",
           "ingredients": "Noni Extract, Kokum, Safed Musali, Ashwagandha, Amla, Giloy",
           "dosage": "15-20 ml twice a day before meals"
-        },
-        {
-          "name": "BRAHMI EXTRACT TABLET",
-          "ingredients": "Pure Brahmi (Bacopa monnieri) Extract",
-          "dosage": "1 tablet twice daily after meals"
-        },
-        {
-          "name": "ASHWAGANDHA TABLET",
-          "ingredients": "Pure Ashwagandha Root Extract",
-          "dosage": "1 tablet with warm milk at bedtime"
         },
         {
           "name": "KIDGDOC RAS",
@@ -4306,16 +3725,6 @@
           "product_name": "NONIDOC JUICE",
           "ingredients": "Noni Extract, Kokum, Safed Musali, Ashwagandha, Amla, Giloy",
           "dosage": "15-20 ml twice a day before meals"
-        },
-        {
-          "name": "BRAHMI EXTRACT TABLET",
-          "ingredients": "Pure Brahmi (Bacopa monnieri) Extract",
-          "dosage": "1 tablet twice daily after meals"
-        },
-        {
-          "name": "ASHWAGANDHA TABLET",
-          "ingredients": "Pure Ashwagandha Root Extract",
-          "dosage": "1 tablet with warm milk at bedtime"
         },
         {
           "name": "ASHWAGANDHA TABLET",
@@ -4379,16 +3788,6 @@
         },
         {
           "name": "BRAHMI EXTRACT TABLET",
-          "ingredients": "Pure Brahmi (Bacopa monnieri) Extract",
-          "dosage": "1 tablet twice daily after meals"
-        },
-        {
-          "name": "ASHWAGANDHA TABLET",
-          "ingredients": "Pure Ashwagandha Root Extract",
-          "dosage": "1 tablet with warm milk at bedtime"
-        },
-        {
-          "name": "BRAHMI EXTRACT TABLET",
           "ingredients": "Pure Brahmi",
           "dosage": "1 tablet twice daily"
         }
@@ -4449,16 +3848,6 @@
         },
         {
           "name": "BRAHMI EXTRACT TABLET",
-          "ingredients": "Pure Brahmi (Bacopa monnieri) Extract",
-          "dosage": "1 tablet twice daily after meals"
-        },
-        {
-          "name": "ASHWAGANDHA TABLET",
-          "ingredients": "Pure Ashwagandha Root Extract",
-          "dosage": "1 tablet with warm milk at bedtime"
-        },
-        {
-          "name": "BRAHMI EXTRACT TABLET",
           "ingredients": "Pure Brahmi",
           "dosage": "1 tablet twice daily"
         }
@@ -4494,7 +3883,7 @@
         "Water aerobics or swimming - 30 minutes, 3 times a week",
         "Yoga asanas like Tadasana (Mountain Pose) and Virabhadrasana (Warrior Pose) - 15 minutes daily"
       ],
-      "how_to_take_products": "Take Immunodoc Ras on an empty stomach in the morning. Take Orthodoc Pravahi Kwath after breakfast and dinner mixed with equal parts warm water. Use warm water to enhance the absorption of the herbs.",
+      "how_to_take_products": "Take Joint Safe Blend Ras on an empty stomach in the morning. Take Joint Safe Blend Pravahi Kwath after breakfast and dinner mixed with equal parts warm water. Use warm water to enhance the absorption of the herbs.",
       "things_to_avoid": [
         "Avoid cold, dry, and stale food that increases Vata dosha.",
         "Avoid high-impact exercises like jumping or heavy weightlifting.",
@@ -4513,16 +3902,6 @@
           "name": "Joint Safe Blend",
           "ingredients": "Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Aloevera/Kokum-free)",
           "dosage": "15-20 ml twice a day on an empty stomach"
-        },
-        {
-          "name": "CALCIUM TABLET & VITAMIN D2 TABLET",
-          "ingredients": "Calcium Citrate, Vitamin D2 from plant sources",
-          "dosage": "1 tablet each daily after meals"
-        },
-        {
-          "name": "CURCIDOC TABLET",
-          "ingredients": "Curcumin Extract for joint inflammation",
-          "dosage": "1 tablet twice daily"
         },
         {
           "name": "JOINT CURATOR OIL",
@@ -4578,16 +3957,6 @@
           "product_name": "ADIDOC PRAVAHI KWATH",
           "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Mulethi, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi",
           "dosage": "15-20 ml twice a day with water"
-        },
-        {
-          "name": "CALCIUM TABLET & VITAMIN D2 TABLET",
-          "ingredients": "Calcium Citrate, Vitamin D2 from plant sources",
-          "dosage": "1 tablet each daily after meals"
-        },
-        {
-          "name": "CURCIDOC TABLET",
-          "ingredients": "Curcumin Extract for joint inflammation",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -4619,7 +3988,7 @@
         "Swimming to maintain mobility without stress on joints - 30 minutes, 3-4 times a week",
         "Yoga asanas like Bhujangasana (Cobra Pose) and Marjaryasana (Cat-Cow Pose) - 20 minutes daily"
       ],
-      "how_to_take_products": "Take Immunodoc Ras early in the morning mixed with warm water to modulate the immune system. Take Orthodoc Pravahi Kwath 30 minutes after meals to manage pain and inflammation.",
+      "how_to_take_products": "Take Autoimmune Safe Blend Ras early in the morning mixed with warm water to modulate the immune system. Take Orthodoc Pravahi Kwath 30 minutes after meals to manage pain and inflammation.",
       "things_to_avoid": [
         "Avoid pro-inflammatory foods like red meat and processed meats.",
         "Strictly avoid nightshades (tomatoes, eggplants, bell peppers) if they trigger symptoms.",
@@ -4638,16 +4007,6 @@
           "name": "Autoimmune Safe Blend",
           "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Mulethi, Tulsi, Ginger (Ashwagandha-free)",
           "dosage": "15-20 ml twice a day on an empty stomach"
-        },
-        {
-          "name": "CALCIUM TABLET & VITAMIN D2 TABLET",
-          "ingredients": "Calcium Citrate, Vitamin D2 from plant sources",
-          "dosage": "1 tablet each daily after meals"
-        },
-        {
-          "name": "CURCIDOC TABLET",
-          "ingredients": "Curcumin Extract for joint inflammation",
-          "dosage": "1 tablet twice daily"
         },
         {
           "name": "JOINT CURATOR OIL",
@@ -4689,7 +4048,7 @@
         "Walking at a comfortable pace in nature - 20 minutes daily",
         "Deep relaxation techniques like Yoga Nidra - 15-20 minutes daily"
       ],
-      "how_to_take_products": "Take Immunodoc Ras in the morning and Adidoc Pravahi Kwath in the evening on an empty stomach. Take Orthodoc Pravahi Kwath after lunch and dinner to alleviate muscle pain. Ensure consistent timing.",
+      "how_to_take_products": "Take Vata Safe Blend Ras in the morning and Adidoc Pravahi Kwath in the evening on an empty stomach. Take Pain Relief Blend Pravahi Kwath after lunch and dinner to alleviate muscle pain. Ensure consistent timing.",
       "things_to_avoid": [
         "Avoid caffeine, alcohol, and sugary drinks which can disrupt sleep and increase pain sensitivity.",
         "Avoid artificial sweeteners and MSG.",
@@ -4713,16 +4072,6 @@
           "product_name": "ADIDOC PRAVAHI KWATH",
           "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Mulethi, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi",
           "dosage": "15-20 ml twice a day with water"
-        },
-        {
-          "name": "CALCIUM TABLET & VITAMIN D2 TABLET",
-          "ingredients": "Calcium Citrate, Vitamin D2 from plant sources",
-          "dosage": "1 tablet each daily after meals"
-        },
-        {
-          "name": "CURCIDOC TABLET",
-          "ingredients": "Curcumin Extract for joint inflammation",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -4754,7 +4103,7 @@
         "Isometric neck exercises (pressing head against hands without moving) - 5 minutes daily",
         "Yoga asanas like Makarasana (Crocodile Pose) and Bhujangasana (Cobra Pose) - 15 minutes daily"
       ],
-      "how_to_take_products": "Take Adidoc Pravahi Kwath in the morning to support tissue healing. Take Orthodoc Pravahi Kwath after meals to reduce neck pain and stiffness.",
+      "how_to_take_products": "Take Joint Safe Blend Pravahi Kwath in the morning to support tissue healing. Take Joint Safe Blend Pravahi Kwath after meals to reduce neck pain and stiffness.",
       "things_to_avoid": [
         "Avoid using thick or multiple pillows while sleeping.",
         "Avoid prolonged looking down at mobile phones or laptops (text neck).",
@@ -4773,16 +4122,6 @@
           "name": "Joint Safe Blend",
           "ingredients": "Bhringraja, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Mulethi, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi (Amla-free)",
           "dosage": "15-20 ml twice a day with water"
-        },
-        {
-          "name": "CALCIUM TABLET & VITAMIN D2 TABLET",
-          "ingredients": "Calcium Citrate, Vitamin D2 from plant sources",
-          "dosage": "1 tablet each daily after meals"
-        },
-        {
-          "name": "CURCIDOC TABLET",
-          "ingredients": "Curcumin Extract for joint inflammation",
-          "dosage": "1 tablet twice daily"
         },
         {
           "name": "JOINT CURATOR OIL",
@@ -4840,16 +4179,6 @@
           "dosage": "15-20 ml twice a day on an empty stomach"
         },
         {
-          "name": "CALCIUM TABLET & VITAMIN D2 TABLET",
-          "ingredients": "Calcium Citrate, Vitamin D2 from plant sources",
-          "dosage": "1 tablet each daily after meals"
-        },
-        {
-          "name": "CURCIDOC TABLET",
-          "ingredients": "Curcumin Extract for joint inflammation",
-          "dosage": "1 tablet twice daily"
-        },
-        {
           "name": "JOINT CURATOR OIL",
           "ingredients": "Nilgiri, Kapoor, Til Oil",
           "dosage": "Massage externally on affected joints"
@@ -4903,16 +4232,6 @@
           "product_name": "ADIDOC PRAVAHI KWATH",
           "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Mulethi, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi",
           "dosage": "15-20 ml twice a day with water"
-        },
-        {
-          "name": "CALCIUM TABLET & VITAMIN D2 TABLET",
-          "ingredients": "Calcium Citrate, Vitamin D2 from plant sources",
-          "dosage": "1 tablet each daily after meals"
-        },
-        {
-          "name": "CURCIDOC TABLET",
-          "ingredients": "Curcumin Extract for joint inflammation",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -4963,16 +4282,6 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera Leaf Ras, Triphala Fruits Ras, Apple Fruit, Kokum Fruit Ext., Punarnava Root C. Powder, Giloy Stem C. Powder, Ashwagandha Root C. Powder, Mulethi Stem C. Powder, Tulsi Panchang C. Powder, Ginger Rhizome C. Powder",
           "dosage": "15-20 ml twice a day on an empty stomach"
-        },
-        {
-          "name": "CALCIUM TABLET & VITAMIN D2 TABLET",
-          "ingredients": "Calcium Citrate, Vitamin D2 from plant sources",
-          "dosage": "1 tablet each daily after meals"
-        },
-        {
-          "name": "CURCIDOC TABLET",
-          "ingredients": "Curcumin Extract for joint inflammation",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -5009,7 +4318,7 @@
         "Gentle stretching to maintain joint flexibility - 15 minutes daily",
         "Yoga and meditation for stress management - 20 minutes daily"
       ],
-      "how_to_take_products": "Take Immunodoc Ras and Alrgydoc Pravahi Kwath in the morning and evening on an empty stomach to detoxify blood and modulate immunity. Take Orthodoc Pravahi Kwath after meals for joint support.",
+      "how_to_take_products": "Take Autoimmune Safe Blend Ras and Alrgydoc Pravahi Kwath in the morning and evening on an empty stomach to detoxify blood and modulate immunity. Take Orthodoc Pravahi Kwath after meals for joint support.",
       "things_to_avoid": [
         "Avoid nightshades (tomatoes, potatoes, eggplants) as they may trigger inflammation.",
         "Avoid red meat, processed foods, and refined sugars.",
@@ -5033,16 +4342,6 @@
           "product_name": "ALRGYDOC PRAVAHI KWATH",
           "ingredients": "Giloy Stem C. Powder, Neem Leaf C. Powder, Tulsi Panchang C.Powder, Brahmi Whole Plant C. Powder, Haldi Rhizome C. Powder",
           "dosage": "15-20 ml twice a day with water"
-        },
-        {
-          "name": "CALCIUM TABLET & VITAMIN D2 TABLET",
-          "ingredients": "Calcium Citrate, Vitamin D2 from plant sources",
-          "dosage": "1 tablet each daily after meals"
-        },
-        {
-          "name": "CURCIDOC TABLET",
-          "ingredients": "Curcumin Extract for joint inflammation",
-          "dosage": "1 tablet twice daily"
         }
       ]
     }
@@ -5097,16 +4396,6 @@
           "dosage": "15-20 ml twice a day with equal amount of warm water after meals"
         },
         {
-          "name": "CALCIUM TABLET & VITAMIN D2 TABLET",
-          "ingredients": "Calcium Citrate, Vitamin D2 from plant sources",
-          "dosage": "1 tablet each daily after meals"
-        },
-        {
-          "name": "CURCIDOC TABLET",
-          "ingredients": "Curcumin Extract for joint inflammation",
-          "dosage": "1 tablet twice daily"
-        },
-        {
           "name": "ORTHODOC PRAVAHI KWATH",
           "ingredients": "Joint anti-inflammatory herbs",
           "dosage": "15-20ml twice daily"
@@ -5147,7 +4436,7 @@
         "Tai Chi for gentle movement - 20 minutes, 3 times a week",
         "Meditation and relaxation techniques to manage fatigue - 15 minutes daily"
       ],
-      "how_to_take_products": "Take Immunodoc Ras and Nonidoc Juice in the morning on an empty stomach to balance immunity and reduce fatigue. Take Alrgydoc Pravahi Kwath in the evening to address skin and systemic inflammation.",
+      "how_to_take_products": "Take Immunodoc Ras and  in the morning on an empty stomach to balance immunity and reduce fatigue. Take Alrgydoc Pravahi Kwath in the evening to address skin and systemic inflammation.",
       "things_to_avoid": [
         "Avoid direct and prolonged exposure to sunlight, which can trigger flares.",
         "Avoid garlic and alfalfa sprouts, as they may stimulate the immune system excessively.",
@@ -5161,16 +4450,6 @@
           "name": "Autoimmune Safe Blend",
           "ingredients": "Amla, Noni, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy (Trikatu-free)",
           "dosage": "15-20 ml twice a day diluted with water"
-        },
-        {
-          "name": "CALCIUM TABLET & VITAMIN D2 TABLET",
-          "ingredients": "Calcium Citrate, Vitamin D2 from plant sources",
-          "dosage": "1 tablet each daily after meals"
-        },
-        {
-          "name": "CURCIDOC TABLET",
-          "ingredients": "Curcumin Extract for joint inflammation",
-          "dosage": "1 tablet twice daily"
         },
         {
           "name": "GILOY TABLET",
@@ -5208,7 +4487,7 @@
         "Swimming in non-chlorinated water (if possible) - 30 minutes, 2-3 times a week",
         "Eye exercises to reduce eye strain and promote tear production - 5 minutes daily"
       ],
-      "how_to_take_products": "Take Immunodoc Ras and Nonidoc Juice daily with plenty of water. The aloe vera and herbs in these products help internally moisturize and balance the immune system.",
+      "how_to_take_products": "Take Dryness Safe Blend Ras and  daily with plenty of water. The aloe vera and herbs in these products help internally moisturize and balance the immune system.",
       "things_to_avoid": [
         "Avoid dry, crunchy, and hard-to-swallow foods.",
         "Avoid caffeine and alcohol, which are dehydrating.",
@@ -5227,16 +4506,6 @@
           "name": "Autoimmune Safe Blend",
           "ingredients": "Amla, Noni, Kokum, Safed Musali, Ashwagandha, Kawach, Giloy (Trikatu-free)",
           "dosage": "15-20 ml twice a day diluted with water"
-        },
-        {
-          "name": "CALCIUM TABLET & VITAMIN D2 TABLET",
-          "ingredients": "Calcium Citrate, Vitamin D2 from plant sources",
-          "dosage": "1 tablet each daily after meals"
-        },
-        {
-          "name": "CURCIDOC TABLET",
-          "ingredients": "Curcumin Extract for joint inflammation",
-          "dosage": "1 tablet twice daily"
         }
       ],
       "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine. Do not stop immunosuppressants. NEVER replace standard DMARDs, biologics, or immunosuppressants. These are purely adjunctive."
@@ -5269,7 +4538,7 @@
         "Yoga (specifically restorative yoga) - 20 minutes daily",
         "Tai Chi for balance and coordination - 20 minutes, 3 times a week"
       ],
-      "how_to_take_products": "Consume Immunodoc Ras and Nonidoc Juice consistently to modulate the immune response, reduce systemic inflammation, and provide neuroprotective herbs.",
+      "how_to_take_products": "Consume Immunodoc Ras and  consistently to modulate the immune response, reduce systemic inflammation, and provide neuroprotective herbs.",
       "things_to_avoid": [
         "Avoid overheating, hot baths, and excessive sun exposure, as heat worsens MS symptoms.",
         "Avoid processed foods, artificial additives, and trans fats.",
@@ -5283,16 +4552,6 @@
           "product_name": "NONIDOC JUICE",
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Herbal Soft Extract (Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Amla, Giloy, Black Pepper, Long Pepper, Ginger)",
           "dosage": "15-20 ml twice a day diluted with water"
-        },
-        {
-          "name": "CALCIUM TABLET & VITAMIN D2 TABLET",
-          "ingredients": "Calcium Citrate, Vitamin D2 from plant sources",
-          "dosage": "1 tablet each daily after meals"
-        },
-        {
-          "name": "CURCIDOC TABLET",
-          "ingredients": "Curcumin Extract for joint inflammation",
-          "dosage": "1 tablet twice daily"
         }
       ],
       "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine. Do not stop immunosuppressants. NEVER replace standard DMARDs, biologics, or immunosuppressants. These are purely adjunctive."
@@ -5325,7 +4584,7 @@
         "Short, slow walks - 10-15 minutes daily",
         "Deep, relaxed breathing exercises (Pranayama) without exertion - 10 minutes daily"
       ],
-      "how_to_take_products": "Take Immunodoc Ras and Nonidoc Juice to provide deep nourishment to the tissues and balance the immune system. Space the doses to align with your energy peaks.",
+      "how_to_take_products": "Take Immunodoc Ras and  to provide deep nourishment to the tissues and balance the immune system. Space the doses to align with your energy peaks.",
       "things_to_avoid": [
         "Avoid strenuous exercise and overexertion.",
         "Avoid heat exposure, hot showers, and hot weather, which can worsen muscle weakness.",
@@ -5344,16 +4603,6 @@
           "product_name": "NONIDOC JUICE",
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Herbal Soft Extract (Safed Musali, Asgandh, Kawach, Patal Koda, Akarkar, Javitri, Amla, Giloy, Black Pepper, Long Pepper, Ginger)",
           "dosage": "15-20 ml twice a day diluted with water"
-        },
-        {
-          "name": "CALCIUM TABLET & VITAMIN D2 TABLET",
-          "ingredients": "Calcium Citrate, Vitamin D2 from plant sources",
-          "dosage": "1 tablet each daily after meals"
-        },
-        {
-          "name": "CURCIDOC TABLET",
-          "ingredients": "Curcumin Extract for joint inflammation",
-          "dosage": "1 tablet twice daily"
         }
       ],
       "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine. Do not stop immunosuppressants. NEVER replace standard DMARDs, biologics, or immunosuppressants. These are purely adjunctive."
@@ -5392,7 +4641,7 @@
         "Anulom Vilom Pranayama (Alternate Nostril Breathing) for 10-15 minutes daily.",
         "Bhujangasana (Cobra Pose) for 3-5 minutes, with careful breathing."
       ],
-      "how_to_take_products": "Take Nonidoc and Immunodoc on an empty stomach with warm water, keeping a gap of 15 minutes between the two. Take Stondoc Ras 30-45 minutes after meals with an equal amount of warm water.",
+      "how_to_take_products": "Take Renal Safe Blend and Immunodoc on an empty stomach with warm water, keeping a gap of 15 minutes between the two. Take Stondoc Ras 30-45 minutes after meals with an equal amount of warm water.",
       "things_to_avoid": [
         "Avoid high-sodium, canned, and processed foods.",
         "Avoid holding the urge to urinate (Vegas Dharana).",
@@ -5417,11 +4666,6 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 2.5ml Triphala Fruits Ras 1g Apple Fruit 250mg Kokum Fruit Ext. 200mg Punarnava Root C. Powder 200mg Giloy Stem C. Powder 50mg Ashwagandha Root C. Powder 50mg Mulethi Stem C. Powder 20mg Tulsi Panchang C. Powder 20mg Ginger Rhizome C. Powder 20mg Excipients and Preservatives.",
           "dosage": "20 ml twice a day, 30 minutes before meals."
-        },
-        {
-          "name": "VITADOC TABLET",
-          "ingredients": "Multivitamins and Antioxidants",
-          "dosage": "1 tablet daily"
         },
         {
           "name": "EXE PUNARNAVA KWATH",
@@ -5463,7 +4707,7 @@
         "Kapalbhati Pranayama (mildly) for 5-10 minutes.",
         "Shavasana (Corpse Pose) for 15 minutes to reduce systemic stress."
       ],
-      "how_to_take_products": "Consume Nonidoc Juice first thing in the morning. After 30 minutes, take Immunodoc Ras. Take Stondoc Ras after lunch and dinner diluted with lukewarm water.",
+      "how_to_take_products": "Consume  first thing in the morning. After 30 minutes, take Immunodoc Ras. Take Stondoc Ras after lunch and dinner diluted with lukewarm water.",
       "things_to_avoid": [
         "Avoid caffeine, particularly strong coffee and dark teas.",
         "Avoid red meat, deep-fried foods, and heavy dairy.",
@@ -5488,11 +4732,6 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 2.5ml Triphala Fruits Ras 1g Apple Fruit 250mg Kokum Fruit Ext. 200mg Punarnava Root C. Powder 200mg Giloy Stem C. Powder 50mg Ashwagandha Root C. Powder 50mg Mulethi Stem C. Powder 20mg Tulsi Panchang C. Powder 20mg Ginger Rhizome C. Powder 20mg Excipients and Preservatives.",
           "dosage": "20 ml twice a day, 30 minutes before meals."
-        },
-        {
-          "name": "VITADOC TABLET",
-          "ingredients": "Multivitamins and Antioxidants",
-          "dosage": "1 tablet daily"
         },
         {
           "name": "DIABODOC RAS",
@@ -5563,11 +4802,6 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 2.5ml Triphala Fruits Ras 1g Apple Fruit 250mg Kokum Fruit Ext. 200mg Punarnava Root C. Powder 200mg Giloy Stem C. Powder 50mg Ashwagandha Root C. Powder 50mg Mulethi Stem C. Powder 20mg Tulsi Panchang C. Powder 20mg Ginger Rhizome C. Powder 20mg Excipients and Preservatives.",
           "dosage": "20 ml twice a day, 30 minutes before meals."
-        },
-        {
-          "name": "VITADOC TABLET",
-          "ingredients": "Multivitamins and Antioxidants",
-          "dosage": "1 tablet daily"
         }
       ],
       "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain."
@@ -5604,7 +4838,7 @@
         "Bhramari Pranayama (Bee Breath) for 10 minutes to calm the nervous system.",
         "Leisurely walking for 20-30 minutes daily."
       ],
-      "how_to_take_products": "Mix Nonidoc Juice with half a glass of warm water and take on an empty stomach. Take Immunodoc Ras 30 mins before meals, and Stondoc Ras 30 mins after meals.",
+      "how_to_take_products": "Mix  with half a glass of warm water and take on an empty stomach. Take Immunodoc Ras 30 mins before meals, and Stondoc Ras 30 mins after meals.",
       "things_to_avoid": [
         "Avoid high-protein diets, especially animal proteins and heavy legumes.",
         "Avoid salty, canned, and preserved foods.",
@@ -5628,11 +4862,6 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 2.5ml Triphala Fruits Ras 1g Apple Fruit 250mg Kokum Fruit Ext. 200mg Punarnava Root C. Powder 200mg Giloy Stem C. Powder 50mg Ashwagandha Root C. Powder 50mg Mulethi Stem C. Powder 20mg Tulsi Panchang C. Powder 20mg Ginger Rhizome C. Powder 20mg Excipients and Preservatives.",
           "dosage": "20 ml twice a day, 30 minutes before meals."
-        },
-        {
-          "name": "VITADOC TABLET",
-          "ingredients": "Multivitamins and Antioxidants",
-          "dosage": "1 tablet daily"
         }
       ],
       "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain."
@@ -5664,7 +4893,7 @@
         "Walking or swimming for 30-40 minutes daily.",
         "Vajrasana (Diamond Pose) for 5-10 minutes after meals to aid digestion and pelvic blood flow."
       ],
-      "how_to_take_products": "Take Immunodoc Ras on an empty stomach in the morning and evening. Take Thunderblast Ras 30-45 minutes after breakfast and dinner.",
+      "how_to_take_products": "Take Prostate Safe Blend Ras on an empty stomach in the morning and evening. Take Prostate Vitality Blend Ras 30-45 minutes after breakfast and dinner.",
       "things_to_avoid": [
         "Avoid drinking large amounts of fluids 2-3 hours before bedtime.",
         "Avoid caffeine, alcohol, and carbonated drinks which irritate the bladder.",
@@ -5683,11 +4912,6 @@
           "name": "Prostate Safe Blend",
           "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger/Kokum-free)",
           "dosage": "20 ml twice a day, 30 minutes before meals."
-        },
-        {
-          "name": "VITADOC TABLET",
-          "ingredients": "Multivitamins and Antioxidants",
-          "dosage": "1 tablet daily"
         },
         {
           "name": "SHUDDH SHILAJIT CAPSULE",
@@ -5709,6 +4933,11 @@
           "name": "Prostate Safe Blend",
           "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger-free)",
           "dosage": "20 ml twice a day, 30 minutes before meals."
+        },
+        {
+          "name": "Safe PUNARNAVA Blend",
+          "ingredients": "Contraindicated ingredients removed from PUNARNAVA",
+          "dosage": "As directed by physician"
         }
       ],
       "diet": [
@@ -5724,7 +4953,7 @@
         "Deep pelvic floor relaxation exercises.",
         "Meditation and deep belly breathing for 15-20 minutes daily."
       ],
-      "how_to_take_products": "Take Exe Punarnava Kwath and Immunodoc Ras 30 mins before meals. Take Thunderblast Ras 45 minutes after meals to support rejuvenation and reduce inflammation.",
+      "how_to_take_products": "Take Exe Safe PUNARNAVA Blend Kwath and Prostate Safe Blend Ras 30 mins before meals. Take Prostate Vitality Blend Ras 45 minutes after meals to support rejuvenation and reduce inflammation.",
       "things_to_avoid": [
         "Avoid spicy, hot, and highly seasoned foods.",
         "Avoid caffeine, alcohol, and acidic drinks.",
@@ -5745,9 +4974,9 @@
           "dosage": "20 ml twice a day, 30 minutes before meals."
         },
         {
-          "name": "VITADOC TABLET",
-          "ingredients": "Multivitamins and Antioxidants",
-          "dosage": "1 tablet daily"
+          "name": "Safe PUNARNAVA Blend",
+          "ingredients": "Contraindicated ingredients removed from PUNARNAVA",
+          "dosage": "As directed by physician"
         }
       ],
       "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain."
@@ -5798,16 +5027,6 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 2.5ml Triphala Fruits Ras 1g Apple Fruit 250mg Kokum Fruit Ext. 200mg Punarnava Root C. Powder 200mg Giloy Stem C. Powder 50mg Ashwagandha Root C. Powder 50mg Mulethi Stem C. Powder 20mg Tulsi Panchang C. Powder 20mg Ginger Rhizome C. Powder 20mg Excipients and Preservatives.",
           "dosage": "20 ml twice a day, 30 minutes before meals."
-        },
-        {
-          "name": "WOMEN WELLNESS TABLET",
-          "ingredients": "Shatavari, Ashoka, Lodhra",
-          "dosage": "1 tablet twice daily"
-        },
-        {
-          "name": "VITADOC TABLET",
-          "ingredients": "Multivitamins and Antioxidants",
-          "dosage": "1 tablet daily"
         }
       ],
       "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain."
@@ -5868,16 +5087,6 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 9.8ml Excipients: Citric Acid, Sorbitol, Vitamin-C, Vitamin-E, Glycerine, Xanthan Gum & D.I Water. Preservatives: Sod. Benzoate, Pot. Sorbate & Sod. EDTA.",
           "dosage": "10-15 ml once a day on an empty stomach."
-        },
-        {
-          "name": "WOMEN WELLNESS TABLET",
-          "ingredients": "Shatavari, Ashoka, Lodhra",
-          "dosage": "1 tablet twice daily"
-        },
-        {
-          "name": "VITADOC TABLET",
-          "ingredients": "Multivitamins and Antioxidants",
-          "dosage": "1 tablet daily"
         }
       ],
       "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain."
@@ -5938,16 +5147,6 @@
           "product_name": "ORTHODOC PRAVAHI KWATH",
           "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 2ml Salai Guggal (Boswellia serrata) Gum Soft Ext. 100mg Nirgundi (Vitex negundo) Leaf Soft Ext. 75mg Malkagni (Celastrus paniculatus) Seed Soft Ext, 75mg Rasna (Pluchea lanceolata) Leaf C. Powder 50mg Methi (Trigonella foenum graecum) Seed C. Powder 50mg Hadjod (Cissus quadrangularis) Panchang C. Powder 50mg Haldi (Curcuma longa) Rhizome C. Powder 50mg Excipients: Xanthan Gum, Citric Acid & D. I. Water. Preservatives: Sod. Benzoate, MPS, PPS, Bronopol & Sod. EDTA.",
           "dosage": "15 ml twice a day, an hour after meals."
-        },
-        {
-          "name": "WOMEN WELLNESS TABLET",
-          "ingredients": "Shatavari, Ashoka, Lodhra",
-          "dosage": "1 tablet twice daily"
-        },
-        {
-          "name": "VITADOC TABLET",
-          "ingredients": "Multivitamins and Antioxidants",
-          "dosage": "1 tablet daily"
         }
       ],
       "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain."
@@ -6010,11 +5209,6 @@
           "dosage": "1 tablet twice a day with warm milk, post meals."
         },
         {
-          "name": "VITADOC TABLET",
-          "ingredients": "Multivitamins and Antioxidants",
-          "dosage": "1 tablet daily"
-        },
-        {
           "name": "TESTOFAST TABLET",
           "ingredients": "Ginseng, Safed Musli",
           "dosage": "1 tablet daily"
@@ -6034,6 +5228,11 @@
           "name": "Urinary Safe Blend",
           "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi (Ginger/Kokum-free)",
           "dosage": "20 ml twice a day, 30 minutes before meals."
+        },
+        {
+          "name": "Safe ALOEVERA SYRUP Blend",
+          "ingredients": "Contraindicated ingredients removed from ALOEVERA SYRUP",
+          "dosage": "As directed by physician"
         }
       ],
       "diet": [
@@ -6049,7 +5248,7 @@
         "Shitali Pranayama (Cooling Breath) for 5-10 minutes.",
         "Avoid heavy exercises that generate excessive body heat and sweating."
       ],
-      "how_to_take_products": "Take Exe Aloevera Syrup and Immunodoc Ras in the morning on an empty stomach. Take Stondoc Ras 30-45 minutes after meals with plenty of water.",
+      "how_to_take_products": "Take Exe Safe ALOEVERA SYRUP Blend and Urinary Safe Blend Ras in the morning on an empty stomach. Take Stondoc Ras 30-45 minutes after meals with plenty of water.",
       "things_to_avoid": [
         "Avoid spicy, sour, and highly acidic foods.",
         "Avoid holding the urge to urinate.",
@@ -6070,9 +5269,9 @@
           "dosage": "20 ml twice a day, 30 minutes before meals."
         },
         {
-          "name": "VITADOC TABLET",
-          "ingredients": "Multivitamins and Antioxidants",
-          "dosage": "1 tablet daily"
+          "name": "Safe ALOEVERA SYRUP Blend",
+          "ingredients": "Contraindicated ingredients removed from ALOEVERA SYRUP",
+          "dosage": "As directed by physician"
         }
       ],
       "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain."
@@ -6109,7 +5308,7 @@
         "Ashwini Mudra (contracting and releasing the anal sphincter) for 5 minutes.",
         "Relaxation exercises like Yoga Nidra to calm the nervous system."
       ],
-      "how_to_take_products": "Take Immunodoc Ras before meals. Take Stondoc Ras after meals. Take Braindoc Pravahi Kwath to support the nervous control of the bladder later in the day.",
+      "how_to_take_products": "Take Bladder Safe Blend Ras before meals. Take Stondoc Ras after meals. Take Bladder Safe Blend Pravahi Kwath to support the nervous control of the bladder later in the day.",
       "things_to_avoid": [
         "Avoid caffeine, alcohol, and artificial sweeteners.",
         "Avoid citrus fruits and tomato-based products.",
@@ -6133,11 +5332,6 @@
           "name": "Bladder Safe Blend",
           "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana (Non-acidic/Pitta-safe)",
           "dosage": "10-15 ml twice a day, an hour after meals."
-        },
-        {
-          "name": "VITADOC TABLET",
-          "ingredients": "Multivitamins and Antioxidants",
-          "dosage": "1 tablet daily"
         }
       ],
       "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain."
@@ -6201,11 +5395,6 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras",
           "dosage": "10-15 ml twice a day with equal water"
-        },
-        {
-          "name": "NEEM EXTRACT TABLET",
-          "ingredients": "Pure Neem Leaf Extract for skin and blood purification",
-          "dosage": "1 tablet twice daily"
         },
         {
           "name": "IRON TABLET",
@@ -6283,11 +5472,6 @@
           "dosage": "10-15 ml twice a day with equal water"
         },
         {
-          "name": "NEEM EXTRACT TABLET",
-          "ingredients": "Pure Neem Leaf Extract for skin and blood purification",
-          "dosage": "1 tablet twice daily"
-        },
-        {
           "name": "RAAKTDOC SYRUP",
           "ingredients": "Blood purifying herbs",
           "dosage": "10-15ml twice daily"
@@ -6353,11 +5537,6 @@
           "dosage": "10-15 ml twice a day with equal water"
         },
         {
-          "name": "NEEM EXTRACT TABLET",
-          "ingredients": "Pure Neem Leaf Extract for skin and blood purification",
-          "dosage": "1 tablet twice daily"
-        },
-        {
           "name": "RAAKTDOC SYRUP",
           "ingredients": "Blood purifying herbs",
           "dosage": "10-15ml twice daily"
@@ -6421,11 +5600,6 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras",
           "dosage": "10-15 ml twice a day with equal water"
-        },
-        {
-          "name": "NEEM EXTRACT TABLET",
-          "ingredients": "Pure Neem Leaf Extract for skin and blood purification",
-          "dosage": "1 tablet twice daily"
         },
         {
           "name": "IRON TABLET",
@@ -6501,11 +5675,6 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras",
           "dosage": "10-15 ml twice a day with equal water"
-        },
-        {
-          "name": "NEEM EXTRACT TABLET",
-          "ingredients": "Pure Neem Leaf Extract for skin and blood purification",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -6566,16 +5735,6 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras",
           "dosage": "10-15 ml twice a day with equal water"
-        },
-        {
-          "name": "IRON TABLET & VITAMIN B12",
-          "ingredients": "Plant-based Iron, Methylcobalamin",
-          "dosage": "1 tablet each daily after meals"
-        },
-        {
-          "name": "NEEM EXTRACT TABLET",
-          "ingredients": "Pure Neem Leaf Extract for skin and blood purification",
-          "dosage": "1 tablet twice daily"
         }
       ]
     }
@@ -6614,7 +5773,7 @@
         "Walking in fresh air (early morning or late evening) - 30 minutes daily",
         "Yoga Asanas (Trikonasana, Bhujangasana) - 20 minutes daily"
       ],
-      "how_to_take_products": "Consume the liquid products mixed with lukewarm water. Take ALRGYDOC 30 minutes before meals and IMMUNODOC after meals.",
+      "how_to_take_products": "Consume the liquid products mixed with lukewarm water. Take ALRGYDOC 30 minutes before meals and Pitta Safe Blend after meals.",
       "things_to_avoid": [
         "Avoid incompatible food combinations (Viruddha Ahara), especially milk with fish or sour fruits.",
         "Avoid excessively salty, sour, and spicy foods.",
@@ -6638,16 +5797,6 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras",
           "dosage": "10-15 ml twice a day with equal water"
-        },
-        {
-          "name": "IRON TABLET & VITAMIN B12",
-          "ingredients": "Plant-based Iron, Methylcobalamin",
-          "dosage": "1 tablet each daily after meals"
-        },
-        {
-          "name": "NEEM EXTRACT TABLET",
-          "ingredients": "Pure Neem Leaf Extract for skin and blood purification",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -6708,16 +5857,6 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras",
           "dosage": "10-15 ml twice a day with equal water"
-        },
-        {
-          "name": "IRON TABLET & VITAMIN B12",
-          "ingredients": "Plant-based Iron, Methylcobalamin",
-          "dosage": "1 tablet each daily after meals"
-        },
-        {
-          "name": "NEEM EXTRACT TABLET",
-          "ingredients": "Pure Neem Leaf Extract for skin and blood purification",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -6778,16 +5917,6 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras",
           "dosage": "10-15 ml twice a day with equal water"
-        },
-        {
-          "name": "IRON TABLET & VITAMIN B12",
-          "ingredients": "Plant-based Iron, Methylcobalamin",
-          "dosage": "1 tablet each daily after meals"
-        },
-        {
-          "name": "NEEM EXTRACT TABLET",
-          "ingredients": "Pure Neem Leaf Extract for skin and blood purification",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -6848,16 +5977,6 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras",
           "dosage": "10-15 ml twice a day with equal water"
-        },
-        {
-          "name": "IRON TABLET & VITAMIN B12",
-          "ingredients": "Plant-based Iron, Methylcobalamin",
-          "dosage": "1 tablet each daily after meals"
-        },
-        {
-          "name": "NEEM EXTRACT TABLET",
-          "ingredients": "Pure Neem Leaf Extract for skin and blood purification",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -6918,16 +6037,6 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras",
           "dosage": "10-15 ml twice a day with equal water"
-        },
-        {
-          "name": "IRON TABLET & VITAMIN B12",
-          "ingredients": "Plant-based Iron, Methylcobalamin",
-          "dosage": "1 tablet each daily after meals"
-        },
-        {
-          "name": "NEEM EXTRACT TABLET",
-          "ingredients": "Pure Neem Leaf Extract for skin and blood purification",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -6988,16 +6097,6 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras",
           "dosage": "10-15 ml twice a day with equal water"
-        },
-        {
-          "name": "IRON TABLET & VITAMIN B12",
-          "ingredients": "Plant-based Iron, Methylcobalamin",
-          "dosage": "1 tablet each daily after meals"
-        },
-        {
-          "name": "NEEM EXTRACT TABLET",
-          "ingredients": "Pure Neem Leaf Extract for skin and blood purification",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -7058,16 +6157,6 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras",
           "dosage": "10-15 ml twice a day with equal water"
-        },
-        {
-          "name": "IRON TABLET & VITAMIN B12",
-          "ingredients": "Plant-based Iron, Methylcobalamin",
-          "dosage": "1 tablet each daily after meals"
-        },
-        {
-          "name": "NEEM EXTRACT TABLET",
-          "ingredients": "Pure Neem Leaf Extract for skin and blood purification",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -7128,16 +6217,6 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras",
           "dosage": "10-15 ml twice a day with equal water"
-        },
-        {
-          "name": "IRON TABLET & VITAMIN B12",
-          "ingredients": "Plant-based Iron, Methylcobalamin",
-          "dosage": "1 tablet each daily after meals"
-        },
-        {
-          "name": "NEEM EXTRACT TABLET",
-          "ingredients": "Pure Neem Leaf Extract for skin and blood purification",
-          "dosage": "1 tablet twice daily"
         }
       ],
       "disclaimer": " Seek standard medical intervention for severe or acute flare-ups."
@@ -7199,16 +6278,6 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras",
           "dosage": "10-15 ml twice a day with equal water"
-        },
-        {
-          "name": "IRON TABLET & VITAMIN B12",
-          "ingredients": "Plant-based Iron, Methylcobalamin",
-          "dosage": "1 tablet each daily after meals"
-        },
-        {
-          "name": "NEEM EXTRACT TABLET",
-          "ingredients": "Pure Neem Leaf Extract for skin and blood purification",
-          "dosage": "1 tablet twice daily"
         }
       ],
       "disclaimer": " Seek standard medical intervention for severe or acute flare-ups."
@@ -7263,16 +6332,6 @@
           "product_name": "NONIDOC JUICE",
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Safed Musali, Asgandh",
           "dosage": "15-30 ml diluted in water twice a day before meals"
-        },
-        {
-          "name": "SEABUCKDOC JUICE",
-          "ingredients": "Sea Buckthorn extract (rich in Omega 7 and Antioxidants)",
-          "dosage": "15ml twice daily"
-        },
-        {
-          "name": "SPIRADOC TABLET",
-          "ingredients": "Spirulina, rich in proteins and vitamins",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -7324,16 +6383,6 @@
           "product_name": "NONIDOC JUICE",
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Safed Musali, Asgandh",
           "dosage": "15-30 ml diluted in water twice a day before meals"
-        },
-        {
-          "name": "SEABUCKDOC JUICE",
-          "ingredients": "Sea Buckthorn extract (rich in Omega 7 and Antioxidants)",
-          "dosage": "15ml twice daily"
-        },
-        {
-          "name": "SPIRADOC TABLET",
-          "ingredients": "Spirulina, rich in proteins and vitamins",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -7385,16 +6434,6 @@
           "product_name": "NONIDOC JUICE",
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Safed Musali, Asgandh",
           "dosage": "15-30 ml diluted in water twice a day before meals"
-        },
-        {
-          "name": "SEABUCKDOC JUICE",
-          "ingredients": "Sea Buckthorn extract (rich in Omega 7 and Antioxidants)",
-          "dosage": "15ml twice daily"
-        },
-        {
-          "name": "SPIRADOC TABLET",
-          "ingredients": "Spirulina, rich in proteins and vitamins",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -7446,16 +6485,6 @@
           "product_name": "NONIDOC JUICE",
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Safed Musali, Asgandh",
           "dosage": "15-30 ml diluted in water twice a day before meals"
-        },
-        {
-          "name": "SEABUCKDOC JUICE",
-          "ingredients": "Sea Buckthorn extract (rich in Omega 7 and Antioxidants)",
-          "dosage": "15ml twice daily"
-        },
-        {
-          "name": "SPIRADOC TABLET",
-          "ingredients": "Spirulina, rich in proteins and vitamins",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -7507,16 +6536,6 @@
           "product_name": "NONIDOC JUICE",
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Safed Musali, Asgandh",
           "dosage": "15-30 ml diluted in water twice a day before meals"
-        },
-        {
-          "name": "SEABUCKDOC JUICE",
-          "ingredients": "Sea Buckthorn extract (rich in Omega 7 and Antioxidants)",
-          "dosage": "15ml twice daily"
-        },
-        {
-          "name": "SPIRADOC TABLET",
-          "ingredients": "Spirulina, rich in proteins and vitamins",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -7568,16 +6587,6 @@
           "product_name": "NONIDOC JUICE",
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Safed Musali, Asgandh",
           "dosage": "15-30 ml diluted in water twice a day before meals"
-        },
-        {
-          "name": "SEABUCKDOC JUICE",
-          "ingredients": "Sea Buckthorn extract (rich in Omega 7 and Antioxidants)",
-          "dosage": "15ml twice daily"
-        },
-        {
-          "name": "SPIRADOC TABLET",
-          "ingredients": "Spirulina, rich in proteins and vitamins",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -7629,16 +6638,6 @@
           "product_name": "NONIDOC JUICE",
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Safed Musali, Asgandh",
           "dosage": "15-30 ml diluted in water twice a day before meals"
-        },
-        {
-          "name": "SEABUCKDOC JUICE",
-          "ingredients": "Sea Buckthorn extract (rich in Omega 7 and Antioxidants)",
-          "dosage": "15ml twice daily"
-        },
-        {
-          "name": "SPIRADOC TABLET",
-          "ingredients": "Spirulina, rich in proteins and vitamins",
-          "dosage": "1 tablet twice daily"
         },
         {
           "name": "SHUDDH SHILAJIT CAPSULE",
@@ -7705,16 +6704,6 @@
           "product_name": "NONIDOC JUICE",
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Safed Musali, Asgandh",
           "dosage": "15-30 ml diluted in water twice a day before meals"
-        },
-        {
-          "name": "SEABUCKDOC JUICE",
-          "ingredients": "Sea Buckthorn extract (rich in Omega 7 and Antioxidants)",
-          "dosage": "15ml twice daily"
-        },
-        {
-          "name": "Spirulina Extract",
-          "ingredients": "Iron-reduced Spirulina",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -7766,16 +6755,6 @@
           "product_name": "NONIDOC JUICE",
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Safed Musali, Asgandh",
           "dosage": "15-30 ml diluted in water twice a day before meals"
-        },
-        {
-          "name": "SEABUCKDOC JUICE",
-          "ingredients": "Sea Buckthorn extract (rich in Omega 7 and Antioxidants)",
-          "dosage": "15ml twice daily"
-        },
-        {
-          "name": "SPIRADOC TABLET",
-          "ingredients": "Spirulina, rich in proteins and vitamins",
-          "dosage": "1 tablet twice daily"
         }
       ]
     }
@@ -7842,16 +6821,6 @@
           "dosage": "15-20 ml twice a day after meals"
         },
         {
-          "name": "SEABUCKDOC JUICE",
-          "ingredients": "Sea Buckthorn extract (rich in Omega 7 and Antioxidants)",
-          "dosage": "15ml twice daily"
-        },
-        {
-          "name": "SPIRADOC TABLET",
-          "ingredients": "Spirulina, rich in proteins and vitamins",
-          "dosage": "1 tablet twice daily"
-        },
-        {
           "name": "COUGHDOC PRAVAHI KWATH",
           "ingredients": "Expectorant herbs",
           "dosage": "10-15ml twice daily"
@@ -7906,16 +6875,6 @@
           "product_name": "THUNDERBLAST RAS",
           "ingredients": "Aloevera, Ashwagandha, Akarkara, Vidarikand, Safed Musli, Gokhru",
           "dosage": "15-20 ml twice a day after meals"
-        },
-        {
-          "name": "SEABUCKDOC JUICE",
-          "ingredients": "Sea Buckthorn extract (rich in Omega 7 and Antioxidants)",
-          "dosage": "15ml twice daily"
-        },
-        {
-          "name": "SPIRADOC TABLET",
-          "ingredients": "Spirulina, rich in proteins and vitamins",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -7967,16 +6926,6 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha",
           "dosage": "15-20 ml twice a day with equal amount of water"
-        },
-        {
-          "name": "SEABUCKDOC JUICE",
-          "ingredients": "Sea Buckthorn extract (rich in Omega 7 and Antioxidants)",
-          "dosage": "15ml twice daily"
-        },
-        {
-          "name": "SPIRADOC TABLET",
-          "ingredients": "Spirulina, rich in proteins and vitamins",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -8028,16 +6977,6 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha",
           "dosage": "15-20 ml twice a day with equal amount of water"
-        },
-        {
-          "name": "SEABUCKDOC JUICE",
-          "ingredients": "Sea Buckthorn extract (rich in Omega 7 and Antioxidants)",
-          "dosage": "15ml twice daily"
-        },
-        {
-          "name": "SPIRADOC TABLET",
-          "ingredients": "Spirulina, rich in proteins and vitamins",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -8099,16 +7038,6 @@
           "product_name": "THUNDERBLAST RAS",
           "ingredients": "Aloevera, Ashwagandha, Akarkara, Vidarikand, Safed Musli, Gokhru",
           "dosage": "15-20 ml twice a day after meals"
-        },
-        {
-          "name": "SEABUCKDOC JUICE",
-          "ingredients": "Sea Buckthorn extract (rich in Omega 7 and Antioxidants)",
-          "dosage": "15ml twice daily"
-        },
-        {
-          "name": "SPIRADOC TABLET",
-          "ingredients": "Spirulina, rich in proteins and vitamins",
-          "dosage": "1 tablet twice daily"
         }
       ]
     },
@@ -8155,16 +7084,6 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha",
           "dosage": "15-20 ml twice a day with equal amount of water"
-        },
-        {
-          "name": "SEABUCKDOC JUICE",
-          "ingredients": "Sea Buckthorn extract (rich in Omega 7 and Antioxidants)",
-          "dosage": "15ml twice daily"
-        },
-        {
-          "name": "SPIRADOC TABLET",
-          "ingredients": "Spirulina, rich in proteins and vitamins",
-          "dosage": "1 tablet twice daily"
         },
         {
           "name": "LIVODOC RAS",
@@ -8219,16 +7138,6 @@
           "dosage": "15-20 ml twice a day with equal amount of water"
         },
         {
-          "name": "SEABUCKDOC JUICE",
-          "ingredients": "Sea Buckthorn extract (rich in Omega 7 and Antioxidants)",
-          "dosage": "15ml twice daily"
-        },
-        {
-          "name": "SPIRADOC TABLET",
-          "ingredients": "Spirulina, rich in proteins and vitamins",
-          "dosage": "1 tablet twice daily"
-        },
-        {
           "name": "STONDOC RAS",
           "ingredients": "Diuretic herbs",
           "dosage": "15-20ml twice daily"
@@ -8275,7 +7184,7 @@
         "Focus shifting: Shift focus from near to far objects for 5 minutes daily.",
         "Anulom Vilom Pranayama (Alternate Nostril Breathing) for 10-15 minutes daily to improve oxygenation."
       ],
-      "how_to_take_products": "Take IMMUNODOC RAS and EXE ALOEVERA SYRUP internally as directed on an empty stomach. EYEDOC DROP should be applied externally into the eyes using a clean dropper, avoiding contact between the dropper and the eye.",
+      "how_to_take_products": "Take Eye Safe Blend RAS and EXE ALOEVERA SYRUP internally as directed on an empty stomach. EYEDOC DROP should be applied externally into the eyes using a clean dropper, avoiding contact between the dropper and the eye.",
       "things_to_avoid": [
         "Avoid excessive exposure to bright sunlight or UV rays without protection.",
         "Avoid prolonged screen time without breaks.",
@@ -8299,16 +7208,6 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 9.8ml",
           "dosage": "15-20 ml twice a day with equal quantity of warm water before meals"
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
         }
       ]
     },
@@ -8369,16 +7268,6 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 9.8ml",
           "dosage": "15-20 ml twice a day with equal quantity of warm water before meals"
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
         }
       ]
     },
@@ -8439,16 +7328,6 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 9.8ml",
           "dosage": "15-20 ml twice a day with equal quantity of warm water before meals"
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
         }
       ]
     },
@@ -8509,16 +7388,6 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 9.8ml",
           "dosage": "15-20 ml twice a day with equal quantity of warm water before meals"
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
         }
       ]
     },
@@ -8555,7 +7424,7 @@
         "Palming for 3-5 minutes, twice daily to rest the eyes.",
         "Avoid heavy physical exertion during active inflammation."
       ],
-      "how_to_take_products": "Use EYEDOC DROP strictly as advised to clear infection and soothe the eye. Take IMMUNODOC RAS and EXE ALOEVERA SYRUP to boost systemic immunity against chronic infections.",
+      "how_to_take_products": "Use EYEDOC DROP strictly as advised to clear infection and soothe the eye. Take Eye Safe Blend RAS and EXE ALOEVERA SYRUP to boost systemic immunity against chronic infections.",
       "things_to_avoid": [
         "Avoid touching or rubbing the eyes with unwashed hands.",
         "Avoid sharing towels, pillows, or eye makeup.",
@@ -8579,16 +7448,6 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 9.8ml",
           "dosage": "15-20 ml twice a day with equal quantity of warm water before meals"
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
         }
       ]
     },
@@ -8625,7 +7484,7 @@
         "Anulom Vilom Pranayama for 15 minutes to improve microcirculation.",
         "Gentle eye tracking exercises for 3-5 minutes daily."
       ],
-      "how_to_take_products": "IMMUNODOC RAS and EXE ALOEVERA SYRUP should be taken regularly to manage systemic metabolic health and immunity. EYEDOC DROP helps maintain external eye health, but blood sugar control is paramount.",
+      "how_to_take_products": "Safe Diabetic Blend RAS and EXE ALOEVERA SYRUP should be taken regularly to manage systemic metabolic health and immunity. Retina Safe Drops DROP helps maintain external eye health, but blood sugar control is paramount.",
       "things_to_avoid": [
         "Avoid all refined sugars, sweets, and high-carb processed foods.",
         "Avoid sedentary lifestyle and daytime sleeping.",
@@ -8649,16 +7508,6 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 9.8ml",
           "dosage": "15-20 ml twice a day with equal quantity of warm water before meals"
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "Antioxidant Extract",
-          "ingredients": "Berry extracts in sugar-free base",
-          "dosage": "15ml twice daily"
         }
       ]
     },
@@ -8695,7 +7544,7 @@
         "Gentle breathing exercises (Pranayama) like Shitali and Sitkari for 10 minutes.",
         "Avoid any exercise that increases body heat or causes sweating."
       ],
-      "how_to_take_products": "Take IMMUNODOC RAS to help modulate the immune system and reduce systemic inflammation. EYEDOC DROP can be used for its soothing herbs, but ensure it does not replace prescribed steroidal/anti-inflammatory drops.",
+      "how_to_take_products": "Take Eye Safe Blend RAS to help modulate the immune system and reduce systemic inflammation. EYEDOC DROP can be used for its soothing herbs, but ensure it does not replace prescribed steroidal/anti-inflammatory drops.",
       "things_to_avoid": [
         "Avoid all sour, salty, spicy, and fermented foods (Pitta-aggravating).",
         "Avoid exposure to bright sunlight and heat.",
@@ -8719,16 +7568,6 @@
           "product_name": "EXE ALOEVERA SYRUP",
           "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 9.8ml",
           "dosage": "15-20 ml twice a day with equal quantity of warm water before meals"
-        },
-        {
-          "name": "NONIDOC JUICE",
-          "ingredients": "Noni fruit extract",
-          "dosage": "15-20ml twice daily"
-        },
-        {
-          "name": "BERRYDOC JUICE",
-          "ingredients": "Acai, Goji, Blackberry extracts",
-          "dosage": "15ml twice daily"
         }
       ]
     }
@@ -8791,16 +7630,6 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Each 10ml contains Aloevera Leaf Ras 2.5ml, Triphala Fruits Ras 1g, Apple Fruit 250mg, Kokum Fruit Ext 200mg, Punarnava Root Powder 200mg, Giloy Stem Powder 50mg, Ashwagandha Root Powder 50mg, Mulethi Stem Powder 20mg, Tulsi Panchang Powder 20mg, Ginger Rhizome Powder 20mg",
           "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
-        },
-        {
-          "name": "ZINC TABLET",
-          "ingredients": "Zinc extract for immune and vision support",
-          "dosage": "1 tablet daily"
-        },
-        {
-          "name": "OMEGADOC CAPSULE",
-          "ingredients": "Omega 3-6-9 fatty acids",
-          "dosage": "1 capsule daily"
         }
       ],
       "disclaimer": " Ensure tympanic membrane (eardrum) is intact before attempting any oil-based ear drops."
@@ -8862,16 +7691,6 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Each 10ml contains Aloevera Leaf Ras 2.5ml, Triphala Fruits Ras 1g, Apple Fruit 250mg, Kokum Fruit Ext 200mg, Punarnava Root Powder 200mg, Giloy Stem Powder 50mg, Ashwagandha Root Powder 50mg, Mulethi Stem Powder 20mg, Tulsi Panchang Powder 20mg, Ginger Rhizome Powder 20mg",
           "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
-        },
-        {
-          "name": "ZINC TABLET",
-          "ingredients": "Zinc extract for immune and vision support",
-          "dosage": "1 tablet daily"
-        },
-        {
-          "name": "OMEGADOC CAPSULE",
-          "ingredients": "Omega 3-6-9 fatty acids",
-          "dosage": "1 capsule daily"
         }
       ],
       "disclaimer": " Ensure tympanic membrane (eardrum) is intact before attempting any oil-based ear drops."
@@ -8933,16 +7752,6 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Each 10ml contains Aloevera Leaf Ras 2.5ml, Triphala Fruits Ras 1g, Apple Fruit 250mg, Kokum Fruit Ext 200mg, Punarnava Root Powder 200mg, Giloy Stem Powder 50mg, Ashwagandha Root Powder 50mg, Mulethi Stem Powder 20mg, Tulsi Panchang Powder 20mg, Ginger Rhizome Powder 20mg",
           "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
-        },
-        {
-          "name": "ZINC TABLET",
-          "ingredients": "Zinc extract for immune and vision support",
-          "dosage": "1 tablet daily"
-        },
-        {
-          "name": "OMEGADOC CAPSULE",
-          "ingredients": "Omega 3-6-9 fatty acids",
-          "dosage": "1 capsule daily"
         }
       ],
       "disclaimer": " Ensure tympanic membrane (eardrum) is intact before attempting any oil-based ear drops."
@@ -9004,16 +7813,6 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Each 10ml contains Aloevera Leaf Ras 2.5ml, Triphala Fruits Ras 1g, Apple Fruit 250mg, Kokum Fruit Ext 200mg, Punarnava Root Powder 200mg, Giloy Stem Powder 50mg, Ashwagandha Root Powder 50mg, Mulethi Stem Powder 20mg, Tulsi Panchang Powder 20mg, Ginger Rhizome Powder 20mg",
           "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
-        },
-        {
-          "name": "ZINC TABLET",
-          "ingredients": "Zinc extract for immune and vision support",
-          "dosage": "1 tablet daily"
-        },
-        {
-          "name": "OMEGADOC CAPSULE",
-          "ingredients": "Omega 3-6-9 fatty acids",
-          "dosage": "1 capsule daily"
         }
       ],
       "disclaimer": " Ensure tympanic membrane (eardrum) is intact before attempting any oil-based ear drops."
@@ -9075,16 +7874,6 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Each 10ml contains Aloevera Leaf Ras 2.5ml, Triphala Fruits Ras 1g, Apple Fruit 250mg, Kokum Fruit Ext 200mg, Punarnava Root Powder 200mg, Giloy Stem Powder 50mg, Ashwagandha Root Powder 50mg, Mulethi Stem Powder 20mg, Tulsi Panchang Powder 20mg, Ginger Rhizome Powder 20mg",
           "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
-        },
-        {
-          "name": "ZINC TABLET",
-          "ingredients": "Zinc extract for immune and vision support",
-          "dosage": "1 tablet daily"
-        },
-        {
-          "name": "OMEGADOC CAPSULE",
-          "ingredients": "Omega 3-6-9 fatty acids",
-          "dosage": "1 capsule daily"
         }
       ],
       "disclaimer": " Ensure tympanic membrane (eardrum) is intact before attempting any oil-based ear drops."
@@ -9122,7 +7911,7 @@
         "Gentle neck stretches to relieve tension around the larynx.",
         "Bhramari Pranayama (Bee Breath) at a very low volume to gently massage the vocal cords."
       ],
-      "how_to_take_products": "Take IMMUNODOC RAS and ALRGYDOC PRAVAHI KWATH to reduce inflammation and fight infection. Use EXE PANCH TULSI OIL in warm water for regular gargling to soothe the throat.",
+      "how_to_take_products": "Take Throat Safe Blend RAS and ALRGYDOC PRAVAHI KWATH to reduce inflammation and fight infection. Use EXE PANCH TULSI OIL in warm water for regular gargling to soothe the throat.",
       "things_to_avoid": [
         "Avoid speaking loudly, shouting, or whispering.",
         "Avoid smoking and exposure to secondhand smoke.",
@@ -9146,16 +7935,6 @@
           "name": "Throat Safe Blend",
           "ingredients": "Aloevera, Triphala, Apple, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger (Kokum-free)",
           "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
-        },
-        {
-          "name": "ZINC TABLET",
-          "ingredients": "Zinc extract for immune and vision support",
-          "dosage": "1 tablet daily"
-        },
-        {
-          "name": "OMEGADOC CAPSULE",
-          "ingredients": "Omega 3-6-9 fatty acids",
-          "dosage": "1 capsule daily"
         },
         {
           "name": "COUGHDOC PRAVAHI KWATH",
@@ -9222,16 +8001,6 @@
           "product_name": "IMMUNODOC RAS",
           "ingredients": "Each 10ml contains Aloevera Leaf Ras 2.5ml, Triphala Fruits Ras 1g, Apple Fruit 250mg, Kokum Fruit Ext 200mg, Punarnava Root Powder 200mg, Giloy Stem Powder 50mg, Ashwagandha Root Powder 50mg, Mulethi Stem Powder 20mg, Tulsi Panchang Powder 20mg, Ginger Rhizome Powder 20mg",
           "dosage": "15-20 ml twice a day with equal quantity of lukewarm water on an empty stomach"
-        },
-        {
-          "name": "ZINC TABLET",
-          "ingredients": "Zinc extract for immune and vision support",
-          "dosage": "1 tablet daily"
-        },
-        {
-          "name": "OMEGADOC CAPSULE",
-          "ingredients": "Omega 3-6-9 fatty acids",
-          "dosage": "1 capsule daily"
         }
       ],
       "disclaimer": " Ensure tympanic membrane (eardrum) is intact before attempting any oil-based ear drops."
