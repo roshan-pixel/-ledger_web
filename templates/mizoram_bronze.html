@@ -227,15 +227,16 @@
 
         thead { position: sticky; top: 0; z-index: 10; }
         thead tr.group-row th {
-            padding: .55rem .9rem;
-            font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+            padding: .6rem .9rem;
+            font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
             text-align: center; border-bottom: 1px solid var(--border);
+            background: #080e1a;
         }
-        thead tr.group-row th.th-bronze { background: rgba(205,127,50,.12); color: var(--bronze); border-left: 2px solid rgba(205,127,50,.4); }
-        thead tr.group-row th.th-silver { background: rgba(168,184,200,.08); color: var(--silver); border-left: 2px solid rgba(168,184,200,.35); }
-        thead tr.group-row th.th-gold   { background: rgba(251,191,36,.10);  color: var(--gold);   border-left: 2px solid rgba(251,191,36,.4); }
-        thead tr.group-row th.th-plat   { background: rgba(226,232,240,.07); color: var(--plat);   border-left: 2px solid rgba(226,232,240,.3); }
-        thead tr.group-row th.th-base   { background: #080e1a; }
+        thead tr.group-row th.th-bronze { background: rgba(130,70,20,.55); color: #f5c97a; border-left: 2px solid rgba(205,127,50,.6); border-right: 2px solid rgba(205,127,50,.3); }
+        thead tr.group-row th.th-silver { background: rgba(80,100,130,.45); color: #c8daf0; border-left: 2px solid rgba(168,184,200,.55); border-right: 2px solid rgba(168,184,200,.3); }
+        thead tr.group-row th.th-gold   { background: rgba(120,90,0,.55);   color: #fde68a; border-left: 2px solid rgba(251,191,36,.6);  border-right: 2px solid rgba(251,191,36,.3); }
+        thead tr.group-row th.th-plat   { background: rgba(80,60,120,.50);  color: #e2d9f3; border-left: 2px solid rgba(180,160,255,.5); border-right: 2px solid rgba(180,160,255,.3); }
+        thead tr.group-row th.th-base   { background: #06090f; }
 
         thead tr.header-row th {
             background: #0a0f1c;
@@ -267,6 +268,31 @@
         td.td-ach  { text-align: center; }
         td.td-date { text-align: center; font-size: .82rem; color: var(--muted2); }
         td.td-phone{ text-align: right; color: var(--muted2); font-size: .83rem; letter-spacing: .3px; }
+
+        /* ── EDITABLE CELLS ──────────────────── */
+        td.editable {
+            cursor: pointer; position: relative;
+        }
+        td.editable:hover .edit-hint { opacity: 1; }
+        .edit-hint {
+            position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
+            font-size: .65rem; color: var(--primary); opacity: 0; transition: opacity .2s;
+            pointer-events: none;
+        }
+        td.editable.empty-cell { color: var(--primary) !important; opacity: .6; font-style: italic; font-size: .8rem; }
+        td.editable.empty-cell:hover { opacity: 1; }
+        .inline-input {
+            background: rgba(99,102,241,.15); border: 1.5px solid var(--primary);
+            border-radius: 6px; color: var(--text); font-family: 'Outfit', sans-serif;
+            font-size: .88rem; padding: .2rem .5rem; width: 100%; outline: none;
+            box-shadow: 0 0 0 3px var(--pglow);
+        }
+        .inline-select {
+            background: rgba(10,14,28,.95); border: 1.5px solid var(--primary);
+            border-radius: 6px; color: var(--text); font-family: 'Outfit', sans-serif;
+            font-size: .88rem; padding: .2rem .5rem; width: 100%; outline: none;
+            box-shadow: 0 0 0 3px var(--pglow);
+        }
 
         td.sep { border-left: 2px solid rgba(255,255,255,.06); }
 
@@ -506,11 +532,110 @@
         { key: 'plat',   comm: '₹15,000',achKey: 'platinum_achieved',dateKey: 'platinum_update_date',cls: 'c-plat'   },
     ];
 
-    function badge(val) {
+    function badge(val, rowId, field) {
         const v = (val || '').toString().trim().toUpperCase();
-        if (v === 'YES') return `<span class="badge badge-yes">✓ Yes</span>`;
-        if (v === 'NO')  return `<span class="badge badge-no">✗ No</span>`;
-        return `<span style="color:var(--muted);font-size:.8rem;">—</span>`;
+        if (v === 'YES') return `<span class="badge badge-yes" onclick="editAchieved(event,'${rowId}','${field}','YES')">✓ Yes</span>`;
+        if (v === 'NO')  return `<span class="badge badge-no"  onclick="editAchieved(event,'${rowId}','${field}','NO')">✗ No</span>`;
+        // Empty/unknown — show editable placeholder
+        return `<span class="badge" style="background:rgba(99,102,241,.12);color:var(--primary);border:1px dashed rgba(99,102,241,.4);cursor:pointer;" onclick="editAchieved(event,'${rowId}','${field}','')">+ Set</span>`;
+    }
+
+    function phone91(val) {
+        const v = (val || '').toString().trim();
+        if (!v || v === '—') return `<span class="editable empty-cell" title="Click to add">+ Add phone</span>`;
+        // Already has +91 or 91 prefix
+        if (v.startsWith('+91') || v.startsWith('91')) return '+91 ' + v.replace(/^\+?91\s*/, '');
+        return '+91 ' + v;
+    }
+
+    function editableDate(val, rowId, field) {
+        const v = (val || '').toString().trim();
+        if (!v || v === '—') return `<span class="editable empty-cell" onclick="startEditCell(event,'${rowId}','${field}','')" title="Click to add date">+ Add date</span>`;
+        return `<span class="editable" onclick="startEditCell(event,'${rowId}','${field}','${v}')" title="Click to edit">${v}<span class="edit-hint">✏</span></span>`;
+    }
+
+    function editablePhone(val, rowId) {
+        const v = (val || '').toString().trim();
+        const display = phone91(v);
+        if (!v || v === '—') return `<span class="editable empty-cell" onclick="startEditPhone(event,'${rowId}','${v}')" title="Click to add">${display}</span>`;
+        return `<span class="editable" onclick="startEditPhone(event,'${rowId}','${v}')" title="Click to edit">${display}<span class="edit-hint">✏</span></span>`;
+    }
+
+    async function saveCell(rowId, field, value) {
+        try {
+            const res = await fetch('/api/mizoram_bronze/update', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({id: rowId, field, value})
+            });
+            const d = await res.json();
+            if (d.success) {
+                // update local data
+                const row = allData.find(r => String(r.id) === String(rowId));
+                if (row) row[field] = value;
+                showToast('Saved!', 'success');
+            } else {
+                showToast('Save failed: ' + (d.error || 'Unknown'), 'error');
+            }
+        } catch(e) {
+            showToast('Error saving', 'error');
+        }
+    }
+
+    function startEditCell(event, rowId, field, current) {
+        event.stopPropagation();
+        const el = event.currentTarget;
+        const parent = el.closest('td');
+        const origHtml = parent.innerHTML;
+        parent.innerHTML = `<input class="inline-input" value="${current}" />`;
+        const inp = parent.querySelector('input');
+        inp.focus(); inp.select();
+        inp.addEventListener('blur', async () => {
+            const newVal = inp.value.trim();
+            await saveCell(rowId, field, newVal);
+            applyFilter();
+        });
+        inp.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') inp.blur();
+            if (e.key === 'Escape') { parent.innerHTML = origHtml; }
+        });
+    }
+
+    function startEditPhone(event, rowId, current) {
+        event.stopPropagation();
+        const el = event.currentTarget;
+        const parent = el.closest('td');
+        const origHtml = parent.innerHTML;
+        // Strip +91 for editing
+        const stripped = current.replace(/^\+?91\s*/, '');
+        parent.innerHTML = `<div style="display:flex;align-items:center;gap:4px"><span style="color:var(--muted2);font-size:.82rem;white-space:nowrap">+91</span><input class="inline-input" value="${stripped}" maxlength="10" style="width:110px" /></div>`;
+        const inp = parent.querySelector('input');
+        inp.focus(); inp.select();
+        inp.addEventListener('blur', async () => {
+            const newVal = inp.value.trim();
+            await saveCell(rowId, 'phone_no', newVal);
+            applyFilter();
+        });
+        inp.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') inp.blur();
+            if (e.key === 'Escape') { parent.innerHTML = origHtml; }
+        });
+    }
+
+    function editAchieved(event, rowId, field, current) {
+        event.stopPropagation();
+        const el = event.currentTarget;
+        const parent = el.closest('td');
+        const origHtml = parent.innerHTML;
+        const sel = current === 'YES' ? 'YES' : 'NO';
+        parent.innerHTML = `<select class="inline-select"><option value="YES" ${sel==='YES'?'selected':''}>✓ Yes</option><option value="NO" ${sel==='NO'?'selected':''}>✗ No</option></select>`;
+        const s = parent.querySelector('select');
+        s.focus();
+        s.addEventListener('change', async () => {
+            await saveCell(rowId, field, s.value);
+            applyFilter();
+        });
+        s.addEventListener('blur', () => { setTimeout(() => applyFilter(), 200); });
     }
 
     function renderRows(data) {
@@ -532,18 +657,18 @@
                 <td class="td-id">${r.ds_id || '—'}</td>
                 <td class="td-name">${r.ds_name || '—'}</td>
                 <td class="td-comm c-bronze sep">₹1,399</td>
-                <td class="td-ach">${badge(r.bronze_achieved)}</td>
-                <td class="td-date">${r.mizoram_bronze_date || '—'}</td>
+                <td class="td-ach">${badge(r.bronze_achieved, r.id, 'bronze_achieved')}</td>
+                <td class="td-date editable" style="position:relative">${editableDate(r.mizoram_bronze_date, r.id, 'mizoram_bronze_date')}</td>
                 <td class="td-comm c-silver sep">₹2,500</td>
-                <td class="td-ach">${badge(r.silver_achieved)}</td>
-                <td class="td-date">${r.silver_update_date || '—'}</td>
+                <td class="td-ach">${badge(r.silver_achieved, r.id, 'silver_achieved')}</td>
+                <td class="td-date editable" style="position:relative">${editableDate(r.silver_update_date, r.id, 'silver_update_date')}</td>
                 <td class="td-comm c-gold sep">₹4,690</td>
-                <td class="td-ach">${badge(r.gold_achieved)}</td>
-                <td class="td-date">${r.gold_update_date || '—'}</td>
+                <td class="td-ach">${badge(r.gold_achieved, r.id, 'gold_achieved')}</td>
+                <td class="td-date editable" style="position:relative">${editableDate(r.gold_update_date, r.id, 'gold_update_date')}</td>
                 <td class="td-comm c-plat sep">₹15,000</td>
-                <td class="td-ach">${badge(r.platinum_achieved)}</td>
-                <td class="td-date">${r.platinum_update_date || '—'}</td>
-                <td class="td-phone">${r.phone_no || '—'}</td>
+                <td class="td-ach">${badge(r.platinum_achieved, r.id, 'platinum_achieved')}</td>
+                <td class="td-date editable" style="position:relative">${editableDate(r.platinum_update_date, r.id, 'platinum_update_date')}</td>
+                <td class="td-phone">${editablePhone(r.phone_no, r.id)}</td>
             </tr>`).join('');
 
         document.getElementById('tableBody').innerHTML = rows;

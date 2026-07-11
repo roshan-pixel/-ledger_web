@@ -169,6 +169,27 @@ def api_fix_historical_buckets():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@app.route('/api/mizoram_bronze/update', methods=['POST'])
+def api_mizoram_bronze_update():
+    try:
+        data = request.get_json()
+        row_id = data.get('id')
+        field  = data.get('field')
+        value  = data.get('value', '').strip()
+        allowed = ['ds_name','mizoram_bronze_date','bronze_achieved','silver_achieved',
+                   'silver_update_date','gold_achieved','gold_update_date',
+                   'platinum_achieved','platinum_update_date','phone_no']
+        if field not in allowed:
+            return jsonify({'error': 'Field not allowed'}), 400
+        conn = get_db()
+        c = conn.cursor()
+        c.execute('UPDATE mizoram_bronze SET {}=? WHERE id=?'.format(field), (value, row_id))
+        conn.commit()
+        conn.close()
+        return jsonify({'success': True})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 from sync_mizoram import sync_mizoram_data
 @app.route('/api/sync_mizoram_now', methods=['POST'])
 def api_sync_mizoram_now():
