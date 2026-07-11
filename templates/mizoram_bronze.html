@@ -3,113 +3,306 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mizoram Bronze 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>Inventory Master — Nexus Analytics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-color: #0f172a;
-            --glass-bg: rgba(30, 41, 59, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent: #3b82f6;
-        }
+        @keyframes fadeInSPA { from{opacity:0} to{opacity:1} }
+        @keyframes shimmer  { 0%{background-position:-400px 0} 100%{background-position:400px 0} }
+        @keyframes spin     { to{transform:rotate(360deg)} }
+        @keyframes pop      { 0%{transform:scale(1)} 50%{transform:scale(1.05)} 100%{transform:scale(1)} }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *, *::before, *::after { box-sizing:border-box; }
+
+        :root {
+            --bg:       #0b0f19;
+            --surface:  rgba(255,255,255,0.04);
+            --surface2: rgba(255,255,255,0.07);
+            --border:   rgba(255,255,255,0.09);
+            --primary:  #6366f1;
+            --pglow:    rgba(99,102,241,0.3);
+            --green:    #10b981;
+            --yellow:   #f59e0b;
+            --red:      #ef4444;
+            --text:     #ffffff;
+            --muted:    #94a3b8;
+            --blur:     blur(16px);
+        }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: radial-gradient(circle at top left, #1e293b, var(--bg-color));
-            color: var(--text-main);
-            min-height: 100vh;
-            padding: 2rem;
+            margin:0; padding:0;
+            font-family:'Outfit',sans-serif;
+            background-color:var(--bg);
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(99,102,241,.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(236,72,153,.15),  transparent 25%);
+            background-attachment:fixed;
+            color:var(--text); min-height:100vh;
+            display:flex;
+            animation:fadeInSPA .3s ease-out forwards;
         }
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
+        /* ── SIDEBAR ─────────────────────── */
+        .sidebar {
+            width:260px; flex-shrink:0;
+            background:var(--surface); border-right:1px solid var(--border);
+            backdrop-filter:var(--blur);
+            padding:2rem 1.5rem; display:flex; flex-direction:column; gap:2rem;
+            position:sticky; top:0; height:100vh; overflow-y:auto;
         }
-
-        .header h1 {
-            font-size: 2rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #fff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .logo {
+            font-size:1.4rem; font-weight:700;
+            
+             
+            letter-spacing:-.5px;
         }
-
-        .btn-back {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            color: var(--text-main);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
+        .nav-menu { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.4rem; }
+        .nav-item {
+            padding:.85rem 1.2rem; border-radius:12px; color:var(--muted);
+            font-weight:500; cursor:pointer; transition:all .25s;
+            display:flex; align-items:center; gap:.85rem; font-size:.92rem;
         }
+        .nav-item:hover { background:rgba(255,255,255,.08); color:var(--text); transform:translateX(4px); }
+        .nav-item.active { background:rgba(99,102,241,.15); color:var(--primary); transform:translateX(4px); }
 
-        .btn-back:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
+        /* ── MAIN ────────────────────────── */
+        .main { flex:1; padding:2rem; overflow:hidden; display:flex; flex-direction:column; gap:1.5rem; }
+
+        /* ── HEADER ──────────────────────── */
+        .page-header { display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; }
+        .page-header h1 { margin:0; font-size:1.9rem; font-weight:700; letter-spacing:-.5px; }
+        .page-header p  { margin:.25rem 0 0; color:var(--muted); font-size:.9rem; }
+        .header-actions { display:flex; align-items:center; gap:.75rem; }
+
+        /* ── SEARCH + FILTER BAR ─────────── */
+        .toolbar {
+            display:flex; align-items:center; gap:.75rem; flex-wrap:wrap;
+            background:var(--surface); border:1px solid var(--border);
+            border-radius:16px; padding:.85rem 1.25rem;
+            backdrop-filter:var(--blur);
         }
+        .search-wrap { position:relative; flex:1; min-width:220px; }
+        .search-wrap svg { position:absolute; left:.9rem; top:50%; transform:translateY(-50%); color:var(--muted); pointer-events:none; }
+        .search-input {
+            width:100%; padding:.6rem .9rem .6rem 2.5rem;
+            background:rgba(255,255,255,.06); border:1px solid var(--border);
+            border-radius:10px; color:var(--text); font-family:'Outfit',sans-serif;
+            font-size:.9rem; outline:none; transition:border-color .2s, box-shadow .2s;
+        }
+        .search-input:focus { border-color:var(--primary); box-shadow:0 0 0 3px var(--pglow); }
+        .search-input::placeholder { color:var(--muted); }
 
+        .filter-btn {
+            padding:.55rem 1.1rem; border-radius:10px; font-family:'Outfit',sans-serif;
+            font-size:.82rem; font-weight:600; cursor:pointer; border:1px solid var(--border);
+            background:var(--surface2); color:var(--muted); transition:all .2s; white-space:nowrap;
+        }
+        .filter-btn:hover, .filter-btn.active { border-color:var(--primary); color:var(--primary); background:rgba(99,102,241,.1); }
+
+        .stat-chip {
+            padding:.4rem .9rem; border-radius:20px; font-size:.8rem; font-weight:600;
+            white-space:nowrap;
+        }
+        .chip-total   { background:rgba(99,102,241,.15); color:var(--primary); }
+        .chip-low     { background:rgba(245,158,11,.15);  color:var(--yellow); }
+        .chip-out     { background:rgba(239,68,68,.15);   color:var(--red); }
+
+        /* ── TABLE ───────────────────────── */
         .table-container {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            backdrop-filter: blur(12px);
-            padding: 1rem;
-            overflow-x: auto;
-            max-height: calc(100vh - 150px);
+            flex:1; overflow:auto; border-radius:16px;
+            border:1px solid var(--border); background:var(--surface);
+            backdrop-filter:var(--blur);
+        }
+        table { width:100%; border-collapse:collapse; min-width:1100px; }
+
+        thead { position:sticky; top:0; z-index:10; }
+        thead th {
+            background:#0d1220; border-bottom:1px solid var(--border);
+            padding:.8rem 1rem; text-align:left;
+            font-size:.75rem; font-weight:600; text-transform:uppercase;
+            letter-spacing:.8px; color:var(--muted); white-space:nowrap;
+        }
+        thead th.sortable { cursor:pointer; user-select:none; }
+        thead th.sortable:hover { color:var(--text); }
+        thead th .sort-icon { margin-left:4px; opacity:.4; font-size:.65rem; }
+        thead th.asc  .sort-icon { opacity:1; }
+        thead th.desc .sort-icon { opacity:1; }
+
+        tbody tr {
+            border-bottom:1px solid rgba(255,255,255,.04);
+            transition:background .15s;
+        }
+        tbody tr:hover { background:rgba(255,255,255,.04); }
+        tbody tr.editing { background:rgba(99,102,241,.06); }
+
+        tbody td {
+            padding:.55rem 1rem; font-size:.88rem;
+            white-space:nowrap; vertical-align:middle;
+        }
+        td.sno     { color:var(--muted); font-size:.8rem; width:48px; }
+        td.product { font-weight:600; max-width:220px; white-space:normal; line-height:1.3; }
+        td.numeric { text-align:right; font-variant-numeric:tabular-nums; }
+        td.editable-cell { cursor:pointer; }
+        td.editable-cell:hover { color:var(--primary); }
+
+        /* inline editor */
+        .cell-editor {
+            background:rgba(99,102,241,.12); border:1.5px solid var(--primary);
+            border-radius:6px; color:var(--text); font-family:'Outfit',sans-serif;
+            font-size:.88rem; padding:.25rem .5rem; width:100%; outline:none;
+            box-shadow:0 0 0 3px var(--pglow);
+            text-align:right;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.9rem;
-        }
-
-        th, td {
-            padding: 12px 16px;
-            text-align: left;
-            border-bottom: 1px solid var(--glass-border);
-            white-space: nowrap;
-        }
-
-        th {
-            font-weight: 600;
-            color: var(--text-muted);
-            position: sticky;
-            top: 0;
-            background: #1e293b;
-            z-index: 10;
-        }
-
-        tr:hover td {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
+        /* stock status badge */
         .badge {
-            padding: 4px 8px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 600;
+            padding:.2rem .65rem; border-radius:20px;
+            font-size:.75rem; font-weight:700; letter-spacing:.3px; display:inline-block;
         }
-        .badge-yes { background: rgba(16, 185, 129, 0.2); color: #34d399; }
-        .badge-no { background: rgba(239, 68, 68, 0.2); color: #f87171; }
-    </style>
+        .badge-in     { background:rgba(16,185,129,.15); color:var(--green); }
+        .badge-low    { background:rgba(245,158,11,.15);  color:var(--yellow); }
+        .badge-out    { background:rgba(239,68,68,.15);   color:var(--red); }
+
+        /* skeleton */
+        .skeleton-row td {
+            height:40px; padding:.4rem 1rem;
+        }
+        .skeleton-bar {
+            height:14px; border-radius:6px;
+            background:linear-gradient(90deg, rgba(255,255,255,.04) 25%, rgba(255,255,255,.1) 50%, rgba(255,255,255,.04) 75%);
+            background-size:400px 100%;
+            animation:shimmer 1.4s infinite linear;
+        }
+
+        /* ── SAVE INDICATOR ──────────────── */
+        #saveIndicator {
+            position:fixed; bottom:2rem; right:2rem;
+            padding:.9rem 1.5rem; border-radius:12px;
+            font-weight:600; font-size:.9rem; color:#fff;
+            display:flex; align-items:center; gap:.6rem;
+            opacity:0; transform:translateY(10px);
+            transition:all .3s; pointer-events:none; z-index:999;
+        }
+        #saveIndicator.saving  { opacity:1; transform:translateY(0); background:rgba(99,102,241,.9); }
+        #saveIndicator.saved   { opacity:1; transform:translateY(0); background:rgba(16,185,129,.9); }
+        #saveIndicator.error   { opacity:1; transform:translateY(0); background:rgba(239,68,68,.9); }
+        .spinner { width:16px; height:16px; border:2px solid rgba(255,255,255,.3); border-top-color:#fff; border-radius:50%; animation:spin .7s linear infinite; }
+
+        /* refresh btn */
+        .refresh-btn {
+            padding:.6rem 1.2rem; border-radius:10px; border:1px solid var(--border);
+            background:var(--surface2); color:var(--text); font-family:'Outfit',sans-serif;
+            font-size:.88rem; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:.5rem;
+            transition:all .2s;
+        }
+        .refresh-btn:hover { border-color:var(--primary); color:var(--primary); }
+        .refresh-btn svg { transition:transform .4s; }
+        .refresh-btn:hover svg { transform:rotate(180deg); }
+
+        /* rows count */
+        #rowCount { font-size:.85rem; color:var(--muted); }
+    
+        
+        /* ── MOBILE OPTIMIZATION ───────────────── */
+        @media(max-width: 768px) {
+            /* Structural Fixes */
+            body { flex-direction: column !important; }
+            .sidebar { width: 100% !important; height: auto !important; position: relative !important; padding: 1rem !important; border-right: none !important; border-bottom: 1px solid var(--border) !important; flex-shrink: 0; gap: 1rem !important; }
+            
+            /* Top Navigation Conversion */
+            .nav-menu { flex-direction: row !important; flex-wrap: nowrap !important; overflow-x: auto !important; justify-content: flex-start !important; padding-bottom: 0.5rem; -webkit-overflow-scrolling: touch; }
+            .nav-item { padding: 0.8rem 1.2rem !important; font-size: 1rem !important; gap: 0.5rem !important; min-height: 44px; flex-shrink: 0; }
+            
+            /* Container Padding Fixes (covers all classes) */
+            .main, .main-content { padding: 1rem !important; width: 100% !important; overflow-x: hidden !important; box-sizing: border-box !important; }
+            .card, .glass-panel, .sync-card, .results-card, .auto-card, .kpi-card { padding: 1rem !important; border-radius: 16px !important; box-sizing: border-box !important; width: 100% !important; }
+            
+            /* Header & Layout Fixes */
+            .inv-header, .header-actions, .header { flex-direction: column !important; align-items: flex-start !important; gap: 1rem !important; }
+            .inv-title h1, h1 { font-size: 2rem !important; }
+            
+            /* Forms, Inputs & iOS Zoom Fix */
+            .ds-lookup-row, .filters { flex-direction: column !important; align-items: stretch !important; gap: 1rem !important; }
+            .ds-lookup-row .glass-input, .filter-input, .filter-select, .glass-input { flex: 1 !important; width: 100% !important; box-sizing: border-box !important; }
+            input, select, textarea { font-size: 16px !important; } /* Prevents iOS Keyboard Zoom */
+            
+            /* Toolbar Filter Buttons wrapping */
+            .toolbar { flex-wrap: nowrap !important; overflow-x: auto !important; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding-bottom: 0.5rem; }
+            .toolbar::-webkit-scrollbar { display: none; }
+            
+            /* Table & Layout Breakpoints */
+            .table-wrap, .table-container { width: 100% !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 1rem; }
+            table { white-space: nowrap !important; }
+            thead th { font-size: 0.85rem !important; }
+            
+            /* Make Product Name sticky on mobile too */
+            .table-container td:nth-child(2), .table-container th:nth-child(2) { position: sticky; left: 48px; z-index: 2; background: rgba(15, 23, 42, 0.95); }
+            
+            /* Touch Target Accessibility (Min 44px) */
+            .btn, .lookup-btn, .sync-btn { min-height: 44px; padding: 0.8rem 1.5rem !important; width: 100%; text-align: center; justify-content: center; }
+            .btn-cancel, .remove-btn, .preset-btn, .filter-btn, .refresh-btn { min-height: 44px; padding: 0.8rem 1.2rem !important; font-size: 1rem !important; flex-shrink: 0; }
+            thead th, tbody td.editable-cell { padding: 1rem !important; }
+            
+            /* Fixed Elements */
+            #saveIndicator { bottom: 1.5rem !important; left: 1rem !important; right: 1rem !important; justify-content: center !important; }
+            
+            /* Contrast Fixes */
+            .log-card { overflow-x: auto; color: #cbd5e1 !important; background: rgba(0,0,0,0.6) !important; }
+            label, thead th { color: #cbd5e1 !important; }
+            .glass-input { border-color: rgba(255,255,255,0.2) !important; }
+        }
+
+        .table-container td:first-child { font-weight:700; color:var(--text); position: sticky; left: 0; background: rgba(15, 23, 42, 0.95); z-index: 2; box-shadow: 2px 0 5px rgba(0,0,0,0.15); }
+        .table-container th:first-child { position: sticky; left: 0; background: rgba(15, 23, 42, 0.98); z-index: 3; box-shadow: 2px 0 5px rgba(0,0,0,0.15); }
+</style>
 </head>
 <body>
 
-    <div class="header">
-        <h1>Mizoram Bronze 2026</h1>
-        <a href="/" class="btn-back">← Back to Dashboard</a>
+<!-- ── SIDEBAR ─────────────────────────────── -->
+<aside class="sidebar">
+    <div class="logo" style="text-align: center; padding: 1rem 0;">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Asclepius Wellness" style="max-width: 85%; height: auto; background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(220,225,235,1) 100%); border-radius: 16px; padding: 12px; box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15), inset 0 0 0 1px rgba(255,255,255,0.5);">
+    </div>
+    <ul class="nav-menu">
+        <li class="nav-item" onclick="navigateTo('/')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+            Dashboard
+        </li>
+        <li class="nav-item" onclick="navigateTo('/inventory')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            Inventory Stock
+        </li>
+        <li class="nav-item" onclick="navigateTo('/inventory_master')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            Inventory Master
+        </li>
+        <li class="nav-item" onclick="navigateTo('/invoice')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            Invoice Generator
+        </li>
+        <li class="nav-item" onclick="navigateTo('/invoice_history')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Recent Invoices
+        </li>
+        <li class="nav-item" onclick="navigateTo('/disease_guide')">
+            <li class="nav-item active" onclick="navigateTo('/mizoram_bronze')">🏆 Mizoram Bronze</li>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            Disease Guide
+        </li>
+    </ul>
+</aside>
+
+<!-- ── MAIN ────────────────────────────────── -->
+<main class="main">
+    <div class="page-header">
+        <div>
+            <h1>Mizoram Bronze 2026</h1>
+            <p style="color: var(--muted);">Commission Data Overview</p>
+        </div>
     </div>
 
-    <div class="table-container">
+    <div class="table-wrap">
         <table>
             <thead>
                 <tr>
@@ -131,60 +324,67 @@
                 </tr>
             </thead>
             <tbody id="tableBody">
-                <tr><td colspan="15" style="text-align:center; color: var(--text-muted);">Loading...</td></tr>
+                <tr><td colspan="15" style="text-align:center; color: var(--muted); padding: 2rem;">Loading...</td></tr>
             </tbody>
         </table>
     </div>
+</main>
 
-    <script>
-        async function loadData() {
-            try {
-                const res = await fetch('/api/mizoram_bronze');
-                const data = await res.json();
-                
-                const tbody = document.getElementById('tableBody');
-                if (data.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="15" style="text-align:center; color: var(--text-muted);">No data available</td></tr>';
-                    return;
-                }
-
-                const formatAchieved = (val) => {
-                    val = val ? val.toString().trim() : '';
-                    if (val.toUpperCase() === 'YES') {
-                        return `<span class="badge badge-yes">YES</span>`;
-                    } else if (val.toUpperCase() === 'NO') {
-                        return `<span class="badge badge-no">NO</span>`;
-                    }
-                    return val;
-                };
-
-                const rowsHtml = data.map(r => `
-                    <tr>
-                        <td><strong>${r.ds_id || ''}</strong></td>
-                        <td>${r.ds_name || ''}</td>
-                        <td>${r.bronze_commission || ''}</td>
-                        <td>${formatAchieved(r.bronze_achieved)}</td>
-                        <td>${r.mizoram_bronze_date || ''}</td>
-                        <td>${r.silver_commission || ''}</td>
-                        <td>${formatAchieved(r.silver_achieved)}</td>
-                        <td>${r.silver_update_date || ''}</td>
-                        <td>${r.gold_commission || ''}</td>
-                        <td>${formatAchieved(r.gold_achieved)}</td>
-                        <td>${r.gold_update_date || ''}</td>
-                        <td>${r.platinum_commission || ''}</td>
-                        <td>${formatAchieved(r.platinum_achieved)}</td>
-                        <td>${r.platinum_update_date || ''}</td>
-                        <td>${r.phone_no || ''}</td>
-                    </tr>
-                `).join('');
-                
-                tbody.innerHTML = rowsHtml;
-            } catch(e) {
-                console.error(e);
-                document.getElementById('tableBody').innerHTML = '<tr><td colspan="15" style="text-align:center; color: #ef4444;">Failed to load data</td></tr>';
+<script>
+    async function loadData() {
+        try {
+            const res = await fetch('/api/mizoram_bronze');
+            const data = await res.json();
+            
+            const tbody = document.getElementById('tableBody');
+            if (data.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="15" style="text-align:center; color: var(--muted); padding: 2rem;">No data available</td></tr>';
+                return;
             }
+
+            const formatAchieved = (val) => {
+                val = val ? val.toString().trim() : '';
+                if (val.toUpperCase() === 'YES') {
+                    return `<span class="badge badge-in">YES</span>`;
+                } else if (val.toUpperCase() === 'NO') {
+                    return `<span class="badge badge-out">NO</span>`;
+                }
+                return val;
+            };
+
+            const rowsHtml = data.map(r => `
+                <tr>
+                    <td><strong>${r.ds_id || ''}</strong></td>
+                    <td class="product">${r.ds_name || ''}</td>
+                    <td class="numeric">${r.bronze_commission || ''}</td>
+                    <td>${formatAchieved(r.bronze_achieved)}</td>
+                    <td>${r.mizoram_bronze_date || ''}</td>
+                    <td class="numeric">${r.silver_commission || ''}</td>
+                    <td>${formatAchieved(r.silver_achieved)}</td>
+                    <td>${r.silver_update_date || ''}</td>
+                    <td class="numeric">${r.gold_commission || ''}</td>
+                    <td>${formatAchieved(r.gold_achieved)}</td>
+                    <td>${r.gold_update_date || ''}</td>
+                    <td class="numeric">${r.platinum_commission || ''}</td>
+                    <td>${formatAchieved(r.platinum_achieved)}</td>
+                    <td>${r.platinum_update_date || ''}</td>
+                    <td class="numeric">${r.phone_no || ''}</td>
+                </tr>
+            `).join('');
+            
+            tbody.innerHTML = rowsHtml;
+        } catch(e) {
+            console.error(e);
+            document.getElementById('tableBody').innerHTML = '<tr><td colspan="15" style="text-align:center; color: #ef4444; padding: 2rem;">Failed to load data</td></tr>';
         }
-        document.addEventListener('DOMContentLoaded', loadData);
-    </script>
+    }
+    document.addEventListener('DOMContentLoaded', loadData);
+    
+    function navigateTo(url) {
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity .25s ease-out';
+        setTimeout(() => { window.location.href = url; }, 260);
+    }
+</script>
 </body>
 </html>
