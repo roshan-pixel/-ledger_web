@@ -92,7 +92,7 @@
 
         /* ── MAIN ──────────────────────────────── */
         .main {
-            flex: 1; overflow: hidden;
+            flex: 1; overflow-y: auto;
             display: flex; flex-direction: column; gap: 1.25rem;
             padding: 1.75rem 2rem;
         }
@@ -346,19 +346,85 @@
 
         /* ── MOBILE ───────────────────────────── */
         @media(max-width:768px) {
-            body { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; position: relative; padding: .75rem; border-right: none; border-bottom: 1px solid var(--border); }
-            .nav-menu { flex-direction: row; overflow-x: auto; scrollbar-width: none; gap: .25rem; padding-bottom: .25rem; }
+            html, body { height: auto; overflow-y: auto; }
+            body { flex-direction: column; min-height: 100vh; }
+
+            /* Sidebar becomes a compact top nav bar */
+            .sidebar {
+                width: 100%; height: auto;
+                position: sticky; top: 0; z-index: 100;
+                padding: .5rem .75rem;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                flex-direction: row;
+                align-items: center;
+                gap: .75rem;
+                overflow: visible;
+            }
+            /* Hide logo on mobile - saves precious space */
+            .logo-wrap { display: none; }
+
+            /* Horizontal scrollable pill nav */
+            .nav-menu {
+                flex-direction: row;
+                overflow-x: auto;
+                scrollbar-width: none;
+                -webkit-overflow-scrolling: touch;
+                gap: .3rem;
+                padding: .25rem 0;
+                flex: 1;
+                flex-wrap: nowrap;
+            }
             .nav-menu::-webkit-scrollbar { display: none; }
-            .nav-item { flex-shrink: 0; padding: .65rem 1rem; font-size: .82rem; }
-            .main { padding: 1rem; gap: 1rem; }
-            .tier-cards { grid-template-columns: repeat(2,1fr); gap: .65rem; }
-            .table-container { overflow-x: auto; }
+
+            .nav-item {
+                flex-shrink: 0;
+                padding: .55rem .9rem;
+                font-size: .8rem;
+                gap: .4rem;
+                border-radius: 20px;
+                white-space: nowrap;
+                min-height: 36px;
+            }
+            /* Hide text on very small screens, show only icon */
+            @media(max-width: 400px) {
+                .nav-item span.nav-text { display: none; }
+            }
+
+            /* Main content scrolls freely */
+            .main {
+                flex: none;
+                padding: .9rem;
+                gap: .85rem;
+                overflow-y: visible;
+                min-height: 0;
+            }
+
+            /* Tier cards 2-column grid */
+            .tier-cards { grid-template-columns: repeat(2,1fr); gap: .6rem; }
+            .tier-amount { font-size: 1.25rem; }
+            .tier-card { padding: .85rem 1rem; }
+
+            /* Toolbar wraps */
+            .toolbar { flex-wrap: wrap; gap: .5rem; }
+
+            /* Table scrolls horizontally */
+            .table-container {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                max-height: none;
+                border-radius: 10px;
+            }
+
+            /* Header stacks */
+            .page-header { flex-direction: column; align-items: flex-start; gap: .6rem; }
+            .header-actions { width: 100%; justify-content: space-between; }
+            .header-left h1 { font-size: 1.4rem; }
+
             #toast { left: 1rem; right: 1rem; bottom: 1rem; justify-content: center; }
         }
         @media(max-width:480px) {
             .tier-cards { grid-template-columns: 1fr 1fr; }
-            .tier-amount { font-size: 1.3rem; }
         }
     </style>
 </head>
@@ -777,7 +843,14 @@
         setTimeout(() => { window.location.href = url; }, 220);
     }
 
-    document.addEventListener('DOMContentLoaded', () => loadData(true));
+    document.addEventListener('DOMContentLoaded', () => {
+        loadData(true);
+        // Auto-scroll active nav item into view on mobile
+        const activeItem = document.querySelector('.nav-item.active');
+        if (activeItem) {
+            activeItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+    });
 </script>
 </body>
 </html>
