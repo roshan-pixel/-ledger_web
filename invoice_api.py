@@ -16,6 +16,8 @@ def get_sold_qty_col_idx(all_headers, date_str):
     try:
         if 'T' in date_str:
             dt = datetime.datetime.fromisoformat(date_str)
+        elif '/' in date_str:
+            dt = datetime.datetime.strptime(date_str[:10], '%d/%m/%Y')
         else:
             dt = datetime.datetime.strptime(date_str[:10], '%Y-%m-%d')
         day = dt.day
