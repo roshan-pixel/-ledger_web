@@ -313,13 +313,13 @@
             const tbody = document.getElementById('historyBody');
             tbody.innerHTML = '';
             
-            if (!data.data || data.data.length === 0) {
+            if (!data.invoices || data.invoices.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; color:var(--muted); padding:2rem;">No invoices generated yet.</td></tr>';
                 return;
             }
             
-            invoiceData = data.data;
-            data.data.forEach((inv, index) => {
+            invoiceData = data.invoices;
+            data.invoices.forEach((inv, index) => {
                 const tr = document.createElement('tr');
                 const isCancelled = inv.status === 'cancelled';
                 
