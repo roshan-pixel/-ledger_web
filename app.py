@@ -154,7 +154,18 @@ def api_mizoram_bronze():
         conn.close()
         return jsonify(data)
     except Exception as e:
+        # If table doesn't exist, we can just return empty array so frontend doesn't crash
+        if "no such table" in str(e).lower():
+            return jsonify([])
         return jsonify({"error": str(e)}), 500
+
+from sync_mizoram import sync_mizoram_data
+@app.route('/api/sync_mizoram_now', methods=['POST'])
+def api_sync_mizoram_now():
+    success = sync_mizoram_data()
+    if success:
+        return jsonify({"success": True})
+    return jsonify({"success": False, "error": "Sync failed, check server logs"}), 500
 
 @app.route('/api/kpi')
 def api_kpi():
