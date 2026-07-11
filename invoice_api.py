@@ -14,13 +14,18 @@ def get_sold_qty_col_idx(all_headers, date_str):
         return None
         
     try:
-        if 'T' in date_str:
+        # Special one-time exemption for 30/06/2026
+        if date_str and date_str.startswith('30/06/2026'):
+            day = 1
+        elif 'T' in date_str:
             dt = datetime.datetime.fromisoformat(date_str)
+            day = dt.day
         elif '/' in date_str:
             dt = datetime.datetime.strptime(date_str[:10], '%d/%m/%Y')
+            day = dt.day
         else:
             dt = datetime.datetime.strptime(date_str[:10], '%Y-%m-%d')
-        day = dt.day
+            day = dt.day
     except:
         day = datetime.datetime.now().day
         
