@@ -140,10 +140,10 @@ def create_invoice():
                 qty_sold = float(item.get('qty', 0))
                 
                 if desc and qty_sold > 0:
-                    norm_desc = desc.replace(' -', '').strip().upper()
+                    norm_desc = desc.replace('\n', ' ').replace(' -', '').strip().upper()
                     c.execute(f"SELECT row_num, c3, c{sold_qty_col_idx} FROM inventory WHERE c3 IS NOT NULL AND c3 != ''")
                     for inv_row in c.fetchall():
-                        c3_val = inv_row['c3'].replace(' -', '').strip().upper()
+                        c3_val = inv_row['c3'].replace('\n', ' ').replace(' -', '').strip().upper()
                         if c3_val == norm_desc:
                             row_num = inv_row['row_num']
                             current_sold = float(inv_row[2] or 0)

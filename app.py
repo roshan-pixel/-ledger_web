@@ -241,7 +241,10 @@ def api_inventory():
                 continue
             row_data = {}
             for h, col in zip(headers, cols_to_select):
-                row_data[h] = row[col]
+                val = row[col]
+                if isinstance(val, str) and h in ['Product Name', 'Item Name', 'Product']:
+                    val = val.replace('\n', ' ')
+                row_data[h] = val
             row_data['__row'] = row['row_num']
             data.append(row_data)
             
