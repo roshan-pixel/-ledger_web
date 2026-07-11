@@ -159,6 +159,16 @@ def api_mizoram_bronze():
             return jsonify([])
         return jsonify({"error": str(e)}), 500
 
+import subprocess
+@app.route('/api/fix_historical_buckets', methods=['POST'])
+def api_fix_historical_buckets():
+    try:
+        script_path = os.path.join(os.path.dirname(__file__), 'fix_buckets.py')
+        result = subprocess.run(['python', script_path], capture_output=True, text=True)
+        return jsonify({"success": True, "output": result.stdout, "error": result.stderr})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 from sync_mizoram import sync_mizoram_data
 @app.route('/api/sync_mizoram_now', methods=['POST'])
 def api_sync_mizoram_now():
