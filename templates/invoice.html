@@ -686,6 +686,14 @@
                 product.Rate || product['Selling Price'] || 0
             );
             const sp = parseFloat(product['SP/Pc'] || product.sp || 0);
+            
+            // Extract remaining stock
+            const stock = parseFloat(product['Remaining Qty'] || product.Stock || 0);
+            const qtyInput = row.querySelector('.item-qty');
+            qtyInput.dataset.maxStock = stock;
+            qtyInput.max = stock;
+            qtyInput.title = `Max Stock: ${stock}`;
+            
             row.querySelector('.item-price').value = price.toFixed(2);
             row.querySelector('.item-sp').dataset.unitSp = sp;
             calculateRow(row);
@@ -694,7 +702,20 @@
 
     // ── Row math ───────────────────────────────────────
     function calculateRow(row) {
-        const qty   = parseFloat(row.querySelector('.item-qty').value)   || 0;
+        let qtyInput = row.querySelector('.item-qty');
+        let qty   = parseFloat(qtyInput.value)   || 0;
+        
+        // Cap at max stock if applicable
+        const maxStock = qtyInput.dataset.maxStock;
+        if (maxStock !== undefined) {
+            const max = parseFloat(maxStock);
+            if (qty > max) {
+                qty = max;
+                qtyInput.value = qty;
+                showToast(`Only ${max} in stock!`, 'error');
+            }
+        }
+        
         const price = parseFloat(row.querySelector('.item-price').value) || 0;
         const unitSp = parseFloat(row.querySelector('.item-sp').dataset.unitSp) || 0;
         row.querySelector('.item-total').value = (qty * price).toFixed(2);
