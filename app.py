@@ -140,6 +140,22 @@ def portal_sync_page():
 def disease_guide():
     return render_template('disease_guide.html')
 
+@app.route('/mizoram_bronze')
+def mizoram_bronze():
+    return render_template('mizoram_bronze.html')
+
+@app.route('/api/mizoram_bronze')
+def api_mizoram_bronze():
+    try:
+        conn = get_db()
+        c = conn.cursor()
+        c.execute('SELECT * FROM mizoram_bronze')
+        data = [dict(row) for row in c.fetchall()]
+        conn.close()
+        return jsonify(data)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 @app.route('/api/kpi')
 def api_kpi():
     try:
