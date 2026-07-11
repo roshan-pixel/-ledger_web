@@ -5,7 +5,7 @@ import os
 def sync_mizoram_data():
     try:
         # Load credentials
-        creds_path = os.path.join(os.path.dirname(__file__), 'credentials.json')
+        creds_path = '/etc/secrets/credentials.json' if os.path.exists('/etc/secrets/credentials.json') else os.path.join(os.path.dirname(__file__), 'credentials.json')
         if not os.path.exists(creds_path):
             print("No credentials.json found.")
             return False
