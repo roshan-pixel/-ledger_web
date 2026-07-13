@@ -267,11 +267,13 @@
                         <th>Amount (₹)</th>
                         <th>Total SP</th>
                         <th>Status</th>
+                        <th style="text-align:center;">Dispatched</th>
+                        <th>Remark</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody id="historyBody">
-                    <tr><td colspan="8" style="text-align:center; color:var(--muted); padding:2rem;">Loading history...</td></tr>
+                    <tr><td colspan="10" style="text-align:center; color:var(--muted); padding:2rem;">Loading history...</td></tr>
                 </tbody>
             </table>
         </div>
@@ -302,6 +304,19 @@
     </div>
 </div>
 
+<div class="modal-overlay" id="remarkModal" onclick="if(event.target===this) closeRemarkModal()">
+    <div class="modal-content" style="max-width:400px;">
+        <div class="modal-header">
+            <div class="modal-title" style="margin:0;">Invoice Remark</div>
+            <button class="modal-close" onclick="closeRemarkModal()">&times;</button>
+        </div>
+        <textarea id="remarkInput" rows="4" style="width:100%; padding:0.8rem; border-radius:8px; border:1px solid var(--border); background:rgba(0,0,0,0.2); color:white; font-family:inherit; margin-bottom:1rem; resize:vertical; font-size:1rem;"></textarea>
+        <div style="text-align:right;">
+            <button class="btn-view" style="width:100%;" onclick="saveRemark()">Save Remark</button>
+        </div>
+    </div>
+</div>
+
 <div id="toast"></div>
 
 <script>
@@ -314,7 +329,7 @@
             tbody.innerHTML = '';
             
             if (!data.invoices || data.invoices.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; color:var(--muted); padding:2rem;">No invoices generated yet.</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="10" style="text-align:center; color:var(--muted); padding:2rem;">No invoices generated yet.</td></tr>';
                 return;
             }
             
@@ -330,6 +345,7 @@
                     }
                 } catch(e) {}
                 
+                let safeRemark = (inv.remark || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
                 tr.innerHTML = `
                     <td class="inv-no">${inv.invoice_no || '-'}</td>
                     <td>${dateStr}</td>
@@ -338,6 +354,8 @@
                     <td class="amt">${parseFloat(inv.amount || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
                     <td class="amt" style="color:#818cf8;font-weight:600;">${parseFloat(inv.grand_total_sp || 0).toFixed(2)}</td>
                     <td><span class="status ${inv.status || 'active'}">${inv.status || 'active'}</span></td>
+                    <td style="text-align:center;"><input type="checkbox" style="cursor:pointer; width:1.2rem; height:1.2rem;" ${inv.is_dispatched ? 'checked' : ''} onchange="toggleDispatched(${inv.id}, this.checked)"></td>
+                    <td><button class="btn-view" style="padding:0.3rem 0.6rem; font-size:0.75rem;" onclick="openRemarkModal(${inv.id}, '${safeRemark}')">Remark</button></td>
                     <td><button class="btn-view" onclick="viewOrder(${index})">View Order</button></td>
                 `;
                 tbody.appendChild(tr);
@@ -398,6 +416,50 @@
         } catch (e) {
             console.error(e);
             alert('Network error cancelling invoice.');
+        }
+    }
+
+    async function toggleDispatched(id, is_checked) {
+        try {
+            await fetch('/api/invoice/update/' + id, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({is_dispatched: is_checked})
+            });
+            showToast('Dispatched status updated', 'success');
+        } catch(e) {
+            console.error(e);
+            showToast('Failed to update dispatched status', 'error');
+        }
+    }
+    
+    let currentRemarkId = null;
+    function openRemarkModal(id, currentRemark) {
+        currentRemarkId = id;
+        document.getElementById('remarkInput').value = currentRemark || '';
+        document.getElementById('remarkModal').classList.add('active');
+    }
+    
+    function closeRemarkModal() {
+        document.getElementById('remarkModal').classList.remove('active');
+        currentRemarkId = null;
+    }
+    
+    async function saveRemark() {
+        if (!currentRemarkId) return;
+        const text = document.getElementById('remarkInput').value;
+        try {
+            await fetch('/api/invoice/update/' + currentRemarkId, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({remark: text})
+            });
+            showToast('Remark saved', 'success');
+            closeRemarkModal();
+            loadHistory(); // reload to update memory state
+        } catch(e) {
+            console.error(e);
+            showToast('Failed to save remark', 'error');
         }
     }
 

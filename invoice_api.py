@@ -82,6 +82,14 @@ def init_db():
         c.execute("ALTER TABLE invoices ADD COLUMN total_sp REAL DEFAULT 0.0")
     except sqlite3.OperationalError:
         pass
+    try:
+        c.execute("ALTER TABLE invoices ADD COLUMN is_dispatched INTEGER DEFAULT 0")
+    except sqlite3.OperationalError:
+        pass
+    try:
+        c.execute("ALTER TABLE invoices ADD COLUMN remark TEXT DEFAULT ''")
+    except sqlite3.OperationalError:
+        pass
     conn.commit()
     conn.close()
 
@@ -243,11 +251,34 @@ def list_invoices():
                 'date_created': r['date_created'],
                 'status': status_val,
                 'items': items_json,
-                'grand_total_sp': db_sp
+                'grand_total_sp': db_sp,
+                'is_dispatched': r['is_dispatched'] if 'is_dispatched' in keys else 0,
+                'remark': r['remark'] if 'remark' in keys else ''
             })
             
         conn.close()
         return jsonify({'invoices': invoices})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@invoice_api.route('/api/invoice/update/<int:invoice_id>', methods=['POST'])
+def update_invoice_info(invoice_id):
+    from app import get_db
+    try:
+        data = request.get_json()
+        conn = get_db()
+        c = conn.cursor()
+        
+        if 'is_dispatched' in data:
+            val = 1 if data['is_dispatched'] else 0
+            c.execute("UPDATE invoices SET is_dispatched = ? WHERE id = ?", (val, invoice_id))
+            
+        if 'remark' in data:
+            c.execute("UPDATE invoices SET remark = ? WHERE id = ?", (data['remark'], invoice_id))
+            
+        conn.commit()
+        conn.close()
+        return jsonify({'success': True})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
