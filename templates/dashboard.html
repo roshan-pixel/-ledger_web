@@ -34,6 +34,10 @@
             --grad-conversion: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             --grad-satisfaction: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
             
+            --grad-remaining: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+            --grad-rem-val: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            --grad-skus: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+            
             --blur: blur(16px);
         }
 
@@ -208,6 +212,9 @@
         .val-users { background-image: var(--grad-users); }
         .val-conversion { background-image: var(--grad-conversion); }
         .val-satisfaction { background-image: var(--grad-satisfaction); }
+        .val-remaining { background-image: var(--grad-remaining); }
+        .val-rem-val { background-image: var(--grad-rem-val); }
+        .val-skus { background-image: var(--grad-skus); }
 
         .kpi-footer {
             margin-top: 1.5rem;
@@ -410,6 +417,51 @@
                 </div>
                 <div class="glow-line" style="background: linear-gradient(90deg, transparent, #3b82f6, transparent);"></div>
             </div>
+
+            <!-- Remaining Qty KPI -->
+            <div class="kpi-card">
+                <div class="kpi-header">
+                    <span class="kpi-title">Remaining Qty</span>
+                    <div class="kpi-icon" style="color: #ec4899;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"></path><path d="M14 17H5"></path><circle cx="17" cy="17" r="3"></circle><circle cx="7" cy="7" r="3"></circle></svg>
+                    </div>
+                </div>
+                <h2 class="kpi-value val-remaining" id="remaining-qty">...</h2>
+                <div class="kpi-footer">
+                    <span class="trend-label">Total remaining items</span>
+                </div>
+                <div class="glow-line" style="background: linear-gradient(90deg, transparent, #ec4899, transparent);"></div>
+            </div>
+
+            <!-- Remaining Value KPI -->
+            <div class="kpi-card">
+                <div class="kpi-header">
+                    <span class="kpi-title">Remaining Value</span>
+                    <div class="kpi-icon" style="color: #06b6d4;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    </div>
+                </div>
+                <h2 class="kpi-value val-rem-val" id="remaining-val">...</h2>
+                <div class="kpi-footer">
+                    <span class="trend-label">Value of current stock</span>
+                </div>
+                <div class="glow-line" style="background: linear-gradient(90deg, transparent, #06b6d4, transparent);"></div>
+            </div>
+
+            <!-- Total SKUs KPI -->
+            <div class="kpi-card">
+                <div class="kpi-header">
+                    <span class="kpi-title">Total SKUs</span>
+                    <div class="kpi-icon" style="color: #f43f5e;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                    </div>
+                </div>
+                <h2 class="kpi-value val-skus" id="total-skus">...</h2>
+                <div class="kpi-footer">
+                    <span class="trend-label">Unique products in inventory</span>
+                </div>
+                <div class="glow-line" style="background: linear-gradient(90deg, transparent, #f43f5e, transparent);"></div>
+            </div>
         </section>
     </main>
 
@@ -444,6 +496,9 @@
                 document.getElementById('monthly-sales').innerText = '₹' + parseFloat(data['Monthly Sales Value']).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
                 document.getElementById('week-sales').innerText = '₹' + parseFloat(data['Week Sales Value']).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
                 document.getElementById('stock-alerts').innerText = Math.round(data['Low Stock Count']) + ' / ' + Math.round(data['Out of Stock Count']);
+                document.getElementById('remaining-qty').innerText = parseFloat(data['Remaining Qty'] || 0).toLocaleString('en-IN');
+                document.getElementById('remaining-val').innerText = '₹' + parseFloat(data['Remaining Value'] || 0).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                document.getElementById('total-skus').innerText = data['Total SKUs'] || 0;
                 
                 // Update missing data
                 if (data['Reporting Period']) {
