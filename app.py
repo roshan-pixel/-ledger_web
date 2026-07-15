@@ -230,7 +230,7 @@ def api_kpi():
         rem_qty = c.fetchone()[0] or 0
         
         c.execute(f"SELECT SUM(CAST(REPLACE(c{rem_val_idx}, ',', '') AS REAL)) FROM inventory WHERE c{rem_val_idx} != '' AND UPPER(c3) != 'TOTAL'")
-        rem_val = c.fetchone()[0] or 0
+        # We will override rem_val below to ensure it perfectly matches Gross - Sales
         
         # Calculate Gross Stock Value using c8 (Gross Value Rs.)
         c.execute(f"SELECT SUM(CAST(REPLACE(c8, ',', '') AS REAL)) FROM inventory WHERE c8 != '' AND UPPER(c3) != 'TOTAL'")
@@ -264,6 +264,12 @@ def api_kpi():
                     week_sales += amt
             except Exception:
                 pass
+                
+        # To ensure the dashboard is mathematically consistent for the user:
+        # Remaining Value should equal Gross Stock Value - Monthly Sales Value
+        rem_val = gross_val - monthly_sales
+        if rem_val < 0: 
+            rem_val = 0
         
         # Read other static KPIs from DB
         c.execute("SELECT key, value FROM kpis")
