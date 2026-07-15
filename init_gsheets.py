@@ -74,15 +74,17 @@ def init_google_sheets():
     try:
         inv_ws = sheet.worksheet('Invoices')
     except gspread.exceptions.WorksheetNotFound:
-        inv_ws = sheet.add_worksheet('Invoices', rows=1000, cols=10)
+        inv_ws = sheet.add_worksheet('Invoices', rows=1000, cols=12)
         
     c.execute("SELECT * FROM invoices")
     rows = c.fetchall()
-    sheet_data = [['ID', 'Invoice No', 'DS Code', 'Customer Name', 'Amount', 'Date Created', 'Items', 'Status', 'Total SP']]
+    sheet_data = [['ID', 'Invoice No', 'DS Code', 'Customer Name', 'Amount', 'Date Created', 'Items', 'Status', 'Total SP', 'Is Dispatched', 'Remark']]
     for r in rows:
         keys = r.keys()
         status_val = r['status'] if 'status' in keys else 'active'
         total_sp_val = r['total_sp'] if 'total_sp' in keys else 0.0
+        is_dispatched = r['is_dispatched'] if 'is_dispatched' in keys else 0
+        remark = r['remark'] if 'remark' in keys else ''
         
         if status_val == 'cancelled':
             continue
@@ -96,7 +98,9 @@ def init_google_sheets():
             r['date_created'], 
             r['items'], 
             status_val, 
-            total_sp_val
+            total_sp_val,
+            is_dispatched,
+            remark
         ])
     inv_ws.clear()
     inv_ws.update(values=sheet_data, range_name='A1')

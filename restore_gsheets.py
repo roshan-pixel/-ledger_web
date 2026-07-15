@@ -63,14 +63,17 @@ def restore_from_gsheets():
             if len(inv_data) > 1:
                 c.execute("DELETE FROM invoices")
                 for row in inv_data[1:]:
-                    # ID, Invoice No, DS Code, Customer Name, Amount, Date Created, Items, Status, Total SP
-                    while len(row) < 9: row.append('')
+                    # ID, Invoice No, DS Code, Customer Name, Amount, Date Created, Items, Status, Total SP, Is Dispatched, Remark
+                    while len(row) < 11: row.append('')
                     
                     # Strip leading quote if it was added to prevent formula execution in sheets
                     if row[1] and str(row[1]).startswith("'"):
                         row[1] = str(row[1]).lstrip("'")
                         
-                    c.execute("INSERT INTO invoices (id, invoice_no, ds_code, customer_name, amount, date_created, items, status, total_sp) VALUES (?,?,?,?,?,?,?,?,?)", row)
+                    # Handle empty strings for integer column 'is_dispatched'
+                    if row[9] == '': row[9] = 0
+                        
+                    c.execute("INSERT INTO invoices (id, invoice_no, ds_code, customer_name, amount, date_created, items, status, total_sp, is_dispatched, remark) VALUES (?,?,?,?,?,?,?,?,?,?,?)", row[:11])
         except Exception as e:
             print("Error restoring Invoices:", e)
             

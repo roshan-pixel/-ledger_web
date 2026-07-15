@@ -278,6 +278,16 @@ def update_invoice_info(invoice_id):
             
         conn.commit()
         conn.close()
+        
+        # Trigger background sync to Google Sheets
+        try:
+            from init_gsheets import init_google_sheets
+            t = threading.Thread(target=init_google_sheets)
+            t.daemon = True
+            t.start()
+        except Exception as e:
+            print("Failed to start gsheets sync:", e)
+            
         return jsonify({'success': True})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
