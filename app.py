@@ -236,8 +236,11 @@ def api_kpi():
         c.execute(f"SELECT SUM(CAST(REPLACE(c8, ',', '') AS REAL)) FROM inventory WHERE c8 != '' AND UPPER(c3) != 'TOTAL'")
         gross_val = c.fetchone()[0] or 0
         
-        c.execute(f"SELECT COUNT(*) FROM inventory WHERE CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) <= 10 AND c{rem_qty_idx} != '' AND UPPER(c3) != 'TOTAL'")
+        c.execute(f"SELECT COUNT(*) FROM inventory WHERE CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) <= 10 AND CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) > 0 AND c{rem_qty_idx} != '' AND UPPER(c3) != 'TOTAL'")
         low_stock = c.fetchone()[0] or 0
+        
+        c.execute(f"SELECT COUNT(*) FROM inventory WHERE CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) <= 0 AND c{rem_qty_idx} != '' AND UPPER(c3) != 'TOTAL'")
+        out_of_stock = c.fetchone()[0] or 0
         
         # Calculate Monthly Sales Value and Week Sales Value directly from the invoices table
         c.execute("SELECT date_created, amount FROM invoices WHERE status != 'cancelled'")
@@ -271,7 +274,8 @@ def api_kpi():
         kpis['Remaining Qty'] = str(rem_qty)
         kpis['Gross Stock Value'] = str(gross_val)
         kpis['Remaining Value'] = str(rem_val)
-        kpis['Low Stock counts'] = str(low_stock)
+        kpis['Low Stock Count'] = str(low_stock)
+        kpis['Out of Stock Count'] = str(out_of_stock)
         kpis['Monthly Sales Value'] = str(monthly_sales)
         kpis['Week Sales Value'] = str(week_sales)
         
