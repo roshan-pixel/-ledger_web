@@ -239,17 +239,28 @@ def api_kpi():
         c.execute(f"SELECT COUNT(*) FROM inventory WHERE CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) <= 10 AND c{rem_qty_idx} != '' AND UPPER(c3) != 'TOTAL'")
         low_stock = c.fetchone()[0] or 0
         
-        # Calculate Monthly Sales Value (Sum of all Sale Value columns)
+        # Calculate Monthly Sales Value and Week Sales Value directly from the invoices table
+        c.execute("SELECT date_created, amount FROM invoices WHERE status != 'cancelled'")
         monthly_sales = 0
-        sale_val_cols = []
-        for i, h in enumerate(headers):
-            if str(h).startswith("Sale Value"):
-                sale_val_cols.append(f"c{i+1}")
-                
-        for col in sale_val_cols:
-            c.execute(f"SELECT SUM(CAST(REPLACE({col}, ',', '') AS REAL)) FROM inventory WHERE {col} != '' AND UPPER(c3) != 'TOTAL'")
-            s = c.fetchone()[0] or 0
-            monthly_sales += s
+        week_sales = 0
+        import datetime
+        now = datetime.datetime.now()
+        
+        for r in c.fetchall():
+            d_str = r[0]
+            amt = r[1] or 0
+            monthly_sales += amt
+            
+            try:
+                if '/' in d_str:
+                    dt = datetime.datetime.strptime(d_str, '%d/%m/%Y')
+                else:
+                    dt = datetime.datetime.strptime(d_str, '%Y-%m-%d')
+                    
+                if (now - dt).days <= 7:
+                    week_sales += amt
+            except Exception:
+                pass
         
         # Read other static KPIs from DB
         c.execute("SELECT key, value FROM kpis")
@@ -262,7 +273,7 @@ def api_kpi():
         kpis['Remaining Value'] = str(rem_val)
         kpis['Low Stock counts'] = str(low_stock)
         kpis['Monthly Sales Value'] = str(monthly_sales)
-        kpis['Week Sales Value'] = str(monthly_sales) # Assuming all current sales represent this active period
+        kpis['Week Sales Value'] = str(week_sales)
         
         conn.close()
         return jsonify(kpis)
