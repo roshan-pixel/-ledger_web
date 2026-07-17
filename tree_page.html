@@ -1,0 +1,879 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" class="no-applicationcache cors no-ie8compat history json postmessage strictmode devicemotion deviceorientation filereader localstorage sessionstorage hashchange cssgradients multiplebgs opacity cssremunit rgba fileinput formattribute placeholder hsla supports fontface generatedcontent no-cssscrollbar formvalidation textshadow fullscreen filesystem cssanimations backgroundsize borderradius borderimage boxshadow csscolumns csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-breakinside flexbox flexboxlegacy no-overflowscrolling cssreflections csstransforms csstransforms3d csstransitions"><head><title>
+	||User Panel of  DS 62C04A||
+</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="description"><meta name="author"><link rel="icon" href="assets/img/basic/favicon.ico" type="image/x-icon"><link href="../SweetAlert/sweet-alert.css" rel="stylesheet">
+    <script src="../SweetAlert/sweet-alert.js"></script>
+
+    <script src="../Common.js"></script>
+    <link href="../ShoppingPoint/CSS/jquery.datetimepicker.css" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/app.css">
+     <style>
+        .loader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #F5F8FA;
+            z-index: 9998;
+            text-align: center;
+        }
+
+        .plane-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+    </style>
+    
+    <script src="js/jQuery-2.1.4.min.js"></script>
+
+    
+    <style type="text/css">/* Chart.js */
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style><style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;box-sizing: content-box;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style></head>
+<body class="loaded">
+    <form name="aspnetForm" method="post" action="./UserGroupTree.aspx" id="aspnetForm">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTQwMzY5MTAxNQ8WAh4TVmFsaWRhdGVSZXF1ZXN0TW9kZQIBFgJmD2QWAgIDD2QWBAIBD2QWAgIBDxYCHgtfIUl0ZW1Db3VudGZkAgIPZBYOAgUPDxYCHghJbWFnZVVybAURLi4vaW1hZ2VzL0dNQS5naWZkZAIHDw8WAh4EVGV4dAUGNjJDMDRBFgQeC29ubW91c2VvdmVyBTRzaG93KCdjdGwwMF9Db250ZW50UGxhY2VIb2xkZXIxX2RpdnAnKTsgcmV0dXJuIHRydWU7Hgpvbm1vdXNlb3V0BTRoaWRlKCdjdGwwMF9Db250ZW50UGxhY2VIb2xkZXIxX2RpdnAnKTsgcmV0dXJuIHRydWU7ZAIJDw8WAh8DBRRST1NIQU4gU0lOR0ggUkFUSE9SRWRkAgsPFgIeCWlubmVyaHRtbAWrATxpZnJhbWUgbWFyZ2luaGVpZ2h0PScwJyBmcmFtZWJvcmRlcj0nMCcgaGVpZ2h0PSczNTBweCcgYWxsb3d0cmFuc3BhcmVuY3k9J2ZhbHNlJyBzY3JvbGxpbmc9J25vJyB3aWR0aD0nNjAwJyAgc3JjPScuLi9HUG9wVXAuYXNweD9EU0lEPXk1SkNRVDZ2NE9LUjBwN1dpMW9Sdmc9PScgPjwvaWZyYW1lPmQCDQ8PFgIeB0VuYWJsZWRoZGQCDw8WAh8BAgEWAmYPZBYIAgEPFgIeA3NyYwURLi4vaW1hZ2VzL1lNQS5naWZkAgMPDxYEHwMFBjk3ODgwRB4PQ29tbWFuZEFyZ3VtZW50BQY5Nzg4MEQWBB8EBUJzaG93KCdjdGwwMF9Db250ZW50UGxhY2VIb2xkZXIxX3JwdGxlZnRfY3RsMDBfZGl2MCcpOyByZXR1cm4gdHJ1ZTsfBQVCaGlkZSgnY3RsMDBfQ29udGVudFBsYWNlSG9sZGVyMV9ycHRsZWZ0X2N0bDAwX2RpdjAnKTsgcmV0dXJuIHRydWU7ZAIEDxUBEUJBTEtSSVNITkEgVElXQVJJZAIFDxYCHwYFqgE8aWZyYW1lIG1hcmdpbmhlaWdodD0nMCcgZnJhbWVib3JkZXI9JzAnIGhlaWdodD0nMzQwcHgnIGFsbG93dHJhbnNwYXJlbmN5PSdmYWxzZScgd2lkdGg9JzYwMCcgc2Nyb2xsaW5nPSdubycgc3JjPScuLi9HUG9wVXAuYXNweD9EU0lEPUJ1ZURLbGZUdm5nUmlSTlo2SGhDQlE9PScgPjwvaWZyYW1lPmQCEQ8WAh8BAgEWAmYPZBYIAgEPFgIfCAURLi4vaW1hZ2VzL0JGQS5naWZkAgMPDxYEHwMFB0FDMjlCMDYfCQUHQUMyOUIwNhYEHwQFQ3Nob3coJ2N0bDAwX0NvbnRlbnRQbGFjZUhvbGRlcjFfcnB0cmlnaHRfY3RsMDBfZGl2MScpOyByZXR1cm4gdHJ1ZTsfBQVDaGlkZSgnY3RsMDBfQ29udGVudFBsYWNlSG9sZGVyMV9ycHRyaWdodF9jdGwwMF9kaXYxJyk7IHJldHVybiB0cnVlO2QCBA8VAQxQQURBTSBLQU5XQVJkAgUPFgIfBgWqATxpZnJhbWUgbWFyZ2luaGVpZ2h0PScwJyBmcmFtZWJvcmRlcj0nMCcgaGVpZ2h0PSczNDBweCcgYWxsb3d0cmFuc3BhcmVuY3k9J2ZhbHNlJyB3aWR0aD0nNjAwJyBzY3JvbGxpbmc9J25vJyBzcmM9Jy4uL0dQb3BVcC5hc3B4P0RTSUQ9RWpPNDdUcW5kbVlJZHZHc3hIa3Rsdz09JyA+PC9pZnJhbWU+ZBgBBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WCQUSY3RsMDAkcmJxdWFsaXR5eWVzBRFjdGwwMCRyYnF1YWxpdHlObwURY3RsMDAkcmJxdWFsaXR5Tm8FEmN0bDAwJHJiZnVsZmlsbHllcwURY3RsMDAkcmJmdWxmaWxsbm8FEWN0bDAwJHJiZnVsZmlsbG5vBRBjdGwwMCRyYnJlZmVyeWVzBQ9jdGwwMCRyYnJlZmVyTm8FD2N0bDAwJHJicmVmZXJObwFrX+dK9RKpVJv0Zjg9hjFVWg+/fWf9urFF2RuR5dwe">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="878DEB73">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAA9/W8gWhLPI35gwBiGNQim2fWL5aaHMHyNEIaHv8TqKnjJ3ZaYbLeBXeGGaB/T2ZV02sxoRJ3paENTFkfMlZrioW4TZSpJ5tocXBUMxMfBWesQ6XUp680gUPIP0JBNqxph6WXD7+H5IAi35unXiyIc6k2OVzQhvK4GLP7YnD2no5NyoowcyzVeW/YP4SmKtY/S76irhN4t1tke+rfJjuhjF2lgdvMZVLI3349yzuMVi4mVnHx3iPt5sGTSEZFdM4306mzpFOeRbAWH8XcQtrWYXH02B84tp6Ya5M6YB9L7dh8D0J7Mb/rUTzxwOx1EVtF5rP/32b4ziThAk/aEYpE52rPMv7McbgcoJKJd0dWgg+w==">
+</div>
+        <div>
+
+            <!-- Pre loader -->
+<div id="loader" class="loader loader-fade">
+    <div class="plane-container">
+        <div class="preloader-wrapper small active">
+            <div class="spinner-layer spinner-blue">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                <div class="circle"></div>
+            </div><div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+            </div>
+
+            <div class="spinner-layer spinner-red">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                <div class="circle"></div>
+            </div><div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+            </div>
+
+            <div class="spinner-layer spinner-yellow">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                <div class="circle"></div>
+            </div><div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+            </div>
+
+            <div class="spinner-layer spinner-green">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                <div class="circle"></div>
+            </div><div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+            <div id="app">
+                <aside id="ctl00_leftmenu" class="main-sidebar fixed offcanvas shadow bg-primary text-white no-b sidebar-dark" data-toggle="offcanvas">
+                    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 720px;"><section class="sidebar" style="height: 720px; overflow: hidden; width: auto;">
+                        <div class="mt-2 mb-2 ml-2">
+                            <a href="usernew.aspx">
+                                <img src="assets/img/basic/logow.png" alt=""></a>
+                        </div>
+                        <div class="relative">
+                            <a data-toggle="collapse" href="#userSettingsCollapse" role="button" aria-expanded="false" aria-controls="userSettingsCollapse" class="btn-fab btn-fab-sm absolute fab-right-bottom fab-top btn-primary shadow1 " style="display: none">
+                                <i class="icon icon-cogs" style="display: none"></i>
+                            </a>
+
+                            <div class="user-panel p-3 mb-2" style="background:#1a52b0">
+
+                                <div>
+                                    <div class="float-left image">
+                                        <img src="assets/img/dummy/u1.png" id="ctl00_user_avatar" class="user_avatar" onerror="this.onerror=null;this.src='assets/img/dummy/u1.png';">
+                                    </div>
+                                    <div class="float-left info">
+                                        <h6 class="font-weight-light mt-2 mb-1">ROSHAN SINGH RATHORE</h6>
+                                        <a href="#"><i class="icon-circle text-primary blink"></i>Online</a>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="collapse multi-collapse" id="userSettingsCollapse">
+                                    <div class="list-group mt-3 shadow">
+                                        <a href="profile.aspx" class="list-group-item list-group-item-action ">
+                                            <i class="mr-2 icon-umbrella text-blue"></i>Profile
+                                        </a>
+
+                                        <a href="ChangePwdNew.aspx" class="list-group-item list-group-item-action"><i class="mr-2 icon-security text-purple"></i>Change Password</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="sidebar-menu">
+                            <li class="header"><strong>MAIN NAVIGATION</strong></li>
+                            <li><a href="UserNew.aspx"><i class="icon icon-grid_on text-lime s-18"></i><span>Dashboard</span> </a></li>
+                            <li class="treeview" id="Li6"><a href="#"><i class="icon icon-account_box s-18"></i>My Profile <i class="icon icon-angle-left s-18 pull-right"></i></a>
+                                <ul class="treeview-menu">
+                                    
+
+                                    
+                                    <li><a href="profile.aspx"><i class="icon icon-circle-o"></i>
+									My Profile</a></li>
+                                    
+                                    
+
+                                    <li><a href="ChangeEmail.aspx"><i class="icon icon-circle-o"></i>Update Email</a></li>
+                                    
+                                    <li><a href="../agriment.aspx" title="" target="_blank"><i class="icon icon-circle-o"></i>Agreement</a></li>
+                                    <li><a href="../AddEndumPrint.aspx" title="" target="_blank"><i class="icon icon-circle-o"></i>Addendum</a></li>
+                                    
+                                    <li><a href="UnderTakingTopaz.aspx" title="" target="_blank"><i class="icon icon-circle-o"></i>Under Taking Topaz</a></li>
+                                    
+
+                                    <li><a href="UserKycPhysical.aspx"><i class="icon icon-circle-o"></i>Reupload KYC</a></li>
+
+                                    
+
+
+
+
+
+                                    
+                                    <li><a href="KYCFINAL.aspx" title="" target="_blank"><i class="icon icon-circle-o"></i>View Kyc</a></li>
+                                    
+                                </ul>
+                            </li>
+
+                            
+                            <li class="treeview"><a href="#"><i class="icon icon-group text-green s-18"></i>Genealogy <i class="icon icon-angle-left s-18 pull-right"></i></a>
+                                <ul class="treeview-menu">
+                                    <li><a href="UserGroupTree.aspx"><i class="icon icon-circle-o"></i>Sales Team</a></li>
+                                    <li><a href="UserDownLineDirectNew.aspx"><i class="icon icon-circle-o"></i>Direct DS Code </a></li>
+
+                                    <li><a href="UserGroupDownLineA.aspx"><i class="icon icon-circle-o"></i>Downline Printing</a></li>
+                                    <li><a href="UserGroupDownLine.aspx"><i class="icon icon-circle-o"></i>Depth Downline   </a></li>
+                                      <li><a href=" frmTeamweeklySp.aspx"><i class="icon icon-circle-o"></i>Team SP weekly    </a></li>
+                        
+                                </ul>
+                            </li>
+
+
+
+
+
+                            <li class="treeview"><a href="#"><i class="icon icon-supervisor_account text-red s-18"></i>Account <i class="icon icon-angle-left s-18 pull-right"></i></a>
+
+                                <ul class="treeview-menu">
+                                    <li><a href="UserLevelNew.aspx"><i class="icon icon-circle-o"></i>Sales Performance/Diamond Royalty</a>
+                                    </li>
+                                    <li><a href="UserRspPayout.aspx"><i class="icon icon-circle-o"></i>My Regular Sales Comission</a>
+                                    </li>
+
+
+                                    <li><a href="UserTripBonanzaPayout.aspx"><i class="icon icon-circle-o"></i>Trip/Bonanza Comission</a>
+                                    </li>
+
+
+                                    <li><a href="UserRepurchasePaymentNew.aspx"><i class="icon icon-circle-o"></i>My Repurchase Payments</a>
+                                    </li>
+                                    <li><a href="LevelPandingListNew.aspx"><i class="icon icon-circle-o"></i>Step Pendency</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!--            <li class="header light mt-3"><strong>UI COMPONENTS</strong></li> -->
+
+                            <li class="treeview ">
+                                <a href="#">
+                                    <i class="icon icon-award5 amber-text s-18"></i><span>Trip/Bonanza</span>
+                                    <i class="icon icon-angle-left s-18 pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+
+
+                                    <li><a href="UserMansoonJulyBonanzaNew.aspx"><i class="icon icon-circle-o"></i>Monsoon Bonanza</a>
+                                    </li> 
+                                    
+
+
+                                    
+
+
+                                     
+
+
+                                    <li><a href="UserTripAchieverListNew.aspx"><i class="icon icon-date_range"></i>My Trip List</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="icon icon-credit-card s-18"></i><span>Order Form</span>
+                                    <i class="icon icon-angle-left s-18 pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+
+                                    
+                                    <li><a href="frmsalenewonline.aspx"><i class="icon icon-date_range"></i>Order Form</a></li>
+                                     
+                                    <li><a href="frmsalenewOnlineKit.aspx"><i class="icon icon-date_range"></i>MY DAILY CHOICE</a></li>
+                                    
+                                    
+
+                                    
+                                    <li><a href="MyPurchaseListNew.aspx"><i class="icon icon-date_range"></i>Pending Orders </a></li>
+                                    <li><a href="MyPurchaseListApNew.aspx"><i class="icon icon-date_range"></i>My Approved Orders</a></li>
+                                    <li><a href="frmcustomersalelist.aspx"><i class="icon icon-date_range"></i>Preferred Customer Sale</a></li>
+                                    <li><a href="itemlistuser.aspx"><i class="icon icon-date_range"></i>Product List</a></li>
+                                </ul>
+                            </li>
+
+
+                            
+                            <li><a href="frmAddGstNo.aspx"><i class="icon icon-key4 text-lime s-18"></i><span>Add GST No.</span> </a></li>
+                            
+
+
+
+                            
+                            <li><a href="UserShareStatement.aspx"><i class="icon icon-key4 text-lime s-18"></i><span>Statement</span> </a></li>
+                            
+
+
+                            
+
+                            
+
+                            
+                            <li class="treeview ">
+                                <a href="#">
+                                    <i class="icon icon-mail-add text-lime s-18"></i><span>Grievance</span>
+                                    <i class="icon icon-angle-left s-18 pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="frmAddComplainNew.aspx"><i class="icon icon-circle-o"></i>Add</a>
+                                    </li>
+                                    <li><a href="frmViewComplainNew.aspx"><i class="icon icon-date_range"></i>View</a>
+                                    </li>
+
+                                    <li><a href="callus.aspx"><i class="icon icon-date_range"></i>Call/Mail Us </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+
+
+
+
+
+                            
+
+
+                            
+
+                            <li><a href="ChangePwdNew.aspx"><i class="icon icon-key4 text-lime s-18"></i><span>Change Password</span> </a></li>
+
+                            
+
+
+                            <li class="treeview ">
+                                <a href="#">
+                                    <i class="icon icon-mail-add text-lime s-18"></i><span>Company Achievers</span>
+                                    <i class="icon icon-angle-left s-18 pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="UserRankAchiever.aspx"><i class="icon icon-circle-o"></i>Rank Achievers</a>
+                                    </li>
+                                    <li><a href="UserwebBonanza.aspx"><i class="icon icon-date_range"></i>Bonanza Achievers</a>
+                                    </li> 
+
+                                    <li><a href="Userwebtripachievers.aspx"><i class="icon icon-date_range"></i>Trip Achievers </a>
+                                    </li>
+                                    <li><a href="UserCarachievers.aspx"><i class="icon icon-date_range"></i>Car Achievers </a>
+                                    </li>
+                                    <li><a href="../files/business-plan.pdf" target="_blank"><i class="icon icon-date_range"></i>Marketing Plan </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="treeview ">
+                                <a href="#">
+                                    <i class="icon icon-mail-add text-lime s-18"></i><span>Id Card</span>
+                                    <i class="icon icon-angle-left s-18 pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="uploadphoto.aspx"><i class="icon icon-circle-o"></i>Upload ID Card Details</a></li>
+                                    
+                                    <li style="display: none"><a href="frmsalenewidCard.aspx"><i class="icon icon-date_range"></i>Get Id Card</a></li>
+                                    <li><a href="../idcardnew.aspx"><i class="icon icon-date_range"></i>View Id Card</a></li>
+                                </ul>
+
+                            </li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="icon icon-credit-card s-18"></i><span>Public Notice</span>
+                                    <i class="icon icon-angle-left s-18 pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="Default11.aspx" target="blank"><i class="icon icon-date_range"></i>Times of India</a></li>
+                                    <li><a href="Default12.aspx" target="blank"><i class="icon icon-date_range"></i>Rashtriya Saharas</a></li>
+
+                                </ul>
+                            </li>
+
+
+                            <li><a href="UserlogoutNew.aspx"><i class="icon icon-sign-out amber-text s-18"></i><span>Logout</span> </a></li>
+                        </ul>
+                    </section><div class="slimScrollBar" style="background: rgba(0, 0, 0, 0.3); width: 5px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; height: 611.321px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+                </aside>
+                <!--Sidebar End-->
+
+                <div id="ctl00_uppermenu" class="has-sidebar-left">
+                    <div class="pos-f-t">
+                        <div class="collapse" id="navbarToggleExternalContent">
+                            <div class="bg-dark pt-2 pb-2 pl-4 pr-2">
+
+                                <div class="search-bar">
+                                    <input class="transparent s-24 text-white b-0 font-weight-lighter w-128 height-50" type="text" placeholder="start typing...">
+                                </div>
+                                <a href="#" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" class="paper-nav-toggle paper-nav-white active "><i></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sticky">
+                        <div class="navbar navbar-expand navbar-dark d-flex justify-content-between bd-navbar blue accent-3">
+                            <div class="relative">
+                                <a href="#" data-toggle="push-menu" class="paper-nav-toggle pp-nav-toggle">
+                                    <i></i>
+                                </a>
+                            </div>
+                            <!--Top Menu Start -->
+                            <div class="navbar-custom-menu">
+                                <ul class="nav navbar-nav">
+                                    <!-- Messages-->
+                                    <span id="ctl00_lblmsg" style="font-weight:normal;"></span>
+
+
+                                    <!-- Messages-->
+
+                                    <!-- Notifications -->
+                                    <li class="dropdown custom-dropdown notifications-menu">
+                                        <a href="#" class=" nav-link" data-toggle="dropdown" aria-expanded="false">
+                                            <i class="icon-notifications "></i>
+                                            <span class="badge badge-danger badge-mini rounded-circle">
+                                                0
+                                            </span>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li class="header">You have 0 notifications</li>
+                                            <li>
+                                                <!-- inner menu: contains the actual data -->
+                                                <ul class="menu">
+                                                    
+
+
+                                                </ul>
+                                            </li>
+                                            <li class="footer p-2 text-center"><a href="frmnotification.aspx">View all</a></li>
+                                        </ul>
+                                    </li>
+
+
+
+
+
+
+
+
+                                    <li class="dropdown custom-dropdown user user-menu ">
+                                        <a href="#" class="nav-link" data-toggle="dropdown">
+                                            <img src="assets/img/dummy/u8.png" id="ctl00_userimg" style="display: none" class="user-image" alt="User Image" onerror="this.onerror=null;this.src='assets/img/dummy/u8.png';">
+                                            <i class="icon-more_vert " style="display: none"></i>
+                                        </a>
+
+                                        <div class="dropdown-menu p-4 dropdown-menu-right" style="display: none">
+                                            <div class="row box justify-content-between my-4">
+                                                <div class="col">
+                                                    <a href="profile.aspx">
+                                                        <i class="icon-user purple lighten-2 avatar  r-5"></i>
+                                                        <div class="pt-1">Profile</div>
+                                                    </a>
+                                                </div>
+                                                <div class="col">
+                                                    <a href="ChangePwdNew.aspx">
+                                                        <i class="icon-beach_access pink lighten-1 avatar  r-5"></i>
+                                                        <div class="pt-1">Change Password</div>
+                                                    </a>
+                                                </div>
+                                                <div class="col">
+                                                    <a href="UserlogoutNew.aspx">
+                                                        <i class="icon-perm_data_setting indigo lighten-2 avatar  r-5"></i>
+                                                        <div class="pt-1">Logout</div>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <!-- Right Sidebar -->
+                
+    <style type="text/css">
+        .tree1 {
+            font-size: 12px;
+            color: #222;
+            line-height: 14px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+            .tree1 a {
+                color: #f34343;
+                text-decoration: none;
+            }
+
+                .tree1 a:hover {
+                    color: #222;
+                    text-decoration: none;
+                }
+
+        .main-user {
+            height: 108px;
+            width: 130px;
+            text-align: left;
+            padding-left: 10px;
+        }
+
+        .main-tree-bac {
+            height: 210px;
+            width: 130px;
+            background: url(images/tree.jpg) no-repeat;
+        }
+
+        .first-tree {
+            height: 99px !important;
+            width: 100%;
+            border: 0px solid #000;
+            overflow-x: scroll;
+        }
+
+            .first-tree .ftree-user {
+                height: 82px;
+                width: 120px;
+                text-align: center;
+                float: left
+            }
+
+        .second-tree {
+            height: 99px !important;
+            width: 100%;
+            border: 0px solid #000;
+            overflow-x: scroll;
+        }
+
+            .second-tree .stree-user {
+                height: 82px;
+                width: 120px;
+                text-align: center;
+                float: left
+            }
+
+
+
+
+
+
+        .demo_tree1 {
+            width: 5000px;
+        }
+    </style>
+
+
+    <link rel="stylesheet" href="assets/css/tree1.css">
+
+
+    <div class="page has-sidebar-left bg-light height-full">
+
+        <header class="blue accent-3 relative nav-sticky">
+            <div class="container-fluid text-white">
+                <div class="row">
+                    <div class="col">
+                        <h4>
+                            <i class="icon-user-o"></i>
+                            Sales Team    <span class="s-14"></span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <div class="animatedParent animateOnce">
+            <div class="container-fluid my-3">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body b-b">
+
+
+                                <script type="text/javascript">
+
+                                    function show(d) {
+                                        var item = document.getElementById(d);
+                                        item.fadein;
+                                        item.style.display = "";
+
+                                    }
+                                    function hide(d) {
+                                        var item = document.getElementById(d);
+                                        item.fadeout;
+                                        item.style.display = "none";
+
+                                    }
+                                </script>
+                                <div class="box box-info">
+                                    <div style="padding-left: 200px;" class="box-header with-border">
+
+                                        <br>
+
+                                        <br>
+                                        DS Code:
+                        <input name="ctl00$ContentPlaceHolder1$txtsearch" type="text" id="ctl00_ContentPlaceHolder1_txtsearch">
+                                        <input type="submit" name="ctl00$ContentPlaceHolder1$btnsearch" value="Search" id="ctl00_ContentPlaceHolder1_btnsearch" class="btn-success">
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <!-- form start -->
+                                    <div class="form-horizontal">
+                                        <div class="box-body">
+
+
+
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tree1">
+                                                <tbody><tr>
+                                                    <td width="140" valign="top">
+                                                        <div class="main-user">
+                                                            <a href="#">
+                                                                <img id="ctl00_ContentPlaceHolder1_imgmains" src="../images/GMA.gif" style="border-width:0px;"><br>
+                                                                <br>
+                                                                </a><a id="ctl00_ContentPlaceHolder1_lbkparentid" onmouseover="show('ctl00_ContentPlaceHolder1_divp'); return true;" onmouseout="hide('ctl00_ContentPlaceHolder1_divp'); return true;" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$lbkparentid','')">62C04A</a><br>
+                                                                <a href="#">(<span id="ctl00_ContentPlaceHolder1_lblparentname">ROSHAN SINGH RATHORE</span>)</a>
+                                                        </div>
+                                                        <div id="ctl00_ContentPlaceHolder1_divp" style="display: none; position: absolute; padding: 5px; margin-left: 85px; margin-top: -55px;"><iframe marginheight="0" frameborder="0" height="350px" allowtransparency="false" scrolling="no" width="600" src="../GPopUp.aspx?DSID=y5JCQT6v4OKR0p7Wi1oRvg=="></iframe></div>
+                                                    </td>
+                                                    <td width="1054">
+                                                        <input type="submit" name="ctl00$ContentPlaceHolder1$btnback" value="Back" id="ctl00_ContentPlaceHolder1_btnback" disabled="disabled" class="btn btn-large btn-primary  "></td>
+                                                </tr>
+                                                <tr>
+                                                    <td rowspan="2" class="main-tree-bac">&nbsp;</td>
+
+                                                    <td>
+                                                        <div class="first-tree">
+                                                            
+                                                                    <div class="ftree-user">
+                                                                        <a href="#">
+                                                                            <img src="../images/YMA.gif" id="ctl00_ContentPlaceHolder1_rptleft_ctl00_imgleft"></a><br>
+                                                                        <a id="ctl00_ContentPlaceHolder1_rptleft_ctl00_Link0" onmouseover="show('ctl00_ContentPlaceHolder1_rptleft_ctl00_div0'); return true;" onmouseout="hide('ctl00_ContentPlaceHolder1_rptleft_ctl00_div0'); return true;" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$rptleft$ctl00$Link0','')">97880D</a>
+                                                                        <br>
+                                                                        <a href="#">(BALKRISHNA TIWARI)</a>
+
+                                                                        <div id="ctl00_ContentPlaceHolder1_rptleft_ctl00_div0" style="position: absolute; display: none; padding: 5px; margin-left: 75px; margin-top: -55px;"><iframe marginheight="0" frameborder="0" height="340px" allowtransparency="false" width="600" scrolling="no" src="../GPopUp.aspx?DSID=BueDKlfTvngRiRNZ6HhCBQ=="></iframe></div>
+                                                                    </div>
+                                                                
+
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="second-tree">
+                                                            
+
+                                                                    <div class="stree-user">
+
+                                                                        <a href="#">
+                                                                            <img src="../images/BFA.gif" id="ctl00_ContentPlaceHolder1_rptright_ctl00_imgright"></a><br>
+                                                                        <a id="ctl00_ContentPlaceHolder1_rptright_ctl00_Link1" onmouseover="show('ctl00_ContentPlaceHolder1_rptright_ctl00_div1'); return true;" onmouseout="hide('ctl00_ContentPlaceHolder1_rptright_ctl00_div1'); return true;" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$rptright$ctl00$Link1','')">AC29B06</a><br>
+                                                                        <a href="#">(PADAM KANWAR)</a>
+                                                                        <div id="ctl00_ContentPlaceHolder1_rptright_ctl00_div1" style="position: absolute; display: none; padding: 5px; margin-left: 75px; margin-top: -55px;"><iframe marginheight="0" frameborder="0" height="340px" allowtransparency="false" width="600" scrolling="no" src="../GPopUp.aspx?DSID=EjO47TqndmYIdvGsxHktlw=="></iframe></div>
+
+                                                                    </div>
+
+                                                                
+
+
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody></table>
+
+
+
+
+                                            <br>
+
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+                <!-- /.right-sidebar -->
+                <!-- Add the sidebar's background. This div must be placed
+         immediately after the control sidebar -->
+                <div class="control-sidebar-bg shadow white fixed"></div>
+            </div>
+            <!--/#app -->
+            <!--/#app -->
+
+        </div>
+        <style>
+            <!-- Rating CSS -->
+            .rate {
+                float: left;
+                height: 46px;
+                padding: 0 10px;
+            }
+
+            .rate:not(:checked) > input {
+                position: absolute;
+                top: -9999px;
+            }
+
+            .rate:not(:checked) > label {
+                float: right;
+                width: 1em;
+                overflow: hidden;
+                white-space: nowrap;
+                cursor: pointer;
+                font-size: 30px;
+                color: #ccc;
+            }
+
+                .rate:not(:checked) > label:before {
+                    content: '★ ';
+                }
+
+            .rate > input:checked ~ label {
+                color: #ffde00;
+            }
+
+            .rate:not(:checked) > label:hover,
+            .rate:not(:checked) > label:hover ~ label {
+                color: #ffde00;
+            }
+
+            .rate > input:checked + label:hover,
+            .rate > input:checked + label:hover ~ label,
+            .rate > input:checked ~ label:hover,
+            .rate > input:checked ~ label:hover ~ label,
+            .rate > label:hover ~ input:checked ~ label {
+                color: #ffde00;
+            }
+        </style>
+        <script>
+            $(document).ready(function () {
+                $("input[type='radio']").click(function () {
+                    var radioValue = $("input[name='rate']:checked").val();
+                    if (radioValue) {
+                        var ratingValue = $('#hdfRating').val();
+                        ratingValue = radioValue;
+                        //alert("Your are a - " + radioValue); 
+                        //alert(ratingValue);
+                        $('input[id=hdfRating]').val(radioValue);
+
+                    }
+                });
+
+
+
+            });
+        </script>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Rate Your Previous Shopping Experience With us </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="display: none">
+                        <div style="border: 0px solid #000">
+                            <p style="margin-bottom: -5px; color: #222; font-weight: 600">Give Rating</p>
+                            <div class="rate" style="border: 0px solid #000; width: 160px;">
+
+                                <input type="radio" id="star5" name="rate" value="5 Star">
+                                <label for="star5" title="text">5 stars</label>
+                                <input type="radio" id="star4" name="rate" value="4 Star">
+                                <label for="star4" title="text">4 stars</label>
+                                <input type="radio" id="star3" name="rate" value="3 Star">
+                                <label for="star3" title="text">3 stars</label>
+                                <input type="radio" id="star2" name="rate" value="2 Star">
+                                <label for="star2" title="text">2 stars</label>
+                                <input type="radio" id="star1" name="rate" value="1 Star">
+                                <label for="star1" title="text">1 star</label>
+
+                                
+                            </div>
+
+                            <p style="clear: both; width: 100%; color: #000; margin-top: -10px;">
+                                <strong>Q. Are you satisfied with the Quality of Product ? </strong>
+                                <br>
+                                <strong>A.</strong> &nbsp;&nbsp;
+                                <input id="ctl00_rbqualityyes" type="radio" name="ctl00$Quality" value="rbqualityyes" checked="checked"><label for="ctl00_rbqualityyes">Yes</label>
+                                 &nbsp;&nbsp;&nbsp;
+                                <input id="ctl00_rbqualityNo" type="radio" name="ctl00$Quality" value="rbqualityNo"><label for="ctl00_rbqualityNo">No</label>
+                                
+                            </p>
+
+                            <p style="clear: both; width: 100%; color: #000; margin-top: -10px;">
+                                <strong>Q.  Is the product fulfilling your needs ? </strong>
+                                <br>
+                                <strong>A.</strong> &nbsp;&nbsp;
+                                <input id="ctl00_rbfulfillyes" type="radio" name="ctl00$fulfilling" value="rbfulfillyes" checked="checked"><label for="ctl00_rbfulfillyes">Yes</label>
+                                
+                                &nbsp;&nbsp;&nbsp;
+                                 <input id="ctl00_rbfulfillno" type="radio" name="ctl00$fulfilling" value="rbfulfillno"><label for="ctl00_rbfulfillno">No</label>
+                                
+                            </p>
+
+                            <p style="clear: both; width: 100%; color: #000; margin-top: -10px;">
+                                <strong>Q. Do you refer this product ? </strong>
+                                <br>
+                                <strong>A.</strong> &nbsp;&nbsp;
+                               
+                                <input id="ctl00_rbreferyes" type="radio" name="ctl00$refer" value="rbreferyes" checked="checked"><label for="ctl00_rbreferyes">Yes</label>
+                                &nbsp;&nbsp;&nbsp;
+                                 <input id="ctl00_rbreferNo" type="radio" name="ctl00$refer" value="rbreferNo"><label for="ctl00_rbreferNo">No</label>
+                                
+                            </p>
+
+                            <div style="clear: both"></div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="justify-content: flex-start;">
+                        <input type="hidden" name="ctl00$hdfRating" id="hdfRating">
+                        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal" style="float:right">Close</button> -->
+                        
+                        <input type="submit" name="ctl00$btnfeedback" value="Submit" id="ctl00_btnfeedback" class="btn btn-primary" style="float: left">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <script src="../ShoppingPoint/JS/jQuery-2.1.4.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
+
+        <script src="../ShoppingPoint/JS/jquery.datetimepicker.js"></script>
+        <script type="text/javascript">
+            $('.Datet').datetimepicker({
+                timepicker: false,
+                format: 'd/m/Y',
+                formatDate: 'Y/m/d'
+            });
+        </script>
+        <script src="assets/js/app.js"></script>
+        <script src="http://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+        <script src="http://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="doc/css/style.css">
+        <link rel="stylesheet" type="text/css" href="dist/css/tooltipster.bundle.min.css">
+        <script type="text/javascript" src="dist/js/tooltipster.bundle.js"></script>
+        <script type="text/javascript" src="doc/js/scripts.js"></script>
+        <script type="text/javascript" src="doc/js/jquery-ui-draggable/jquery-ui.min.js"></script>
+
+        <script src="ASPSnippets_Pager.min.js"></script>
+        <script src="http://static.codepen.io/assets/common/stopExecutionOnTimeout-41c52890748cd7143004e05d3c5f786c66b19939c4500ce446314d1748483e13.js"></script>
+        <script>$(document).ready(function () {
+
+                $("#thover").click(function () {
+                    $(this).fadeOut();
+                    $("#tpopup").fadeOut();
+                });
+
+                $("#tclose").click(function () {
+                    $("#thover").fadeOut();
+                    $("#tpopup").fadeOut();
+                });
+
+                $("#tclose1").click(function () {
+                    $("#thover").fadeOut();
+                    $("#tpopup").fadeOut();
+                });
+
+
+            });
+
+
+
+        </script>
+
+
+    </form>
+
+
+<div class="tooltip-inner" id="line-chart-tooltip" style="position: absolute; display: none; opacity: 0.8;"></div></body></html>

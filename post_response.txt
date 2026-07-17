@@ -1,0 +1,522 @@
+1|#||4|31082|updatePanel|ctl00_ContentPlaceHolder1_UpdatePanel1|
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- About Me Box -->
+                        <div class="box ">
+                            <div class="box-header">
+                                
+                            </div>
+                            <!-- /.box-header -->
+
+
+
+                            <div class="form-group" style="line-height: 40px; clear: both">
+                                <label class="col-sm-3 control-label">Date</label>
+                                <div class="col-sm-3">
+                                    <input name="ctl00$ContentPlaceHolder1$txtdate" type="text" value="05/07/2026" id="ctl00_ContentPlaceHolder1_txtdate" disabled="disabled" class="form-control Datedt" />
+
+
+                                </div>
+
+                                <label class="col-sm-3 control-label">Transaction  Id</label>
+                                <div class="col-sm-3">
+                                    <input name="ctl00$ContentPlaceHolder1$txtvrno" type="text" value="639188846421893418" id="ctl00_ContentPlaceHolder1_txtvrno" disabled="disabled" class="form-control" />
+                                </div>
+
+                            </div>
+
+                            <div class="form-group" style="line-height: 40px; clear: both">
+                                <label class="col-sm-3 control-label">DS Code</label>
+                                <div class="col-sm-3">
+
+                                    <input type="hidden" name="ctl00$ContentPlaceHolder1$HfState" id="ctl00_ContentPlaceHolder1_HfState" value="MIZORAM" />
+                                    <input type="hidden" name="ctl00$ContentPlaceHolder1$hfdnewmsrno" id="ctl00_ContentPlaceHolder1_hfdnewmsrno" value="11429137" />
+                                    <input name="ctl00$ContentPlaceHolder1$txtid" type="text" value="9176AF94" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ContentPlaceHolder1$txtid\&#39;,\&#39;\&#39;)&#39;, 0)" onkeypress="if (WebForm_TextBoxKeyHandler(event) == false) return false;" id="ctl00_ContentPlaceHolder1_txtid" disabled="disabled" class="form-control" />
+
+                                </div>
+
+                                <label class="col-sm-3 control-label">DS Name</label>
+                                <div class="col-sm-3">
+
+                                    <input name="ctl00$ContentPlaceHolder1$txtname" type="text" value="LALHLIMPUII" id="ctl00_ContentPlaceHolder1_txtname" disabled="disabled" class="form-control" />
+                                </div>
+
+                            </div>
+                            <div class="form-group" style="line-height: 40px; clear: both; display: none;">
+                                <label class="col-sm-3 control-label">Sponsor ID</label>
+                                <div class="col-sm-3">
+                                    <input name="ctl00$ContentPlaceHolder1$txtSponserID" type="text" value="E75E236C" id="ctl00_ContentPlaceHolder1_txtSponserID" disabled="disabled" class="form-control" />
+
+                                </div>
+
+                                <label class="col-sm-3 control-label">Sponsor Name</label>
+                                <div class="col-sm-3">
+                                    <input name="ctl00$ContentPlaceHolder1$txtSponserName" type="text" value="A" id="ctl00_ContentPlaceHolder1_txtSponserName" disabled="disabled" class="form-control" />
+                                </div>
+
+                            </div>
+                            <div class="form-group" style="line-height: 40px; clear: both">
+                                <label class="col-sm-3 control-label">Mobile</label>
+                                <div class="col-sm-3">
+                                    <input name="ctl00$ContentPlaceHolder1$txtmobile" type="text" value="9862359930" id="ctl00_ContentPlaceHolder1_txtmobile" disabled="disabled" class="form-control" />
+
+                                </div>
+
+                                <label class="col-sm-3 control-label"></label>
+                                <div class="col-sm-3">
+                                </div>
+
+                            </div>
+                            <div class="form-group" style="line-height: 40px; clear: both">
+                                <label class="col-sm-3 control-label">Address</label>
+                                <div class="col-sm-9">
+                                    <textarea name="ctl00$ContentPlaceHolder1$txtaddress" rows="2" cols="20" id="ctl00_ContentPlaceHolder1_txtaddress" disabled="disabled" class="form-control">
+BIAKIN MUAL, RAMHLUN NORTH</textarea>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group" style="line-height: 40px; clear: both">
+                                <label class="col-sm-3 control-label">Same As Profile Address</label>
+                                <div class="col-sm-9">
+                                    <input id="ctl00_ContentPlaceHolder1_chkaddr" type="checkbox" name="ctl00$ContentPlaceHolder1$chkaddr" checked="checked" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ContentPlaceHolder1$chkaddr\&#39;,\&#39;\&#39;)&#39;, 0)" />
+
+                                </div>
+
+                            </div>
+                            <div class="form-group" style="line-height: 40px; clear: both">
+                                <label class="col-sm-3 control-label">Shipping Address</label>
+                                <div class="col-sm-9">
+                                    <textarea name="ctl00$ContentPlaceHolder1$txtshipaddress" rows="2" cols="20" id="ctl00_ContentPlaceHolder1_txtshipaddress" class="form-control">
+BIAKIN MUAL, RAMHLUN NORTH</textarea>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-group" style="line-height: 40px; clear: both">
+                                <label class="col-sm-3 control-label">Shipping Mobile</label>
+                                <div class="col-sm-3">
+                                    <input name="ctl00$ContentPlaceHolder1$ShipMobile" type="text" maxlength="10" id="ctl00_ContentPlaceHolder1_ShipMobile" class="form-control" />
+
+                                </div>
+
+                                <label class="col-sm-3 control-label">Shipping Pincode</label>
+                                <div class="col-sm-3">
+                                    <input name="ctl00$ContentPlaceHolder1$txtshpingpincode" type="text" maxlength="6" id="ctl00_ContentPlaceHolder1_txtshpingpincode" class="form-control" />
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="form-group" style="line-height: 40px; clear: both">
+                                <label class="col-sm-3 control-label">Select Payment Mode</label>
+                                <div class="col-sm-3">
+                                    <select name="ctl00$ContentPlaceHolder1$ddlpaymentmode" id="ctl00_ContentPlaceHolder1_ddlpaymentmode" class="form-control">
+	<option selected="selected" value="Cash">Cash</option>
+	<option value="Cheque">Cheque</option>
+	<option value="DD">DD</option>
+
+</select>
+                                </div>
+
+                                <label class="col-sm-3 control-label">Cheque/DD No.</label>
+                                <div class="col-sm-3">
+                                    <input name="ctl00$ContentPlaceHolder1$txtchno" type="text" value="0" id="ctl00_ContentPlaceHolder1_txtchno" class="form-control" />
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group" style="line-height: 40px; clear: both">
+                                <label class="col-sm-3 control-label">Bank</label>
+                                <div class="col-sm-3">
+                                    <input name="ctl00$ContentPlaceHolder1$txtBankName" type="text" id="ctl00_ContentPlaceHolder1_txtBankName" class="form-control" />
+
+                                </div>
+
+                                <label class="col-sm-3 control-label">Branch Name.</label>
+                                <div class="col-sm-3">
+
+                                    <input name="ctl00$ContentPlaceHolder1$txtbranch" type="text" id="ctl00_ContentPlaceHolder1_txtbranch" class="form-control" />
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group" style="line-height: 40px; clear: both">
+                                <label class="col-sm-3 control-label">Transaction Number</label>
+                                <div class="col-sm-3">
+                                    <input name="ctl00$ContentPlaceHolder1$txttransno" type="text" id="ctl00_ContentPlaceHolder1_txttransno" class="form-control" />
+                                </div>
+
+                                <label class="col-sm-3 control-label"></label>
+                                <div class="col-sm-3">
+                                </div>
+
+                            </div>
+                            <div id="ctl00_ContentPlaceHolder1_Salegroup" class="form-group" style="line-height:40px;clear:both;display:none;">
+                                <label class="col-sm-4 control-label">Select Sale Group</label>
+                                <div class="col-sm-4">
+                                    <span disabled="disabled"><input id="ctl00_ContentPlaceHolder1_rbsao" type="radio" name="ctl00$ContentPlaceHolder1$SaleGroup" value="rbsao" disabled="disabled" /><label for="ctl00_ContentPlaceHolder1_rbsao">SAO</label></span>
+                                </div>
+
+
+                                <div class="col-sm-4">
+                                    <span disabled="disabled"><input id="ctl00_ContentPlaceHolder1_rbSgo" type="radio" name="ctl00$ContentPlaceHolder1$SaleGroup" value="rbSgo" disabled="disabled" /><label for="ctl00_ContentPlaceHolder1_rbSgo">SGO</label></span>
+
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-sm-12  table-responsive">
+
+
+
+                                    <div>
+	<table class="table table-bordered table-striped" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_GridView2" style="width:100%;border-collapse:collapse;">
+		<tr>
+			<th scope="col">Sno</th><th scope="col">Product Code</th><th scope="col">Product Name</th><th scope="col">HSN Code</th><th scope="col">Rate</th><th scope="col">SV/RSP</th><th scope="col">Quantity</th><th scope="col">Total Amount</th><th scope="col">CGST Rate</th><th scope="col">CGST Amount</th><th scope="col">SGST Rate</th><th scope="col">SGST Amount</th><th scope="col">Net Amount</th><th scope="col">Total SV/RSP</th><th scope="col">Color</th><th scope="col">&nbsp;</th>
+		</tr><tr>
+			<td>1</td><td>52</td><td>BRAINDOC PRAVAHI KWATH</td><td>30049011</td><td>1093.22</td><td>7.00</td><td>1</td><td>1093.22</td><td>2.50</td><td>27.3305</td><td>2.50</td><td>27.3305</td><td>1147.881</td><td>7</td><td>&nbsp;</td><td>
+                                                    <input type="image" name="ctl00$ContentPlaceHolder1$GridView2$ctl02$delbtn" id="ctl00_ContentPlaceHolder1_GridView2_ctl02_delbtn" src="../images/del.gif" alt="Remove" onclick="return window.confirm(&#39;Are you sure For Delete This Row&#39;);" style="border-width:0px;" />
+                                                </td>
+		</tr><tr align="left" style="color:#FF3300;background-color:#F7F6FC;font-weight:bold;">
+			<td>&nbsp;</td><td>&nbsp;</td><td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>7.00</td><td>1</td><td>1093.22</td><td>&nbsp;</td><td>27.3305</td><td>&nbsp;</td><td>27.3305</td><td>1147.881</td><td>7</td><td>&nbsp;</td><td>&nbsp;</td>
+		</tr>
+	</table>
+</div>
+
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group" style="line-height: 40px; clear: both;">
+                                <label class="col-sm-3 control-label">Netamount  </label>
+                                <div class="col-sm-9">
+                                    <input name="ctl00$ContentPlaceHolder1$txtnetamount" type="text" value="1147.881" id="ctl00_ContentPlaceHolder1_txtnetamount" disabled="disabled" class="form-control" />
+
+                                </div>
+
+
+
+                            </div>
+
+                                 <div class="form-group" style="line-height: 40px; clear: both">
+                                <label class="col-sm-3 control-label">Select Color</label>
+                                <div class="col-sm-3">
+                                    <select name="ctl00$ContentPlaceHolder1$ddlcolor" id="ctl00_ContentPlaceHolder1_ddlcolor" class="form-control">
+	<option selected="selected" value="0">Select Color </option>
+	<option value="AQUAMARINE">AQUAMARINE</option>
+	<option value="OFF WHITE">OFF WHITE</option>
+	<option value="OLIVE">OLIVE</option>
+	<option value="POWDER BLUE">POWDER BLUE</option>
+	<option value="ZED BLACK">ZED BLACK</option>
+
+</select>
+                                </div>
+
+                                <label class="col-sm-3 control-label"> </label>
+                                <div class="col-sm-3">
+                                  
+                                </div>
+
+                                </div> 
+
+                            <div class="form-group" style="line-height: 40px; clear: both">
+                                <label class="col-sm-3 control-label">Select Product</label>
+                                <div class="col-sm-3">
+                                    <select name="ctl00$ContentPlaceHolder1$itemlist" id="ctl00_ContentPlaceHolder1_itemlist" class="form-control">
+	<option value="286">24K GOLD FACE MOISTURIZER</option>
+	<option value="292">24K GOLD FACE SERUM</option>
+	<option value="320">ACTIVE FIBER COMPLEX</option>
+	<option value="55">ADIDOC PRAVAHI KWATH</option>
+	<option value="295">AHA + BHA FACE SHEET MASK</option>
+	<option value="351">ALL DAY GLOW CREAM FOR WOMEN</option>
+	<option value="346">ALOEVERA CUCUMBER CREAM</option>
+	<option value="282">ALOEVERA CUCUMBER GEL</option>
+	<option value="373">ALOEVERA ORANGE SHOWER GEL</option>
+	<option value="284">ALOEVERA PINK GEL</option>
+	<option value="358">ALOEVERA SAFFRON OINT GEL</option>
+	<option value="374">ALOEVERA SHOWER GEL</option>
+	<option value="283">ALOEVERA TURMERIC GEL</option>
+	<option value="58">ALRGYDOC PRAVAHI KWATH</option>
+	<option value="364">AMLA HAIR OIL</option>
+	<option value="506">ARJUN EXTRACT TABLET</option>
+	<option value="323">ASCLEPIUS SHUDH SHILAJIT</option>
+	<option value="314">ASHWAGANDHA TABLET</option>
+	<option value="261">ASTHMDOC SYRUP</option>
+	<option value="226">AYUSH KWATH POWDER</option>
+	<option value="362">B-TON OINT</option>
+	<option value="236">BATHVEDA BEAUTY CREAM BAR</option>
+	<option value="237">BATHVEDA GOAT MILK BAR</option>
+	<option value="241">BATHVEDA NEEM TULSI BAR</option>
+	<option value="490">BERRYDOC JUICE</option>
+	<option value="406">BLURR LOOSE POWDER- BANANA PUNCH</option>
+	<option value="407">BLURR LOOSE POWDER- POP PINK</option>
+	<option value="405">BLURR LOOSE POWDER-WHITE TOUCH</option>
+	<option value="357">BODY LOTION</option>
+	<option value="507">BRAHMI EXTRACT TABLET</option>
+	<option selected="selected" value="52">BRAINDOC PRAVAHI KWATH</option>
+	<option value="503">CALCIUM TABLET</option>
+	<option value="42">CARDIODOC RAS</option>
+	<option value="279">CHARCOAL FACE WASH</option>
+	<option value="481">CHILLI POWDER- 200 GM</option>
+	<option value="482">CHILLI POWDER-500 GM</option>
+	<option value="39">CHLORODOC PRAVAHI KWATH</option>
+	<option value="297">COLLAGEN + PEPTIDE FACE SHEET</option>
+	<option value="402">COLOR DREW BLUSH STICK- FLIRTY</option>
+	<option value="404">COLOR DREW BLUSH STICK-CHEEKY</option>
+	<option value="366">COOL OIL</option>
+	<option value="487">CORIANDER POWDER-200GM</option>
+	<option value="488">CORIANDER POWDER-500GM</option>
+	<option value="217">COUGHDOC PRAVAHI KWATH</option>
+	<option value="307">COW C DOC TABLET</option>
+	<option value="304">CURCIDOC DROP</option>
+	<option value="367">DAILY CARE SHAMPOO</option>
+	<option value="369">DAMAGE REPAIR SHAMPOO</option>
+	<option value="348">DAY CREAM</option>
+	<option value="510">DAYLIFT TABLET</option>
+	<option value="50">DENTODOC CREAM</option>
+	<option value="45">DIABODOC RAS</option>
+	<option value="311">DIGIDOC POWDER</option>
+	<option value="240">EASY SWEEP SURFACE CLEANER</option>
+	<option value="232">ECO AROGYAM TEA</option>
+	<option value="49">EXE ALOEVERA SYRUP</option>
+	<option value="231">EXE C COMFORT OIL</option>
+	<option value="278">EXE GILOY RAS</option>
+	<option value="214">EXE HERBAL TEA</option>
+	<option value="218">EXE JC OINT</option>
+	<option value="33">EXE PANCH TULSI OIL</option>
+	<option value="202">EXE PUNARNAVA KWATH</option>
+	<option value="53">EXE TRIPHALA PRAVAHI KWATH</option>
+	<option value="219">EXE VEINDOC OIL</option>
+	<option value="109">EYEDOC DROP</option>
+	<option value="423">EYELINER HOLOGRAPHIC- AMBRE GREEN FLARE</option>
+	<option value="505">FENUGREEK EXTRACT TABLET</option>
+	<option value="216">FEVODOC PRAVAHI KWATH</option>
+	<option value="310">FITDOC  POWDER</option>
+	<option value="274">FREE YOU ANION SANITARY PAD(280 MM)</option>
+	<option value="275">FREE YOU ANION SANITARY PAD(330 MM)</option>
+	<option value="256">GASDOC CAPSULE</option>
+	<option value="46">GYNEDOC RAS</option>
+	<option value="513">HAIR CLEANSER-SHAMPOO</option>
+	<option value="293">HAIR GROWTH SERUM</option>
+	<option value="359">HAIR SHINE OINT- CONDITIONER</option>
+	<option value="512">HAIRDOC OIL</option>
+	<option value="514">HAIRDOC OIL 200 ML</option>
+	<option value="174">HANDWASH</option>
+	<option value="361">HEAL DOC CREAM</option>
+	<option value="494">HEIGHTDOC POWDER</option>
+	<option value="353">HERBAL FACE WASH</option>
+	<option value="260">HIIMODOC SYRUP</option>
+	<option value="285">HYALURONIC ACID FACE MOISTURIZER</option>
+	<option value="289">HYALURONIC ACID WITH SNAIL MU</option>
+	<option value="281">HYDRATING FACE WASH</option>
+	<option value="44">IMMUNODOC RAS</option>
+	<option value="511">IRON TABLET</option>
+	<option value="339">JEEVEDA BLACK CARDAMOM-BADI ELAIC</option>
+	<option value="337">JEEVEDA CAROM SEEDS AJWAIN</option>
+	<option value="325">JEEVEDA CHICKEN MASALA</option>
+	<option value="378">JEEVEDA CINNAMON STICKS-DALCHINI</option>
+	<option value="345">JEEVEDA CLOVE-LAUNG</option>
+	<option value="341">JEEVEDA CUMIN SEEDS JEERA</option>
+	<option value="343">JEEVEDA FENUGREEK SEEDS -METHI DANA</option>
+	<option value="327">JEEVEDA FISH MASALA</option>
+	<option value="328">JEEVEDA GARAM MASALA</option>
+	<option value="340">JEEVEDA GREEN CARDAMOM CHOTI ELAI</option>
+	<option value="329">JEEVEDA KITCHEN KING MASALA</option>
+	<option value="330">JEEVEDA MUTTON MASALA</option>
+	<option value="335">JEEVEDA TANDOORI CHICKEN MASALA</option>
+	<option value="4">JOINT CURATOR OIL</option>
+	<option value="257">KABZDOC GRANULES</option>
+	<option value="428">KAJAL RETRACTABLE</option>
+	<option value="25">KIDGDOC RAS</option>
+	<option value="355">KIWI FRUIT FACE WASH</option>
+	<option value="296">KOJIC ACID FACE SHEET MASK</option>
+	<option value="300">LAVENDER SUNSREEN STICKBROAD SPECTURM SPF50 PA++++</option>
+	<option value="259">LIMFRESH DISH WASH BAR</option>
+	<option value="234">LIMFRESH LIQUID DISH WASH</option>
+	<option value="356">LIP BALM</option>
+	<option value="478">LITTLE  PIE SOOTHING BABY GENTLE SOAP</option>
+	<option value="375">LITTLE PIE BABY LOTION</option>
+	<option value="371">LITTLE PIE BABY SHAMPOO</option>
+	<option value="321">LITTLE PIE KIDS PROTEIN  POWDER</option>
+	<option value="47">LIVODOC RAS</option>
+	<option value="414">LUMITOUCH COMPACT POWDER RADIANT BEIGE</option>
+	<option value="412">LUMITOUCH COMPACT POWDER- BANANA EDGE</option>
+	<option value="413">LUMITOUCH COMPACT POWDER- CAPPUCCINO</option>
+	<option value="411">LUMITOUCH COMPACT POWDER- IVORY TOUCH</option>
+	<option value="410">LUMITOUCH COMPACT POWDER-BRIGHT LIGHT</option>
+	<option value="409">LUMITOUCH COMPACT POWDER-SOFT SAND</option>
+	<option value="448">LUXE MATTE LIQUID LIPSTICK- CARAMEL</option>
+	<option value="452">LUXE MATTE LIQUID LIPSTICK- CHOCO DELIGHT</option>
+	<option value="447">LUXE MATTE LIQUID LIPSTICK- CINNAMON</option>
+	<option value="444">LUXE MATTE LIQUID LIPSTICK- CORAL KISS</option>
+	<option value="443">LUXE MATTE LIQUID LIPSTICK- DEEP HUE</option>
+	<option value="450">LUXE MATTE LIQUID LIPSTICK- FIERY</option>
+	<option value="442">LUXE MATTE LIQUID LIPSTICK- FINE WINE</option>
+	<option value="451">LUXE MATTE LIQUID LIPSTICK- HALEN</option>
+	<option value="449">LUXE MATTE LIQUID LIPSTICK- HOT CHICK</option>
+	<option value="453">LUXE MATTE LIQUID LIPSTICK- MAUVE ATTACK</option>
+	<option value="446">LUXE MATTE LIQUID LIPSTICK- ROSE PLAY</option>
+	<option value="445">LUXE MATTE LIQUID LIPSTICK- TIPSY</option>
+	<option value="308">MASSDOC  POWDER</option>
+	<option value="426">MATT EYE LINER BLACK</option>
+	<option value="262">METAADOC SYRUP</option>
+	<option value="352">MOISTURISING CREAM</option>
+	<option value="387">MOSQUITO REPELLENT CREAM</option>
+	<option value="277">NEBEL PERFUME</option>
+	<option value="508">NEEM EXTRACT TABLET</option>
+	<option value="291">NIACINAMIDE FACE SERUM</option>
+	<option value="350">NIGHT CREAM WOMENS</option>
+	<option value="489">NONIDOC JUICE</option>
+	<option value="492">OMEGADOC CAPSULE</option>
+	<option value="276">ORELLA PERFUME</option>
+	<option value="40">ORTHODOC PRAVAHI KWATH</option>
+	<option value="372">PEEL OFF FACE MASK</option>
+	<option value="37">PILODOC RAS</option>
+	<option value="418">POWDER BLUSH- BABE</option>
+	<option value="417">POWDER BLUSH- COY</option>
+	<option value="416">POWDER BLUSH- SEDUCTRESS</option>
+	<option value="233">POWER FLUSH TOILET CLEANER</option>
+	<option value="395">PREP-IT PRIMER</option>
+	<option value="215">PRODOC POWDER</option>
+	<option value="322">PROTEINDOC POWDER</option>
+	<option value="263">RAAKTDOC SYRUP</option>
+	<option value="264">ROOM FRESHNER(MUSK)</option>
+	<option value="370">ROOT &amp; SHINE SHAMPOO</option>
+	<option value="294">SALICYLIC ACID FACE SHEET MASK</option>
+	<option value="491">SEABUCKDOC JUICE</option>
+	<option value="388">SHAVING CREAM FOR MEN</option>
+	<option value="203">SHIITAKE SHAKE (RABDI FALOODA)</option>
+	<option value="495">SHOTS MORE</option>
+	<option value="255">SHUDDH SHILAJIT CAPSULE</option>
+	<option value="470">SILK SHEIN LUXE LIP GLOSS SWEET CARAMEL</option>
+	<option value="471">SILK SHEIN LUXE LIP GLOSS- BOSS BABE</option>
+	<option value="472">SILK SHEIN LUXE LIP GLOSS- LOTUS DRIP</option>
+	<option value="469">SILK SHEIN LUXE LIP GLOSS- STRAWBERRY FLUSH</option>
+	<option value="459">SKIN TINT LUMINOUS VEIL MOCHACCINO</option>
+	<option value="457">SKIN TINT LUMINOUS VEIL RADIANT SAND</option>
+	<option value="458">SKIN TINT LUMINOUS VEIL- SOFT MAPLE</option>
+	<option value="515">SLIMDOC POWDER RICH CHOCLATE FLAVOR</option>
+	<option value="518">SLIMDOC POWDER-CREAMY BANANA FLAVOR</option>
+	<option value="516">SLIMDOC POWDER-REAL MANGO FLAVOR</option>
+	<option value="303">SNISS LONDON XI</option>
+	<option value="302">SNISS REVOQUE</option>
+	<option value="36">STONDOC RAS</option>
+	<option value="354">STRAWBERRY FACE WASH</option>
+	<option value="299">SUNSCREEN SPF50 PA++++ GEL</option>
+	<option value="161">SUPERVO RICE BRAN OIL (2 LTR)</option>
+	<option value="162">SUPERVO RICE BRAN OIL (5 LTR)</option>
+	<option value="377">TALCUM POWDER</option>
+	<option value="316">TESTOFAST TABLET</option>
+	<option value="41">THUNDERBLAST RAS</option>
+	<option value="38">THYDOC PRAVAHI KWATH</option>
+	<option value="258">TOSHINE DETERGENT BAR</option>
+	<option value="239">TOSHINE DETERGENT POWDER</option>
+	<option value="238">TOSHINE LIQUID WASH</option>
+	<option value="252">TOSHINE WINTERWEAR LIQUID WASH</option>
+	<option value="484">TURMERIC POWDER -200 GM</option>
+	<option value="485">TURMERIC POWDER -500 GM</option>
+	<option value="394">ULTRA SMOOTH FOUNDATION FOR RADIANT GLOW-CARAMEL GLOW</option>
+	<option value="390">ULTRA SMOOTH FOUNDATION FOR RADIANT GLOW-CREAMY VANILLA</option>
+	<option value="389">ULTRA SMOOTH FOUNDATION FOR RADIANT GLOW-PURE IVORY</option>
+	<option value="392">ULTRA SMOOTH FOUNDATION FOR RADIANT GLOW-SILK ALMOND</option>
+	<option value="391">ULTRA SMOOTH FOUNDATION FOR RADIANT GLOW-SOFT BEIGE</option>
+	<option value="393">ULTRA SMOOTH FOUNDATION FOR RADIANT GLOW-WARM CHESTNUT</option>
+	<option value="376">ULTRA SMOOTHING SERUM</option>
+	<option value="368">ULTRA SMOOTHING SHAMPOO</option>
+	<option value="287">UNDER EYE CREAM</option>
+	<option value="349">V SPLASH</option>
+	<option value="128">VEDIK AGRO AGRO 90</option>
+	<option value="130">VEDIK AGRO BHUVITA</option>
+	<option value="129">VEDIK AGRO ECO HARIYALI</option>
+	<option value="126">VEDIK AGRO PGPR</option>
+	<option value="178">VETDOC CALCIUM SUSPENSION</option>
+	<option value="179">VETDOC FAT BOOSTER POWDER</option>
+	<option value="493">VITADOC TABLET</option>
+	<option value="501">VITAMIN B12 TABLET</option>
+	<option value="290">VITAMIN C FACE SERUM</option>
+	<option value="288">VITAMIN C FACE TONER</option>
+	<option value="280">VITAMIN C FACE WASH</option>
+	<option value="502">VITAMIN D2 TABLET</option>
+	<option value="318">WAKECHA LEMON LIME</option>
+	<option value="504">WOMEN WELLNESS TABLET</option>
+	<option value="500">ZINC TABLET</option>
+
+</select>
+                                </div>
+
+                                <label class="col-sm-3 control-label">Quantity</label>
+                                <div class="col-sm-3">
+                                    <input name="ctl00$ContentPlaceHolder1$txtqty" type="text" id="ctl00_ContentPlaceHolder1_txtqty" class="form-control" />
+                                    <input type="submit" name="ctl00$ContentPlaceHolder1$btnadd" value="Add" onclick="return ChkQty();" id="ctl00_ContentPlaceHolder1_btnadd" class="btn-setting-two" />
+
+                                </div>
+
+                                </div> 
+                                <div class="form-group" style="line-height: 40px; clear: both">
+
+                                    <div class="col-sm-12">
+                                        
+                                        
+                                        <input type="hidden" name="ctl00$ContentPlaceHolder1$HfMsrno" id="ctl00_ContentPlaceHolder1_HfMsrno" />
+                                        <input type="hidden" name="ctl00$ContentPlaceHolder1$Hfintromsrno" id="ctl00_ContentPlaceHolder1_Hfintromsrno" value="11429061" />
+                                    </div>
+                                </div>
+                                <div class="form-group" style="line-height: 40px; clear: both">
+                                    <label class="col-sm-3 control-label">Remarks</label>
+                                    <div class="col-sm-9">
+                                        <input name="ctl00$ContentPlaceHolder1$txtRemark" type="text" id="ctl00_ContentPlaceHolder1_txtRemark" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group" style="line-height: 40px; clear: both">
+
+                                    <div class="col-sm-12">
+
+
+                                        <div style="display: none;">
+                                            <input type="submit" name="ctl00$ContentPlaceHolder1$btnshow" value="show" id="ctl00_ContentPlaceHolder1_btnshow" class="btn-setting" />
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group" style="line-height: 40px; clear: both">
+
+                                    <div class="col-sm-12">
+                                        <input type="submit" name="ctl00$ContentPlaceHolder1$ButtonSave1" value="Save" onclick="return SaveMsg();" id="ctl00_ContentPlaceHolder1_ButtonSave1" class="btn btn-large btn-primary" />
+                                    </div>
+                                </div>
+                                <div class="form-group" style="line-height: 40px; clear: both">
+
+                                    <div class="col-sm-12">
+                                        <input type="hidden" name="ctl00$ContentPlaceHolder1$Gcod" id="ctl00_ContentPlaceHolder1_Gcod" />
+                                        <input type="hidden" name="ctl00$ContentPlaceHolder1$GDFrom" id="ctl00_ContentPlaceHolder1_GDFrom" />
+                                        <input type="hidden" name="ctl00$ContentPlaceHolder1$GDTo" id="ctl00_ContentPlaceHolder1_GDTo" />
+                                        <input type="hidden" name="ctl00$ContentPlaceHolder1$opti" id="ctl00_ContentPlaceHolder1_opti" />
+                                        <input type="hidden" name="ctl00$ContentPlaceHolder1$HFRCnt" id="ctl00_ContentPlaceHolder1_HFRCnt" />
+                                        <input type="hidden" name="ctl00$ContentPlaceHolder1$hfwalletBalance" id="ctl00_ContentPlaceHolder1_hfwalletBalance" />
+                                        <input type="hidden" name="ctl00$ContentPlaceHolder1$hfdiscount" id="ctl00_ContentPlaceHolder1_hfdiscount" value="0" />
+                                        <input type="hidden" name="ctl00$ContentPlaceHolder1$hfnetamt" id="ctl00_ContentPlaceHolder1_hfnetamt" value="1147.881" />
+                                        <input type="hidden" name="ctl00$ContentPlaceHolder1$hdnStatus" id="ctl00_ContentPlaceHolder1_hdnStatus" value="0" />
+                                        <input type="hidden" name="ctl00$ContentPlaceHolder1$Franchisestate" id="ctl00_ContentPlaceHolder1_Franchisestate" value="MIZORAM" />
+                                        <input type="hidden" name="ctl00$ContentPlaceHolder1$hfGST" id="ctl00_ContentPlaceHolder1_hfGST" value="0" />
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                </section>
+            |0|hiddenField|__LASTFOCUS||0|hiddenField|__EVENTTARGET||0|hiddenField|__EVENTARGUMENT||10296|hiddenField|__VIEWSTATE|/wEPDwULLTE2OTQ4MDcyNzQPFgIeE1ZhbGlkYXRlUmVxdWVzdE1vZGUCARYCZg9kFgICAw9kFgICAg9kFgJmD2QWAmYPZBYgAgEPDxYCHgRUZXh0BQowNS8wNy8yMDI2ZGQCAw8PFgIfAQUSNjM5MTg4ODQ2NDIxODkzNDE4ZGQCCQ8PFgQfAQUIOTE3NkFGOTQeB0VuYWJsZWRoZGQCCw8PFgIfAQULTEFMSExJTVBVSUlkZAINDw8WAh8BBQhFNzVFMjM2Q2RkAg8PDxYCHwEFAUFkZAIRDw8WAh8BBQo5ODYyMzU5OTMwZGQCEw8PFgIfAQUaQklBS0lOIE1VQUwsIFJBTUhMVU4gTk9SVEhkZAIVDxAPFgIeB0NoZWNrZWRnZGRkZAInDxYCHgVzdHlsZQUpbGluZS1oZWlnaHQ6NDBweDtjbGVhcjpib3RoO2Rpc3BsYXk6bm9uZTsWBAIBDxAPFgIfAmhkZGRkAgMPEA8WAh8CaGRkZGQCKQ88KwARAwAPFgQeC18hRGF0YUJvdW5kZx4LXyFJdGVtQ291bnQCAWQBEBYGAggCCQIKAgsCDAINFgY8KwAFAQAWAh4HVmlzaWJsZWc8KwAFAQAWAh8HZzwrAAUBABYCHwdnPCsABQEAFgIfB2c8KwAFAQAWAh8HaDwrAAUBABYCHwdoFgZmZmZmZmYMFCsAABYCZg9kFgQCAQ9kFh5mDw8WAh8BBQExZGQCAQ8PFgIfAQUCNTJkZAICDw8WAh8BBRZCUkFJTkRPQyBQUkFWQUhJIEtXQVRIZGQCAw8PFgIfAQUIMzAwNDkwMTFkZAIEDw8WAh8BBQcxMDkzLjIyZGQCBQ8PFgIfAQUENy4wMGRkAgYPDxYCHwEFATFkZAIHDw8WAh8BBQcxMDkzLjIyZGQCCA8PFgIfAQUEMi41MGRkAgkPDxYCHwEFBzI3LjMzMDVkZAIKDw8WAh8BBQQyLjUwZGQCCw8PFgIfAQUHMjcuMzMwNWRkAg4PDxYCHwEFCDExNDcuODgxZGQCDw8PFgIfAQUBN2RkAhAPDxYCHwEFBiZuYnNwO2RkAgIPZBYSAgIPDxYCHwEFBVRvdGFsZGQCBQ8PFgIfAQUENy4wMGRkAgYPDxYCHwEFATFkZAIHDw8WAh8BBQcxMDkzLjIyZGQCCQ8PFgIfAQUHMjcuMzMwNWRkAgsPDxYCHwEFBzI3LjMzMDVkZAINDw8WAh8BBQEwZGQCDg8PFgIfAQUIMTE0Ny44ODFkZAIPDw8WAh8BBQE3ZGQCKw8PFgIfAQUIMTE0Ny44ODFkZAItDxAPFgYeDURhdGFUZXh0RmllbGQFBUNvbG9yHg5EYXRhVmFsdWVGaWVsZAUFQ29sb3IfBWdkEBUGDVNlbGVjdCBDb2xvciAKQVFVQU1BUklORQlPRkYgV0hJVEUFT0xJVkULUE9XREVSIEJMVUUJWkVEIEJMQUNLFQYBMApBUVVBTUFSSU5FCU9GRiBXSElURQVPTElWRQtQT1dERVIgQkxVRQlaRUQgQkxBQ0sUKwMGZ2dnZ2dnZGQCLw8QDxYGHwgFCEl0ZW1OYW1lHwkFCEl0ZW1Db2RlHwVnZBAV2QEZMjRLIEdPTEQgRkFDRSBNT0lTVFVSSVpFUhMyNEsgR09MRCBGQUNFIFNFUlVNFEFDVElWRSBGSUJFUiBDT01QTEVYFEFESURPQyBQUkFWQUhJIEtXQVRIGUFIQSArIEJIQSBGQUNFIFNIRUVUIE1BU0scQUxMIERBWSBHTE9XIENSRUFNIEZPUiBXT01FThdBTE9FVkVSQSBDVUNVTUJFUiBDUkVBTRVBTE9FVkVSQSBDVUNVTUJFUiBHRUwaQUxPRVZFUkEgT1JBTkdFIFNIT1dFUiBHRUwRQUxPRVZFUkEgUElOSyBHRUwZQUxPRVZFUkEgU0FGRlJPTiBPSU5UIEdFTBNBTE9FVkVSQSBTSE9XRVIgR0VMFUFMT0VWRVJBIFRVUk1FUklDIEdFTBZBTFJHWURPQyBQUkFWQUhJIEtXQVRIDUFNTEEgSEFJUiBPSUwUQVJKVU4gRVhUUkFDVCBUQUJMRVQYQVNDTEVQSVVTIFNIVURIIFNISUxBSklUEkFTSFdBR0FOREhBIFRBQkxFVA5BU1RITURPQyBTWVJVUBJBWVVTSCBLV0FUSCBQT1dERVIKQi1UT04gT0lOVBlCQVRIVkVEQSBCRUFVVFkgQ1JFQU0gQkFSFkJBVEhWRURBIEdPQVQgTUlMSyBCQVIXQkFUSFZFREEgTkVFTSBUVUxTSSBCQVIOQkVSUllET0MgSlVJQ0UgQkxVUlIgTE9PU0UgUE9XREVSLSBCQU5BTkEgUFVOQ0gcQkxVUlIgTE9PU0UgUE9XREVSLSBQT1AgUElOSx5CTFVSUiBMT09TRSBQT1dERVItV0hJVEUgVE9VQ0gLQk9EWSBMT1RJT04VQlJBSE1JIEVYVFJBQ1QgVEFCTEVUFkJSQUlORE9DIFBSQVZBSEkgS1dBVEgOQ0FMQ0lVTSBUQUJMRVQNQ0FSRElPRE9DIFJBUxJDSEFSQ09BTCBGQUNFIFdBU0gVQ0hJTExJIFBPV0RFUi0gMjAwIEdNFENISUxMSSBQT1dERVItNTAwIEdNF0NITE9ST0RPQyBQUkFWQUhJIEtXQVRIHUNPTExBR0VOICsgUEVQVElERSBGQUNFIFNIRUVUHkNPTE9SIERSRVcgQkxVU0ggU1RJQ0stIEZMSVJUWR1DT0xPUiBEUkVXIEJMVVNIIFNUSUNLLUNIRUVLWQhDT09MIE9JTBZDT1JJQU5ERVIgUE9XREVSLTIwMEdNFkNPUklBTkRFUiBQT1dERVItNTAwR00WQ09VR0hET0MgUFJBVkFISSBLV0FUSBBDT1cgQyBET0MgVEFCTEVUDUNVUkNJRE9DIERST1ASREFJTFkgQ0FSRSBTSEFNUE9PFURBTUFHRSBSRVBBSVIgU0hBTVBPTwlEQVkgQ1JFQU0OREFZTElGVCBUQUJMRVQOREVOVE9ET0MgQ1JFQU0MRElBQk9ET0MgUkFTDkRJR0lET0MgUE9XREVSGkVBU1kgU1dFRVAgU1VSRkFDRSBDTEVBTkVSD0VDTyBBUk9HWUFNIFRFQRJFWEUgQUxPRVZFUkEgU1lSVVARRVhFIEMgQ09NRk9SVCBPSUwNRVhFIEdJTE9ZIFJBUw5FWEUgSEVSQkFMIFRFQQtFWEUgSkMgT0lOVBNFWEUgUEFOQ0ggVFVMU0kgT0lME0VYRSBQVU5BUk5BVkEgS1dBVEgaRVhFIFRSSVBIQUxBIFBSQVZBSEkgS1dBVEgPRVhFIFZFSU5ET0MgT0lMC0VZRURPQyBEUk9QJ0VZRUxJTkVSIEhPTE9HUkFQSElDLSBBTUJSRSBHUkVFTiBGTEFSRRhGRU5VR1JFRUsgRVhUUkFDVCBUQUJMRVQVRkVWT0RPQyBQUkFWQUhJIEtXQVRIDkZJVERPQyAgUE9XREVSI0ZSRUUgWU9VIEFOSU9OIFNBTklUQVJZIFBBRCgyODAgTU0pI0ZSRUUgWU9VIEFOSU9OIFNBTklUQVJZIFBBRCgzMzAgTU0pDkdBU0RPQyBDQVBTVUxFC0dZTkVET0MgUkFTFUhBSVIgQ0xFQU5TRVItU0hBTVBPTxFIQUlSIEdST1dUSCBTRVJVTRxIQUlSIFNISU5FIE9JTlQtIENPTkRJVElPTkVSC0hBSVJET0MgT0lMEkhBSVJET0MgT0lMIDIwMCBNTAhIQU5EV0FTSA5IRUFMIERPQyBDUkVBTRBIRUlHSFRET0MgUE9XREVSEEhFUkJBTCBGQUNFIFdBU0gOSElJTU9ET0MgU1lSVVAgSFlBTFVST05JQyBBQ0lEIEZBQ0UgTU9JU1RVUklaRVIdSFlBTFVST05JQyBBQ0lEIFdJVEggU05BSUwgTVUTSFlEUkFUSU5HIEZBQ0UgV0FTSA1JTU1VTk9ET0MgUkFTC0lST04gVEFCTEVUIUpFRVZFREEgQkxBQ0sgQ0FSREFNT00tQkFESSBFTEFJQxpKRUVWRURBIENBUk9NIFNFRURTIEFKV0FJThZKRUVWRURBIENISUNLRU4gTUFTQUxBIEpFRVZFREEgQ0lOTkFNT04gU1RJQ0tTLURBTENISU5JE0pFRVZFREEgQ0xPVkUtTEFVTkcZSkVFVkVEQSBDVU1JTiBTRUVEUyBKRUVSQSNKRUVWRURBIEZFTlVHUkVFSyBTRUVEUyAtTUVUSEkgREFOQRNKRUVWRURBIEZJU0ggTUFTQUxBFEpFRVZFREEgR0FSQU0gTUFTQUxBIUpFRVZFREEgR1JFRU4gQ0FSREFNT00gQ0hPVEkgRUxBSRtKRUVWRURBIEtJVENIRU4gS0lORyBNQVNBTEEVSkVFVkVEQSBNVVRUT04gTUFTQUxBH0pFRVZFREEgVEFORE9PUkkgQ0hJQ0tFTiBNQVNBTEERSk9JTlQgQ1VSQVRPUiBPSUwQS0FCWkRPQyBHUkFOVUxFUxFLQUpBTCBSRVRSQUNUQUJMRQtLSURHRE9DIFJBUxRLSVdJIEZSVUlUIEZBQ0UgV0FTSBpLT0pJQyBBQ0lEIEZBQ0UgU0hFRVQgTUFTSzJMQVZFTkRFUiBTVU5TUkVFTiBTVElDS0JST0FEIFNQRUNUVVJNIFNQRjUwIFBBKysrKxZMSU1GUkVTSCBESVNIIFdBU0ggQkFSGUxJTUZSRVNIIExJUVVJRCBESVNIIFdBU0gITElQIEJBTE0lTElUVExFICBQSUUgU09PVEhJTkcgQkFCWSBHRU5UTEUgU09BUBZMSVRUTEUgUElFIEJBQlkgTE9USU9OF0xJVFRMRSBQSUUgQkFCWSBTSEFNUE9PH0xJVFRMRSBQSUUgS0lEUyBQUk9URUlOICBQT1dERVILTElWT0RPQyBSQVMmTFVNSVRPVUNIIENPTVBBQ1QgUE9XREVSIFJBRElBTlQgQkVJR0UlTFVNSVRPVUNIIENPTVBBQ1QgUE9XREVSLSBCQU5BTkEgRURHRSRMVU1JVE9VQ0ggQ09NUEFDVCBQT1dERVItIENBUFBVQ0NJTk8lTFVNSVRPVUNIIENPTVBBQ1QgUE9XREVSLSBJVk9SWSBUT1VDSCVMVU1JVE9VQ0ggQ09NUEFDVCBQT1dERVItQlJJR0hUIExJR0hUIkxVTUlUT1VDSCBDT01QQUNUIFBPV0RFUi1TT0ZUIFNBTkQjTFVYRSBNQVRURSBMSVFVSUQgTElQU1RJQ0stIENBUkFNRUwpTFVYRSBNQVRURSBMSVFVSUQgTElQU1RJQ0stIENIT0NPIERFTElHSFQkTFVYRSBNQVRURSBMSVFVSUQgTElQU1RJQ0stIENJTk5BTU9OJkxVWEUgTUFUVEUgTElRVUlEIExJUFNUSUNLLSBDT1JBTCBLSVNTJExVWEUgTUFUVEUgTElRVUlEIExJUFNUSUNLLSBERUVQIEhVRSFMVVhFIE1BVFRFIExJUVVJRCBMSVBTVElDSy0gRklFUlklTFVYRSBNQVRURSBMSVFVSUQgTElQU1RJQ0stIEZJTkUgV0lORSFMVVhFIE1BVFRFIExJUVVJRCBMSVBTVElDSy0gSEFMRU4lTFVYRSBNQVRURSBMSVFVSUQgTElQU1RJQ0stIEhPVCBDSElDSyhMVVhFIE1BVFRFIExJUVVJRCBMSVBTVElDSy0gTUFVVkUgQVRUQUNLJUxVWEUgTUFUVEUgTElRVUlEIExJUFNUSUNLLSBST1NFIFBMQVkhTFVYRSBNQVRURSBMSVFVSUQgTElQU1RJQ0stIFRJUFNZD01BU1NET0MgIFBPV0RFUhRNQVRUIEVZRSBMSU5FUiBCTEFDSw5NRVRBQURPQyBTWVJVUBJNT0lTVFVSSVNJTkcgQ1JFQU0YTU9TUVVJVE8gUkVQRUxMRU5UIENSRUFNDU5FQkVMIFBFUkZVTUUTTkVFTSBFWFRSQUNUIFRBQkxFVBZOSUFDSU5BTUlERSBGQUNFIFNFUlVNEk5JR0hUIENSRUFNIFdPTUVOUw1OT05JRE9DIEpVSUNFEE9NRUdBRE9DIENBUFNVTEUOT1JFTExBIFBFUkZVTUUWT1JUSE9ET0MgUFJBVkFISSBLV0FUSBJQRUVMIE9GRiBGQUNFIE1BU0sLUElMT0RPQyBSQVMSUE9XREVSIEJMVVNILSBCQUJFEVBPV0RFUiBCTFVTSC0gQ09ZGFBPV0RFUiBCTFVTSC0gU0VEVUNUUkVTUxpQT1dFUiBGTFVTSCBUT0lMRVQgQ0xFQU5FUg5QUkVQLUlUIFBSSU1FUg1QUk9ET0MgUE9XREVSEVBST1RFSU5ET0MgUE9XREVSDlJBQUtURE9DIFNZUlVQE1JPT00gRlJFU0hORVIoTVVTSykUUk9PVCAmIFNISU5FIFNIQU1QT08eU0FMSUNZTElDIEFDSUQgRkFDRSBTSEVFVCBNQVNLEFNFQUJVQ0tET0MgSlVJQ0UVU0hBVklORyBDUkVBTSBGT1IgTUVOHlNISUlUQUtFIFNIQUtFIChSQUJESSBGQUxPT0RBKQpTSE9UUyBNT1JFF1NIVURESCBTSElMQUpJVCBDQVBTVUxFJ1NJTEsgU0hFSU4gTFVYRSBMSVAgR0xPU1MgU1dFRVQgQ0FSQU1FTCRTSUxLIFNIRUlOIExVWEUgTElQIEdMT1NTLSBCT1NTIEJBQkUlU0lMSyBTSEVJTiBMVVhFIExJUCBHTE9TUy0gTE9UVVMgRFJJUCtTSUxLIFNIRUlOIExVWEUgTElQIEdMT1NTLSBTVFJBV0JFUlJZIEZMVVNIIlNLSU4gVElOVCBMVU1JTk9VUyBWRUlMIE1PQ0hBQ0NJTk8kU0tJTiBUSU5UIExVTUlOT1VTIFZFSUwgUkFESUFOVCBTQU5EI1NLSU4gVElOVCBMVU1JTk9VUyBWRUlMLSBTT0ZUIE1BUExFI1NMSU1ET0MgUE9XREVSIFJJQ0ggQ0hPQ0xBVEUgRkxBVk9SI1NMSU1ET0MgUE9XREVSLUNSRUFNWSBCQU5BTkEgRkxBVk9SIFNMSU1ET0MgUE9XREVSLVJFQUwgTUFOR08gRkxBVk9SD1NOSVNTIExPTkRPTiBYSQ1TTklTUyBSRVZPUVVFC1NUT05ET0MgUkFTFFNUUkFXQkVSUlkgRkFDRSBXQVNIGlNVTlNDUkVFTiBTUEY1MCBQQSsrKysgR0VMHVNVUEVSVk8gUklDRSBCUkFOIE9JTCAoMiBMVFIpHVNVUEVSVk8gUklDRSBCUkFOIE9JTCAoNSBMVFIpDVRBTENVTSBQT1dERVIQVEVTVE9GQVNUIFRBQkxFVBBUSFVOREVSQkxBU1QgUkFTFFRIWURPQyBQUkFWQUhJIEtXQVRIFVRPU0hJTkUgREVURVJHRU5UIEJBUhhUT1NISU5FIERFVEVSR0VOVCBQT1dERVITVE9TSElORSBMSVFVSUQgV0FTSB5UT1NISU5FIFdJTlRFUldFQVIgTElRVUlEIFdBU0gXVFVSTUVSSUMgUE9XREVSIC0yMDAgR00XVFVSTUVSSUMgUE9XREVSIC01MDAgR001VUxUUkEgU01PT1RIIEZPVU5EQVRJT04gRk9SIFJBRElBTlQgR0xPVy1DQVJBTUVMIEdMT1c3VUxUUkEgU01PT1RIIEZPVU5EQVRJT04gRk9SIFJBRElBTlQgR0xPVy1DUkVBTVkgVkFOSUxMQTNVTFRSQSBTTU9PVEggRk9VTkRBVElPTiBGT1IgUkFESUFOVCBHTE9XLVBVUkUgSVZPUlk0VUxUUkEgU01PT1RIIEZPVU5EQVRJT04gRk9SIFJBRElBTlQgR0xPVy1TSUxLIEFMTU9ORDNVTFRSQSBTTU9PVEggRk9VTkRBVElPTiBGT1IgUkFESUFOVCBHTE9XLVNPRlQgQkVJR0U2VUxUUkEgU01PT1RIIEZPVU5EQVRJT04gRk9SIFJBRElBTlQgR0xPVy1XQVJNIENIRVNUTlVUFVVMVFJBIFNNT09USElORyBTRVJVTRdVTFRSQSBTTU9PVEhJTkcgU0hBTVBPTw9VTkRFUiBFWUUgQ1JFQU0IViBTUExBU0gSVkVESUsgQUdSTyBBR1JPIDkwElZFRElLIEFHUk8gQkhVVklUQRdWRURJSyBBR1JPIEVDTyBIQVJJWUFMSQ9WRURJSyBBR1JPIFBHUFIZVkVURE9DIENBTENJVU0gU1VTUEVOU0lPThlWRVRET0MgRkFUIEJPT1NURVIgUE9XREVSDlZJVEFET0MgVEFCTEVUElZJVEFNSU4gQjEyIFRBQkxFVBRWSVRBTUlOIEMgRkFDRSBTRVJVTRRWSVRBTUlOIEMgRkFDRSBUT05FUhNWSVRBTUlOIEMgRkFDRSBXQVNIEVZJVEFNSU4gRDIgVEFCTEVUEldBS0VDSEEgTEVNT04gTElNRRVXT01FTiBXRUxMTkVTUyBUQUJMRVQLWklOQyBUQUJMRVQV2QEDMjg2AzI5MgMzMjACNTUDMjk1AzM1MQMzNDYDMjgyAzM3MwMyODQDMzU4AzM3NAMyODMCNTgDMzY0AzUwNgMzMjMDMzE0AzI2MQMyMjYDMzYyAzIzNgMyMzcDMjQxAzQ5MAM0MDYDNDA3AzQwNQMzNTcDNTA3AjUyAzUwMwI0MgMyNzkDNDgxAzQ4MgIzOQMyOTcDNDAyAzQwNAMzNjYDNDg3AzQ4OAMyMTcDMzA3AzMwNAMzNjcDMzY5AzM0OAM1MTACNTACNDUDMzExAzI0MAMyMzICNDkDMjMxAzI3OAMyMTQDMjE4AjMzAzIwMgI1MwMyMTkDMTA5AzQyMwM1MDUDMjE2AzMxMAMyNzQDMjc1AzI1NgI0NgM1MTMDMjkzAzM1OQM1MTIDNTE0AzE3NAMzNjEDNDk0AzM1MwMyNjADMjg1AzI4OQMyODECNDQDNTExAzMzOQMzMzcDMzI1AzM3OAMzNDUDMzQxAzM0MwMzMjcDMzI4AzM0MAMzMjkDMzMwAzMzNQE0AzI1NwM0MjgCMjUDMzU1AzI5NgMzMDADMjU5AzIzNAMzNTYDNDc4AzM3NQMzNzEDMzIxAjQ3AzQxNAM0MTIDNDEzAzQxMQM0MTADNDA5AzQ0OAM0NTIDNDQ3AzQ0NAM0NDMDNDUwAzQ0MgM0NTEDNDQ5AzQ1MwM0NDYDNDQ1AzMwOAM0MjYDMjYyAzM1MgMzODcDMjc3AzUwOAMyOTEDMzUwAzQ4OQM0OTIDMjc2AjQwAzM3MgIzNwM0MTgDNDE3AzQxNgMyMzMDMzk1AzIxNQMzMjIDMjYzAzI2NAMzNzADMjk0AzQ5MQMzODgDMjAzAzQ5NQMyNTUDNDcwAzQ3MQM0NzIDNDY5AzQ1OQM0NTcDNDU4AzUxNQM1MTgDNTE2AzMwMwMzMDICMzYDMzU0AzI5OQMxNjEDMTYyAzM3NwMzMTYCNDECMzgDMjU4AzIzOQMyMzgDMjUyAzQ4NAM0ODUDMzk0AzM5MAMzODkDMzkyAzM5MQMzOTMDMzc2AzM2OAMyODcDMzQ5AzEyOAMxMzADMTI5AzEyNgMxNzgDMTc5AzQ5MwM1MDEDMjkwAzI4OAMyODADNTAyAzMxOAM1MDQDNTAwFCsD2QFnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZGQCNQ8PFgIfAWVkZAI3Dw8WAh8BZWRkGAIFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYCBSFjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGNoa2FkZHIFMGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkR3JpZFZpZXcyJGN0bDAyJGRlbGJ0bgUjY3RsMDAkQ29udGVudFBsYWNlSG9sZGVyMSRHcmlkVmlldzIPPCsADAEIAgFkfX7ljd+qM5Kb89r5Oofogu0q9PWl/r5SpFHXunh1v2g=|8|hiddenField|__VIEWSTATEGENERATOR|F78BA5F5|5748|hiddenField|__EVENTVALIDATION|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|38|asyncPostBackControlIDs||ctl00$ContentPlaceHolder1$ButtonSave1,|0|postBackControlIDs|||40|updatePanelIDs||tctl00$ContentPlaceHolder1$UpdatePanel1,|0|childUpdatePanelIDs|||39|panelsToRefreshIDs||ctl00$ContentPlaceHolder1$UpdatePanel1,|2|asyncPostBackTimeout||90|24|formAction||./SpdistributorSale.aspx|21|pageTitle||Direct Seller  Sales |42|scriptBlock|ScriptContentNoTags|alert('Please fill Shipping Mobile No..');|184|scriptBlock|ScriptPath|/ScriptResource.axd?d=IudHRDSDPiq4TmozJlQfzU3y_lx383NfzqWuY001eTAFzpzQw2ikmAm2TtkvlhJEQpFVfgf3VCWlmft2YDheg119YYBQhxyP_Sy2jgNp3Wah3Pbx-FkMYKPHM7HP02C14AIXZDA06IfnTRPg3BhY5A2&t=2750b2ff|33|focus||ctl00_ContentPlaceHolder1_txtdate|

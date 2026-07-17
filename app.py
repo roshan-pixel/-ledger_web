@@ -191,6 +191,7 @@ def api_mizoram_bronze_update():
         return jsonify({'error': str(e)}), 500
 
 from sync_mizoram import sync_mizoram_data
+
 @app.route('/api/sync_mizoram_now', methods=['POST'])
 def api_sync_mizoram_now():
     success = sync_mizoram_data()
@@ -198,6 +199,112 @@ def api_sync_mizoram_now():
         return jsonify({"success": True})
     return jsonify({"success": False, "error": "Sync failed, check server logs"}), 500
 
+@app.route('/api/inventory/restock', methods=['POST'])
+def api_inventory_restock():
+    try:
+        data = request.get_json()
+        product_name = data.get('product_name')
+        qty_to_add = float(data.get('qty_to_add', 0))
+        
+        if not product_name or qty_to_add <= 0:
+            return jsonify({'error': 'Invalid input'}), 400
+            
+        conn = get_db()
+        c = conn.cursor()
+        c.execute("SELECT c7 FROM inventory WHERE UPPER(c3) = ?", (product_name.upper(),))
+        row = c.fetchone()
+        if not row:
+            conn.close()
+            return jsonify({'error': 'Product not found'}), 404
+            
+        current_qty = float(str(row[0]).replace(',', '') or 0)
+        new_qty = current_qty + qty_to_add
+        
+        c.execute("UPDATE inventory SET c7 = ? WHERE UPPER(c3) = ?", (new_qty, product_name.upper()))
+        
+        c.execute("SELECT value FROM settings WHERE key='inventory_headers'")
+        all_headers = json.loads(c.fetchone()[0])
+        c.execute("SELECT row_num FROM inventory WHERE UPPER(c3) != 'TOTAL'")
+        for r in c.fetchall():
+            update_inventory_formulas(conn, r['row_num'], all_headers)
+        
+        update_totals_row(conn)
+        conn.commit()
+        conn.close()
+        
+        # Trigger background sync to Google Sheets
+        try:
+            import threading
+            from init_gsheets import init_google_sheets
+            t = threading.Thread(target=init_google_sheets)
+            t.daemon = True
+            t.start()
+        except Exception as e:
+            print("Failed to start gsheets sync:", e)
+            
+        return jsonify({'success': True, 'new_total_qty': new_qty})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/inventory/add_product', methods=['POST'])
+def api_inventory_add_product():
+    try:
+        data = request.get_json()
+        prod_name = data.get('product_name')
+        hsn = data.get('hsn_code', '')
+        price = data.get('price', 0)
+        qty = data.get('total_qty', 0)
+        
+        if not prod_name:
+            return jsonify({'error': 'Product name required'}), 400
+            
+        conn = get_db()
+        c = conn.cursor()
+        c.execute("SELECT row_num FROM inventory WHERE UPPER(c3) = ?", (prod_name.upper(),))
+        if c.fetchone():
+            conn.close()
+            return jsonify({'error': 'Product already exists'}), 400
+            
+        c.execute("SELECT MAX(CAST(c2 AS INTEGER)) FROM inventory WHERE c2 != '' AND UPPER(c3) != 'TOTAL'")
+        max_sno = c.fetchone()[0] or 0
+        sno = max_sno + 1
+        
+        cols = [f"c{i}" for i in range(1, 31)]
+        vals = [""] * 30
+        vals[1] = str(sno)
+        vals[2] = prod_name
+        vals[3] = str(hsn)
+        vals[4] = str(price)
+        vals[6] = str(qty)
+        
+        placeholders = ",".join(["?"] * 30)
+        col_str = ",".join(cols)
+        
+        c.execute(f"INSERT INTO inventory ({col_str}) VALUES ({placeholders})", vals)
+        
+        c.execute("SELECT value FROM settings WHERE key='inventory_headers'")
+        all_headers = json.loads(c.fetchone()[0])
+        c.execute("SELECT row_num FROM inventory WHERE UPPER(c3) != 'TOTAL'")
+        for r in c.fetchall():
+            update_inventory_formulas(conn, r['row_num'], all_headers)
+            
+        update_totals_row(conn)
+        conn.commit()
+        conn.close()
+        
+        # Trigger background sync to Google Sheets
+        try:
+            import threading
+            from init_gsheets import init_google_sheets
+            t = threading.Thread(target=init_google_sheets)
+            t.daemon = True
+            t.start()
+        except Exception as e:
+            print("Failed to start gsheets sync:", e)
+            
+        return jsonify({'success': True})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 @app.route('/api/kpi')
 def api_kpi():
     try:
@@ -227,14 +334,14 @@ def api_kpi():
         if not rem_val_idx: rem_val_idx = 20
         
         c.execute(f"SELECT SUM(CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL)) FROM inventory WHERE c{rem_qty_idx} != '' AND UPPER(c3) != 'TOTAL'")
-        rem_qty = c.fetchone()[0] or 0
+        rem_qty = round(c.fetchone()[0] or 0, 2)
         
-        c.execute(f"SELECT SUM(CAST(REPLACE(c{rem_val_idx}, ',', '') AS REAL)) FROM inventory WHERE c{rem_val_idx} != '' AND UPPER(c3) != 'TOTAL'")
-        # We will override rem_val below to ensure it perfectly matches Gross - Sales
+        c.execute(f"SELECT SUM(CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) * CAST(REPLACE(c{dp_idx}, ',', '') AS REAL)) FROM inventory WHERE c{rem_qty_idx} != '' AND c{dp_idx} != '' AND UPPER(c3) != 'TOTAL'")
+        rem_val = round(c.fetchone()[0] or 0, 2)
         
         # Calculate Gross Stock Value using c8 (Gross Value Rs.)
         c.execute(f"SELECT SUM(CAST(REPLACE(c8, ',', '') AS REAL)) FROM inventory WHERE c8 != '' AND UPPER(c3) != 'TOTAL'")
-        gross_val = c.fetchone()[0] or 0
+        gross_val = round(c.fetchone()[0] or 0, 2)
         
         c.execute(f"SELECT COUNT(*) FROM inventory WHERE CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) <= 10 AND CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) > 0 AND c{rem_qty_idx} != '' AND UPPER(c3) != 'TOTAL'")
         low_stock = c.fetchone()[0] or 0
@@ -242,34 +349,38 @@ def api_kpi():
         c.execute(f"SELECT COUNT(*) FROM inventory WHERE CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) <= 0 AND c{rem_qty_idx} != '' AND UPPER(c3) != 'TOTAL'")
         out_of_stock = c.fetchone()[0] or 0
         
-        # Calculate Monthly Sales Value and Week Sales Value directly from the invoices table
+        # Calculate Monthly Sales Value, Week Sales Value, Total Invoices directly from the invoices table
         c.execute("SELECT date_created, amount FROM invoices WHERE status != 'cancelled'")
         monthly_sales = 0
         week_sales = 0
+        total_invoices = 0
+        total_invoice_value = 0
         import datetime
         now = datetime.datetime.now()
         
         for r in c.fetchall():
             d_str = r[0]
-            amt = r[1] or 0
+            amt = float(r[1] or 0)
             monthly_sales += amt
+            total_invoice_value += amt
+            total_invoices += 1
             
             try:
-                if '/' in d_str:
-                    dt = datetime.datetime.strptime(d_str, '%d/%m/%Y')
+                if 'T' in d_str:
+                    dt = datetime.datetime.fromisoformat(d_str)
+                elif '/' in d_str:
+                    dt = datetime.datetime.strptime(d_str[:10], '%d/%m/%Y')
                 else:
-                    dt = datetime.datetime.strptime(d_str, '%Y-%m-%d')
+                    dt = datetime.datetime.strptime(d_str[:10], '%Y-%m-%d')
                     
                 if (now - dt).days <= 7:
                     week_sales += amt
             except Exception:
                 pass
                 
-        # To ensure the dashboard is mathematically consistent for the user:
-        # Remaining Value should equal Gross Stock Value - Monthly Sales Value
-        rem_val = gross_val - monthly_sales
-        if rem_val < 0: 
-            rem_val = 0
+        monthly_sales = round(monthly_sales, 2)
+        week_sales = round(week_sales, 2)
+        total_invoice_value = round(total_invoice_value, 2)
         
         # Read other static KPIs from DB
         c.execute("SELECT key, value FROM kpis")
@@ -277,13 +388,15 @@ def api_kpi():
         
         # Overwrite dynamic ones
         kpis['Total SKUs'] = str(total_skus)
-        kpis['Remaining Qty'] = str(rem_qty)
-        kpis['Gross Stock Value'] = str(gross_val)
+        kpis['Remaining Qty'] = f"{rem_qty:g}" # Remove trailing zeros
         kpis['Remaining Value'] = str(rem_val)
+        kpis['Gross Stock Value'] = str(gross_val)
         kpis['Low Stock Count'] = str(low_stock)
         kpis['Out of Stock Count'] = str(out_of_stock)
         kpis['Monthly Sales Value'] = str(monthly_sales)
         kpis['Week Sales Value'] = str(week_sales)
+        kpis['Total Invoices'] = str(total_invoices)
+        kpis['Total Invoice Value'] = str(total_invoice_value)
         
         conn.close()
         return jsonify(kpis)

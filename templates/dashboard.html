@@ -462,6 +462,35 @@
                 </div>
                 <div class="glow-line" style="background: linear-gradient(90deg, transparent, #f43f5e, transparent);"></div>
             </div>
+            <!-- Total Invoices KPI -->
+            <div class="kpi-card">
+                <div class="kpi-header">
+                    <span class="kpi-title">Total Invoices</span>
+                    <div class="kpi-icon" style="color: #6366f1;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    </div>
+                </div>
+                <h2 class="kpi-value" id="total-invoices" style="background-image: linear-gradient(135deg, #a5b4fc 0%, #6366f1 100%);">...</h2>
+                <div class="kpi-footer">
+                    <span class="trend-label">Active invoices</span>
+                </div>
+                <div class="glow-line" style="background: linear-gradient(90deg, transparent, #6366f1, transparent);"></div>
+            </div>
+
+            <!-- Total Invoice Value KPI -->
+            <div class="kpi-card">
+                <div class="kpi-header">
+                    <span class="kpi-title">Total Invoice Value</span>
+                    <div class="kpi-icon" style="color: #14b8a6;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                    </div>
+                </div>
+                <h2 class="kpi-value" id="total-invoice-val" style="background-image: linear-gradient(135deg, #5eead4 0%, #14b8a6 100%);">...</h2>
+                <div class="kpi-footer">
+                    <span class="trend-label">Sum of all invoices</span>
+                </div>
+                <div class="glow-line" style="background: linear-gradient(90deg, transparent, #14b8a6, transparent);"></div>
+            </div>
         </section>
     </main>
 
@@ -492,13 +521,15 @@
                 const res = await fetch('/api/kpi');
                 const data = await res.json();
                 
-                document.getElementById('gross-stock-value').innerText = '₹' + parseFloat(data['Gross Stock Value']).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-                document.getElementById('monthly-sales').innerText = '₹' + parseFloat(data['Monthly Sales Value']).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-                document.getElementById('week-sales').innerText = '₹' + parseFloat(data['Week Sales Value']).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-                document.getElementById('stock-alerts').innerText = Math.round(data['Low Stock Count']) + ' / ' + Math.round(data['Out of Stock Count']);
+                document.getElementById('gross-stock-value').innerText = '₹' + parseFloat(data['Gross Stock Value'] || 0).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                document.getElementById('monthly-sales').innerText = '₹' + parseFloat(data['Monthly Sales Value'] || 0).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                document.getElementById('week-sales').innerText = '₹' + parseFloat(data['Week Sales Value'] || 0).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                document.getElementById('stock-alerts').innerText = Math.round(data['Low Stock Count'] || 0) + ' / ' + Math.round(data['Out of Stock Count'] || 0);
                 document.getElementById('remaining-qty').innerText = parseFloat(data['Remaining Qty'] || 0).toLocaleString('en-IN');
                 document.getElementById('remaining-val').innerText = '₹' + parseFloat(data['Remaining Value'] || 0).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
                 document.getElementById('total-skus').innerText = data['Total SKUs'] || 0;
+                document.getElementById('total-invoices').innerText = data['Total Invoices'] || 0;
+                document.getElementById('total-invoice-val').innerText = '₹' + parseFloat(data['Total Invoice Value'] || 0).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
                 
                 // Update missing data
                 if (data['Reporting Period']) {

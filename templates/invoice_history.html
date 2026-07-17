@@ -352,7 +352,7 @@
                     <td>${inv.ds_code || '-'}</td>
                     <td>${inv.customer_name || '-'}</td>
                     <td class="amt">${parseFloat(inv.amount || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
-                    <td class="amt" style="color:#818cf8;font-weight:600;">${parseFloat(inv.grand_total_sp || 0).toFixed(2)}</td>
+                    <td class="amt" style="color:#818cf8;font-weight:600;">${parseFloat(inv.grand_total_sp || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
                     <td><span class="status ${inv.status || 'active'}">${inv.status || 'active'}</span></td>
                     <td style="text-align:center;"><input type="checkbox" style="cursor:pointer; width:1.2rem; height:1.2rem;" ${inv.is_dispatched ? 'checked' : ''} onchange="toggleDispatched(${inv.id}, this.checked)"></td>
                     <td><button class="btn-view" style="padding:0.3rem 0.6rem; font-size:0.75rem;" onclick="openRemarkModal(${inv.id}, '${safeRemark}')">Remark</button></td>
@@ -369,7 +369,7 @@
         const inv = invoiceData[index];
         document.getElementById('modalTitle').textContent = `Order Details: ${inv.invoice_no}`;
         document.getElementById('modalTotal').textContent = '₹' + parseFloat(inv.amount || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2});
-        document.getElementById('modalTotalSP').textContent = parseFloat(inv.grand_total_sp || 0).toFixed(2);
+        document.getElementById('modalTotalSP').textContent = parseFloat(inv.grand_total_sp || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2});
         
         const tbody = document.getElementById('modalItems');
         tbody.innerHTML = '';
@@ -380,9 +380,9 @@
                     <td>${item.description || item.name}</td>
                     <td>${item.qty}</td>
                     <td class="amt">${parseFloat(item.price || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
-                    <td class="amt" style="color:#818cf8;">${parseFloat(item.unit_sp || 0).toFixed(2)}</td>
+                    <td class="amt" style="color:#818cf8;">${parseFloat(item.unit_sp || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
                     <td class="amt">${parseFloat(item.total || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
-                    <td class="amt" style="color:#818cf8; font-weight:bold;">${parseFloat(item.total_sp || 0).toFixed(2)}</td>
+                    <td class="amt" style="color:#818cf8; font-weight:bold;">${parseFloat(item.total_sp || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
                 </tr>
             `;
         });
