@@ -115,17 +115,25 @@ def restore_from_gsheets():
         conn.commit()
         log_sync(conn, 'restore', 'success')
         print("Restore complete! Now running sales re-sync...")
-        conn.close()
         
         # ALWAYS recompute Sold Qty from local invoices table after restore!
         # Because the google sheet might have old/stale Sold Qty columns!
         from sync_sales_to_inventory import sync_sales_to_inventory
         sync_sales_to_inventory(push_to_gsheets=False)
         
-    except Exception as e:
-        conn.rollback()
-        log_sync(conn, 'restore', 'failed')
         conn.close()
+        
+    except Exception as e:
+        try:
+            conn.rollback()
+            log_sync(conn, 'restore', 'failed')
+        except Exception:
+            pass
+        finally:
+            try:
+                conn.close()
+            except Exception:
+                pass
         print("Fatal error in restore, rolled back:", e)
 
 if __name__ == "__main__":
