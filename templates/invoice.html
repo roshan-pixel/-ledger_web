@@ -676,6 +676,17 @@
     // ── Auto-fill price when product selected ─────────
     function handleProductSelect(input) {
         const name = input.value.trim();
+        
+        // Prevent duplicate items
+        const allInputs = document.querySelectorAll('.item-desc');
+        for (let i = 0; i < allInputs.length; i++) {
+            if (allInputs[i] !== input && allInputs[i].value.trim() === name) {
+                alert('ITEM ALREADY ADDED PLEASE INCREASE THE QTY THERE ONLY !');
+                input.value = '';
+                return;
+            }
+        }
+
         const product = inventoryData.find(p =>
             (p['Product Name'] || p.Product || p['Item Name'] || '') === name
         );
