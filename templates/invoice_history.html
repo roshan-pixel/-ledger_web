@@ -345,7 +345,7 @@
                     }
                 } catch(e) {}
                 
-                let safeRemark = (inv.remark || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                let safeRemark = (inv.remark || '').replace(/'/g, "\\'").replace(/"/g, '&quot;').replace(/\n/g, '\\n').replace(/\r/g, '\\r');
                 tr.innerHTML = `
                     <td class="inv-no">${inv.invoice_no || '-'}</td>
                     <td>${dateStr}</td>
