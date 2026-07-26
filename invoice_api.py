@@ -219,7 +219,7 @@ def list_invoices():
                 except:
                     pass
                     
-        c.execute('SELECT * FROM invoices ORDER BY id DESC')
+        c.execute('SELECT * FROM invoices ORDER BY invoice_no DESC')
         rows = c.fetchall()
         
         invoices = []
