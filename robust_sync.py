@@ -119,7 +119,10 @@ def sync_all_to_inventory():
     conn.close()
 
     print("Syncing to Google Sheets...")
-    init_google_sheets()
+    try:
+        init_google_sheets()
+    except Exception as e:
+        print('GSheets fail:', e)
     print("Robust Sync Complete!")
 
 if __name__ == "__main__":

@@ -825,6 +825,16 @@ if os.path.exists('credentials.json') or os.path.exists('/etc/secrets/credential
     except Exception as e:
         print(f"Initial sync failed: {e}")
 
+
+@app.route('/api/fix_sync')
+def api_fix_sync():
+    import robust_sync
+    try:
+        robust_sync.sync_all_to_inventory()
+        return "Fixed!"
+    except Exception as e:
+        return str(e)
+
 if __name__ == '__main__':
     # Cloud-ready configuration
     app.run(host='0.0.0.0', port=5000, debug=True, use_reloader=False)
