@@ -116,10 +116,9 @@ def restore_from_gsheets():
         log_sync(conn, 'restore', 'success')
         print("Restore complete! Now running sales re-sync...")
         
-        # ALWAYS recompute Sold Qty from local invoices table after restore!
-        # Because the google sheet might have old/stale Sold Qty columns!
-        from sync_sales_to_inventory import sync_sales_to_inventory
-        sync_sales_to_inventory(push_to_gsheets=False)
+        # Commented out: Trust Google Sheets as the master source for inventory
+        # from sync_sales_to_inventory import sync_sales_to_inventory
+        # sync_sales_to_inventory(push_to_gsheets=False)
         
         conn.close()
         

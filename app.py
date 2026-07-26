@@ -307,6 +307,35 @@ def api_kpi():
         conn = get_db()
         c = conn.cursor()
         
+        # 1. Attempt to fetch live data from Google Sheets first
+        try:
+            import gspread
+            import os
+            creds_path = '/etc/secrets/credentials.json' if os.path.exists('/etc/secrets/credentials.json') else 'credentials.json'
+            if os.path.exists(creds_path):
+                gc = gspread.service_account(filename=creds_path)
+                sheet = gc.open('Ledger_Database')
+                kpi_ws = sheet.worksheet('KPIs')
+                kpi_data = kpi_ws.get_all_values()
+                
+                live_kpis = {}
+                if len(kpi_data) > 1:
+                    for row in kpi_data[1:]:
+                        if len(row) >= 2:
+                            live_kpis[row[0]] = row[1]
+                            
+                    # Always update the local kpis table so it's cached
+                    c.execute("DELETE FROM kpis")
+                    for k, v in live_kpis.items():
+                        c.execute("INSERT INTO kpis VALUES (?,?)", (k, v))
+                    conn.commit()
+                    
+                    conn.close()
+                    return jsonify(live_kpis)
+        except Exception as e:
+            print(f"Live Google Sheets fetch failed: {e}")
+            # Fallback to local recalculation if live fetch fails
+        
         # Recalculate KPIs based on current inventory
         # Total SKUs
         c.execute("SELECT COUNT(*) FROM inventory WHERE c3 != '' AND c3 IS NOT NULL AND UPPER(c3) != 'TOTAL'")
@@ -399,6 +428,15 @@ def api_kpi():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+
+@app.route('/api/force_sync')
+def api_force_sync():
+    try:
+        from restore_gsheets import restore_from_gsheets
+        restore_from_gsheets()
+        return jsonify({"status": "success", "message": "Live data successfully fetched from Google Sheets!"})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/api/inventory')
 def api_inventory():
