@@ -696,6 +696,24 @@ def api_customer():
         return jsonify({'error': str(e)}), 500
 
 # Run sync on startup (only if credentials exist, e.g. on Render or local with key)
+@app.route('/stock_point_order')
+def stock_point_order():
+    return render_template('stock_point_order.html')
+
+@app.route('/api/sp_order_data')
+def api_sp_order_data():
+    import subprocess
+    import sys
+    import json
+    
+    script_path = os.path.join(os.path.dirname(__file__), 'fetch_order_data.py')
+    try:
+        # Using the provided credentials
+        res = subprocess.run([sys.executable, script_path, "AAZFD8117G", "ABC@1234"], capture_output=True, text=True)
+        return jsonify(json.loads(res.stdout))
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
+
 if os.path.exists('credentials.json') or os.path.exists('/etc/secrets/credentials.json'):
     print("Starting initial sync from Google Sheets...")
     try:

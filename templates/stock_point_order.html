@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Stock Point Order Form — Nexus Analytics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @keyframes fadeInSPA { from{opacity:0} to{opacity:1} }
+        @keyframes spin { to{transform:rotate(360deg)} }
+        *, *::before, *::after { box-sizing:border-box; }
+        :root {
+            --bg:       #0b0f19;
+            --surface:  rgba(255,255,255,0.04);
+            --surface2: rgba(255,255,255,0.07);
+            --border:   rgba(255,255,255,0.09);
+            --primary:  #6366f1;
+            --pglow:    rgba(99,102,241,0.3);
+            --green:    #10b981;
+            --red:      #ef4444;
+            --text:     #ffffff;
+            --muted:    #94a3b8;
+            --blur:     blur(16px);
+        }
+        body {
+            margin:0; padding:0;
+            font-family:'Outfit',sans-serif;
+            background-color:var(--bg);
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(99,102,241,.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(236,72,153,.15),  transparent 25%);
+            background-attachment:fixed;
+            color:var(--text); min-height:100vh;
+            display:flex;
+            animation:fadeInSPA .3s ease-out forwards;
+        }
+        
+        /* ── SIDEBAR ─────────────────────── */
+        .sidebar {
+            width:260px; flex-shrink:0;
+            background:var(--surface); border-right:1px solid var(--border);
+            backdrop-filter:var(--blur);
+            padding:2rem 1.5rem; display:flex; flex-direction:column; gap:2rem;
+            position:sticky; top:0; height:100vh; overflow-y:auto;
+        }
+        .logo { font-size:1.4rem; font-weight:700; letter-spacing:-.5px; text-align:center; padding:1rem 0; }
+        .logo img { max-width:85%; background: linear-gradient(135deg, #fff 0%, #dce1eb 100%); border-radius:16px; padding:12px; }
+        .nav-menu { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.4rem; }
+        .nav-item {
+            padding:.85rem 1.2rem; border-radius:12px; color:var(--muted);
+            font-weight:500; cursor:pointer; transition:all .25s;
+            display:flex; align-items:center; gap:.85rem; font-size:.92rem;
+        }
+        .nav-item:hover { background:rgba(255,255,255,.08); color:var(--text); transform:translateX(4px); }
+        .nav-item.active { background:rgba(99,102,241,.15); color:var(--primary); transform:translateX(4px); }
+
+        /* ── MAIN ────────────────────────── */
+        .main { flex:1; padding:2rem; overflow:hidden; display:flex; flex-direction:column; gap:1.5rem; }
+
+        .page-header { display:flex; justify-content:space-between; align-items:flex-end; gap:1rem; flex-wrap:wrap; border-bottom:1px solid var(--border); padding-bottom:1rem; }
+        .page-header h1 { margin:0; font-size:1.9rem; font-weight:700; }
+        .page-header p { margin:.25rem 0 0; color:var(--muted); font-size:.9rem; }
+
+        /* Wallet Balance Display */
+        .wallet-card {
+            background: rgba(16, 185, 129, 0.1); border: 1px solid var(--green); border-radius: 12px;
+            padding: 1.5rem; display: flex; justify-content: space-between; align-items: center;
+        }
+        .wallet-card.insufficient { background: rgba(239, 68, 68, 0.1); border-color: var(--red); }
+        .wallet-title { font-size: 1.1rem; color: var(--muted); font-weight: 500; }
+        .wallet-amount { font-size: 2.2rem; font-weight: 700; color: var(--green); }
+        .wallet-card.insufficient .wallet-amount { color: var(--red); }
+
+        /* Form Area */
+        .form-section { background: var(--surface); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border); }
+        .form-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: flex-end; }
+        .input-group { display: flex; flex-direction: column; gap: 0.4rem; flex: 1; min-width: 150px; }
+        .input-group.large { flex: 2; min-width: 250px; }
+        .input-group label { font-size: 0.85rem; font-weight: 600; color: var(--muted); }
+        .glass-input {
+            padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid var(--border);
+            background: rgba(255,255,255,0.06); color: var(--text); font-family: inherit;
+            outline: none; transition: all 0.2s;
+        }
+        .glass-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--pglow); }
+        select.glass-input { appearance: auto; cursor: pointer; }
+        option { background: var(--bg); color: var(--text); }
+
+        .btn {
+            padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; font-family: inherit;
+            cursor: pointer; transition: all 0.2s; border: none;
+        }
+        .btn-primary { background: var(--primary); color: #fff; }
+        .btn-primary:hover { background: #4f46e5; }
+        .btn-primary:disabled { background: var(--muted); cursor: not-allowed; opacity: 0.6; }
+
+        /* Table */
+        .table-container { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; margin-top: 1.5rem; }
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        th, td { padding: 0.8rem 1rem; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+        th { background: rgba(0,0,0,0.2); font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.75rem; }
+        td.numeric { text-align: right; }
+        th.numeric { text-align: right; }
+        
+        .remove-btn { color: var(--red); background: none; border: none; cursor: pointer; font-size: 1.2rem; }
+        
+        .order-summary { display: flex; justify-content: flex-end; align-items: center; margin-top: 1.5rem; gap: 2rem; }
+        .total-amount { font-size: 1.8rem; font-weight: 700; color: var(--text); }
+        
+        .validation-msg { color: var(--red); font-weight: 500; font-size: 0.95rem; display: none; margin-top: 1rem; text-align: right; }
+        
+        /* Loading Overlay */
+        .loading-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(11, 15, 25, 0.85); backdrop-filter: blur(8px);
+            z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center;
+        }
+        .spinner-large {
+            width: 50px; height: 50px; border: 4px solid rgba(99,102,241,0.2);
+            border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite;
+        }
+        .loading-text { margin-top: 1rem; font-size: 1.2rem; font-weight: 500; color: #fff; }
+
+        @media(max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; padding: 1rem; border-right: none; border-bottom: 1px solid var(--border); }
+            .nav-menu { flex-direction: row; overflow-x: auto; padding-bottom: 0.5rem; }
+            .nav-item { min-height: 44px; white-space: nowrap; }
+            .main { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner-large"></div>
+    <div class="loading-text">Fetching Live Wallet Balance & Products...</div>
+</div>
+
+<aside class="sidebar">
+    <div class="logo">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Asclepius Wellness">
+    </div>
+    <ul class="nav-menu">
+        <li class="nav-item" onclick="window.location.href='/'">Dashboard</li>
+        <li class="nav-item" onclick="window.location.href='/inventory_master'">Inventory Master</li>
+        <li class="nav-item" onclick="window.location.href='/invoice'">Invoice Generator</li>
+        <li class="nav-item" onclick="window.location.href='/invoice_history'">Recent Invoices</li>
+        <li class="nav-item active">Stock Point Order</li>
+    </ul>
+</aside>
+
+<main class="main">
+    <div class="page-header">
+        <div>
+            <h1>Stock Point Order Form</h1>
+            <p>Create and submit franchise orders directly using live wallet balance.</p>
+        </div>
+    </div>
+
+    <!-- Wallet Balance -->
+    <div class="wallet-card" id="walletCard">
+        <div class="wallet-title">Available Wallet Balance</div>
+        <div class="wallet-amount" id="walletBalanceTxt">₹ 0.00</div>
+    </div>
+
+    <!-- Product Form -->
+    <div class="form-section">
+        <div class="form-row">
+            <div class="input-group large">
+                <label>Select Product</label>
+                <select id="productSelect" class="glass-input" onchange="onProductSelect()">
+                    <option value="">-- Select Product --</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Rate (₹)</label>
+                <input type="number" id="productRate" class="glass-input" step="0.01" oninput="calcAmount()">
+            </div>
+            <div class="input-group">
+                <label>Quantity</label>
+                <input type="number" id="productQty" class="glass-input" min="1" value="1" oninput="calcAmount()">
+            </div>
+            <div class="input-group">
+                <label>Amount (₹)</label>
+                <input type="text" id="productAmount" class="glass-input" disabled>
+            </div>
+            <div class="input-group" style="flex: 0;">
+                <button class="btn btn-primary" onclick="addToOrder()">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Table -->
+    <div class="table-container">
+        <table id="orderTable">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th class="numeric">Rate (₹)</th>
+                    <th class="numeric">Qty</th>
+                    <th class="numeric">Amount (₹)</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="orderBody">
+                <tr id="emptyRow"><td colspan="5" style="text-align:center; color:var(--muted);">No items added yet.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="validation-msg" id="validationMsg">
+        Insufficient wallet balance. Order amount exceeds the available wallet balance.
+    </div>
+
+    <div class="order-summary">
+        <div>
+            <span style="color:var(--muted); font-size:1.1rem; margin-right:1rem;">Running Total:</span>
+            <span class="total-amount" id="runningTotal">₹ 0.00</span>
+        </div>
+        <button class="btn btn-primary" id="submitOrderBtn" onclick="submitOrder()" disabled>Submit Order</button>
+    </div>
+
+</main>
+
+<script>
+    let walletBalance = 0;
+    let orderTotal = 0;
+    let orderItems = [];
+    let spProducts = [];
+    let localInventory = [];
+
+    // On Load
+    window.onload = async () => {
+        try {
+            // Fetch Inventory (for rate lookup)
+            const invRes = await fetch('/api/inventory');
+            const invData = await invRes.json();
+            if (invData.data) {
+                localInventory = invData.data;
+            }
+
+            // Fetch Live Wallet & SP Products
+            const spRes = await fetch('/api/sp_order_data');
+            const spData = await spRes.json();
+            
+            document.getElementById('loadingOverlay').style.display = 'none';
+
+            if (!spData.success) {
+                alert("Failed to fetch live data: " + (spData.error || "Unknown Error"));
+                return;
+            }
+
+            walletBalance = spData.balance || 0;
+            document.getElementById('walletBalanceTxt').innerText = '₹ ' + walletBalance.toLocaleString('en-IN', {minimumFractionDigits:2});
+            
+            if (spData.products && spData.products.length > 0) {
+                spProducts = spData.products;
+                populateProductSelect();
+            }
+        } catch (e) {
+            document.getElementById('loadingOverlay').style.display = 'none';
+            alert("Network error while initializing page.");
+            console.error(e);
+        }
+    };
+
+    function populateProductSelect() {
+        const sel = document.getElementById('productSelect');
+        sel.innerHTML = '<option value="">-- Select Product --</option>';
+        spProducts.forEach(p => {
+            const opt = document.createElement('option');
+            opt.value = p.id;
+            opt.textContent = p.name;
+            sel.appendChild(opt);
+        });
+    }
+
+    function onProductSelect() {
+        const sel = document.getElementById('productSelect');
+        const text = sel.options[sel.selectedIndex].text;
+        
+        // Try to find rate in local inventory by matching name
+        let foundRate = "";
+        if (text) {
+            // Very naive matching - try to find if inventory name is in SP name or vice-versa
+            const matched = localInventory.find(inv => {
+                const invName = (inv['Product Name'] || '').toLowerCase();
+                const spName = text.toLowerCase();
+                return invName && (spName.includes(invName) || invName.includes(spName));
+            });
+            if (matched) {
+                // dp index logic or 'Price/Pc (Rs.)'
+                foundRate = matched['Price/Pc (Rs.)'] || matched['DP'] || "";
+                foundRate = foundRate.toString().replace(/,/g, '');
+            }
+        }
+        
+        document.getElementById('productRate').value = foundRate;
+        document.getElementById('productQty').value = "1";
+        calcAmount();
+    }
+
+    function calcAmount() {
+        const rate = parseFloat(document.getElementById('productRate').value) || 0;
+        const qty = parseInt(document.getElementById('productQty').value) || 0;
+        document.getElementById('productAmount').value = (rate * qty).toFixed(2);
+    }
+
+    function addToOrder() {
+        const sel = document.getElementById('productSelect');
+        const productId = sel.value;
+        const productName = sel.options[sel.selectedIndex].text;
+        const rate = parseFloat(document.getElementById('productRate').value) || 0;
+        const qty = parseInt(document.getElementById('productQty').value) || 0;
+
+        if (!productId || qty <= 0 || rate <= 0) {
+            alert("Please select a product and enter valid rate and quantity.");
+            return;
+        }
+
+        const amt = rate * qty;
+        orderItems.push({ id: productId, name: productName, rate, qty, amount: amt });
+        
+        // Reset form
+        sel.value = "";
+        document.getElementById('productRate').value = "";
+        document.getElementById('productQty').value = "1";
+        document.getElementById('productAmount').value = "";
+        
+        renderTable();
+    }
+
+    function removeItem(index) {
+        orderItems.splice(index, 1);
+        renderTable();
+    }
+
+    function renderTable() {
+        const tbody = document.getElementById('orderBody');
+        if (orderItems.length === 0) {
+            tbody.innerHTML = '<tr id="emptyRow"><td colspan="5" style="text-align:center; color:var(--muted);">No items added yet.</td></tr>';
+            orderTotal = 0;
+        } else {
+            let html = '';
+            orderTotal = 0;
+            orderItems.forEach((item, idx) => {
+                html += `<tr>
+                    <td>${item.name}</td>
+                    <td class="numeric">₹ ${item.rate.toLocaleString('en-IN', {minimumFractionDigits:2})}</td>
+                    <td class="numeric">${item.qty}</td>
+                    <td class="numeric">₹ ${item.amount.toLocaleString('en-IN', {minimumFractionDigits:2})}</td>
+                    <td><button class="remove-btn" onclick="removeItem(${idx})">×</button></td>
+                </tr>`;
+                orderTotal += item.amount;
+            });
+            tbody.innerHTML = html;
+        }
+
+        document.getElementById('runningTotal').innerText = '₹ ' + orderTotal.toLocaleString('en-IN', {minimumFractionDigits:2});
+        validateOrder();
+    }
+
+    function validateOrder() {
+        const btn = document.getElementById('submitOrderBtn');
+        const msg = document.getElementById('validationMsg');
+        const card = document.getElementById('walletCard');
+        
+        if (orderTotal > walletBalance) {
+            card.classList.add('insufficient');
+            msg.style.display = 'block';
+            btn.disabled = true;
+        } else {
+            card.classList.remove('insufficient');
+            msg.style.display = 'none';
+            btn.disabled = (orderItems.length === 0);
+        }
+    }
+
+    function submitOrder() {
+        if (orderTotal > walletBalance) return;
+        if (orderItems.length === 0) return;
+        
+        if (confirm(`Submit order for ₹ ${orderTotal.toLocaleString('en-IN')}?`)) {
+            // Here you would implement the actual submission to Asclepius or your own DB
+            // For now, we simulate success
+            alert("Order submission workflow initiated. (Placeholder for actual submission logic)");
+        }
+    }
+</script>
+
+</body>
+</html>
