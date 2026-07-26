@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         @keyframes fadeInSPA { from{opacity:0} to{opacity:1} }
-        @keyframes spin { to{transform:rotate(360deg)} }
         *, *::before, *::after { box-sizing:border-box; }
         :root {
             --bg:       #0b0f19;
@@ -70,13 +69,23 @@
         }
         .wallet-card.insufficient { background: rgba(239, 68, 68, 0.1); border-color: var(--red); }
         .wallet-title { font-size: 1.1rem; color: var(--muted); font-weight: 500; }
-        .wallet-amount { font-size: 2.2rem; font-weight: 700; color: var(--green); }
-        .wallet-card.insufficient .wallet-amount { color: var(--red); }
+        
+        .wallet-input-wrap { display: flex; align-items: center; gap: 0.5rem; }
+        .wallet-input-wrap span { font-size: 2.2rem; font-weight: 700; color: var(--green); }
+        .wallet-card.insufficient .wallet-input-wrap span,
+        .wallet-card.insufficient .wallet-input-wrap input { color: var(--red); border-color: var(--red); }
 
+        .wallet-input {
+            font-size: 2.2rem; font-weight: 700; color: var(--green);
+            background: transparent; border: none; border-bottom: 2px dashed var(--green);
+            border-radius: 0; width: 200px; padding: 0 0.5rem; outline: none; text-align: right; font-family: inherit;
+        }
+        .wallet-input:focus { border-bottom-style: solid; }
+        
         /* Form Area */
         .form-section { background: var(--surface); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border); }
         .form-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: flex-end; }
-        .input-group { display: flex; flex-direction: column; gap: 0.4rem; flex: 1; min-width: 150px; }
+        .input-group { display: flex; flex-direction: column; gap: 0.4rem; flex: 1; min-width: 120px; }
         .input-group.large { flex: 2; min-width: 250px; }
         .input-group label { font-size: 0.85rem; font-weight: 600; color: var(--muted); }
         .glass-input {
@@ -87,6 +96,7 @@
         .glass-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--pglow); }
         select.glass-input { appearance: auto; cursor: pointer; }
         option { background: var(--bg); color: var(--text); }
+        .glass-input:disabled { opacity: 0.7; background: rgba(0,0,0,0.2); }
 
         .btn {
             padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; font-family: inherit;
@@ -111,18 +121,6 @@
         
         .validation-msg { color: var(--red); font-weight: 500; font-size: 0.95rem; display: none; margin-top: 1rem; text-align: right; }
         
-        /* Loading Overlay */
-        .loading-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(11, 15, 25, 0.85); backdrop-filter: blur(8px);
-            z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center;
-        }
-        .spinner-large {
-            width: 50px; height: 50px; border: 4px solid rgba(99,102,241,0.2);
-            border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite;
-        }
-        .loading-text { margin-top: 1rem; font-size: 1.2rem; font-weight: 500; color: #fff; }
-
         @media(max-width: 768px) {
             body { flex-direction: column; }
             .sidebar { width: 100%; height: auto; position: relative; padding: 1rem; border-right: none; border-bottom: 1px solid var(--border); }
@@ -133,11 +131,6 @@
     </style>
 </head>
 <body>
-
-<div class="loading-overlay" id="loadingOverlay">
-    <div class="spinner-large"></div>
-    <div class="loading-text">Fetching Live Wallet Balance & Products...</div>
-</div>
 
 <aside class="sidebar">
     <div class="logo">
@@ -156,14 +149,17 @@
     <div class="page-header">
         <div>
             <h1>Stock Point Order Form</h1>
-            <p>Create and submit franchise orders directly using live wallet balance.</p>
+            <p>Draft your franchise order. (Wallet balance requires manual entry)</p>
         </div>
     </div>
 
     <!-- Wallet Balance -->
     <div class="wallet-card" id="walletCard">
         <div class="wallet-title">Available Wallet Balance</div>
-        <div class="wallet-amount" id="walletBalanceTxt">₹ 0.00</div>
+        <div class="wallet-input-wrap">
+            <span>₹</span>
+            <input type="number" id="walletBalanceTxt" class="wallet-input" value="0" step="1" oninput="updateWalletBalance()">
+        </div>
     </div>
 
     <!-- Product Form -->
@@ -172,8 +168,12 @@
             <div class="input-group large">
                 <label>Select Product</label>
                 <select id="productSelect" class="glass-input" onchange="onProductSelect()">
-                    <option value="">-- Select Product --</option>
+                    <option value="">-- Loading Products... --</option>
                 </select>
+            </div>
+            <div class="input-group" style="flex: 0.5;">
+                <label>Box Size</label>
+                <input type="text" id="productBox" class="glass-input" disabled>
             </div>
             <div class="input-group">
                 <label>Rate (₹)</label>
@@ -199,6 +199,7 @@
             <thead>
                 <tr>
                     <th>Product Name</th>
+                    <th class="numeric">Box Size</th>
                     <th class="numeric">Rate (₹)</th>
                     <th class="numeric">Qty</th>
                     <th class="numeric">Amount (₹)</th>
@@ -206,13 +207,13 @@
                 </tr>
             </thead>
             <tbody id="orderBody">
-                <tr id="emptyRow"><td colspan="5" style="text-align:center; color:var(--muted);">No items added yet.</td></tr>
+                <tr id="emptyRow"><td colspan="6" style="text-align:center; color:var(--muted);">No items added yet.</td></tr>
             </tbody>
         </table>
     </div>
 
     <div class="validation-msg" id="validationMsg">
-        Insufficient wallet balance. Order amount exceeds the available wallet balance.
+        Insufficient wallet balance. Order amount exceeds the entered wallet balance.
     </div>
 
     <div class="order-summary">
@@ -229,87 +230,63 @@
     let walletBalance = 0;
     let orderTotal = 0;
     let orderItems = [];
-    let spProducts = [];
     let localInventory = [];
 
     // On Load
     window.onload = async () => {
         try {
-            // Fetch Inventory (for rate lookup)
+            // Fetch Inventory 
             const invRes = await fetch('/api/inventory');
             const invText = await invRes.text();
             let invData;
             try { invData = JSON.parse(invText); } catch(err) { throw new Error("Inventory API returned non-JSON: " + invText.substring(0,100)); }
             
             if (invData.data) {
-                localInventory = invData.data;
-            }
-
-            // Fetch Live Wallet & SP Products
-            const spRes = await fetch('/api/sp_order_data');
-            const spText = await spRes.text();
-            let spData;
-            try { 
-                spData = JSON.parse(spText); 
-            } catch(err) { 
-                alert("Server returned invalid response (probably 500 or 502 error):\n\n" + spText.substring(0, 300));
-                document.getElementById('loadingOverlay').style.display = 'none';
-                return;
-            }
-            
-            document.getElementById('loadingOverlay').style.display = 'none';
-
-            if (!spData.success) {
-                alert("Failed to fetch live data: " + (spData.error || "Unknown Error"));
-                return;
-            }
-
-            walletBalance = spData.balance || 0;
-            document.getElementById('walletBalanceTxt').innerText = '₹ ' + walletBalance.toLocaleString('en-IN', {minimumFractionDigits:2});
-            
-            if (spData.products && spData.products.length > 0) {
-                spProducts = spData.products;
+                // Filter out empty rows or totals
+                localInventory = invData.data.filter(r => r['Product Name'] && r['Product Name'].toUpperCase() !== 'TOTAL');
                 populateProductSelect();
             }
         } catch (e) {
-            document.getElementById('loadingOverlay').style.display = 'none';
-            alert("Network error while initializing page.");
+            alert("Error loading inventory data: " + e.message);
             console.error(e);
         }
     };
 
+    function updateWalletBalance() {
+        walletBalance = parseFloat(document.getElementById('walletBalanceTxt').value) || 0;
+        validateOrder();
+    }
+
     function populateProductSelect() {
         const sel = document.getElementById('productSelect');
         sel.innerHTML = '<option value="">-- Select Product --</option>';
-        spProducts.forEach(p => {
+        localInventory.forEach((p, idx) => {
             const opt = document.createElement('option');
-            opt.value = p.id;
-            opt.textContent = p.name;
+            opt.value = idx;
+            opt.textContent = p['Product Name'];
             sel.appendChild(opt);
         });
     }
 
     function onProductSelect() {
         const sel = document.getElementById('productSelect');
-        const text = sel.options[sel.selectedIndex].text;
-        
-        // Try to find rate in local inventory by matching name
-        let foundRate = "";
-        if (text) {
-            // Very naive matching - try to find if inventory name is in SP name or vice-versa
-            const matched = localInventory.find(inv => {
-                const invName = (inv['Product Name'] || '').toLowerCase();
-                const spName = text.toLowerCase();
-                return invName && (spName.includes(invName) || invName.includes(spName));
-            });
-            if (matched) {
-                // dp index logic or 'Price/Pc (Rs.)'
-                foundRate = matched['Price/Pc (Rs.)'] || matched['DP'] || "";
-                foundRate = foundRate.toString().replace(/,/g, '');
-            }
+        const idx = sel.value;
+        if (idx === "") {
+            document.getElementById('productRate').value = "";
+            document.getElementById('productBox').value = "";
+            document.getElementById('productQty').value = "1";
+            document.getElementById('productAmount').value = "";
+            return;
         }
         
-        document.getElementById('productRate').value = foundRate;
+        const product = localInventory[idx];
+        let rate = product['Price/Pc (Rs.)'] || 0;
+        if(typeof rate === 'string') rate = rate.replace(/,/g, '');
+        
+        let box = product['Box'] || 1;
+        
+        document.getElementById('productRate').value = rate;
+        document.getElementById('productBox').value = box;
         document.getElementById('productQty').value = "1";
         calcAmount();
     }
@@ -322,22 +299,29 @@
 
     function addToOrder() {
         const sel = document.getElementById('productSelect');
-        const productId = sel.value;
+        const idx = sel.value;
+        if (idx === "") {
+            alert("Please select a product.");
+            return;
+        }
+        
         const productName = sel.options[sel.selectedIndex].text;
         const rate = parseFloat(document.getElementById('productRate').value) || 0;
+        const box = document.getElementById('productBox').value || "1";
         const qty = parseInt(document.getElementById('productQty').value) || 0;
 
-        if (!productId || qty <= 0 || rate <= 0) {
-            alert("Please select a product and enter valid rate and quantity.");
+        if (qty <= 0 || rate <= 0) {
+            alert("Please enter a valid rate and quantity.");
             return;
         }
 
         const amt = rate * qty;
-        orderItems.push({ id: productId, name: productName, rate, qty, amount: amt });
+        orderItems.push({ name: productName, rate, box, qty, amount: amt });
         
         // Reset form
         sel.value = "";
         document.getElementById('productRate').value = "";
+        document.getElementById('productBox').value = "";
         document.getElementById('productQty').value = "1";
         document.getElementById('productAmount').value = "";
         
@@ -352,7 +336,7 @@
     function renderTable() {
         const tbody = document.getElementById('orderBody');
         if (orderItems.length === 0) {
-            tbody.innerHTML = '<tr id="emptyRow"><td colspan="5" style="text-align:center; color:var(--muted);">No items added yet.</td></tr>';
+            tbody.innerHTML = '<tr id="emptyRow"><td colspan="6" style="text-align:center; color:var(--muted);">No items added yet.</td></tr>';
             orderTotal = 0;
         } else {
             let html = '';
@@ -360,6 +344,7 @@
             orderItems.forEach((item, idx) => {
                 html += `<tr>
                     <td>${item.name}</td>
+                    <td class="numeric">${item.box}</td>
                     <td class="numeric">₹ ${item.rate.toLocaleString('en-IN', {minimumFractionDigits:2})}</td>
                     <td class="numeric">${item.qty}</td>
                     <td class="numeric">₹ ${item.amount.toLocaleString('en-IN', {minimumFractionDigits:2})}</td>
@@ -395,9 +380,8 @@
         if (orderItems.length === 0) return;
         
         if (confirm(`Submit order for ₹ ${orderTotal.toLocaleString('en-IN')}?`)) {
-            // Here you would implement the actual submission to Asclepius or your own DB
-            // For now, we simulate success
-            alert("Order submission workflow initiated. (Placeholder for actual submission logic)");
+            // Placeholder for actual submission
+            alert("Order submission workflow initiated.");
         }
     }
 </script>
