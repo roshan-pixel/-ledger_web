@@ -307,36 +307,6 @@ def api_kpi():
         conn = get_db()
         c = conn.cursor()
         
-        # 1. Attempt to fetch live data from Google Sheets first
-        try:
-            import gspread
-            import os
-            creds_path = '/etc/secrets/credentials.json' if os.path.exists('/etc/secrets/credentials.json') else 'credentials.json'
-            if os.path.exists(creds_path):
-                gc = gspread.service_account(filename=creds_path)
-                sheet = gc.open('Ledger_Database')
-                kpi_ws = sheet.worksheet('KPIs')
-                kpi_data = kpi_ws.get_all_values()
-                
-                live_kpis = {}
-                if len(kpi_data) > 1:
-                    for row in kpi_data[1:]:
-                        if len(row) >= 2:
-                            live_kpis[row[0]] = row[1]
-                            
-                    # Always update the local kpis table so it's cached
-                    c.execute("DELETE FROM kpis")
-                    for k, v in live_kpis.items():
-                        c.execute("INSERT INTO kpis VALUES (?,?)", (k, v))
-                    conn.commit()
-                    
-                    conn.close()
-                    return jsonify(live_kpis)
-        except Exception as e:
-            print(f"Live Google Sheets fetch failed: {e}")
-            # Fallback to local recalculation if live fetch fails
-        
-        # Recalculate KPIs based on current inventory
         # Total SKUs
         c.execute("SELECT COUNT(*) FROM inventory WHERE c3 != '' AND c3 IS NOT NULL AND UPPER(c3) != 'TOTAL'")
         total_skus = c.fetchone()[0]
@@ -349,14 +319,16 @@ def api_kpi():
         dp_idx = None
         rem_qty_idx = None
         rem_val_idx = None
+        tot_qty_idx = None
         for i, h in enumerate(headers):
             if h == 'Price/Pc (Rs.)': dp_idx = i + 1
             elif h == 'Remaining Qty': rem_qty_idx = i + 1
             elif h == 'Remaining Value (Rs.)': rem_val_idx = i + 1
-            elif h == 'Total Qty': avail_stock_idx = i + 1
+            elif h == 'Total Qty': tot_qty_idx = i + 1
             
         if not rem_qty_idx: rem_qty_idx = 19
         if not rem_val_idx: rem_val_idx = 20
+        if not tot_qty_idx: tot_qty_idx = 7
         
         c.execute(f"SELECT SUM(CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL)) FROM inventory WHERE c{rem_qty_idx} != '' AND UPPER(c3) != 'TOTAL'")
         rem_qty = round(c.fetchone()[0] or 0, 2)
@@ -364,8 +336,8 @@ def api_kpi():
         c.execute(f"SELECT SUM(CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) * CAST(REPLACE(c{dp_idx}, ',', '') AS REAL)) FROM inventory WHERE c{rem_qty_idx} != '' AND c{dp_idx} != '' AND UPPER(c3) != 'TOTAL'")
         rem_val = round(c.fetchone()[0] or 0, 2)
         
-        # Calculate Gross Stock Value using c8 (Gross Value Rs.)
-        c.execute(f"SELECT SUM(CAST(REPLACE(c8, ',', '') AS REAL)) FROM inventory WHERE c8 != '' AND UPPER(c3) != 'TOTAL'")
+        # Calculate Gross Stock Value using Total Qty * Price
+        c.execute(f"SELECT SUM(CAST(REPLACE(c{tot_qty_idx}, ',', '') AS REAL) * CAST(REPLACE(c{dp_idx}, ',', '') AS REAL)) FROM inventory WHERE c{tot_qty_idx} != '' AND c{dp_idx} != '' AND UPPER(c3) != 'TOTAL'")
         gross_val = round(c.fetchone()[0] or 0, 2)
         
         c.execute(f"SELECT COUNT(*) FROM inventory WHERE CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) <= 10 AND CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) > 0 AND c{rem_qty_idx} != '' AND UPPER(c3) != 'TOTAL'")
@@ -386,9 +358,6 @@ def api_kpi():
         for r in c.fetchall():
             d_str = r[0]
             amt = float(r[1] or 0)
-            monthly_sales += amt
-            total_invoice_value += amt
-            total_invoices += 1
             
             try:
                 if 'T' in d_str:
@@ -398,6 +367,14 @@ def api_kpi():
                 else:
                     dt = datetime.datetime.strptime(d_str[:10], '%Y-%m-%d')
                     
+                total_invoices += 1
+                total_invoice_value += amt
+                
+                # Check current month
+                if dt.year == now.year and dt.month == now.month:
+                    monthly_sales += amt
+                    
+                # Check past 7 days
                 if (now - dt).days <= 7:
                     week_sales += amt
             except Exception:
@@ -422,6 +399,7 @@ def api_kpi():
         kpis['Week Sales Value'] = str(week_sales)
         kpis['Total Invoices'] = str(total_invoices)
         kpis['Total Invoice Value'] = str(total_invoice_value)
+        kpis['Reporting Period'] = "Live (Syncing from GSheets + Local)"
         
         conn.close()
         return jsonify(kpis)
