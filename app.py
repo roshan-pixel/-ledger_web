@@ -531,9 +531,9 @@ def update_totals_row(conn):
         print("Error updating totals row:", e)
 
 
-@app.route('/api/inventory', methods=['GET'])
-def get_inventory():
-    conn = get_db_connection()
+@app.route('/api/stock_point_inventory', methods=['GET'])
+def get_stock_point_inventory():
+    conn = get_db()
     c = conn.cursor()
     # c1=Sr, c2=Code, c3=Name, c4=Pack, c5=Price, c6=Box, c7=TotalQty, c8=Gross, c27=SP, c28=TotalSP
     c.execute('SELECT c2, c3, c4, c5, c6, c7, c8, c27, c28 FROM inventory WHERE c3 IS NOT NULL')
