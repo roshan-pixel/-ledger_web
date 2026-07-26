@@ -172,16 +172,20 @@
                 </select>
             </div>
             <div class="input-group" style="flex: 0.5;">
-                <label>Box Size</label>
-                <input type="text" id="productBox" class="glass-input" disabled>
+                <label>Box Size (Pcs)</label>
+                <input type="text" id="productBoxSize" class="glass-input" disabled>
             </div>
             <div class="input-group">
-                <label>Rate (₹)</label>
-                <input type="number" id="productRate" class="glass-input" step="0.01" oninput="calcAmount()">
+                <label>Rate/Pc (₹)</label>
+                <input type="number" id="productRate" class="glass-input" disabled>
             </div>
             <div class="input-group">
-                <label>Quantity</label>
-                <input type="number" id="productQty" class="glass-input" min="1" value="1" oninput="calcAmount()">
+                <label>Enter Boxes</label>
+                <input type="number" id="productBoxes" class="glass-input" min="1" value="1" oninput="calcAmount()">
+            </div>
+            <div class="input-group">
+                <label>Total Pcs</label>
+                <input type="number" id="productQty" class="glass-input" disabled>
             </div>
             <div class="input-group">
                 <label>Amount (₹)</label>
@@ -200,14 +204,15 @@
                 <tr>
                     <th>Product Name</th>
                     <th class="numeric">Box Size</th>
-                    <th class="numeric">Rate (₹)</th>
-                    <th class="numeric">Qty</th>
+                    <th class="numeric">Rate/Pc</th>
+                    <th class="numeric">Boxes</th>
+                    <th class="numeric">Total Pcs</th>
                     <th class="numeric">Amount (₹)</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody id="orderBody">
-                <tr id="emptyRow"><td colspan="6" style="text-align:center; color:var(--muted);">No items added yet.</td></tr>
+                <tr id="emptyRow"><td colspan="7" style="text-align:center; color:var(--muted);">No items added yet.</td></tr>
             </tbody>
         </table>
     </div>
@@ -273,8 +278,9 @@
         const idx = sel.value;
         if (idx === "") {
             document.getElementById('productRate').value = "";
-            document.getElementById('productBox').value = "";
-            document.getElementById('productQty').value = "1";
+            document.getElementById('productBoxSize').value = "";
+            document.getElementById('productBoxes').value = "1";
+            document.getElementById('productQty').value = "";
             document.getElementById('productAmount').value = "";
             return;
         }
@@ -283,18 +289,22 @@
         let rate = product['Price/Pc (Rs.)'] || 0;
         if(typeof rate === 'string') rate = rate.replace(/,/g, '');
         
-        let box = product['Box'] || 1;
+        let boxSize = product['Box'] || 1;
         
         document.getElementById('productRate').value = rate;
-        document.getElementById('productBox').value = box;
-        document.getElementById('productQty').value = "1";
+        document.getElementById('productBoxSize').value = boxSize;
+        document.getElementById('productBoxes').value = "1";
         calcAmount();
     }
 
     function calcAmount() {
         const rate = parseFloat(document.getElementById('productRate').value) || 0;
-        const qty = parseInt(document.getElementById('productQty').value) || 0;
-        document.getElementById('productAmount').value = (rate * qty).toFixed(2);
+        const boxSize = parseInt(document.getElementById('productBoxSize').value) || 1;
+        const boxes = parseInt(document.getElementById('productBoxes').value) || 0;
+        
+        const totalPcs = boxSize * boxes;
+        document.getElementById('productQty').value = totalPcs;
+        document.getElementById('productAmount').value = (rate * totalPcs).toFixed(2);
     }
 
     function addToOrder() {
@@ -307,22 +317,24 @@
         
         const productName = sel.options[sel.selectedIndex].text;
         const rate = parseFloat(document.getElementById('productRate').value) || 0;
-        const box = document.getElementById('productBox').value || "1";
-        const qty = parseInt(document.getElementById('productQty').value) || 0;
+        const boxSize = parseInt(document.getElementById('productBoxSize').value) || 1;
+        const boxes = parseInt(document.getElementById('productBoxes').value) || 0;
+        const totalPcs = boxSize * boxes;
 
-        if (qty <= 0 || rate <= 0) {
-            alert("Please enter a valid rate and quantity.");
+        if (boxes <= 0 || rate <= 0) {
+            alert("Please enter a valid number of boxes.");
             return;
         }
 
-        const amt = rate * qty;
-        orderItems.push({ name: productName, rate, box, qty, amount: amt });
+        const amt = rate * totalPcs;
+        orderItems.push({ name: productName, rate, boxSize, boxes, totalPcs, amount: amt });
         
         // Reset form
         sel.value = "";
         document.getElementById('productRate').value = "";
-        document.getElementById('productBox').value = "";
-        document.getElementById('productQty').value = "1";
+        document.getElementById('productBoxSize').value = "";
+        document.getElementById('productBoxes').value = "1";
+        document.getElementById('productQty').value = "";
         document.getElementById('productAmount').value = "";
         
         renderTable();
@@ -336,7 +348,7 @@
     function renderTable() {
         const tbody = document.getElementById('orderBody');
         if (orderItems.length === 0) {
-            tbody.innerHTML = '<tr id="emptyRow"><td colspan="6" style="text-align:center; color:var(--muted);">No items added yet.</td></tr>';
+            tbody.innerHTML = '<tr id="emptyRow"><td colspan="7" style="text-align:center; color:var(--muted);">No items added yet.</td></tr>';
             orderTotal = 0;
         } else {
             let html = '';
@@ -344,9 +356,10 @@
             orderItems.forEach((item, idx) => {
                 html += `<tr>
                     <td>${item.name}</td>
-                    <td class="numeric">${item.box}</td>
+                    <td class="numeric">${item.boxSize}</td>
                     <td class="numeric">₹ ${item.rate.toLocaleString('en-IN', {minimumFractionDigits:2})}</td>
-                    <td class="numeric">${item.qty}</td>
+                    <td class="numeric">${item.boxes}</td>
+                    <td class="numeric">${item.totalPcs}</td>
                     <td class="numeric">₹ ${item.amount.toLocaleString('en-IN', {minimumFractionDigits:2})}</td>
                     <td><button class="remove-btn" onclick="removeItem(${idx})">×</button></td>
                 </tr>`;
