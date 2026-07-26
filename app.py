@@ -526,12 +526,73 @@ def update_totals_row(conn):
         # Update the total row
         updates = ", ".join([f"{k}=?" for k in sums.keys()])
         values = list(sums.values()) + [row_id]
-        c.execute(f"UPDATE inventory SET {updates} WHERE row_num=?", values)
+c.execute(f"UPDATE inventory SET {updates} WHERE row_num=?", values)
     except Exception as e:
         print("Error updating totals row:", e)
 
 
-@app.route('/api/update', methods=['POST'])
+@app.route('/api/inventory', methods=['GET'])
+def get_inventory():
+    conn = get_db_connection()
+    c = conn.cursor()
+    # c1=Sr, c2=Code, c3=Name, c4=Pack, c5=Price, c6=Box, c7=TotalQty, c8=Gross, c27=SP, c28=TotalSP
+    c.execute('SELECT c2, c3, c4, c5, c6, c7, c8, c27, c28 FROM inventory WHERE c3 IS NOT NULL')
+    rows = c.fetchall()
+    conn.close()
+    
+    # Load scraped Box Sizes and Rates
+    scraped = {}
+    try:
+        import json
+        with open('scraped_products.json', 'r', encoding='utf-8') as f:
+            scraped = json.load(f)
+    except:
+        pass
+        
+    products = []
+    for row in rows:
+        name = row['c3']
+        # Extract product ID which is usually in brackets like [320]
+        import re
+        m = re.search(r'\[(\d+)\]', name)
+        prod_id = m.group(1) if m else None
+        
+        box_size = 1
+        rate = 0.0
+        sp = 0.0
+        if prod_id and prod_id in scraped:
+            box_size = scraped[prod_id].get('box_size', 1)
+            rate = scraped[prod_id].get('rate', 0.0)
+            
+        try:
+            sp = float(row['c27']) if row['c27'] else 0.0
+        except:
+            sp = 0.0
+            
+        # fallback rate
+        if rate == 0.0:
+            try:
+                rate = float(row['c5']) if row['c5'] else 0.0
+            except:
+                rate = 0.0
+                
+        if box_size == 0:
+            box_size = 1
+            
+        products.append({
+            'code': row['c2'],
+            'name': name,
+            'id': prod_id,
+            'pack': row['c4'],
+            'box_size': box_size,
+            'rate': rate,
+            'sp': sp,
+            'stock_qty': row['c7']
+        })
+        
+    return jsonify({'products': products})
+
+@app.route('/api/submit_order', methods=['POST'])
 def api_update():
     updates = request.json.get('updates', [])
     try:

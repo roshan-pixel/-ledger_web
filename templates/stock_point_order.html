@@ -240,22 +240,22 @@
     // On Load
     window.onload = async () => {
         try {
-            // Fetch Inventory 
+            // Fetch Inventory from our API (which merges ledger.db + scraped Box Sizes)
             const invRes = await fetch('/api/inventory');
             const invText = await invRes.text();
             let invData;
             try { invData = JSON.parse(invText); } catch(err) { throw new Error("Inventory API returned non-JSON: " + invText.substring(0,100)); }
             
-            if (invData.data) {
-                // Filter out empty rows or totals
-                localInventory = invData.data.filter(r => r['Product Name'] && r['Product Name'].toUpperCase() !== 'TOTAL');
+            if (invData.products) {
+                // The backend API now returns an array in 'products'
+                localInventory = invData.products;
                 populateProductSelect();
             }
         } catch (e) {
             alert("Error loading inventory data: " + e.message);
             console.error(e);
         }
-    };
+    }
 
     function updateWalletBalance() {
         walletBalance = parseFloat(document.getElementById('walletBalanceTxt').value) || 0;
@@ -268,7 +268,7 @@
         localInventory.forEach((p, idx) => {
             const opt = document.createElement('option');
             opt.value = idx;
-            opt.textContent = p['Product Name'];
+            opt.textContent = p.name;
             sel.appendChild(opt);
         });
     }
@@ -286,10 +286,8 @@
         }
         
         const product = localInventory[idx];
-        let rate = product['Price/Pc (Rs.)'] || 0;
-        if(typeof rate === 'string') rate = rate.replace(/,/g, '');
-        
-        let boxSize = product['Box'] || 1;
+        let rate = product.rate || 0;
+        let boxSize = product.box_size || 1;
         
         document.getElementById('productRate').value = rate;
         document.getElementById('productBoxSize').value = boxSize;
