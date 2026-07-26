@@ -237,14 +237,25 @@
         try {
             // Fetch Inventory (for rate lookup)
             const invRes = await fetch('/api/inventory');
-            const invData = await invRes.json();
+            const invText = await invRes.text();
+            let invData;
+            try { invData = JSON.parse(invText); } catch(err) { throw new Error("Inventory API returned non-JSON: " + invText.substring(0,100)); }
+            
             if (invData.data) {
                 localInventory = invData.data;
             }
 
             // Fetch Live Wallet & SP Products
             const spRes = await fetch('/api/sp_order_data');
-            const spData = await spRes.json();
+            const spText = await spRes.text();
+            let spData;
+            try { 
+                spData = JSON.parse(spText); 
+            } catch(err) { 
+                alert("Server returned invalid response (probably 500 or 502 error):\n\n" + spText.substring(0, 300));
+                document.getElementById('loadingOverlay').style.display = 'none';
+                return;
+            }
             
             document.getElementById('loadingOverlay').style.display = 'none';
 

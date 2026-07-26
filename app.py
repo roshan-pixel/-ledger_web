@@ -708,9 +708,16 @@ def api_sp_order_data():
     
     script_path = os.path.join(os.path.dirname(__file__), 'fetch_order_data.py')
     try:
-        # Using the provided credentials
-        res = subprocess.run([sys.executable, script_path, "AAZFD8117G", "ABC@1234"], capture_output=True, text=True)
+        # Using the provided credentials with a 25-second timeout to prevent gunicorn worker hanging
+        res = subprocess.run([sys.executable, script_path, "AAZFD8117G", "ABC@1234"], capture_output=True, text=True, timeout=25)
+        
+        # If output is empty, it means the script crashed without printing json
+        if not res.stdout.strip():
+            return jsonify({"success": False, "error": f"Scraper crashed silently. Stderr: {res.stderr}"})
+            
         return jsonify(json.loads(res.stdout))
+    except subprocess.TimeoutExpired:
+        return jsonify({"success": False, "error": "Scraping script timed out after 25 seconds. The Asclepius portal might be slow, or the cloud provider blocked the connection."})
     except Exception as e:
         return jsonify({"success": False, "error": str(e)})
 
