@@ -239,21 +239,24 @@
 
     // On Load
     window.onload = async () => {
+        const sel = document.getElementById('productSelect');
         try {
-            // Fetch Inventory from our API (which merges ledger.db + scraped Box Sizes)
-            const invRes = await fetch('/api/inventory');
-            const invText = await invRes.text();
-            let invData;
-            try { invData = JSON.parse(invText); } catch(err) { throw new Error("Inventory API returned non-JSON: " + invText.substring(0,100)); }
-            
-            if (invData.products) {
-                // The backend API now returns an array in 'products'
+            sel.innerHTML = '<option value="">-- Loading... --</option>';
+            const invRes = await fetch('/api/stock_point_inventory');
+            if (!invRes.ok) {
+                const errText = await invRes.text();
+                throw new Error('API error ' + invRes.status + ': ' + errText.substring(0, 200));
+            }
+            const invData = await invRes.json();
+            if (invData.products && invData.products.length > 0) {
                 localInventory = invData.products;
                 populateProductSelect();
+            } else {
+                sel.innerHTML = '<option value="">-- No products found (API returned 0) --</option>';
             }
         } catch (e) {
-            alert("Error loading inventory data: " + e.message);
-            console.error(e);
+            sel.innerHTML = '<option value="">-- ERROR: ' + e.message.substring(0, 80) + ' --</option>';
+            console.error('Stock point load error:', e);
         }
     }
 
