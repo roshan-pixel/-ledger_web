@@ -526,7 +526,7 @@ def update_totals_row(conn):
         # Update the total row
         updates = ", ".join([f"{k}=?" for k in sums.keys()])
         values = list(sums.values()) + [row_id]
-c.execute(f"UPDATE inventory SET {updates} WHERE row_num=?", values)
+        c.execute(f"UPDATE inventory SET {updates} WHERE row_num=?", values)
     except Exception as e:
         print("Error updating totals row:", e)
 
