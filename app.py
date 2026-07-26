@@ -15,7 +15,7 @@ from invoice_api import invoice_api
 app.register_blueprint(invoice_api)
 
 
-DB_PATH = 'ledger.db'
+DB_PATH = str(Path(__file__).parent / 'ledger.db')
 
 # ---------------------------------------------------------------------------
 # Disease Guide – in-memory cache
