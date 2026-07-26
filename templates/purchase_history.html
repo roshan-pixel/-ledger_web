@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Purchase History — Nexus Analytics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @keyframes fadeInSPA { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes shimmer { 0%{background-position:-400px 0} 100%{background-position:400px 0} }
+        @keyframes modalIn { from{opacity:0;transform:scale(.94)} to{opacity:1;transform:scale(1)} }
+
+        *, *::before, *::after { box-sizing: border-box; }
+        :root {
+            --bg:      #0b0f19;
+            --surface: rgba(255,255,255,0.04);
+            --surface2:rgba(255,255,255,0.07);
+            --border:  rgba(255,255,255,0.09);
+            --primary: #6366f1;
+            --pglow:   rgba(99,102,241,0.3);
+            --green:   #10b981;
+            --red:     #ef4444;
+            --amber:   #f59e0b;
+            --text:    #ffffff;
+            --muted:   #94a3b8;
+            --blur:    blur(16px);
+        }
+        body {
+            margin:0; padding:0;
+            font-family:'Outfit',sans-serif;
+            background-color:var(--bg);
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(99,102,241,.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(236,72,153,.15), transparent 25%);
+            background-attachment:fixed;
+            color:var(--text); min-height:100vh;
+            display:flex;
+            animation:fadeInSPA .3s ease-out forwards;
+        }
+
+        /* ── SIDEBAR ─────────────────────────────────── */
+        .sidebar {
+            width:260px; flex-shrink:0;
+            background:var(--surface); border-right:1px solid var(--border);
+            backdrop-filter:var(--blur);
+            padding:2rem 1.5rem; display:flex; flex-direction:column; gap:2rem;
+            position:sticky; top:0; height:100vh; overflow-y:auto;
+        }
+        .logo img { max-width:85%; background:linear-gradient(135deg,#fff 0%,#dce1eb 100%); border-radius:16px; padding:12px; display:block; margin:0 auto; }
+        .nav-menu { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.4rem; }
+        .nav-item {
+            padding:.85rem 1.2rem; border-radius:12px; color:var(--muted);
+            font-weight:500; cursor:pointer; transition:all .25s;
+            display:flex; align-items:center; gap:.85rem; font-size:.92rem;
+        }
+        .nav-item:hover { background:rgba(255,255,255,.08); color:var(--text); transform:translateX(4px); }
+        .nav-item.active { background:rgba(99,102,241,.15); color:var(--primary); transform:translateX(4px); }
+
+        /* ── MAIN ────────────────────────────────────── */
+        .main { flex:1; padding:2rem; display:flex; flex-direction:column; gap:1.5rem; overflow:hidden; }
+
+        .page-header { display:flex; justify-content:space-between; align-items:flex-end; gap:1rem; flex-wrap:wrap; border-bottom:1px solid var(--border); padding-bottom:1rem; }
+        .page-header h1 { margin:0; font-size:1.9rem; font-weight:700; }
+        .page-header p  { margin:.25rem 0 0; color:var(--muted); font-size:.9rem; }
+
+        /* Summary cards */
+        .summary-bar { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:1rem; }
+        .stat-card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:1.2rem 1.4rem; }
+        .stat-label { font-size:.78rem; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; }
+        .stat-value { font-size:1.6rem; font-weight:700; margin-top:.3rem; }
+        .stat-value.green { color:var(--green); }
+        .stat-value.amber { color:var(--amber); }
+        .stat-value.primary { color:var(--primary); }
+
+        /* Search / filter bar */
+        .filter-bar { display:flex; gap:.75rem; flex-wrap:wrap; align-items:center; }
+        .glass-input {
+            padding:.65rem 1rem; border-radius:8px; border:1px solid var(--border);
+            background:rgba(255,255,255,.06); color:var(--text); font-family:inherit;
+            outline:none; transition:all .2s; font-size:.92rem;
+        }
+        .glass-input:focus { border-color:var(--primary); box-shadow:0 0 0 3px var(--pglow); }
+        .glass-input::placeholder { color:var(--muted); }
+
+        /* Table */
+        .table-wrap { overflow-x:auto; border:1px solid var(--border); border-radius:14px; flex:1; }
+        table { width:100%; border-collapse:collapse; min-width:780px; }
+        th { background:rgba(0,0,0,.25); font-weight:600; color:var(--muted); text-transform:uppercase;
+             letter-spacing:.5px; font-size:.72rem; padding:.9rem 1rem; text-align:left; }
+        td { padding:.8rem 1rem; border-bottom:1px solid var(--border); font-size:.88rem; vertical-align:middle; }
+        tr:last-child td { border-bottom:none; }
+        tr:hover td { background:rgba(255,255,255,.03); }
+
+        .badge {
+            display:inline-block; padding:.25rem .65rem; border-radius:20px; font-size:.75rem; font-weight:600;
+        }
+        .badge-green { background:rgba(16,185,129,.15); color:var(--green); border:1px solid rgba(16,185,129,.3); }
+        .badge-amber { background:rgba(245,158,11,.15); color:var(--amber); border:1px solid rgba(245,158,11,.3); }
+        .badge-primary{ background:rgba(99,102,241,.15); color:var(--primary); border:1px solid rgba(99,102,241,.3); }
+
+        .btn-view {
+            padding:.42rem 1rem; border-radius:8px; font-size:.82rem; font-weight:600;
+            cursor:pointer; border:none; background:rgba(99,102,241,.18); color:var(--primary);
+            transition:all .2s; white-space:nowrap; font-family:inherit;
+        }
+        .btn-view:hover { background:rgba(99,102,241,.35); }
+
+        /* ── MODAL ───────────────────────────────────── */
+        .modal-overlay {
+            display:none; position:fixed; inset:0; background:rgba(0,0,0,.7);
+            backdrop-filter:blur(6px); z-index:1000; align-items:center; justify-content:center; padding:1rem;
+        }
+        .modal-overlay.open { display:flex; }
+        .modal {
+            background:#131825; border:1px solid var(--border); border-radius:20px;
+            width:100%; max-width:900px; max-height:90vh; display:flex; flex-direction:column;
+            animation:modalIn .2s ease-out;
+        }
+        .modal-header {
+            padding:1.5rem 1.8rem 1rem; border-bottom:1px solid var(--border);
+            display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;
+        }
+        .modal-title { font-size:1.3rem; font-weight:700; margin:0; }
+        .modal-meta  { color:var(--muted); font-size:.85rem; margin:.3rem 0 0; }
+        .modal-close { background:none; border:none; color:var(--muted); font-size:1.6rem; cursor:pointer; line-height:1; transition:color .2s; padding:0; }
+        .modal-close:hover { color:var(--text); }
+        .modal-body { overflow-y:auto; padding:1.5rem 1.8rem; flex:1; }
+
+        .modal table th { font-size:.7rem; }
+        .modal table td { font-size:.85rem; }
+        .numeric { text-align:right; }
+
+        .modal-footer {
+            padding:1rem 1.8rem; border-top:1px solid var(--border);
+            display:flex; justify-content:flex-end; gap:1rem; align-items:center;
+        }
+        .total-line { font-size:1.1rem; font-weight:700; }
+        .total-line span { color:var(--green); font-size:1.4rem; }
+
+        /* Skeleton loader */
+        .skeleton { background:linear-gradient(90deg,rgba(255,255,255,.05) 25%,rgba(255,255,255,.1) 50%,rgba(255,255,255,.05) 75%); background-size:400px 100%; animation:shimmer 1.5s infinite; border-radius:6px; height:1rem; }
+
+        /* Empty state */
+        .empty-state { text-align:center; padding:4rem 2rem; color:var(--muted); }
+        .empty-state .icon { font-size:3rem; margin-bottom:1rem; }
+
+        @media(max-width:768px){
+            body { flex-direction:column; }
+            .sidebar { width:100%; height:auto; position:relative; padding:1rem; border-right:none; border-bottom:1px solid var(--border); }
+            .nav-menu { flex-direction:row; overflow-x:auto; padding-bottom:.5rem; }
+            .nav-item { min-height:44px; white-space:nowrap; }
+            .main { padding:1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<aside class="sidebar">
+    <div class="logo">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Asclepius Wellness">
+    </div>
+    <ul class="nav-menu">
+        <li class="nav-item" onclick="window.location.href='/'">🏠 Dashboard</li>
+        <li class="nav-item" onclick="window.location.href='/inventory_master'">📦 Inventory Master</li>
+        <li class="nav-item" onclick="window.location.href='/invoice'">🧾 Invoice Generator</li>
+        <li class="nav-item" onclick="window.location.href='/invoice_history'">📋 Recent Invoices</li>
+        <li class="nav-item" onclick="window.location.href='/stock_point_order'">🛒 Stock Point Order</li>
+        <li class="nav-item active">📑 Purchase History</li>
+    </ul>
+</aside>
+
+<main class="main">
+    <div class="page-header">
+        <div>
+            <h1>Purchase History</h1>
+            <p>Stock Point orders from the portal · 01 Jun 2026 – 26 Jul 2026</p>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="summary-bar" id="summaryBar">
+        <div class="stat-card"><div class="stat-label">Total Orders</div><div class="stat-value primary" id="statOrders">—</div></div>
+        <div class="stat-card"><div class="stat-label">Total Amount</div><div class="stat-value green" id="statTotal">—</div></div>
+        <div class="stat-card"><div class="stat-label">Total IGST</div><div class="stat-value amber" id="statIgst">—</div></div>
+        <div class="stat-card"><div class="stat-label">Avg Order Value</div><div class="stat-value primary" id="statAvg">—</div></div>
+    </div>
+
+    <!-- Filter -->
+    <div class="filter-bar">
+        <input type="text" id="searchInput" class="glass-input" placeholder="🔍  Search bill no, date…" oninput="filterOrders()" style="flex:1; min-width:200px;">
+    </div>
+
+    <!-- Table -->
+    <div class="table-wrap">
+        <table id="ordersTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Bill No</th>
+                    <th>Date</th>
+                    <th>Party</th>
+                    <th class="numeric">IGST (₹)</th>
+                    <th class="numeric">Total (₹)</th>
+                    <th>LR / Tracking</th>
+                    <th>Delivery Date</th>
+                    <th>Courier</th>
+                    <th>Products</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="ordersBody">
+                <tr><td colspan="11"><div class="skeleton" style="margin:.5rem 0;"></div><div class="skeleton" style="margin:.5rem 0;width:70%;"></div></td></tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<!-- Bill Detail Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal">
+        <div class="modal-header">
+            <div>
+                <div class="modal-title" id="modalTitle">Bill Detail</div>
+                <div class="modal-meta" id="modalMeta"></div>
+            </div>
+            <button class="modal-close" onclick="closeModal()">×</button>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+        <div class="modal-footer">
+            <div class="total-line">Total: <span id="modalTotal">—</span></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let allOrders = [];
+
+    function fmtNum(n) {
+        const v = parseFloat(n) || 0;
+        return '₹ ' + v.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+    }
+
+    // Load orders
+    window.onload = async () => {
+        try {
+            const res  = await fetch('/api/purchase_orders');
+            const data = await res.json();
+            if (data.error && !data.orders.length) {
+                document.getElementById('ordersBody').innerHTML =
+                    `<tr><td colspan="11"><div class="empty-state"><div class="icon">⚠️</div><p>${data.error}</p></div></td></tr>`;
+                return;
+            }
+            allOrders = data.orders || [];
+            renderSummary(allOrders);
+            renderTable(allOrders);
+        } catch (e) {
+            document.getElementById('ordersBody').innerHTML =
+                `<tr><td colspan="11"><div class="empty-state"><div class="icon">❌</div><p>Failed to load: ${e.message}</p></div></td></tr>`;
+        }
+    };
+
+    function renderSummary(orders) {
+        const total = orders.reduce((s, o) => s + (parseFloat(o.total) || 0), 0);
+        const igst  = orders.reduce((s, o) => s + (parseFloat(o.igst)  || 0), 0);
+        document.getElementById('statOrders').textContent = orders.length;
+        document.getElementById('statTotal').textContent  = '₹ ' + total.toLocaleString('en-IN', {minimumFractionDigits:2});
+        document.getElementById('statIgst').textContent   = '₹ ' + igst.toLocaleString('en-IN',  {minimumFractionDigits:2});
+        document.getElementById('statAvg').textContent    = orders.length
+            ? '₹ ' + (total / orders.length).toLocaleString('en-IN', {minimumFractionDigits:2})
+            : '—';
+    }
+
+    function renderTable(orders) {
+        const tbody = document.getElementById('ordersBody');
+        if (!orders.length) {
+            tbody.innerHTML = `<tr><td colspan="11"><div class="empty-state"><div class="icon">📭</div><p>No orders found for this period.</p></div></td></tr>`;
+            return;
+        }
+        tbody.innerHTML = orders.map((o, idx) => `
+            <tr>
+                <td>${o.sr || idx+1}</td>
+                <td><strong>${o.bill_no || '—'}</strong></td>
+                <td>${o.date || '—'}</td>
+                <td style="font-size:.82rem;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${o.party || ''}">${o.party || '—'}</td>
+                <td class="numeric">${fmtNum(o.igst)}</td>
+                <td class="numeric"><strong>${fmtNum(o.total)}</strong></td>
+                <td><span class="badge badge-primary">${o.lr_no || '—'}</span></td>
+                <td>${o.delivery_date || '—'}</td>
+                <td style="font-size:.8rem;color:var(--muted);">${o.courier || '—'}</td>
+                <td><span class="badge badge-green">${(o.products || []).length} items</span></td>
+                <td><button class="btn-view" onclick="viewBill(${idx})">View Bill</button></td>
+            </tr>
+        `).join('');
+    }
+
+    function filterOrders() {
+        const q = document.getElementById('searchInput').value.toLowerCase().trim();
+        if (!q) { renderTable(allOrders); return; }
+        const filtered = allOrders.filter(o =>
+            (o.bill_no  || '').toLowerCase().includes(q) ||
+            (o.date     || '').toLowerCase().includes(q) ||
+            (o.party    || '').toLowerCase().includes(q) ||
+            (o.lr_no    || '').toLowerCase().includes(q) ||
+            (o.courier  || '').toLowerCase().includes(q)
+        );
+        renderTable(filtered);
+    }
+
+    function viewBill(idx) {
+        const order = allOrders[idx];
+        if (!order) return;
+
+        document.getElementById('modalTitle').textContent = order.bill_no || 'Bill Detail';
+        document.getElementById('modalMeta').textContent  =
+            `Date: ${order.date || '—'}   |   Party: ${order.party || '—'}   |   LR: ${order.lr_no || '—'}   |   Courier: ${order.courier || '—'}`;
+
+        const prods = order.products || [];
+        let bodyHtml = '';
+
+        if (!prods.length) {
+            bodyHtml = `<div class="empty-state"><div class="icon">📦</div><p>No product detail available for this bill.<br><small style="color:var(--muted)">The portal may not have returned line items.</small></p></div>`;
+        } else {
+            // Bill detail columns: Sr | Code | Name | Rate | Qty | Amount | Tax% | Net Amount
+            const maxCols = Math.max(...prods.map(r => r.length));
+            const headers = maxCols >= 8
+                ? ['Sr','Code','Product Name','Rate (₹)','Qty','Amount (₹)','Tax %','Net Amount (₹)']
+                : Array.from({length: maxCols}, (_, i) => `Col ${i+1}`);
+            const numericCols = new Set([3, 4, 5, 6, 7]);
+
+            bodyHtml = `
+                <div class="table-wrap" style="max-height:55vh; overflow-y:auto; border-radius:10px;">
+                    <table>
+                        <thead>
+                            <tr>${headers.map((h,i) => `<th ${numericCols.has(i)?'class="numeric"':''}>${h}</th>`).join('')}</tr>
+                        </thead>
+                        <tbody>
+                            ${prods.map(row => `
+                                <tr>${row.map((cell, i) => `
+                                    <td ${numericCols.has(i)?'class="numeric"':''}>${cell || '—'}</td>
+                                `).join('')}</tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>`;
+        }
+
+        document.getElementById('modalBody').innerHTML = bodyHtml;
+        document.getElementById('modalTotal').textContent = fmtNum(order.total);
+        document.getElementById('modalOverlay').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        document.getElementById('modalOverlay').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>

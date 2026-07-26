@@ -776,9 +776,26 @@ def api_customer():
         return jsonify({'error': str(e)}), 500
 
 # Run sync on startup (only if credentials exist, e.g. on Render or local with key)
+@app.route('/purchase_history')
+def purchase_history():
+    return render_template('purchase_history.html')
+
+@app.route('/api/purchase_orders')
+def api_purchase_orders():
+    ORDERS_PATH = str(Path(__file__).parent / 'purchase_orders.json')
+    try:
+        with open(ORDERS_PATH, 'r', encoding='utf-8') as f:
+            orders = json.load(f)
+        return jsonify({'orders': orders})
+    except FileNotFoundError:
+        return jsonify({'orders': [], 'error': 'purchase_orders.json not found'})
+    except Exception as e:
+        return jsonify({'orders': [], 'error': str(e)}), 500
+
 @app.route('/stock_point_order')
 def stock_point_order():
     return render_template('stock_point_order.html')
+
 
 @app.route('/api/sp_order_data')
 def api_sp_order_data():
