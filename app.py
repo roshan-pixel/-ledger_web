@@ -336,14 +336,18 @@ def api_kpi():
         c.execute(f"SELECT SUM(CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) * CAST(REPLACE(c{dp_idx}, ',', '') AS REAL)) FROM inventory WHERE c{rem_qty_idx} != '' AND c{dp_idx} != '' AND UPPER(c3) != 'TOTAL'")
         rem_val = round(c.fetchone()[0] or 0, 2)
         
-        # ── Gross Stock Value: use actual purchase orders from ledger (Debit entries)
-        # This is far more accurate than TotalQty * Price which uses averaged invoice prices
+        # ── Ledger-based KPIs ────────────────────────────────────────
+        # Read from ledger_report.json which is synced from Asclepius portal.
+        # The first Cr entry = initial capital deposit.
+        # All subsequent Cr entries = sales revenue being credited back by AWPL.
         import json as _json
         from pathlib import Path
         LEDGER_FILE = str(Path(__file__).parent / 'ledger_report.json')
-        total_invested  = 0.0   # sum of all Dr entries (money spent buying stock)
-        total_credited  = 0.0   # sum of all Cr entries (money added to wallet)
-        wallet_balance  = 0.0   # current closing balance
+        total_invested   = 0.0   # sum of all Dr entries (money spent on stock orders)
+        initial_capital  = 0.0   # first Cr entry (owner's own money put in)
+        sales_recycled   = 0.0   # subsequent Cr entries (sales revenue coming back)
+        wallet_balance   = 0.0   # current closing balance
+        first_cr_seen    = False
         try:
             with open(LEDGER_FILE, 'r', encoding='utf-8') as _f:
                 _ledger = _json.load(_f)
@@ -354,11 +358,15 @@ def api_kpi():
                 if tx_type == 'DR':
                     total_invested += tx_amt
                 elif tx_type == 'CR':
-                    total_credited += tx_amt
+                    if not first_cr_seen:
+                        initial_capital = tx_amt   # e.g. Rs.20,00,000
+                        first_cr_seen   = True
+                    else:
+                        sales_recycled += tx_amt   # money from your sales coming back
         except Exception:
             pass
 
-        # gross_val = actual money spent purchasing stock from AWPL
+        # Gross stock value = actual money spent purchasing from AWPL
         gross_val = round(total_invested, 2)
         
         c.execute(f"SELECT COUNT(*) FROM inventory WHERE CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) <= 10 AND CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) > 0 AND c{rem_qty_idx} != '' AND UPPER(c3) != 'TOTAL'")
@@ -413,10 +421,10 @@ def api_kpi():
         kpis['Total SKUs'] = str(total_skus)
         kpis['Remaining Qty'] = f"{rem_qty:g}"
         kpis['Remaining Value'] = str(rem_val)
-        kpis['Gross Stock Value'] = str(gross_val)       # = total money spent on stock orders
+        kpis['Gross Stock Value'] = str(gross_val)          # = total Dr (stock orders)
         kpis['Wallet Balance']   = str(round(wallet_balance, 2))
-        kpis['Total Invested']   = str(round(total_invested, 2))  # sum of all Dr
-        kpis['Total Credited']   = str(round(total_credited, 2))  # sum of all Cr
+        kpis['Initial Capital']  = str(round(initial_capital, 2))   # first Cr = owner's money
+        kpis['Sales Recycled']   = str(round(sales_recycled, 2))    # subsequent Cr = from sales
         kpis['Low Stock Count'] = str(low_stock)
         kpis['Out of Stock Count'] = str(out_of_stock)
         kpis['Monthly Sales Value'] = str(monthly_sales)
