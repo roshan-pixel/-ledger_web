@@ -317,9 +317,7 @@
         // Load wallet from ledger first
         loadWalletFromLedger();
 
-        const sel = document.getElementById('productSelect');
         try {
-            sel.innerHTML = '<option value="">-- Loading... --</option>';
             const invRes = await fetch('/api/stock_point_inventory');
             if (!invRes.ok) {
                 const errText = await invRes.text();
@@ -333,7 +331,7 @@
                 document.getElementById('productSearchInput').placeholder = "No products found";
             }
         } catch (e) {
-            sel.innerHTML = '<option value="">-- ERROR: ' + e.message.substring(0, 80) + ' --</option>';
+            document.getElementById('productSearchInput').placeholder = "ERROR loading products";
             console.error('Stock point load error:', e);
         }
     }
