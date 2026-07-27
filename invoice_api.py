@@ -135,6 +135,45 @@ def create_invoice():
             if c.fetchone():
                 return jsonify({'error': f'Invoice number {invoice_no} already exists!'}), 400
                 
+        # 0.5. Validate Stock (Strict Policy)
+        c.execute("SELECT value FROM settings WHERE key='inventory_headers'")
+        all_headers = json.loads(c.fetchone()[0])
+        rem_qty_idx = next((i for i, h in enumerate(all_headers) if 'Remaining Qty' in h), None)
+        if rem_qty_idx is not None:
+            rem_qty_col = f"c{rem_qty_idx + 1}"
+            
+            # Aggregate requested items by normalized name
+            requested_qty = {}
+            original_names = {}
+            for item in items:
+                desc = str(item.get('description') or item.get('name') or '').strip()
+                try:
+                    qty_req = float(str(item.get('qty', 0)).replace(',', ''))
+                except:
+                    qty_req = 0.0
+                    
+                if desc and qty_req > 0:
+                    norm_desc = desc.replace('\n', ' ').replace(' -', '').strip().upper()
+                    requested_qty[norm_desc] = requested_qty.get(norm_desc, 0) + qty_req
+                    original_names[norm_desc] = desc
+                    
+            # Fetch remaining stock from DB
+            c.execute(f"SELECT c3, {rem_qty_col} FROM inventory WHERE c3 IS NOT NULL AND c3 != ''")
+            db_stock = {}
+            for inv_row in c.fetchall():
+                c3_val = str(inv_row[0]).replace('\n', ' ').replace(' -', '').strip().upper()
+                try:
+                    rem = float(str(inv_row[1] or '0').replace(',', ''))
+                except:
+                    rem = 0.0
+                db_stock[c3_val] = rem
+                    
+            # Check each requested item
+            for norm_desc, qty_req in requested_qty.items():
+                avail = db_stock.get(norm_desc, 0.0)
+                if qty_req > avail:
+                    return jsonify({'error': f'Strict Policy Error: Not enough stock for {original_names[norm_desc]}. Requested: {qty_req}, Available: {avail}'}), 400
+
         # 1. Save the invoice
         c.execute(
             'INSERT INTO invoices (invoice_no, ds_code, customer_name, amount, date_created, items, total_sp) VALUES (?, ?, ?, ?, ?, ?, ?)',
