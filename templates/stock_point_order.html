@@ -128,6 +128,24 @@
             .nav-item { min-height: 44px; white-space: nowrap; }
             .main { padding: 1rem; }
         }
+        .autocomplete-wrapper { position: relative; width: 100%; }
+        .autocomplete-arrow {
+            position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+            cursor: pointer; color: var(--muted); pointer-events: auto; font-size: 0.8rem;
+        }
+        .autocomplete-list {
+            display: none; position: absolute; top: 100%; left: 0; right: 0;
+            background: var(--bg); border: 1px solid var(--border);
+            max-height: 200px; overflow-y: auto; z-index: 1000;
+            border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.5); margin-top: 4px;
+        }
+        .autocomplete-item {
+            padding: 0.6rem 1rem; cursor: pointer; border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: var(--text); font-size: 0.9rem;
+        }
+        .autocomplete-item:hover, .autocomplete-item.active {
+            background: rgba(99, 102, 241, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -176,9 +194,11 @@
         <div class="form-row">
             <div class="input-group large">
                 <label>Select Product</label>
-                <select id="productSelect" class="glass-input" onchange="onProductSelect()">
-                    <option value="">-- Loading Products... --</option>
-                </select>
+                <div class="autocomplete-wrapper">
+                    <input type="text" id="productSearchInput" class="glass-input" placeholder="Search product..." autocomplete="off" onfocus="showAutocomplete()" oninput="filterAutocomplete()" onchange="handleProductSelect()">
+                    <div class="autocomplete-arrow" onclick="toggleAutocomplete()">▼</div>
+                    <div id="autocompleteList" class="autocomplete-list"></div>
+                </div>
             </div>
             <div class="input-group" style="flex: 0.5;">
                 <label>Box Size (Pcs)</label>
@@ -308,9 +328,9 @@
             const invData = await invRes.json();
             if (invData.products && invData.products.length > 0) {
                 localInventory = invData.products;
-                populateProductSelect();
+                document.getElementById('productSearchInput').placeholder = "Search product...";
             } else {
-                sel.innerHTML = '<option value="">-- No products found (API returned 0) --</option>';
+                document.getElementById('productSearchInput').placeholder = "No products found";
             }
         } catch (e) {
             sel.innerHTML = '<option value="">-- ERROR: ' + e.message.substring(0, 80) + ' --</option>';
@@ -318,21 +338,76 @@
         }
     }
 
-    function populateProductSelect() {
-        const sel = document.getElementById('productSelect');
-        sel.innerHTML = '<option value="">-- Select Product --</option>';
-        localInventory.forEach((p, idx) => {
-            const opt = document.createElement('option');
-            opt.value = idx;
-            opt.textContent = p.name;
-            sel.appendChild(opt);
+    let activeProductIdx = "";
+
+    function showAutocomplete() {
+        renderAutocompleteList(document.getElementById('productSearchInput').value, true);
+    }
+    
+    function filterAutocomplete() {
+        renderAutocompleteList(document.getElementById('productSearchInput').value, false);
+    }
+    
+    function toggleAutocomplete() {
+        const list = document.getElementById('autocompleteList');
+        if (list.style.display === 'block') {
+            list.style.display = 'none';
+        } else {
+            document.getElementById('productSearchInput').focus();
+            renderAutocompleteList(document.getElementById('productSearchInput').value, true);
+        }
+    }
+    
+    document.addEventListener('click', function(e) {
+        const list = document.getElementById('autocompleteList');
+        if (!e.target.closest('.autocomplete-wrapper') && list) {
+            list.style.display = 'none';
+        }
+    });
+
+    function renderAutocompleteList(query, showAllIfEmpty) {
+        const list = document.getElementById('autocompleteList');
+        list.innerHTML = '';
+        const q = query.toLowerCase().trim();
+        
+        let matches = [];
+        if (q === '' && showAllIfEmpty) {
+            matches = localInventory.map((p, idx) => ({p, idx}));
+        } else if (q !== '') {
+            matches = localInventory.map((p, idx) => ({p, idx})).filter(obj => obj.p.name.toLowerCase().includes(q));
+        }
+        
+        if (matches.length === 0) {
+            list.style.display = 'none';
+            return;
+        }
+        
+        matches.forEach(obj => {
+            const div = document.createElement('div');
+            div.className = 'autocomplete-item';
+            div.textContent = obj.p.name;
+            div.onclick = function() {
+                document.getElementById('productSearchInput').value = obj.p.name;
+                list.style.display = 'none';
+                activeProductIdx = obj.idx;
+                handleProductSelect();
+            };
+            list.appendChild(div);
         });
+        
+        list.style.display = 'block';
     }
 
-    function onProductSelect() {
-        const sel = document.getElementById('productSelect');
-        const idx = sel.value;
-        if (idx === "") {
+    function handleProductSelect() {
+        const inputVal = document.getElementById('productSearchInput').value;
+        const match = localInventory.findIndex(p => p.name === inputVal);
+        if (match !== -1) {
+            activeProductIdx = match;
+        } else {
+            activeProductIdx = "";
+        }
+        
+        if (activeProductIdx === "") {
             document.getElementById('productRate').value = "";
             document.getElementById('productBoxSize').value = "";
             document.getElementById('productBoxes').value = "1";
@@ -341,12 +416,9 @@
             return;
         }
         
-        const product = localInventory[idx];
-        let rate = product.rate || 0;
-        let boxSize = product.box_size || 1;
-        
-        document.getElementById('productRate').value = rate;
-        document.getElementById('productBoxSize').value = boxSize;
+        const product = localInventory[activeProductIdx];
+        document.getElementById('productRate').value = product.rate || 0;
+        document.getElementById('productBoxSize').value = product.box_size || 1;
         document.getElementById('productBoxes').value = "1";
         calcAmount();
     }
@@ -362,14 +434,13 @@
     }
 
     function addToOrder() {
-        const sel = document.getElementById('productSelect');
-        const idx = sel.value;
-        if (idx === "") {
-            alert("Please select a product.");
+        if (activeProductIdx === "") {
+            alert("Please select a valid product from the list.");
             return;
         }
         
-        const productName = sel.options[sel.selectedIndex].text;
+        const idx = activeProductIdx;
+        const productName = document.getElementById('productSearchInput').value;
         const rate = parseFloat(document.getElementById('productRate').value) || 0;
         const boxSize = parseInt(document.getElementById('productBoxSize').value) || 1;
         const boxes = parseInt(document.getElementById('productBoxes').value) || 0;
