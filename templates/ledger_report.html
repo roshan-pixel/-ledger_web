@@ -123,11 +123,43 @@
         td.balance-cell { font-weight: 600; }
 
         .badge {
-            display: inline-flex; align-items: center; gap: .3rem;
-            padding: .2rem .65rem; border-radius: 999px; font-size: .72rem; font-weight: 600;
+            display: inline-block; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
         }
-        .badge-credit { background: rgba(16,185,129,.12); color: var(--green); border: 1px solid rgba(16,185,129,.25); }
-        .badge-debit  { background: rgba(239,68,68,.12);  color: var(--red);   border: 1px solid rgba(239,68,68,.25); }
+        .badge.credit { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+        .badge.debit  { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+
+        /* Modal */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 1000;
+            align-items: center; justify-content: center;
+        }
+        .modal-overlay.active { display: flex; animation: fadeInSPA 0.2s ease-out; }
+        .modal-card {
+            background: var(--bg); border: 1px solid var(--border); border-radius: 16px;
+            width: 90%; max-width: 450px; padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        .modal-card h2 { margin: 0 0 1.5rem; font-size: 1.4rem; }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; margin-bottom: 0.4rem; font-size: 0.9rem; color: var(--muted); }
+        .modal-input {
+            width: 100%; padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid var(--border);
+            background: rgba(255,255,255,0.06); color: var(--text); font-family: inherit; font-size: 1rem;
+            outline: none; transition: all 0.2s;
+        }
+        .modal-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--pglow); }
+        .modal-actions { display: flex; justify-content: flex-end; gap: 1rem; margin-top: 2rem; }
+
+        @media (max-width: 768px) {
+            .kpi-grid { grid-template-columns: 1fr; }
+            .controls-bar { flex-direction: column; }
+            body { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; padding: 1rem; border-right: none; border-bottom: 1px solid var(--border); }
+            .nav-menu { flex-direction: row; overflow-x: auto; padding-bottom: .5rem; }
+            .nav-item { min-height: 44px; white-space: nowrap; }
+            .main { padding: 1rem; }
+        }
 
         /* ── Empty / Loading states ─────── */
         .empty-state { padding: 4rem 2rem; text-align: center; color: var(--muted); }
@@ -152,14 +184,6 @@
         .page-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
         .page-btn:disabled { opacity: .3; cursor: not-allowed; }
         .page-info { color: var(--muted); font-size: .82rem; }
-
-        @media (max-width: 768px) {
-            body { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; position: relative; padding: 1rem; border-right: none; border-bottom: 1px solid var(--border); }
-            .nav-menu { flex-direction: row; overflow-x: auto; padding-bottom: .5rem; }
-            .nav-item { min-height: 44px; white-space: nowrap; }
-            .main { padding: 1rem; }
-        }
     </style>
 </head>
 <body>
@@ -180,16 +204,17 @@
 </aside>
 
 <main class="main">
-    <div class="page-header">
+    <div class="page-header" style="flex-direction:row; justify-content:space-between; align-items:flex-end;">
         <div>
-            <h1>&#128184; Ledger Report</h1>
+            <h1>Ledger Report</h1>
             <p id="reportSubtitle">Franchise wallet statement from 01 Jan 2026 · Synced from Asclepius Portal</p>
-        </div>
-        <div style="display:flex; gap:.75rem; align-items:center;">
-            <div class="sync-status">
-                <span class="sync-dot" id="syncDot"></span>
-                <span id="syncLabel">Loading…</span>
+            <div style="margin-top:0.5rem; font-size:0.85rem; display:flex; align-items:center; gap:0.5rem;">
+                <div class="sync-dot" id="syncDot"></div>
+                <span id="syncLabel" style="color:var(--muted);">Checking status…</span>
             </div>
+        </div>
+        <div style="display: flex; gap: 1rem;">
+            <button class="btn btn-outline" onclick="openManualModal()">+ Manual Entry</button>
             <button class="btn btn-primary" id="syncBtn" onclick="syncNow()">🔄 Sync Now</button>
         </div>
     </div>
@@ -250,6 +275,36 @@
         </div>
         <div class="pagination" id="paginationBar" style="display:none;"></div>
     </div>
+    
+    <!-- Manual Entry Modal -->
+    <div class="modal-overlay" id="manualModal">
+        <div class="modal-card">
+            <h2>Add Manual Entry</h2>
+            <div class="form-group">
+                <label>Date (DD/MM/YYYY)</label>
+                <input type="text" id="manDate" class="modal-input" placeholder="e.g. 27/07/2026">
+            </div>
+            <div class="form-group">
+                <label>Particulars / Details</label>
+                <input type="text" id="manDetails" class="modal-input" placeholder="e.g. Cash Deposit">
+            </div>
+            <div class="form-group">
+                <label>Amount (₹)</label>
+                <input type="number" id="manAmount" class="modal-input" placeholder="0.00" step="0.01">
+            </div>
+            <div class="form-group">
+                <label>Type</label>
+                <select id="manType" class="modal-input">
+                    <option value="credit">Credit (Money Added to Wallet)</option>
+                    <option value="debit">Debit (Money Deducted for Order)</option>
+                </select>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-outline" onclick="closeManualModal()">Cancel</button>
+                <button class="btn btn-primary" id="saveManualBtn" onclick="saveManualEntry()">Save Entry</button>
+            </div>
+        </div>
+    </div>
 </main>
 
 <script>
@@ -290,11 +345,7 @@
         const entries = data.entries || [];
         const closing = data.closing_balance || 0;
         const scraped = data.scraped_at || '';
-        const headers = data.headers || [];
 
-        // Map entries to canonical fields
-        // Actual portal columns: Sno, C&F Name, Transaction Date, Transaction Details,
-        //                        Transaction Amount, Transaction Type (Cr/Dr), Balance
         allEntries = entries.map((row, i) => {
             const txType   = (row['Transaction Type'] || row['Type'] || '').trim().toLowerCase();
             const txAmt    = parseFloat((row['Transaction Amount'] || row['Amount'] || '0').replace(/[^0-9.]/g,'')) || 0;
@@ -313,7 +364,6 @@
             };
         });
 
-        // Compute KPIs
         let totalCredit = 0, totalDebit = 0;
         allEntries.forEach(e => { totalCredit += e.credit; totalDebit += e.debit; });
 
@@ -327,8 +377,6 @@
             const label = d.toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric' }) + ' ' +
                           d.toLocaleTimeString('en-IN', { hour:'2-digit', minute:'2-digit' });
             setSyncStatus('ok', 'Last synced ' + label);
-            document.getElementById('reportSubtitle').textContent =
-                'Franchise wallet statement 01 Jan 2026 → Today · Synced ' + label;
         } else {
             setSyncStatus('ok', 'Data loaded');
         }
@@ -375,7 +423,7 @@
                 <td class="numeric debit">${e.debit > 0 ? fmt(e.debit) : '—'}</td>
                 <td class="numeric credit">${e.credit > 0 ? fmt(e.credit) : '—'}</td>
                 <td class="numeric balance-cell">${e.balance > 0 ? fmt(e.balance) : '—'}</td>
-                <td><span class="badge ${e.type === 'credit' ? 'badge-credit' : e.type === 'debit' ? 'badge-debit' : ''}">${e.type === 'credit' ? '↑ Credit' : e.type === 'debit' ? '↓ Debit' : '—'}</span></td>
+                <td><span class="badge ${e.type}">${e.type === 'credit' ? 'Credit' : e.type === 'debit' ? 'Debit' : '—'}</span></td>
             </tr>
         `).join('');
 
@@ -396,7 +444,6 @@
             }
         }
         html += `<button class="page-btn" onclick="goPage(${currentPage+1})" ${currentPage===totalPages?'disabled':''}>→</button>`;
-        html += `<span class="page-info">${filteredEntries.length} entries</span>`;
         bar.innerHTML = html;
     }
 
@@ -423,7 +470,7 @@
         btn.disabled = true;
         btn.textContent = '⏳ Syncing…';
         setSyncStatus('syncing', 'Fetching from portal…');
-        document.getElementById('ledgerBody').innerHTML = '<tr><td colspan="7"><div class="spinner"></div><p style="text-align:center;color:var(--muted);font-size:.9rem;">Logging into Asclepius portal and scraping ledger…<br>This takes ~30–45 seconds.</p></td></tr>';
+        document.getElementById('ledgerBody').innerHTML = '<tr><td colspan="7"><div class="spinner"></div><p style="text-align:center;color:var(--muted);font-size:.9rem;">Logging into portal and scraping ledger…<br>This takes ~30–45 seconds.</p></td></tr>';
 
         try {
             const res = await fetch('/api/sync_ledger', { method: 'POST' });
@@ -443,8 +490,60 @@
         }
     }
 
-    // Init
-    loadLedger();
+    // --- Manual Entry Modal ---
+    function openManualModal() {
+        const today = new Date();
+        const dd = String(today.getDate()).padStart(2, '0');
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const yyyy = today.getFullYear();
+        document.getElementById('manDate').value = `${dd}/${mm}/${yyyy}`;
+        document.getElementById('manDetails').value = '';
+        document.getElementById('manAmount').value = '';
+        document.getElementById('manType').value = 'credit';
+        document.getElementById('manualModal').classList.add('active');
+    }
+
+    function closeManualModal() {
+        document.getElementById('manualModal').classList.remove('active');
+    }
+
+    async function saveManualEntry() {
+        const btn = document.getElementById('saveManualBtn');
+        const date = document.getElementById('manDate').value.trim();
+        const particulars = document.getElementById('manDetails').value.trim();
+        const amount = document.getElementById('manAmount').value.trim();
+        const type = document.getElementById('manType').value;
+
+        if (!date || !particulars || !amount) {
+            alert("Please fill all fields");
+            return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Saving...';
+
+        try {
+            const res = await fetch('/api/ledger_manual_entry', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ date, particulars, amount, type })
+            });
+            const data = await res.json();
+            if (data.success) {
+                closeManualModal();
+                loadLedger(); // refresh table
+            } else {
+                alert('Error: ' + data.error);
+            }
+        } catch (e) {
+            alert('Network Error: ' + e.message);
+        } finally {
+            btn.disabled = false;
+            btn.textContent = 'Save Entry';
+        }
+    }
+
+    window.onload = loadLedger;
 </script>
 </body>
 </html>

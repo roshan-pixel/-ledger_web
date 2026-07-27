@@ -868,6 +868,52 @@ def api_sync_ledger():
         return jsonify({'success': False, 'error': str(e)})
 
 
+@app.route('/api/ledger_manual_entry', methods=['POST'])
+def api_ledger_manual_entry():
+    """Add a manual entry to the ledger_report.json file."""
+    import json as _json
+    from datetime import datetime
+    
+    data = request.json
+    date_str = data.get('date', datetime.now().strftime("%d/%m/%Y"))
+    particulars = data.get('particulars', '')
+    amount = float(data.get('amount', 0))
+    entry_type = data.get('type', 'credit').lower()
+    
+    LEDGER_FILE = str(Path(__file__).parent / 'ledger_report.json')
+    try:
+        with open(LEDGER_FILE, 'r', encoding='utf-8') as f:
+            ledger = _json.load(f)
+    except Exception:
+        ledger = {"entries": [], "closing_balance": 0.0, "row_count": 0}
+        
+    current_balance = float(ledger.get('closing_balance', 0.0))
+    if entry_type == 'credit':
+        new_balance = current_balance + amount
+    else:
+        new_balance = current_balance - amount
+        
+    new_entry = {
+        "Transaction Date": date_str,
+        "Transaction Details": f"{particulars} (Manual Entry)",
+        "Transaction Amount": str(amount),
+        "Transaction Type": "Cr" if entry_type == 'credit' else "Dr",
+        "Balance": str(new_balance)
+    }
+    
+    ledger.setdefault('entries', []).append(new_entry)
+    ledger['closing_balance'] = new_balance
+    ledger['row_count'] = len(ledger['entries'])
+    # Don't change scraped_at so we still know when the real portal was last scraped
+    
+    try:
+        with open(LEDGER_FILE, 'w', encoding='utf-8') as f:
+            _json.dump(ledger, f, ensure_ascii=False, indent=2)
+        return jsonify({"success": True, "closing_balance": new_balance})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
+
 @app.route('/stock_point_order')
 def stock_point_order():
     return render_template('stock_point_order.html')
