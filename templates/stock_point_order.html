@@ -453,7 +453,8 @@
         orderItems.push({ name: productName, rate, boxSize, boxes, totalPcs, amount: amt });
         
         // Reset form
-        sel.value = "";
+        document.getElementById('productSearchInput').value = "";
+        activeProductIdx = "";
         document.getElementById('productRate').value = "";
         document.getElementById('productBoxSize').value = "";
         document.getElementById('productBoxes').value = "1";
