@@ -919,6 +919,44 @@ def stock_point_order():
     return render_template('stock_point_order.html')
 
 
+@app.route('/api/place_stock_order', methods=['POST'])
+def api_place_stock_order():
+    """
+    Places a franchise stock point order on the Asclepius portal.
+    Expects JSON body: { "items": [{"name": "...", "qty": 10, "portal_id": "41"}, ...] }
+    Runs submit_stock_order.py as a subprocess (handles Playwright in Gunicorn).
+    """
+    import subprocess
+    import sys as _sys
+    import json as _json
+
+    data = request.json or {}
+    items = data.get('items', [])
+
+    if not items:
+        return jsonify({'success': False, 'error': 'No items provided'}), 400
+
+    script_path = os.path.join(os.path.dirname(__file__), 'submit_stock_order.py')
+    items_json = _json.dumps(items, ensure_ascii=False)
+
+    try:
+        res = subprocess.run(
+            [_sys.executable, script_path, items_json],
+            capture_output=True, text=True, timeout=180  # 3 min max
+        )
+        output = res.stdout.strip()
+        if not output:
+            return jsonify({
+                'success': False,
+                'error': f'Portal script produced no output. Stderr: {res.stderr[:500]}'
+            })
+        return jsonify(_json.loads(output))
+    except subprocess.TimeoutExpired:
+        return jsonify({'success': False, 'error': 'Portal submission timed out (3 min). The portal may be slow.'})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
 @app.route('/api/sp_order_data')
 def api_sp_order_data():
     import subprocess

@@ -442,14 +442,114 @@
         }
     }
 
-    function submitOrder() {
+    async function submitOrder() {
         if (orderTotal > walletBalance) return;
         if (orderItems.length === 0) return;
-        
-        if (confirm(`Submit order for ₹ ${orderTotal.toLocaleString('en-IN')}?`)) {
-            // Placeholder for actual submission
-            alert("Order submission workflow initiated.");
+
+        const confirmed = confirm(
+            `Submit order to Asclepius portal?\n\n` +
+            `Items: ${orderItems.length}\n` +
+            `Total: ₹ ${orderTotal.toLocaleString('en-IN')}\n\n` +
+            `This will place a real purchase order on your franchise account.`
+        );
+        if (!confirmed) return;
+
+        // Show progress modal
+        showProgress('Connecting to Asclepius portal…', 'Please wait. Do not close this tab.');
+
+        // Prepare items payload with portal_id from localInventory if available
+        const payload = orderItems.map(item => {
+            // Try to find portal_id from localInventory by name match
+            const found = localInventory.find(p => p.name === item.name);
+            return {
+                name: item.name,
+                qty: item.totalPcs,
+                portal_id: found ? (found.portal_id || found.id || '') : ''
+            };
+        });
+
+        try {
+            updateProgress('Logging into portal & building order…', '~1–2 minutes. Portal is processing your items.');
+
+            const res = await fetch('/api/place_stock_order', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ items: payload })
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                const placed = data.items_added || [];
+                const failed = data.items_failed || [];
+                let msg = `✅ Order submitted to portal!\n\n`;
+                msg += `✓ Items placed: ${placed.length}\n`;
+                if (failed.length) msg += `⚠ Not found on portal: ${failed.join(', ')}\n`;
+                msg += `\nSubmitted at: ${data.submitted_at || 'just now'}`;
+
+                hideProgress();
+                alert(msg);
+
+                // Clear the order form
+                orderItems = [];
+                renderTable();
+
+                // Refresh wallet balance from ledger
+                updateProgress('Refreshing wallet balance…', '');
+                await fetch('/api/sync_ledger', { method: 'POST' });
+                await loadWalletFromLedger();
+                hideProgress();
+
+            } else {
+                hideProgress();
+                alert(`❌ Portal submission failed:\n\n${data.error || 'Unknown error'}\n\nYou can still manually place the order on the Asclepius portal.`);
+            }
+
+        } catch (e) {
+            hideProgress();
+            alert(`❌ Network error: ${e.message}\n\nPlease check your connection and try again.`);
         }
+    }
+
+    // ── Progress Modal ─────────────────────────────────────────────────────────
+    function showProgress(title, subtitle) {
+        let modal = document.getElementById('progressModal');
+        if (!modal) {
+            modal = document.createElement('div');
+            modal.id = 'progressModal';
+            modal.style.cssText = `
+                position:fixed; top:0; left:0; width:100%; height:100%; z-index:9999;
+                background:rgba(0,0,0,0.7); backdrop-filter:blur(4px);
+                display:flex; align-items:center; justify-content:center;
+            `;
+            modal.innerHTML = `
+                <div style="background:var(--bg,#1a1a2e); border:1px solid var(--border,#333); border-radius:16px;
+                            padding:2.5rem 2rem; max-width:420px; width:90%; text-align:center;">
+                    <div style="width:48px;height:48px;border:4px solid rgba(255,255,255,.1);
+                                border-top-color:var(--primary,#6366f1); border-radius:50%;
+                                animation:spin 1s linear infinite; margin:0 auto 1.5rem;"></div>
+                    <div id="progressTitle" style="font-size:1.1rem;font-weight:600;margin-bottom:.5rem;"></div>
+                    <div id="progressSub" style="font-size:.85rem;color:var(--muted,#888);"></div>
+                    <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+        modal.style.display = 'flex';
+        document.getElementById('progressTitle').textContent = title;
+        document.getElementById('progressSub').textContent = subtitle;
+    }
+
+    function updateProgress(title, subtitle) {
+        const t = document.getElementById('progressTitle');
+        const s = document.getElementById('progressSub');
+        if (t) t.textContent = title;
+        if (s) s.textContent = subtitle;
+    }
+
+    function hideProgress() {
+        const modal = document.getElementById('progressModal');
+        if (modal) modal.style.display = 'none';
     }
 </script>
 
