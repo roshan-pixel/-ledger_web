@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ledger Report — Nexus Analytics</title>
+    <meta name="description" content="Franchise wallet ledger report from the Asclepius portal. View all debits, credits and closing balance from 01 Jan 2026.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @keyframes fadeInSPA { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.5} }
+
+        *, *::before, *::after { box-sizing: border-box; }
+        :root {
+            --bg:       #0b0f19;
+            --surface:  rgba(255,255,255,0.04);
+            --surface2: rgba(255,255,255,0.07);
+            --border:   rgba(255,255,255,0.09);
+            --primary:  #6366f1;
+            --pglow:    rgba(99,102,241,0.3);
+            --green:    #10b981;
+            --red:      #ef4444;
+            --amber:    #f59e0b;
+            --text:     #ffffff;
+            --muted:    #94a3b8;
+            --blur:     blur(16px);
+        }
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(99,102,241,.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(16,185,129,.12), transparent 25%);
+            background-attachment: fixed;
+            color: var(--text); min-height: 100vh;
+            display: flex;
+            animation: fadeInSPA .35s ease-out forwards;
+        }
+
+        /* ── SIDEBAR ─────────────────────── */
+        .sidebar {
+            width: 260px; flex-shrink: 0;
+            background: var(--surface); border-right: 1px solid var(--border);
+            backdrop-filter: var(--blur);
+            padding: 2rem 1.5rem; display: flex; flex-direction: column; gap: 2rem;
+            position: sticky; top: 0; height: 100vh; overflow-y: auto;
+        }
+        .logo { font-size: 1.4rem; font-weight: 700; letter-spacing: -.5px; text-align: center; padding: 1rem 0; }
+        .logo img { max-width: 85%; background: linear-gradient(135deg,#fff 0%,#dce1eb 100%); border-radius: 16px; padding: 12px; }
+        .nav-menu { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .4rem; }
+        .nav-item {
+            padding: .85rem 1.2rem; border-radius: 12px; color: var(--muted);
+            font-weight: 500; cursor: pointer; transition: all .25s;
+            display: flex; align-items: center; gap: .85rem; font-size: .92rem;
+        }
+        .nav-item:hover { background: rgba(255,255,255,.08); color: var(--text); transform: translateX(4px); }
+        .nav-item.active { background: rgba(99,102,241,.15); color: var(--primary); transform: translateX(4px); }
+
+        /* ── MAIN ────────────────────────── */
+        .main { flex: 1; padding: 2rem; overflow: hidden; display: flex; flex-direction: column; gap: 1.5rem; min-width: 0; }
+
+        .page-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; flex-wrap: wrap; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
+        .page-header h1 { margin: 0; font-size: 1.9rem; font-weight: 700; }
+        .page-header p { margin: .25rem 0 0; color: var(--muted); font-size: .9rem; }
+
+        /* ── KPI Cards ─────────────────── */
+        .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+        .kpi-card {
+            background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+            padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: .4rem;
+        }
+        .kpi-label { font-size: .8rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+        .kpi-val { font-size: 1.8rem; font-weight: 700; }
+        .kpi-card.green .kpi-val { color: var(--green); }
+        .kpi-card.red   .kpi-val { color: var(--red); }
+        .kpi-card.amber .kpi-val { color: var(--amber); }
+        .kpi-sub { font-size: .78rem; color: var(--muted); }
+
+        /* ── Controls bar ──────────────── */
+        .controls-bar {
+            background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+            padding: 1rem 1.5rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+        }
+        .search-input {
+            flex: 1; min-width: 200px;
+            padding: .65rem 1rem; border-radius: 8px; border: 1px solid var(--border);
+            background: rgba(255,255,255,.06); color: var(--text); font-family: inherit; font-size: .9rem;
+            outline: none; transition: all .2s;
+        }
+        .search-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--pglow); }
+        .search-input::placeholder { color: var(--muted); }
+
+        .btn {
+            padding: .65rem 1.4rem; border-radius: 8px; font-weight: 600; font-family: inherit;
+            cursor: pointer; transition: all .2s; border: none; font-size: .9rem; white-space: nowrap;
+        }
+        .btn-primary { background: var(--primary); color: #fff; }
+        .btn-primary:hover:not(:disabled) { background: #4f46e5; transform: translateY(-1px); }
+        .btn-primary:disabled { opacity: .5; cursor: not-allowed; }
+        .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--muted); }
+        .btn-outline:hover { border-color: var(--primary); color: var(--text); }
+
+        .sync-status { font-size: .8rem; color: var(--muted); display: flex; align-items: center; gap: .5rem; margin-left: auto; }
+        .sync-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); display: inline-block; }
+        .sync-dot.syncing { background: var(--amber); animation: pulse 1s ease-in-out infinite; }
+        .sync-dot.error { background: var(--red); }
+
+        /* ── Table ─────────────────────── */
+        .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+        .table-scroll { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        thead { background: rgba(0,0,0,.25); }
+        th { padding: .75rem 1rem; text-align: left; font-size: .72rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .6px; white-space: nowrap; }
+        td { padding: .8rem 1rem; border-top: 1px solid var(--border); font-size: .88rem; }
+        tr:hover td { background: rgba(255,255,255,.02); }
+        td.numeric, th.numeric { text-align: right; font-variant-numeric: tabular-nums; }
+        td.credit { color: var(--green); font-weight: 600; }
+        td.debit  { color: var(--red);   font-weight: 600; }
+        td.balance-cell { font-weight: 600; }
+
+        .badge {
+            display: inline-flex; align-items: center; gap: .3rem;
+            padding: .2rem .65rem; border-radius: 999px; font-size: .72rem; font-weight: 600;
+        }
+        .badge-credit { background: rgba(16,185,129,.12); color: var(--green); border: 1px solid rgba(16,185,129,.25); }
+        .badge-debit  { background: rgba(239,68,68,.12);  color: var(--red);   border: 1px solid rgba(239,68,68,.25); }
+
+        /* ── Empty / Loading states ─────── */
+        .empty-state { padding: 4rem 2rem; text-align: center; color: var(--muted); }
+        .empty-state .icon { font-size: 3rem; margin-bottom: 1rem; }
+        .empty-state h3 { margin: 0 0 .5rem; color: var(--text); }
+        .empty-state p { margin: 0; font-size: .9rem; }
+
+        .spinner {
+            width: 36px; height: 36px; border: 3px solid var(--border);
+            border-top-color: var(--primary); border-radius: 50%;
+            animation: spin .7s linear infinite; margin: 2rem auto;
+        }
+
+        /* ── Pagination ─────────────────── */
+        .pagination { display: flex; justify-content: center; align-items: center; gap: .5rem; padding: 1rem; border-top: 1px solid var(--border); }
+        .page-btn {
+            padding: .4rem .8rem; border-radius: 6px; border: 1px solid var(--border);
+            background: transparent; color: var(--muted); cursor: pointer; font-size: .85rem;
+            transition: all .2s; font-family: inherit;
+        }
+        .page-btn:hover { border-color: var(--primary); color: var(--text); }
+        .page-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+        .page-btn:disabled { opacity: .3; cursor: not-allowed; }
+        .page-info { color: var(--muted); font-size: .82rem; }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; padding: 1rem; border-right: none; border-bottom: 1px solid var(--border); }
+            .nav-menu { flex-direction: row; overflow-x: auto; padding-bottom: .5rem; }
+            .nav-item { min-height: 44px; white-space: nowrap; }
+            .main { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<aside class="sidebar">
+    <div class="logo">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Asclepius Wellness">
+    </div>
+    <ul class="nav-menu">
+        <li class="nav-item" onclick="window.location.href='/'">Dashboard</li>
+        <li class="nav-item" onclick="window.location.href='/inventory_master'">Inventory Master</li>
+        <li class="nav-item" onclick="window.location.href='/invoice'">Invoice Generator</li>
+        <li class="nav-item" onclick="window.location.href='/invoice_history'">Recent Invoices</li>
+        <li class="nav-item" onclick="window.location.href='/stock_point_order'">Stock Point Order</li>
+        <li class="nav-item" onclick="window.location.href='/purchase_history'">&#128209; Purchase History</li>
+        <li class="nav-item active">&#128184; Ledger Report</li>
+    </ul>
+</aside>
+
+<main class="main">
+    <div class="page-header">
+        <div>
+            <h1>&#128184; Ledger Report</h1>
+            <p id="reportSubtitle">Franchise wallet statement from 01 Jan 2026 · Synced from Asclepius Portal</p>
+        </div>
+        <div style="display:flex; gap:.75rem; align-items:center;">
+            <div class="sync-status">
+                <span class="sync-dot" id="syncDot"></span>
+                <span id="syncLabel">Loading…</span>
+            </div>
+            <button class="btn btn-primary" id="syncBtn" onclick="syncNow()">🔄 Sync Now</button>
+        </div>
+    </div>
+
+    <!-- KPI Cards -->
+    <div class="kpi-row">
+        <div class="kpi-card green">
+            <div class="kpi-label">Closing Balance (Wallet)</div>
+            <div class="kpi-val" id="kpiClosing">₹ —</div>
+            <div class="kpi-sub" id="kpiClosingSub">Available to spend</div>
+        </div>
+        <div class="kpi-card green">
+            <div class="kpi-label">Total Credits</div>
+            <div class="kpi-val" id="kpiCredits">₹ —</div>
+            <div class="kpi-sub">Money added to wallet</div>
+        </div>
+        <div class="kpi-card red">
+            <div class="kpi-label">Total Debits</div>
+            <div class="kpi-val" id="kpiDebits">₹ —</div>
+            <div class="kpi-sub">Orders placed</div>
+        </div>
+        <div class="kpi-card amber">
+            <div class="kpi-label">Total Entries</div>
+            <div class="kpi-val" id="kpiEntries">—</div>
+            <div class="kpi-sub" id="kpiPeriod">Since 01 Jan 2026</div>
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls-bar">
+        <input type="text" class="search-input" id="searchInput" placeholder="&#128269;  Search by date, particulars…" oninput="filterTable()">
+        <select id="filterType" onchange="filterTable()" style="padding:.65rem 1rem; border-radius:8px; border:1px solid var(--border); background:rgba(255,255,255,.06); color:var(--text); font-family:inherit; outline:none; cursor:pointer;">
+            <option value="all">All Entries</option>
+            <option value="credit">Credits Only</option>
+            <option value="debit">Debits Only</option>
+        </select>
+    </div>
+
+    <!-- Table -->
+    <div class="table-wrap">
+        <div class="table-scroll">
+            <table id="ledgerTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Date</th>
+                        <th>Particulars</th>
+                        <th class="numeric">Debit (₹)</th>
+                        <th class="numeric">Credit (₹)</th>
+                        <th class="numeric">Balance (₹)</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody id="ledgerBody">
+                    <tr><td colspan="7"><div class="spinner"></div></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination" id="paginationBar" style="display:none;"></div>
+    </div>
+</main>
+
+<script>
+    const PER_PAGE = 50;
+    let allEntries = [];
+    let filteredEntries = [];
+    let currentPage = 1;
+
+    function fmt(n) {
+        if (!n && n !== 0) return '—';
+        return parseFloat(n).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function setSyncStatus(state, label) {
+        const dot = document.getElementById('syncDot');
+        dot.className = 'sync-dot' + (state === 'syncing' ? ' syncing' : state === 'error' ? ' error' : '');
+        document.getElementById('syncLabel').textContent = label;
+    }
+
+    async function loadLedger() {
+        setSyncStatus('syncing', 'Loading…');
+        try {
+            const res = await fetch('/api/ledger_report');
+            const data = await res.json();
+            if (data.success === false && !data.entries?.length) {
+                showEmpty(data.error || 'No data found. Press Sync Now to fetch from portal.');
+                setSyncStatus('error', 'No data');
+                return;
+            }
+            renderData(data);
+        } catch (e) {
+            showEmpty('Failed to load: ' + e.message);
+            setSyncStatus('error', 'Load error');
+        }
+    }
+
+    function renderData(data) {
+        const entries = data.entries || [];
+        const closing = data.closing_balance || 0;
+        const scraped = data.scraped_at || '';
+        const headers = data.headers || [];
+
+        // Map entries to canonical fields
+        // Actual portal columns: Sno, C&F Name, Transaction Date, Transaction Details,
+        //                        Transaction Amount, Transaction Type (Cr/Dr), Balance
+        allEntries = entries.map((row, i) => {
+            const txType   = (row['Transaction Type'] || row['Type'] || '').trim().toLowerCase();
+            const txAmt    = parseFloat((row['Transaction Amount'] || row['Amount'] || '0').replace(/[^0-9.]/g,'')) || 0;
+            const bal      = parseFloat((row['Balance'] || '0').replace(/[^0-9.]/g,'')) || 0;
+            const isCredit = txType === 'cr' || txType === 'credit';
+            const isDebit  = txType === 'dr' || txType === 'debit';
+
+            return {
+                idx:         i + 1,
+                date:        row['Transaction Date'] || row['Date'] || '',
+                particulars: row['Transaction Details'] || row['Particulars'] || row['Narration'] || row['Description'] || '',
+                debit:       isDebit  ? txAmt : 0,
+                credit:      isCredit ? txAmt : 0,
+                balance:     bal,
+                type:        isCredit ? 'credit' : isDebit ? 'debit' : 'neutral',
+            };
+        });
+
+        // Compute KPIs
+        let totalCredit = 0, totalDebit = 0;
+        allEntries.forEach(e => { totalCredit += e.credit; totalDebit += e.debit; });
+
+        document.getElementById('kpiClosing').textContent = '₹ ' + fmt(closing);
+        document.getElementById('kpiCredits').textContent = '₹ ' + fmt(totalCredit);
+        document.getElementById('kpiDebits').textContent  = '₹ ' + fmt(totalDebit);
+        document.getElementById('kpiEntries').textContent = allEntries.length;
+
+        if (scraped) {
+            const d = new Date(scraped);
+            const label = d.toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric' }) + ' ' +
+                          d.toLocaleTimeString('en-IN', { hour:'2-digit', minute:'2-digit' });
+            setSyncStatus('ok', 'Last synced ' + label);
+            document.getElementById('reportSubtitle').textContent =
+                'Franchise wallet statement 01 Jan 2026 → Today · Synced ' + label;
+        } else {
+            setSyncStatus('ok', 'Data loaded');
+        }
+
+        filteredEntries = [...allEntries];
+        currentPage = 1;
+        renderTable();
+    }
+
+    function filterTable() {
+        const q = document.getElementById('searchInput').value.toLowerCase();
+        const type = document.getElementById('filterType').value;
+        filteredEntries = allEntries.filter(e => {
+            const matchQ = !q || e.date.toLowerCase().includes(q) || e.particulars.toLowerCase().includes(q);
+            const matchT = type === 'all' || e.type === type;
+            return matchQ && matchT;
+        });
+        currentPage = 1;
+        renderTable();
+    }
+
+    function renderTable() {
+        const tbody = document.getElementById('ledgerBody');
+        if (filteredEntries.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="7">
+                <div class="empty-state">
+                    <div class="icon">📋</div>
+                    <h3>No entries found</h3>
+                    <p>Try adjusting your search or filter, or sync fresh data from the portal.</p>
+                </div></td></tr>`;
+            document.getElementById('paginationBar').style.display = 'none';
+            return;
+        }
+
+        const totalPages = Math.ceil(filteredEntries.length / PER_PAGE);
+        const start = (currentPage - 1) * PER_PAGE;
+        const slice = filteredEntries.slice(start, start + PER_PAGE);
+
+        tbody.innerHTML = slice.map(e => `
+            <tr>
+                <td style="color:var(--muted); font-size:.8rem;">${e.idx}</td>
+                <td style="white-space:nowrap;">${e.date || '—'}</td>
+                <td>${e.particulars || '—'}</td>
+                <td class="numeric debit">${e.debit > 0 ? fmt(e.debit) : '—'}</td>
+                <td class="numeric credit">${e.credit > 0 ? fmt(e.credit) : '—'}</td>
+                <td class="numeric balance-cell">${e.balance > 0 ? fmt(e.balance) : '—'}</td>
+                <td><span class="badge ${e.type === 'credit' ? 'badge-credit' : e.type === 'debit' ? 'badge-debit' : ''}">${e.type === 'credit' ? '↑ Credit' : e.type === 'debit' ? '↓ Debit' : '—'}</span></td>
+            </tr>
+        `).join('');
+
+        renderPagination(totalPages);
+    }
+
+    function renderPagination(totalPages) {
+        const bar = document.getElementById('paginationBar');
+        if (totalPages <= 1) { bar.style.display = 'none'; return; }
+        bar.style.display = 'flex';
+
+        let html = `<button class="page-btn" onclick="goPage(${currentPage-1})" ${currentPage===1?'disabled':''}>←</button>`;
+        for (let i = 1; i <= totalPages; i++) {
+            if (i === 1 || i === totalPages || Math.abs(i - currentPage) <= 2) {
+                html += `<button class="page-btn ${i===currentPage?'active':''}" onclick="goPage(${i})">${i}</button>`;
+            } else if (Math.abs(i - currentPage) === 3) {
+                html += `<span class="page-info">…</span>`;
+            }
+        }
+        html += `<button class="page-btn" onclick="goPage(${currentPage+1})" ${currentPage===totalPages?'disabled':''}>→</button>`;
+        html += `<span class="page-info">${filteredEntries.length} entries</span>`;
+        bar.innerHTML = html;
+    }
+
+    function goPage(n) {
+        const totalPages = Math.ceil(filteredEntries.length / PER_PAGE);
+        if (n < 1 || n > totalPages) return;
+        currentPage = n;
+        renderTable();
+        document.querySelector('.table-wrap').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function showEmpty(msg) {
+        document.getElementById('ledgerBody').innerHTML = `<tr><td colspan="7">
+            <div class="empty-state">
+                <div class="icon">📡</div>
+                <h3>No Ledger Data</h3>
+                <p>${msg}</p>
+                <button class="btn btn-primary" onclick="syncNow()" style="margin-top:1rem;">🔄 Sync From Portal</button>
+            </div></td></tr>`;
+    }
+
+    async function syncNow() {
+        const btn = document.getElementById('syncBtn');
+        btn.disabled = true;
+        btn.textContent = '⏳ Syncing…';
+        setSyncStatus('syncing', 'Fetching from portal…');
+        document.getElementById('ledgerBody').innerHTML = '<tr><td colspan="7"><div class="spinner"></div><p style="text-align:center;color:var(--muted);font-size:.9rem;">Logging into Asclepius portal and scraping ledger…<br>This takes ~30–45 seconds.</p></td></tr>';
+
+        try {
+            const res = await fetch('/api/sync_ledger', { method: 'POST' });
+            const data = await res.json();
+            if (data.success === false) {
+                showEmpty('Sync failed: ' + (data.error || 'Unknown error'));
+                setSyncStatus('error', 'Sync failed');
+            } else {
+                renderData(data);
+            }
+        } catch (e) {
+            showEmpty('Network error: ' + e.message);
+            setSyncStatus('error', 'Error');
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '🔄 Sync Now';
+        }
+    }
+
+    // Init
+    loadLedger();
+</script>
+</body>
+</html>

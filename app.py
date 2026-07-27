@@ -808,6 +808,66 @@ def api_purchase_orders():
     except Exception as e:
         return jsonify({'orders': [], 'error': str(e)}), 500
 
+# ── Ledger Report ──────────────────────────────────────────────────────────
+
+@app.route('/ledger_report')
+def ledger_report():
+    return render_template('ledger_report.html')
+
+
+@app.route('/api/ledger_report')
+def api_ledger_report():
+    """Return cached ledger entries from ledger_report.json (fast, no scrape)."""
+    import json as _json
+    LEDGER_FILE = str(Path(__file__).parent / 'ledger_report.json')
+    try:
+        with open(LEDGER_FILE, 'r', encoding='utf-8') as f:
+            data = _json.load(f)
+        return jsonify(data)
+    except FileNotFoundError:
+        return jsonify({'success': False, 'error': 'No ledger data yet. Please sync first.', 'entries': [], 'closing_balance': 0})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e), 'entries': [], 'closing_balance': 0}), 500
+
+
+@app.route('/api/ledger_wallet_balance')
+def api_ledger_wallet_balance():
+    """Return just the closing balance for the stock-point-order wallet sync."""
+    import json as _json
+    LEDGER_FILE = str(Path(__file__).parent / 'ledger_report.json')
+    try:
+        with open(LEDGER_FILE, 'r', encoding='utf-8') as f:
+            data = _json.load(f)
+        closing = data.get('closing_balance', 0) or data.get('wallet_balance', 0)
+        scraped_at = data.get('scraped_at', '')
+        return jsonify({'success': True, 'closing_balance': closing, 'scraped_at': scraped_at})
+    except FileNotFoundError:
+        return jsonify({'success': False, 'closing_balance': 0, 'error': 'Not synced yet'})
+    except Exception as e:
+        return jsonify({'success': False, 'closing_balance': 0, 'error': str(e)}), 500
+
+
+@app.route('/api/sync_ledger', methods=['POST'])
+def api_sync_ledger():
+    """Trigger a live scrape of the Asclepius ledger report. Returns scraped data."""
+    import subprocess
+    import sys
+    import json as _json
+    script_path = os.path.join(os.path.dirname(__file__), 'fetch_ledger_report.py')
+    try:
+        res = subprocess.run(
+            [sys.executable, script_path, 'AAZFD8117G', 'ABC@1234'],
+            capture_output=True, text=True, timeout=60
+        )
+        if not res.stdout.strip():
+            return jsonify({'success': False, 'error': f'Scraper crashed. Stderr: {res.stderr[:500]}'})
+        return jsonify(_json.loads(res.stdout))
+    except subprocess.TimeoutExpired:
+        return jsonify({'success': False, 'error': 'Scraper timed out (60s). Portal may be slow or blocked.'})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)})
+
+
 @app.route('/stock_point_order')
 def stock_point_order():
     return render_template('stock_point_order.html')

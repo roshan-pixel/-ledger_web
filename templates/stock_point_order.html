@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -143,6 +143,7 @@
         <li class="nav-item" onclick="window.location.href='/invoice_history'">Recent Invoices</li>
         <li class="nav-item active">Stock Point Order</li>
         <li class="nav-item" onclick="window.location.href='/purchase_history'">&#128209; Purchase History</li>
+        <li class="nav-item" onclick="window.location.href='/ledger_report'">&#128184; Ledger Report</li>
     </ul>
 </aside>
 
@@ -150,16 +151,23 @@
     <div class="page-header">
         <div>
             <h1>Stock Point Order Form</h1>
-            <p>Draft your franchise order. (Wallet balance requires manual entry)</p>
+            <p id="orderSubtitle">Draft your franchise order · Wallet synced from Asclepius Ledger</p>
         </div>
+        <a href="/ledger_report" style="font-size:.85rem; color:var(--primary); text-decoration:none;">&#128184; View Full Ledger →</a>
     </div>
 
-    <!-- Wallet Balance -->
+    <!-- Wallet Balance (auto-synced from ledger) -->
     <div class="wallet-card" id="walletCard">
-        <div class="wallet-title">Available Wallet Balance</div>
-        <div class="wallet-input-wrap">
-            <span>₹</span>
-            <input type="number" id="walletBalanceTxt" class="wallet-input" value="0" step="1" oninput="updateWalletBalance()">
+        <div>
+            <div class="wallet-title">Available Wallet Balance</div>
+            <div id="walletSyncMeta" style="font-size:.78rem; color:var(--muted); margin-top:.3rem;">Loading from ledger…</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:1rem;">
+            <div class="wallet-input-wrap">
+                <span>₹</span>
+                <span id="walletBalanceDisplay" class="wallet-input" style="display:inline-block; cursor:default; min-width:160px;">—</span>
+            </div>
+            <button class="btn btn-outline" id="walletRefreshBtn" onclick="refreshWallet()" title="Re-fetch from Asclepius portal ledger" style="padding:.5rem 1rem; font-size:.82rem;">🔄</button>
         </div>
     </div>
 
@@ -238,8 +246,57 @@
     let orderItems = [];
     let localInventory = [];
 
+    // ── Auto-load wallet from ledger ──────────────────────────────────────
+    async function loadWalletFromLedger() {
+        try {
+            const res = await fetch('/api/ledger_wallet_balance');
+            const data = await res.json();
+            const meta = document.getElementById('walletSyncMeta');
+            const disp = document.getElementById('walletBalanceDisplay');
+
+            if (data.success && data.closing_balance > 0) {
+                walletBalance = parseFloat(data.closing_balance) || 0;
+                disp.textContent = walletBalance.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+                if (data.scraped_at) {
+                    const d = new Date(data.scraped_at);
+                    meta.textContent = '✓ Synced from ledger · ' +
+                        d.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) +
+                        ' ' + d.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+                } else {
+                    meta.textContent = '✓ Synced from ledger';
+                }
+            } else {
+                disp.textContent = '0.00';
+                meta.innerHTML = '⚠ Not synced · <a href="/ledger_report" style="color:var(--primary);">Go to Ledger Report to sync</a>';
+            }
+            validateOrder();
+        } catch (e) {
+            document.getElementById('walletSyncMeta').textContent = 'Could not load wallet: ' + e.message;
+        }
+    }
+
+    async function refreshWallet() {
+        const btn = document.getElementById('walletRefreshBtn');
+        btn.textContent = '⏳';
+        btn.disabled = true;
+        document.getElementById('walletSyncMeta').textContent = 'Syncing from portal…';
+        try {
+            // Trigger a fresh scrape
+            await fetch('/api/sync_ledger', { method: 'POST' });
+            await loadWalletFromLedger();
+        } catch (e) {
+            document.getElementById('walletSyncMeta').textContent = 'Refresh failed: ' + e.message;
+        } finally {
+            btn.textContent = '🔄';
+            btn.disabled = false;
+        }
+    }
+
     // On Load
     window.onload = async () => {
+        // Load wallet from ledger first
+        loadWalletFromLedger();
+
         const sel = document.getElementById('productSelect');
         try {
             sel.innerHTML = '<option value="">-- Loading... --</option>';
@@ -259,11 +316,6 @@
             sel.innerHTML = '<option value="">-- ERROR: ' + e.message.substring(0, 80) + ' --</option>';
             console.error('Stock point load error:', e);
         }
-    }
-
-    function updateWalletBalance() {
-        walletBalance = parseFloat(document.getElementById('walletBalanceTxt').value) || 0;
-        validateOrder();
     }
 
     function populateProductSelect() {
