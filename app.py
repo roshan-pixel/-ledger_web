@@ -581,82 +581,33 @@ def update_totals_row(conn):
 
 @app.route('/api/stock_point_inventory', methods=['GET'])
 def get_stock_point_inventory():
-    conn = get_db()
-    c = conn.cursor()
-    # c1=Sr, c2=Code, c3=Name, c4=Pack, c5=Price, c6=Box, c7=TotalQty, c8=Gross, c27=SP, c28=TotalSP
-    c.execute('SELECT c2, c3, c4, c5, c6, c7, c8, c27, c28 FROM inventory WHERE c3 IS NOT NULL')
-    rows = c.fetchall()
-    conn.close()
-
-    # Load scraped Box Sizes and Rates (absolute path so gunicorn finds it)
-    scraped = {}
     from pathlib import Path
+    import json
+    
     SCRAPED_PATH = str(Path(__file__).parent / 'scraped_products.json')
+    products = []
+    
     try:
-        import json
         with open(SCRAPED_PATH, 'r', encoding='utf-8') as f:
             scraped = json.load(f)
-    except Exception:
-        pass
-
-    # Build a name-based lookup index from scraped data for fuzzy fallback
-    import re as _re
-    scraped_by_name = {}
-    for pid, pdata in scraped.items():
-        raw = pdata.get('name', '')
-        # strip trailing ==(id) suffix added by portal dropdown
-        clean = _re.sub(r'==\(\d+\)', '', raw).strip().upper()
-        scraped_by_name[clean] = pdata
-
-    products = []
-    for row in rows:
-        name = row['c3']
-        # Extract product ID from brackets like [320]
-        m = _re.search(r'\[(\d+)\]', name)
-        prod_id = m.group(1) if m else None
-
-        box_size = 1
-        rate = 0.0
-
-        # Match 1: by prod_id key in scraped dict (most reliable)
-        if prod_id and prod_id in scraped:
-            box_size = scraped[prod_id].get('box_size', 1)
-            rate     = scraped[prod_id].get('rate', 0.0)
-        else:
-            # Match 2: name-based — strip [id] and trailing dash from db name
-            db_clean = _re.sub(r'\[\d+\]', '', name).replace('-', '').strip().upper()
-            if db_clean in scraped_by_name:
-                box_size = scraped_by_name[db_clean].get('box_size', 1)
-                rate     = scraped_by_name[db_clean].get('rate', 0.0)
-
-        # SP from ledger
-        try:
-            sp = float(row['c27']) if row['c27'] else 0.0
-        except Exception:
-            sp = 0.0
-
-        # Fallback rate from ledger if scraped rate still 0
-        if rate == 0.0:
-            try:
-                rate = float(row['c5']) if row['c5'] else 0.0
-            except Exception:
-                rate = 0.0
-
-        if box_size == 0:
-            box_size = 1
-
-        products.append({
-            'code':      row['c2'],
-            'name':      name,
-            'id':        prod_id,
-            'pack':      row['c4'],
-            'box_size':  box_size,
-            'rate':      rate,
-            'sp':        sp,
-            'stock_qty': row['c7']
-        })
+            
+        for pid, pdata in scraped.items():
+            name = pdata.get('name', '').strip()
+            if name:
+                products.append({
+                    'id': pid,
+                    'name': name,
+                    'box_size': pdata.get('box_size', 1),
+                    'rate': pdata.get('rate', 0.0)
+                })
+                
+        # Sort alphabetically for better UX
+        products.sort(key=lambda x: x['name'])
+    except Exception as e:
+        print("Error loading scraped_products.json:", e)
 
     return jsonify({'products': products})
+
 
 
 @app.route('/api/submit_order', methods=['POST'])
