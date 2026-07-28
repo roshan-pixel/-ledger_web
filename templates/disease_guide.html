@@ -813,11 +813,11 @@
             }
             if (query) {
                 filtered = filtered.filter(d => {
-                    const diseaseName = (d.disease_name||'').toLowerCase();
-                    const categoryName = (d.category_name||'').toLowerCase();
-                    const diet = (d.diet||'').toLowerCase();
-                    const avoid = (d.things_to_avoid||'').toLowerCase();
-                    const tip = (d.ayurvedic_tip||'').toLowerCase();
+                    const diseaseName = String(d.disease_name||'').toLowerCase();
+                    const categoryName = String(d.category_name||'').toLowerCase();
+                    const diet = String(d.diet||'').toLowerCase();
+                    const avoid = String(d.things_to_avoid||'').toLowerCase();
+                    const tip = String(d.ayurvedic_tip||'').toLowerCase();
                     
                     let searchTags = "";
                     for (const [kw, tags] of Object.entries(diseaseKeywordsToTags)) {
