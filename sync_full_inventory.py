@@ -90,8 +90,19 @@ def sync_all_to_inventory():
                     
                 if desc and qty > 0:
                     norm_desc = desc.replace('\n', ' ').replace(' -', '').strip().upper()
-                    if norm_desc in inv_map:
+                    
+                    # Try to extract ID from the end of the description (e.g. 'OMEGADOC CAPSULE     492')
+                    import re
+                    m = re.search(r'\b(\d+)$', norm_desc)
+                    prod_id = m.group(1) if m else None
+                    
+                    row_num = None
+                    if prod_id and prod_id in inv_map_by_id:
+                        row_num = inv_map_by_id[prod_id]
+                    elif norm_desc in inv_map:
                         row_num = inv_map[norm_desc]
+                        
+                    if row_num is not None:
                         c.execute(f"SELECT c{sold_qty_col_idx} FROM inventory WHERE row_num=?", (row_num,))
                         curr_sold = float(str(c.fetchone()[0] or 0).replace(',', ''))
                         c.execute(f"UPDATE inventory SET c{sold_qty_col_idx}=? WHERE row_num=?", (curr_sold + qty, row_num))
