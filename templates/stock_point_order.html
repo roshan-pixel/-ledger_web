@@ -302,7 +302,7 @@
         document.getElementById('walletSyncMeta').textContent = 'Syncing from portal…';
         try {
             // Trigger a fresh scrape
-            await fetch('/api/sync_ledger', { method: 'POST' });
+            await pollSyncLedger();
             await loadWalletFromLedger();
         } catch (e) {
             document.getElementById('walletSyncMeta').textContent = 'Refresh failed: ' + e.message;
@@ -566,7 +566,7 @@
 
                 // Refresh wallet balance from ledger
                 updateProgress('Refreshing wallet balance…', '');
-                await fetch('/api/sync_ledger', { method: 'POST' });
+                await pollSyncLedger();
                 await loadWalletFromLedger();
                 hideProgress();
 
@@ -579,6 +579,24 @@
             hideProgress();
             alert(`❌ Network error: ${e.message}\n\nPlease check your connection and try again.`);
         }
+    }
+
+    async function pollSyncLedger() {
+        try {
+            await fetch('/api/sync_ledger', { method: 'POST' });
+            let attempts = 0;
+            while (attempts < 30) {
+                attempts++;
+                try {
+                    const statusRes = await fetch('/api/sync_status');
+                    const statusData = await statusRes.json();
+                    if (statusData.status === 'done' || statusData.status === 'idle' || statusData.status === 'error') {
+                        break;
+                    }
+                } catch(e) {}
+                await new Promise(r => setTimeout(r, 3000));
+            }
+        } catch(e) {}
     }
 
     // ── Progress Modal ─────────────────────────────────────────────────────────

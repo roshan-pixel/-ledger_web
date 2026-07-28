@@ -856,25 +856,41 @@ def api_ledger_wallet_balance():
         return jsonify({'success': False, 'closing_balance': 0, 'error': str(e)}), 500
 
 
+SCRAPER_PROCESS = None
+
 @app.route('/api/sync_ledger', methods=['POST'])
 def api_sync_ledger():
-    """Trigger a live scrape of the Asclepius ledger report. Returns scraped data."""
+    global SCRAPER_PROCESS
     import subprocess
     import sys
     import json as _json
     script_path = os.path.join(os.path.dirname(__file__), 'fetch_ledger_report.py')
+    
+    if SCRAPER_PROCESS is not None and SCRAPER_PROCESS.poll() is None:
+        return jsonify({"success": True, "status": "already_syncing"})
+        
     try:
-        res = subprocess.run(
-            [sys.executable, script_path, 'AAZFD8117G', 'ABC@1234'],
-            capture_output=True, text=True, timeout=60
+        SCRAPER_PROCESS = subprocess.Popen(
+            [sys.executable, script_path, 'AAZFD8117G', 'ABC@1234']
         )
-        if not res.stdout.strip():
-            return jsonify({'success': False, 'error': f'Scraper crashed. Stderr: {res.stderr[:500]}'})
-        return jsonify(_json.loads(res.stdout))
-    except subprocess.TimeoutExpired:
-        return jsonify({'success': False, 'error': 'Scraper timed out (60s). Portal may be slow or blocked.'})
+        return jsonify({'success': True, 'status': 'started'})
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/sync_status', methods=['GET'])
+def api_sync_status():
+    global SCRAPER_PROCESS
+    if SCRAPER_PROCESS is None:
+        return jsonify({"status": "idle"})
+    
+    retcode = SCRAPER_PROCESS.poll()
+    if retcode is None:
+        return jsonify({"status": "syncing"})
+    
+    if retcode == 0:
+        return jsonify({"status": "done"})
+    else:
+        return jsonify({"status": "error", "message": f"Scraper exited with code {retcode}"})
 
 
 @app.route('/api/ledger_manual_entry', methods=['POST'])

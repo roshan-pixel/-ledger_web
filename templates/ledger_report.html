@@ -478,13 +478,48 @@
             if (data.success === false) {
                 showEmpty('Sync failed: ' + (data.error || 'Unknown error'));
                 setSyncStatus('error', 'Sync failed');
-            } else {
-                renderData(data);
+                btn.disabled = false;
+                btn.textContent = '🔄 Sync Now';
+                return;
             }
+            
+            // Poll for completion
+            let attempts = 0;
+            const pollInterval = setInterval(async () => {
+                attempts++;
+                if (attempts > 30) { // 90 seconds max
+                    clearInterval(pollInterval);
+                    showEmpty('Sync timeout (90s)');
+                    setSyncStatus('error', 'Timeout');
+                    btn.disabled = false;
+                    btn.textContent = '🔄 Sync Now';
+                    return;
+                }
+                
+                try {
+                    const statusRes = await fetch('/api/sync_status');
+                    const statusData = await statusRes.json();
+                    
+                    if (statusData.status === 'done' || statusData.status === 'idle') {
+                        clearInterval(pollInterval);
+                        await loadLedger(); // load fresh data from json
+                        btn.disabled = false;
+                        btn.textContent = '🔄 Sync Now';
+                    } else if (statusData.status === 'error') {
+                        clearInterval(pollInterval);
+                        showEmpty('Scraper error: ' + statusData.message);
+                        setSyncStatus('error', 'Scraper error');
+                        btn.disabled = false;
+                        btn.textContent = '🔄 Sync Now';
+                    }
+                } catch (e) {
+                    // Ignore transient network errors during polling
+                }
+            }, 3000);
+            
         } catch (e) {
             showEmpty('Network error: ' + e.message);
             setSyncStatus('error', 'Error');
-        } finally {
             btn.disabled = false;
             btn.textContent = '🔄 Sync Now';
         }
