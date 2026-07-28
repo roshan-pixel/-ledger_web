@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -612,8 +612,8 @@
 
     <main class="main-content" id="mainScroll">
         <div class="hero">
-            <h1>Asclepius Master Disease Guide</h1>
-            <p>Medically verified Ayurvedic protocols • Expert curated</p>
+            <h1>Health Problem & Disease Search</h1>
+            <p>Find Ayurvedic solutions for your health problems (Search by disease or symptom)</p>
         </div>
 
         <div class="stats-bar">
@@ -639,7 +639,7 @@
         <div class="tools-row">
             <div class="search-wrapper">
                 <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                <input type="text" id="searchInput" class="search-input" placeholder="Search diseases, protocols..." oninput="handleSearch()">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search problems (e.g. 'hair fall', 'stomach pain', 'blood pressure')..." oninput="handleSearch()">
             </div>
             <select class="sort-select" id="sortSelect" onchange="handleSearch()">
                 <option value="az">Sort: A-Z</option>
@@ -750,17 +750,75 @@
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
             const sortVal = document.getElementById('sortSelect').value;
 
-            // Use a shallow copy to prevent mutating the original `allDiseases` array!
+            // Dictionary to map common layman terms to diseases
+            const commonTerms = {
+                "Coronary Artery Disease (CAD)": "heart attack, chest pain, blocked arteries, heart disease",
+                "Essential Hypertension": "high bp, blood pressure, high blood pressure",
+                "Type 2 Diabetes Mellitus": "sugar, blood sugar, high sugar, diabetes",
+                "Obesity": "weight loss, fat, overweight, belly fat, motapa",
+                "Polycystic Ovary Syndrome (PCOS)": "pcos, pcod, irregular periods, periods problem",
+                "Dyslipidemia (High Cholesterol)": "cholesterol, high cholesterol, triglycerides",
+                "Asthma": "breathing problem, shortness of breath, wheezing, dama",
+                "Osteoarthritis": "joint pain, knee pain, arthritis, bone pain, joint",
+                "Rheumatoid Arthritis": "joint pain, swelling, severe joint pain, arthritis, joint",
+                "Gout": "uric acid, toe pain, joint pain",
+                "Migraine": "headache, severe headache, half head pain",
+                "Insomnia": "sleep, sleeplessness, can't sleep, sleep problem, neend",
+                "Peptic Ulcer Disease": "stomach ulcer, acidity, stomach pain, burning stomach",
+                "Gastroesophageal Reflux Disease (GERD)": "acid reflux, heartburn, acidity, gas",
+                "Irritable Bowel Syndrome (IBS)": "stomach pain, diarrhea, constipation, ibs, gas",
+                "Constipation": "kabz, hard stool, gas, clear stomach",
+                "Hemorrhoids (Piles)": "piles, bawasir, bleeding, pain while passing stool",
+                "Acne Vulgaris": "pimples, acne, breakouts, face spots",
+                "Alopecia": "hair fall, hair loss, baldness, thinning hair, ganjapan",
+                "Eczema (Atopic Dermatitis)": "itching, dry skin, skin allergy, khujli",
+                "Psoriasis": "scaly skin, skin patches, itching",
+                "Anemia": "weakness, low hemoglobin, blood loss, pale skin, khoon ki kami",
+                "Kidney Stones (Nephrolithiasis)": "stone, kidney stone, pathri, stomach pain",
+                "Urinary Tract Infection (UTI)": "urine infection, burning urine",
+                "Hypothyroidism": "thyroid, weight gain, fatigue",
+                "Hyperthyroidism (Graves' Disease)": "thyroid, weight loss",
+                "Fatty Liver Disease (NAFLD)": "fatty liver, liver problem, liver",
+                "Cirrhosis": "liver failure, liver damage, alcohol liver",
+                "Tuberculosis (TB)": "tb, cough, chronic cough, khasi",
+                "Cataract": "motiyabind, blurry vision, eye problem",
+                "Glaucoma": "eye pressure, vision loss",
+                "Depression": "sadness, depression, low mood",
+                "Anxiety Disorders": "anxiety, tension, stress, panic, fear",
+                "Dengue Fever": "dengue, fever, mosquito, low platelets",
+                "Malaria": "malaria, fever, chills, mosquito",
+                "Typhoid Fever": "typhoid, fever, weakness",
+                "Viral Hepatitis": "hepatitis, jaundice, piliya, yellow eyes",
+                "Chronic Kidney Disease": "kidney problem, kidney failure",
+                "Cervical Spondylosis": "neck pain, cervical, shoulder pain"
+            };
+
             let filtered = [...allDiseases];
             
             if (currentFilter) {
                 filtered = filtered.filter(d => d.category_name === currentFilter);
             }
             if (query) {
-                filtered = filtered.filter(d => 
-                    (d.disease_name||'').toLowerCase().includes(query) || 
-                    (d.category_name||'').toLowerCase().includes(query)
-                );
+                filtered = filtered.filter(d => {
+                    const diseaseName = (d.disease_name||'').toLowerCase();
+                    const categoryName = (d.category_name||'').toLowerCase();
+                    const diet = (d.diet||'').toLowerCase();
+                    const avoid = (d.things_to_avoid||'').toLowerCase();
+                    const tip = (d.ayurvedic_tip||'').toLowerCase();
+                    
+                    let searchTags = "";
+                    for (const [key, tags] of Object.entries(commonTerms)) {
+                        if (diseaseName.includes(key.toLowerCase())) {
+                            searchTags = tags.toLowerCase();
+                        }
+                    }
+
+                    const searchableText = `${diseaseName} ${categoryName} ${diet} ${avoid} ${tip} ${searchTags}`;
+                    
+                    // Simple multi-word matching (all words must be present)
+                    const searchWords = query.split(' ').filter(w => w.length > 0);
+                    return searchWords.every(word => searchableText.includes(word));
+                });
             }
 
             // Sort
