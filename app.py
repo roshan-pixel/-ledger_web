@@ -11,6 +11,32 @@ from init_gsheets import init_google_sheets
 
 app = Flask(__name__)
 
+@app.errorhandler(500)
+def internal_error(error):
+    import traceback
+    return jsonify({
+        "success": False,
+        "error": "500 Internal Server Error",
+        "traceback": traceback.format_exc(),
+        "error_msg": str(error)
+    }), 500
+
+@app.errorhandler(404)
+def not_found_error(error):
+    return jsonify({
+        "success": False,
+        "error": "404 Not Found",
+        "error_msg": str(error)
+    }), 404
+
+@app.errorhandler(405)
+def method_not_allowed_error(error):
+    return jsonify({
+        "success": False,
+        "error": "405 Method Not Allowed",
+        "error_msg": str(error)
+    }), 405
+
 from invoice_api import invoice_api
 app.register_blueprint(invoice_api)
 
