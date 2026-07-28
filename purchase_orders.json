@@ -3958,5 +3958,19 @@
         "354313.68"
       ]
     ]
+  },
+  {
+    "sr": "",
+    "bill_no": "",
+    "party": "Total",
+    "date": "",
+    "cgst": "",
+    "sgst": "",
+    "igst": "240048.66",
+    "total": "2878445.76",
+    "lr_no": "",
+    "delivery_date": "",
+    "courier": "",
+    "products": []
   }
 ]
