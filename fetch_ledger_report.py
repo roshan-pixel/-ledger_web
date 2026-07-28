@@ -58,7 +58,7 @@ def fetch_ledger_report(username: str, password: str) -> dict:
             page.wait_for_load_state("networkidle")
             page.wait_for_timeout(2000)
 
-            from_date = "01/01/2026"
+            from_date = "01/06/2026"
             to_date   = datetime.now().strftime("%d/%m/%Y")
 
             # ── 3. Fill date fields via JS (bypasses xdsoft date picker) ──────
