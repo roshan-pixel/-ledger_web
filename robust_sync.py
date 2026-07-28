@@ -11,6 +11,10 @@ def extract_code(text):
     m = re.search(r'\[(\d+)\]', text)
     if m: return m.group(1)
     
+    # Try to find (123)
+    m = re.search(r'\((\d+)\)', text)
+    if m: return m.group(1)
+    
     # Try to find 123 at the end of the string (e.g. OMEGADOC CAPSULE     492)
     m = re.search(r'\s+(\d+)$', text.strip())
     if m: return m.group(1)
