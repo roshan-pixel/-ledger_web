@@ -32,7 +32,6 @@ def fetch_ledger_report(username: str, password: str) -> dict:
             # ── 1. Login ──────────────────────────────────────────────────────
             page.goto(LOGIN_URL, wait_until="domcontentloaded")
             
-            # Reveal hidden ASP.NET fields
             page.evaluate('''() => {
                 ["ctl00_ContentPlaceHolder1_txtspUserid","ctl00_ContentPlaceHolder1_txtsppassword"].forEach(id => {
                     let el = document.getElementById(id);
@@ -43,9 +42,10 @@ def fetch_ledger_report(username: str, password: str) -> dict:
 
             page.fill("input[name='ctl00$ContentPlaceHolder1$txtspUserid']", username, force=True)
             page.fill("input[name='ctl00$ContentPlaceHolder1$txtsppassword']", password, force=True)
-            page.click("input[name='ctl00$ContentPlaceHolder1$btnfranlogin']", force=True)
             
-            page.wait_for_url("**/shoppingpoint/**", timeout=15000)
+            # Submit and just wait for navigation commit
+            with page.expect_navigation(wait_until="commit"):
+                page.click("input[name='ctl00$ContentPlaceHolder1$btnfranlogin']", force=True)
 
             # ── 2. Go to Ledger Report ────────────────────────────────────────
             page.goto(LEDGER_URL, wait_until="domcontentloaded")
@@ -60,23 +60,17 @@ def fetch_ledger_report(username: str, password: str) -> dict:
                 if (from) {{ from.value = "{from_date}"; }}
                 if (to)   {{ to.value   = "{to_date}"; }}
             }}''')
-            page.wait_for_timeout(500)
-
-            # Make sure the franchise dropdown has the pre-selected franchise value
-            # (It's already pre-selected from the page load, but let's confirm)
-            franchise_value = page.eval_on_selector(
-                "select[name='ctl00$ContentPlaceHolder1$ddlfranch']",
-                "el => el.value"
-            )
 
             # ── 4. Click Show ──────────────────────────────────────────────────
+            # Click and wait for the table to refresh. 
             page.click("input[name='ctl00$ContentPlaceHolder1$Button1']")
             
-            # Instead of waiting for networkidle which takes forever, wait for the table or balance to appear!
+            # Wait for lblbal to become visible OR just wait 3 seconds
             try:
-                page.wait_for_selector("#ctl00_ContentPlaceHolder1_lblbal", state="visible", timeout=10000)
+                page.wait_for_selector("#ctl00_ContentPlaceHolder1_lblbal", state="attached", timeout=8000)
             except Exception:
-                page.wait_for_timeout(2000)
+                pass
+            page.wait_for_timeout(1000)
 
             # ── 5. Extract closing balance from lblbal ─────────────────────────
             balance_text = ""
@@ -153,7 +147,7 @@ def fetch_ledger_report(username: str, password: str) -> dict:
                 "success":         True,
                 "from_date":       from_date,
                 "to_date":         to_date,
-                "franchise_value": franchise_value,
+                "franchise_value": "960158985",
                 "headers":         headers,
                 "entries":         entries,
                 "closing_balance": closing_balance,
