@@ -30,10 +30,8 @@ def fetch_ledger_report(username: str, password: str) -> dict:
             page = browser.new_page(viewport={"width": 1280, "height": 900})
 
             # ── 1. Login ──────────────────────────────────────────────────────
-            page.goto(LOGIN_URL)
-            page.wait_for_load_state("networkidle")
-            page.wait_for_timeout(1500)
-
+            page.goto(LOGIN_URL, wait_until="domcontentloaded")
+            
             # Reveal hidden ASP.NET fields
             page.evaluate('''() => {
                 ["ctl00_ContentPlaceHolder1_txtspUserid","ctl00_ContentPlaceHolder1_txtsppassword"].forEach(id => {
@@ -46,17 +44,11 @@ def fetch_ledger_report(username: str, password: str) -> dict:
             page.fill("input[name='ctl00$ContentPlaceHolder1$txtspUserid']", username, force=True)
             page.fill("input[name='ctl00$ContentPlaceHolder1$txtsppassword']", password, force=True)
             page.click("input[name='ctl00$ContentPlaceHolder1$btnfranlogin']", force=True)
-
-            try:
-                page.wait_for_load_state("networkidle", timeout=15000)
-                page.wait_for_timeout(2000)
-            except Exception:
-                pass
+            
+            page.wait_for_url("**/shoppingpoint/**", timeout=15000)
 
             # ── 2. Go to Ledger Report ────────────────────────────────────────
-            page.goto(LEDGER_URL)
-            page.wait_for_load_state("networkidle")
-            page.wait_for_timeout(2000)
+            page.goto(LEDGER_URL, wait_until="domcontentloaded")
 
             from_date = "01/06/2026"
             to_date   = datetime.now().strftime("%d/%m/%Y")
@@ -79,11 +71,12 @@ def fetch_ledger_report(username: str, password: str) -> dict:
 
             # ── 4. Click Show ──────────────────────────────────────────────────
             page.click("input[name='ctl00$ContentPlaceHolder1$Button1']")
+            
+            # Instead of waiting for networkidle which takes forever, wait for the table or balance to appear!
             try:
-                page.wait_for_load_state("networkidle", timeout=20000)
-                page.wait_for_timeout(3000)
+                page.wait_for_selector("#ctl00_ContentPlaceHolder1_lblbal", state="visible", timeout=10000)
             except Exception:
-                page.wait_for_timeout(3000)
+                page.wait_for_timeout(2000)
 
             # ── 5. Extract closing balance from lblbal ─────────────────────────
             balance_text = ""
@@ -97,58 +90,58 @@ def fetch_ledger_report(username: str, password: str) -> dict:
             except Exception as e:
                 print(f"[warn] lblbal not found: {e}", file=sys.stderr)
 
-            # ── 6. Parse the ledger table ──────────────────────────────────────
-            from bs4 import BeautifulSoup
-            html_content = page.content()
-            soup = BeautifulSoup(html_content, "html.parser")
-
-            # Find the main data table – pick the one with most data rows
-            tables = soup.find_all("table")
-            ledger_table = None
-            max_rows = 0
-            for t in tables:
-                rows = t.find_all("tr")
-                if len(rows) > max_rows:
-                    max_rows = len(rows)
-                    ledger_table = t
-
-            entries = []
-            headers = []
-
-            if ledger_table and max_rows > 1:
-                rows = ledger_table.find_all("tr")
-                header_row_idx = None
-
-                # Find header row
-                for i, row in enumerate(rows):
-                    ths = row.find_all("th")
-                    tds = row.find_all("td")
-                    cells = ths if ths else tds
-                    cell_texts = [c.get_text(strip=True) for c in cells]
-                    text_joined = " ".join(cell_texts).lower()
-                    if any(kw in text_joined for kw in ["date", "particular", "debit", "credit", "balance"]):
-                        headers = cell_texts
-                        header_row_idx = i
-                        break
-
-                if header_row_idx is not None:
-                    for row in rows[header_row_idx + 1:]:
-                        cells = row.find_all("td")
-                        cell_texts = [c.get_text(strip=True) for c in cells]
-                        if not any(t.strip() for t in cell_texts):
-                            continue
-                        if len(cell_texts) >= 2:
-                            row_dict = {}
-                            for j, h in enumerate(headers):
-                                row_dict[h] = cell_texts[j] if j < len(cell_texts) else ""
-                            entries.append(row_dict)
+            # ── 6. Parse the ledger table via JS (Instant!) ─────────────────────
+            entries, headers = page.evaluate('''() => {
+                const tables = document.querySelectorAll("table");
+                let maxRows = 0;
+                let ledgerTable = null;
+                for (let t of tables) {
+                    if (t.rows.length > maxRows) {
+                        maxRows = t.rows.length;
+                        ledgerTable = t;
+                    }
+                }
+                
+                if (!ledgerTable || maxRows <= 1) return [[], []];
+                
+                let headers = [];
+                let entries = [];
+                let headerRowIdx = -1;
+                
+                for (let i=0; i < ledgerTable.rows.length; i++) {
+                    const row = ledgerTable.rows[i];
+                    let cells = Array.from(row.cells).map(c => c.innerText.trim());
+                    let textJoined = cells.join(" ").toLowerCase();
+                    if (textJoined.includes("date") && (textJoined.includes("particular") || textJoined.includes("detail")) && textJoined.includes("balance")) {
+                        headers = cells;
+                        headerRowIdx = i;
+                        break;
+                    }
+                }
+                
+                if (headerRowIdx !== -1) {
+                    for (let i = headerRowIdx + 1; i < ledgerTable.rows.length; i++) {
+                        const row = ledgerTable.rows[i];
+                        let cells = Array.from(row.cells).map(c => c.innerText.trim());
+                        if (cells.some(c => c)) { // not empty
+                            let rowDict = {};
+                            for (let j=0; j<headers.length; j++) {
+                                rowDict[headers[j]] = cells[j] || "";
+                            }
+                            entries.push(rowDict);
+                        }
+                    }
+                }
+                
+                return [entries, headers];
+            }''')
 
             # Fallback: if closing_balance still 0, try the last row's balance column
             if closing_balance == 0.0 and entries:
                 last = entries[-1]
                 for key, val in last.items():
                     if "balance" in key.lower():
-                        raw = re.sub(r'[^\d.]', '', val)
+                        raw = re.sub(r'[^\d.]', '', str(val))
                         try:
                             closing_balance = float(raw)
                         except ValueError:
