@@ -750,47 +750,74 @@
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
             const sortVal = document.getElementById('sortSelect').value;
 
-            // Dictionary to map common layman terms to diseases
-            const commonTerms = {
-                "Coronary Artery Disease (CAD)": "heart attack, chest pain, blocked arteries, heart disease",
-                "Essential Hypertension": "high bp, blood pressure, high blood pressure",
-                "Type 2 Diabetes Mellitus": "sugar, blood sugar, high sugar, diabetes",
-                "Obesity": "weight loss, fat, overweight, belly fat, motapa",
-                "Polycystic Ovary Syndrome (PCOS)": "pcos, pcod, irregular periods, periods problem",
-                "Dyslipidemia (High Cholesterol)": "cholesterol, high cholesterol, triglycerides",
-                "Asthma": "breathing problem, shortness of breath, wheezing, dama",
-                "Osteoarthritis": "joint pain, knee pain, arthritis, bone pain, joint",
-                "Rheumatoid Arthritis": "joint pain, swelling, severe joint pain, arthritis, joint",
-                "Gout": "uric acid, toe pain, joint pain",
-                "Migraine": "headache, severe headache, half head pain",
-                "Insomnia": "sleep, sleeplessness, can't sleep, sleep problem, neend",
-                "Peptic Ulcer Disease": "stomach ulcer, acidity, stomach pain, burning stomach",
-                "Gastroesophageal Reflux Disease (GERD)": "acid reflux, heartburn, acidity, gas",
-                "Irritable Bowel Syndrome (IBS)": "stomach pain, diarrhea, constipation, ibs, gas",
-                "Constipation": "kabz, hard stool, gas, clear stomach",
-                "Hemorrhoids (Piles)": "piles, bawasir, bleeding, pain while passing stool",
-                "Acne Vulgaris": "pimples, acne, breakouts, face spots",
-                "Alopecia": "hair fall, hair loss, baldness, thinning hair, ganjapan",
-                "Eczema (Atopic Dermatitis)": "itching, dry skin, skin allergy, khujli",
-                "Psoriasis": "scaly skin, skin patches, itching",
-                "Anemia": "weakness, low hemoglobin, blood loss, pale skin, khoon ki kami",
-                "Kidney Stones (Nephrolithiasis)": "stone, kidney stone, pathri, stomach pain",
-                "Urinary Tract Infection (UTI)": "urine infection, burning urine",
-                "Hypothyroidism": "thyroid, weight gain, fatigue",
-                "Hyperthyroidism (Graves' Disease)": "thyroid, weight loss",
-                "Fatty Liver Disease (NAFLD)": "fatty liver, liver problem, liver",
-                "Cirrhosis": "liver failure, liver damage, alcohol liver",
-                "Tuberculosis (TB)": "tb, cough, chronic cough, khasi",
-                "Cataract": "motiyabind, blurry vision, eye problem",
-                "Glaucoma": "eye pressure, vision loss",
-                "Depression": "sadness, depression, low mood",
-                "Anxiety Disorders": "anxiety, tension, stress, panic, fear",
-                "Dengue Fever": "dengue, fever, mosquito, low platelets",
-                "Malaria": "malaria, fever, chills, mosquito",
-                "Typhoid Fever": "typhoid, fever, weakness",
-                "Viral Hepatitis": "hepatitis, jaundice, piliya, yellow eyes",
-                "Chronic Kidney Disease": "kidney problem, kidney failure",
-                "Cervical Spondylosis": "neck pain, cervical, shoulder pain"
+            // Dictionary mapping layman terms to disease keywords
+            const laymanToDisease = {
+                "heart attack": ["coronary", "ischemic", "myocardial", "heart"],
+                "chest pain": ["coronary", "ischemic", "angina", "heart"],
+                "bp": ["hypertension", "blood pressure"],
+                "blood pressure": ["hypertension", "blood pressure"],
+                "sugar": ["diabetes", "diabetic", "mellitus"],
+                "diabetes": ["diabetes", "diabetic", "mellitus"],
+                "fat": ["obesity", "fatty liver", "lipid", "cholesterol", "weight"],
+                "motapa": ["obesity", "weight gain"],
+                "weight loss": ["obesity", "hyperthyroidism", "thyroid"],
+                "weight gain": ["hypothyroidism", "obesity", "thyroid"],
+                "pcos": ["polycystic ovary"],
+                "pcod": ["polycystic ovary"],
+                "period": ["polycystic ovary", "endometriosis", "menstrua"],
+                "cholesterol": ["dyslipidemia", "cholesterol", "lipid"],
+                "breathing": ["asthma", "pulmonary", "bronchitis", "copd", "emphysema"],
+                "breath": ["asthma", "pulmonary", "bronchitis", "copd"],
+                "dama": ["asthma", "bronchitis"],
+                "khasi": ["tuberculosis", "bronchitis", "asthma", "cough", "laryngitis"],
+                "cough": ["tuberculosis", "bronchitis", "asthma", "laryngitis"],
+                "joint": ["osteoarthritis", "rheumatoid", "gout", "arthritis", "spondyl"],
+                "knee": ["osteoarthritis", "arthritis"],
+                "arthritis": ["osteoarthritis", "rheumatoid", "gout", "arthritis"],
+                "uric acid": ["gout"],
+                "headache": ["migraine", "tension"],
+                "half head": ["migraine"],
+                "sleep": ["insomnia", "apnea"],
+                "neend": ["insomnia", "apnea"],
+                "stomach": ["ulcer", "gerd", "ibs", "gastric", "bowel", "digestion"],
+                "ulcer": ["ulcer"],
+                "acidity": ["gerd", "reflux", "ulcer", "acidity"],
+                "gas": ["gerd", "ibs", "constipation", "reflux", "gas"],
+                "kabz": ["constipation"],
+                "piles": ["hemorrhoids"],
+                "bawasir": ["hemorrhoids"],
+                "pimples": ["acne"],
+                "acne": ["acne", "rosacea"],
+                "hair": ["alopecia", "hair"],
+                "ganjapan": ["alopecia", "baldness"],
+                "skin": ["eczema", "psoriasis", "vitiligo", "rosacea", "lichen", "dermatitis", "skin"],
+                "khujli": ["eczema", "psoriasis", "dermatitis", "urticaria", "itch"],
+                "weakness": ["anemia", "fatigue"],
+                "khoon ki kami": ["anemia", "iron"],
+                "stone": ["kidney", "gallstone", "cholelithiasis", "stone"],
+                "pathri": ["gallstone", "cholelithiasis", "kidney"],
+                "urine": ["urinary", "prostat", "bladder", "urine"],
+                "thyroid": ["thyroid", "hashimoto", "graves"],
+                "liver": ["cirrhosis", "fatty liver", "hepatitis", "nafld", "liver"],
+                "jaundice": ["hepatitis", "jaundice"],
+                "piliya": ["hepatitis", "jaundice"],
+                "tb": ["tuberculosis"],
+                "eye": ["cataract", "glaucoma", "macular", "dry eye", "conjunctivitis", "retinopathy", "uveitis", "eye"],
+                "motiyabind": ["cataract"],
+                "depression": ["depress"],
+                "anxiety": ["anxiety", "panic", "stress"],
+                "tension": ["anxiety", "stress", "tension"],
+                "dengue": ["dengue"],
+                "malaria": ["malaria"],
+                "typhoid": ["typhoid"],
+                "kidney": ["kidney", "nephro", "glomerulo", "renal"],
+                "neck": ["cervical", "neck"],
+                "cervical": ["cervical"],
+                "back": ["lumbar", "back pain", "sciatica"],
+                "spine": ["spondyl", "ankylosing", "spine"],
+                "fever": ["fever", "dengue", "malaria", "typhoid"],
+                "bukhar": ["fever", "dengue", "malaria", "typhoid"],
+                "cancer": ["cancer", "oncolog", "tumor"]
             };
 
             let filtered = [...allDiseases];
@@ -807,9 +834,9 @@
                     const tip = (d.ayurvedic_tip||'').toLowerCase();
                     
                     let searchTags = "";
-                    for (const [key, tags] of Object.entries(commonTerms)) {
-                        if (diseaseName.includes(key.toLowerCase())) {
-                            searchTags = tags.toLowerCase();
+                    for (const [laymanTerm, keywords] of Object.entries(laymanToDisease)) {
+                        if (keywords.some(kw => diseaseName.includes(kw.toLowerCase()))) {
+                            searchTags += " " + laymanTerm.toLowerCase();
                         }
                     }
 
