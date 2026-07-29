@@ -47,10 +47,11 @@ def sync_sales_to_inventory(push_to_gsheets=False):
                 qty_sold = float(item.get('qty', 0))
                 
                 if desc and qty_sold > 0:
-                    norm_desc = desc.replace('\n', ' ').replace(' -', '').strip().upper()
+                    import re
+                    norm_desc = re.sub(r'[^A-Z0-9]', '', desc.upper())
                     c.execute(f"SELECT row_num, c3, c{sold_qty_col_idx} FROM inventory WHERE c3 IS NOT NULL AND c3 != ''")
                     for inv_row in c.fetchall():
-                        c3_val = str(inv_row['c3']).replace('\n', ' ').replace(' -', '').strip().upper()
+                        c3_val = re.sub(r'[^A-Z0-9]', '', str(inv_row['c3']).upper())
                         if c3_val == norm_desc:
                             row_num = inv_row['row_num']
                             current_sold = float(str(inv_row[2] or 0).replace(',', ''))
