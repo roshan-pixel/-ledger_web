@@ -3,6 +3,7 @@ import sqlite3
 import datetime
 import json
 import threading
+import re
 from init_gsheets import init_google_sheets
 
 def get_sold_qty_col_idx(all_headers, date_str):
@@ -173,7 +174,7 @@ def create_invoice():
             for norm_desc, qty_req in requested_qty.items():
                 avail = db_stock.get(norm_desc, 0.0)
                 if qty_req > avail:
-                    return jsonify({'error': f'Strict Policy Error: Not enough stock for {original_names[norm_desc]}. Requested: {qty_req}, Available: {avail}'}), 400
+                        return jsonify({'error': f'Strict Policy Error: Not enough stock for {original_names[norm_desc]}. Requested: {qty_req}, Available: {avail}'}), 400
 
         # 1. Save the invoice
         c.execute(
