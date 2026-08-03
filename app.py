@@ -2,8 +2,10 @@ import os
 import sqlite3
 import json
 import threading
+import re
 from pathlib import Path
 from flask import Flask, jsonify, request, render_template
+import inventory_engine
 
 # Import Google Sheets Sync functions
 from restore_gsheets import restore_from_gsheets
@@ -686,35 +688,25 @@ def api_portal_sync():
         return jsonify({'error': str(e), 'updated': 0}), 500
 
 
-@app.route('/api/inventory_master')
-def api_inventory_master():
+@app.route('/api/inventory_master/months')
+def api_inventory_master_months():
     try:
         conn = get_db()
-        c = conn.cursor()
-        
-        c.execute("SELECT value FROM settings WHERE key='inventory_headers'")
-        all_headers = json.loads(c.fetchone()[0])
-        
-        headers = []
-        cols = []
-        for i, h in enumerate(all_headers):
-            if h:
-                headers.append(h)
-                cols.append(f"c{i+1}")
-        
-        c.execute(f"SELECT row_num, {', '.join(cols)} FROM inventory ORDER BY row_num")
-        
-        rows = []
-        for row in c.fetchall():
-            if not row['c3']:
-                continue
-            r = {'__row': row['row_num']}
-            for h, col in zip(headers, cols):
-                r[h] = row[col]
-            rows.append(r)
-            
+        months = inventory_engine.get_available_months(conn)
         conn.close()
-        return jsonify({'headers': headers, 'data': rows})
+        return jsonify({'months': months})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/inventory_master')
+def api_inventory_master():
+    month = request.args.get('month')
+    try:
+        conn = get_db()
+        result = inventory_engine.calculate_inventory(conn, month)
+        conn.close()
+        return jsonify(result)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
@@ -734,9 +726,15 @@ def api_inventory_master_update():
         c.execute("SELECT value FROM settings WHERE key='inventory_headers'")
         all_headers = json.loads(c.fetchone()[0])
         
+        def normalize_header(h_str):
+            if not h_str:
+                return ""
+            return re.sub(r'\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\b\s*', '', h_str)
+
         col_idx = None
-        for i, h in enumerate(all_headers[:22]):
-            if str(h) == col_name or (not h and col_name == f"Col_{i+1}"):
+        norm_col_name = normalize_header(col_name)
+        for i, h in enumerate(all_headers[:30]):
+            if normalize_header(str(h)) == norm_col_name or (not h and col_name == f"Col_{i+1}"):
                 col_idx = i + 1
                 break
                 

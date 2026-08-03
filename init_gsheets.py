@@ -2,6 +2,7 @@ import sqlite3
 import gspread
 import json
 import os
+import inventory_engine
 
 def init_google_sheets():
     print("Connecting to Google Sheets...")
@@ -20,16 +21,13 @@ def init_google_sheets():
     except gspread.exceptions.WorksheetNotFound:
         inv_ws = sheet.add_worksheet('Inventory', rows=1000, cols=40)
     
-    c.execute("SELECT value FROM settings WHERE key='inventory_headers'")
-    headers = json.loads(c.fetchone()[0])
-    
-    c.execute("SELECT * FROM inventory ORDER BY row_num")
-    rows = c.fetchall()
+    result = inventory_engine.calculate_inventory(conn)
+    headers = result['headers']
+    rows = result['data']
     
     sheet_data = [headers]
     for r in rows:
-        # SQLite row to list based on columns c1..c30
-        row_data = [r[f'c{i+1}'] for i in range(len(headers))]
+        row_data = [r.get(h, '') for h in headers]
         sheet_data.append(row_data)
         
     inv_ws.clear()
