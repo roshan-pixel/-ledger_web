@@ -6,13 +6,13 @@ sold quantities back to the correct weekly column in Inventory_Master.
 """
 from playwright.sync_api import sync_playwright
 from datetime import datetime, timedelta
-import json, sys, re
+import json, sys, re, os
 
 PORTAL_URL   = 'https://asclepiuswellness.com'
 LOGIN_URL    = f'{PORTAL_URL}/login.aspx?webid=1'
 SALE_REPORT  = f'{PORTAL_URL}/shoppingpoint/spDSSaleReport.aspx'
-USERNAME     = 'AAZFD8117G'
-PASSWORD     = 'ABC@1234'
+USERNAME     = os.environ.get('PORTAL_USERNAME', 'AAZFD8117G')
+PASSWORD     = os.environ.get('PORTAL_PASSWORD', 'ABC@1234')
 
 
 def login_and_get_data(from_date: str, to_date: str) -> list[dict]:

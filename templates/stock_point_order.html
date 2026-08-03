@@ -7,10 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        @keyframes fadeInSPA { from{opacity:0} to{opacity:1} }
-        *, *::before, *::after { box-sizing:border-box; }
-        :root {
+    <style>@keyframes fadeInSPA { from{opacity:0} to{opacity:1} }*, *::before, *::after { box-sizing:border-box; }:root {
             --bg:       #0b0f19;
             --surface:  rgba(255,255,255,0.04);
             --surface2: rgba(255,255,255,0.07);
@@ -22,8 +19,7 @@
             --text:     #ffffff;
             --muted:    #94a3b8;
             --blur:     blur(16px);
-        }
-        body {
+        }body {
             margin:0; padding:0;
             font-family:'Outfit',sans-serif;
             background-color:var(--bg);
@@ -34,119 +30,198 @@
             color:var(--text); min-height:100vh;
             display:flex;
             animation:fadeInSPA .3s ease-out forwards;
-        }
-        
-        /* ── SIDEBAR ─────────────────────── */
-        .sidebar {
-            width:260px; flex-shrink:0;
-            background:var(--surface); border-right:1px solid var(--border);
-            backdrop-filter:var(--blur);
-            padding:2rem 1.5rem; display:flex; flex-direction:column; gap:2rem;
-            position:sticky; top:0; height:100vh; overflow-y:auto;
-        }
-        .logo { font-size:1.4rem; font-weight:700; letter-spacing:-.5px; text-align:center; padding:1rem 0; }
-        .logo img { max-width:85%; background: linear-gradient(135deg, #fff 0%, #dce1eb 100%); border-radius:16px; padding:12px; }
-        .nav-menu { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.4rem; }
-        .nav-item {
-            padding:.85rem 1.2rem; border-radius:12px; color:var(--muted);
-            font-weight:500; cursor:pointer; transition:all .25s;
-            display:flex; align-items:center; gap:.85rem; font-size:.92rem;
-        }
-        .nav-item:hover { background:rgba(255,255,255,.08); color:var(--text); transform:translateX(4px); }
-        .nav-item.active { background:rgba(99,102,241,.15); color:var(--primary); transform:translateX(4px); }
-
-        /* ── MAIN ────────────────────────── */
-        .main { flex:1; padding:2rem; overflow:hidden; display:flex; flex-direction:column; gap:1.5rem; }
-
-        .page-header { display:flex; justify-content:space-between; align-items:flex-end; gap:1rem; flex-wrap:wrap; border-bottom:1px solid var(--border); padding-bottom:1rem; }
-        .page-header h1 { margin:0; font-size:1.9rem; font-weight:700; }
-        .page-header p { margin:.25rem 0 0; color:var(--muted); font-size:.9rem; }
-
-        /* Wallet Balance Display */
+        }/* ── MAIN ────────────────────────── */
+        .main { flex:1; padding:2rem; overflow:hidden; display:flex; flex-direction:column; gap:1.5rem; }.page-header { display:flex; justify-content:space-between; align-items:flex-end; gap:1rem; flex-wrap:wrap; border-bottom:1px solid var(--border); padding-bottom:1rem; }.page-header h1 { margin:0; font-size:1.9rem; font-weight:700; }.page-header p { margin:.25rem 0 0; color:var(--muted); font-size:.9rem; }/* Wallet Balance Display */
         .wallet-card {
             background: rgba(16, 185, 129, 0.1); border: 1px solid var(--green); border-radius: 12px;
             padding: 1.5rem; display: flex; justify-content: space-between; align-items: center;
-        }
-        .wallet-card.insufficient { background: rgba(239, 68, 68, 0.1); border-color: var(--red); }
-        .wallet-title { font-size: 1.1rem; color: var(--muted); font-weight: 500; }
-        
-        .wallet-input-wrap { display: flex; align-items: center; gap: 0.5rem; }
-        .wallet-input-wrap span { font-size: 2.2rem; font-weight: 700; color: var(--green); }
-        .wallet-card.insufficient .wallet-input-wrap span,
-        .wallet-card.insufficient .wallet-input-wrap input { color: var(--red); border-color: var(--red); }
-
-        .wallet-input {
+        }.wallet-card.insufficient { background: rgba(239, 68, 68, 0.1); border-color: var(--red); }.wallet-title { font-size: 1.1rem; color: var(--muted); font-weight: 500; }.wallet-input-wrap { display: flex; align-items: center; gap: 0.5rem; }.wallet-input-wrap span { font-size: 2.2rem; font-weight: 700; color: var(--green); }.wallet-card.insufficient .wallet-input-wrap span, .wallet-card.insufficient .wallet-input-wrap input { color: var(--red); border-color: var(--red); }.wallet-input {
             font-size: 2.2rem; font-weight: 700; color: var(--green);
             background: transparent; border: none; border-bottom: 2px dashed var(--green);
             border-radius: 0; width: 200px; padding: 0 0.5rem; outline: none; text-align: right; font-family: inherit;
-        }
-        .wallet-input:focus { border-bottom-style: solid; }
-        
-        /* Form Area */
-        .form-section { background: var(--surface); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border); }
-        .form-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: flex-end; }
-        .input-group { display: flex; flex-direction: column; gap: 0.4rem; flex: 1; min-width: 120px; }
-        .input-group.large { flex: 2; min-width: 250px; }
-        .input-group label { font-size: 0.85rem; font-weight: 600; color: var(--muted); }
-        .glass-input {
+        }.wallet-input:focus { border-bottom-style: solid; }/* Form Area */
+        .form-section { background: var(--surface); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border); }.form-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: flex-end; }.input-group { display: flex; flex-direction: column; gap: 0.4rem; flex: 1; min-width: 120px; }.input-group.large { flex: 2; min-width: 250px; }.input-group label { font-size: 0.85rem; font-weight: 600; color: var(--muted); }.glass-input {
             padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid var(--border);
             background: rgba(255,255,255,0.06); color: var(--text); font-family: inherit;
             outline: none; transition: all 0.2s;
-        }
-        .glass-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--pglow); }
-        select.glass-input { appearance: auto; cursor: pointer; }
-        option { background: var(--bg); color: var(--text); }
-        .glass-input:disabled { opacity: 0.7; background: rgba(0,0,0,0.2); }
-
-        .btn {
+        }.glass-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--pglow); }select.glass-input { appearance: auto; cursor: pointer; }option { background: var(--bg); color: var(--text); }.glass-input:disabled { opacity: 0.7; background: rgba(0,0,0,0.2); }.btn {
             padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; font-family: inherit;
             cursor: pointer; transition: all 0.2s; border: none;
-        }
-        .btn-primary { background: var(--primary); color: #fff; }
-        .btn-primary:hover { background: #4f46e5; }
-        .btn-primary:disabled { background: var(--muted); cursor: not-allowed; opacity: 0.6; }
-
-        /* Table */
-        .table-container { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; margin-top: 1.5rem; }
-        table { width: 100%; border-collapse: collapse; min-width: 600px; }
-        th, td { padding: 0.8rem 1rem; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
-        th { background: rgba(0,0,0,0.2); font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.75rem; }
-        td.numeric { text-align: right; }
-        th.numeric { text-align: right; }
+        }.btn-primary { background: var(--primary); color: #fff; }.btn-primary:hover { background: #4f46e5; }.btn-primary:disabled { background: var(--muted); cursor: not-allowed; opacity: 0.6; }/* Table */
+        .table-container { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; margin-top: 1.5rem; }table { width: 100%; border-collapse: collapse; min-width: 600px; }th, td { padding: 0.8rem 1rem; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.9rem; }th { background: rgba(0,0,0,0.2); font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.75rem; }td.numeric { text-align: right; }th.numeric { text-align: right; }.remove-btn { color: var(--red); background: none; border: none; cursor: pointer; font-size: 1.2rem; }.order-summary { display: flex; justify-content: flex-end; align-items: center; margin-top: 1.5rem; gap: 2rem; }.total-amount { font-size: 1.8rem; font-weight: 700; color: var(--text); }.validation-msg { color: var(--red); font-weight: 500; font-size: 0.95rem; display: none; margin-top: 1rem; text-align: right; }
         
-        .remove-btn { color: var(--red); background: none; border: none; cursor: pointer; font-size: 1.2rem; }
-        
-        .order-summary { display: flex; justify-content: flex-end; align-items: center; margin-top: 1.5rem; gap: 2rem; }
-        .total-amount { font-size: 1.8rem; font-weight: 700; color: var(--text); }
-        
-        .validation-msg { color: var(--red); font-weight: 500; font-size: 0.95rem; display: none; margin-top: 1rem; text-align: right; }
-        
-        @media(max-width: 768px) {
-            body { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; position: relative; padding: 1rem; border-right: none; border-bottom: 1px solid var(--border); }
-            .nav-menu { flex-direction: row; overflow-x: auto; padding-bottom: 0.5rem; }
-            .nav-item { min-height: 44px; white-space: nowrap; }
-            .main { padding: 1rem; }
-        }
-        .autocomplete-wrapper { position: relative; width: 100%; }
-        .autocomplete-arrow {
+        @media(max-width: 768px) {body { flex-direction: column; }.main { padding: 1rem; }
+        }.autocomplete-wrapper { position: relative; width: 100%; }.autocomplete-arrow {
             position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
             cursor: pointer; color: var(--muted); pointer-events: auto; font-size: 0.8rem;
-        }
-        .autocomplete-list {
+        }.autocomplete-list {
             display: none; position: absolute; top: 100%; left: 0; right: 0;
             background: var(--bg); border: 1px solid var(--border);
             max-height: 200px; overflow-y: auto; z-index: 1000;
             border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.5); margin-top: 4px;
-        }
-        .autocomplete-item {
+        }.autocomplete-item {
             padding: 0.6rem 1rem; cursor: pointer; border-bottom: 1px solid rgba(255,255,255,0.05);
             color: var(--text); font-size: 0.9rem;
-        }
-        .autocomplete-item:hover, .autocomplete-item.active {
+        }.autocomplete-item:hover, .autocomplete-item.active {
             background: rgba(99, 102, 241, 0.2);
         }
-    </style>
+    
+
+        /* Unified Premium Sidebar Styles */
+        .sidebar {
+            width: 280px !important;
+            flex-shrink: 0 !important;
+            background: #0b0f19 !important;
+            border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+            padding: 2rem 1.5rem !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 2rem !important;
+            position: sticky !important;
+            top: 0 !important;
+            height: 100vh !important;
+            overflow-y: auto !important;
+            box-sizing: border-box !important;
+            scrollbar-width: thin !important;
+            scrollbar-color: rgba(255,255,255,0.1) transparent !important;
+            z-index: 100 !important;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 4px !important;
+        }
+        .sidebar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border-radius: 4px !important;
+        }
+
+        .sidebar .logo {
+            text-align: center !important;
+            padding: 0.5rem 0 1.5rem 0 !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+            margin-bottom: 0.5rem !important;
+        }
+
+        .sidebar .logo img {
+            max-width: 85% !important;
+            height: auto !important;
+            background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(220,225,235,1) 100%) !important;
+            border-radius: 16px !important;
+            padding: 12px !important;
+            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15), inset 0 0 0 1px rgba(255,255,255,0.5) !important;
+            display: inline-block !important;
+        }
+
+        .nav-menu {
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 0.4rem !important;
+        }
+
+        .nav-item {
+            padding: 0.85rem 1.1rem !important;
+            border-radius: 12px !important;
+            color: #94a3b8 !important;
+            font-weight: 500 !important;
+            cursor: pointer !important;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.85rem !important;
+            font-size: 0.92rem !important;
+            text-decoration: none !important;
+            user-select: none !important;
+        }
+
+        .nav-item svg {
+            flex-shrink: 0 !important;
+            width: 20px !important;
+            height: 20px !important;
+            transition: stroke 0.25s ease !important;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.06) !important;
+            color: #ffffff !important;
+            transform: translateX(4px) !important;
+        }
+
+        .nav-item.active {
+            background: rgba(99, 102, 241, 0.15) !important;
+            color: #818cf8 !important;
+            font-weight: 600 !important;
+            box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.25) !important;
+        }
+
+        .nav-item.active svg {
+            stroke: #818cf8 !important;
+        }
+
+        /* Responsive Mobile Styles */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column !important;
+            }
+            .sidebar {
+                width: 100% !important;
+                height: auto !important;
+                position: sticky !important;
+                top: 0 !important;
+                padding: 0.75rem 1rem !important;
+                border-right: none !important;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+                gap: 0.75rem !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                overflow-y: visible !important;
+                overflow-x: visible !important;
+                background: #0b0f19 !important;
+            }
+            .sidebar .logo {
+                padding: 0 !important;
+                margin: 0 !important;
+                border-bottom: none !important;
+                display: flex !important;
+                align-items: center !important;
+            }
+            .sidebar .logo img {
+                max-width: 120px !important;
+                padding: 6px 8px !important;
+                border-radius: 8px !important;
+            }
+            .nav-menu {
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                gap: 0.5rem !important;
+                flex: 1 !important;
+                padding-bottom: 0.2rem !important;
+                -webkit-overflow-scrolling: touch !important;
+                scrollbar-width: none !important;
+            }
+            .nav-menu::-webkit-scrollbar {
+                display: none !important;
+            }
+            .nav-item {
+                padding: 0.6rem 0.9rem !important;
+                font-size: 0.88rem !important;
+                gap: 0.5rem !important;
+                min-height: 38px !important;
+                flex-shrink: 0 !important;
+                white-space: nowrap !important;
+            }
+            .nav-item svg {
+                width: 18px !important;
+                height: 18px !important;
+            }
+            .nav-item:hover {
+                transform: none !important;
+            }
+        }
+</style>
 </head>
 <body>
 
@@ -155,13 +230,50 @@
         <img src="{{ url_for('static', filename='logo.png') }}" alt="Asclepius Wellness">
     </div>
     <ul class="nav-menu">
-        <li class="nav-item" onclick="window.location.href='/'">Dashboard</li>
-        <li class="nav-item" onclick="window.location.href='/inventory_master'">Inventory Master</li>
-        <li class="nav-item" onclick="window.location.href='/invoice'">Invoice Generator</li>
-        <li class="nav-item" onclick="window.location.href='/invoice_history'">Recent Invoices</li>
-        <li class="nav-item active">Stock Point Order</li>
-        <li class="nav-item" onclick="window.location.href='/purchase_history'">&#128209; Purchase History</li>
-        <li class="nav-item" onclick="window.location.href='/ledger_report'">&#128184; Ledger Report</li>
+        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/') : window.location.href='/'">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+            <span>Dashboard</span>
+        </li>
+        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/inventory') : window.location.href='/inventory'">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+            <span>Inventory Stock</span>
+        </li>
+        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/inventory_master') : window.location.href='/inventory_master'">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            <span>Inventory Master</span>
+        </li>
+        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/invoice') : window.location.href='/invoice'">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            <span>Invoice Generator</span>
+        </li>
+        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/invoice_history') : window.location.href='/invoice_history'">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Recent Invoices</span>
+        </li>
+        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/disease_guide') : window.location.href='/disease_guide'">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            <span>Disease Guide</span>
+        </li>
+        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/mizoram_bronze') : window.location.href='/mizoram_bronze'">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <span>Mizoram Bonanza</span>
+        </li>
+        <li class="nav-item active" onclick="typeof navigateTo === 'function' ? navigateTo('/stock_point_order') : window.location.href='/stock_point_order'">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+            <span>Stock Point Order</span>
+        </li>
+        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/purchase_history') : window.location.href='/purchase_history'">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            <span>Purchase History</span>
+        </li>
+        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/ledger_report') : window.location.href='/ledger_report'">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            <span>Ledger Report</span>
+        </li>
+        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/portal_sync') : window.location.href='/portal_sync'">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+            <span>Portal Sync</span>
+        </li>
     </ul>
 </aside>
 

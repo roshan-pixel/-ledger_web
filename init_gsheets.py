@@ -78,13 +78,17 @@ def init_google_sheets():
         
     c.execute("SELECT * FROM invoices")
     rows = c.fetchall()
-    sheet_data = [['ID', 'Invoice No', 'DS Code', 'Customer Name', 'Amount', 'Date Created', 'Items', 'Status', 'Total SP', 'Is Dispatched', 'Remark']]
+    sheet_data = [['ID', 'Invoice No', 'DS Code', 'Customer Name', 'Amount', 'Date Created', 'Items', 'Status', 'Total SP', 'Is Dispatched', 'Remark', 'TID', 'Mobile', 'Delivery Date', 'Stock Point']]
     for r in rows:
         keys = r.keys()
         status_val = r['status'] if 'status' in keys else 'active'
         total_sp_val = r['total_sp'] if 'total_sp' in keys else 0.0
         is_dispatched = r['is_dispatched'] if 'is_dispatched' in keys else 0
         remark = r['remark'] if 'remark' in keys else ''
+        tid_val = r['tid'] if 'tid' in keys else ''
+        mobile_val = r['mobile'] if 'mobile' in keys else ''
+        deliv_date_val = r['delivery_date'] if 'delivery_date' in keys else ''
+        stock_pt_val = r['stock_point'] if 'stock_point' in keys else ''
         
         if status_val == 'cancelled':
             continue
@@ -100,7 +104,11 @@ def init_google_sheets():
             status_val, 
             total_sp_val,
             is_dispatched,
-            remark
+            remark,
+            tid_val,
+            mobile_val,
+            deliv_date_val,
+            stock_pt_val
         ])
     inv_ws.clear()
     inv_ws.update(values=sheet_data, range_name='A1')

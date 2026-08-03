@@ -1,42 +1,53 @@
-import gspread
+import requests
 import json
+import time
 
-gc = gspread.service_account(filename='C:/Users/sgarm/Downloads/ledger_web/credentials.json')
-sheet = gc.open('Ledger_Database')
-inv_ws = sheet.worksheet('Invoices')
-data = inv_ws.get_all_values()
+BASE_URL = 'https://ledger-web-app.onrender.com'
 
-# Find row 14
-row_idx = None
-for i, row in enumerate(data):
-    if row[0] == '14':
-        row_idx = i + 1  # 1-based index for Google Sheets
-        target_row = row
-        break
+# 1. Fetch invoice 112
+print("Fetching invoice 112...")
+res = requests.get(f'{BASE_URL}/api/invoice/list')
+invoices = res.json().get('invoices', [])
+inv = next(i for i in invoices if i['id'] == 112)
 
-if target_row:
-    items = json.loads(target_row[6])
-    new_total = 0.0
-    new_total_sp = 0.0
-    
-    for item in items:
-        if 'TOSHINE WINTERWEAR' in item['description']:
-            item['price'] = "190.00"
-            item['unit_sp'] = "0.25"
-            item['total_sp'] = "0.50"
-            item['total'] = "380.00"
-        
-        new_total += float(item['total'])
-        new_total_sp += float(item['total_sp'])
-        
-    print(f"Old Amount: {target_row[4]}, New Amount: {new_total:.2f}")
-    print(f"Old Total SP: {target_row[8]}, New Total SP: {new_total_sp:.2f}")
-    
-    # Update the row locally in script to verify
-    target_row[6] = json.dumps(items)
-    target_row[4] = f"{new_total:.2f}"
-    target_row[8] = f"{new_total_sp:.2f}"
-    
-    # Update Google Sheets
-    inv_ws.update(values=[target_row], range_name=f'A{row_idx}:I{row_idx}')
-    print("Google Sheets updated successfully!")
+# 2. Cancel invoice 112
+print("Cancelling invoice 112...")
+cancel_res = requests.post(f'{BASE_URL}/api/invoice/cancel/112')
+print(cancel_res.json())
+
+# Wait a couple of seconds to ensure DB and stock are updated
+time.sleep(3)
+
+# 3. Create new corrected invoice
+new_items = []
+for item in inv['items']:
+    desc = item.get('description', '')
+    if '503' in desc:
+        print("Dropping Calcium Tablet (was 0 stock).")
+        continue
+    elif '510' in desc:
+        print("Reducing Daylift Tablet from 3 to 2 (max stock).")
+        item['qty'] = '2'
+        item['total'] = str(float(item['price']) * 2)
+        item['total_sp'] = str(float(item['unit_sp']) * 2)
+        new_items.append(item)
+    else:
+        new_items.append(item)
+
+grand_total = sum(float(i['total']) for i in new_items)
+grand_total_sp = sum(float(i['total_sp']) for i in new_items)
+
+new_invoice = {
+    'invoiceNo': inv['invoice_no'],
+    'dsCode': inv['ds_code'],
+    'billedTo': inv['customer_name'],
+    'date': inv['date_created'],
+    'items': new_items,
+    'grandTotal': grand_total,
+    'grandTotalSP': grand_total_sp,
+    'orderType': 'sao'
+}
+
+print(f"Creating new invoice: Total={grand_total}, SP={grand_total_sp}")
+create_res = requests.post(f'{BASE_URL}/api/invoice/create', json=new_invoice)
+print(create_res.json())
