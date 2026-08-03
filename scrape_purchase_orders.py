@@ -6,13 +6,14 @@ Full purchase history scraper.
 - Saves to purchase_orders.json
 """
 import json
+from datetime import date
 from playwright.sync_api import sync_playwright
 from bs4 import BeautifulSoup
 
 LOGIN_URL    = 'https://asclepiuswellness.com/login.aspx?webid=1'
 PURCHASE_URL = 'https://asclepiuswellness.com/shoppingpoint/PurchaseListn.aspx'
 DATE_FROM    = '01/06/2026'
-DATE_TO      = '31/07/2026'
+DATE_TO      = date.today().strftime('%d/%m/%Y')   # always today
 OUT_FILE     = 'purchase_orders.json'
 
 
