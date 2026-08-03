@@ -10,6 +10,7 @@ from restore_gsheets import restore_from_gsheets
 from init_gsheets import init_google_sheets
 
 app = Flask(__name__)
+app.config['JSON_AS_ASCII'] = False   # send Unicode as real UTF-8, not \uXXXX escapes
 
 @app.errorhandler(500)
 def internal_error(error):
