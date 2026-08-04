@@ -851,9 +851,10 @@ def api_product_sales():
                         matched = True
                         
                     if matched:
-                        # Format date cleanly
+                        # Format date cleanly — guard against None date_created
+                        date_created = date_created or ''
                         formatted_date = date_created
-                        if 'T' in date_created:
+                        if date_created and 'T' in date_created:
                             try:
                                 formatted_date = datetime.datetime.fromisoformat(date_created).strftime('%d/%m/%Y')
                             except:

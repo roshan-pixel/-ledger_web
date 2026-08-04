@@ -532,6 +532,10 @@
 
 </main>
 
+<!-- Save Indicator -->
+<div id="saveIndicator">
+    <div class="spinner" id="saveSpinner" style="display:none"></div>
+    <span id="saveText">Saving...</span>
 </div>
 
 <!-- Stock History Modal Overlay -->
@@ -705,16 +709,18 @@ function renderTable() {
                 h === 'Product Name' ? 'product' : '',
             ].filter(Boolean);
 
+            // Use data-product attribute to safely pass product names that may contain quotes
+            const safeProd = (r['Product Name'] || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;');
             if (!isTotalRow) {
                 if (h === 'Total Qty') {
                     classes.push('clickable-qty');
-                    tdAttrs += ` onclick="showPurchasesHistory('${escQ(r['Product Name'])}')"`;
+                    tdAttrs += ` data-product="${safeProd}" onclick="showPurchasesHistory(this.dataset.product)"`;
                     tdAttrs += ` title="Click to view Stock IN (Purchases) History"`;
                 } else if (h.startsWith('Sold Qty') || h === 'Tie-Breaker Sold Qty') {
                     const qtyVal = parseFloat(val) || 0;
                     if (qtyVal > 0) {
                         classes.push('clickable-qty');
-                        tdAttrs += ` onclick="showSalesHistory('${escQ(r['Product Name'])}')"`;
+                        tdAttrs += ` data-product="${safeProd}" onclick="showSalesHistory(this.dataset.product)"`;
                         tdAttrs += ` title="Click to view Stock OUT (Sales) History"`;
                     }
                 }
@@ -1004,9 +1010,11 @@ function closeHistoryModal(event) {
     document.getElementById('historyModal').style.display = 'none';
 }
 
-// Escape key listener to close modal
+// Escape key listener to close modal — only fires when modal is actually open
 window.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeHistoryModal();
+    if (e.key === 'Escape' && document.getElementById('historyModal').style.display !== 'none') {
+        closeHistoryModal();
+    }
 });
 
 // ── SPA nav ───────────────────────────────────────
