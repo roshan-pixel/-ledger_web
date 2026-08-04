@@ -61,24 +61,50 @@ def restore_from_gsheets():
             print("Error restoring customers:", e)
             raise e # Fail the transaction
             
-        # 2. Inventory
+        # 2. Inventory - use header-name matching to avoid column-offset bugs.
+        # init_gsheets exports using inventory_engine headers (no empty cols).
+        # restore must map each GSheets column header back to the correct cN
+        # column using the settings inventory_headers as the source of truth.
         try:
             inv_ws = sheet.worksheet('Inventory')
             inv_data = inv_ws.get_all_values()
             if len(inv_data) > 1:
+                # Load the canonical header list from settings (includes empty c1)
+                c.execute("SELECT value FROM settings WHERE key='inventory_headers'")
+                hdr_row = c.fetchone()
+                all_db_headers = json.loads(hdr_row[0]) if hdr_row else []
+
+                # Build map: header_name (str) → 1-based column index
+                header_to_col = {}
+                for i, h in enumerate(all_db_headers):
+                    if h:  # skip empty slots
+                        header_to_col[str(h)] = i + 1
+
+                gsheets_headers = inv_data[0]  # first row = column names from GSheets
+
                 c.execute("DELETE FROM inventory")
-                headers = inv_data[0]
                 for idx, row in enumerate(inv_data[1:]):
-                    while len(row) < len(headers):
+                    while len(row) < len(gsheets_headers):
                         row.append('')
-                    
-                    cols = ', '.join([f'c{i+1}' for i in range(len(headers))])
-                    placeholders = ', '.join(['?'] * len(headers))
-                    
-                    c.execute(f"INSERT INTO inventory (row_num, {cols}) VALUES (?, {placeholders})", [idx+1] + row)
+
+                    # Map each GSheets column to the correct DB cN column by name
+                    col_values = {}
+                    for col_i, gh in enumerate(gsheets_headers):
+                        if gh in header_to_col:
+                            db_col = header_to_col[gh]
+                            col_values[f'c{db_col}'] = row[col_i] if col_i < len(row) else ''
+
+                    if col_values:
+                        cols_str   = ', '.join(col_values.keys())
+                        placeholders = ', '.join(['?'] * len(col_values))
+                        c.execute(
+                            f"INSERT INTO inventory (row_num, {cols_str}) VALUES (?, {placeholders})",
+                            [idx + 1] + list(col_values.values())
+                        )
         except Exception as e:
             print("Error restoring inventory:", e)
             raise e
+
             
         # 3. KPIs
         try:
