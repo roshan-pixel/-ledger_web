@@ -1348,6 +1348,20 @@ def api_sync_now():
     return jsonify({"success": True, "log": log})
 
 
+@app.route('/api/sync_remarks_from_gsheets', methods=['POST'])
+def api_sync_remarks_from_gsheets():
+    """Trigger one-way remarks pull from GSheets (no push/upload back)."""
+    if not _creds_exist:
+        return jsonify({"success": False, "error": "Google Sheets credentials not found"}), 400
+        
+    try:
+        import restore_gsheets
+        res = restore_gsheets.sync_remarks_from_gsheets()
+        return jsonify(res)
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
+
 if __name__ == '__main__':
     # Cloud-ready configuration
     app.run(host='0.0.0.0', port=5000, debug=True, use_reloader=False)

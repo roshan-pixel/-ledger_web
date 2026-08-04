@@ -175,5 +175,88 @@ def restore_from_gsheets():
                 pass
         print("Fatal error in restore, rolled back:", e)
 
+def sync_remarks_from_gsheets():
+    print("Syncing remarks from Google Sheets...")
+    conn = sqlite3.connect('ledger.db')
+    try:
+        creds_path = '/etc/secrets/credentials.json' if os.path.exists('/etc/secrets/credentials.json') else 'credentials.json'
+        if not os.path.exists(creds_path):
+            print("Credentials file not found — skipping remarks sync.")
+            conn.close()
+            return {"success": False, "error": "Credentials file not found"}
+
+        gc = gspread.service_account(filename=creds_path)
+        sheet = gc.open('Ledger_Database')
+        
+        try:
+            inv_ws = sheet.worksheet('Invoices')
+            inv_data = inv_ws.get_all_values()
+        except Exception as e:
+            print("Invoices worksheet not found in Google Sheets:", e)
+            conn.close()
+            return {"success": False, "error": "Invoices worksheet not found"}
+
+        if len(inv_data) > 1:
+            headers = inv_data[0]
+            # Find the index of 'Invoice No', 'Remark', and 'Is Dispatched'
+            try:
+                inv_no_idx = headers.index('Invoice No')
+                remark_idx = headers.index('Remark')
+            except ValueError:
+                # Fallback to absolute index position if header names mismatch
+                inv_no_idx = 1 # Column B
+                remark_idx = 10 # Column K
+            
+            dispatched_idx = None
+            if 'Is Dispatched' in headers:
+                dispatched_idx = headers.index('Is Dispatched')
+            elif len(headers) > 9:
+                dispatched_idx = 9 # Column J
+                
+            c = conn.cursor()
+            updated_count = 0
+            for row in inv_data[1:]:
+                # Ensure the row has enough elements
+                max_needed_idx = max(inv_no_idx, remark_idx, dispatched_idx or 0)
+                while len(row) <= max_needed_idx:
+                    row.append('')
+                
+                inv_no = str(row[inv_no_idx]).strip()
+                if inv_no.startswith("'"):
+                    inv_no = inv_no.lstrip("'")
+                
+                remark = str(row[remark_idx]).strip()
+                
+                # Update dispatch status if present in GSheets
+                disp_val = None
+                if dispatched_idx is not None:
+                    try:
+                        disp_val = int(float(row[dispatched_idx] or 0))
+                    except:
+                        disp_val = 0
+                
+                if inv_no:
+                    if disp_val is not None:
+                        c.execute("UPDATE invoices SET remark = ?, is_dispatched = ? WHERE invoice_no = ?", (remark, disp_val, inv_no))
+                    else:
+                        c.execute("UPDATE invoices SET remark = ? WHERE invoice_no = ?", (remark, inv_no))
+                    updated_count += 1
+            
+            conn.commit()
+            print(f"Sync complete. Updated remarks/dispatch for {updated_count} invoices from Google Sheets.")
+            conn.close()
+            return {"success": True, "updated_count": updated_count}
+        else:
+            conn.close()
+            return {"success": True, "updated_count": 0, "message": "No invoices data found in Google Sheets"}
+            
+    except Exception as e:
+        print("Error syncing remarks from Google Sheets:", e)
+        try:
+            conn.close()
+        except:
+            pass
+        return {"success": False, "error": str(e)}
+
 if __name__ == "__main__":
     restore_from_gsheets()
