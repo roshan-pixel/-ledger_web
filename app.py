@@ -747,6 +747,17 @@ def api_inventory_master_update():
         update_totals_row(conn)
         conn.commit()
         conn.close()
+
+        # Trigger background sync to Google Sheets
+        try:
+            import threading
+            from init_gsheets import init_google_sheets
+            t = threading.Thread(target=init_google_sheets)
+            t.daemon = True
+            t.start()
+        except Exception as e:
+            print("Failed to start gsheets sync:", e)
+
         return jsonify({'success': True, 'row': row_num, 'col': col_name, 'value': value})
     except Exception as e:
         return jsonify({'error': str(e)}), 500

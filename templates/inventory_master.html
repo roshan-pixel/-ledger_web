@@ -424,11 +424,9 @@ let monthsLoaded = false;
 // Helper to check if a column is editable
 function isEditable(colName) {
     const staticEditable = new Set([
-        'Product Name', 'HSN Code', 'Price/Pc (Rs.)', 'Box', 'Total Qty', 'Remarks', 'SP/Pc'
+        'Product Name', 'HSN Code', 'Price/Pc (Rs.)', 'Box', 'Remarks', 'SP/Pc'
     ]);
-    if (staticEditable.has(colName)) return true;
-    if (colName && colName.startsWith('Sold Qty')) return true;
-    return false;
+    return staticEditable.has(colName);
 }
 
 // Helper to check if a column is numeric (right-aligned)
