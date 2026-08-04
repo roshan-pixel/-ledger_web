@@ -228,16 +228,19 @@ def main():
     inserted = 0
     updated  = 0
     for inv in all_invoices:
-        c.execute("SELECT id FROM invoices WHERE invoice_no=?", (inv['invoice_no'],))
+        c.execute("SELECT remark FROM invoices WHERE invoice_no=?", (inv['invoice_no'],))
         row = c.fetchone()
         if row:
+            existing_remark = row[0]
+            remark_to_save = existing_remark if existing_remark else inv['remark']
+            
             c.execute("""UPDATE invoices SET ds_code=?, customer_name=?, amount=?,
                          date_created=?, items=?, status=?, total_sp=?, is_dispatched=?,
                          remark=?, tid=?, mobile=?, delivery_date=?, stock_point=?
                          WHERE invoice_no=?""",
                       (inv['ds_code'], inv['customer_name'], inv['amount'],
                        inv['date_created'], inv['items'], inv['status'],
-                       inv['total_sp'], inv['is_dispatched'], inv['remark'],
+                       inv['total_sp'], inv['is_dispatched'], remark_to_save,
                        inv['tid'], inv['mobile'], inv['delivery_date'],
                        inv['stock_point'], inv['invoice_no']))
             updated += 1

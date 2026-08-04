@@ -1260,14 +1260,18 @@ def _auto_sync_loop():
                     print(f"[AutoSync] Rollover check failed: {e}")
                 last_rollover_day = now.day
 
-            # ── Hourly GSheets push ───────────────────────────────────────
+            # ── Hourly GSheets Two-Way Sync (Pull updates then Push back) ──
             if now.hour != last_push_hour:
                 try:
-                    print(f"[AutoSync] Hourly push to Google Sheets ({now.strftime('%H:%M')})...")
-                    init_google_sheets()
-                    print("[AutoSync] ✓ GSheets push complete.")
+                    if _creds_exist:
+                        print(f"[AutoSync] Hourly sync started ({now.strftime('%H:%M')})...")
+                        print("[AutoSync] Pulling latest data from Google Sheets (restoring custom remarks)...")
+                        restore_from_gsheets()
+                        print("[AutoSync] Pushing latest local DB updates to Google Sheets...")
+                        init_google_sheets()
+                        print("[AutoSync] ✓ Hourly sync complete.")
                 except Exception as e:
-                    print(f"[AutoSync] GSheets push failed: {e}")
+                    print(f"[AutoSync] Hourly sync failed: {e}")
                 last_push_hour = now.hour
 
         except Exception as e:
