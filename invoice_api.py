@@ -153,7 +153,17 @@ def create_invoice():
     except:
         total_sp = 0.0
         
-    date_created = data.get('date') or datetime.datetime.now().isoformat()
+    # Standardize date to YYYY-MM-DD
+    raw_date = data.get('date') or datetime.datetime.now().isoformat()
+    raw_date = raw_date.strip()
+    date_created = raw_date[:10]  # Take YYYY-MM-DD from YYYY-MM-DDT...
+    for fmt in ('%d/%m/%Y', '%Y-%m-%d'):
+        try:
+            date_created = datetime.datetime.strptime(raw_date[:10], fmt).strftime('%Y-%m-%d')
+            break
+        except ValueError:
+            pass
+
     items = data.get('items', [])
     
     try:

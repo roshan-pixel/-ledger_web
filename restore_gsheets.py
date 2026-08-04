@@ -125,6 +125,17 @@ def restore_from_gsheets():
             inv_data = inv_ws.get_all_values()
             if len(inv_data) > 1:
                 c.execute("DELETE FROM invoices")
+                import datetime
+                def to_iso_date(d_str):
+                    if not d_str: return ''
+                    d_str = str(d_str).strip()
+                    for fmt in ('%d/%m/%Y', '%Y-%m-%d'):
+                        try:
+                            return datetime.datetime.strptime(d_str[:10], fmt).strftime('%Y-%m-%d')
+                        except ValueError:
+                            pass
+                    return d_str
+
                 for row in inv_data[1:]:
                     while len(row) < 15: row.append('')
                     
@@ -132,6 +143,9 @@ def restore_from_gsheets():
                         row[1] = str(row[1]).lstrip("'")
                         
                     if row[9] == '': row[9] = 0
+                    
+                    row[5] = to_iso_date(row[5])
+                    row[13] = to_iso_date(row[13])
                         
                     c.execute("INSERT INTO invoices (id, invoice_no, ds_code, customer_name, amount, date_created, items, status, total_sp, is_dispatched, remark, tid, mobile, delivery_date, stock_point) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", row[:15])
         except Exception as e:
