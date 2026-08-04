@@ -7,38 +7,68 @@ import re
 from init_gsheets import init_google_sheets
 
 def get_sold_qty_col_idx(all_headers, date_str):
-    sold_cols = []
+    """Return the column index (1-based) for the Sold Qty column that matches the
+    week-bucket of date_str.  Returns None if no Sold Qty columns exist.
+    IMPORTANT: only maps the invoice into the Sold Qty columns if the invoice
+    month matches the month embedded in the column headers (e.g. 'Jul').  If the
+    months differ the invoice belongs to a different monthly block and we return
+    None so the caller skips the DB write (inventory_engine handles it
+    dynamically instead)."""
+    sold_col_headers = []  # list of (col_1based_idx, header_str)
     for i, h in enumerate(all_headers):
         if str(h).startswith("Sold Qty"):
-            sold_cols.append(i + 1)
-    if not sold_cols:
+            sold_col_headers.append((i + 1, str(h)))
+    if not sold_col_headers:
         return None
-        
+
     try:
         # Special one-time exemption for 30/06/2026
         if date_str and date_str.startswith('30/06/2026'):
+            inv_month_abbr = 'Jun'
             day = 1
         elif 'T' in date_str:
             dt = datetime.datetime.fromisoformat(date_str)
+            inv_month_abbr = dt.strftime('%b')  # 'Jul', 'Aug', ...
             day = dt.day
         elif '/' in date_str:
             dt = datetime.datetime.strptime(date_str[:10], '%d/%m/%Y')
+            inv_month_abbr = dt.strftime('%b')
             day = dt.day
         else:
             dt = datetime.datetime.strptime(date_str[:10], '%Y-%m-%d')
+            inv_month_abbr = dt.strftime('%b')
             day = dt.day
     except:
-        day = datetime.datetime.now().day
-        
+        dt = datetime.datetime.now()
+        inv_month_abbr = dt.strftime('%b')
+        day = dt.day
+
+    # Filter to only the sold-qty columns whose header month matches the invoice month.
+    # Header format: "Sold Qty (Jul 1-7)" → second token is month abbr.
+    matching_cols = []
+    for col_idx, h in sold_col_headers:
+        # extract month abbreviation from header, e.g. "Sold Qty (Jul 1-7)" → "Jul"
+        import re as _re
+        m = _re.search(r'\(([A-Za-z]{3})\s', h)
+        if m and m.group(1) == inv_month_abbr:
+            matching_cols.append(col_idx)
+        elif not m:
+            # Header has no month (legacy plain 'Sold Qty') - keep it
+            matching_cols.append(col_idx)
+
+    if not matching_cols:
+        # Invoice month doesn't match any column month header → skip DB write
+        return None
+
     if day <= 7: week_idx = 0
     elif day <= 14: week_idx = 1
     elif day <= 21: week_idx = 2
     elif day <= 28: week_idx = 3
     else: week_idx = 4
-    
-    if week_idx < len(sold_cols):
-        return sold_cols[week_idx]
-    return sold_cols[-1]
+
+    if week_idx < len(matching_cols):
+        return matching_cols[week_idx]
+    return matching_cols[-1]
 
 
 invoice_api = Blueprint('invoice_api', __name__)
@@ -196,16 +226,17 @@ def create_invoice():
                 qty_sold = float(item.get('qty', 0))
                 
                 if desc and qty_sold > 0:
-                    import re
+                    # Normalize: strip everything except uppercase alphanumeric
                     norm_desc = re.sub(r'[^A-Z0-9]', '', desc.upper())
                     c.execute(f"SELECT row_num, c3, c{sold_qty_col_idx} FROM inventory WHERE c3 IS NOT NULL AND c3 != ''")
                     for inv_row in c.fetchall():
-                        c3_val = inv_row['c3'].replace('\n', ' ').replace(' -', '').strip().upper()
+                        # Use SAME normalization on both sides so they can match
+                        c3_val = re.sub(r'[^A-Z0-9]', '', str(inv_row['c3']).upper())
                         if c3_val == norm_desc:
                             row_num = inv_row['row_num']
                             current_sold = float(inv_row[2] or 0)
                             new_sold = current_sold + qty_sold
-                            
+
                             c.execute(f"UPDATE inventory SET c{sold_qty_col_idx}=? WHERE row_num=?", (new_sold, row_num))
                             update_inventory_formulas(conn, row_num, all_headers)
                             break
@@ -261,7 +292,7 @@ def list_invoices():
                 except:
                     pass
                     
-        c.execute('SELECT * FROM invoices ORDER BY invoice_no DESC')
+        c.execute('SELECT * FROM invoices ORDER BY id DESC')
         rows = c.fetchall()
         
         invoices = []
@@ -367,9 +398,12 @@ def get_next_invoice_no():
                 return jsonify({'next_no': next_no})
                 
         import datetime
-        year = datetime.datetime.now().year
+        now = datetime.datetime.now()
+        # Financial year: Apr-Mar, e.g. Apr 2026 - Mar 2027 → "26-27"
+        fy_start = now.year if now.month >= 4 else now.year - 1
+        fy_suffix = f"{str(fy_start)[2:]}-{str(fy_start + 1)[2:]}"
         # Default starting point if no previous invoice found
-        return jsonify({'next_no': f'DSR/000068/26-27'})
+        return jsonify({'next_no': f'DSR/000001/{fy_suffix}'})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
@@ -401,7 +435,8 @@ def cancel_invoice(invoice_id):
                 qty_sold = float(item.get('qty', 0))
                 
                 if desc and qty_sold > 0:
-                    norm_desc = desc.replace(' -', '').strip().upper()
+                    # Use SAME normalization on both sides so they can match
+                    norm_desc = re.sub(r'[^A-Z0-9]', '', desc.upper())
                     c.execute(f"SELECT row_num, c3, c{sold_qty_col_idx} FROM inventory WHERE c3 IS NOT NULL AND c3 != ''")
                     for inv_row in c.fetchall():
                         c3_val = re.sub(r'[^A-Z0-9]', '', str(inv_row['c3']).upper())
@@ -410,7 +445,7 @@ def cancel_invoice(invoice_id):
                             current_sold = float(inv_row[2] or 0)
                             # We subtract because we are cancelling the invoice
                             new_sold = max(0, current_sold - qty_sold)
-                            
+
                             c.execute(f"UPDATE inventory SET c{sold_qty_col_idx}=? WHERE row_num=?", (new_sold, row_num))
                             update_inventory_formulas(conn, row_num, all_headers)
                             break

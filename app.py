@@ -2,10 +2,12 @@ import os
 import sqlite3
 import json
 import threading
+import time
 import re
 from pathlib import Path
 from flask import Flask, jsonify, request, render_template
 import inventory_engine
+import monthly_rollover
 
 # Import Google Sheets Sync functions
 from restore_gsheets import restore_from_gsheets
@@ -1013,12 +1015,86 @@ def api_sp_order_data():
     except Exception as e:
         return jsonify({"success": False, "error": str(e)})
 
-if os.path.exists('credentials.json') or os.path.exists('/etc/secrets/credentials.json'):
-    print("Starting initial sync from Google Sheets...")
+
+# ─────────────────────────────────────────────────────────────────────────────
+# AUTO-SYNC SCHEDULER
+# Runs once at startup, then loops forever in a background daemon thread:
+#   • Every day  → check if month changed and roll headers automatically
+#   • Every hour → push local DB → Google Sheets
+# ─────────────────────────────────────────────────────────────────────────────
+def _auto_sync_loop():
+    import datetime
+
+    # Track last GSheets push and last rollover-check day
+    last_push_hour   = -1
+    last_rollover_day = -1
+
+    print("[AutoSync] Background scheduler started.")
+
+    while True:
+        try:
+            now = datetime.datetime.now()
+
+            # ── Monthly rollover: run once per calendar day ───────────────
+            if now.day != last_rollover_day:
+                try:
+                    conn = sqlite3.connect(DB_PATH)
+                    conn.row_factory = sqlite3.Row
+                    rolled = monthly_rollover.check_and_rollover(conn, verbose=True)
+                    conn.close()
+                    if rolled:
+                        # Immediately push the new headers to GSheets after rollover
+                        print("[AutoSync] Rollover done — pushing fresh headers to GSheets.")
+                        init_google_sheets()
+                except Exception as e:
+                    print(f"[AutoSync] Rollover check failed: {e}")
+                last_rollover_day = now.day
+
+            # ── Hourly GSheets push ───────────────────────────────────────
+            if now.hour != last_push_hour:
+                try:
+                    print(f"[AutoSync] Hourly push to Google Sheets ({now.strftime('%H:%M')})...")
+                    init_google_sheets()
+                    print("[AutoSync] ✓ GSheets push complete.")
+                except Exception as e:
+                    print(f"[AutoSync] GSheets push failed: {e}")
+                last_push_hour = now.hour
+
+        except Exception as e:
+            print(f"[AutoSync] Scheduler error: {e}")
+
+        # Sleep 5 minutes between checks (light on resources)
+        time.sleep(300)
+
+
+# ── Startup sequence ─────────────────────────────────────────────────────────
+_creds_exist = (
+    os.path.exists('credentials.json') or
+    os.path.exists('/etc/secrets/credentials.json')
+)
+
+if _creds_exist:
+    # 1. Pull latest data FROM Google Sheets into local DB on every startup
+    print("[Startup] Restoring from Google Sheets...")
     try:
         restore_from_gsheets()
+        print("[Startup] ✓ Restored from GSheets.")
     except Exception as e:
-        print(f"Initial sync failed: {e}")
+        print(f"[Startup] GSheets restore failed: {e}")
+
+# 2. Check if headers need to roll over (e.g. new month since last deploy)
+try:
+    _conn = sqlite3.connect(DB_PATH)
+    _conn.row_factory = sqlite3.Row
+    monthly_rollover.check_and_rollover(_conn, verbose=True)
+    _conn.close()
+except Exception as e:
+    print(f"[Startup] Rollover check failed: {e}")
+
+# 3. Start the perpetual background sync scheduler
+_scheduler_thread = threading.Thread(target=_auto_sync_loop, daemon=True, name="AutoSyncScheduler")
+_scheduler_thread.start()
+print("[Startup] ✓ Auto-sync scheduler running (hourly GSheets push + daily rollover).")
 
 
 @app.route('/api/fix_sync')
@@ -1029,6 +1105,34 @@ def api_fix_sync():
         return "Fixed!"
     except Exception as e:
         return str(e)
+
+
+@app.route('/api/sync_now', methods=['POST', 'GET'])
+def api_sync_now():
+    """Manual trigger: pull from GSheets → check rollover → push back."""
+    log = []
+    try:
+        if _creds_exist:
+            restore_from_gsheets()
+            log.append("✓ Pulled from Google Sheets")
+    except Exception as e:
+        log.append(f"✗ Pull failed: {e}")
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        conn.row_factory = sqlite3.Row
+        rolled = monthly_rollover.check_and_rollover(conn, verbose=False)
+        conn.close()
+        log.append(f"{'✓ Headers rolled over to new month' if rolled else '✓ Headers already current'}")
+    except Exception as e:
+        log.append(f"✗ Rollover check failed: {e}")
+    try:
+        if _creds_exist:
+            init_google_sheets()
+            log.append("✓ Pushed to Google Sheets")
+    except Exception as e:
+        log.append(f"✗ Push failed: {e}")
+    return jsonify({"success": True, "log": log})
+
 
 if __name__ == '__main__':
     # Cloud-ready configuration
