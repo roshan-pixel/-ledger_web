@@ -716,7 +716,9 @@ def api_inventory_master():
 @app.route('/api/product/purchases')
 def api_product_purchases():
     import datetime
+    import calendar
     product_name = request.args.get('product_name', '').strip()
+    month_val = request.args.get('month', '').strip() # e.g. "2026-08"
     if not product_name:
         return jsonify({'purchases': [], 'error': 'product_name is required'})
     
@@ -724,6 +726,15 @@ def api_product_purchases():
     target_norm_name = re.sub(r'\[\d+\]', '', product_name).replace('-', '').strip().upper()
     target_norm_name = re.sub(r'\s+', ' ', target_norm_name)
     target_norm_name = re.sub(r'\s*\-\s*$', '', target_norm_name).strip()
+
+    end_date = None
+    if month_val:
+        try:
+            year, month = map(int, month_val.split('-'))
+            last_day = calendar.monthrange(year, month)[1]
+            end_date = datetime.date(year, month, last_day)
+        except Exception as ex:
+            print("Error parsing month in purchases:", ex)
 
     purchases_path = Path(__file__).parent / 'purchase_orders.json'
     results = []
@@ -733,6 +744,10 @@ def api_product_purchases():
                 orders = json.load(f)
                 for order in orders:
                     o_date = order.get('date', '')
+                    parsed_o_date = inventory_engine.parse_date(o_date)
+                    if end_date and parsed_o_date and parsed_o_date > end_date:
+                        continue
+
                     bill_no = order.get('bill_no', '')
                     party = order.get('party', '')
                     for prod in order.get('products', []):
@@ -787,7 +802,11 @@ def api_product_purchases():
 @app.route('/api/product/sales')
 def api_product_sales():
     import datetime
+    import calendar
     product_name = request.args.get('product_name', '').strip()
+    month_val = request.args.get('month', '').strip() # e.g. "2026-08"
+    column_header = request.args.get('column_header', '').strip() # e.g. "Sold Qty (Aug 1-7)"
+    
     if not product_name:
         return jsonify({'sales': [], 'error': 'product_name is required'})
         
@@ -795,6 +814,27 @@ def api_product_sales():
     target_norm_name = re.sub(r'\[\d+\]', '', product_name).replace('-', '').strip().upper()
     target_norm_name = re.sub(r'\s+', ' ', target_norm_name)
     target_norm_name = re.sub(r'\s*\-\s*$', '', target_norm_name).strip()
+
+    start_date = None
+    end_date = None
+    
+    if month_val:
+        try:
+            year, month = map(int, month_val.split('-'))
+            last_day = calendar.monthrange(year, month)[1]
+            start_date = datetime.date(year, month, 1)
+            end_date = datetime.date(year, month, last_day)
+            
+            if column_header:
+                # Find matching range like: "Sold Qty (Aug 1-7)" or "Sold Qty (Jul 8-14)"
+                m = re.search(r'Sold Qty \(([A-Za-z]{3})\s+(\d+)\-(\d+)\)', column_header)
+                if m:
+                    day_start = int(m.group(2))
+                    day_end = int(m.group(3))
+                    start_date = datetime.date(year, month, day_start)
+                    end_date = datetime.date(year, month, day_end)
+        except Exception as ex:
+            print("Error parsing date range filtering:", ex)
 
     results = []
     try:
@@ -806,6 +846,14 @@ def api_product_sales():
         
         for r in invoices:
             date_created = r['date_created']
+            inv_date = inventory_engine.parse_date(date_created)
+            if not inv_date:
+                continue
+            if start_date and inv_date < start_date:
+                continue
+            if end_date and inv_date > end_date:
+                continue
+
             inv_no = r['invoice_no']
             cust_name = r['customer_name']
             ds_code = r['ds_code']
@@ -851,7 +899,6 @@ def api_product_sales():
                         matched = True
                         
                     if matched:
-                        # Format date cleanly — guard against None date_created
                         date_created = date_created or ''
                         formatted_date = date_created
                         if date_created and 'T' in date_created:
@@ -862,7 +909,8 @@ def api_product_sales():
                         results.append({
                             'date': formatted_date,
                             'invoice_no': inv_no,
-                            'customer_name': f"{cust_name} ({ds_code})" if ds_code else cust_name,
+                            'customer_name': cust_name or '—',
+                            'ds_code': ds_code or '—',
                             'qty': qty,
                             'rate': rate,
                             'total': total_val

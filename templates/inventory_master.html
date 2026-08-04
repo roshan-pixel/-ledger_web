@@ -714,13 +714,13 @@ function renderTable() {
             if (!isTotalRow) {
                 if (h === 'Total Qty') {
                     classes.push('clickable-qty');
-                    tdAttrs += ` data-product="${safeProd}" onclick="showPurchasesHistory(this.dataset.product)"`;
+                    tdAttrs += ` data-product="${safeProd}" data-col="${escQ(h)}" onclick="showPurchasesHistory(this.dataset.product, this.dataset.col)"`;
                     tdAttrs += ` title="Click to view Stock IN (Purchases) History"`;
                 } else if (h.startsWith('Sold Qty') || h === 'Tie-Breaker Sold Qty') {
                     const qtyVal = parseFloat(val) || 0;
                     if (qtyVal > 0) {
                         classes.push('clickable-qty');
-                        tdAttrs += ` data-product="${safeProd}" onclick="showSalesHistory(this.dataset.product)"`;
+                        tdAttrs += ` data-product="${safeProd}" data-col="${escQ(h)}" onclick="showSalesHistory(this.dataset.product, this.dataset.col)"`;
                         tdAttrs += ` title="Click to view Stock OUT (Sales) History"`;
                     }
                 }
@@ -878,12 +878,13 @@ function showSkeletons() {
 }
 
 // ── Stock History Modal Control ───────────────────
-function showPurchasesHistory(productName) {
+function showPurchasesHistory(productName, columnHeader) {
     const modal = document.getElementById('historyModal');
     const title = document.getElementById('modalTitle');
     const loading = document.getElementById('modalLoading');
     const error = document.getElementById('modalError');
     const tableWrap = document.getElementById('modalTableWrap');
+    const selectedMonth = document.getElementById('monthSelector').value;
     
     title.textContent = `Stock IN (Purchases) — ${productName}`;
     modal.style.display = 'flex';
@@ -891,7 +892,7 @@ function showPurchasesHistory(productName) {
     error.style.display = 'none';
     tableWrap.style.display = 'none';
     
-    fetch(`/api/product/purchases?product_name=${encodeURIComponent(productName)}`)
+    fetch(`/api/product/purchases?product_name=${encodeURIComponent(productName)}&month=${selectedMonth}`)
         .then(res => res.json())
         .then(data => {
             loading.style.display = 'none';
@@ -903,7 +904,7 @@ function showPurchasesHistory(productName) {
             
             const list = data.purchases || [];
             if (list.length === 0) {
-                error.textContent = "No purchase history found for this product.";
+                error.textContent = "No purchase history found for this product up to this month.";
                 error.style.display = 'block';
                 return;
             }
@@ -942,20 +943,29 @@ function showPurchasesHistory(productName) {
         });
 }
 
-function showSalesHistory(productName) {
+function showSalesHistory(productName, columnHeader) {
     const modal = document.getElementById('historyModal');
     const title = document.getElementById('modalTitle');
     const loading = document.getElementById('modalLoading');
     const error = document.getElementById('modalError');
     const tableWrap = document.getElementById('modalTableWrap');
+    const selectedMonth = document.getElementById('monthSelector').value;
     
-    title.textContent = `Stock OUT (Sales) — ${productName}`;
+    // Display cleaner header indicating the clicked column week/period
+    let periodName = columnHeader;
+    if (columnHeader.startsWith('Sold Qty (')) {
+        periodName = columnHeader.replace('Sold Qty (', '').replace(')', '');
+    } else if (columnHeader === 'Tie-Breaker Sold Qty') {
+        periodName = "Full Month";
+    }
+    
+    title.textContent = `Stock OUT (Sales: ${periodName}) — ${productName}`;
     modal.style.display = 'flex';
     loading.style.display = 'flex';
     error.style.display = 'none';
     tableWrap.style.display = 'none';
     
-    fetch(`/api/product/sales?product_name=${encodeURIComponent(productName)}`)
+    fetch(`/api/product/sales?product_name=${encodeURIComponent(productName)}&column_header=${encodeURIComponent(columnHeader)}&month=${selectedMonth}`)
         .then(res => res.json())
         .then(data => {
             loading.style.display = 'none';
@@ -967,7 +977,7 @@ function showSalesHistory(productName) {
             
             const list = data.sales || [];
             if (list.length === 0) {
-                error.textContent = "No sales history found for this product.";
+                error.textContent = `No sales history found for this product during ${periodName}.`;
                 error.style.display = 'block';
                 return;
             }
@@ -979,7 +989,8 @@ function showSalesHistory(productName) {
                 <tr>
                     <th>Date</th>
                     <th>Invoice No</th>
-                    <th>Customer Name (DS Code)</th>
+                    <th>DS ID</th>
+                    <th>Customer Name</th>
                     <th style="text-align:right">Qty</th>
                     <th style="text-align:right">Price</th>
                     <th style="text-align:right">Total</th>
@@ -990,7 +1001,8 @@ function showSalesHistory(productName) {
                 <tr>
                     <td style="white-space:nowrap">${item.date || '—'}</td>
                     <td style="font-family:monospace; font-weight:600; color:#818cf8; white-space:nowrap">${item.invoice_no || '—'}</td>
-                    <td style="white-space:normal; max-width:280px">${item.customer_name || '—'}</td>
+                    <td style="font-family:monospace; font-weight:600; color:#e2e8f0; white-space:nowrap">${item.ds_code || '—'}</td>
+                    <td style="white-space:normal; max-width:200px">${item.customer_name || '—'}</td>
                     <td style="text-align:right; font-weight:600">${item.qty}</td>
                     <td style="text-align:right">₹${parseFloat(item.rate).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
                     <td style="text-align:right; font-weight:600; color:#f59e0b">₹${parseFloat(item.total).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
