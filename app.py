@@ -713,6 +713,167 @@ def api_inventory_master():
         return jsonify({'error': str(e)}), 500
 
 
+@app.route('/api/product/purchases')
+def api_product_purchases():
+    import datetime
+    product_name = request.args.get('product_name', '').strip()
+    if not product_name:
+        return jsonify({'purchases': [], 'error': 'product_name is required'})
+    
+    target_code = inventory_engine.extract_code(product_name)
+    target_norm_name = re.sub(r'\[\d+\]', '', product_name).replace('-', '').strip().upper()
+    target_norm_name = re.sub(r'\s+', ' ', target_norm_name)
+    target_norm_name = re.sub(r'\s*\-\s*$', '', target_norm_name).strip()
+
+    purchases_path = Path(__file__).parent / 'purchase_orders.json'
+    results = []
+    if purchases_path.exists():
+        try:
+            with open(purchases_path, 'r', encoding='utf-8') as f:
+                orders = json.load(f)
+                for order in orders:
+                    o_date = order.get('date', '')
+                    bill_no = order.get('bill_no', '')
+                    party = order.get('party', '')
+                    for prod in order.get('products', []):
+                        if len(prod) >= 5:
+                            code = str(prod[1]).strip()
+                            raw_name = str(prod[2]).replace('\n', ' ').strip().upper()
+                            norm_name = re.sub(r'\s+', ' ', raw_name)
+                            norm_name = re.sub(r'\s*\-\s*$', '', norm_name).strip()
+                            
+                            qty = 0
+                            try:
+                                qty = float(str(prod[4]).replace(',', ''))
+                            except:
+                                pass
+                                
+                            rate = 0.0
+                            try:
+                                rate = float(str(prod[3]).replace(',', ''))
+                            except:
+                                pass
+                                
+                            total_val = 0.0
+                            try:
+                                total_val = float(str(prod[5]).replace(',', ''))
+                            except:
+                                pass
+
+                            matched = False
+                            if target_code and code == target_code:
+                                matched = True
+                            elif norm_name == target_norm_name:
+                                matched = True
+                            elif re.sub(r'[^A-Z0-9]', '', norm_name) == re.sub(r'[^A-Z0-9]', '', target_norm_name):
+                                matched = True
+
+                            if matched and qty > 0:
+                                results.append({
+                                    'date': o_date,
+                                    'bill_no': bill_no,
+                                    'party': party,
+                                    'qty': qty,
+                                    'rate': rate,
+                                    'total': total_val
+                                })
+        except Exception as e:
+            return jsonify({'purchases': [], 'error': str(e)}), 500
+            
+    results.sort(key=lambda x: inventory_engine.parse_date(x['date']) or datetime.date.min, reverse=True)
+    return jsonify({'purchases': results})
+
+
+@app.route('/api/product/sales')
+def api_product_sales():
+    import datetime
+    product_name = request.args.get('product_name', '').strip()
+    if not product_name:
+        return jsonify({'sales': [], 'error': 'product_name is required'})
+        
+    target_code = inventory_engine.extract_code(product_name)
+    target_norm_name = re.sub(r'\[\d+\]', '', product_name).replace('-', '').strip().upper()
+    target_norm_name = re.sub(r'\s+', ' ', target_norm_name)
+    target_norm_name = re.sub(r'\s*\-\s*$', '', target_norm_name).strip()
+
+    results = []
+    try:
+        conn = get_db()
+        c = conn.cursor()
+        c.execute("SELECT * FROM invoices WHERE status != 'cancelled'")
+        invoices = c.fetchall()
+        conn.close()
+        
+        for r in invoices:
+            date_created = r['date_created']
+            inv_no = r['invoice_no']
+            cust_name = r['customer_name']
+            ds_code = r['ds_code']
+            
+            try:
+                items = json.loads(r['items'] or '[]')
+            except:
+                items = []
+                
+            for item in items:
+                desc = str(item.get('description') or item.get('name') or '').strip()
+                qty = 0
+                try:
+                    qty = float(str(item.get('qty', 0)).replace(',', ''))
+                except:
+                    pass
+                    
+                rate = 0.0
+                try:
+                    rate = float(str(item.get('rate') or item.get('price', 0)).replace(',', ''))
+                except:
+                    pass
+                    
+                total_val = 0.0
+                try:
+                    total_val = float(str(item.get('total') or (qty * rate)).replace(',', ''))
+                except:
+                    pass
+                    
+                if desc and qty > 0:
+                    code = inventory_engine.extract_code(desc)
+                    norm_name = re.sub(r'\[\d+\]', '', desc).replace('-', '').strip().upper()
+                    norm_name = re.sub(r'\s+\d+$', '', norm_name)
+                    norm_name = re.sub(r'\s+', ' ', norm_name)
+                    norm_name = re.sub(r'\s*\-\s*$', '', norm_name).strip()
+                    
+                    matched = False
+                    if target_code and code == target_code:
+                        matched = True
+                    elif norm_name == target_norm_name:
+                        matched = True
+                    elif re.sub(r'[^A-Z0-9]', '', norm_name) == re.sub(r'[^A-Z0-9]', '', target_norm_name):
+                        matched = True
+                        
+                    if matched:
+                        # Format date cleanly
+                        formatted_date = date_created
+                        if 'T' in date_created:
+                            try:
+                                formatted_date = datetime.datetime.fromisoformat(date_created).strftime('%d/%m/%Y')
+                            except:
+                                pass
+                        results.append({
+                            'date': formatted_date,
+                            'invoice_no': inv_no,
+                            'customer_name': f"{cust_name} ({ds_code})" if ds_code else cust_name,
+                            'qty': qty,
+                            'rate': rate,
+                            'total': total_val
+                        })
+    except Exception as e:
+        return jsonify({'sales': [], 'error': str(e)}), 500
+        
+    results.sort(key=lambda x: inventory_engine.parse_date(x['date']) or datetime.date.min, reverse=True)
+    return jsonify({'sales': results})
+
+
+
 @app.route('/api/inventory_master/update', methods=['POST'])
 def api_inventory_master_update():
     payload = request.json
