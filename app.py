@@ -16,6 +16,11 @@ from init_gsheets import init_google_sheets
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False   # send Unicode as real UTF-8, not \uXXXX escapes
 
+@app.route('/ping')
+@app.route('/health')
+def ping():
+    return jsonify({"status": "ok", "message": "pong"}), 200
+
 @app.errorhandler(500)
 def internal_error(error):
     import traceback
