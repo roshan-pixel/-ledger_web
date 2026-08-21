@@ -68,7 +68,15 @@
           "ingredients": "Flaxseed oil",
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
         }
-      ]
+      ],
+      "simple_name": "Heart Artery Blockage (हार्ट ब्लॉकेज / सीने का दर्द)",
+      "layman_explanation": "Blood vessels supplying the heart muscle become narrowed or blocked by cholesterol plaques.",
+      "symptoms": [
+        "Chest tightness or squeezing pain",
+        "Shortness of breath on exertion",
+        "Profuse cold sweating and fatigue"
+      ],
+      "search_tags": "heart attack, chest pain, blocked arteries, heart disease, cardiac, chhati me dard, blockage, heart"
     },
     {
       "disease_name": "Essential Hypertension",
@@ -117,7 +125,15 @@
           "ingredients": "Honey, Haldi, Brahmi, Shankh Pushpi, Tulsi, Ashwagandha, Anar Dana, Sunthi, Lahsoon",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "High Blood Pressure (हाई ब्लड प्रेशर / बीपी)",
+      "layman_explanation": "The pressure of blood flowing through your arteries is persistently elevated, straining heart & blood vessels.",
+      "symptoms": [
+        "Morning headaches at back of head",
+        "Dizziness and visual disturbances",
+        "Fast heartbeat, feeling anxious or restless"
+      ],
+      "search_tags": "high bp, blood pressure, high blood pressure, bp, hypertension, sir dard, chakkar"
     },
     {
       "disease_name": "Heart Failure",
@@ -183,7 +199,15 @@
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
         }
       ],
-      "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine. Must be monitored by a cardiologist."
+      "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine. Must be monitored by a cardiologist.",
+      "simple_name": "Weak Heart Pumping (दिल की कमजोरी / सांस फूलना)",
+      "layman_explanation": "The heart muscle becomes too weak or stiff to pump sufficient blood to the body, causing fluid retention.",
+      "symptoms": [
+        "Swelling in feet, ankles and legs",
+        "Severe breathlessness when lying down",
+        "Chronic tiredness and rapid heart rate"
+      ],
+      "search_tags": "heart failure, weak heart, breathing problem, swelling feet, pair me sujan, sans phoolna"
     },
     {
       "disease_name": "Rheumatic Heart Disease",
@@ -238,7 +262,15 @@
           "dosage": "1 capsule (or 15ml) twice daily after meals to optimize lipid-based absorption for cardiovascular endothelial repair.",
           "rationale": "Highly synergistic for cardiovascular health and managing inflammation."
         }
-      ]
+      ],
+      "simple_name": "Heart Valve Damage from Throat Infection (गठिया से दिल का रोग)",
+      "layman_explanation": "Permanent damage to heart valves caused by untreated streptococcal throat infection or rheumatic fever.",
+      "symptoms": [
+        "Chest discomfort and fatigue",
+        "Shortness of breath during exertion",
+        "History of joint pains and recurrent fever"
+      ],
+      "search_tags": "rheumatic, heart valve, throat infection, fever, heart"
     },
     {
       "disease_name": "Atrial Fibrillation",
@@ -288,7 +320,15 @@
           "ingredients": "Brahmi leaf extract",
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
         }
-      ]
+      ],
+      "simple_name": "Irregular / Fast Heartbeat (दिल की धड़कन तेज व अनियमित होना)",
+      "layman_explanation": "Upper chambers of the heart beat chaotically and out of coordination, causing fluttering in the chest.",
+      "symptoms": [
+        "Heart palpitations or fluttering sensation",
+        "Sudden dizziness or lightheadedness",
+        "Fatigue and shortness of breath"
+      ],
+      "search_tags": "heartbeat, palpitation, irregular pulse, dhadkan, ghabrahat, pulse"
     },
     {
       "disease_name": "Peripheral Artery Disease",
@@ -348,7 +388,15 @@
           "ingredients": "Flaxseed oil",
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
         }
-      ]
+      ],
+      "simple_name": "Leg Artery Blockage & Walking Pain (पैरों की नसों में ब्लॉकेज व दर्द)",
+      "layman_explanation": "Narrowed arteries reduce blood flow to the limbs, causing painful cramping in the legs during walking.",
+      "symptoms": [
+        "Painful cramping in calves/thighs while walking",
+        "Coldness or numbness in lower legs/feet",
+        "Slow healing of cuts or sores on feet"
+      ],
+      "search_tags": "leg pain, walking pain, blood circulation, pair dard, nason ka dard, circulation"
     },
     {
       "disease_name": "Dilated Cardiomyopathy",
@@ -397,7 +445,15 @@
           "ingredients": "Terminalia arjuna",
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
         }
-      ]
+      ],
+      "simple_name": "Enlarged & Weak Heart Muscle (दिल का आकार बढ़ना व कमजोरी)",
+      "layman_explanation": "Heart muscle ventricles stretch and thin, making the heart larger and unable to pump blood efficiently.",
+      "symptoms": [
+        "Shortness of breath during daily activity or rest",
+        "Swelling in legs, ankles and abdomen",
+        "Fatigue and irregular pulse"
+      ],
+      "search_tags": "enlarged heart, cardiomyopathy, weak heart, swelling, sans fulna"
     },
     {
       "disease_name": "Hypertrophic Cardiomyopathy",
@@ -452,7 +508,15 @@
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution.",
           "rationale": "Highly synergistic for supporting overall cardiovascular health."
         }
-      ]
+      ],
+      "simple_name": "Thickened Heart Muscle (दिल की मांसपेशियां मोटी होना)",
+      "layman_explanation": "Heart muscle walls become abnormally thick, making it harder for the heart to pump blood.",
+      "symptoms": [
+        "Chest pain during physical exertion",
+        "Dizziness or fainting episodes after activity",
+        "Rapid or fluttering heartbeat"
+      ],
+      "search_tags": "thick heart, chest pain, fainting, cardiac, dhadkan"
     },
     {
       "disease_name": "Valvular Heart Disease",
@@ -507,7 +571,15 @@
           "dosage": "1 capsule (or 15ml) twice daily after meals to optimize lipid-based absorption for cardiovascular endothelial repair.",
           "rationale": "Supports overall cardiovascular health and heart function."
         }
-      ]
+      ],
+      "simple_name": "Heart Valve Leakage or Narrowing (दिल के वाल्व की खराबी)",
+      "layman_explanation": "One or more valves of the heart do not open or close properly, disrupting normal blood flow.",
+      "symptoms": [
+        "Shortness of breath and wheezing",
+        "Swelling in ankles, feet or abdomen",
+        "Chest heaviness and fatigue"
+      ],
+      "search_tags": "heart valve, valve leak, chest pain, breathlessness, valve"
     },
     {
       "disease_name": "Aortic Aneurysm",
@@ -556,7 +628,15 @@
           "ingredients": "Flaxseed and Omega-rich extracts",
           "dosage": "1 capsule (or 15ml) twice daily after meals to optimize lipid-based absorption for cardiovascular endothelial repair."
         }
-      ]
+      ],
+      "simple_name": "Main Artery Ballooning (मुख्य धमनी में सूजन/फैलाव)",
+      "layman_explanation": "An abnormal bulge in the wall of the aorta, the major blood vessel carrying oxygenated blood from heart.",
+      "symptoms": [
+        "Deep throbbing pain in chest, back or abdomen",
+        "Difficulty swallowing or coughing",
+        "Shortness of breath"
+      ],
+      "search_tags": "aorta, artery, back pain, chest pain, blood vessel"
     },
     {
       "disease_name": "Deep Vein Thrombosis",
@@ -611,7 +691,15 @@
           "ingredients": "Flaxseed oil",
           "dosage": "1 capsule (or 15ml) twice daily after meals to optimize lipid-based absorption for cardiovascular endothelial repair."
         }
-      ]
+      ],
+      "simple_name": "Blood Clot in Leg Vein (पैर की नस में खून का थक्का/सूजन)",
+      "layman_explanation": "A blood clot forms in a deep vein, usually in the calf or thigh, blocking healthy blood flow.",
+      "symptoms": [
+        "Swelling in one leg or calf",
+        "Throbbing or cramping pain in the calf",
+        "Red or darkened warm skin on the painful leg"
+      ],
+      "search_tags": "blood clot, leg swelling, calf pain, dvt, pair me sujan, khoon ka thakka"
     },
     {
       "disease_name": "Pulmonary Hypertension",
@@ -660,7 +748,15 @@
           "ingredients": "5 types of Tulsi extract",
           "dosage": "2-3 drops diluted in 50ml of warm water, twice daily to ensure optimal systemic distribution."
         }
-      ]
+      ],
+      "simple_name": "High Blood Pressure in Lung Arteries (फेफड़ों की नसों में हाई बीपी)",
+      "layman_explanation": "Increased pressure in the blood vessels that lead from the heart to the lungs, straining the right heart chamber.",
+      "symptoms": [
+        "Shortness of breath with minimal exertion",
+        "Dizziness, lightheadedness or fainting",
+        "Bluish color to lips and fingers"
+      ],
+      "search_tags": "lung bp, pulmonary, breathlessness, fatigue, sans fulna"
     },
     {
       "disease_name": "Ischemic Heart Disease",
@@ -719,7 +815,15 @@
           "ingredients": "Terminalia arjuna",
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
         }
-      ]
+      ],
+      "simple_name": "Reduced Blood Supply to Heart (हार्ट में खून की कमी / एंजाइना)",
+      "layman_explanation": "Heart muscle receives insufficient blood and oxygen due to narrowed coronary arteries.",
+      "symptoms": [
+        "Chest tightness radiating to left shoulder, arm or neck",
+        "Heaviness or burning in chest",
+        "Breathlessness on walking"
+      ],
+      "search_tags": "ischemic, heart disease, angina, chest pain, chhati me dard, attack"
     },
     {
       "disease_name": "Stroke (Cerebrovascular Disease sequelae)",
@@ -784,7 +888,15 @@
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution.",
           "rationale": "Highly synergistic for both brain recovery and underlying cardiovascular health."
         }
-      ]
+      ],
+      "simple_name": "Brain Stroke Recovery & Paralysis (लकवा / फालिज / ब्रेन स्ट्रोक)",
+      "layman_explanation": "Recovery support after brain blood supply disruption, helping rebuild nerve function and muscle strength.",
+      "symptoms": [
+        "Weakness or numbness on one side of body/face",
+        "Difficulty speaking or slurred words",
+        "Impaired balance, walking difficulty"
+      ],
+      "search_tags": "stroke, paralysis, lakwa, falij, brain stroke, weakness, chalne me pareshani"
     },
     {
       "disease_name": "Type 2 Diabetes Mellitus",
@@ -853,7 +965,15 @@
           "ingredients": "Dietary Fiber",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "High Blood Sugar / Diabetes (शुगर / डायबिटीज / मधुमेह)",
+      "layman_explanation": "Body cells become resistant to insulin, leading to chronically high sugar levels in the blood.",
+      "symptoms": [
+        "Frequent urination, especially at night",
+        "Excessive thirst and constant hunger",
+        "Tiredness, slow wound healing, blurry vision"
+      ],
+      "search_tags": "sugar, blood sugar, high sugar, diabetes, diabetic, madhumeh, peshab, thakan"
     },
     {
       "disease_name": "Type 1 Diabetes Mellitus",
@@ -922,7 +1042,15 @@
           "ingredients": "Dietary Fiber",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Insulin-Dependent Diabetes (जन्मजात / इंसुलिन वाली शुगर)",
+      "layman_explanation": "Autoimmune condition where pancreas produces little or no insulin, requiring lifestyle and metabolic balance.",
+      "symptoms": [
+        "Rapid unintended weight loss",
+        "Constant intense thirst and hunger",
+        "Frequent urination and extreme fatigue"
+      ],
+      "search_tags": "type 1 diabetes, insulin, child sugar, weight loss, madhumeh"
     },
     {
       "disease_name": "Hypothyroidism",
@@ -971,7 +1099,15 @@
           "ingredients": "Aloevera Ras, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger.",
           "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         }
-      ]
+      ],
+      "simple_name": "Underactive Thyroid / Weight Gain (थायराइड - वजन बढ़ना, सुस्ती)",
+      "layman_explanation": "Thyroid gland fails to produce sufficient thyroid hormones, slowing down the body's entire metabolism.",
+      "symptoms": [
+        "Unexplained weight gain and puffy face",
+        "Extreme tiredness, lethargy and cold sensitivity",
+        "Hair fall, dry skin and chronic constipation"
+      ],
+      "search_tags": "thyroid, hypothyroidism, weight gain, motapa, hair fall, thakan, susti"
     },
     {
       "disease_name": "Hyperthyroidism (Graves' Disease)",
@@ -1020,7 +1156,15 @@
           "ingredients": "Aloevera Leaf Ras.",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Overactive Thyroid / Rapid Weight Loss (थायराइड - वजन घटना, घबराहट)",
+      "layman_explanation": "Thyroid gland produces excessive thyroid hormones, putting metabolism into overdrive.",
+      "symptoms": [
+        "Rapid weight loss despite eating normally",
+        "Shaking hands and trembling fingers",
+        "Rapid heartbeat, heat intolerance and anxiety"
+      ],
+      "search_tags": "hyperthyroid, graves, weight loss, dhadkan, ghabrahat, thyroid"
     },
     {
       "disease_name": "Obesity",
@@ -1079,7 +1223,15 @@
           "ingredients": "Weight management blend",
           "dosage": "1 teaspoon (3-5g) twice daily, 15 minutes before meals with warm water to optimize enzymatic breakdown."
         }
-      ]
+      ],
+      "simple_name": "Excess Body Weight & Fat (मोटापा / पेट की चर्बी घटाना)",
+      "layman_explanation": "Excess accumulation of body fat that impacts joints, stamina, heart health, and energy.",
+      "symptoms": [
+        "Breathlessness during mild physical activity",
+        "Heavy sweating and sleep disturbances",
+        "Joint and lower back pain from weight stress"
+      ],
+      "search_tags": "weight loss, fat, overweight, belly fat, motapa, weight gain, pet ki charbi, vajan"
     },
     {
       "disease_name": "Polycystic Ovary Syndrome (PCOS)",
@@ -1143,7 +1295,15 @@
           "ingredients": "Metabolic and insulin support",
           "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         }
-      ]
+      ],
+      "simple_name": "PCOS / Irregular Periods & Hormonal Imbalance (पीसीओडी / माहवारी की समस्या)",
+      "layman_explanation": "Hormonal condition causing irregular menstrual cycles, ovarian cysts, and elevated androgens in women.",
+      "symptoms": [
+        "Irregular, delayed, or missing periods",
+        "Excessive facial/body hair and acne",
+        "Abdominal weight gain and fertility challenges"
+      ],
+      "search_tags": "pcos, pcod, irregular periods, periods problem, menstruation, facial hair, mahwari, periods"
     },
     {
       "disease_name": "Metabolic Syndrome",
@@ -1202,7 +1362,15 @@
           "ingredients": "Aloevera Ras, Jamun Phal, Karela, Gurnar, Triphala, Vijaysar Ext., Methi, Giloya Ext.",
           "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         }
-      ]
+      ],
+      "simple_name": "Combined Belly Fat, High Sugar & BP (मेटाबॉलिक सिंड्रोम - मोटापा, शुगर, बीपी)",
+      "layman_explanation": "Cluster of metabolic risk factors including excess belly fat, high fasting sugar, elevated BP, and abnormal lipids.",
+      "symptoms": [
+        "Increased waist circumference / central obesity",
+        "High fasting blood sugar & lethargy after meals",
+        "Elevated blood pressure"
+      ],
+      "search_tags": "metabolic, belly fat, sugar, bp, cholesterol, motapa"
     },
     {
       "disease_name": "Hashimoto's Thyroiditis",
@@ -1261,7 +1429,15 @@
           "ingredients": "Flax Seed Oil.",
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
         }
-      ]
+      ],
+      "simple_name": "Autoimmune Thyroid Swelling (ऑटोइम्यून थायराइड सूजन)",
+      "layman_explanation": "Immune system attacks the thyroid gland, causing chronic inflammation and progressive underactive thyroid.",
+      "symptoms": [
+        "Swelling at front of the neck (Goiter)",
+        "Fatigue, brain fog, and muscle aches",
+        "Weight gain and dry, coarse skin"
+      ],
+      "search_tags": "hashimoto, thyroid, goiter, neck swelling, ghabrahat, thyroid"
     },
     {
       "disease_name": "Cushing's Syndrome",
@@ -1326,7 +1502,15 @@
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution.",
           "rationale": "Essential for preventing and managing severe bone loss and osteoporosis caused by excess cortisol."
         }
-      ]
+      ],
+      "simple_name": "High Cortisol / Moon Face & Body Fat (कॉर्टिसोल हार्मोन की अधिकता)",
+      "layman_explanation": "Condition resulting from prolonged elevated levels of the stress hormone cortisol in the body.",
+      "symptoms": [
+        "Round, puffy face ('moon face')",
+        "Fat accumulation around neck and upper back",
+        "Purple stretch marks on abdomen and thighs"
+      ],
+      "search_tags": "cushing, moon face, weight gain, cortisol, stretch marks"
     },
     {
       "disease_name": "Addison's Disease",
@@ -1385,7 +1569,15 @@
           "ingredients": "Ashwagandha Extract (Withania Somnifera).",
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
         }
-      ]
+      ],
+      "simple_name": "Adrenal Deficiency / Extreme Weakness (एड्रीनल ग्रंथि की कमजोरी / लो बीपी)",
+      "layman_explanation": "Adrenal glands produce insufficient vital hormones (cortisol & aldosterone), leading to energy collapse.",
+      "symptoms": [
+        "Extreme, worsening fatigue and weight loss",
+        "Darkening of skin patches (Hyperpigmentation)",
+        "Dizziness upon standing and craving salty food"
+      ],
+      "search_tags": "addison, low bp, dark skin, extreme fatigue, weakness, chakkar"
     },
     {
       "disease_name": "Hyperparathyroidism",
@@ -1444,7 +1636,15 @@
           "ingredients": "Elva, Pashanveda, Varuna, Kulthi, Gokhru, Kutha, Giloy, Palash, Moulsiri, Apamarga.",
           "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         }
-      ]
+      ],
+      "simple_name": "High Calcium & Weak Bones (कैल्शियम असंतुलन व हड्डियों की कमजोरी)",
+      "layman_explanation": "Overactive parathyroid glands produce too much parathyroid hormone, stripping calcium from bones into blood.",
+      "symptoms": [
+        "Fragile, aching bones and joint pain",
+        "Recurrent kidney stones and frequent urination",
+        "Muscle weakness, nausea and mental fatigue"
+      ],
+      "search_tags": "calcium, parathyroid, bone pain, kidney stone, haddiyo me dard"
     },
     {
       "disease_name": "Dyslipidemia (High Cholesterol)",
@@ -1503,7 +1703,15 @@
           "ingredients": "Flax Seed Oil.",
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
         }
-      ]
+      ],
+      "simple_name": "High Cholesterol & Triglycerides (खून में कोलेस्ट्रॉल और चर्बी)",
+      "layman_explanation": "Unhealthy balance of fats in blood (high LDL bad cholesterol and high triglycerides) that clogs arteries.",
+      "symptoms": [
+        "Usually silent with no early symptoms",
+        "Yellowish fatty bumps near eyes or tendons",
+        "Shortness of breath and leg pain during exertion"
+      ],
+      "search_tags": "cholesterol, high cholesterol, triglycerides, fat, lipid, khoon me charbi, blockage"
     },
     {
       "disease_name": "Diabetic Neuropathy",
@@ -1562,7 +1770,15 @@
           "ingredients": "Til Seed Oil, Lavender Flower Oil, Ginger Rhizome Oil.",
           "dosage": "2-3 drops diluted in 50ml of warm water, twice daily to ensure optimal systemic distribution."
         }
-      ]
+      ],
+      "simple_name": "Diabetic Nerve Pain & Numbness (डायबिटीज में पैरों का सुन्न होना व जलन)",
+      "layman_explanation": "Chronic high blood sugar damages delicate nerve fibers, primarily in the feet, toes, and legs.",
+      "symptoms": [
+        "Burning, tingling or needle-like pain in feet",
+        "Loss of sensation or numbness in toes/soles",
+        "Sharp burning pains that worsen at night"
+      ],
+      "search_tags": "diabetic nerve, numbness in feet, burning feet, pair me jalan, sunn hona, diabetes"
     },
     {
       "disease_name": "Diabetic Retinopathy",
@@ -1627,7 +1843,15 @@
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution.",
           "rationale": "Synergistic for supporting eye health and microcirculation."
         }
-      ]
+      ],
+      "simple_name": "Diabetic Eye Damage (शुगर के कारण आँखों की रोशनी कम होना)",
+      "layman_explanation": "High blood sugar damages tiny retinal blood vessels, causing swelling, fluid leakage, or vision loss.",
+      "symptoms": [
+        "Blurry or fluctuating vision",
+        "Dark spots or floating webs in eyesight",
+        "Impaired night vision and color fading"
+      ],
+      "search_tags": "diabetic eye, blurry vision, floaters, aankh ki roshni, sugar eye"
     },
     {
       "disease_name": "Diabetic Nephropathy",
@@ -1686,7 +1910,15 @@
           "ingredients": "Punarnava, Kutki, Harad, Neem Chhal, Daruhaldi, Patol Patra, Giloy, Sonth, Sarpunkha, Rohida Chhal.",
           "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         }
-      ]
+      ],
+      "simple_name": "Diabetic Kidney Damage (डायबिटीज में गुर्दे/किडनी की खराबी)",
+      "layman_explanation": "Kidney filtering units become damaged from long-standing diabetes, causing protein leakage into urine.",
+      "symptoms": [
+        "Swelling in feet, ankles, hands or puffy eyes",
+        "Foamy or frothy urine",
+        "Fatigue, nausea, and worsening blood pressure"
+      ],
+      "search_tags": "diabetic kidney, protein in urine, swelling, kidney damage, peshab me jhag, gurda"
     }
   ],
   "Respiratory": [
@@ -1754,7 +1986,15 @@
           "specific_dosage": "15-20 ml twice a day with equal amount of water.",
           "dosage": "15 ml twice daily mixed with a small amount of honey (if non-diabetic) or warm water to act as a targeted expectorant for the respiratory tract."
         }
-      ]
+      ],
+      "simple_name": "Chronic Lung Damage & Severe Breathlessness (सीओपीडी / पुरानी सांस की बीमारी)",
+      "layman_explanation": "Progressive lung disease causing obstructed airflow from the lungs, leading to chronic breathlessness.",
+      "symptoms": [
+        "Daily cough with thick mucus/phlegm",
+        "Severe shortness of breath with simple walking",
+        "Chest tightness and wheezing sound"
+      ],
+      "search_tags": "copd, breathing problem, lungs, chronic cough, dama, sans fulna, khasi, balgam"
     },
     {
       "disease_name": "Asthma",
@@ -1830,7 +2070,15 @@
           "ingredients": "5 types of Tulsi",
           "dosage": "2-3 drops in warm water or herbal tea, taken 2-3 times daily to maintain continuous bronchodilation and clear respiratory cilia."
         }
-      ]
+      ],
+      "simple_name": "Asthma / Bronchial Allergy (दमा / सांस फूलना व घरघराहट)",
+      "layman_explanation": "Airways swell, narrow, and produce excess mucus in response to triggers like dust, cold air, or pollen.",
+      "symptoms": [
+        "Wheezing or whistling sound when breathing out",
+        "Night-time or early morning coughing fits",
+        "Sudden chest tightness and breathlessness"
+      ],
+      "search_tags": "asthma, dama, breathing problem, wheezing, cough, sans ki takleef, khasi"
     },
     {
       "disease_name": "Bronchiectasis",
@@ -1896,7 +2144,15 @@
           "specific_dosage": "15-20 ml twice a day with equal amount of water.",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Widened Airways & Chronic Phlegm Cough (सांस की नलियों का फैलाव व कफ)",
+      "layman_explanation": "Permanent widening and scarring of bronchi that prevents lungs from clearing mucus naturally.",
+      "symptoms": [
+        "Daily coughing up large amounts of foul/colored phlegm",
+        "Recurrent chest infections and wheezing",
+        "Fatigue and breathlessness"
+      ],
+      "search_tags": "phlegm, mucus cough, chest infection, balgam, khasi, lungs"
     },
     {
       "disease_name": "Interstitial Lung Disease",
@@ -1968,7 +2224,15 @@
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution.",
           "rationale": "Provides multivitamin support for general weakness and chronic disease."
         }
-      ]
+      ],
+      "simple_name": "Stiff Lung Tissue & Dry Cough (फेफड़ों में कड़ापन व सूखी खांसी)",
+      "layman_explanation": "Broad group of disorders that cause progressive scarring of lung tissue between the air sacs.",
+      "symptoms": [
+        "Persistent dry, hacking cough",
+        "Breathlessness even while resting or talking",
+        "Fingertip clubbing and chest discomfort"
+      ],
+      "search_tags": "lung stiffness, dry cough, sukhi khasi, sans fulna, lungs"
     },
     {
       "disease_name": "Pulmonary Fibrosis",
@@ -2034,7 +2298,15 @@
           "specific_dosage": "15-20 ml twice a day with equal amount of water.",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Lung Tissue Scarring (फेफड़ों में जाला या सिकुड़न)",
+      "layman_explanation": "Lungs become scarred and thickened over time, severely restricting oxygen delivery to the bloodstream.",
+      "symptoms": [
+        "Rapid, shallow breathing and breathlessness",
+        "Dry cough that does not improve",
+        "Aching muscles, joints, and unexplained weight loss"
+      ],
+      "search_tags": "lung fibrosis, lung scarring, breathing difficulty, sans fulna, lungs"
     },
     {
       "disease_name": "Chronic Bronchitis",
@@ -2110,7 +2382,15 @@
           "ingredients": "5 types of Tulsi",
           "dosage": "2-3 drops in warm water or herbal tea, taken 2-3 times daily to maintain continuous bronchodilation and clear respiratory cilia."
         }
-      ]
+      ],
+      "simple_name": "Long-Term Chest Cough & Phlegm (पुरानी खांसी और बलगम)",
+      "layman_explanation": "Ongoing irritation and inflammation of the mucous membranes in the bronchial passages.",
+      "symptoms": [
+        "Persistent daily cough producing yellow/green mucus",
+        "Chest congestion and mild wheezing",
+        "Frequent winter respiratory infections"
+      ],
+      "search_tags": "chronic bronchitis, cough, phlegm, balgam wali khasi, chest congestion"
     },
     {
       "disease_name": "Emphysema",
@@ -2176,7 +2456,15 @@
           "specific_dosage": "15-20 ml twice a day with equal amount of water.",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Damaged Air Sacs in Lungs (फेफड़ों की वायु थैलियों का नुकसान)",
+      "layman_explanation": "The inner walls of the lungs' air sacs (alveoli) weaken and rupture, creating larger air spaces that trap stale air.",
+      "symptoms": [
+        "Progressive shortness of breath with mild effort",
+        "Inability to exhale fully",
+        "Barrel-shaped chest and fatigue"
+      ],
+      "search_tags": "emphysema, lungs, breathing problem, sans fulna"
     },
     {
       "disease_name": "Sleep Apnea",
@@ -2236,7 +2524,15 @@
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
         }
       ],
-      "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine or prescribed CPAP therapy. Supplements do not replace CPAP machines or Pulmonologist evaluation."
+      "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine or prescribed CPAP therapy. Supplements do not replace CPAP machines or Pulmonologist evaluation.",
+      "simple_name": "Night Snoring & Breathing Stops During Sleep (सोते समय खर्राटे व सांस रुकना)",
+      "layman_explanation": "Throat muscles relax and temporarily block the airway during sleep, depriving the brain of oxygen.",
+      "symptoms": [
+        "Loud, persistent snoring",
+        "Sudden gasping or choking awakenings at night",
+        "Morning dry mouth, headaches and severe daytime sleepiness"
+      ],
+      "search_tags": "sleep apnea, snoring, kharrate, neend me sans rukna, sleep, thakan"
     },
     {
       "disease_name": "Chronic Sinusitis",
@@ -2308,7 +2604,15 @@
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution.",
           "rationale": "Synergistic for supporting immunity against chronic infections."
         }
-      ]
+      ],
+      "simple_name": "Sinus Infection & Blocked Nose (साइनस / बंद नाक / सिर दर्द)",
+      "layman_explanation": "The cavities around nasal passages remain inflamed and blocked for 12 weeks or longer.",
+      "symptoms": [
+        "Thick, discolored nasal discharge & blocked nostrils",
+        "Pain, pressure and swelling around eyes, cheeks and forehead",
+        "Reduced sense of smell and taste"
+      ],
+      "search_tags": "sinus, sinusitis, blocked nose, runny nose, sir dard, band naak, cold"
     }
   ],
   "Gastrointestinal": [
@@ -2380,7 +2684,15 @@
           "dosage": "15 ml (or 1 tablet) twice daily exactly 20 minutes before meals. The mucilaginous/hepatoprotective properties coat and protect the gastric/hepatic lining before food digestion begins.",
           "rationale": "Excellent for soothing and healing the mucosal lining of the esophagus and stomach."
         }
-      ]
+      ],
+      "simple_name": "Severe Acidity & Heartburn (एसिडिटी, सीने में जलन, खट्टी डकार)",
+      "layman_explanation": "Stomach acid and digestive juices frequently flow backward into the food pipe (esophagus).",
+      "symptoms": [
+        "Burning sensation in chest after meals (Heartburn)",
+        "Sour or acidic burps and food regurgitation",
+        "Bloating, nausea and lump sensation in throat"
+      ],
+      "search_tags": "acidity, gerd, heartburn, acid reflux, gas, chest burning, khatti dakar, seene me jalan, pet me gas"
     },
     {
       "disease_name": "Peptic Ulcer Disease",
@@ -2450,7 +2762,15 @@
           "dosage": "15 ml (or 1 tablet) twice daily exactly 20 minutes before meals. The mucilaginous/hepatoprotective properties coat and protect the gastric/hepatic lining before food digestion begins.",
           "rationale": "Highly synergistic for healing mucosal dryness and stomach ulcers."
         }
-      ]
+      ],
+      "simple_name": "Stomach Ulcer & Burning Pain (पेट का छाला / अल्सर और जलन)",
+      "layman_explanation": "Painful sores on the protective lining of the stomach or first part of small intestine.",
+      "symptoms": [
+        "Burning stomach pain, especially on empty stomach",
+        "Feeling uncomfortably full or bloated quickly",
+        "Heartburn, nausea and dark stools"
+      ],
+      "search_tags": "stomach ulcer, ulcer, pet me chhale, acidity, stomach burning, pet dard"
     },
     {
       "disease_name": "Irritable Bowel Syndrome (IBS)",
@@ -2516,7 +2836,15 @@
           "specific_dosage": "15-20 ml twice daily with equal amount of water after meals.",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "IBS / Spastic Colon & Loose Stool/Gas (आईबीएस / बार-बार दस्त या कब्ज, पेट में मरोड़)",
+      "layman_explanation": "Functional gut disorder causing abdominal pain, cramping, bloating, and irregular bowel habits.",
+      "symptoms": [
+        "Stomach cramps and pain relieved after passing stool",
+        "Alternating bouts of diarrhea and constipation",
+        "Excessive gas, bloating and sudden urge for toilet"
+      ],
+      "search_tags": "ibs, irritable bowel, pet me marod, dast, loose motion, kabz, gas, digestion"
     },
     {
       "disease_name": "Inflammatory Bowel Disease (IBD)",
@@ -2580,7 +2908,15 @@
           "specific_dosage": "15-20 ml twice daily with equal amount of water after meals.",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Chronic Intestine Swelling (आंतों की गंभीर सूजन)",
+      "layman_explanation": "Chronic, autoimmune-mediated inflammation of parts of the digestive tract.",
+      "symptoms": [
+        "Persistent watery or bloody diarrhea",
+        "Abdominal pain and painful cramping",
+        "Unintended weight loss and low energy"
+      ],
+      "search_tags": "ibd, intestine swelling, diarrhea, aanto me sujan, pet dard"
     },
     {
       "disease_name": "Crohn's Disease",
@@ -2652,7 +2988,15 @@
           "dosage": "15 ml (or 1 tablet) twice daily exactly 20 minutes before meals. The mucilaginous/hepatoprotective properties coat and protect the gastric/hepatic lining before food digestion begins.",
           "rationale": "Synergistic for healing ulcers and soothing gastrointestinal mucous membranes."
         }
-      ]
+      ],
+      "simple_name": "Deep Intestine Ulcers & Cramping (आंतों में गहरे छाले / क्रोहन रोग)",
+      "layman_explanation": "Inflammatory bowel disease that causes deep inflammation affecting all layers of the intestinal wall.",
+      "symptoms": [
+        "Severe abdominal pain and frequent diarrhea",
+        "Blood in stool and anal fissures",
+        "Weight loss, fever, mouth ulcers and fatigue"
+      ],
+      "search_tags": "crohn, intestine ulcer, blood in stool, pet dard, diarrhea"
     },
     {
       "disease_name": "Ulcerative Colitis",
@@ -2722,7 +3066,15 @@
           "dosage": "15 ml (or 1 tablet) twice daily exactly 20 minutes before meals. The mucilaginous/hepatoprotective properties coat and protect the gastric/hepatic lining before food digestion begins.",
           "rationale": "Highly effective for healing intestinal ulcers and supporting the mucous membranes."
         }
-      ]
+      ],
+      "simple_name": "Bleeding Colon Ulcers (बड़ी आंत में छाले व शौच में खून)",
+      "layman_explanation": "Long-term inflammation and ulcers on the inner lining of the large intestine (colon) and rectum.",
+      "symptoms": [
+        "Frequent bloody diarrhea with pus/mucus",
+        "Urgent feeling of needing to pass stool",
+        "Left-sided abdominal cramping and rectal pain"
+      ],
+      "search_tags": "ulcerative colitis, bloody stool, colitis, shauch me khoon, pet dard, aanto me sujan"
     },
     {
       "disease_name": "Non-Alcoholic Fatty Liver Disease (NAFLD)",
@@ -2794,7 +3146,15 @@
           "dosage": "15 ml (or 1 tablet) twice daily exactly 20 minutes before meals. The mucilaginous/hepatoprotective properties coat and protect the gastric/hepatic lining before food digestion begins.",
           "rationale": "Provides excellent support for liver and spleen function and boosts immunity."
         }
-      ]
+      ],
+      "simple_name": "Fatty Liver / Liver Fat (फैटी लीवर / लीवर में चर्बी जमना)",
+      "layman_explanation": "Excess fat accumulates in liver cells, impairing liver metabolism, detoxification, and energy.",
+      "symptoms": [
+        "Feeling sluggish, heavy and constantly fatigued",
+        "Dull ache or discomfort in upper right abdomen",
+        "Poor digestion, bloating and loss of appetite"
+      ],
+      "search_tags": "fatty liver, liver problem, liver fat, nafld, pachan, liver ki bimari"
     },
     {
       "disease_name": "Cirrhosis of Liver",
@@ -2867,7 +3227,15 @@
           "dosage": "15 ml (or 1 tablet) twice daily exactly 20 minutes before meals. The mucilaginous/hepatoprotective properties coat and protect the gastric/hepatic lining before food digestion begins.",
           "rationale": "Indicated for liver/spleen health and immunity."
         }
-      ]
+      ],
+      "simple_name": "Severe Liver Damage & Scarring (लीवर का सिकुड़ना / सिरोसिस)",
+      "layman_explanation": "Extensive scarring of liver tissue that replaces healthy liver cells and blocks internal blood flow.",
+      "symptoms": [
+        "Yellowing of eyes and skin (Jaundice)",
+        "Swelling in belly (Ascites) and swollen legs",
+        "Easy bruising, bleeding and extreme weakness"
+      ],
+      "search_tags": "cirrhosis, liver failure, jaundice, piliya, pet me pani, liver"
     },
     {
       "disease_name": "Gallstones (Cholelithiasis)",
@@ -2933,7 +3301,15 @@
           "specific_dosage": "15-20 ml twice daily with equal amount of water after meals.",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Gallbladder Stone & Upper Stomach Pain (पित्त की थैली की पथरी)",
+      "layman_explanation": "Hardened digestive stone deposits that form inside the gallbladder, causing sudden duct blockage.",
+      "symptoms": [
+        "Sudden, sharp pain in upper right abdomen",
+        "Pain radiating through to right shoulder blade",
+        "Nausea, vomiting and indigestion after fatty meals"
+      ],
+      "search_tags": "gallstones, gallbladder stone, pathri, pitte ki pathri, upper stomach pain, pet dard"
     },
     {
       "disease_name": "Hemorrhoids",
@@ -3003,7 +3379,15 @@
           "ingredients": "Aloe Vera",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Piles / Bawasir & Rectal Pain (बवासीर / मस्से / शौच में दर्द व खून)",
+      "layman_explanation": "Swollen and inflamed veins in the rectum and anus that bleed and ache during bowel movements.",
+      "symptoms": [
+        "Bright red blood on toilet paper or in pan",
+        "Pain, stinging discomfort or itching in anal region",
+        "Hard painful lumps or protruding piles mass"
+      ],
+      "search_tags": "piles, bawasir, hemorrhoids, bleeding in stool, shauch me dard, masse, kabz"
     }
   ],
   "NEUROLOGICAL": [
@@ -3083,7 +3467,15 @@
           "dosage": "1 capsule twice daily with meals to optimize fat-soluble absorption for neurological myelin sheath repair."
         }
       ],
-      "disclaimer": " MUST NOT replace prescribed neurological medications. Consult your neurologist."
+      "disclaimer": " MUST NOT replace prescribed neurological medications. Consult your neurologist.",
+      "simple_name": "Memory Loss / Alzheimer's (याददाश्त खोना / भूलने की बीमारी)",
+      "layman_explanation": "Progressive brain disorder that destroys brain connections, affecting memory, logic, and daily tasks.",
+      "symptoms": [
+        "Forgetting familiar names, recent events, and dates",
+        "Getting lost in familiar neighborhood routes",
+        "Difficulty managing money or following recipes"
+      ],
+      "search_tags": "memory loss, alzheimer, forgetting, dimag ki bimari, yaadash, bhulna"
     },
     {
       "disease_name": "Parkinson's Disease",
@@ -3161,7 +3553,15 @@
           "dosage": "1 capsule twice daily with meals to optimize fat-soluble absorption for neurological myelin sheath repair."
         }
       ],
-      "disclaimer": " MUST NOT replace prescribed neurological medications. Consult your neurologist."
+      "disclaimer": " MUST NOT replace prescribed neurological medications. Consult your neurologist.",
+      "simple_name": "Hand Tremors & Slow Movement / Parkinson's (हाथ-पैर कांपना / कंपन वात)",
+      "layman_explanation": "Dopamine-producing brain cells deteriorate, leading to tremors, stiffness, and balance loss.",
+      "symptoms": [
+        "Rhythmic trembling in hands, fingers or chin while resting",
+        "Slowness of movement (shuffling footsteps)",
+        "Muscle stiffness and soft, monotone voice"
+      ],
+      "search_tags": "parkinson, hand tremor, shaking hands, hath kapna, kampan, chalne me pareshani"
     },
     {
       "disease_name": "Epilepsy",
@@ -3227,7 +3627,15 @@
           "dosage": "1 capsule twice daily with meals to optimize fat-soluble absorption for neurological myelin sheath repair.",
           "rationale": "Supports brain health."
         }
-      ]
+      ],
+      "simple_name": "Seizures / Fits / Epilepsy (मिर्गी के दौरे / झटके आना)",
+      "layman_explanation": "Surges of abnormal electrical activity in the brain that trigger temporary seizures or convulsions.",
+      "symptoms": [
+        "Uncontrollable jerking spasms of arms and legs",
+        "Blank staring spells and loss of awareness",
+        "Temporary confusion or sudden fall to the ground"
+      ],
+      "search_tags": "epilepsy, seizures, fits, mirgi ke daure, jhatke, behosh"
     },
     {
       "disease_name": "Migraine",
@@ -3287,7 +3695,15 @@
           "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Severe One-Sided Headache & Nausea (माइग्रेन / आधे सिर का तेज दर्द)",
+      "layman_explanation": "Intense throbbing, pulsating neurological headache, often on one side, aggravated by light and noise.",
+      "symptoms": [
+        "Severe pulsating pain on one side of head",
+        "Sensitivity to bright light, loud sound and smells",
+        "Nausea, vomiting, and seeing flashes (Aura)"
+      ],
+      "search_tags": "migraine, headache, severe headache, one side head pain, aadhe sir dard, ulti"
     },
     {
       "disease_name": "Peripheral Neuropathy",
@@ -3353,7 +3769,15 @@
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution.",
           "rationale": "Essential for addressing nerve degeneration and supporting overall nerve health."
         }
-      ]
+      ],
+      "simple_name": "Nerve Weakness & Tingling in Limbs (नसों की कमजोरी, झनझनाहट व सुन्नपन)",
+      "layman_explanation": "Damage to the peripheral nerves outside the brain and spine, leading to altered sensations.",
+      "symptoms": [
+        "Pins-and-needles tingling in toes and feet",
+        "Numbness, loss of feeling, or burning sensation",
+        "Weakness in grip or foot drop while walking"
+      ],
+      "search_tags": "nerve weakness, tingling, numbness, jhanjhanahat, nason ki kamzori, pair sunn"
     },
     {
       "disease_name": "Dementia",
@@ -3426,7 +3850,15 @@
           "rationale": "Helps prevent further nerve degeneration associated with dementia."
         }
       ],
-      "disclaimer": " MUST NOT replace prescribed neurological medications. Consult your neurologist."
+      "disclaimer": " MUST NOT replace prescribed neurological medications. Consult your neurologist.",
+      "simple_name": "Cognitive Decline & Memory Impairment (दिमागी कमजोरी व याददाश्त की कमी)",
+      "layman_explanation": "General term for progressive decline in memory, problem-solving, and language abilities.",
+      "symptoms": [
+        "Difficulty holding conversations or finding words",
+        "Confusion about day, time, or location",
+        "Personality changes, mood swings and agitation"
+      ],
+      "search_tags": "dementia, memory loss, brain decline, dimag, bhulne ki aadat"
     },
     {
       "disease_name": "Essential Tremor",
@@ -3504,7 +3936,15 @@
           "dosage": "1 capsule twice daily with meals to optimize fat-soluble absorption for neurological myelin sheath repair."
         }
       ],
-      "disclaimer": " MUST NOT replace prescribed neurological medications. Consult your neurologist."
+      "disclaimer": " MUST NOT replace prescribed neurological medications. Consult your neurologist.",
+      "simple_name": "Shaking Hands During Daily Tasks (हाथ कांपना - चम्मच या पेन पकड़ते समय)",
+      "layman_explanation": "Involuntary rhythmic shaking that happens when performing voluntary actions like writing or drinking.",
+      "symptoms": [
+        "Shaking hands when holding a glass, spoon, or pen",
+        "Nodding head motion ('yes-yes' or 'no-no')",
+        "Quivering voice during talking"
+      ],
+      "search_tags": "hand shaking, tremor, hath kapna, writing shake, kampan"
     },
     {
       "disease_name": "Restless Legs Syndrome",
@@ -3564,7 +4004,15 @@
           "ingredients": "Aloevera, Triphala, Apple, Kokum, Punarnava, Giloy, Ashwagandha, Mulethi, Tulsi, Ginger",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Uncontrollable Urge to Move Legs at Night (रात को पैरों में बेचैनी व दर्द)",
+      "layman_explanation": "Uncomfortable creeping sensation in legs that creates an overwhelming need to move them during rest.",
+      "symptoms": [
+        "Crawling, pulling, or aching feeling deep in calves",
+        "Symptoms worsen in evening/night during bed rest",
+        "Temporary relief only when getting up and walking"
+      ],
+      "search_tags": "restless legs, leg ache at night, pair me bechaini, neend na aana"
     }
   ],
   "PSYCHIATRIC": [
@@ -3626,7 +4074,15 @@
           "ingredients": "Aloevera, Ashwagandha, Safed Musli, Gokhru, Shilajeet, Kesar",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Clinical Depression & Low Mood (डिप्रेशन / उदासी / मन न लगना)",
+      "layman_explanation": "Persistent low mood, loss of interest, and lack of mental energy lasting weeks or months.",
+      "symptoms": [
+        "Overwhelming sadness, emptiness, and hopelessness",
+        "Loss of interest in work, family, or hobbies",
+        "Sleep disruption, exhaustion, and low appetite"
+      ],
+      "search_tags": "depression, sadness, low mood, negative thoughts, udasi, nirasha, man na lagna"
     },
     {
       "disease_name": "Generalized Anxiety Disorder",
@@ -3692,7 +4148,15 @@
           "ingredients": "Pure Brahmi",
           "dosage": "1 tablet (or 15ml) twice daily. Clinical protocol: Take the evening dose exactly 30 minutes before bedtime with warm milk to maximize blood-brain barrier penetration and nervous system sedation."
         }
-      ]
+      ],
+      "simple_name": "Chronic Anxiety, Worry & Restlessness (घबराहट, अत्यधिक चिंता व बेचैनी)",
+      "layman_explanation": "Constant, excessive worry about multiple daily situations, keeping the body in high alert.",
+      "symptoms": [
+        "Feeling on edge, restless, or jumpy constantly",
+        "Rapid pulse, shallow breathing, and sweating",
+        "Muscle tension, stomach upset, and racing thoughts"
+      ],
+      "search_tags": "anxiety, worry, tension, stress, panic, ghabrahat, bechaini, chinta"
     },
     {
       "disease_name": "Bipolar Disorder",
@@ -3752,7 +4216,15 @@
           "ingredients": "Aloevera, Ashwagandha, Safed Musli, Gokhru, Shilajeet, Kesar",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Extreme Mood Swings / Bipolar (मूड का अचानक बदलना - बहुत खुशी या गहरा दुख)",
+      "layman_explanation": "Episodes of emotional highs (mania/hypomania) alternating with periods of deep depression.",
+      "symptoms": [
+        "High energy, racing thoughts, and reduced need for sleep",
+        "Alternating with deep despair, lack of energy and withdrawal",
+        "Impulsive decisions and mood shifts"
+      ],
+      "search_tags": "bipolar, mood swings, mania, depression, mood badalna"
     },
     {
       "disease_name": "Schizophrenia",
@@ -3818,7 +4290,15 @@
           "dosage": "1 capsule twice daily with meals to optimize fat-soluble absorption for neurological myelin sheath repair.",
           "rationale": "Provides essential fatty acids necessary for optimal brain function."
         }
-      ]
+      ],
+      "simple_name": "Severe Mental Disorder & Hallucinations (गंभीर मानसिक रोग / भ्रम व अस्वाभाविक व्यवहार)",
+      "layman_explanation": "Brain disorder where thoughts, emotions, and perception of reality become distorted.",
+      "symptoms": [
+        "Hearing voices or seeing things that aren't there",
+        "False beliefs not based in reality (Delusions)",
+        "Disorganized thinking and emotional withdrawal"
+      ],
+      "search_tags": "schizophrenia, mental illness, delusions, hallucinations, aawaze sunai dena, dimagi bimari"
     },
     {
       "disease_name": "Post-Traumatic Stress Disorder (PTSD)",
@@ -3890,7 +4370,15 @@
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution.",
           "rationale": "Supports brain health."
         }
-      ]
+      ],
+      "simple_name": "Post-Trauma Shock & Nightmare Stress (मानसिक सदमा / डर व पुरानी घटनाओं की चिंता)",
+      "layman_explanation": "Mental health condition triggered by witnessing or experiencing a terrifying traumatic event.",
+      "symptoms": [
+        "Flashbacks or disturbing recurring memories",
+        "Severe nightmares and sleep disturbances",
+        "Avoiding places, people or thoughts linked to the trauma"
+      ],
+      "search_tags": "ptsd, trauma, mental shock, nightmares, sadma, darna"
     },
     {
       "disease_name": "Attention Deficit Hyperactivity Disorder (ADHD)",
@@ -3950,7 +4438,15 @@
           "ingredients": "Brahmi, Shankhpushpi",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Hyperactivity & Lack of Focus (एकाग्रता की कमी / अतिसक्रियता)",
+      "layman_explanation": "Neurodevelopmental condition affecting attention control, impulse regulation, and focus.",
+      "symptoms": [
+        "Trouble focusing or completing routine tasks",
+        "Restlessness, fidgeting and constant movement",
+        "Impulsive actions and disorganization"
+      ],
+      "search_tags": "adhd, focus, concentration, hyperactivity, dhyan na lagna"
     },
     {
       "disease_name": "Insomnia",
@@ -4016,7 +4512,15 @@
           "ingredients": "Pure Ashwagandha Root",
           "dosage": "1 tablet (or 15ml) twice daily. Clinical protocol: Take the evening dose exactly 30 minutes before bedtime with warm milk to maximize blood-brain barrier penetration and nervous system sedation."
         }
-      ]
+      ],
+      "simple_name": "Sleeplessness / Trouble Sleeping (नींद न आना / अनिद्रा की समस्या)",
+      "layman_explanation": "Persistent inability to fall asleep or stay asleep through the night, leading to daytime exhaustion.",
+      "symptoms": [
+        "Lying awake for hours waiting for sleep",
+        "Waking up multiple times through the night",
+        "Waking up exhausted, unrefreshed, and irritable"
+      ],
+      "search_tags": "insomnia, sleeplessness, sleep problem, neend na aana, anidra, rat ko jagna"
     },
     {
       "disease_name": "Panic Disorder",
@@ -4082,7 +4586,15 @@
           "ingredients": "Pure Brahmi",
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
         }
-      ]
+      ],
+      "simple_name": "Sudden Panic & Heart Racing Attacks (अचानक दिल की धड़कन बढ़ना व घबराहट के दौरे)",
+      "layman_explanation": "Sudden unexpected attacks of overwhelming terror with severe physical sensations.",
+      "symptoms": [
+        "Sudden chest pounding, racing pulse, and sweating",
+        "Feeling unable to breathe or choking sensation",
+        "Intense fear of losing control or dying"
+      ],
+      "search_tags": "panic attack, fear, chest racing, dhadkan, achanak ghabrahat, dar lagna"
     },
     {
       "disease_name": "Obsessive-Compulsive Disorder (OCD)",
@@ -4148,7 +4660,15 @@
           "ingredients": "Pure Brahmi",
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
         }
-      ]
+      ],
+      "simple_name": "Repeated Thoughts & Compulsive Habits (वहम / बार-बार हाथ धोना या एक ही सोच आना)",
+      "layman_explanation": "Unwanted intrusive thoughts (obsessions) that drive repeated behavioral rituals (compulsions).",
+      "symptoms": [
+        "Excessive fear of germs driving repetitive hand washing",
+        "Repeatedly checking locks, stoves, or switches",
+        "Needing items arranged in exact symmetrical order"
+      ],
+      "search_tags": "ocd, obsessive, repeated habits, hath dhona, veham"
     }
   ],
   "Musculoskeletal": [
@@ -4207,7 +4727,15 @@
           "ingredients": "Nilgiri, Kapoor, Til Oil",
           "dosage": "2-3 drops diluted in 50ml of warm water, twice daily to ensure optimal systemic distribution."
         }
-      ]
+      ],
+      "simple_name": "Knee & Joint Pain / Bone Friction (घुटनों और जोड़ों का दर्द / गठिया / घिसाव)",
+      "layman_explanation": "Cushioning cartilage inside joints wears away over time, causing bone friction, stiffness and aching pain.",
+      "symptoms": [
+        "Knee pain when walking, climbing stairs or sitting down",
+        "Morning joint stiffness lasting 15-30 minutes",
+        "Crackling/popping sound (crepitus) in knees"
+      ],
+      "search_tags": "joint pain, knee pain, osteoarthritis, arthritis, gathiya, ghutno ka dard, jodo ka dard, swelling"
     },
     {
       "disease_name": "Osteoporosis",
@@ -4257,7 +4785,15 @@
           "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Mulethi, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Weak & Brittle Bones (हड्डियों की कमजोरी व खोखलापन)",
+      "layman_explanation": "Bones lose density and mineral structure, becoming porous and prone to fractures from mild falls.",
+      "symptoms": [
+        "Back pain from minor vertebral compressions",
+        "Gradual loss of height and forward stooped posture",
+        "Bone fractures from minimal impact"
+      ],
+      "search_tags": "osteoporosis, weak bones, brittle bones, haddi kamjor, haddiyo ka dard, fracture"
     },
     {
       "disease_name": "Ankylosing Spondylitis",
@@ -4324,7 +4860,15 @@
           "ingredients": "Nilgiri, Kapoor, Til Oil",
           "dosage": "2-3 drops diluted in 50ml of warm water, twice daily to ensure optimal systemic distribution."
         }
-      ]
+      ],
+      "simple_name": "Spine Stiffness & Back Arthritis (रीढ़ की हड्डी में अकड़न व दर्द)",
+      "layman_explanation": "Inflammatory arthritis affecting the spine vertebrae, leading to fusion and rigid posture over time.",
+      "symptoms": [
+        "Severe morning lower back and hip stiffness",
+        "Pain that improves with movement and worsens with rest",
+        "Difficulty turning neck or bending back"
+      ],
+      "search_tags": "ankylosing spondylitis, spine stiffness, back pain, kamar akadna, reedh ki haddi"
     },
     {
       "disease_name": "Fibromyalgia",
@@ -4380,7 +4924,15 @@
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution.",
           "rationale": "Helps manage severe stress and neurological fatigue common in fibromyalgia."
         }
-      ]
+      ],
+      "simple_name": "Full Body Muscle Pain & Fatigue (पूरे शरीर में दर्द, मांसपेशियों में खिंचाव व थकान)",
+      "layman_explanation": "Disorder characterized by widespread musculoskeletal pain accompanied by fatigue and sleep issues.",
+      "symptoms": [
+        "Widespread aching pain across entire body",
+        "Tender trigger points on neck, shoulders, hips",
+        "Waking up exhausted despite full sleep"
+      ],
+      "search_tags": "fibromyalgia, body pain, muscle pain, chronic fatigue, pure sharir me dard, thakan"
     },
     {
       "disease_name": "Cervical Spondylosis",
@@ -4447,7 +4999,15 @@
           "ingredients": "Nilgiri, Kapoor, Til Oil",
           "dosage": "2-3 drops diluted in 50ml of warm water, twice daily to ensure optimal systemic distribution."
         }
-      ]
+      ],
+      "simple_name": "Neck Pain & Cervical Nerve Pinch (गर्दन का दर्द / सर्वाइकल / चक्कर आना)",
+      "layman_explanation": "Wear and tear of spinal discs in the neck causing nerve irritation, neck stiffness, and dizzy spells.",
+      "symptoms": [
+        "Neck pain radiating down into shoulders and arms",
+        "Tingling, numbness, or weakness in fingers/hands",
+        "Dizziness when turning head or looking up/down"
+      ],
+      "search_tags": "cervical, neck pain, cervical spondylosis, g गर्दन का दर्द, chakkar, hath me dard"
     },
     {
       "disease_name": "Lumbar Spondylosis",
@@ -4502,7 +5062,15 @@
           "ingredients": "Nilgiri, Kapoor, Til Oil",
           "dosage": "2-3 drops diluted in 50ml of warm water, twice daily to ensure optimal systemic distribution."
         }
-      ]
+      ],
+      "simple_name": "Lower Back Pain / Lumbar Strain (कमर दर्द / रीढ़ के निचले हिस्से का दर्द)",
+      "layman_explanation": "Degeneration of lower spine discs and joints causing chronic lower back ache and nerve pressure.",
+      "symptoms": [
+        "Lower back ache that worsens after prolonged sitting/standing",
+        "Stiffness in lower spine upon getting out of bed",
+        "Pain radiating into buttocks and upper thighs"
+      ],
+      "search_tags": "lumbar, lower back pain, kamar dard, back pain, spine, baithne me dard"
     },
     {
       "disease_name": "Chronic Low Back Pain",
@@ -4552,7 +5120,15 @@
           "ingredients": "Bhringraja, Amla, Brahmi, Bhui Amla, Giloy, Nagakesar, Punarnava, Mulethi, Vidarikanda, Tulsi, Arjuna, Neem, Laung, Haldi",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Long-Term Back Pain & Sciatica (पुरानी कमर दर्द / सायटिका का दर्द)",
+      "layman_explanation": "Persistent back pain lasting over 3 months, often due to disc bulge, sciatica, or ligament strain.",
+      "symptoms": [
+        "Constant dull ache or sharp spasms in lower back",
+        "Electric shock-like pain shooting down one leg (Sciatica)",
+        "Difficulty standing upright without discomfort"
+      ],
+      "search_tags": "back pain, sciatica, lumbar, kamar dard, sayatika, pair me dard"
     },
     {
       "disease_name": "Gouty Arthritis",
@@ -4608,7 +5184,15 @@
           "dosage": "1 tablet/capsule (or 15ml) twice daily immediately after meals. Taking post-meal ensures maximum assimilation of minerals and fat-soluble curcuminoids into the joint synovium.",
           "rationale": "Synergistic for reducing joint inflammation associated with arthritis."
         }
-      ]
+      ],
+      "simple_name": "Uric Acid & Big Toe Joint Pain (यूरिक एसिड / पैर के अंगूठे में तेज दर्द व सूजन)",
+      "layman_explanation": "Uric acid crystals accumulate in joint fluids, triggering sudden severe attacks of inflammation.",
+      "symptoms": [
+        "Sudden intense throbbing pain in big toe joint (often at night)",
+        "Joint turns bright red, swollen, hot and tender to touch",
+        "Inability to wear shoes or bear weight on foot"
+      ],
+      "search_tags": "gout, uric acid, toe pain, joint pain, uric acid badhna, anguthe me sujan"
     },
     {
       "disease_name": "Psoriatic Arthritis",
@@ -4686,7 +5270,15 @@
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability.",
           "rationale": "Highly synergistic for supporting skin health and mucous membranes."
         }
-      ]
+      ],
+      "simple_name": "Joint Pain with Skin Psoriasis (सोरायसिस के साथ जोड़ों का दर्द)",
+      "layman_explanation": "Inflammatory arthritis affecting joints in individuals suffering from the skin disease psoriasis.",
+      "symptoms": [
+        "Swollen sausage-like fingers and toes (Dactylitis)",
+        "Heel and sole of foot pain (Achilles tendon pain)",
+        "Joint stiffness combined with scaly red skin patches"
+      ],
+      "search_tags": "psoriatic arthritis, psoriasis joint, swelling fingers, skin and joint"
     }
   ],
   "Autoimmune": [
@@ -4756,7 +5348,15 @@
           "dosage": "1 tablet/capsule (or 15ml) twice daily immediately after meals. Taking post-meal ensures maximum assimilation of minerals and fat-soluble curcuminoids into the joint synovium."
         }
       ],
-      "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine. Do not stop immunosuppressants. NEVER replace standard DMARDs, biologics, or immunosuppressants. These are purely adjunctive."
+      "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine. Do not stop immunosuppressants. NEVER replace standard DMARDs, biologics, or immunosuppressants. These are purely adjunctive.",
+      "simple_name": "Severe Joint Swelling & Pain (रूमेटाइड गठिया / जोड़ों की सूजन व जकड़न)",
+      "layman_explanation": "Autoimmune disease where body defenses attack the lining of joints, causing painful swelling on both sides.",
+      "symptoms": [
+        "Warm, swollen, tender joints on both hands/feet equally",
+        "Morning stiffness lasting over 1 hour",
+        "Finger joint deformities and chronic fatigue"
+      ],
+      "search_tags": "rheumatoid arthritis, severe arthritis, gathiya, hath paon me sujan, morning stiffness"
     },
     {
       "disease_name": "Systemic Lupus Erythematosus (SLE)",
@@ -4812,7 +5412,15 @@
           "dosage": "1 tablet (or 15ml) twice daily on an empty stomach to ensure systemic blood purification (Rakta Shodhana) and immune modulation without interference from digestive chyme."
         }
       ],
-      "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine. Do not stop immunosuppressants. NEVER replace standard DMARDs, biologics, or immunosuppressants. These are purely adjunctive."
+      "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine. Do not stop immunosuppressants. NEVER replace standard DMARDs, biologics, or immunosuppressants. These are purely adjunctive.",
+      "simple_name": "Lupus / Full Body Autoimmune Disorder (ल्यूपस / शरीर में सूजन, चेहरे पर तितलीनुमा चकत्ते)",
+      "layman_explanation": "Autoimmune disease where the immune system attacks multiple tissues including skin, joints, and kidneys.",
+      "symptoms": [
+        "Butterfly-shaped rash across bridge of nose and cheeks",
+        "Joint pain, swelling, and chronic fatigue",
+        "Sunlight sensitivity, mouth ulcers and low-grade fevers"
+      ],
+      "search_tags": "lupus, sle, butterfly rash, autoimmune, jodo me dard, chehre par daag"
     },
     {
       "disease_name": "Sjogren's Syndrome",
@@ -4853,7 +5461,15 @@
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
         }
       ],
-      "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine. Do not stop immunosuppressants. NEVER replace standard DMARDs, biologics, or immunosuppressants. These are purely adjunctive."
+      "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine. Do not stop immunosuppressants. NEVER replace standard DMARDs, biologics, or immunosuppressants. These are purely adjunctive.",
+      "simple_name": "Dry Mouth & Dry Eyes (मुंह और आँखों में गंभीर सूखापन)",
+      "layman_explanation": "Autoimmune disorder that primarily targets moisture-producing tear and saliva glands.",
+      "symptoms": [
+        "Severe dry, burning, or gritty feeling in eyes",
+        "Dry mouth making swallowing dry food difficult",
+        "Swollen salivary glands and joint aches"
+      ],
+      "search_tags": "sjogren, dry eyes, dry mouth, aankh me jalan, muh me sukha pan"
     },
     {
       "disease_name": "Multiple Sclerosis",
@@ -4911,7 +5527,15 @@
           "rationale": "Supports brain health and reduces central nervous system inflammation."
         }
       ],
-      "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine. Do not stop immunosuppressants. NEVER replace standard DMARDs, biologics, or immunosuppressants. These are purely adjunctive."
+      "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine. Do not stop immunosuppressants. NEVER replace standard DMARDs, biologics, or immunosuppressants. These are purely adjunctive.",
+      "simple_name": "Nerve Sheath Damage & Mobility Difficulty (मल्टीपल स्केलेरोसिस / नसों की क्षति व चलने में कठिनाई)",
+      "layman_explanation": "Immune system strips the protective myelin coating around nerves in the brain and spinal cord.",
+      "symptoms": [
+        "Numbness, weakness or tingling in one or more limbs",
+        "Electric-shock sensations occurring with neck movement",
+        "Blurred vision, balance issues and extreme fatigue"
+      ],
+      "search_tags": "multiple sclerosis, ms, nerve damage, balance problem, chalne me dikkat"
     },
     {
       "disease_name": "Myasthenia Gravis",
@@ -4968,7 +5592,15 @@
           "rationale": "Synergistic for combating muscle wasting and neurological fatigue."
         }
       ],
-      "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine. Do not stop immunosuppressants. NEVER replace standard DMARDs, biologics, or immunosuppressants. These are purely adjunctive."
+      "disclaimer": " CRITICAL: Do Not Replace Allopathic Medicine. Do not stop immunosuppressants. NEVER replace standard DMARDs, biologics, or immunosuppressants. These are purely adjunctive.",
+      "simple_name": "Severe Muscle Fatigue & Drooping Eyelids (मांसपेशियों की अत्यधिक कमजोरी / पलकें झुकना)",
+      "layman_explanation": "Breakdown in normal communication between nerves and muscles, causing rapid muscle fatigue.",
+      "symptoms": [
+        "Drooping of one or both eyelids (Ptosis)",
+        "Double vision and difficulty making facial expressions",
+        "Difficulty chewing, swallowing, or holding up the head"
+      ],
+      "search_tags": "myasthenia, drooping eyelid, muscle weakness, weakness, palken jhukna"
     }
   ],
   "Renal & Genitourinary Diseases": [
@@ -5048,7 +5680,15 @@
           "dosage": "15-20 ml twice daily on an empty stomach with plenty of water. Clinical note: Maintain daytime hydration to facilitate safe diuretic clearance without stressing the nephrons."
         }
       ],
-      "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain."
+      "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain.",
+      "simple_name": "Kidney Weakness & High Creatinine (किडनी की बीमारी / यूरिया-क्रिएटिनिन बढ़ना)",
+      "layman_explanation": "Gradual long-term decline in kidneys' ability to filter metabolic toxins and excess fluid from blood.",
+      "symptoms": [
+        "Swelling in feet, ankles, legs and puffy morning eyes",
+        "Loss of appetite, nausea, and metallic taste in mouth",
+        "High creatinine/urea levels and fatigue"
+      ],
+      "search_tags": "kidney failure, ckd, creatinine, urea, kidney problem, gurda, pair me sujan"
     },
     {
       "disease_name": "Polycystic Kidney Disease",
@@ -5119,7 +5759,15 @@
           "dosage": "15-20 ml strictly on an empty stomach (30-45 minutes before meals) with an equal volume of lukewarm water to maximize metabolic absorption and glycemic control."
         }
       ],
-      "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain."
+      "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain.",
+      "simple_name": "Kidney Cysts / Genetic Kidney Swelling (गुर्दे में गांठें / सिस्ट की समस्या)",
+      "layman_explanation": "Genetic disorder where numerous fluid-filled non-cancerous cysts develop and enlarge in the kidneys.",
+      "symptoms": [
+        "High blood pressure and back or flank pain",
+        "Blood in urine (hematuria) and kidney stones",
+        "Enlarged abdomen and recurring urinary infections"
+      ],
+      "search_tags": "polycystic kidney, kidney cysts, gurde me gaanth, flank pain"
     },
     {
       "disease_name": "Nephrotic Syndrome",
@@ -5179,7 +5827,15 @@
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
       ],
-      "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain."
+      "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain.",
+      "simple_name": "Protein Leak in Urine & Body Swelling (पेशाब में प्रोटीन निकलना / पूरे शरीर में सूजन)",
+      "layman_explanation": "Kidney disorder causing the body to excrete too much protein in the urine, leading to fluid accumulation.",
+      "symptoms": [
+        "Severe swelling (edema), especially around eyes and in feet",
+        "Foamy or bubbly appearance of urine",
+        "Weight gain from fluid retention and fatigue"
+      ],
+      "search_tags": "nephrotic, protein in urine, swelling, peshab me jhag, sujan"
     },
     {
       "disease_name": "Glomerulonephritis",
@@ -5239,7 +5895,15 @@
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
       ],
-      "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain."
+      "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain.",
+      "simple_name": "Kidney Filter Inflammation (गुर्दे की छलनी में सूजन / पेशाब में खून)",
+      "layman_explanation": "Inflammation of the tiny filters (glomeruli) in the kidneys that clean waste and excess fluid.",
+      "symptoms": [
+        "Pink, brown or cola-colored urine from red blood cells",
+        "Foamy urine due to excess protein",
+        "High blood pressure and swelling in face/legs"
+      ],
+      "search_tags": "glomerulonephritis, kidney inflammation, blood in urine, peshab me khoon"
     },
     {
       "disease_name": "Benign Prostatic Hyperplasia (BPH)",
@@ -5300,7 +5964,15 @@
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
         }
       ],
-      "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain."
+      "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain.",
+      "simple_name": "Enlarged Prostate & Urine Flow Problem (प्रोस्टेट बढ़ना / पेशाब रुक-रुक कर आना)",
+      "layman_explanation": "Non-cancerous enlargement of the prostate gland in men that narrows the urethra and slows urine stream.",
+      "symptoms": [
+        "Frequent or urgent need to urinate, especially at night",
+        "Weak, interrupted, or dribbling urine stream",
+        "Difficulty starting urination and feeling bladder not empty"
+      ],
+      "search_tags": "prostate, bph, urine blockage, peshab me dikkat, rat ko peshab, prostate gland"
     },
     {
       "disease_name": "Chronic Prostatitis",
@@ -5356,7 +6028,15 @@
           "rationale": "Highly synergistic for supporting prostate health and immunity."
         }
       ],
-      "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain."
+      "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain.",
+      "simple_name": "Prostate Swelling & Pelvic Pain (प्रोस्टेट की सूजन / पेल्विक दर्द व पेशाब में परेशानी)",
+      "layman_explanation": "Ongoing inflammation or infection of the prostate gland causing pelvic and genital discomfort.",
+      "symptoms": [
+        "Pain in groin, pelvic area, or lower back",
+        "Painful or burning urination and ejaculation",
+        "Urgent and frequent need to urinate"
+      ],
+      "search_tags": "prostatitis, prostate pain, pelvic pain, peshab me jalan, purush takleef"
     },
     {
       "disease_name": "Endometriosis",
@@ -5406,7 +6086,15 @@
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
       ],
-      "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain."
+      "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain.",
+      "simple_name": "Severe Period Cramps & Pelvic Pain (माहवारी में असहनीय दर्द / एंडोमेट्रियोसिस)",
+      "layman_explanation": "Tissue similar to the lining of the uterus grows outside the uterus on ovaries and pelvic walls.",
+      "symptoms": [
+        "Severe, debilitating menstrual cramps",
+        "Chronic lower back and pelvic pain",
+        "Pain during intercourse and heavy menstrual bleeding"
+      ],
+      "search_tags": "endometriosis, period pain, severe cramps, periods me dard, mahwari"
     },
     {
       "disease_name": "Uterine Fibroids",
@@ -5466,7 +6154,15 @@
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
       ],
-      "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain."
+      "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain.",
+      "simple_name": "Uterus Lumps / Rasoli (गर्भाशय में रसौली / गांठ व अधिक रक्तस्राव)",
+      "layman_explanation": "Non-cancerous muscular tumors that grow in or on the wall of the uterus in reproductive-age women.",
+      "symptoms": [
+        "Heavy or prolonged menstrual bleeding",
+        "Pelvic pressure, heaviness or lower abdominal fullness",
+        "Frequent urination and lower backache"
+      ],
+      "search_tags": "fibroids, uterus lump, rasoli, heavy periods, pet me rasoli, mahwari"
     },
     {
       "disease_name": "Chronic Pelvic Pain",
@@ -5526,7 +6222,15 @@
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
       ],
-      "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain."
+      "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain.",
+      "simple_name": "Lower Abdominal & Pelvic Ache (पेड़ू / निचले पेट में लगातार दर्द)",
+      "layman_explanation": "Persistent pain in the lower abdomen or pelvic area lasting for 6 months or longer.",
+      "symptoms": [
+        "Constant or intermittent dull pelvic ache",
+        "Sharp cramps or pressure in lower abdomen",
+        "Pain worsened by prolonged sitting or intercourse"
+      ],
+      "search_tags": "pelvic pain, lower belly pain, pedu me dard, periods, pelvic"
     },
     {
       "disease_name": "Erectile Dysfunction",
@@ -5543,7 +6247,7 @@
         },
         {
           "product_name": "TESTOFAST TABLET",
-          "ingredients": "Ginseng Extract 10% (Panax ginseng), Musali Safed Extract 25% (Chlorophytum borivilianum), Ashwagandha Extract 10% (Withania somnifera), Brihat Gokshura Extract 15% (Pedalium murex Linn), Kawach Extract 50% (Mucuna pruriens), Ginkgo Biloba Extract 24% (Ginkgo biloba), Saffron-Gesar Extract 5% (Crocus sativus), Black Pepper Extract\u2013Bioperine (Piper nigrum).",
+          "ingredients": "Ginseng Extract 10% (Panax ginseng), Musali Safed Extract 25% (Chlorophytum borivilianum), Ashwagandha Extract 10% (Withania somnifera), Brihat Gokshura Extract 15% (Pedalium murex Linn), Kawach Extract 50% (Mucuna pruriens), Ginkgo Biloba Extract 24% (Ginkgo biloba), Saffron-Gesar Extract 5% (Crocus sativus), Black Pepper Extract–Bioperine (Piper nigrum).",
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
         }
       ],
@@ -5582,7 +6286,7 @@
         },
         {
           "product_name": "TESTOFAST TABLET",
-          "ingredients": "Ginseng Extract 10% (Panax ginseng), Musali Safed Extract 25% (Chlorophytum borivilianum), Ashwagandha Extract 10% (Withania somnifera), Brihat Gokshura Extract 15% (Pedalium murex Linn), Kawach Extract 50% (Mucuna pruriens), Ginkgo Biloba Extract 24% (Ginkgo biloba), Saffron-Gesar Extract 5% (Crocus sativus), Black Pepper Extract\u2013Bioperine (Piper nigrum).",
+          "ingredients": "Ginseng Extract 10% (Panax ginseng), Musali Safed Extract 25% (Chlorophytum borivilianum), Ashwagandha Extract 10% (Withania somnifera), Brihat Gokshura Extract 15% (Pedalium murex Linn), Kawach Extract 50% (Mucuna pruriens), Ginkgo Biloba Extract 24% (Ginkgo biloba), Saffron-Gesar Extract 5% (Crocus sativus), Black Pepper Extract–Bioperine (Piper nigrum).",
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
         },
         {
@@ -5591,7 +6295,15 @@
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
         }
       ],
-      "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain."
+      "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain.",
+      "simple_name": "Male Sexual Weakness & Vitality (पुरुष यौन कमजोरी / ताकत व स्टैमिना की कमी)",
+      "layman_explanation": "Inability to achieve or maintain a firm erection, often due to poor circulation, stress, or nerve health.",
+      "symptoms": [
+        "Difficulty getting an erection when desired",
+        "Difficulty maintaining an erection through intercourse",
+        "Reduced sexual desire, low stamina and energy"
+      ],
+      "search_tags": "erectile dysfunction, ed, male weakness, stamina, purush kamzori, shukranu"
     },
     {
       "disease_name": "Chronic Urinary Tract Infections",
@@ -5657,7 +6369,15 @@
           "rationale": "Provides powerful support against systemic infections and purifies the blood."
         }
       ],
-      "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain."
+      "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain.",
+      "simple_name": "Frequent Urine Infection & Burning (पेशाब में जलन व बार-बार इन्फेक्शन / यूटीआई)",
+      "layman_explanation": "Recurrent bacterial invasion in the bladder or urethra causing burning and painful urination.",
+      "symptoms": [
+        "Strong, burning sensation while urinating",
+        "Constant urge to urinate with small volume",
+        "Cloudy, reddish or strong-smelling urine"
+      ],
+      "search_tags": "uti, urine infection, burning urine, peshab me jalan, urine problem"
     },
     {
       "disease_name": "Overactive Bladder",
@@ -5707,7 +6427,15 @@
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution."
         }
       ],
-      "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain."
+      "disclaimer": " Seek immediate medical attention for red flags such as high fever, hematuria, or excruciating colic pain.",
+      "simple_name": "Frequent Sudden Urge to Urinate (बार-बार और अचानक पेशाब लगना)",
+      "layman_explanation": "Bladder muscles contract involuntarily, creating sudden urgency to pass urine even when not full.",
+      "symptoms": [
+        "Sudden uncontrollable urge to urinate",
+        "Involuntary urine leakage (Urge incontinence)",
+        "Frequent urination (8+ times day and 2+ times night)"
+      ],
+      "search_tags": "overactive bladder, frequent urine, leak urine, peshab bar bar aana"
     }
   ],
   "HEMATOLOGICAL": [
@@ -5784,7 +6512,15 @@
           "ingredients": "Liver support",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Low Blood / Hemoglobin Deficiency (खून की कमी / कमजोरी / थकान)",
+      "layman_explanation": "Body lacks sufficient iron to produce hemoglobin, starving cells and muscles of oxygen.",
+      "symptoms": [
+        "Extreme fatigue, low energy and constant tiredness",
+        "Pale or yellowish skin and brittle fingernails",
+        "Cold hands and feet, dizziness and breathlessness"
+      ],
+      "search_tags": "anemia, low hemoglobin, iron deficiency, khoon ki kami, kamzori, thakan, chakkar"
     },
     {
       "disease_name": "Thalassemia",
@@ -5849,7 +6585,15 @@
           "ingredients": "Blood purifying herbs",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Thalassemia / Low Blood Production (थैलेसीमिया / बार-बार खून चढ़ाने की आवश्यकता)",
+      "layman_explanation": "Genetic blood disorder causing the body to make less hemoglobin and fewer healthy red blood cells.",
+      "symptoms": [
+        "Severe fatigue, weakness and pale skin",
+        "Slow growth in children and bone deformities",
+        "Enlarged spleen and dark urine"
+      ],
+      "search_tags": "thalassemia, low blood, genetic blood, khoon ki kami, hemoglobin"
     },
     {
       "disease_name": "Sickle Cell Anemia",
@@ -5914,7 +6658,15 @@
           "ingredients": "Blood purifying herbs",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Sickle Cell / Abnormal Red Blood Cells (सिकल सेल / जोड़ों में तेज दर्द व खून की कमी)",
+      "layman_explanation": "Red blood cells become rigid and crescent-shaped, getting stuck in small blood vessels.",
+      "symptoms": [
+        "Sudden episodes of severe pain in chest, joints or abdomen ('pain crises')",
+        "Frequent infections and delayed growth",
+        "Chronic anemia, swelling in hands and feet"
+      ],
+      "search_tags": "sickle cell, blood sickle, joint pain crises, khoon ki bimari"
     },
     {
       "disease_name": "Pernicious Anemia",
@@ -5989,7 +6741,15 @@
           "ingredients": "Liver support",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Vitamin B12 Deficiency Anemia (विटामिन B12 की कमी / नसों में कमजोरी व खून की कमी)",
+      "layman_explanation": "Body cannot properly absorb Vitamin B12 from food, leading to faulty red blood cell production.",
+      "symptoms": [
+        "Tingling, numbness or burning in hands and feet",
+        "Smooth, bright red, sore tongue",
+        "Memory lapses, unsteadiness while walking, and fatigue"
+      ],
+      "search_tags": "b12 deficiency, pernicious anemia, tingling, nason ki kamzori, vitamin b12"
     },
     {
       "disease_name": "Aplastic Anemia",
@@ -6049,7 +6809,15 @@
           "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Bone Marrow Blood Deficiency (अस्थि मज्जा में खून न बनना / कमजोरी)",
+      "layman_explanation": "Bone marrow stops producing enough new blood cells (red cells, white cells, and platelets).",
+      "symptoms": [
+        "Fatigue and pale complexion from low red cells",
+        "Frequent, long-lasting infections from low white cells",
+        "Easy bruising, bleeding gums, or nosebleeds from low platelets"
+      ],
+      "search_tags": "aplastic anemia, bone marrow, low platelets, bleeding, khoon na banna"
     },
     {
       "disease_name": "Idiopathic Thrombocytopenic Purpura (ITP)",
@@ -6099,7 +6867,15 @@
           "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Low Platelets & Skin Bruising (प्लेटलेट्स कम होना / त्वचा पर नीले निशान)",
+      "layman_explanation": "Autoimmune disorder where immune system destroys platelets, raising risk of easy bleeding.",
+      "symptoms": [
+        "Easy or excessive bruising (Purpura)",
+        "Superficial bleeding into skin appearing as pinpoint red spots (Petechiae)",
+        "Bleeding from gums or nose, heavy periods"
+      ],
+      "search_tags": "itp, low platelets, bruising, bleeding gums, platelets badhana, neele nishan"
     }
   ],
   "DERMATOLOGICAL": [
@@ -6179,7 +6955,15 @@
           "dosage": "1 tablet (or 15ml) twice daily on an empty stomach to ensure systemic blood purification (Rakta Shodhana) and immune modulation without interference from digestive chyme.",
           "rationale": "Provides blood purification to help clear skin conditions."
         }
-      ]
+      ],
+      "simple_name": "Scaly Red Skin Patches (सोरायसिस / लाल चकत्ते व पपड़ीदार त्वचा)",
+      "layman_explanation": "Skin condition where skin cells multiply too rapidly, forming raised red patches with silvery scales.",
+      "symptoms": [
+        "Thick red patches covered with silvery scales",
+        "Dry, cracked skin that may bleed or itch",
+        "Itching, burning and soreness on elbows, knees, scalp"
+      ],
+      "search_tags": "psoriasis, skin disease, scaly skin, chamdi ki bimari, khujli, red patches"
     },
     {
       "disease_name": "Eczema (Atopic Dermatitis)",
@@ -6251,7 +7035,15 @@
           "dosage": "1 tablet (or 15ml) twice daily on an empty stomach to ensure systemic blood purification (Rakta Shodhana) and immune modulation without interference from digestive chyme.",
           "rationale": "Nourishes the skin and supports healing of dermal tissues."
         }
-      ]
+      ],
+      "simple_name": "Skin Allergy, Dryness & Severe Itching (एग्जिमा / दाद, खाज, खुजली)",
+      "layman_explanation": "Inflammatory skin condition causing dry, itchy, red and irritable skin patches.",
+      "symptoms": [
+        "Intense itching that worsens at night",
+        "Dry, sensitive, raw and cracked skin",
+        "Small raised bumps that ooze fluid when scratched"
+      ],
+      "search_tags": "eczema, skin allergy, itching, khujli, daad, khaaj, dry skin"
     },
     {
       "disease_name": "Vitiligo",
@@ -6323,7 +7115,15 @@
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution.",
           "rationale": "Matches the dietary recommendation for B12 supplementation in Vitiligo."
         }
-      ]
+      ],
+      "simple_name": "White Patches on Skin (सफेद दाग / विटिलिगो / ल्यूकोडर्मा)",
+      "layman_explanation": "Autoimmune destruction of melanin-producing skin cells, causing patches of skin to lose color.",
+      "symptoms": [
+        "Patchy loss of natural skin pigment",
+        "Premature whitening of scalp hair, eyelashes, or eyebrows",
+        "Loss of color inside tissues of mouth and nose"
+      ],
+      "search_tags": "vitiligo, white patches, safed daag, leukoderma, skin color"
     },
     {
       "disease_name": "Acne Vulgaris",
@@ -6395,7 +7195,15 @@
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution.",
           "rationale": "Provides blood purification and is indicated for severe acne."
         }
-      ]
+      ],
+      "simple_name": "Pimples, Acne & Facial Spots (कील-मुंहासे / चेहरे के पिंपल्स व दाग)",
+      "layman_explanation": "Hair follicles become plugged with sebum oil and dead skin cells, causing inflammation and breakouts.",
+      "symptoms": [
+        "Whiteheads, blackheads and tender red bumps",
+        "Pus-filled pimples (pustules) on face, chest or back",
+        "Painful inflammatory cysts and acne scars"
+      ],
+      "search_tags": "acne, pimples, breakouts, spots, keel muhase, chehre ke daag, face pimples"
     },
     {
       "disease_name": "Rosacea",
@@ -6455,7 +7263,15 @@
           "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Facial Redness & Flushing (चेहरे पर लाली व नसों का दिखना)",
+      "layman_explanation": "Chronic skin condition causing blushing, redness, and visible blood vessels across cheeks and nose.",
+      "symptoms": [
+        "Persistent facial redness across cheeks and nose",
+        "Small red pus-filled bumps mimicking acne",
+        "Enlarged visible blood vessels (Telangiectasia) and eye irritation"
+      ],
+      "search_tags": "rosacea, red face, blushing, chehre par laali, face redness"
     },
     {
       "disease_name": "Chronic Urticaria",
@@ -6527,7 +7343,15 @@
           "dosage": "1 tablet (or 15ml) twice daily on an empty stomach to ensure systemic blood purification (Rakta Shodhana) and immune modulation without interference from digestive chyme.",
           "rationale": "Supports immunity and skin health."
         }
-      ]
+      ],
+      "simple_name": "Hives / Sudden Skin Rashes & Itching (पित्ती उछलना / शीतपित्त / लाल चकत्ते)",
+      "layman_explanation": "Allergic skin reaction causing sudden itchy red or skin-colored welts across the body.",
+      "symptoms": [
+        "Batches of red or skin-colored itchy raised welts",
+        "Welts that vary in shape and appear/disappear quickly",
+        "Severe itching, burning or stinging on skin"
+      ],
+      "search_tags": "hives, urticaria, pitti, rashesh, khujli, allergic skin, chakatte"
     },
     {
       "disease_name": "Alopecia Areata",
@@ -6587,7 +7411,15 @@
           "ingredients": "Aloevera (Aloe barbadensis) Leaf Ras",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Patchy Hair Loss / Baldness (बाल झड़ना / गोल-गोल गंजापन / एलोपेसिया)",
+      "layman_explanation": "Autoimmune disorder where hair follicles are attacked, causing circular patches of complete hair loss.",
+      "symptoms": [
+        "Coin-sized round bald patches on scalp or beard",
+        "Sudden excessive hair shedding while brushing",
+        "Thinning hair and receding hairline"
+      ],
+      "search_tags": "alopecia, hair loss, hair fall, baldness, baal jhadna, ganjapan, baal girna"
     },
     {
       "disease_name": "Lichen Planus",
@@ -6660,7 +7492,15 @@
           "rationale": "Supports immunity and aids in healing severe skin conditions."
         }
       ],
-      "disclaimer": " Seek standard medical intervention for severe or acute flare-ups."
+      "disclaimer": " Seek standard medical intervention for severe or acute flare-ups.",
+      "simple_name": "Purple Itchy Skin & Mouth Bumps (लाइकेन प्लेनस / त्वचा व मुंह में बैंगनी दाने)",
+      "layman_explanation": "Inflammatory autoimmune condition characterized by purplish, flat-topped, itchy skin bumps and mouth lesions.",
+      "symptoms": [
+        "Purplish, flat-topped, itchy bumps on wrists, ankles or back",
+        "Lacy white patches inside cheeks or on tongue",
+        "Nail damage and thinning"
+      ],
+      "search_tags": "lichen planus, skin bumps, mouth patches, khujli, chamdi ke daane"
     },
     {
       "disease_name": "Seborrheic Dermatitis",
@@ -6727,7 +7567,15 @@
           "rationale": "Effective for severe skin conditions and eczema."
         }
       ],
-      "disclaimer": " Seek standard medical intervention for severe or acute flare-ups."
+      "disclaimer": " Seek standard medical intervention for severe or acute flare-ups.",
+      "simple_name": "Severe Dandruff & Oily Scalp Flakes (रूसी / सिर में पपड़ी व खुजली / रूसी)",
+      "layman_explanation": "Common skin condition that mainly affects the scalp, causing scaly patches, red skin and stubborn dandruff.",
+      "symptoms": [
+        "Greasy skin covered with flaky white or yellow scales",
+        "Dandruff on scalp, eyebrows, beard or chest",
+        "Redness and itching along hairline and ears"
+      ],
+      "search_tags": "dandruff, seborrheic, rusi, scalp flakes, sir me khujli, oily scalp"
     }
   ],
   "ONCOLOGICAL (supportive/complementary care)": [
@@ -6780,7 +7628,15 @@
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Safed Musali, Asgandh",
           "dosage": "1 tablet/15ml twice daily. Clinical protocol: Must be taken exactly midway between meals (2 hours after, 1 hour before) to ensure maximum cellular uptake for cachexia support without inducing nausea."
         }
-      ]
+      ],
+      "simple_name": "Breast Lump / Cancer Supportive Care (स्तन में गांठ / कैंसर पूरक देखभाल)",
+      "layman_explanation": "Supportive Ayurvedic care to enhance immunity, reduce treatment side-effects, and support cellular health.",
+      "symptoms": [
+        "A breast lump or thickening that feels different from surrounding tissue",
+        "Change in size, shape or appearance of breast",
+        "Fatigue and weakness"
+      ],
+      "search_tags": "breast cancer, breast lump, stan me gaanth, cancer support, immunity"
     },
     {
       "disease_name": "Cervical Cancer",
@@ -6837,7 +7693,15 @@
           "dosage": "1 tablet/15ml twice daily. Clinical protocol: Must be taken exactly midway between meals (2 hours after, 1 hour before) to ensure maximum cellular uptake for cachexia support without inducing nausea.",
           "rationale": "Synergistic multivitamin for addressing general weakness and cachexia."
         }
-      ]
+      ],
+      "simple_name": "Cervical Health / Uterine Cancer Support (गर्भाशय ग्रीवा कैंसर देखभाल)",
+      "layman_explanation": "Complementary Ayurvedic protocol to boost pelvic cellular vitality, immunity, and overall strength.",
+      "symptoms": [
+        "Abnormal vaginal bleeding between periods",
+        "Watery, bloody vaginal discharge with foul odor",
+        "Pelvic pain or pain during intercourse"
+      ],
+      "search_tags": "cervical cancer, cervix, cancer, pelvic bleeding, immunity"
     },
     {
       "disease_name": "Oral Cancer",
@@ -6888,7 +7752,15 @@
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Safed Musali, Asgandh",
           "dosage": "1 tablet/15ml twice daily. Clinical protocol: Must be taken exactly midway between meals (2 hours after, 1 hour before) to ensure maximum cellular uptake for cachexia support without inducing nausea."
         }
-      ]
+      ],
+      "simple_name": "Mouth Sores / Oral Cancer Support (मुंह के छाले / मुख कैंसर देखभाल)",
+      "layman_explanation": "Supportive herbal care for long-standing oral ulcers, tissue healing, and mouth cavity immunity.",
+      "symptoms": [
+        "A persistent mouth sore that does not heal for weeks",
+        "White or red patch on gums, tongue, or lining of mouth",
+        "Difficulty chewing or swallowing"
+      ],
+      "search_tags": "oral cancer, mouth ulcer, muh ka cancer, muh me chhale, cancer"
     },
     {
       "disease_name": "Lung Cancer",
@@ -6945,7 +7817,15 @@
           "dosage": "1 tablet/15ml twice daily. Clinical protocol: Must be taken exactly midway between meals (2 hours after, 1 hour before) to ensure maximum cellular uptake for cachexia support without inducing nausea.",
           "rationale": "Helps manage general weakness and cachexia in oncological conditions."
         }
-      ]
+      ],
+      "simple_name": "Lung Tumor / Lung Cancer Support (फेफड़ों का कैंसर / सांस की तकलीफ)",
+      "layman_explanation": "Herbal support to improve respiratory comfort, reduce coughing, and strengthen vital lung capacity.",
+      "symptoms": [
+        "Persistent cough that doesn't go away",
+        "Coughing up blood, even in small amounts",
+        "Shortness of breath, chest pain, and hoarseness"
+      ],
+      "search_tags": "lung cancer, lung tumor, coughing blood, sans me takleef, cancer"
     },
     {
       "disease_name": "Colorectal Cancer",
@@ -7002,7 +7882,15 @@
           "dosage": "1 tablet/15ml twice daily. Clinical protocol: Must be taken exactly midway between meals (2 hours after, 1 hour before) to ensure maximum cellular uptake for cachexia support without inducing nausea.",
           "rationale": "Provides support for general weakness, cachexia, and chronic diseases."
         }
-      ]
+      ],
+      "simple_name": "Colon & Rectum Cancer Support (बड़ी आंत व मलाशय कैंसर देखभाल)",
+      "layman_explanation": "Supportive herbs to promote healthy digestion, protect intestinal mucosa, and aid vitality.",
+      "symptoms": [
+        "Persistent change in bowel habits (diarrhea or constipation)",
+        "Rectal bleeding or blood in stool",
+        "Persistent abdominal discomfort, gas or cramps"
+      ],
+      "search_tags": "colorectal cancer, colon tumor, aanto ka cancer, stool blood, cancer"
     },
     {
       "disease_name": "Stomach (Gastric) Cancer",
@@ -7053,7 +7941,15 @@
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Safed Musali, Asgandh",
           "dosage": "1 tablet/15ml twice daily. Clinical protocol: Must be taken exactly midway between meals (2 hours after, 1 hour before) to ensure maximum cellular uptake for cachexia support without inducing nausea."
         }
-      ]
+      ],
+      "simple_name": "Stomach Cancer & Severe Indigestion (पेट का कैंसर देखभाल)",
+      "layman_explanation": "Supportive Ayurvedic formulations to soothe gastric lining, boost appetite, and combat wasting.",
+      "symptoms": [
+        "Difficulty swallowing and persistent indigestion",
+        "Feeling bloated after small meals",
+        "Severe stomach pain, nausea, and unintended weight loss"
+      ],
+      "search_tags": "stomach cancer, gastric tumor, pet ka cancer, weight loss, cancer"
     },
     {
       "disease_name": "Prostate Cancer",
@@ -7121,7 +8017,15 @@
           "ingredients": "Pure Shilajit",
           "dosage": "1 tablet/15ml twice daily. Clinical protocol: Must be taken exactly midway between meals (2 hours after, 1 hour before) to ensure maximum cellular uptake for cachexia support without inducing nausea."
         }
-      ]
+      ],
+      "simple_name": "Prostate Tumor / Prostate Cancer Support (प्रोस्टेट कैंसर देखभाल)",
+      "layman_explanation": "Herbal support to manage urinary comfort, prostate cellular health, and male vitality.",
+      "symptoms": [
+        "Difficulty starting urination or weak stream",
+        "Blood in urine or semen",
+        "Bone pain in hips, back or ribs"
+      ],
+      "search_tags": "prostate cancer, prostate tumor, urine difficulty, cancer"
     },
     {
       "disease_name": "Liver Cancer",
@@ -7182,7 +8086,15 @@
           "ingredients": "Amla Juice, Noni Soft Extract, Kokum Soft Extract, Safed Musali, Asgandh",
           "dosage": "1 tablet/15ml twice daily. Clinical protocol: Must be taken exactly midway between meals (2 hours after, 1 hour before) to ensure maximum cellular uptake for cachexia support without inducing nausea."
         }
-      ]
+      ],
+      "simple_name": "Liver Tumor / Liver Cancer Support (लीवर कैंसर देखभाल)",
+      "layman_explanation": "Supportive Ayurvedic hepatoprotective rasayanas to assist liver detox, energy, and appetite.",
+      "symptoms": [
+        "Loss of appetite, nausea and unexplained weight loss",
+        "Upper right abdominal pain and swelling",
+        "Yellow discoloration of skin and eyes (Jaundice)"
+      ],
+      "search_tags": "liver cancer, liver tumor, piliya, jaundice, liver, cancer"
     },
     {
       "disease_name": "Thyroid Cancer",
@@ -7239,7 +8151,15 @@
           "dosage": "1 tablet/15ml twice daily. Clinical protocol: Must be taken exactly midway between meals (2 hours after, 1 hour before) to ensure maximum cellular uptake for cachexia support without inducing nausea.",
           "rationale": "Helps manage general weakness and cachexia in oncological conditions."
         }
-      ]
+      ],
+      "simple_name": "Thyroid Lump & Gland Tumor (थायराइड ग्रंथि की गांठ / कैंसर)",
+      "layman_explanation": "Supportive protocol for thyroid gland cellular rejuvenation, lymph drainage, and hormone balance.",
+      "symptoms": [
+        "A lump or nodule in front of neck",
+        "Changes to voice, including increasing hoarseness",
+        "Difficulty swallowing or breathing"
+      ],
+      "search_tags": "thyroid cancer, thyroid lump, neck nodule, gale me gaanth, thyroid"
     }
   ],
   "INFECTIOUS (CHRONIC)": [
@@ -7320,7 +8240,15 @@
           "ingredients": "Expectorant herbs",
           "dosage": "15 ml twice daily mixed with a small amount of honey (if non-diabetic) or warm water to act as a targeted expectorant for the respiratory tract."
         }
-      ]
+      ],
+      "simple_name": "Chronic TB / Long-Term Chest Infection (टीबी / पुरानी तपेदिक / खांसी-बुखार)",
+      "layman_explanation": "Chronic bacterial infection that primarily attacks the lungs, causing long-term weakness and cough.",
+      "symptoms": [
+        "Coughing that lasts three or more weeks",
+        "Coughing up blood or mucus",
+        "Evening fever, night sweats, and severe weight loss"
+      ],
+      "search_tags": "tuberculosis, tb, chronic cough, khasi, balgam me khoon, bukhar, vajan ghatna"
     },
     {
       "disease_name": "HIV/AIDS (supportive)",
@@ -7371,7 +8299,15 @@
           "ingredients": "Aloevera, Ashwagandha, Akarkara, Vidarikand, Safed Musli, Gokhru",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Low Immunity & Chronic Infection Support (इम्यूनिटी की कमी / रोग प्रतिरोधक क्षमता)",
+      "layman_explanation": "Ayurvedic Rasayana therapy to enhance CD4 vitality, combat opportunistic fatigue, and strengthen stamina.",
+      "symptoms": [
+        "Recurrent long-lasting fevers and night sweats",
+        "Chronic fatigue and rapid weight loss",
+        "Frequent mouth ulcers and repeated infections"
+      ],
+      "search_tags": "hiv, aids, low immunity, immunity booster, kamzori, rasayana"
     },
     {
       "disease_name": "Chronic Hepatitis B",
@@ -7428,7 +8364,15 @@
           "dosage": "15 ml (or 1 tablet) twice daily exactly 20 minutes before meals. The mucilaginous/hepatoprotective properties coat and protect the gastric/hepatic lining before food digestion begins.",
           "rationale": "Synergistic for boosting immunity and supporting liver health."
         }
-      ]
+      ],
+      "simple_name": "Hepatitis B / Chronic Liver Viral Infection (हेपेटाइटिस बी / पुराना पीलिया व लीवर इन्फेक्शन)",
+      "layman_explanation": "Long-term viral infection of the liver that causes chronic inflammation and potential liver damage.",
+      "symptoms": [
+        "Chronic fatigue and mild fever",
+        "Yellowing of skin and whites of eyes (Jaundice)",
+        "Abdominal discomfort, dark urine, and loss of appetite"
+      ],
+      "search_tags": "hepatitis b, liver infection, jaundice, piliya, liver problem"
     },
     {
       "disease_name": "Chronic Hepatitis C",
@@ -7485,7 +8429,15 @@
           "dosage": "15 ml (or 1 tablet) twice daily exactly 20 minutes before meals. The mucilaginous/hepatoprotective properties coat and protect the gastric/hepatic lining before food digestion begins.",
           "rationale": "Supports liver health and boosts immunity against chronic infections."
         }
-      ]
+      ],
+      "simple_name": "Hepatitis C / Liver Infection (हेपेटाइटिस सी / लीवर की वायरल बीमारी)",
+      "layman_explanation": "Viral infection causing chronic inflammation of the liver, leading to fatigue and reduced liver function.",
+      "symptoms": [
+        "Bleeding easily or bruising easily",
+        "Itchy skin and fluid accumulation in belly (Ascites)",
+        "Fatigue, poor appetite, and dark-colored urine"
+      ],
+      "search_tags": "hepatitis c, liver virus, jaundice, liver swelling, liver"
     },
     {
       "disease_name": "Post-COVID-19 Condition (Long COVID)",
@@ -7552,7 +8504,15 @@
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution.",
           "rationale": "Helps overcome general weakness and fatigue from chronic infectious recovery."
         }
-      ]
+      ],
+      "simple_name": "Long COVID Weakness & Fatigue (कोरोना के बाद की कमजोरी, सांस फूलना व थकान)",
+      "layman_explanation": "Lingering symptoms following COVID-19 infection, such as chronic exhaustion, brain fog, and lung weakness.",
+      "symptoms": [
+        "Exhausting fatigue that worsens after physical effort",
+        "Shortness of breath or coughing on mild exertion",
+        "Brain fog, memory lapses, and joint pains"
+      ],
+      "search_tags": "long covid, post covid, corona weakness, sans phoolna, thakan, brain fog"
     },
     {
       "disease_name": "Chronic Amoebiasis",
@@ -7603,7 +8563,15 @@
           "ingredients": "Liver protecting herbs",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Amoebic Dysentery & Stomach Cramps (अमीबा / पेचिश / पेट में मरोड़ व आंव आना)",
+      "layman_explanation": "Persistent parasitic infection of the intestines causing abdominal cramping, mucus in stools, and loose motions.",
+      "symptoms": [
+        "Loose stools containing visible mucus ('Aanv') or blood",
+        "Abdominal cramps, bloating, and gas",
+        "Feeling of incomplete evacuation after passing stool"
+      ],
+      "search_tags": "amoebiasis, dysentery, loose motion, dast, pet me marod, pet me aanv, pachan"
     },
     {
       "disease_name": "Lymphatic Filariasis",
@@ -7660,7 +8628,15 @@
           "ingredients": "Anti-inflammatory herbs",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Elephantiasis / Leg Swelling (हाथीपांव / फाइलेरिया / पैर की भारी सूजन)",
+      "layman_explanation": "Parasitic mosquito-borne infection that blocks lymphatic drainage, causing massive swelling in legs or arms.",
+      "symptoms": [
+        "Severe swelling of legs, feet, or genitals",
+        "Thickened, hardened, pebble-like skin",
+        "Recurring fever episodes and pain in groin lymph nodes"
+      ],
+      "search_tags": "filariasis, elephantiasis, hathipaon, swelling in leg, pair me bhaari sujan"
     }
   ],
   "OPHTHALMOLOGICAL": [
@@ -7728,7 +8704,15 @@
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution.",
           "rationale": "Synergistic for supporting eye health."
         }
-      ]
+      ],
+      "simple_name": "Eye Lens Clouding (मोतियाबिंद / आँखों के आगे धुंधलापन)",
+      "layman_explanation": "The natural crystalline lens of the eye becomes cloudy, making vision look hazy and colors muted.",
+      "symptoms": [
+        "Clouded, blurred or dim vision",
+        "Difficulty seeing clearly at night or in low light",
+        "Seeing 'halos' around bright lights and glare"
+      ],
+      "search_tags": "cataract, motiyabind, blurry vision, eye problem, aankh me dhundhlapan"
     },
     {
       "disease_name": "Glaucoma",
@@ -7794,7 +8778,15 @@
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution.",
           "rationale": "Synergistic for eye health and protecting visual function."
         }
-      ]
+      ],
+      "simple_name": "High Eye Pressure & Nerve Damage (काला मोतिया / आँखों का दबाव बढ़ना)",
+      "layman_explanation": "Elevated fluid pressure inside the eye damages the optic nerve, gradually narrowing peripheral side vision.",
+      "symptoms": [
+        "Gradual loss of peripheral (side) vision ('tunnel vision')",
+        "Severe eye pain, headache, and nausea (in acute angle closure)",
+        "Seeing rainbow-colored halos around lights"
+      ],
+      "search_tags": "glaucoma, kala motia, eye pressure, vision loss, aankh ka dard"
     },
     {
       "disease_name": "Age-related Macular Degeneration (AMD)",
@@ -7866,7 +8858,15 @@
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution.",
           "rationale": "Directly supports the AMD diet requirement for zinc-rich intake to protect the macula."
         }
-      ]
+      ],
+      "simple_name": "Center Vision Loss / Retinal Aging (आँखों के पर्दे की कमजोरी / उम्र से कम दिखना)",
+      "layman_explanation": "Wear and tear of the central area of the retina (macula), distorting central vision needed for reading and faces.",
+      "symptoms": [
+        "Blurriness or dark blank spot in central field of view",
+        "Straight lines appear wavy or bent",
+        "Difficulty recognizing familiar faces or reading text"
+      ],
+      "search_tags": "amd, macular degeneration, retina, blurred vision, aankh ki roshni"
     },
     {
       "disease_name": "Dry Eye Syndrome",
@@ -7938,7 +8938,15 @@
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability.",
           "rationale": "Highly effective for mucosal dryness and skin/mucous membranes."
         }
-      ]
+      ],
+      "simple_name": "Dry, Burning & Straining Eyes (आँखों में सूखापन, जलन व थकान)",
+      "layman_explanation": "Eyes do not produce enough quality tears, leading to persistent gritty irritation, burning, and screen fatigue.",
+      "symptoms": [
+        "Stinging, burning, or scratchy sensation in eyes",
+        "Redness and sensitivity to light / mobile screens",
+        "Feeling like sand or an eyelash is stuck in the eye"
+      ],
+      "search_tags": "dry eye, burning eyes, screen strain, aankh me jalan, sukha pan"
     },
     {
       "disease_name": "Chronic Conjunctivitis",
@@ -7998,7 +9006,15 @@
           "ingredients": "Each 10ml contains Aloevera (Aloe barbadensis) Leaf Ras 9.8ml",
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
-      ]
+      ],
+      "simple_name": "Pink Eye / Chronic Eye Allergy & Redness (आँख आना / आँखों में लाली, जलन व पानी बहना)",
+      "layman_explanation": "Long-term inflammation of the clear membrane lining the eyelid and eyeball, causing red watery eyes.",
+      "symptoms": [
+        "Redness in the white of the eye",
+        "Itching, burning, and persistent watery discharge",
+        "Crusting of eyelids or lashes in the morning"
+      ],
+      "search_tags": "conjunctivitis, pink eye, aankh aana, eye redness, aankh me laali"
     },
     {
       "disease_name": "Diabetic Retinopathy",
@@ -8064,7 +9080,15 @@
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution.",
           "rationale": "Synergistic for supporting eye health and microcirculation."
         }
-      ]
+      ],
+      "simple_name": "Diabetic Eye Damage (शुगर के कारण आँखों की रोशनी कम होना)",
+      "layman_explanation": "High blood sugar damages tiny retinal blood vessels, causing swelling, fluid leakage, or vision loss.",
+      "symptoms": [
+        "Blurry or fluctuating vision",
+        "Dark spots or floating webs in eyesight",
+        "Impaired night vision and color fading"
+      ],
+      "search_tags": "diabetic eye, blurry vision, floaters, aankh ki roshni, sugar eye"
     },
     {
       "disease_name": "Uveitis",
@@ -8130,7 +9154,15 @@
           "dosage": "1 tablet/capsule twice daily after meals with a full glass of warm water to optimize gastrointestinal dissolution.",
           "rationale": "Provides anti-inflammatory support and promotes eye health."
         }
-      ]
+      ],
+      "simple_name": "Deep Eye Inflammation & Pain (आँख की भीतरी सूजन व तेज दर्द)",
+      "layman_explanation": "Inflammation of the middle layer of the eye (uvea), which can damage eye tissue and reduce eyesight.",
+      "symptoms": [
+        "Eye redness with deep aching pain",
+        "Blurred vision and floaters",
+        "Extreme sensitivity to light (Photophobia)"
+      ],
+      "search_tags": "uveitis, eye inflammation, eye pain, aankh me dard, light sensitivity"
     }
   ],
   "OTOLARYNGOLOGICAL": [
@@ -8199,7 +9231,15 @@
           "rationale": "Fights systemic infections and purifies the blood to clear chronic ear infections."
         }
       ],
-      "disclaimer": " Ensure tympanic membrane (eardrum) is intact before attempting any oil-based ear drops."
+      "disclaimer": " Ensure tympanic membrane (eardrum) is intact before attempting any oil-based ear drops.",
+      "simple_name": "Middle Ear Infection & Ear Pus (कान का बहना / कान का इन्फेक्शन व दर्द)",
+      "layman_explanation": "Recurrent or persistent infection of the middle ear space, often causing fluid or pus drainage from ear.",
+      "symptoms": [
+        "Pus or fluid discharge from the ear",
+        "Hearing loss or muffled hearing in the affected ear",
+        "Earache and feeling of fullness inside ear"
+      ],
+      "search_tags": "otitis media, ear infection, ear pus, kaan behna, kaan me dard, kaan ka pahiya"
     },
     {
       "disease_name": "Tinnitus",
@@ -8266,7 +9306,15 @@
           "rationale": "Essential for preventing nerve degeneration and directly indicated for tinnitus."
         }
       ],
-      "disclaimer": " Ensure tympanic membrane (eardrum) is intact before attempting any oil-based ear drops."
+      "disclaimer": " Ensure tympanic membrane (eardrum) is intact before attempting any oil-based ear drops.",
+      "simple_name": "Ringing or Buzzing in Ears (कान में सीटी / घंटी / आवाजें गूंजना)",
+      "layman_explanation": "Perception of noise, buzzing, or whistling sounds in the ears when no external sound is present.",
+      "symptoms": [
+        "Ringing, buzzing, roaring, clicking or hissing in ears",
+        "Noise is louder in quiet environments at bedtime",
+        "Difficulty concentrating or sleeping due to ear noise"
+      ],
+      "search_tags": "tinnitus, ringing in ear, ear noise, kaan me aawaz, seeti bajna"
     },
     {
       "disease_name": "Meniere's Disease",
@@ -8327,7 +9375,15 @@
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
       ],
-      "disclaimer": " Ensure tympanic membrane (eardrum) is intact before attempting any oil-based ear drops."
+      "disclaimer": " Ensure tympanic membrane (eardrum) is intact before attempting any oil-based ear drops.",
+      "simple_name": "Severe Dizziness & Ear Pressure / Vertigo (चक्कर आना, कान में भारीपन व सिर घूमना)",
+      "layman_explanation": "Inner ear disorder causing sudden episodes of intense spinning dizziness (vertigo), ringing, and hearing fluctuations.",
+      "symptoms": [
+        "Sudden severe spinning dizziness (Vertigo) lasting hours",
+        "Ringing or roaring sound in one ear (Tinnitus)",
+        "Feeling of fullness or plugged pressure in the ear"
+      ],
+      "search_tags": "meniere, vertigo, dizziness, chakkar aana, kaan me aawaz, sir ghoomna"
     },
     {
       "disease_name": "Chronic Sinusitis",
@@ -8394,7 +9450,15 @@
           "rationale": "Synergistic for supporting immunity against chronic infections."
         }
       ],
-      "disclaimer": " Ensure tympanic membrane (eardrum) is intact before attempting any oil-based ear drops."
+      "disclaimer": " Ensure tympanic membrane (eardrum) is intact before attempting any oil-based ear drops.",
+      "simple_name": "Sinus Infection & Blocked Nose (साइनस / बंद नाक / सिर दर्द)",
+      "layman_explanation": "The cavities around nasal passages remain inflamed and blocked for 12 weeks or longer.",
+      "symptoms": [
+        "Thick, discolored nasal discharge & blocked nostrils",
+        "Pain, pressure and swelling around eyes, cheeks and forehead",
+        "Reduced sense of smell and taste"
+      ],
+      "search_tags": "sinus, sinusitis, blocked nose, runny nose, sir dard, band naak, cold"
     },
     {
       "disease_name": "Allergic Rhinitis",
@@ -8455,7 +9519,15 @@
           "dosage": "15-20 ml twice daily diluted with exactly equal parts lukewarm water, strictly on an empty stomach for maximum bioavailability."
         }
       ],
-      "disclaimer": " Ensure tympanic membrane (eardrum) is intact before attempting any oil-based ear drops."
+      "disclaimer": " Ensure tympanic membrane (eardrum) is intact before attempting any oil-based ear drops.",
+      "simple_name": "Dust & Cold Allergy / Sneezing (धूल-मिट्टी से छींकें, जुकाम व नाक बहना)",
+      "layman_explanation": "Allergic response in nasal passages triggered by dust, pollen, cold weather, or animal dander.",
+      "symptoms": [
+        "Repetitive sneezing fits in morning or around dust",
+        "Runny, itchy, or blocked nose",
+        "Itchy, watery eyes and scratchy throat"
+      ],
+      "search_tags": "allergic rhinitis, sneezing, chheenk, runny nose, dust allergy, jukam, naak behna"
     },
     {
       "disease_name": "Chronic Laryngitis",
@@ -8517,7 +9589,15 @@
           "dosage": "15 ml twice daily mixed with a small amount of honey (if non-diabetic) or warm water to act as a targeted expectorant for the respiratory tract."
         }
       ],
-      "disclaimer": " Ensure tympanic membrane (eardrum) is intact before attempting any oil-based ear drops."
+      "disclaimer": " Ensure tympanic membrane (eardrum) is intact before attempting any oil-based ear drops.",
+      "simple_name": "Voice Hoarseness & Vocal Cord Strain (गला बैठना / आवाज भारी होना व गले में खराश)",
+      "layman_explanation": "Long-term inflammation of the voice box (larynx) and vocal cords, causing a raspy or lost voice.",
+      "symptoms": [
+        "Hoarseness, raspy voice or complete loss of voice",
+        "Tickling sensation and raw soreness in throat",
+        "Constant urge to clear throat and dry cough"
+      ],
+      "search_tags": "laryngitis, hoarse voice, lost voice, gala baithna, aawaz kharab, gale me kharash"
     },
     {
       "disease_name": "Age-related Hearing Loss (Presbycusis)",
@@ -8584,7 +9664,15 @@
           "rationale": "Essential for auditory nerve health and preventing age-related nerve degeneration."
         }
       ],
-      "disclaimer": " Ensure tympanic membrane (eardrum) is intact before attempting any oil-based ear drops."
+      "disclaimer": " Ensure tympanic membrane (eardrum) is intact before attempting any oil-based ear drops.",
+      "simple_name": "Age-Related Hearing Loss (कम सुनाई देना / कान की कमजोरी)",
+      "layman_explanation": "Gradual loss of hearing that occurs in both ears as people grow older, especially for high-pitched sounds.",
+      "symptoms": [
+        "Difficulty understanding speech in crowded rooms",
+        "Asking people to repeat themselves frequently",
+        "Turning up TV or radio volume higher than others prefer"
+      ],
+      "search_tags": "hearing loss, presbycusis, deaf, uncha sunna, kaan ki kamzori, sunai na dena"
     }
   ]
 }

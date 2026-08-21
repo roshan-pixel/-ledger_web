@@ -61,7 +61,7 @@ _DISEASE_CACHE_LOCK = threading.Lock()
 
 # Fields returned in the list endpoint (heavy ingredient lists excluded)
 _LIST_FIELDS = {
-    'id', 'disease_name', 'category_name',
+    'id', 'disease_name', 'category_name', 'simple_name', 'layman_explanation', 'symptoms', 'search_tags',
     'final_recommended_products', 'recommended_wellness_products',
     'diet', 'exercise', 'ayurvedic_tip', 'things_to_avoid', 'disclaimer',
 }
@@ -94,7 +94,7 @@ def api_disease_guide():
     """Return a lightweight list of diseases, optionally filtered.
 
     Query params:
-      ?q=<term>         – case-insensitive search on disease_name
+      ?q=<term>         – case-insensitive search on disease_name, simple_name, search_tags
       ?category=<name>  – exact-match (case-insensitive) on category_name
     """
     try:
@@ -106,7 +106,10 @@ def api_disease_guide():
         results = diseases
         if q:
             results = [d for d in results
-                       if q in (d.get('disease_name') or '').lower()]
+                       if q in (d.get('disease_name') or '').lower() or
+                          q in (d.get('simple_name') or '').lower() or
+                          q in (d.get('search_tags') or '').lower() or
+                          q in (d.get('layman_explanation') or '').lower()]
         if category:
             results = [d for d in results
                        if (d.get('category_name') or '').lower() == category]

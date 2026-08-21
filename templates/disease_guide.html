@@ -3,78 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Asclepius Master Disease Guide</title>
+    <title>Asclepius Health & Disease Guide — सरल स्वास्थ्य मार्गदर्शिका</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>/* 10/10 Premium Styling */
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
         :root {
             --bg-color: #0b0f19;
-            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-bg: rgba(255, 255, 255, 0.04);
             --card-border: rgba(255, 255, 255, 0.08);
             --text-main: #ffffff;
             --text-muted: #94a3b8;
             --accent: #6366f1;
             --accent-glow: rgba(99, 102, 241, 0.4);
-        }body {
+            --green: #10b981;
+            --green-glow: rgba(16, 185, 129, 0.25);
+            --amber: #f59e0b;
+            --red: #ef4444;
+        }
+
+        body {
             margin: 0;
             font-family: 'Outfit', sans-serif;
             background-color: var(--bg-color);
+            background-image:
+                radial-gradient(circle at 15% 30%, rgba(99, 102, 241, 0.15), transparent 30%),
+                radial-gradient(circle at 85% 70%, rgba(16, 185, 129, 0.12), transparent 30%);
+            background-attachment: fixed;
             color: var(--text-main);
             display: flex;
             min-height: 100vh;
             overflow-x: hidden;
             animation: fadeInSPA 0.4s ease-out forwards;
-        }@keyframes fadeInSPA { from { opacity: 0; } to { opacity: 1; } }/* Main Content */
+        }
+
+        @keyframes fadeInSPA { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Main Layout */
         .main-content {
             flex: 1;
-            padding: 2.5rem 3rem;
+            padding: 2.2rem 2.8rem;
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1.4rem;
             height: 100vh;
             overflow-y: auto;
             box-sizing: border-box;
             position: relative;
-        }/* Hero Section */
+        }
+
+        /* Hero */
         .hero {
             display: flex;
             flex-direction: column;
+            gap: 0.4rem;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
             gap: 0.5rem;
-            margin-bottom: 0.5rem;
-        }.hero h1 {
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #34d399;
+            padding: 0.3rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            width: fit-content;
+        }
+        .hero h1 {
             margin: 0;
-            font-size: 2.8rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #818cf8, #c084fc, #34d399);
+            font-size: 2.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #a5b4fc, #c084fc, #34d399);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: -0.5px;
-        }.hero p {
+            line-height: 1.2;
+        }
+        .hero p {
             margin: 0;
             color: var(--text-muted);
-            font-size: 1.1rem;
-        }/* Stats Bar */
-        .stats-bar {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
-        }.stat-pill {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 30px;
-            padding: 0.5rem 1.2rem;
-            font-size: 0.95rem;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        /* Quick Symptom Chips Carousel */
+        .quick-section-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            backdrop-filter: blur(8px);
-            transition: all 0.3s;
-        }.stat-pill:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: rgba(255,255,255,0.2);
+            margin-top: 0.2rem;
+        }
+        .quick-chips-wrapper {
+            display: flex;
+            gap: 0.6rem;
+            overflow-x: auto;
+            padding-bottom: 0.4rem;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255,255,255,0.1) transparent;
+        }
+        .quick-chips-wrapper::-webkit-scrollbar { height: 4px; }
+        .quick-chips-wrapper::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
+
+        .symptom-chip {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 0.55rem 1rem;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: #e2e8f0;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-family: inherit;
+        }
+        .symptom-chip:hover {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: rgba(99, 102, 241, 0.5);
+            color: white;
             transform: translateY(-2px);
-        }.stat-val { font-weight: 700; color: #fff; }.text-green { color: #34d399; }.text-gold { color: #fbbf24; }/* Tools Row */
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+        }
+        .symptom-chip.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+            box-shadow: 0 4px 14px var(--accent-glow);
+            font-weight: 600;
+        }
+
+        /* Search & Filter Toolbar */
         .tools-row {
             display: flex;
             gap: 1rem;
@@ -82,64 +149,61 @@
             flex-wrap: wrap;
             position: relative;
             z-index: 5;
-        }.search-wrapper {
+        }
+        .search-wrapper {
             position: relative;
             flex: 1;
-            min-width: 300px;
-        }.search-icon {
+            min-width: 320px;
+        }
+        .search-icon {
             position: absolute;
             left: 1.2rem;
             top: 50%;
             transform: translateY(-50%);
-            color: rgba(99, 102, 241, 0.7); /* Always partially lit */
-            transition: color 0.3s;
+            color: rgba(99, 102, 241, 0.8);
             pointer-events: none;
-        }.search-input {
+        }
+        .search-input {
             width: 100%;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(99, 102, 241, 0.5); /* Always visible border */
-            box-shadow: 0 0 15px rgba(99, 102, 241, 0.15); /* Permanent subtle glow */
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(99, 102, 241, 0.45);
+            box-shadow: 0 0 16px rgba(99, 102, 241, 0.12);
             border-radius: 16px;
-            padding: 1.2rem 1.2rem 1.2rem 3.5rem;
+            padding: 1.1rem 1.2rem 1.1rem 3.4rem;
             color: white;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-family: 'Outfit', sans-serif;
             outline: none;
             transition: all 0.3s ease;
             box-sizing: border-box;
-        }.search-wrapper:focus-within .search-input {
-            background: rgba(255,255,255,0.09);
+        }
+        .search-wrapper:focus-within .search-input {
+            background: rgba(255, 255, 255, 0.09);
             border-color: var(--accent);
             box-shadow: 0 0 0 4px var(--accent-glow), 0 0 20px rgba(99, 102, 241, 0.3);
-        }.search-wrapper:focus-within .search-icon { 
-            color: var(--accent); 
-        }.search-input:not(:placeholder-shown) {
-            border-color: rgba(99, 102, 241, 0.8);
-            background: rgba(255,255,255,0.08);
-            box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
-        }.sort-select {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 1rem 1.5rem;
+        }
+        .sort-select {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 14px;
+            padding: 1rem 1.4rem;
             color: white;
             font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
+            font-size: 0.95rem;
             outline: none;
             cursor: pointer;
-            appearance: none;
-            min-width: 160px;
-            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-            background-size: 16px;
-        }.sort-select option { background: var(--bg-color); color: white; }/* Category Pills Scroll */
+            min-width: 170px;
+        }
+        .sort-select option { background: #0f172a; color: white; }
+
+        /* Category Nav */
         .category-nav {
             display: flex;
             align-items: center;
             gap: 0.5rem;
             position: relative;
-        }.cat-arrow {
+        }
+        .cat-arrow {
             flex-shrink: 0;
             width: 36px; height: 36px;
             border-radius: 50%;
@@ -149,94 +213,110 @@
             cursor: pointer;
             display: flex; align-items: center; justify-content: center;
             transition: all 0.2s;
-            z-index: 2;
-        }.cat-arrow:hover {
-            background: rgba(99,102,241,0.3);
-            border-color: rgba(99,102,241,0.5);
-            box-shadow: 0 0 10px rgba(99,102,241,0.3);
-        }.cat-arrow:disabled {
-            opacity: 0.2;
-            cursor: default;
-        }.category-scroll {
+        }
+        .cat-arrow:hover { background: rgba(99,102,241,0.3); border-color: rgba(99,102,241,0.5); }
+        .category-scroll {
             display: flex;
-            gap: 0.8rem;
+            gap: 0.6rem;
             overflow-x: auto;
             flex: 1;
             scrollbar-width: none;
-            -ms-overflow-style: none;
             scroll-behavior: smooth;
             padding: 4px 2px;
-        }.category-scroll::-webkit-scrollbar { display: none; }.cat-btn {
+        }
+        .category-scroll::-webkit-scrollbar { display: none; }
+        .cat-btn {
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.1);
             color: var(--text-muted);
-            padding: 0.6rem 1.2rem;
+            padding: 0.55rem 1.1rem;
             border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             font-weight: 500;
-            font-family: 'Outfit', sans-serif;
             cursor: pointer;
             white-space: nowrap;
-            transition: all 0.3s;
-        }.cat-btn:hover { background: rgba(255,255,255,0.1); color: white; }.cat-btn.active {
+            transition: all 0.25s;
+            font-family: inherit;
+        }
+        .cat-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+        .cat-btn.active {
             background: var(--accent);
             border-color: var(--accent);
             color: white;
             box-shadow: 0 4px 12px var(--accent-glow);
-        }/* Results Counter */
+        }
+
+        /* Result Meta */
         .result-meta {
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             color: var(--text-muted);
-            margin-top: -0.5rem;
-        }/* Cards Grid */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Cards Grid */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
             gap: 1.5rem;
-            margin-top: 1rem;
-        }@keyframes cardFadeUp {
-            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            margin-top: 0.2rem;
+        }
+        @keyframes cardFadeUp {
+            from { opacity: 0; transform: translateY(24px) scale(0.97); }
             to { opacity: 1; transform: translateY(0) scale(1); }
-        }.disease-card {
+        }
+        .disease-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 1.5rem;
+            border-radius: 18px;
+            padding: 1.6rem;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.1rem;
             position: relative;
             overflow: hidden;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             opacity: 0;
-            animation: cardFadeUp 0.5s ease-out forwards;
-        }.disease-card::before {
+            animation: cardFadeUp 0.45s ease-out forwards;
+            backdrop-filter: blur(8px);
+        }
+        .disease-card::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0;
             height: 4px;
             background: var(--card-accent, var(--accent));
-            opacity: 0.8;
-        }.disease-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.06);
-            border-color: rgba(255,255,255,0.15);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3), 0 0 20px rgba(var(--card-accent-rgb, 99, 102, 241), 0.15);
-        }.card-header {
+        }
+        .disease-card:hover {
+            transform: translateY(-6px);
+            background: rgba(255,255,255,0.07);
+            border-color: rgba(255,255,255,0.18);
+            box-shadow: 0 16px 36px rgba(0,0,0,0.4), 0 0 24px rgba(var(--card-accent-rgb, 99, 102, 241), 0.18);
+        }
+
+        .card-header {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .card-top-row {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            gap: 1rem;
-        }.card-title {
+            gap: 0.75rem;
+        }
+        .card-simple-title {
             margin: 0;
-            font-size: 1.4rem;
-            font-weight: 600;
-            line-height: 1.2;
-            color: white;
-        }.card-cat-badge {
-            background: rgba(255,255,255,0.1);
-            padding: 0.3rem 0.6rem;
+            font-size: 1.35rem;
+            font-weight: 700;
+            line-height: 1.3;
+            color: #ffffff;
+        }
+        .card-cat-badge {
+            background: rgba(255,255,255,0.08);
+            padding: 0.3rem 0.65rem;
             border-radius: 6px;
             font-size: 0.75rem;
             font-weight: 600;
@@ -244,186 +324,247 @@
             letter-spacing: 0.5px;
             color: var(--card-accent, #a5b4fc);
             white-space: nowrap;
-        }.products-preview {
-            background: rgba(0,0,0,0.2);
+        }
+        .card-medical-tag {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 0.25rem 0.55rem;
+            border-radius: 6px;
+            width: fit-content;
+        }
+
+        /* Layman explanation box */
+        .card-layman-box {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 3px solid var(--accent);
+            padding: 0.75rem 1rem;
+            border-radius: 0 10px 10px 0;
+            font-size: 0.9rem;
+            color: #e0e7ff;
+            line-height: 1.5;
+        }
+        .card-layman-box strong { color: #818cf8; }
+
+        /* Symptoms Pills */
+        .symptoms-box {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .symptoms-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .symptom-pills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+        .sym-pill {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 0.25rem 0.6rem;
+            font-size: 0.8rem;
+            color: #cbd5e1;
+        }
+
+        /* Products Preview */
+        .products-preview {
+            background: rgba(0,0,0,0.25);
             border-radius: 12px;
             padding: 1rem;
-            margin-top: 0.5rem;
-        }.section-label {
-            font-size: 0.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .section-label {
+            font-size: 0.78rem;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }.product-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-        }.product-item:last-child { margin-bottom: 0; }.p-icon { font-size: 1.1rem; }.p-details { display: flex; flex-direction: column; }.p-name { color: #34d399; font-weight: 500; }.p-dose { color: #94a3b8; font-size: 0.8rem; font-style: italic; }.card-footer {
-            margin-top: auto;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }.click-hint {
-            font-size: 0.85rem;
-            color: var(--accent);
+            letter-spacing: 0.8px;
+            font-weight: 700;
             display: flex;
             align-items: center;
             gap: 0.4rem;
-        }/* Action Buttons */
-        .action-btns {
+        }
+        .product-item {
             display: flex;
-            gap: 0.5rem;
-        }.icon-btn {
-            width: 34px; height: 34px;
-            border-radius: 8px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
+            align-items: flex-start;
+            gap: 0.6rem;
+            font-size: 0.92rem;
+        }
+        .p-icon { font-size: 1.1rem; line-height: 1; flex-shrink: 0; }
+        .p-details { display: flex; flex-direction: column; }
+        .p-name { color: #34d399; font-weight: 600; }
+        .p-dose { color: #94a3b8; font-size: 0.8rem; font-style: italic; }
+
+        .card-footer {
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .click-hint {
+            font-size: 0.86rem;
+            color: var(--accent);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .action-btns { display: flex; gap: 0.5rem; }
+        .icon-btn {
+            width: 36px; height: 36px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
             color: var(--text-muted);
             cursor: pointer;
             display: flex; align-items: center; justify-content: center;
             transition: all 0.2s;
-        }.icon-btn:hover { background: rgba(255,255,255,0.15); color: white; transform: scale(1.05); }/* Shimmer Skeletons */
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }.skeleton {
-            background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 75%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-            border-radius: 8px;
-        }.skel-card { height: 280px; border-radius: 16px; border: 1px solid var(--card-border); }/* Full Screen Modal */
+        }
+        .icon-btn:hover { background: rgba(99, 102, 241, 0.25); border-color: var(--accent); color: white; transform: scale(1.06); }
+        .btn-whatsapp { color: #25d366; }
+        .btn-whatsapp:hover { background: rgba(37, 211, 102, 0.2); border-color: #25d366; color: #25d366; }
+
+        /* Full Screen Modal */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.7);
-            backdrop-filter: blur(10px);
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(12px);
             z-index: 1000;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 1.5rem;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.3s ease;
-        }.modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }.modal-content {
-            background: #111827;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .modal-content {
+            background: #10172a;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 22px;
             width: 100%;
-            max-width: 800px;
+            max-width: 820px;
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
             transform: scale(0.95) translateY(20px);
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
-        }.modal-overlay.active .modal-content {
-            transform: scale(1) translateY(0);
-        }.modal-header {
-            padding: 2rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7);
+        }
+        .modal-overlay.active .modal-content { transform: scale(1) translateY(0); }
+        .modal-header {
+            padding: 2rem 2.2rem 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
             position: sticky;
             top: 0;
-            background: rgba(17, 24, 39, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(16, 23, 42, 0.96);
+            backdrop-filter: blur(12px);
             z-index: 10;
-        }.modal-close {
+        }
+        .modal-close {
             position: absolute;
             top: 1.5rem; right: 1.5rem;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.08);
             border: none;
             color: white;
-            width: 36px; height: 36px;
+            width: 38px; height: 38px;
             border-radius: 50%;
             cursor: pointer;
             display: flex; align-items: center; justify-content: center;
-            transition: background 0.2s;
-        }.modal-close:hover { background: rgba(255,255,255,0.2); }.modal-title { font-size: 2.2rem; margin: 0.5rem 0 0 0; color: white; }.modal-body { padding: 2rem; display: flex; flex-direction: column; gap: 2rem; }.info-section {
+            transition: all 0.2s;
+        }
+        .modal-close:hover { background: rgba(255,255,255,0.2); transform: rotate(90deg); }
+        .modal-title { font-size: 1.9rem; font-weight: 700; margin: 0.4rem 0 0.3rem; color: white; }
+        .modal-subtitle { font-size: 0.95rem; color: #94a3b8; }
+        .modal-body { padding: 2rem 2.2rem; display: flex; flex-direction: column; gap: 1.8rem; }
+
+        /* Modal Info Sections */
+        .modal-card-box {
             background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.07);
             border-radius: 16px;
-            padding: 1.5rem;
-        }.info-section h3 {
-            margin: 0 0 1rem 0;
-            font-size: 1.2rem;
-            color: var(--accent);
-            display: flex; align-items: center; gap: 0.5rem;
-        }.modal-list {
+            padding: 1.4rem;
+        }
+        .modal-card-box h3 {
+            margin: 0 0 0.9rem 0;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .modal-list {
             list-style: none; padding: 0; margin: 0;
-            display: flex; flex-direction: column; gap: 0.8rem;
-        }.modal-list li {
-            display: flex; gap: 1rem; align-items: flex-start;
-            color: #cbd5e1; line-height: 1.5;
-        }.modal-list li::before {
-            content: '•';
-            color: var(--accent);
-            font-weight: bold;
-            font-size: 1.5rem;
-            line-height: 1;
-        }.modal-list.avoid li::before { content: '⚠️'; font-size: 1.1rem; }.modal-list.diet li::before { content: '🥗'; font-size: 1.1rem; }.modal-list.exercise li::before { content: '🧘'; font-size: 1.1rem; }.tip-box {
-            background: rgba(45, 212, 191, 0.1);
-            border-left: 4px solid #2dd4bf;
-            padding: 1rem 1.5rem;
-            border-radius: 0 12px 12px 0;
-            color: #ccfbf1;
-            font-size: 1.05rem;
+            display: flex; flex-direction: column; gap: 0.75rem;
+        }
+        .modal-list li {
+            display: flex; gap: 0.8rem; align-items: flex-start;
+            color: #cbd5e1; line-height: 1.55; font-size: 0.95rem;
+        }
+        .modal-list.diet li::before { content: '🥗'; font-size: 1.1rem; }
+        .modal-list.avoid li::before { content: '❌'; font-size: 1.1rem; }
+        .modal-list.exercise li::before { content: '🧘'; font-size: 1.1rem; }
+        .modal-list.symptoms li::before { content: '🔍'; font-size: 1.1rem; }
+
+        .tip-box {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid #10b981;
+            padding: 1.2rem 1.4rem;
+            border-radius: 0 14px 14px 0;
+            color: #a7f3d0;
+            font-size: 1rem;
             line-height: 1.6;
-        }.disclaimer-box {
-            background: rgba(244, 63, 94, 0.1);
+        }
+        .tip-box strong { color: #34d399; font-size: 1.05rem; }
+
+        .disclaimer-box {
+            background: rgba(244, 63, 94, 0.08);
             border: 1px solid rgba(244, 63, 94, 0.2);
-            padding: 1rem;
+            padding: 1rem 1.2rem;
             border-radius: 12px;
             color: #fda4af;
-            font-size: 0.9rem;
-            display: flex; gap: 0.8rem; align-items: flex-start;
-        }/* Toast */
+            font-size: 0.88rem;
+            display: flex; gap: 0.75rem; align-items: flex-start;
+            line-height: 1.5;
+        }
+
+        /* Toast */
         .toast {
             position: fixed;
             bottom: 2rem; right: 2rem;
             background: #10b981;
             color: white;
-            padding: 1rem 2rem;
+            padding: 1rem 1.8rem;
             border-radius: 12px;
             font-weight: 600;
             box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
             transform: translateY(100px);
             opacity: 0;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
             z-index: 9999;
-        }.toast.show { transform: translateY(0); opacity: 1; }/* Back to top */
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem; right: 2rem;
-            width: 48px; height: 48px;
-            border-radius: 50%;
-            background: var(--accent);
-            color: white;
-            border: none;
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 12px var(--accent-glow);
-            opacity: 0; visibility: hidden;
-            transition: all 0.3s;
-            z-index: 900;
-        }.back-to-top.visible { opacity: 1; visibility: visible; }.back-to-top:hover { transform: translateY(-3px); background: #4f46e5; }
-
-        @media (max-width: 768px) {body { flex-direction: column; }.main-content { padding: 1.5rem 1rem; }.hero h1 { font-size: 2rem; }.cards-grid { grid-template-columns: 1fr; }.tools-row { flex-direction: column; align-items: stretch; }.modal-overlay { padding: 0; align-items: flex-end; }.modal-content { max-height: 85vh; border-radius: 24px 24px 0 0; }
         }
-    
+        .toast.show { transform: translateY(0); opacity: 1; }
 
-        /* Unified Premium Sidebar Styles */
+        /* Unified Sidebar */
         .sidebar {
             width: 280px !important;
             flex-shrink: 0 !important;
@@ -438,36 +579,20 @@
             height: 100vh !important;
             overflow-y: auto !important;
             box-sizing: border-box !important;
-            scrollbar-width: thin !important;
-            scrollbar-color: rgba(255,255,255,0.1) transparent !important;
             z-index: 100 !important;
         }
-
-        .sidebar::-webkit-scrollbar {
-            width: 4px !important;
-        }
-        .sidebar::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.1) !important;
-            border-radius: 4px !important;
-        }
-
         .sidebar .logo {
             text-align: center !important;
             padding: 0.5rem 0 1.5rem 0 !important;
             border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
-            margin-bottom: 0.5rem !important;
         }
-
         .sidebar .logo img {
             max-width: 85% !important;
             height: auto !important;
             background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(220,225,235,1) 100%) !important;
             border-radius: 16px !important;
             padding: 12px !important;
-            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15), inset 0 0 0 1px rgba(255,255,255,0.5) !important;
-            display: inline-block !important;
         }
-
         .nav-menu {
             list-style: none !important;
             padding: 0 !important;
@@ -476,35 +601,20 @@
             flex-direction: column !important;
             gap: 0.4rem !important;
         }
-
         .nav-item {
             padding: 0.85rem 1.1rem !important;
             border-radius: 12px !important;
             color: #94a3b8 !important;
             font-weight: 500 !important;
             cursor: pointer !important;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
             display: flex !important;
             align-items: center !important;
             gap: 0.85rem !important;
             font-size: 0.92rem !important;
             text-decoration: none !important;
-            user-select: none !important;
+            transition: all 0.2s ease !important;
         }
-
-        .nav-item svg {
-            flex-shrink: 0 !important;
-            width: 20px !important;
-            height: 20px !important;
-            transition: stroke 0.25s ease !important;
-        }
-
-        .nav-item:hover {
-            background: rgba(255, 255, 255, 0.06) !important;
-            color: #ffffff !important;
-            transform: translateX(4px) !important;
-        }
-
+        .nav-item:hover { background: rgba(255, 255, 255, 0.06) !important; color: #ffffff !important; }
         .nav-item.active {
             background: rgba(99, 102, 241, 0.15) !important;
             color: #818cf8 !important;
@@ -512,15 +622,8 @@
             box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.25) !important;
         }
 
-        .nav-item.active svg {
-            stroke: #818cf8 !important;
-        }
-
-        /* Responsive Mobile Styles */
         @media (max-width: 768px) {
-            body {
-                flex-direction: column !important;
-            }
+            body { flex-direction: column !important; }
             .sidebar {
                 width: 100% !important;
                 height: auto !important;
@@ -532,230 +635,214 @@
                 gap: 0.75rem !important;
                 flex-direction: row !important;
                 align-items: center !important;
-                overflow-y: visible !important;
-                overflow-x: visible !important;
-                background: #0b0f19 !important;
             }
-            .sidebar .logo {
-                padding: 0 !important;
-                margin: 0 !important;
-                border-bottom: none !important;
-                display: flex !important;
-                align-items: center !important;
-            }
-            .sidebar .logo img {
-                max-width: 120px !important;
-                padding: 6px 8px !important;
-                border-radius: 8px !important;
-            }
+            .sidebar .logo { padding: 0 !important; margin: 0 !important; border-bottom: none !important; }
+            .sidebar .logo img { max-width: 120px !important; padding: 6px 8px !important; }
             .nav-menu {
                 flex-direction: row !important;
                 flex-wrap: nowrap !important;
                 overflow-x: auto !important;
                 gap: 0.5rem !important;
                 flex: 1 !important;
-                padding-bottom: 0.2rem !important;
-                -webkit-overflow-scrolling: touch !important;
                 scrollbar-width: none !important;
             }
-            .nav-menu::-webkit-scrollbar {
-                display: none !important;
-            }
-            .nav-item {
-                padding: 0.6rem 0.9rem !important;
-                font-size: 0.88rem !important;
-                gap: 0.5rem !important;
-                min-height: 38px !important;
-                flex-shrink: 0 !important;
-                white-space: nowrap !important;
-            }
-            .nav-item svg {
-                width: 18px !important;
-                height: 18px !important;
-            }
-            .nav-item:hover {
-                transform: none !important;
-            }
+            .nav-menu::-webkit-scrollbar { display: none !important; }
+            .nav-item { padding: 0.6rem 0.9rem !important; font-size: 0.85rem !important; white-space: nowrap !important; }
+            .main-content { padding: 1.5rem 1rem !important; }
+            .hero h1 { font-size: 2rem !important; }
+            .cards-grid { grid-template-columns: 1fr !important; }
+            .modal-overlay { padding: 0 !important; align-items: flex-end !important; }
+            .modal-content { max-height: 85vh !important; border-radius: 24px 24px 0 0 !important; }
         }
-</style>
+    </style>
 </head>
 <body>
 
     <aside class="sidebar">
-    <div class="logo">
-        <img src="{{ url_for('static', filename='logo.png') }}" alt="Asclepius Wellness">
-    </div>
-    <ul class="nav-menu">
-        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/') : window.location.href='/'">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
-            <span>Dashboard</span>
-        </li>
-        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/inventory') : window.location.href='/inventory'">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
-            <span>Inventory Stock</span>
-        </li>
-        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/inventory_master') : window.location.href='/inventory_master'">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-            <span>Inventory Master</span>
-        </li>
-        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/invoice') : window.location.href='/invoice'">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-            <span>Invoice Generator</span>
-        </li>
-        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/invoice_history') : window.location.href='/invoice_history'">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <span>Recent Invoices</span>
-        </li>
-        <li class="nav-item active" onclick="typeof navigateTo === 'function' ? navigateTo('/disease_guide') : window.location.href='/disease_guide'">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-            <span>Disease Guide</span>
-        </li>
-        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/mizoram_bronze') : window.location.href='/mizoram_bronze'">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-            <span>Mizoram Bonanza</span>
-        </li>
-        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/stock_point_order') : window.location.href='/stock_point_order'">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-            <span>Stock Point Order</span>
-        </li>
-        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/purchase_history') : window.location.href='/purchase_history'">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-            <span>Purchase History</span>
-        </li>
-        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/ledger_report') : window.location.href='/ledger_report'">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
-            <span>Ledger Report</span>
-        </li>
-        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/portal_sync') : window.location.href='/portal_sync'">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
-            <span>Portal Sync</span>
-        </li>
-    </ul>
-</aside>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Asclepius Wellness">
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item" onclick="window.location.href='/'">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+                <span>Dashboard</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='/inventory'">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+                <span>Inventory Stock</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='/inventory_master'">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                <span>Inventory Master</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='/invoice'">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                <span>Invoice Generator</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='/invoice_history'">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Recent Invoices</span>
+            </li>
+            <li class="nav-item active" onclick="window.location.href='/disease_guide'">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                <span>Disease Guide</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='/mizoram_bronze'">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <span>Mizoram Bonanza</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='/stock_point_order'">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                <span>Stock Point Order</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='/purchase_history'">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                <span>Purchase History</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='/ledger_report'">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                <span>Ledger Report</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='/portal_sync'">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                <span>Portal Sync</span>
+            </li>
+        </ul>
+    </aside>
 
     <main class="main-content" id="mainScroll">
         <div class="hero">
-            <h1>Health Problem & Disease Search</h1>
-            <p>Find Ayurvedic solutions for your health problems (Search by disease or symptom)</p>
+            <div class="hero-badge">🌿 100% Ayurvedic Natural Protocols</div>
+            <h1>सरल स्वास्थ्य एवं रोग समाधान गाइड</h1>
+            <p>Understand your health problem in simple words & find the exact Asclepius products, diet, and dosage.</p>
         </div>
 
-        <div class="stats-bar">
-            <div class="stat-pill"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> <span class="stat-val" id="countDiseases">-</span> Diseases</div>
-            <div class="stat-pill"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg> <span class="stat-val" id="countCats">-</span> Categories</div>
-            <div class="stat-pill text-gold">⭐ <span class="stat-val">10/10</span> Expert Rated</div>
-            <div class="stat-pill text-green">🌿 <span class="stat-val">Ayurvedic</span> Protocol</div>
+        <!-- Quick Problem Filter Chips -->
+        <div class="quick-section-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            Quick Symptom & Problem Search (एक क्लिक में समस्या चुनें):
+        </div>
+        <div class="quick-chips-wrapper" id="quickChips">
+            <button class="symptom-chip" onclick="quickFilter('joint pain', this)">🦴 घुटनों व जोड़ों का दर्द</button>
+            <button class="symptom-chip" onclick="quickFilter('acidity', this)">🍽️ गैस / एसिडिटी / कब्ज</button>
+            <button class="symptom-chip" onclick="quickFilter('sugar', this)">🍬 शुगर / डायबिटीज</button>
+            <button class="symptom-chip" onclick="quickFilter('high bp', this)">🫀 हाई बीपी व हृदय</button>
+            <button class="symptom-chip" onclick="quickFilter('piles', this)">🚽 बवासीर / पाइल्स</button>
+            <button class="symptom-chip" onclick="quickFilter('hair loss', this)">💇 बाल झड़ना व गंजापन</button>
+            <button class="symptom-chip" onclick="quickFilter('skin allergy', this)">🌿 दाद, खाज व सोरायसिस</button>
+            <button class="symptom-chip" onclick="quickFilter('asthma', this)">🫁 दमा / सांस फूलना / खांसी</button>
+            <button class="symptom-chip" onclick="quickFilter('pathri', this)">🪨 गुर्दे व पित्त की पथरी</button>
+            <button class="symptom-chip" onclick="quickFilter('pcos', this)">🌸 महिला स्वास्थ्य / PCOS</button>
+            <button class="symptom-chip" onclick="quickFilter('fatty liver', this)">🛡️ फैटी लीवर व पीलिया</button>
+            <button class="symptom-chip" onclick="quickFilter('khoon ki kami', this)">🩸 खून की कमी व कमजोरी</button>
+            <button class="symptom-chip" onclick="quickFilter('weight loss', this)">🏃 मोटापा घटाना</button>
+            <button class="symptom-chip" onclick="quickFilter('insomnia', this)">🧠 तनाव, सिरदर्द व अनिद्रा</button>
+            <button class="symptom-chip" onclick="quickFilter('cataract', this)">👁️ आँखों की रोशनी व मोतियाबिंद</button>
         </div>
 
+        <!-- Search & Sort Tools -->
+        <div class="tools-row">
+            <div class="search-wrapper">
+                <svg class="search-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search by symptoms or disease (e.g. 'pet dard', 'knee pain', 'sugar', 'hair fall', 'pathri')..." oninput="handleSearch()">
+            </div>
+            <select class="sort-select" id="sortSelect" onchange="handleSearch()">
+                <option value="az">Sort: A to Z</option>
+                <option value="za">Sort: Z to A</option>
+                <option value="products">Most Products First</option>
+            </select>
+        </div>
+
+        <!-- Category Horizontal Nav -->
         <div class="category-nav">
             <button class="cat-arrow" id="catPrev" onclick="scrollCats(-1)">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
             </button>
             <div class="category-scroll" id="catScroll">
-                <button class="cat-btn active" onclick="setCategory('', this)">All</button>
-                <!-- Categories injected here -->
+                <button class="cat-btn active" onclick="setCategory('', this)">All Categories</button>
             </div>
             <button class="cat-arrow" id="catNext" onclick="scrollCats(1)">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </button>
         </div>
 
-        <div class="tools-row">
-            <div class="search-wrapper">
-                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                <input type="text" id="searchInput" class="search-input" placeholder="Search problems (e.g. 'hair fall', 'stomach pain', 'blood pressure')..." oninput="handleSearch()">
-            </div>
-            <select class="sort-select" id="sortSelect" onchange="handleSearch()">
-                <option value="az">Sort: A-Z</option>
-                <option value="za">Sort: Z-A</option>
-                <option value="products">Most Products First</option>
-            </select>
+        <div class="result-meta" id="resultMeta">
+            <span id="resultsCount">Loading 136 health solutions...</span>
+            <span id="activeFilterBadge" style="display:none; color:#818cf8; font-weight:600; cursor:pointer;" onclick="clearAllFilters()">✖ Clear Filter</span>
         </div>
-        
-        <div class="result-meta" id="resultMeta">Loading data...</div>
 
+        <!-- Cards Grid -->
         <div class="cards-grid" id="cardsGrid">
-            <!-- Skeletons -->
-            <div class="skeleton skel-card"></div><div class="skeleton skel-card"></div>
-            <div class="skeleton skel-card"></div><div class="skeleton skel-card"></div>
-            <div class="skeleton skel-card"></div><div class="skeleton skel-card"></div>
+            <!-- Dynamic Cards Injected Here -->
         </div>
     </main>
 
-    <!-- Modal -->
+    <!-- Modal Popup for Deep Breakdown -->
     <div class="modal-overlay" id="diseaseModal" onclick="closeModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
             <div class="modal-header">
                 <button class="modal-close" onclick="closeModal(true)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
-                <span class="card-cat-badge" id="modalCat" style="background: rgba(255,255,255,0.1); color: #fff;">Category</span>
+                <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+                    <span class="card-cat-badge" id="modalCat">Category</span>
+                    <span class="card-medical-tag" id="modalMedTag">🩺 Medical Term</span>
+                </div>
                 <h2 class="modal-title" id="modalTitle">Disease Name</h2>
+                <div class="modal-subtitle" id="modalSubtitle">Simple explanation will appear here</div>
             </div>
             <div class="modal-body" id="modalBody">
-                <!-- Content injected here -->
+                <!-- Content injected via JS -->
             </div>
         </div>
     </div>
 
     <div class="toast" id="toastMsg">Copied to clipboard!</div>
 
-    <button class="back-to-top" id="btnTop" onclick="scrollToTop()">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
-    </button>
-
     <script>
-        // Constants & Colors
         const CAT_COLORS = {
-            'General': '139, 92, 246', // violet
-            'Respiratory': '6, 182, 212', // cyan
-            'Gastrointestinal': '245, 158, 11', // amber
-            'NEUROLOGICAL': '168, 85, 247', // purple
-            'PSYCHIATRIC': '236, 72, 153', // pink
-            'Musculoskeletal': '249, 115, 22', // orange
-            'Autoimmune': '239, 68, 68', // red
-            'Renal & Genitourinary Diseases': '59, 130, 246', // blue
-            'HEMATOLOGICAL': '220, 38, 38', // crimson
-            'DERMATOLOGICAL': '132, 204, 22', // lime
-            'ONCOLOGICAL (supportive/complementary care)': '124, 58, 237', // deep purple
-            'INFECTIOUS (CHRONIC)': '22, 163, 74', // green
-            'OPHTHALMOLOGICAL': '8, 145, 178', // teal
-            'OTOLARYNGOLOGICAL': '217, 119, 6', // dark amber
-            'default': '99, 102, 241' // indigo
+            'General': '139, 92, 246',
+            'Respiratory': '6, 182, 212',
+            'Gastrointestinal': '245, 158, 11',
+            'NEUROLOGICAL': '168, 85, 247',
+            'PSYCHIATRIC': '236, 72, 153',
+            'Musculoskeletal': '249, 115, 22',
+            'Autoimmune': '239, 68, 68',
+            'Renal & Genitourinary Diseases': '59, 130, 246',
+            'HEMATOLOGICAL': '220, 38, 38',
+            'DERMATOLOGICAL': '132, 204, 22',
+            'ONCOLOGICAL (supportive/complementary care)': '124, 58, 237',
+            'INFECTIOUS (CHRONIC)': '22, 163, 74',
+            'OPHTHALMOLOGICAL': '8, 145, 178',
+            'OTOLARYNGOLOGICAL': '217, 119, 6',
+            'default': '99, 102, 241'
         };
 
-        // State
         let allDiseases = [];
         let currentFilter = '';
-        
-        function navigateTo(url) {
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.3s ease-out';
-            setTimeout(() => { window.location.href = url; }, 300);
-        }
 
         async function init() {
             try {
-                // Check URL params
-                const urlParams = new URLSearchParams(window.location.search);
-                const q = urlParams.get('q');
-                if (q) document.getElementById('searchInput').value = q;
-
                 const res = await fetch('/api/disease_guide');
                 const data = await res.json();
                 allDiseases = data.diseases || [];
-                
-                document.getElementById('countDiseases').textContent = allDiseases.length;
-                document.getElementById('countCats').textContent = (data.categories || []).length;
 
                 renderCategoryPills(data.categories || []);
+
+                const urlParams = new URLSearchParams(window.location.search);
+                const q = urlParams.get('q');
+                if (q) {
+                    document.getElementById('searchInput').value = q;
+                }
+
                 handleSearch();
             } catch (err) {
                 console.error(err);
-                document.getElementById('cardsGrid').innerHTML = '<p style="color:#ef4444;">Failed to load data. Ensure API is running.</p>';
+                document.getElementById('cardsGrid').innerHTML = '<p style="color:#ef4444; padding:2rem;">Failed to load disease guide. Please ensure server is running.</p>';
             }
         }
 
         function renderCategoryPills(cats) {
             const container = document.getElementById('catScroll');
-            let html = `<button class="cat-btn active" onclick="setCategory('', this)">All</button>`;
+            let html = `<button class="cat-btn active" onclick="setCategory('', this)">All Categories</button>`;
             cats.forEach(c => {
                 html += `<button class="cat-btn" onclick="setCategory('${c.replace(/'/g,"\\'")}', this)">${c}</button>`;
             });
@@ -765,7 +852,30 @@
         function setCategory(cat, btnElem) {
             currentFilter = cat;
             document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-            if(btnElem) btnElem.classList.add('active');
+            if (btnElem) btnElem.classList.add('active');
+            handleSearch();
+        }
+
+        function quickFilter(term, chipElem) {
+            const input = document.getElementById('searchInput');
+            if (chipElem.classList.contains('active')) {
+                chipElem.classList.remove('active');
+                input.value = '';
+            } else {
+                document.querySelectorAll('.symptom-chip').forEach(c => c.classList.remove('active'));
+                chipElem.classList.add('active');
+                input.value = term;
+            }
+            handleSearch();
+        }
+
+        function clearAllFilters() {
+            document.getElementById('searchInput').value = '';
+            currentFilter = '';
+            document.querySelectorAll('.symptom-chip').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            const firstCat = document.querySelector('.cat-btn');
+            if (firstCat) firstCat.classList.add('active');
             handleSearch();
         }
 
@@ -773,99 +883,36 @@
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
             const sortVal = document.getElementById('sortSelect').value;
 
-            // Dictionary mapping disease keywords to comprehensive layman search tags
-            const diseaseKeywordsToTags = {
-                "coronary": "heart attack, chest pain, blocked arteries, heart disease, cardiac",
-                "ischemic": "heart attack, chest pain, blocked arteries, heart disease, cardiac",
-                "myocardial": "heart attack, chest pain, heart disease, cardiac",
-                "angina": "chest pain, heart",
-                "hypertension": "high bp, blood pressure, high blood pressure, bp",
-                "diabetes": "sugar, blood sugar, high sugar, diabetes, diabetic, madhumeh",
-                "obesity": "weight loss, fat, overweight, belly fat, motapa, weight gain",
-                "polycystic ovary": "pcos, pcod, irregular periods, periods problem, menstruation",
-                "dyslipidemia": "cholesterol, high cholesterol, triglycerides, fat, lipid",
-                "asthma": "breathing problem, shortness of breath, wheezing, dama, cough, khasi",
-                "pulmonary": "breathing problem, shortness of breath, lungs",
-                "bronchitis": "cough, khasi, breathing problem, lungs",
-                "copd": "breathing problem, shortness of breath, lungs, cough, khasi",
-                "osteoarthritis": "joint pain, knee pain, arthritis, bone pain, joint",
-                "rheumatoid": "joint pain, swelling, severe joint pain, arthritis, joint",
-                "gout": "uric acid, toe pain, joint pain, arthritis",
-                "spondylosis": "neck pain, cervical, shoulder pain, back pain, spine",
-                "lumbar": "lower back pain, back pain, spine, kamar dard",
-                "migraine": "headache, severe headache, half head pain, sir dard",
-                "insomnia": "sleep, sleeplessness, can't sleep, sleep problem, neend",
-                "ulcer": "stomach ulcer, acidity, stomach pain, burning stomach, gastric, pet dard",
-                "gerd": "acid reflux, heartburn, acidity, gas, stomach pain",
-                "ibs": "stomach pain, diarrhea, constipation, ibs, gas, pet dard",
-                "constipation": "kabz, hard stool, gas, clear stomach, digestion",
-                "hemorrhoids": "piles, bawasir, bleeding, pain while passing stool",
-                "acne": "pimples, acne, breakouts, face spots, skin",
-                "alopecia": "hair fall, hair loss, baldness, thinning hair, ganjapan, bal jhadna",
-                "eczema": "itching, dry skin, skin allergy, khujli, skin",
-                "psoriasis": "scaly skin, skin patches, itching, khujli, skin",
-                "anemia": "weakness, low hemoglobin, blood loss, pale skin, khoon ki kami, fatigue",
-                "kidney stone": "stone, kidney stone, pathri, stomach pain",
-                "cholelithiasis": "gallstone, pathri, stomach pain",
-                "urinary": "urine infection, burning urine, uti",
-                "prostat": "urine problem, prostate",
-                "hypothyroidism": "thyroid, weight gain, fatigue",
-                "hyperthyroidism": "thyroid, weight loss",
-                "hashimoto": "thyroid, weight gain",
-                "graves": "thyroid, weight loss",
-                "fatty liver": "fatty liver, liver problem, liver",
-                "cirrhosis": "liver failure, liver damage, alcohol liver, liver",
-                "tuberculosis": "tb, cough, chronic cough, khasi, lungs",
-                "cataract": "motiyabind, blurry vision, eye problem, vision",
-                "glaucoma": "eye pressure, vision loss, eye problem",
-                "depression": "sadness, depression, low mood, stress",
-                "anxiety": "anxiety, tension, stress, panic, fear, ghabrahat",
-                "dengue": "dengue, fever, mosquito, low platelets, bukhar",
-                "malaria": "malaria, fever, chills, mosquito, bukhar",
-                "typhoid": "typhoid, fever, weakness, bukhar",
-                "hepatitis": "hepatitis, jaundice, piliya, yellow eyes, liver",
-                "kidney": "kidney problem, kidney failure, renal",
-                "cancer": "cancer, tumor, oncology",
-                "fever": "fever, bukhar"
-            };
-
             let filtered = [...allDiseases];
-            
+
             if (currentFilter) {
                 filtered = filtered.filter(d => d.category_name === currentFilter);
             }
-            if (query) {
-                filtered = filtered.filter(d => {
-                    const diseaseName = String(d.disease_name||'').toLowerCase();
-                    const categoryName = String(d.category_name||'').toLowerCase();
-                    const diet = String(d.diet||'').toLowerCase();
-                    const avoid = String(d.things_to_avoid||'').toLowerCase();
-                    const tip = String(d.ayurvedic_tip||'').toLowerCase();
-                    
-                    let searchTags = "";
-                    for (const [kw, tags] of Object.entries(diseaseKeywordsToTags)) {
-                        if (diseaseName.includes(kw.toLowerCase())) {
-                            searchTags += " " + tags.toLowerCase();
-                        }
-                    }
 
-                    const searchableText = `${diseaseName} ${categoryName} ${diet} ${avoid} ${tip} ${searchTags}`;
-                    
-                    // Simple multi-word matching (all words must be present)
-                    const searchWords = query.split(' ').filter(w => w.length > 0);
-                    return searchWords.every(word => searchableText.includes(word));
+            if (query) {
+                const searchWords = query.split(' ').filter(w => w.length > 0);
+                filtered = filtered.filter(d => {
+                    const simpleName = String(d.simple_name || '').toLowerCase();
+                    const medName = String(d.disease_name || '').toLowerCase();
+                    const explanation = String(d.layman_explanation || '').toLowerCase();
+                    const tags = String(d.search_tags || '').toLowerCase();
+                    const category = String(d.category_name || '').toLowerCase();
+                    const symptoms = (d.symptoms || []).join(' ').toLowerCase();
+
+                    const combined = `${simpleName} ${medName} ${explanation} ${tags} ${category} ${symptoms}`;
+                    return searchWords.every(word => combined.includes(word));
                 });
             }
 
             // Sort
             filtered.sort((a, b) => {
-                const nameA = a.disease_name || '';
-                const nameB = b.disease_name || '';
+                const nameA = a.simple_name || a.disease_name || '';
+                const nameB = b.simple_name || b.disease_name || '';
                 if (sortVal === 'az') return nameA.localeCompare(nameB);
                 if (sortVal === 'za') return nameB.localeCompare(nameA);
                 if (sortVal === 'products') {
-                    const lenA = (a.final_recommended_products||a.recommended_wellness_products||[]).length;
-                    const lenB = (b.final_recommended_products||b.recommended_wellness_products||[]).length;
+                    const lenA = (a.final_recommended_products || a.recommended_wellness_products || []).length;
+                    const lenB = (b.final_recommended_products || b.recommended_wellness_products || []).length;
                     return lenB - lenA;
                 }
                 return 0;
@@ -876,65 +923,103 @@
 
         function renderCards(list, query) {
             const grid = document.getElementById('cardsGrid');
-            const meta = document.getElementById('resultMeta');
-            
+            const countLabel = document.getElementById('resultsCount');
+            const activeFilter = document.getElementById('activeFilterBadge');
+
             grid.innerHTML = '';
-            
+
+            if (query || currentFilter) {
+                activeFilter.style.display = 'inline-block';
+            } else {
+                activeFilter.style.display = 'none';
+            }
+
             if (list.length === 0) {
-                meta.textContent = query ? `No results for "${query}"` : 'No results found.';
+                countLabel.textContent = `No health solutions found for "${query}"`;
+                grid.innerHTML = `
+                    <div style="grid-column: 1 / -1; padding: 4rem 2rem; text-align: center; color: #94a3b8;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🔍</div>
+                        <h3 style="color:white; font-size:1.4rem; margin:0 0 0.5rem;">No exact match found</h3>
+                        <p>Try searching common terms like 'knee pain', 'sugar', 'gas', 'hair fall', or select from the quick problem buttons above.</p>
+                        <button class="symptom-chip" onclick="clearAllFilters()" style="margin: 1.5rem auto 0; background: var(--accent);">Show All 136 Conditions</button>
+                    </div>
+                `;
                 return;
             }
-            
-            meta.textContent = query ? `Showing ${list.length} results for "${query}"` : `Showing all ${list.length} diseases`;
+
+            countLabel.textContent = query || currentFilter ? `Showing ${list.length} matching health solutions` : `Showing all ${list.length} conditions`;
 
             list.forEach((d, idx) => {
-                const name = d.disease_name || 'Unknown';
+                const simpleTitle = d.simple_name || d.disease_name || 'Health Problem';
+                const medName = d.disease_name || '';
                 const cat = d.category_name || 'General';
                 const colorRGB = CAT_COLORS[cat] || CAT_COLORS['default'];
+                const explanation = d.layman_explanation || 'Click to view complete protocol and herbal solutions.';
+                const symptoms = d.symptoms || [];
+
                 const prods = d.final_recommended_products || d.recommended_wellness_products || [];
-                
                 let prodsHtml = prods.slice(0, 3).map(p => {
                     const pName = typeof p === 'string' ? p : (p.product || p.name || p.product_name);
-                    const pDose = p.dosage || p.how_to_take || 'As directed';
+                    const pDose = p.specific_dosage || p.dosage || p.how_to_take || 'As directed';
                     return `
                         <div class="product-item">
-                            <span class="p-icon">💊</span>
+                            <span class="p-icon">🌿</span>
                             <div class="p-details">
                                 <span class="p-name">${pName}</span>
-                                <span class="p-dose">${pDose}</span>
+                                <span class="p-dose">${pDose.length > 70 ? pDose.slice(0, 70) + '…' : pDose}</span>
                             </div>
                         </div>
                     `;
                 }).join('');
-                
-                if (prods.length > 3) {
-                    prodsHtml += `<div class="product-item" style="color:#94a3b8; font-size:0.85rem; margin-top: 0.5rem; justify-content:center;">+ ${prods.length - 3} more products (click to view)</div>`;
-                }
-                if (prods.length === 0) prodsHtml = '<div style="color:#94a3b8; font-size:0.9rem;">No products listed.</div>';
 
-                const delay = Math.min(idx * 0.04, 1.5).toFixed(2);
-                
-                // Use the exact backend ID to ensure the correct full data is fetched
+                if (prods.length > 3) {
+                    prodsHtml += `<div style="color:#818cf8; font-size:0.82rem; font-weight:600; margin-top:0.4rem; text-align:center;">+ ${prods.length - 3} more recommended products (click card)</div>`;
+                }
+                if (!prodsHtml) prodsHtml = '<div style="color:#94a3b8; font-size:0.85rem;">Consult Ayurvedic specialist for exact products.</div>';
+
+                let symptomsHtml = '';
+                if (symptoms.length > 0) {
+                    const pills = symptoms.slice(0, 3).map(s => `<span class="sym-pill">${s}</span>`).join('');
+                    symptomsHtml = `
+                        <div class="symptoms-box">
+                            <div class="symptoms-title">🔍 Common Signs (लक्षण):</div>
+                            <div class="symptom-pills-list">${pills}</div>
+                        </div>
+                    `;
+                }
+
+                const delay = Math.min(idx * 0.03, 1.2).toFixed(2);
                 const globalIdx = d.id !== undefined ? d.id : idx;
 
                 const cardHtml = `
                     <div class="disease-card" style="animation-delay: ${delay}s; --card-accent: rgb(${colorRGB}); --card-accent-rgb: ${colorRGB};" onclick="openModal(${globalIdx})">
                         <div class="card-header">
-                            <h3 class="card-title">${name}</h3>
-                            <span class="card-cat-badge" style="background: rgba(${colorRGB}, 0.15); color: rgb(${colorRGB}); border: 1px solid rgba(${colorRGB},0.3);">${cat}</span>
+                            <div class="card-top-row">
+                                <h3 class="card-simple-title">${simpleTitle}</h3>
+                                <span class="card-cat-badge" style="background: rgba(${colorRGB}, 0.15); color: rgb(${colorRGB}); border: 1px solid rgba(${colorRGB},0.35);">${cat}</span>
+                            </div>
+                            <div class="card-medical-tag">🩺 Medical Term: <strong>${medName}</strong></div>
                         </div>
+
+                        <div class="card-layman-box">
+                            <strong>💡 सरल शब्दों में:</strong> ${explanation}
+                        </div>
+
+                        ${symptomsHtml}
+
                         <div class="products-preview">
-                            <div class="section-label">Recommended Products</div>
+                            <div class="section-label">🌿 Suggested Ayurvedic Products:</div>
                             ${prodsHtml}
                         </div>
+
                         <div class="card-footer">
-                            <span class="click-hint">View full protocol →</span>
+                            <span class="click-hint">View Complete Protocol & Diet →</span>
                             <div class="action-btns" onclick="event.stopPropagation()">
-                                <button class="icon-btn" onclick="copyProtocol(${globalIdx})" title="Copy to clipboard">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                <button class="icon-btn btn-whatsapp" onclick="shareWhatsApp(${globalIdx})" title="Share on WhatsApp">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                                 </button>
-                                <button class="icon-btn" onclick="shareProtocol(${globalIdx})" title="Share link">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                                <button class="icon-btn" onclick="copyProtocol(${globalIdx})" title="Copy details">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                 </button>
                             </div>
                         </div>
@@ -944,87 +1029,138 @@
             });
         }
 
-        function formatList(arr, icon = '•') {
-            if (!arr) return '';
-            if (!Array.isArray(arr)) arr = [arr];
-            if (arr.length === 0) return '';
-            return `<ul class="modal-list ${icon === '⚠️' ? 'avoid' : (icon === '🥗' ? 'diet' : 'exercise')}">` + arr.map(i => `<li>${i}</li>`).join('') + '</ul>';
-        }
-
         async function openModal(globalIdx) {
-            // Find the disease in our local list by its backend ID
             const d = allDiseases.find(x => x.id === globalIdx) || allDiseases[globalIdx];
             if (!d) return;
 
-            // Fetch full details if needed, but we have most in memory now.
-            // Using API to get full disease object to ensure we have ingredients if any.
             let fullData = d;
             try {
-                // Fetch using the exact backend ID
                 const res = await fetch('/api/disease_guide/' + globalIdx);
-                if(res.ok) fullData = await res.json();
-            } catch(e) { console.warn("Could not fetch full details, using cached."); }
+                if (res.ok) fullData = await res.json();
+            } catch (e) {
+                console.warn("Could not fetch full details, using cached.");
+            }
 
-            const name = fullData.disease_name || 'Unknown';
+            const simpleTitle = fullData.simple_name || fullData.disease_name || 'Health Problem';
+            const medName = fullData.disease_name || '';
             const cat = fullData.category_name || 'General';
             const colorRGB = CAT_COLORS[cat] || CAT_COLORS['default'];
+            const explanation = fullData.layman_explanation || 'Natural Ayurvedic protocol.';
+            const symptoms = fullData.symptoms || [];
+
+            document.getElementById('modalTitle').textContent = simpleTitle;
+            document.getElementById('modalSubtitle').textContent = explanation;
             
-            document.getElementById('modalTitle').textContent = name;
             const catBadge = document.getElementById('modalCat');
             catBadge.textContent = cat;
             catBadge.style.background = `rgba(${colorRGB}, 0.2)`;
             catBadge.style.color = `rgb(${colorRGB})`;
             catBadge.style.borderColor = `rgba(${colorRGB}, 0.5)`;
 
+            document.getElementById('modalMedTag').innerHTML = `🩺 Medical Term: <strong>${medName}</strong>`;
+
+            // Build Products Section
             const prods = fullData.final_recommended_products || fullData.recommended_wellness_products || [];
-            let prodsHtml = prods.map(p => {
+            let prodsHtml = prods.map((p, i) => {
                 const pName = typeof p === 'string' ? p : (p.product || p.name || p.product_name);
-                const pDose = p.dosage || p.how_to_take || 'As directed';
-                const pIngs = (p.key_ingredients && p.key_ingredients.length) ? `<div style="color:#64748b; font-size:0.85rem; margin-top:0.3rem;">Contains: ${p.key_ingredients.join(', ')}</div>` : '';
+                const pDose = p.specific_dosage || p.dosage || p.how_to_take || 'Take as advised';
+                const pIngs = (p.ingredients || p.key_ingredients) ? `<div style="color:#94a3b8; font-size:0.85rem; margin-top:0.5rem; line-height:1.4;"><strong>Key Herbs:</strong> ${typeof p.ingredients === 'string' ? p.ingredients : (p.ingredients || p.key_ingredients).join(', ')}</div>` : '';
                 return `
-                    <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
-                        <div style="color: #34d399; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.2rem;">${pName}</div>
-                        <div style="color: #94a3b8; font-size: 0.95rem; font-style: italic;">${pDose}</div>
+                    <div style="background: rgba(0,0,0,0.35); padding: 1.2rem; border-radius: 14px; border: 1px solid rgba(255,255,255,0.08);">
+                        <div style="display:flex; justify-content:space-between; align-items:center; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.4rem;">
+                            <div style="color: #34d399; font-weight: 700; font-size: 1.15rem;">${i+1}. ${pName}</div>
+                            <span style="background:rgba(16,185,129,0.15); color:#10b981; font-size:0.78rem; font-weight:600; padding:0.2rem 0.6rem; border-radius:6px;">🌅 Daytime / 🌙 Night Protocol</span>
+                        </div>
+                        <div style="color: #e2e8f0; font-size: 0.95rem; line-height: 1.5; background: rgba(255,255,255,0.03); padding: 0.6rem 0.8rem; border-radius: 8px; margin-top: 0.4rem;">
+                            <strong>🥄 खुराक (Dosage):</strong> ${pDose}
+                        </div>
                         ${pIngs}
                     </div>
                 `;
             }).join('');
-            if(!prodsHtml) prodsHtml = '<p>No specific products listed.</p>';
+            if (!prodsHtml) prodsHtml = '<p>Consult your Ayurvedic practitioner for tailored products.</p>';
 
             let html = `
-                <div class="info-section">
-                    <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg> Protocol Products</h3>
+                <div class="modal-card-box" style="background: rgba(99, 102, 241, 0.08); border-color: rgba(99, 102, 241, 0.25);">
+                    <h3 style="color:#818cf8;">💡 इस समस्या को आसान भाषा में समझें (About This Condition)</h3>
+                    <p style="margin:0; color:#e0e7ff; line-height:1.6; font-size:1rem;">${explanation}</p>
+                </div>
+            `;
+
+            if (symptoms.length > 0) {
+                const symLi = symptoms.map(s => `<li>${s}</li>`).join('');
+                html += `
+                    <div class="modal-card-box">
+                        <h3>🔍 प्रमुख लक्षण (Common Signs & Symptoms)</h3>
+                        <ul class="modal-list symptoms">${symLi}</ul>
+                    </div>
+                `;
+            }
+
+            html += `
+                <div class="modal-card-box">
+                    <h3 style="color:#34d399;">🌿 सुझाई गई आयुर्वेदिक दवाएं व खुराक (Asclepius Protocol)</h3>
                     <div style="display:flex; flex-direction:column; gap:1rem;">${prodsHtml}</div>
                 </div>
             `;
 
             if (fullData.ayurvedic_tip) {
-                html += `<div class="tip-box"><strong>🌿 Ayurvedic Tip:</strong><br>${fullData.ayurvedic_tip}</div>`;
+                html += `
+                    <div class="tip-box">
+                        <strong>🍵 घरेलू आयुर्वेदिक नुस्खा (Home Remedy Tip):</strong><br>
+                        ${fullData.ayurvedic_tip}
+                    </div>
+                `;
             }
 
-            const dietHtml = formatList(fullData.diet, '🥗');
-            if (dietHtml) {
-                html += `<div class="info-section"><h3>🥗 Recommended Diet</h3>${dietHtml}</div>`;
+            if (fullData.diet && fullData.diet.length > 0) {
+                const dietArr = Array.isArray(fullData.diet) ? fullData.diet : [fullData.diet];
+                html += `
+                    <div class="modal-card-box">
+                        <h3 style="color:#34d399;">🥗 क्या खाएं और पिएं? (Recommended Diet)</h3>
+                        <ul class="modal-list diet">${dietArr.map(d => `<li>${d}</li>`).join('')}</ul>
+                    </div>
+                `;
             }
 
-            const exHtml = formatList(fullData.exercise, '🧘');
-            if (exHtml) {
-                html += `<div class="info-section"><h3>🧘 Exercise Protocol</h3>${exHtml}</div>`;
+            if (fullData.things_to_avoid && fullData.things_to_avoid.length > 0) {
+                const avoidArr = Array.isArray(fullData.things_to_avoid) ? fullData.things_to_avoid : [fullData.things_to_avoid];
+                html += `
+                    <div class="modal-card-box" style="border-color: rgba(239, 68, 68, 0.3);">
+                        <h3 style="color:#f87171;">⚠️ क्या बिल्कुल न खाएं / परहेज (Things to Avoid)</h3>
+                        <ul class="modal-list avoid">${avoidArr.map(a => `<li>${a}</li>`).join('')}</ul>
+                    </div>
+                `;
             }
 
-            const avoidHtml = formatList(fullData.things_to_avoid, '⚠️');
-            if (avoidHtml) {
-                html += `<div class="info-section" style="border-color: rgba(244,63,94,0.3);">
-                    <h3 style="color:#fb7185;">⚠️ Things to Avoid</h3>${avoidHtml}
-                </div>`;
+            if (fullData.exercise && fullData.exercise.length > 0) {
+                const exArr = Array.isArray(fullData.exercise) ? fullData.exercise : [fullData.exercise];
+                html += `
+                    <div class="modal-card-box">
+                        <h3 style="color:#a78bfa;">🧘 दैनिक व्यायाम व प्राणायाम (Exercise & Yoga)</h3>
+                        <ul class="modal-list exercise">${exArr.map(e => `<li>${e}</li>`).join('')}</ul>
+                    </div>
+                `;
             }
 
             if (fullData.disclaimer) {
-                html += `<div class="disclaimer-box">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-                    <div><strong>Medical Disclaimer:</strong> ${fullData.disclaimer}</div>
-                </div>`;
+                html += `
+                    <div class="disclaimer-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        <div><strong>सलाह (Disclaimer):</strong> ${fullData.disclaimer}</div>
+                    </div>
+                `;
             }
+
+            // WhatsApp Share Footer in Modal
+            html += `
+                <div style="display:flex; justify-content:center; margin-top:1rem;">
+                    <button onclick="shareWhatsApp(${globalIdx})" style="background:#25d366; color:white; border:none; padding:0.9rem 2rem; border-radius:14px; font-weight:700; font-size:1.05rem; cursor:pointer; display:flex; align-items:center; gap:0.6rem; font-family:inherit; box-shadow:0 8px 20px rgba(37,211,102,0.3);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        Share Protocol on WhatsApp
+                    </button>
+                </div>
+            `;
 
             document.getElementById('modalBody').innerHTML = html;
             document.getElementById('diseaseModal').classList.add('active');
@@ -1032,14 +1168,12 @@
         }
 
         function closeModal(force=false) {
-            // if event target is the overlay background, close it
             if (force === true || (event && event.target.id === 'diseaseModal')) {
                 document.getElementById('diseaseModal').classList.remove('active');
                 document.body.style.overflow = 'auto';
             }
         }
 
-        // Close modal on escape
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeModal(true);
         });
@@ -1053,69 +1187,61 @@
 
         function copyProtocol(globalIdx) {
             const d = allDiseases.find(x => x.id === globalIdx) || allDiseases[globalIdx];
-            if(!d) return;
+            if (!d) return;
             const prods = d.final_recommended_products || d.recommended_wellness_products || [];
-            let txt = `Protocol for ${d.disease_name || 'Disease'}:\n\n`;
-            prods.forEach(p => {
+            let txt = `🌿 *Asclepius Wellness Solution*\n`;
+            txt += `📌 *समस्या / रोग:* ${d.simple_name || d.disease_name}\n`;
+            txt += `💡 *सरल अर्थ:* ${d.layman_explanation || ''}\n\n`;
+            txt += `💊 *सुझाई गई आयुर्वेदिक दवाएं:*\n`;
+            prods.forEach((p, i) => {
                 const pName = typeof p === 'string' ? p : (p.product || p.name || p.product_name);
-                const pDose = p.dosage || p.how_to_take || 'As directed';
-                txt += `- ${pName} (${pDose})\n`;
+                const pDose = p.specific_dosage || p.dosage || p.how_to_take || 'As directed';
+                txt += `${i+1}. *${pName}* — ${pDose}\n`;
             });
-            navigator.clipboard.writeText(txt).then(() => showToast('Protocol copied to clipboard!'));
+            if (d.ayurvedic_tip) {
+                txt += `\n🍵 *घरेलू नुस्खा:* ${d.ayurvedic_tip}\n`;
+            }
+            navigator.clipboard.writeText(txt).then(() => showToast('Protocol copied for WhatsApp!'));
         }
 
-        // Category Scrolling Logic
+        function shareWhatsApp(globalIdx) {
+            const d = allDiseases.find(x => x.id === globalIdx) || allDiseases[globalIdx];
+            if (!d) return;
+            const prods = d.final_recommended_products || d.recommended_wellness_products || [];
+            let txt = `🌿 *Asclepius Wellness Solution*\n`;
+            txt += `📌 *स्वास्थ्य समस्या:* ${d.simple_name || d.disease_name}\n`;
+            txt += `💡 *सरल शब्दों में:* ${d.layman_explanation || ''}\n\n`;
+            txt += `💊 *सुझाई गई आयुर्वेदिक दवाएं व खुराक:*\n`;
+            prods.forEach((p, i) => {
+                const pName = typeof p === 'string' ? p : (p.product || p.name || p.product_name);
+                const pDose = p.specific_dosage || p.dosage || p.how_to_take || 'As directed';
+                txt += `• *${pName}*:\n  ↳ ${pDose}\n`;
+            });
+            if (d.ayurvedic_tip) {
+                txt += `\n🍵 *घरेलू नुस्खा (Home Tip):* ${d.ayurvedic_tip}\n`;
+            }
+            if (d.diet && d.diet.length > 0) {
+                const dietArr = Array.isArray(d.diet) ? d.diet : [d.diet];
+                txt += `\n🥗 *क्या खाएं:* ${dietArr.slice(0, 3).join(', ')}\n`;
+            }
+            if (d.things_to_avoid && d.things_to_avoid.length > 0) {
+                const avoidArr = Array.isArray(d.things_to_avoid) ? d.things_to_avoid : [d.things_to_avoid];
+                txt += `\n⚠️ *परहेज (क्या न खाएं):* ${avoidArr.slice(0, 3).join(', ')}\n`;
+            }
+            const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(txt)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
         const catScrollEl = document.getElementById('catScroll');
         const prevBtn = document.getElementById('catPrev');
         const nextBtn = document.getElementById('catNext');
 
-        function updateArrowState() {
-            if (!catScrollEl || !prevBtn || !nextBtn) return;
-            prevBtn.disabled = catScrollEl.scrollLeft <= 0;
-            // Allow 1px tolerance for rounding issues
-            nextBtn.disabled = Math.ceil(catScrollEl.scrollLeft + catScrollEl.clientWidth) >= catScrollEl.scrollWidth - 1;
-        }
-
         function scrollCats(direction) {
             if (!catScrollEl) return;
-            const scrollAmount = 300;
-            catScrollEl.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
-        }
-
-        if (catScrollEl) {
-            catScrollEl.addEventListener('scroll', updateArrowState);
-            window.addEventListener('resize', updateArrowState);
-            // Delay initial check to ensure DOM is fully rendered
-            setTimeout(updateArrowState, 100);
-        }
-
-        function shareProtocol(globalIdx) {
-            const d = allDiseases.find(x => x.id === globalIdx) || allDiseases[globalIdx];
-            if(!d) return;
-            const url = window.location.origin + window.location.pathname + '?q=' + encodeURIComponent(d.disease_name);
-            if (navigator.share) {
-                navigator.share({
-                    title: `Asclepius Protocol: ${d.disease_name}`,
-                    url: url
-                }).catch(err => console.log(err));
-            } else {
-                navigator.clipboard.writeText(url).then(() => showToast('Link copied to clipboard!'));
-            }
-        }
-
-        // Scroll to top button logic
-        const mainScroll = document.getElementById('mainScroll');
-        const btnTop = document.getElementById('btnTop');
-        mainScroll.addEventListener('scroll', () => {
-            if (mainScroll.scrollTop > 300) btnTop.classList.add('visible');
-            else btnTop.classList.remove('visible');
-        });
-        function scrollToTop() {
-            mainScroll.scrollTo({ top: 0, behavior: 'smooth' });
+            catScrollEl.scrollBy({ left: direction * 280, behavior: 'smooth' });
         }
 
         window.onload = init;
     </script>
 </body>
 </html>
-
