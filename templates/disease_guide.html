@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Asclepius Health & Disease Guide — सरल स्वास्थ्य मार्गदर्शिका</title>
+    <title>Asclepius Health & Disease Guide — Simple Plain English</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -712,39 +712,39 @@
 
     <main class="main-content" id="mainScroll">
         <div class="hero">
-            <div class="hero-badge">🌿 100% Ayurvedic Natural Protocols</div>
-            <h1>सरल स्वास्थ्य एवं रोग समाधान गाइड</h1>
-            <p>Understand your health problem in simple words & find the exact Asclepius products, diet, and dosage.</p>
+            <div class="hero-badge">🌿 100% Ayurvedic Natural Solutions</div>
+            <h1>Simple Health & Disease Guide</h1>
+            <p>Understand any health condition in plain everyday English & find the exact Asclepius products, diet, and dosage instructions.</p>
         </div>
 
         <!-- Quick Problem Filter Chips -->
         <div class="quick-section-title">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-            Quick Symptom & Problem Search (एक क्लिक में समस्या चुनें):
+            Quick Symptom & Problem Search (Click to filter):
         </div>
         <div class="quick-chips-wrapper" id="quickChips">
-            <button class="symptom-chip" onclick="quickFilter('joint pain', this)">🦴 घुटनों व जोड़ों का दर्द</button>
-            <button class="symptom-chip" onclick="quickFilter('acidity', this)">🍽️ गैस / एसिडिटी / कब्ज</button>
-            <button class="symptom-chip" onclick="quickFilter('sugar', this)">🍬 शुगर / डायबिटीज</button>
-            <button class="symptom-chip" onclick="quickFilter('high bp', this)">🫀 हाई बीपी व हृदय</button>
-            <button class="symptom-chip" onclick="quickFilter('piles', this)">🚽 बवासीर / पाइल्स</button>
-            <button class="symptom-chip" onclick="quickFilter('hair loss', this)">💇 बाल झड़ना व गंजापन</button>
-            <button class="symptom-chip" onclick="quickFilter('skin allergy', this)">🌿 दाद, खाज व सोरायसिस</button>
-            <button class="symptom-chip" onclick="quickFilter('asthma', this)">🫁 दमा / सांस फूलना / खांसी</button>
-            <button class="symptom-chip" onclick="quickFilter('pathri', this)">🪨 गुर्दे व पित्त की पथरी</button>
-            <button class="symptom-chip" onclick="quickFilter('pcos', this)">🌸 महिला स्वास्थ्य / PCOS</button>
-            <button class="symptom-chip" onclick="quickFilter('fatty liver', this)">🛡️ फैटी लीवर व पीलिया</button>
-            <button class="symptom-chip" onclick="quickFilter('khoon ki kami', this)">🩸 खून की कमी व कमजोरी</button>
-            <button class="symptom-chip" onclick="quickFilter('weight loss', this)">🏃 मोटापा घटाना</button>
-            <button class="symptom-chip" onclick="quickFilter('insomnia', this)">🧠 तनाव, सिरदर्द व अनिद्रा</button>
-            <button class="symptom-chip" onclick="quickFilter('cataract', this)">👁️ आँखों की रोशनी व मोतियाबिंद</button>
+            <button class="symptom-chip" onclick="quickFilter('joint pain', this)">🦴 Knee & Joint Pain</button>
+            <button class="symptom-chip" onclick="quickFilter('acidity', this)">🍽️ Acidity, Gas & Bloating</button>
+            <button class="symptom-chip" onclick="quickFilter('sugar', this)">🍬 High Sugar & Diabetes</button>
+            <button class="symptom-chip" onclick="quickFilter('high bp', this)">🫀 High BP & Heart Care</button>
+            <button class="symptom-chip" onclick="quickFilter('piles', this)">🚽 Piles & Hemorrhoids</button>
+            <button class="symptom-chip" onclick="quickFilter('hair loss', this)">💇 Hair Fall & Baldness</button>
+            <button class="symptom-chip" onclick="quickFilter('skin allergy', this)">🌿 Skin Allergy, Itching & Psoriasis</button>
+            <button class="symptom-chip" onclick="quickFilter('asthma', this)">🫁 Asthma, Wheezing & Cough</button>
+            <button class="symptom-chip" onclick="quickFilter('stone', this)">🪨 Kidney & Gallbladder Stones</button>
+            <button class="symptom-chip" onclick="quickFilter('pcos', this)">🌸 Women's Health & PCOS</button>
+            <button class="symptom-chip" onclick="quickFilter('fatty liver', this)">🛡️ Fatty Liver & Digestion</button>
+            <button class="symptom-chip" onclick="quickFilter('low blood', this)">🩸 Low Blood & Chronic Weakness</button>
+            <button class="symptom-chip" onclick="quickFilter('weight loss', this)">🏃 Weight Loss & Belly Fat</button>
+            <button class="symptom-chip" onclick="quickFilter('insomnia', this)">🧠 Stress, Headaches & Insomnia</button>
+            <button class="symptom-chip" onclick="quickFilter('cataract', this)">👁️ Eyesight & Cataract Support</button>
         </div>
 
         <!-- Search & Sort Tools -->
         <div class="tools-row">
             <div class="search-wrapper">
                 <svg class="search-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                <input type="text" id="searchInput" class="search-input" placeholder="Search by symptoms or disease (e.g. 'pet dard', 'knee pain', 'sugar', 'hair fall', 'pathri')..." oninput="handleSearch()">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search by symptoms or disease (e.g. 'knee pain', 'sugar', 'hair fall', 'burning chest', 'stone', 'blood pressure')..." oninput="handleSearch()">
             </div>
             <select class="sort-select" id="sortSelect" onchange="handleSearch()">
                 <option value="az">Sort: A to Z</option>
@@ -950,7 +950,7 @@
             countLabel.textContent = query || currentFilter ? `Showing ${list.length} matching health solutions` : `Showing all ${list.length} conditions`;
 
             list.forEach((d, idx) => {
-                const simpleTitle = d.simple_name || d.disease_name || 'Health Problem';
+                const simpleTitle = d.simple_name || d.disease_name || 'Health Condition';
                 const medName = d.disease_name || '';
                 const cat = d.category_name || 'General';
                 const colorRGB = CAT_COLORS[cat] || CAT_COLORS['default'];
@@ -982,7 +982,7 @@
                     const pills = symptoms.slice(0, 3).map(s => `<span class="sym-pill">${s}</span>`).join('');
                     symptomsHtml = `
                         <div class="symptoms-box">
-                            <div class="symptoms-title">🔍 Common Signs (लक्षण):</div>
+                            <div class="symptoms-title">🔍 Common Signs & Symptoms:</div>
                             <div class="symptom-pills-list">${pills}</div>
                         </div>
                     `;
@@ -1002,7 +1002,7 @@
                         </div>
 
                         <div class="card-layman-box">
-                            <strong>💡 सरल शब्दों में:</strong> ${explanation}
+                            <strong>💡 In Simple Words:</strong> ${explanation}
                         </div>
 
                         ${symptomsHtml}
@@ -1041,7 +1041,7 @@
                 console.warn("Could not fetch full details, using cached.");
             }
 
-            const simpleTitle = fullData.simple_name || fullData.disease_name || 'Health Problem';
+            const simpleTitle = fullData.simple_name || fullData.disease_name || 'Health Condition';
             const medName = fullData.disease_name || '';
             const cat = fullData.category_name || 'General';
             const colorRGB = CAT_COLORS[cat] || CAT_COLORS['default'];
@@ -1072,7 +1072,7 @@
                             <span style="background:rgba(16,185,129,0.15); color:#10b981; font-size:0.78rem; font-weight:600; padding:0.2rem 0.6rem; border-radius:6px;">🌅 Daytime / 🌙 Night Protocol</span>
                         </div>
                         <div style="color: #e2e8f0; font-size: 0.95rem; line-height: 1.5; background: rgba(255,255,255,0.03); padding: 0.6rem 0.8rem; border-radius: 8px; margin-top: 0.4rem;">
-                            <strong>🥄 खुराक (Dosage):</strong> ${pDose}
+                            <strong>🥄 Recommended Dosage:</strong> ${pDose}
                         </div>
                         ${pIngs}
                     </div>
@@ -1082,7 +1082,7 @@
 
             let html = `
                 <div class="modal-card-box" style="background: rgba(99, 102, 241, 0.08); border-color: rgba(99, 102, 241, 0.25);">
-                    <h3 style="color:#818cf8;">💡 इस समस्या को आसान भाषा में समझें (About This Condition)</h3>
+                    <h3 style="color:#818cf8;">💡 Understanding This Condition (In Simple Words)</h3>
                     <p style="margin:0; color:#e0e7ff; line-height:1.6; font-size:1rem;">${explanation}</p>
                 </div>
             `;
@@ -1091,7 +1091,7 @@
                 const symLi = symptoms.map(s => `<li>${s}</li>`).join('');
                 html += `
                     <div class="modal-card-box">
-                        <h3>🔍 प्रमुख लक्षण (Common Signs & Symptoms)</h3>
+                        <h3>🔍 Common Signs & Symptoms</h3>
                         <ul class="modal-list symptoms">${symLi}</ul>
                     </div>
                 `;
@@ -1099,7 +1099,7 @@
 
             html += `
                 <div class="modal-card-box">
-                    <h3 style="color:#34d399;">🌿 सुझाई गई आयुर्वेदिक दवाएं व खुराक (Asclepius Protocol)</h3>
+                    <h3 style="color:#34d399;">🌿 Recommended Ayurvedic Products & Dosage Schedule</h3>
                     <div style="display:flex; flex-direction:column; gap:1rem;">${prodsHtml}</div>
                 </div>
             `;
@@ -1107,7 +1107,7 @@
             if (fullData.ayurvedic_tip) {
                 html += `
                     <div class="tip-box">
-                        <strong>🍵 घरेलू आयुर्वेदिक नुस्खा (Home Remedy Tip):</strong><br>
+                        <strong>🍵 Natural Home Remedy Tip:</strong><br>
                         ${fullData.ayurvedic_tip}
                     </div>
                 `;
@@ -1117,7 +1117,7 @@
                 const dietArr = Array.isArray(fullData.diet) ? fullData.diet : [fullData.diet];
                 html += `
                     <div class="modal-card-box">
-                        <h3 style="color:#34d399;">🥗 क्या खाएं और पिएं? (Recommended Diet)</h3>
+                        <h3 style="color:#34d399;">🥗 Recommended Diet (What to Eat & Drink)</h3>
                         <ul class="modal-list diet">${dietArr.map(d => `<li>${d}</li>`).join('')}</ul>
                     </div>
                 `;
@@ -1127,7 +1127,7 @@
                 const avoidArr = Array.isArray(fullData.things_to_avoid) ? fullData.things_to_avoid : [fullData.things_to_avoid];
                 html += `
                     <div class="modal-card-box" style="border-color: rgba(239, 68, 68, 0.3);">
-                        <h3 style="color:#f87171;">⚠️ क्या बिल्कुल न खाएं / परहेज (Things to Avoid)</h3>
+                        <h3 style="color:#f87171;">⚠️ Foods to Avoid (Strict Precautions)</h3>
                         <ul class="modal-list avoid">${avoidArr.map(a => `<li>${a}</li>`).join('')}</ul>
                     </div>
                 `;
@@ -1137,7 +1137,7 @@
                 const exArr = Array.isArray(fullData.exercise) ? fullData.exercise : [fullData.exercise];
                 html += `
                     <div class="modal-card-box">
-                        <h3 style="color:#a78bfa;">🧘 दैनिक व्यायाम व प्राणायाम (Exercise & Yoga)</h3>
+                        <h3 style="color:#a78bfa;">🧘 Daily Exercise & Yoga Protocol</h3>
                         <ul class="modal-list exercise">${exArr.map(e => `<li>${e}</li>`).join('')}</ul>
                     </div>
                 `;
@@ -1147,7 +1147,7 @@
                 html += `
                     <div class="disclaimer-box">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-                        <div><strong>सलाह (Disclaimer):</strong> ${fullData.disclaimer}</div>
+                        <div><strong>Advisory Disclaimer:</strong> ${fullData.disclaimer}</div>
                     </div>
                 `;
             }
@@ -1190,18 +1190,19 @@
             if (!d) return;
             const prods = d.final_recommended_products || d.recommended_wellness_products || [];
             let txt = `🌿 *Asclepius Wellness Solution*\n`;
-            txt += `📌 *समस्या / रोग:* ${d.simple_name || d.disease_name}\n`;
-            txt += `💡 *सरल अर्थ:* ${d.layman_explanation || ''}\n\n`;
-            txt += `💊 *सुझाई गई आयुर्वेदिक दवाएं:*\n`;
+            txt += `📌 *Condition:* ${d.simple_name || d.disease_name}\n`;
+            txt += `🩺 *Medical Term:* ${d.disease_name}\n`;
+            txt += `💡 *Explanation:* ${d.layman_explanation || ''}\n\n`;
+            txt += `💊 *Recommended Ayurvedic Products & Dosage:*\n`;
             prods.forEach((p, i) => {
                 const pName = typeof p === 'string' ? p : (p.product || p.name || p.product_name);
                 const pDose = p.specific_dosage || p.dosage || p.how_to_take || 'As directed';
                 txt += `${i+1}. *${pName}* — ${pDose}\n`;
             });
             if (d.ayurvedic_tip) {
-                txt += `\n🍵 *घरेलू नुस्खा:* ${d.ayurvedic_tip}\n`;
+                txt += `\n🍵 *Natural Home Tip:* ${d.ayurvedic_tip}\n`;
             }
-            navigator.clipboard.writeText(txt).then(() => showToast('Protocol copied for WhatsApp!'));
+            navigator.clipboard.writeText(txt).then(() => showToast('Protocol copied to clipboard!'));
         }
 
         function shareWhatsApp(globalIdx) {
@@ -1209,24 +1210,25 @@
             if (!d) return;
             const prods = d.final_recommended_products || d.recommended_wellness_products || [];
             let txt = `🌿 *Asclepius Wellness Solution*\n`;
-            txt += `📌 *स्वास्थ्य समस्या:* ${d.simple_name || d.disease_name}\n`;
-            txt += `💡 *सरल शब्दों में:* ${d.layman_explanation || ''}\n\n`;
-            txt += `💊 *सुझाई गई आयुर्वेदिक दवाएं व खुराक:*\n`;
+            txt += `📌 *Health Condition:* ${d.simple_name || d.disease_name}\n`;
+            txt += `🩺 *Medical Term:* ${d.disease_name}\n`;
+            txt += `💡 *In Simple Words:* ${d.layman_explanation || ''}\n\n`;
+            txt += `💊 *Recommended Ayurvedic Products & Dosage:*\n`;
             prods.forEach((p, i) => {
                 const pName = typeof p === 'string' ? p : (p.product || p.name || p.product_name);
                 const pDose = p.specific_dosage || p.dosage || p.how_to_take || 'As directed';
                 txt += `• *${pName}*:\n  ↳ ${pDose}\n`;
             });
             if (d.ayurvedic_tip) {
-                txt += `\n🍵 *घरेलू नुस्खा (Home Tip):* ${d.ayurvedic_tip}\n`;
+                txt += `\n🍵 *Natural Home Tip:* ${d.ayurvedic_tip}\n`;
             }
             if (d.diet && d.diet.length > 0) {
                 const dietArr = Array.isArray(d.diet) ? d.diet : [d.diet];
-                txt += `\n🥗 *क्या खाएं:* ${dietArr.slice(0, 3).join(', ')}\n`;
+                txt += `\n🥗 *Recommended Diet:* ${dietArr.slice(0, 3).join(', ')}\n`;
             }
             if (d.things_to_avoid && d.things_to_avoid.length > 0) {
                 const avoidArr = Array.isArray(d.things_to_avoid) ? d.things_to_avoid : [d.things_to_avoid];
-                txt += `\n⚠️ *परहेज (क्या न खाएं):* ${avoidArr.slice(0, 3).join(', ')}\n`;
+                txt += `\n⚠️ *Foods to Avoid:* ${avoidArr.slice(0, 3).join(', ')}\n`;
             }
             const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(txt)}`;
             window.open(whatsappUrl, '_blank');
