@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Asclepius Health & Disease Guide — Simple Plain English</title>
+    <title>Asclepius Health & Disease Guide — English & Mizo ṭawng</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -49,6 +49,63 @@
             overflow-y: auto;
             box-sizing: border-box;
             position: relative;
+        }
+
+        /* Top Header Bar with Language Switcher */
+        .top-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Language Switcher Button Group */
+        .lang-switch-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 0.35rem 0.5rem 0.35rem 0.85rem;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+        }
+        .lang-icon { font-size: 1.15rem; }
+        .lang-title-text {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #cbd5e1;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+        .lang-toggle-btn-group {
+            display: flex;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 3px;
+            border-radius: 20px;
+            gap: 3px;
+        }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            padding: 0.45rem 1.1rem;
+            border-radius: 16px;
+            font-size: 0.86rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: inherit;
+        }
+        .lang-btn:hover {
+            color: white;
+        }
+        .lang-btn.active {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: #ffffff;
+            box-shadow: 0 2px 10px rgba(99, 102, 241, 0.5);
         }
 
         /* Hero */
@@ -653,6 +710,8 @@
             .cards-grid { grid-template-columns: 1fr !important; }
             .modal-overlay { padding: 0 !important; align-items: flex-end !important; }
             .modal-content { max-height: 85vh !important; border-radius: 24px 24px 0 0 !important; }
+            .top-header-row { flex-direction: column; align-items: flex-start; }
+            .lang-switch-container { width: 100%; justify-content: space-between; }
         }
     </style>
 </head>
@@ -711,45 +770,43 @@
     </aside>
 
     <main class="main-content" id="mainScroll">
+        <!-- Top Row with Language Switcher -->
+        <div class="top-header-row">
+            <div class="hero-badge" id="heroBadge">🌿 100% Ayurvedic Natural Solutions</div>
+            <div class="lang-switch-container">
+                <span class="lang-icon">🌐</span>
+                <span class="lang-title-text" id="langLabel">Language:</span>
+                <div class="lang-toggle-btn-group">
+                    <button class="lang-btn active" id="btnLangEn" onclick="switchLanguage('en')">English</button>
+                    <button class="lang-btn" id="btnLangMizo" onclick="switchLanguage('mizo')">Mizo ṭawng</button>
+                </div>
+            </div>
+        </div>
+
         <div class="hero">
-            <div class="hero-badge">🌿 100% Ayurvedic Natural Solutions</div>
-            <h1>Simple Health & Disease Guide</h1>
-            <p>Understand any health condition in plain everyday English & find the exact Asclepius products, diet, and dosage instructions.</p>
+            <h1 id="heroTitle">Simple Health & Disease Guide</h1>
+            <p id="heroSubtitle">Understand any health condition in plain everyday English & find the exact Asclepius products, diet, and dosage instructions.</p>
         </div>
 
         <!-- Quick Problem Filter Chips -->
-        <div class="quick-section-title">
+        <div class="quick-section-title" id="quickTitle">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-            Quick Symptom & Problem Search (Click to filter):
+            <span id="quickTitleText">Quick Symptom & Problem Search (Click to filter):</span>
         </div>
         <div class="quick-chips-wrapper" id="quickChips">
-            <button class="symptom-chip" onclick="quickFilter('joint pain', this)">🦴 Knee & Joint Pain</button>
-            <button class="symptom-chip" onclick="quickFilter('acidity', this)">🍽️ Acidity, Gas & Bloating</button>
-            <button class="symptom-chip" onclick="quickFilter('sugar', this)">🍬 High Sugar & Diabetes</button>
-            <button class="symptom-chip" onclick="quickFilter('high bp', this)">🫀 High BP & Heart Care</button>
-            <button class="symptom-chip" onclick="quickFilter('piles', this)">🚽 Piles & Hemorrhoids</button>
-            <button class="symptom-chip" onclick="quickFilter('hair loss', this)">💇 Hair Fall & Baldness</button>
-            <button class="symptom-chip" onclick="quickFilter('skin allergy', this)">🌿 Skin Allergy, Itching & Psoriasis</button>
-            <button class="symptom-chip" onclick="quickFilter('asthma', this)">🫁 Asthma, Wheezing & Cough</button>
-            <button class="symptom-chip" onclick="quickFilter('stone', this)">🪨 Kidney & Gallbladder Stones</button>
-            <button class="symptom-chip" onclick="quickFilter('pcos', this)">🌸 Women's Health & PCOS</button>
-            <button class="symptom-chip" onclick="quickFilter('fatty liver', this)">🛡️ Fatty Liver & Digestion</button>
-            <button class="symptom-chip" onclick="quickFilter('low blood', this)">🩸 Low Blood & Chronic Weakness</button>
-            <button class="symptom-chip" onclick="quickFilter('weight loss', this)">🏃 Weight Loss & Belly Fat</button>
-            <button class="symptom-chip" onclick="quickFilter('insomnia', this)">🧠 Stress, Headaches & Insomnia</button>
-            <button class="symptom-chip" onclick="quickFilter('cataract', this)">👁️ Eyesight & Cataract Support</button>
+            <!-- Dynamic Chips Injected Here -->
         </div>
 
         <!-- Search & Sort Tools -->
         <div class="tools-row">
             <div class="search-wrapper">
                 <svg class="search-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                <input type="text" id="searchInput" class="search-input" placeholder="Search by symptoms or disease (e.g. 'knee pain', 'sugar', 'hair fall', 'burning chest', 'stone', 'blood pressure')..." oninput="handleSearch()">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search by symptoms or disease (e.g. 'knee pain', 'sugar', 'hair fall', 'stone')..." oninput="handleSearch()">
             </div>
             <select class="sort-select" id="sortSelect" onchange="handleSearch()">
-                <option value="az">Sort: A to Z</option>
-                <option value="za">Sort: Z to A</option>
-                <option value="products">Most Products First</option>
+                <option value="az" id="optSortAz">Sort: A to Z</option>
+                <option value="za" id="optSortZa">Sort: Z to A</option>
+                <option value="products" id="optSortProds">Most Products First</option>
             </select>
         </div>
 
@@ -759,7 +816,7 @@
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
             </button>
             <div class="category-scroll" id="catScroll">
-                <button class="cat-btn active" onclick="setCategory('', this)">All Categories</button>
+                <!-- Injected via JS -->
             </div>
             <button class="cat-arrow" id="catNext" onclick="scrollCats(1)">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -767,7 +824,7 @@
         </div>
 
         <div class="result-meta" id="resultMeta">
-            <span id="resultsCount">Loading 136 health solutions...</span>
+            <span id="resultsCount">Loading health solutions...</span>
             <span id="activeFilterBadge" style="display:none; color:#818cf8; font-weight:600; cursor:pointer;" onclick="clearAllFilters()">✖ Clear Filter</span>
         </div>
 
@@ -816,16 +873,130 @@
             'default': '99, 102, 241'
         };
 
+        const I18N = {
+            en: {
+                badge: '🌿 100% Ayurvedic Natural Solutions',
+                heroTitle: 'Simple Health & Disease Guide',
+                heroSubtitle: 'Understand any health condition in plain everyday English & find the exact Asclepius products, diet, and dosage instructions.',
+                langLabel: 'Language:',
+                quickTitle: 'Quick Symptom & Problem Search (Click to filter):',
+                searchPlaceholder: "Search by symptoms or disease (e.g. 'knee pain', 'sugar', 'hair fall', 'stone')...",
+                sortAz: 'Sort: A to Z',
+                sortZa: 'Sort: Z to A',
+                sortProds: 'Most Products First',
+                allCategories: 'All Categories',
+                showingCount: (count, total) => `Showing ${count} matching health solutions`,
+                showingAll: (total) => `Showing all ${total} conditions`,
+                noMatchTitle: 'No exact match found',
+                noMatchDesc: "Try searching common terms like 'knee pain', 'sugar', 'gas', 'hair fall', or select from the quick problem buttons above.",
+                showAllBtn: 'Show All 136 Conditions',
+                clearFilter: '✖ Clear Filter',
+                inSimpleWords: 'In Simple Words:',
+                commonSigns: 'Common Signs & Symptoms:',
+                suggestedProducts: 'Suggested Ayurvedic Products:',
+                moreProducts: (n) => `+ ${n} more recommended products (click card)`,
+                noProducts: 'Consult Ayurvedic specialist for exact products.',
+                viewProtocol: 'View Complete Protocol & Diet →',
+                modalAbout: '💡 Understanding This Condition (In Simple Words)',
+                modalSymptoms: '🔍 Common Signs & Symptoms Checklist',
+                modalProducts: '🌿 Recommended Ayurvedic Products & Dosage Schedule',
+                dayNightProtocol: '🌅 Daytime / 🌙 Night Protocol',
+                dosageLabel: '🥄 Recommended Dosage:',
+                keyHerbs: 'Key Herbs:',
+                homeTip: '🍵 Natural Home Remedy Tip:',
+                diet: '🥗 Recommended Diet (What to Eat & Drink)',
+                avoid: '⚠️ Foods to Avoid (Strict Precautions)',
+                exercise: '🧘 Daily Exercise & Yoga Protocol',
+                disclaimer: 'Advisory Disclaimer:',
+                whatsappBtn: 'Share Protocol on WhatsApp',
+                toastCopied: 'Copied to clipboard!',
+                quickChips: [
+                    { term: 'joint pain', label: '🦴 Knee & Joint Pain' },
+                    { term: 'acidity', label: '🍽️ Acidity, Gas & Bloating' },
+                    { term: 'sugar', label: '🍬 High Sugar & Diabetes' },
+                    { term: 'high bp', label: '🫀 High BP & Heart Care' },
+                    { term: 'piles', label: '🚽 Piles & Hemorrhoids' },
+                    { term: 'hair loss', label: '💇 Hair Fall & Baldness' },
+                    { term: 'skin allergy', label: '🌿 Skin Allergy & Itching' },
+                    { term: 'asthma', label: '🫁 Asthma, Wheezing & Cough' },
+                    { term: 'stone', label: '🪨 Kidney & Gallbladder Stones' },
+                    { term: 'pcos', label: "🌸 Women's Health & PCOS" },
+                    { term: 'fatty liver', label: '🛡️ Fatty Liver & Digestion' },
+                    { term: 'low blood', label: '🩸 Low Blood & Weakness' },
+                    { term: 'weight loss', label: '🏃 Weight Loss & Belly Fat' },
+                    { term: 'insomnia', label: '🧠 Stress, Headaches & Insomnia' },
+                    { term: 'cataract', label: '👁️ Eyesight & Cataract Support' }
+                ]
+            },
+            mizo: {
+                badge: '🌿 100% Ayurvedic Damdawi Tha',
+                heroTitle: 'Hriselna & Natna Inenkawlna Guide',
+                heroSubtitle: 'I natna hriatfiahna awlsam leh Asclepius damdawi, chaw ei dan leh a ei zat tur chiang taka hriatna.',
+                langLabel: 'Ṭawng:',
+                quickTitle: 'Natna & A Lanna Hmeh Chhuahna (Hmet la zawng rawh):',
+                searchPlaceholder: "Natna emaw a lanna zawng rawh (e.g. 'ruhseg na', 'zunthlum', 'pum na', 'thisen sang', 'kal lung', 'sam tla')...",
+                sortAz: 'A atanga Z',
+                sortZa: 'Z atanga A',
+                sortProds: 'Damdawi Tam Danin',
+                allCategories: 'Category Zawng Zawng',
+                showingCount: (count, total) => `Natna ${count} zawn hmuh a ni`,
+                showingAll: (total) => `Natna zawng zawng ${total} hmuh a ni`,
+                noMatchTitle: 'Zawn hmuh a awm rih lo',
+                noMatchDesc: "Khawngaihin thumal awlsam zawk hmang rawh (e.g. 'ruhseg na', 'zunthlum', 'pum na', 'thisen sang') emaw chunga button hi hmet rawh.",
+                showAllBtn: 'Natna 136 Zawng Zawng En Rawh',
+                clearFilter: '✖ Filter Tithi rawh',
+                inSimpleWords: 'Hriatfiahna Awlsam:',
+                commonSigns: 'A Lanna Tlangpui:',
+                suggestedProducts: 'Asclepius Damdawi Rawttute:',
+                moreProducts: (n) => `+ Damdawi ${n} dang a awm (hmet rawh)`,
+                noProducts: 'Ayurvedic Doctor rawn rawh.',
+                viewProtocol: 'Chipchiar zawk enna →',
+                modalAbout: '💡 He Natna Hriatfiahna (Awlsam Takin)',
+                modalSymptoms: '🔍 Natna Lanna Tlangpui (Signs & Symptoms)',
+                modalProducts: '🌿 Asclepius Damdawi & Ei Dan Tur (Recommended Products)',
+                dayNightProtocol: '🌅 Chhun / 🌙 Zan Protocol',
+                dosageLabel: '🥄 Ei Zat Tur (Dosage):',
+                keyHerbs: 'Damdawi Hnahthlak (Key Herbs):',
+                homeTip: '🍵 In Lama Inenkawlna Tha (Home Remedy Tip):',
+                diet: '🥗 Chaw Ei Tur (Recommended Diet):',
+                avoid: '⚠️ Ei Loh Tur / Insum Tur (Foods to Avoid):',
+                exercise: '🧘 Taksa Sawizawina & Yoga (Exercise):',
+                disclaimer: 'Hriattirna / Disclaimer:',
+                whatsappBtn: 'WhatsApp-ah Thawn Rawh',
+                toastCopied: 'Clipboard-ah copy a ni ta!',
+                quickChips: [
+                    { term: 'ruhseg na', label: '🦴 Ruhseg & Khup Na' },
+                    { term: 'pum thip', label: '🍽️ Pum Na, Thip & Acidity' },
+                    { term: 'zunthlum', label: '🍬 Zunthlum (Diabetes)' },
+                    { term: 'thisen sang', label: '🫀 Thisen Sang & Thinlung' },
+                    { term: 'piles', label: '🚽 Piles / Ekchhuak Na' },
+                    { term: 'sam tla', label: '💇 Sam Tla & Lu Kawlh' },
+                    { term: 'vun thak', label: '🌿 Vun Thak, Ro & Phun' },
+                    { term: 'thawkchham', label: '🫁 Thawkchham & Khuh (Asthma)' },
+                    { term: 'lung', label: '🪨 Mit Lung & Kal Lung (Stones)' },
+                    { term: 'periods', label: "🌸 Hmeichhe Natna & Periods" },
+                    { term: 'thin thau', label: '🛡️ Thin Thau (Fatty Liver)' },
+                    { term: 'thisen tlem', label: '🩸 Thisen Tlem & Chau' },
+                    { term: 'thau', label: '🏃 Thau Tihhniam (Weight Loss)' },
+                    { term: 'muttheihloh', label: '🧠 Rilru Hah & Muttheihloh' },
+                    { term: 'mit', label: '👁️ Mit Fiahlo & Mit Del' }
+                ]
+            }
+        };
+
+        let currentLang = localStorage.getItem('disease_guide_lang') || 'en';
         let allDiseases = [];
         let currentFilter = '';
+        let categoriesList = [];
 
         async function init() {
             try {
                 const res = await fetch('/api/disease_guide');
                 const data = await res.json();
                 allDiseases = data.diseases || [];
+                categoriesList = data.categories || [];
 
-                renderCategoryPills(data.categories || []);
+                applyLanguage(currentLang);
 
                 const urlParams = new URLSearchParams(window.location.search);
                 const q = urlParams.get('q');
@@ -840,11 +1011,51 @@
             }
         }
 
+        function switchLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('disease_guide_lang', lang);
+            applyLanguage(lang);
+            handleSearch();
+        }
+
+        function applyLanguage(lang) {
+            const t = I18N[lang] || I18N.en;
+
+            // Update Header Switcher active states
+            document.getElementById('btnLangEn').classList.toggle('active', lang === 'en');
+            document.getElementById('btnLangMizo').classList.toggle('active', lang === 'mizo');
+
+            // Update static strings
+            document.getElementById('heroBadge').textContent = t.badge;
+            document.getElementById('heroTitle').textContent = t.heroTitle;
+            document.getElementById('heroSubtitle').textContent = t.heroSubtitle;
+            document.getElementById('langLabel').textContent = t.langLabel;
+            document.getElementById('quickTitleText').textContent = t.quickTitle;
+            document.getElementById('searchInput').placeholder = t.searchPlaceholder;
+            document.getElementById('optSortAz').textContent = t.sortAz;
+            document.getElementById('optSortZa').textContent = t.sortZa;
+            document.getElementById('optSortProds').textContent = t.sortProds;
+            document.getElementById('activeFilterBadge').textContent = t.clearFilter;
+
+            // Render Quick Chips
+            const chipsWrapper = document.getElementById('quickChips');
+            let chipsHtml = '';
+            t.quickChips.forEach(c => {
+                chipsHtml += `<button class="symptom-chip" onclick="quickFilter('${c.term}', this)">${c.label}</button>`;
+            });
+            chipsWrapper.innerHTML = chipsHtml;
+
+            // Render Category Pills
+            renderCategoryPills(categoriesList);
+        }
+
         function renderCategoryPills(cats) {
+            const t = I18N[currentLang] || I18N.en;
             const container = document.getElementById('catScroll');
-            let html = `<button class="cat-btn active" onclick="setCategory('', this)">All Categories</button>`;
+            let html = `<button class="cat-btn ${currentFilter === '' ? 'active' : ''}" onclick="setCategory('', this)">${t.allCategories}</button>`;
             cats.forEach(c => {
-                html += `<button class="cat-btn" onclick="setCategory('${c.replace(/'/g,"\\'")}', this)">${c}</button>`;
+                const isActive = (currentFilter === c) ? 'active' : '';
+                html += `<button class="cat-btn ${isActive}" onclick="setCategory('${c.replace(/'/g,"\\'")}', this)">${c}</button>`;
             });
             container.innerHTML = html;
         }
@@ -880,6 +1091,7 @@
         }
 
         function handleSearch() {
+            const t = I18N[currentLang] || I18N.en;
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
             const sortVal = document.getElementById('sortSelect').value;
 
@@ -892,22 +1104,27 @@
             if (query) {
                 const searchWords = query.split(' ').filter(w => w.length > 0);
                 filtered = filtered.filter(d => {
-                    const simpleName = String(d.simple_name || '').toLowerCase();
+                    const simpleNameEn = String(d.simple_name_en || d.simple_name || '').toLowerCase();
+                    const simpleNameMizo = String(d.simple_name_mizo || '').toLowerCase();
                     const medName = String(d.disease_name || '').toLowerCase();
-                    const explanation = String(d.layman_explanation || '').toLowerCase();
-                    const tags = String(d.search_tags || '').toLowerCase();
+                    const expEn = String(d.layman_explanation_en || d.layman_explanation || '').toLowerCase();
+                    const expMizo = String(d.layman_explanation_mizo || '').toLowerCase();
+                    const tagsEn = String(d.search_tags_en || d.search_tags || '').toLowerCase();
+                    const tagsMizo = String(d.search_tags_mizo || '').toLowerCase();
                     const category = String(d.category_name || '').toLowerCase();
-                    const symptoms = (d.symptoms || []).join(' ').toLowerCase();
+                    const symptomsEn = (d.symptoms_en || d.symptoms || []).join(' ').toLowerCase();
+                    const symptomsMizo = (d.symptoms_mizo || []).join(' ').toLowerCase();
 
-                    const combined = `${simpleName} ${medName} ${explanation} ${tags} ${category} ${symptoms}`;
+                    const combined = `${simpleNameEn} ${simpleNameMizo} ${medName} ${expEn} ${expMizo} ${tagsEn} ${tagsMizo} ${category} ${symptomsEn} ${symptomsMizo}`;
                     return searchWords.every(word => combined.includes(word));
                 });
             }
 
             // Sort
             filtered.sort((a, b) => {
-                const nameA = a.simple_name || a.disease_name || '';
-                const nameB = b.simple_name || b.disease_name || '';
+                const isMizo = currentLang === 'mizo';
+                const nameA = (isMizo ? a.simple_name_mizo : a.simple_name_en) || a.simple_name || a.disease_name || '';
+                const nameB = (isMizo ? b.simple_name_mizo : b.simple_name_en) || b.simple_name || b.disease_name || '';
                 if (sortVal === 'az') return nameA.localeCompare(nameB);
                 if (sortVal === 'za') return nameB.localeCompare(nameA);
                 if (sortVal === 'products') {
@@ -922,6 +1139,8 @@
         }
 
         function renderCards(list, query) {
+            const t = I18N[currentLang] || I18N.en;
+            const isMizo = currentLang === 'mizo';
             const grid = document.getElementById('cardsGrid');
             const countLabel = document.getElementById('resultsCount');
             const activeFilter = document.getElementById('activeFilterBadge');
@@ -935,27 +1154,27 @@
             }
 
             if (list.length === 0) {
-                countLabel.textContent = `No health solutions found for "${query}"`;
+                countLabel.textContent = query ? `${t.noMatchTitle} "${query}"` : t.noMatchTitle;
                 grid.innerHTML = `
                     <div style="grid-column: 1 / -1; padding: 4rem 2rem; text-align: center; color: #94a3b8;">
                         <div style="font-size: 3rem; margin-bottom: 1rem;">🔍</div>
-                        <h3 style="color:white; font-size:1.4rem; margin:0 0 0.5rem;">No exact match found</h3>
-                        <p>Try searching common terms like 'knee pain', 'sugar', 'gas', 'hair fall', or select from the quick problem buttons above.</p>
-                        <button class="symptom-chip" onclick="clearAllFilters()" style="margin: 1.5rem auto 0; background: var(--accent);">Show All 136 Conditions</button>
+                        <h3 style="color:white; font-size:1.4rem; margin:0 0 0.5rem;">${t.noMatchTitle}</h3>
+                        <p>${t.noMatchDesc}</p>
+                        <button class="symptom-chip" onclick="clearAllFilters()" style="margin: 1.5rem auto 0; background: var(--accent);">${t.showAllBtn}</button>
                     </div>
                 `;
                 return;
             }
 
-            countLabel.textContent = query || currentFilter ? `Showing ${list.length} matching health solutions` : `Showing all ${list.length} conditions`;
+            countLabel.textContent = query || currentFilter ? t.showingCount(list.length, allDiseases.length) : t.showingAll(list.length);
 
             list.forEach((d, idx) => {
-                const simpleTitle = d.simple_name || d.disease_name || 'Health Condition';
+                const simpleTitle = (isMizo ? d.simple_name_mizo : d.simple_name_en) || d.simple_name || d.disease_name || 'Health Condition';
                 const medName = d.disease_name || '';
                 const cat = d.category_name || 'General';
                 const colorRGB = CAT_COLORS[cat] || CAT_COLORS['default'];
-                const explanation = d.layman_explanation || 'Click to view complete protocol and herbal solutions.';
-                const symptoms = d.symptoms || [];
+                const explanation = (isMizo ? d.layman_explanation_mizo : d.layman_explanation_en) || d.layman_explanation || 'Natural Ayurvedic protocol.';
+                const symptoms = (isMizo ? d.symptoms_mizo : d.symptoms_en) || d.symptoms || [];
 
                 const prods = d.final_recommended_products || d.recommended_wellness_products || [];
                 let prodsHtml = prods.slice(0, 3).map(p => {
@@ -973,16 +1192,16 @@
                 }).join('');
 
                 if (prods.length > 3) {
-                    prodsHtml += `<div style="color:#818cf8; font-size:0.82rem; font-weight:600; margin-top:0.4rem; text-align:center;">+ ${prods.length - 3} more recommended products (click card)</div>`;
+                    prodsHtml += `<div style="color:#818cf8; font-size:0.82rem; font-weight:600; margin-top:0.4rem; text-align:center;">${t.moreProducts(prods.length - 3)}</div>`;
                 }
-                if (!prodsHtml) prodsHtml = '<div style="color:#94a3b8; font-size:0.85rem;">Consult Ayurvedic specialist for exact products.</div>';
+                if (!prodsHtml) prodsHtml = `<div style="color:#94a3b8; font-size:0.85rem;">${t.noProducts}</div>`;
 
                 let symptomsHtml = '';
                 if (symptoms.length > 0) {
                     const pills = symptoms.slice(0, 3).map(s => `<span class="sym-pill">${s}</span>`).join('');
                     symptomsHtml = `
                         <div class="symptoms-box">
-                            <div class="symptoms-title">🔍 Common Signs & Symptoms:</div>
+                            <div class="symptoms-title">🔍 ${t.commonSigns}</div>
                             <div class="symptom-pills-list">${pills}</div>
                         </div>
                     `;
@@ -1002,23 +1221,23 @@
                         </div>
 
                         <div class="card-layman-box">
-                            <strong>💡 In Simple Words:</strong> ${explanation}
+                            <strong>💡 ${t.inSimpleWords}</strong> ${explanation}
                         </div>
 
                         ${symptomsHtml}
 
                         <div class="products-preview">
-                            <div class="section-label">🌿 Suggested Ayurvedic Products:</div>
+                            <div class="section-label">🌿 ${t.suggestedProducts}</div>
                             ${prodsHtml}
                         </div>
 
                         <div class="card-footer">
-                            <span class="click-hint">View Complete Protocol & Diet →</span>
+                            <span class="click-hint">${t.viewProtocol}</span>
                             <div class="action-btns" onclick="event.stopPropagation()">
-                                <button class="icon-btn btn-whatsapp" onclick="shareWhatsApp(${globalIdx})" title="Share on WhatsApp">
+                                <button class="icon-btn btn-whatsapp" onclick="shareWhatsApp(${globalIdx})" title="WhatsApp">
                                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                                 </button>
-                                <button class="icon-btn" onclick="copyProtocol(${globalIdx})" title="Copy details">
+                                <button class="icon-btn" onclick="copyProtocol(${globalIdx})" title="Copy">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                 </button>
                             </div>
@@ -1030,6 +1249,8 @@
         }
 
         async function openModal(globalIdx) {
+            const t = I18N[currentLang] || I18N.en;
+            const isMizo = currentLang === 'mizo';
             const d = allDiseases.find(x => x.id === globalIdx) || allDiseases[globalIdx];
             if (!d) return;
 
@@ -1041,12 +1262,12 @@
                 console.warn("Could not fetch full details, using cached.");
             }
 
-            const simpleTitle = fullData.simple_name || fullData.disease_name || 'Health Condition';
+            const simpleTitle = (isMizo ? fullData.simple_name_mizo : fullData.simple_name_en) || fullData.simple_name || fullData.disease_name || 'Health Condition';
             const medName = fullData.disease_name || '';
             const cat = fullData.category_name || 'General';
             const colorRGB = CAT_COLORS[cat] || CAT_COLORS['default'];
-            const explanation = fullData.layman_explanation || 'Natural Ayurvedic protocol.';
-            const symptoms = fullData.symptoms || [];
+            const explanation = (isMizo ? fullData.layman_explanation_mizo : fullData.layman_explanation_en) || fullData.layman_explanation || 'Natural Ayurvedic protocol.';
+            const symptoms = (isMizo ? fullData.symptoms_mizo : fullData.symptoms_en) || fullData.symptoms || [];
 
             document.getElementById('modalTitle').textContent = simpleTitle;
             document.getElementById('modalSubtitle').textContent = explanation;
@@ -1064,25 +1285,25 @@
             let prodsHtml = prods.map((p, i) => {
                 const pName = typeof p === 'string' ? p : (p.product || p.name || p.product_name);
                 const pDose = p.specific_dosage || p.dosage || p.how_to_take || 'Take as advised';
-                const pIngs = (p.ingredients || p.key_ingredients) ? `<div style="color:#94a3b8; font-size:0.85rem; margin-top:0.5rem; line-height:1.4;"><strong>Key Herbs:</strong> ${typeof p.ingredients === 'string' ? p.ingredients : (p.ingredients || p.key_ingredients).join(', ')}</div>` : '';
+                const pIngs = (p.ingredients || p.key_ingredients) ? `<div style="color:#94a3b8; font-size:0.85rem; margin-top:0.5rem; line-height:1.4;"><strong>${t.keyHerbs}</strong> ${typeof p.ingredients === 'string' ? p.ingredients : (p.ingredients || p.key_ingredients).join(', ')}</div>` : '';
                 return `
                     <div style="background: rgba(0,0,0,0.35); padding: 1.2rem; border-radius: 14px; border: 1px solid rgba(255,255,255,0.08);">
                         <div style="display:flex; justify-content:space-between; align-items:center; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.4rem;">
                             <div style="color: #34d399; font-weight: 700; font-size: 1.15rem;">${i+1}. ${pName}</div>
-                            <span style="background:rgba(16,185,129,0.15); color:#10b981; font-size:0.78rem; font-weight:600; padding:0.2rem 0.6rem; border-radius:6px;">🌅 Daytime / 🌙 Night Protocol</span>
+                            <span style="background:rgba(16,185,129,0.15); color:#10b981; font-size:0.78rem; font-weight:600; padding:0.2rem 0.6rem; border-radius:6px;">${t.dayNightProtocol}</span>
                         </div>
                         <div style="color: #e2e8f0; font-size: 0.95rem; line-height: 1.5; background: rgba(255,255,255,0.03); padding: 0.6rem 0.8rem; border-radius: 8px; margin-top: 0.4rem;">
-                            <strong>🥄 Recommended Dosage:</strong> ${pDose}
+                            <strong>${t.dosageLabel}</strong> ${pDose}
                         </div>
                         ${pIngs}
                     </div>
                 `;
             }).join('');
-            if (!prodsHtml) prodsHtml = '<p>Consult your Ayurvedic practitioner for tailored products.</p>';
+            if (!prodsHtml) prodsHtml = `<p>${t.noProducts}</p>`;
 
             let html = `
                 <div class="modal-card-box" style="background: rgba(99, 102, 241, 0.08); border-color: rgba(99, 102, 241, 0.25);">
-                    <h3 style="color:#818cf8;">💡 Understanding This Condition (In Simple Words)</h3>
+                    <h3 style="color:#818cf8;">${t.modalAbout}</h3>
                     <p style="margin:0; color:#e0e7ff; line-height:1.6; font-size:1rem;">${explanation}</p>
                 </div>
             `;
@@ -1091,7 +1312,7 @@
                 const symLi = symptoms.map(s => `<li>${s}</li>`).join('');
                 html += `
                     <div class="modal-card-box">
-                        <h3>🔍 Common Signs & Symptoms</h3>
+                        <h3>${t.modalSymptoms}</h3>
                         <ul class="modal-list symptoms">${symLi}</ul>
                     </div>
                 `;
@@ -1099,7 +1320,7 @@
 
             html += `
                 <div class="modal-card-box">
-                    <h3 style="color:#34d399;">🌿 Recommended Ayurvedic Products & Dosage Schedule</h3>
+                    <h3 style="color:#34d399;">${t.modalProducts}</h3>
                     <div style="display:flex; flex-direction:column; gap:1rem;">${prodsHtml}</div>
                 </div>
             `;
@@ -1107,7 +1328,7 @@
             if (fullData.ayurvedic_tip) {
                 html += `
                     <div class="tip-box">
-                        <strong>🍵 Natural Home Remedy Tip:</strong><br>
+                        <strong>${t.homeTip}</strong><br>
                         ${fullData.ayurvedic_tip}
                     </div>
                 `;
@@ -1117,7 +1338,7 @@
                 const dietArr = Array.isArray(fullData.diet) ? fullData.diet : [fullData.diet];
                 html += `
                     <div class="modal-card-box">
-                        <h3 style="color:#34d399;">🥗 Recommended Diet (What to Eat & Drink)</h3>
+                        <h3 style="color:#34d399;">${t.diet}</h3>
                         <ul class="modal-list diet">${dietArr.map(d => `<li>${d}</li>`).join('')}</ul>
                     </div>
                 `;
@@ -1127,7 +1348,7 @@
                 const avoidArr = Array.isArray(fullData.things_to_avoid) ? fullData.things_to_avoid : [fullData.things_to_avoid];
                 html += `
                     <div class="modal-card-box" style="border-color: rgba(239, 68, 68, 0.3);">
-                        <h3 style="color:#f87171;">⚠️ Foods to Avoid (Strict Precautions)</h3>
+                        <h3 style="color:#f87171;">${t.avoid}</h3>
                         <ul class="modal-list avoid">${avoidArr.map(a => `<li>${a}</li>`).join('')}</ul>
                     </div>
                 `;
@@ -1137,7 +1358,7 @@
                 const exArr = Array.isArray(fullData.exercise) ? fullData.exercise : [fullData.exercise];
                 html += `
                     <div class="modal-card-box">
-                        <h3 style="color:#a78bfa;">🧘 Daily Exercise & Yoga Protocol</h3>
+                        <h3 style="color:#a78bfa;">${t.exercise}</h3>
                         <ul class="modal-list exercise">${exArr.map(e => `<li>${e}</li>`).join('')}</ul>
                     </div>
                 `;
@@ -1147,7 +1368,7 @@
                 html += `
                     <div class="disclaimer-box">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-                        <div><strong>Advisory Disclaimer:</strong> ${fullData.disclaimer}</div>
+                        <div><strong>${t.disclaimer}</strong> ${fullData.disclaimer}</div>
                     </div>
                 `;
             }
@@ -1157,7 +1378,7 @@
                 <div style="display:flex; justify-content:center; margin-top:1rem;">
                     <button onclick="shareWhatsApp(${globalIdx})" style="background:#25d366; color:white; border:none; padding:0.9rem 2rem; border-radius:14px; font-weight:700; font-size:1.05rem; cursor:pointer; display:flex; align-items:center; gap:0.6rem; font-family:inherit; box-shadow:0 8px 20px rgba(37,211,102,0.3);">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                        Share Protocol on WhatsApp
+                        ${t.whatsappBtn}
                     </button>
                 </div>
             `;
@@ -1186,49 +1407,60 @@
         }
 
         function copyProtocol(globalIdx) {
+            const t = I18N[currentLang] || I18N.en;
+            const isMizo = currentLang === 'mizo';
             const d = allDiseases.find(x => x.id === globalIdx) || allDiseases[globalIdx];
             if (!d) return;
             const prods = d.final_recommended_products || d.recommended_wellness_products || [];
-            let txt = `🌿 *Asclepius Wellness Solution*\n`;
-            txt += `📌 *Condition:* ${d.simple_name || d.disease_name}\n`;
+            
+            const simpleTitle = (isMizo ? d.simple_name_mizo : d.simple_name_en) || d.simple_name || d.disease_name;
+            const explanation = (isMizo ? d.layman_explanation_mizo : d.layman_explanation_en) || d.layman_explanation || '';
+
+            let txt = isMizo ? `🌿 *Asclepius Inenkawlna Tha*\n` : `🌿 *Asclepius Wellness Solution*\n`;
+            txt += isMizo ? `📌 *Natna:* ${simpleTitle}\n` : `📌 *Condition:* ${simpleTitle}\n`;
             txt += `🩺 *Medical Term:* ${d.disease_name}\n`;
-            txt += `💡 *Explanation:* ${d.layman_explanation || ''}\n\n`;
-            txt += `💊 *Recommended Ayurvedic Products & Dosage:*\n`;
+            txt += isMizo ? `💡 *Hriatfiahna:* ${explanation}\n\n` : `💡 *Explanation:* ${explanation}\n\n`;
+            txt += isMizo ? `💊 *Asclepius Damdawi & Ei Zat Tur:*\n` : `💊 *Recommended Ayurvedic Products & Dosage:*\n`;
             prods.forEach((p, i) => {
                 const pName = typeof p === 'string' ? p : (p.product || p.name || p.product_name);
                 const pDose = p.specific_dosage || p.dosage || p.how_to_take || 'As directed';
                 txt += `${i+1}. *${pName}* — ${pDose}\n`;
             });
             if (d.ayurvedic_tip) {
-                txt += `\n🍵 *Natural Home Tip:* ${d.ayurvedic_tip}\n`;
+                txt += isMizo ? `\n🍵 *In Lama Tih Tur:* ${d.ayurvedic_tip}\n` : `\n🍵 *Natural Home Tip:* ${d.ayurvedic_tip}\n`;
             }
-            navigator.clipboard.writeText(txt).then(() => showToast('Protocol copied to clipboard!'));
+            navigator.clipboard.writeText(txt).then(() => showToast(t.toastCopied));
         }
 
         function shareWhatsApp(globalIdx) {
+            const isMizo = currentLang === 'mizo';
             const d = allDiseases.find(x => x.id === globalIdx) || allDiseases[globalIdx];
             if (!d) return;
             const prods = d.final_recommended_products || d.recommended_wellness_products || [];
-            let txt = `🌿 *Asclepius Wellness Solution*\n`;
-            txt += `📌 *Health Condition:* ${d.simple_name || d.disease_name}\n`;
+            
+            const simpleTitle = (isMizo ? d.simple_name_mizo : d.simple_name_en) || d.simple_name || d.disease_name;
+            const explanation = (isMizo ? d.layman_explanation_mizo : d.layman_explanation_en) || d.layman_explanation || '';
+
+            let txt = isMizo ? `🌿 *Asclepius Inenkawlna Tha*\n` : `🌿 *Asclepius Wellness Solution*\n`;
+            txt += isMizo ? `📌 *Natna:* ${simpleTitle}\n` : `📌 *Health Condition:* ${simpleTitle}\n`;
             txt += `🩺 *Medical Term:* ${d.disease_name}\n`;
-            txt += `💡 *In Simple Words:* ${d.layman_explanation || ''}\n\n`;
-            txt += `💊 *Recommended Ayurvedic Products & Dosage:*\n`;
+            txt += isMizo ? `💡 *Hriatfiahna Awlsam:* ${explanation}\n\n` : `💡 *In Simple Words:* ${explanation}\n\n`;
+            txt += isMizo ? `💊 *Asclepius Damdawi & Ei Zat Tur:*\n` : `💊 *Recommended Ayurvedic Products & Dosage:*\n`;
             prods.forEach((p, i) => {
                 const pName = typeof p === 'string' ? p : (p.product || p.name || p.product_name);
                 const pDose = p.specific_dosage || p.dosage || p.how_to_take || 'As directed';
                 txt += `• *${pName}*:\n  ↳ ${pDose}\n`;
             });
             if (d.ayurvedic_tip) {
-                txt += `\n🍵 *Natural Home Tip:* ${d.ayurvedic_tip}\n`;
+                txt += isMizo ? `\n🍵 *In Lama Inenkawlna Tip:* ${d.ayurvedic_tip}\n` : `\n🍵 *Natural Home Tip:* ${d.ayurvedic_tip}\n`;
             }
             if (d.diet && d.diet.length > 0) {
                 const dietArr = Array.isArray(d.diet) ? d.diet : [d.diet];
-                txt += `\n🥗 *Recommended Diet:* ${dietArr.slice(0, 3).join(', ')}\n`;
+                txt += isMizo ? `\n🥗 *Chaw Ei Tur:* ${dietArr.slice(0, 3).join(', ')}\n` : `\n🥗 *Recommended Diet:* ${dietArr.slice(0, 3).join(', ')}\n`;
             }
             if (d.things_to_avoid && d.things_to_avoid.length > 0) {
                 const avoidArr = Array.isArray(d.things_to_avoid) ? d.things_to_avoid : [d.things_to_avoid];
-                txt += `\n⚠️ *Foods to Avoid:* ${avoidArr.slice(0, 3).join(', ')}\n`;
+                txt += isMizo ? `\n⚠️ *Ei Loh Tur (Insum Tur):* ${avoidArr.slice(0, 3).join(', ')}\n` : `\n⚠️ *Foods to Avoid:* ${avoidArr.slice(0, 3).join(', ')}\n`;
             }
             const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(txt)}`;
             window.open(whatsappUrl, '_blank');

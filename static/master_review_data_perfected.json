@@ -76,7 +76,23 @@
         "Shortness of breath on exertion",
         "Profuse cold sweating and fatigue"
       ],
-      "search_tags": "heart attack, chest pain, blocked arteries, heart disease, cardiac, chest heaviness, blockage, heart"
+      "search_tags": "heart attack, chest pain, blocked arteries, heart disease, cardiac, chest heaviness, blockage, heart",
+      "simple_name_mizo": "Thinlung Thisen Zam Ping & Awm Na (CAD)",
+      "layman_explanation_mizo": "Thinlung hnathawk tura thisen petu thazam chu thau leh cholesterol-in a phui/ping a, awm na leh thawkchham a thlen.",
+      "symptoms_mizo": [
+        "Awm chhung tawt leh sa huam huam",
+        "Thawh hah deuh laia thawkchham",
+        "Thlan vawt tla leh chauh ngawih ngawih"
+      ],
+      "search_tags_mizo": "thinlung na, awm na, thisen zam ping, thinlung, heart attack, cad",
+      "simple_name_en": "Heart Artery Blockage & Chest Pain",
+      "layman_explanation_en": "Blood vessels supplying blood to the heart muscle become narrowed or blocked by cholesterol plaques.",
+      "symptoms_en": [
+        "Chest tightness or squeezing pain",
+        "Shortness of breath on exertion",
+        "Profuse cold sweating and fatigue"
+      ],
+      "search_tags_en": "heart attack, chest pain, blocked arteries, heart disease, cardiac, chest heaviness, blockage, heart"
     },
     {
       "disease_name": "Essential Hypertension",
@@ -133,7 +149,23 @@
         "Dizziness and ringing in ears",
         "Fast heartbeat, feeling anxious or restless"
       ],
-      "search_tags": "high bp, blood pressure, high blood pressure, bp, hypertension, headache, dizziness"
+      "search_tags": "high bp, blood pressure, high blood pressure, bp, hypertension, headache, dizziness",
+      "simple_name_mizo": "Thisen Sang (High Blood Pressure)",
+      "layman_explanation_mizo": "Thisen zam chhunga thisen kal nawrna a san reng avangin thinlung leh thazam tan a hahthlak hle.",
+      "symptoms_mizo": [
+        "Zingkar tukkhum ruh na",
+        "Lu hai leh beng chhung ri vung vung",
+        "Thin phu rang leh rilru chiai/hah"
+      ],
+      "search_tags_mizo": "thisen sang, bp sang, lu hai, lu na, high bp, hypertension",
+      "simple_name_en": "High Blood Pressure (High BP)",
+      "layman_explanation_en": "The pressure of blood flowing through your arteries is persistently too high, straining heart and blood vessels.",
+      "symptoms_en": [
+        "Morning headaches at back of head",
+        "Dizziness and ringing in ears",
+        "Fast heartbeat, feeling anxious or restless"
+      ],
+      "search_tags_en": "high bp, blood pressure, high blood pressure, bp, hypertension, headache, dizziness"
     },
     {
       "disease_name": "Heart Failure",
@@ -207,7 +239,23 @@
         "Severe breathlessness when lying flat",
         "Chronic tiredness and rapid heart rate"
       ],
-      "search_tags": "heart failure, weak heart, breathing problem, swelling feet, breathlessness, swollen legs"
+      "search_tags": "heart failure, weak heart, breathing problem, swelling feet, breathlessness, swollen legs",
+      "simple_name_mizo": "Thinlung Chaklo & Thawkchham (Heart Failure)",
+      "layman_explanation_mizo": "Thinlung thichak a lo tlem a, thisen pump chhuak zo tawh lovin taksa-ah tui a tling khawm.",
+      "symptoms_mizo": [
+        "Ke artui leh bawp vung",
+        "Muthal laia thawkchham nasa lutuk",
+        "Chauh reng leh thin phu rang"
+      ],
+      "search_tags_mizo": "thinlung chaklo, ke vung, thawkchham, heart failure, thinlung",
+      "simple_name_en": "Weak Heart Pumping & Breathlessness",
+      "layman_explanation_en": "The heart muscle becomes too weak or stiff to pump sufficient blood to the body, causing fluid retention.",
+      "symptoms_en": [
+        "Swelling in feet, ankles, and legs",
+        "Severe breathlessness when lying flat",
+        "Chronic tiredness and rapid heart rate"
+      ],
+      "search_tags_en": "heart failure, weak heart, breathing problem, swelling feet, breathlessness, swollen legs"
     },
     {
       "disease_name": "Rheumatic Heart Disease",
@@ -270,7 +318,23 @@
         "Shortness of breath during daily activities",
         "History of joint pains and recurring fever"
       ],
-      "search_tags": "rheumatic, heart valve, throat infection, fever, heart damage"
+      "search_tags": "rheumatic, heart valve, throat infection, fever, heart damage",
+      "simple_name_mizo": "Hrawk Na Atanga Thinlung Chhia (RHD)",
+      "layman_explanation_mizo": "Hrawk na leh khawsik atanga thinlung chhung a kawngkhar (valves) lo chhe zui ta a ni.",
+      "symptoms_mizo": [
+        "Awm chhung nuamlo leh chauh",
+        "Nitina chetvelna a thawkchham",
+        "Ruhseg na leh khawsik nei thin"
+      ],
+      "search_tags_mizo": "thinlung valve, hrawk na, rhd, rheumatic, thinlung chhia",
+      "simple_name_en": "Heart Valve Damage from Throat Infection",
+      "layman_explanation_en": "Permanent damage to heart valves caused by untreated bacterial throat infection or rheumatic fever.",
+      "symptoms_en": [
+        "Chest discomfort and fatigue",
+        "Shortness of breath during daily activities",
+        "History of joint pains and recurring fever"
+      ],
+      "search_tags_en": "rheumatic, heart valve, throat infection, fever, heart damage"
     },
     {
       "disease_name": "Atrial Fibrillation",
@@ -328,7 +392,23 @@
         "Sudden dizziness or lightheadedness",
         "Fatigue and shortness of breath"
       ],
-      "search_tags": "heartbeat, palpitation, irregular pulse, fluttering heart, pulse, racing heart"
+      "search_tags": "heartbeat, palpitation, irregular pulse, fluttering heart, pulse, racing heart",
+      "simple_name_mizo": "Thin Phu Diklo & Rang Lutuk (Arrhythmia)",
+      "layman_explanation_mizo": "Thinlung chunglam a phu dik lovin a rang thut thut a, awm chhung a phu dawt dawt thin.",
+      "symptoms_mizo": [
+        "Thin phu rang/dawt dawt",
+        "Lu hai thut leh tluk mai hlauhawm",
+        "Chauh leh thawkchham"
+      ],
+      "search_tags_mizo": "thin phu rang, thin phu diklo, palpitations, thin phu, arrhythmia",
+      "simple_name_en": "Irregular / Racing Heartbeat (Palpitations)",
+      "layman_explanation_en": "Upper chambers of the heart beat chaotically and out of coordination, causing fluttering in the chest.",
+      "symptoms_en": [
+        "Heart palpitations or fluttering sensation",
+        "Sudden dizziness or lightheadedness",
+        "Fatigue and shortness of breath"
+      ],
+      "search_tags_en": "heartbeat, palpitation, irregular pulse, fluttering heart, pulse, racing heart"
     },
     {
       "disease_name": "Peripheral Artery Disease",
@@ -396,7 +476,23 @@
         "Coldness or numbness in lower legs and feet",
         "Slow healing of cuts or sores on feet"
       ],
-      "search_tags": "leg pain, walking pain, blood circulation, calf cramps, leg numbness, circulation"
+      "search_tags": "leg pain, walking pain, blood circulation, calf cramps, leg numbness, circulation",
+      "simple_name_mizo": "Kelei Thisen Zam Ping & Kal Na",
+      "layman_explanation_mizo": "Ke lam thisen petu thazam a ping a, ke kal laia bawp ruh na leh chawlh ngai a thlen.",
+      "symptoms_mizo": [
+        "Kal laia chawn leh bawp na",
+        "Ke vawt leh zawi/mu chhut",
+        "Ke hliam dam har lutuk"
+      ],
+      "search_tags_mizo": "ke na, bawp na, chawn na, ke mu, thisen zam, pad",
+      "simple_name_en": "Leg Artery Blockage & Walking Pain",
+      "layman_explanation_en": "Narrowed arteries reduce blood flow to the limbs, causing painful cramping in the legs during walking.",
+      "symptoms_en": [
+        "Painful cramping in calves or thighs while walking",
+        "Coldness or numbness in lower legs and feet",
+        "Slow healing of cuts or sores on feet"
+      ],
+      "search_tags_en": "leg pain, walking pain, blood circulation, calf cramps, leg numbness, circulation"
     },
     {
       "disease_name": "Dilated Cardiomyopathy",
@@ -453,7 +549,23 @@
         "Swelling in legs, ankles, and abdomen",
         "Fatigue and irregular pulse"
       ],
-      "search_tags": "enlarged heart, cardiomyopathy, weak heart, swelling, breathlessness"
+      "search_tags": "enlarged heart, cardiomyopathy, weak heart, swelling, breathlessness",
+      "simple_name_mizo": "Thinlung Lian & Chaklo",
+      "layman_explanation_mizo": "Thinlung thichak a zau a, a pan a, thisen a pump chhuak tha theilo a ni.",
+      "symptoms_mizo": [
+        "Thil tih laia thawkchham",
+        "Bawp, ke leh pum vung",
+        "Chauh leh thin phu diklo"
+      ],
+      "search_tags_mizo": "thinlung lian, cardiomyopathy, ke vung, thawkchham",
+      "simple_name_en": "Enlarged & Weak Heart Muscle",
+      "layman_explanation_en": "Heart muscle ventricles stretch and thin, making the heart larger and unable to pump blood efficiently.",
+      "symptoms_en": [
+        "Shortness of breath during daily activity or rest",
+        "Swelling in legs, ankles, and abdomen",
+        "Fatigue and irregular pulse"
+      ],
+      "search_tags_en": "enlarged heart, cardiomyopathy, weak heart, swelling, breathlessness"
     },
     {
       "disease_name": "Hypertrophic Cardiomyopathy",
@@ -516,7 +628,23 @@
         "Dizziness or fainting episodes after activity",
         "Rapid or fluttering heartbeat"
       ],
-      "search_tags": "thick heart, chest pain, fainting, cardiac, heart strain"
+      "search_tags": "thick heart, chest pain, fainting, cardiac, heart strain",
+      "simple_name_mizo": "Thinlung Thichak Chhah Lutuk",
+      "layman_explanation_mizo": "Thinlung bang a chhah lutuk avangin thisen luh leh chhuah a harsa a ni.",
+      "symptoms_mizo": [
+        "Taksa sawizawi laia awm na",
+        "Lu hai leh nikhawhrelova tluk",
+        "Thin phu rang lutuk"
+      ],
+      "search_tags_mizo": "thinlung chhah, awm na, lu hai, thinlung",
+      "simple_name_en": "Thickened Heart Muscle & Exertion Pain",
+      "layman_explanation_en": "Heart muscle walls become abnormally thick, making it harder for the heart to pump blood.",
+      "symptoms_en": [
+        "Chest pain during physical exertion",
+        "Dizziness or fainting episodes after activity",
+        "Rapid or fluttering heartbeat"
+      ],
+      "search_tags_en": "thick heart, chest pain, fainting, cardiac, heart strain"
     },
     {
       "disease_name": "Valvular Heart Disease",
@@ -579,7 +707,23 @@
         "Swelling in ankles, feet, or abdomen",
         "Chest heaviness and fatigue"
       ],
-      "search_tags": "heart valve, valve leak, chest pain, breathlessness, valve defect"
+      "search_tags": "heart valve, valve leak, chest pain, breathlessness, valve defect",
+      "simple_name_mizo": "Thinlung Kawngkhar (Valve) Chhia / Leak",
+      "layman_explanation_mizo": "Thinlung chhunga thisen kalna kawngkhar a inhawng/inkhar tha theilo a, thisen a kir leh thin.",
+      "symptoms_mizo": [
+        "Thawkchham leh thaw harsa",
+        "Ke artui leh pum vung",
+        "Awm rit leh chauh"
+      ],
+      "search_tags_mizo": "valve chhia, thinlung valve, thawkchham, ke vung",
+      "simple_name_en": "Heart Valve Leakage or Narrowing",
+      "layman_explanation_en": "One or more valves of the heart do not open or close properly, disrupting normal blood flow.",
+      "symptoms_en": [
+        "Shortness of breath and wheezing",
+        "Swelling in ankles, feet, or abdomen",
+        "Chest heaviness and fatigue"
+      ],
+      "search_tags_en": "heart valve, valve leak, chest pain, breathlessness, valve defect"
     },
     {
       "disease_name": "Aortic Aneurysm",
@@ -636,7 +780,23 @@
         "Difficulty swallowing or coughing",
         "Shortness of breath"
       ],
-      "search_tags": "aorta, artery, back pain, chest pain, blood vessel balloon"
+      "search_tags": "aorta, artery, back pain, chest pain, blood vessel balloon",
+      "simple_name_mizo": "Thisen Zam Pui Puarpang & Na",
+      "layman_explanation_mizo": "Taksa pumpuia thisen petu thazam pui ber (Aorta) bang a chaklo a, a puar lian a ni.",
+      "symptoms_mizo": [
+        "Awm, hnungzang emaw pum chhung na ngut ngut",
+        "Lem harsa leh khuh",
+        "Thawkchham"
+      ],
+      "search_tags_mizo": "thisen zam pui, aorta, hnungzang na, awm na",
+      "simple_name_en": "Main Artery Ballooning & Weakness",
+      "layman_explanation_en": "An abnormal bulge in the wall of the aorta, the major blood vessel carrying oxygenated blood from the heart.",
+      "symptoms_en": [
+        "Deep throbbing pain in chest, back, or abdomen",
+        "Difficulty swallowing or coughing",
+        "Shortness of breath"
+      ],
+      "search_tags_en": "aorta, artery, back pain, chest pain, blood vessel balloon"
     },
     {
       "disease_name": "Deep Vein Thrombosis",
@@ -699,7 +859,23 @@
         "Throbbing or cramping pain in the calf",
         "Red or darkened warm skin on the painful leg"
       ],
-      "search_tags": "blood clot, leg swelling, calf pain, dvt, leg clot, swollen calf"
+      "search_tags": "blood clot, leg swelling, calf pain, dvt, leg clot, swollen calf",
+      "simple_name_mizo": "Chawn Thisen Khal / Tang (DVT)",
+      "layman_explanation_mizo": "Bawp leh chawn chhung thuk a thisen zamah thisen a khal a, thisen kal a dang ping.",
+      "symptoms_mizo": [
+        "Bawp leh chawn pakhat vung lian",
+        "Chawn na leh za",
+        "Bawp vung sa leh sen"
+      ],
+      "search_tags_mizo": "thisen khal, chawn vung, bawp na, dvt",
+      "simple_name_en": "Blood Clot in Leg Vein (DVT)",
+      "layman_explanation_en": "A blood clot forms in a deep vein, usually in the calf or thigh, blocking healthy blood circulation.",
+      "symptoms_en": [
+        "Swelling in one leg or calf",
+        "Throbbing or cramping pain in the calf",
+        "Red or darkened warm skin on the painful leg"
+      ],
+      "search_tags_en": "blood clot, leg swelling, calf pain, dvt, leg clot, swollen calf"
     },
     {
       "disease_name": "Pulmonary Hypertension",
@@ -756,7 +932,23 @@
         "Dizziness, lightheadedness, or fainting",
         "Bluish color on lips and fingers"
       ],
-      "search_tags": "lung bp, pulmonary, breathlessness, fatigue, lung pressure"
+      "search_tags": "lung bp, pulmonary, breathlessness, fatigue, lung pressure",
+      "simple_name_mizo": "Chhura Thisen Zam Sang Lutuk",
+      "layman_explanation_mizo": "Thinlung atanga chhur (lungs) pana thisen zamah thisen nawrna a sang lutuk a ni.",
+      "symptoms_mizo": [
+        "Tlem chet hlek pawha thawkchham",
+        "Lu hai leh tluk mai awlsam",
+        "Hmui leh kut tin duk"
+      ],
+      "search_tags_mizo": "chhur thisen sang, thawkchham, lungs bp, pulmonary",
+      "simple_name_en": "High Blood Pressure in Lung Arteries",
+      "layman_explanation_en": "Increased pressure in the blood vessels that lead from the heart to the lungs, straining the right heart chamber.",
+      "symptoms_en": [
+        "Shortness of breath with minimal exertion",
+        "Dizziness, lightheadedness, or fainting",
+        "Bluish color on lips and fingers"
+      ],
+      "search_tags_en": "lung bp, pulmonary, breathlessness, fatigue, lung pressure"
     },
     {
       "disease_name": "Ischemic Heart Disease",
@@ -823,7 +1015,23 @@
         "Heaviness or burning in chest",
         "Breathlessness on walking"
       ],
-      "search_tags": "ischemic, heart disease, angina, chest pain, heart attack, chest tightness"
+      "search_tags": "ischemic, heart disease, angina, chest pain, heart attack, chest tightness",
+      "simple_name_mizo": "Thinlung Thisen Tlem & Awm Na (Angina)",
+      "layman_explanation_mizo": "Thinlung-in oxygen leh thisen a dawn tlem avangin awm chhung a na a, a tawt thin.",
+      "symptoms_mizo": [
+        "Awm chhung na darh (dar vei lam, nghawng)",
+        "Awm rit leh sa huam huam",
+        "Kal laia thawkchham"
+      ],
+      "search_tags_mizo": "angina, awm na, thinlung na, ischemic",
+      "simple_name_en": "Reduced Blood Supply to Heart (Angina)",
+      "layman_explanation_en": "Heart muscle receives insufficient blood and oxygen due to narrowed coronary arteries.",
+      "symptoms_en": [
+        "Chest tightness radiating to left shoulder, arm, or neck",
+        "Heaviness or burning in chest",
+        "Breathlessness on walking"
+      ],
+      "search_tags_en": "ischemic, heart disease, angina, chest pain, heart attack, chest tightness"
     },
     {
       "disease_name": "Stroke (Cerebrovascular Disease sequelae)",
@@ -896,7 +1104,23 @@
         "Difficulty speaking or slurred words",
         "Impaired balance, walking difficulty"
       ],
-      "search_tags": "stroke, paralysis, brain stroke, weakness, walking difficulty, speech loss"
+      "search_tags": "stroke, paralysis, brain stroke, weakness, walking difficulty, speech loss",
+      "simple_name_mizo": "Thluak Thisen Zam Chhia / Zeng (Stroke)",
+      "layman_explanation_mizo": "Thluak thisen zam a chah emaw a thih avanga taksa zeng leh che theilo inenkawlna.",
+      "symptoms_mizo": [
+        "Taksa sir leh hmai zeng / che theilo",
+        "Ṭawng fiahlo leh ṭawng harsa",
+        "Kal theilo leh thluak buai"
+      ],
+      "search_tags_mizo": "stroke, zeng, thluak, taksa zeng, tawng theilo",
+      "simple_name_en": "Brain Stroke Recovery & Paralysis Support",
+      "layman_explanation_en": "Recovery support after brain blood supply disruption, helping rebuild nerve function and muscle strength.",
+      "symptoms_en": [
+        "Weakness or numbness on one side of body or face",
+        "Difficulty speaking or slurred words",
+        "Impaired balance, walking difficulty"
+      ],
+      "search_tags_en": "stroke, paralysis, brain stroke, weakness, walking difficulty, speech loss"
     },
     {
       "disease_name": "Type 2 Diabetes Mellitus",
@@ -973,7 +1197,23 @@
         "Excessive thirst and constant hunger",
         "Tiredness, slow wound healing, blurry vision"
       ],
-      "search_tags": "sugar, blood sugar, high sugar, diabetes, diabetic, frequent urination, fatigue"
+      "search_tags": "sugar, blood sugar, high sugar, diabetes, diabetic, frequent urination, fatigue",
+      "simple_name_mizo": "Zunthlum (Type 2 Diabetes)",
+      "layman_explanation_mizo": "Taksa-in insulin a hman theih loh avangin thisen chhunga chini (sugar) a tam lutuk a ni.",
+      "symptoms_mizo": [
+        "Zanah zun a chhuak zing lutuk",
+        "Tui in hal reng leh rilṭam reng",
+        "Chauh awlsam, hliam dam har, leh mit fiahlo"
+      ],
+      "search_tags_mizo": "zunthlum, chini sang, zun tam, sugar, diabetes",
+      "simple_name_en": "High Blood Sugar / Diabetes",
+      "layman_explanation_en": "Body cells become resistant to insulin, leading to chronically high sugar levels in the blood.",
+      "symptoms_en": [
+        "Frequent urination, especially at night",
+        "Excessive thirst and constant hunger",
+        "Tiredness, slow wound healing, blurry vision"
+      ],
+      "search_tags_en": "sugar, blood sugar, high sugar, diabetes, diabetic, frequent urination, fatigue"
     },
     {
       "disease_name": "Type 1 Diabetes Mellitus",
@@ -1050,7 +1290,23 @@
         "Constant intense thirst and hunger",
         "Frequent urination and extreme fatigue"
       ],
-      "search_tags": "type 1 diabetes, insulin, child sugar, weight loss, juvenile diabetes"
+      "search_tags": "type 1 diabetes, insulin, child sugar, weight loss, juvenile diabetes",
+      "simple_name_mizo": "Zunthlum (Insulin Mamawh Chi)",
+      "layman_explanation_mizo": "Taksa chhung a pancreas-in insulin a siam theih loh avanga zunthlum nei an ni.",
+      "symptoms_mizo": [
+        "Cher thut leh thau hleih theihlohna",
+        "Tuihal reng leh rilṭam reng",
+        "Zun zing lutuk leh chau"
+      ],
+      "search_tags_mizo": "type 1 zunthlum, insulin, naupang zunthlum, diabetes",
+      "simple_name_en": "Insulin-Dependent Diabetes",
+      "layman_explanation_en": "Autoimmune condition where the pancreas produces little or no insulin, requiring metabolic balance.",
+      "symptoms_en": [
+        "Rapid unintended weight loss",
+        "Constant intense thirst and hunger",
+        "Frequent urination and extreme fatigue"
+      ],
+      "search_tags_en": "type 1 diabetes, insulin, child sugar, weight loss, juvenile diabetes"
     },
     {
       "disease_name": "Hypothyroidism",
@@ -1107,7 +1363,23 @@
         "Extreme tiredness, lethargy, and cold sensitivity",
         "Hair fall, dry skin, and chronic constipation"
       ],
-      "search_tags": "thyroid, hypothyroidism, weight gain, hair fall, fatigue, sluggishness"
+      "search_tags": "thyroid, hypothyroidism, weight gain, hair fall, fatigue, sluggishness",
+      "simple_name_mizo": "Thyroid Hnathawh Tlem (Thau & Chau)",
+      "layman_explanation_mizo": "Thyroid gland-in hormone a siam tlem avangin taksa chakna leh thil sawngbawlna a muang vek a ni.",
+      "symptoms_mizo": [
+        "Thau thut leh hmai vung",
+        "Chauh reng, zawi leh vawt tih awlsam",
+        "Sam tla, vun ro leh ek khal"
+      ],
+      "search_tags_mizo": "thyroid, thau, sam tla, chauh, hypothyroidism",
+      "simple_name_en": "Underactive Thyroid (Weight Gain & Fatigue)",
+      "layman_explanation_en": "Thyroid gland fails to produce sufficient thyroid hormones, slowing down the body's entire metabolism.",
+      "symptoms_en": [
+        "Unexplained weight gain and puffy face",
+        "Extreme tiredness, lethargy, and cold sensitivity",
+        "Hair fall, dry skin, and chronic constipation"
+      ],
+      "search_tags_en": "thyroid, hypothyroidism, weight gain, hair fall, fatigue, sluggishness"
     },
     {
       "disease_name": "Hyperthyroidism (Graves' Disease)",
@@ -1164,7 +1436,23 @@
         "Shaking hands and trembling fingers",
         "Rapid heartbeat, heat intolerance, and anxiety"
       ],
-      "search_tags": "hyperthyroid, graves, weight loss, rapid heartbeat, anxiety, thyroid"
+      "search_tags": "hyperthyroid, graves, weight loss, rapid heartbeat, anxiety, thyroid",
+      "simple_name_mizo": "Thyroid Hnathawh Nasa Lutuk (Cher & Thinphu Rang)",
+      "layman_explanation_mizo": "Thyroid gland-in hormone a siam tam lutuk avangin taksa a che rang a, chaw a heh chungin a cher tual tual.",
+      "symptoms_mizo": [
+        "Cher tial tial chaw ei tam chungin",
+        "Kut khur leh thin phu rang",
+        "Khawlum tuar theilo leh chiai"
+      ],
+      "search_tags_mizo": "hyperthyroid, graves, cher, kut khur, thyroid",
+      "simple_name_en": "Overactive Thyroid (Rapid Weight Loss & Anxiety)",
+      "layman_explanation_en": "Thyroid gland produces excessive thyroid hormones, putting the metabolism into overdrive.",
+      "symptoms_en": [
+        "Rapid weight loss despite eating normally",
+        "Shaking hands and trembling fingers",
+        "Rapid heartbeat, heat intolerance, and anxiety"
+      ],
+      "search_tags_en": "hyperthyroid, graves, weight loss, rapid heartbeat, anxiety, thyroid"
     },
     {
       "disease_name": "Obesity",
@@ -1231,7 +1519,23 @@
         "Heavy sweating and sleep disturbances",
         "Joint and lower back pain from weight stress"
       ],
-      "search_tags": "weight loss, fat, overweight, belly fat, obesity, weight gain, body fat, slimming"
+      "search_tags": "weight loss, fat, overweight, belly fat, obesity, weight gain, body fat, slimming",
+      "simple_name_mizo": "Thau Lutuk & Pum Thau (Obesity)",
+      "layman_explanation_mizo": "Taksa-ah thau a tling tam lutuk a, ruh, thinlung leh taksa pumpui tan a rit a ni.",
+      "symptoms_mizo": [
+        "Chetsawn hleka thawkchham",
+        "Thlan tla nasa lutuk leh mut thalo",
+        "Ruhseg na leh kawng na"
+      ],
+      "search_tags_mizo": "thau, thau lutuk, thau tihhniam, weight loss, obesity",
+      "simple_name_en": "Excess Body Weight & Belly Fat",
+      "layman_explanation_en": "Excess accumulation of body fat that impacts joints, stamina, heart health, and energy.",
+      "symptoms_en": [
+        "Breathlessness during mild physical activity",
+        "Heavy sweating and sleep disturbances",
+        "Joint and lower back pain from weight stress"
+      ],
+      "search_tags_en": "weight loss, fat, overweight, belly fat, obesity, weight gain, body fat, slimming"
     },
     {
       "disease_name": "Polycystic Ovary Syndrome (PCOS)",
@@ -1303,7 +1607,23 @@
         "Excessive facial or body hair and acne",
         "Abdominal weight gain and fertility challenges"
       ],
-      "search_tags": "pcos, pcod, irregular periods, period problems, menstruation, facial hair, ovaries"
+      "search_tags": "pcos, pcod, irregular periods, period problems, menstruation, facial hair, ovaries",
+      "simple_name_mizo": "Hmeichhe Chhul Bawm Vung & Period Buai (PCOS)",
+      "layman_explanation_mizo": "Hmeichhe hormone buai avanga thla tin thi neih hun diklo leh chhul bawma tui bawk awm a ni.",
+      "symptoms_mizo": [
+        "Thi neih hun mumallo / thulh",
+        "Hmai hmul to leh hmai bawl",
+        "Pum thau leh fa neih harsa"
+      ],
+      "search_tags_mizo": "pcos, pcod, periods buai, hmeichhe natna, thi neih diklo",
+      "simple_name_en": "PCOS / Irregular Periods & Hormonal Imbalance",
+      "layman_explanation_en": "Hormonal condition causing irregular menstrual cycles, ovarian cysts, and elevated androgens in women.",
+      "symptoms_en": [
+        "Irregular, delayed, or missing periods",
+        "Excessive facial or body hair and acne",
+        "Abdominal weight gain and fertility challenges"
+      ],
+      "search_tags_en": "pcos, pcod, irregular periods, period problems, menstruation, facial hair, ovaries"
     },
     {
       "disease_name": "Metabolic Syndrome",
@@ -1370,7 +1690,23 @@
         "High fasting blood sugar and lethargy after meals",
         "Elevated blood pressure"
       ],
-      "search_tags": "metabolic, belly fat, sugar, bp, cholesterol, central obesity"
+      "search_tags": "metabolic, belly fat, sugar, bp, cholesterol, central obesity",
+      "simple_name_mizo": "Pum Thau, Zunthlum & Thisen Sang Inpawlh",
+      "layman_explanation_mizo": "Pum thau, thisen sang, zunthlum leh cholesterol sang inzawm khawm a ni.",
+      "symptoms_mizo": [
+        "Kawng len lutuk (Pum thau)",
+        "Zunthlum sang leh chaw ei hnu zawi",
+        "Thisen sang"
+      ],
+      "search_tags_mizo": "metabolic, pum thau, zunthlum, thisen sang",
+      "simple_name_en": "Combined Belly Fat, High Sugar & BP",
+      "layman_explanation_en": "Cluster of metabolic risk factors including excess belly fat, high fasting sugar, elevated BP, and abnormal lipids.",
+      "symptoms_en": [
+        "Increased waist circumference and central obesity",
+        "High fasting blood sugar and lethargy after meals",
+        "Elevated blood pressure"
+      ],
+      "search_tags_en": "metabolic, belly fat, sugar, bp, cholesterol, central obesity"
     },
     {
       "disease_name": "Hashimoto's Thyroiditis",
@@ -1437,7 +1773,23 @@
         "Fatigue, brain fog, and muscle aches",
         "Weight gain and dry, coarse skin"
       ],
-      "search_tags": "hashimoto, thyroid, goiter, neck swelling, sluggishness, thyroid"
+      "search_tags": "hashimoto, thyroid, goiter, neck swelling, sluggishness, thyroid",
+      "simple_name_mizo": "Nghawng Vung & Thyroid Chaklo",
+      "layman_explanation_mizo": "Taksa venhimna-in thyroid gland a beih avanga nghawng vung (Goiter) leh thyroid chaklo a ni.",
+      "symptoms_mizo": [
+        "Nghawng hma lam vung lian",
+        "Chauh, thluak chhah leh tha zawi",
+        "Thau leh vun ro"
+      ],
+      "search_tags_mizo": "hashimoto, nghawng vung, goiter, thyroid",
+      "simple_name_en": "Autoimmune Thyroid Swelling (Goiter)",
+      "layman_explanation_en": "Immune system attacks the thyroid gland, causing chronic inflammation and progressive underactive thyroid.",
+      "symptoms_en": [
+        "Swelling at the front of the neck (Goiter)",
+        "Fatigue, brain fog, and muscle aches",
+        "Weight gain and dry, coarse skin"
+      ],
+      "search_tags_en": "hashimoto, thyroid, goiter, neck swelling, sluggishness, thyroid"
     },
     {
       "disease_name": "Cushing's Syndrome",
@@ -1510,7 +1862,23 @@
         "Fat accumulation around neck and upper back",
         "Purple stretch marks on abdomen and thighs"
       ],
-      "search_tags": "cushing, moon face, weight gain, cortisol, stretch marks"
+      "search_tags": "cushing, moon face, weight gain, cortisol, stretch marks",
+      "simple_name_mizo": "Hmai Bial Pum Thau (Cortisol Sang)",
+      "layman_explanation_mizo": "Stress hormone (Cortisol) a tam lutuk avanga hmai bial leh taksa thau thut a ni.",
+      "symptoms_mizo": [
+        "Hmai bial lian (Moon face)",
+        "Nghawng leh hnung thau bawk",
+        "Pum leh malpui vung duk"
+      ],
+      "search_tags_mizo": "cushing, moon face, hmai bial, thau",
+      "simple_name_en": "High Cortisol / Moon Face & Body Fat",
+      "layman_explanation_en": "Condition resulting from prolonged elevated levels of the stress hormone cortisol in the body.",
+      "symptoms_en": [
+        "Round, puffy face ('moon face')",
+        "Fat accumulation around neck and upper back",
+        "Purple stretch marks on abdomen and thighs"
+      ],
+      "search_tags_en": "cushing, moon face, weight gain, cortisol, stretch marks"
     },
     {
       "disease_name": "Addison's Disease",
@@ -1577,7 +1945,23 @@
         "Darkening of skin patches (Hyperpigmentation)",
         "Dizziness upon standing and craving salty food"
       ],
-      "search_tags": "addison, low bp, dark skin, extreme fatigue, weakness, dizziness"
+      "search_tags": "addison, low bp, dark skin, extreme fatigue, weakness, dizziness",
+      "simple_name_mizo": "Adrenal Gland Chaklo & Thisen Hniam",
+      "layman_explanation_mizo": "Adrenal gland-in hormone a siam tlem lutuk avanga taksa zawi leh thisen hniam a ni.",
+      "symptoms_mizo": [
+        "Chauh ngawih ngawih leh cher",
+        "Vun rawng a dum/thim tial tial",
+        "Thisen hniam leh al ei chak"
+      ],
+      "search_tags_mizo": "addison, thisen hniam, vun thim, chauh",
+      "simple_name_en": "Adrenal Deficiency & Low Blood Pressure",
+      "layman_explanation_en": "Adrenal glands produce insufficient vital hormones (cortisol & aldosterone), leading to energy collapse.",
+      "symptoms_en": [
+        "Extreme, worsening fatigue and weight loss",
+        "Darkening of skin patches (Hyperpigmentation)",
+        "Dizziness upon standing and craving salty food"
+      ],
+      "search_tags_en": "addison, low bp, dark skin, extreme fatigue, weakness, dizziness"
     },
     {
       "disease_name": "Hyperparathyroidism",
@@ -1644,7 +2028,23 @@
         "Recurrent kidney stones and frequent urination",
         "Muscle weakness, nausea, and mental fatigue"
       ],
-      "search_tags": "calcium, parathyroid, bone pain, kidney stone, weak bones"
+      "search_tags": "calcium, parathyroid, bone pain, kidney stone, weak bones",
+      "simple_name_mizo": "Calcium Tam Lutuk & Ruh Chaklo",
+      "layman_explanation_mizo": "Parathyroid hormone a tam lutuk a, ruh atangin calcium a la chhuak a, ruh a tichaklo a ni.",
+      "symptoms_mizo": [
+        "Ruh na leh ruh tliak awlsam",
+        "Kal lung awm zing leh zun tam",
+        "Tha zawi leh luakchhuak"
+      ],
+      "search_tags_mizo": "calcium, ruh na, kal lung, parathyroid",
+      "simple_name_en": "High Calcium & Weak Bones",
+      "layman_explanation_en": "Overactive parathyroid glands produce too much hormone, stripping calcium from bones into the bloodstream.",
+      "symptoms_en": [
+        "Fragile, aching bones and joint pain",
+        "Recurrent kidney stones and frequent urination",
+        "Muscle weakness, nausea, and mental fatigue"
+      ],
+      "search_tags_en": "calcium, parathyroid, bone pain, kidney stone, weak bones"
     },
     {
       "disease_name": "Dyslipidemia (High Cholesterol)",
@@ -1711,7 +2111,23 @@
         "Yellowish fatty bumps near eyes or tendons",
         "Shortness of breath and leg pain during exertion"
       ],
-      "search_tags": "cholesterol, high cholesterol, triglycerides, fat, lipid, blood fat, blockage"
+      "search_tags": "cholesterol, high cholesterol, triglycerides, fat, lipid, blood fat, blockage",
+      "simple_name_mizo": "Thisen Chhunga Thau & Cholesterol Tam",
+      "layman_explanation_mizo": "Thisen chhunga cholesterol leh triglyceride a tam lutuk a, thisen zam a phui/ping thei.",
+      "symptoms_mizo": [
+        "A tirah a lanna a awm lo tlangpui",
+        "Mit sir vela thau ser awm",
+        "Awm tawt leh ke na"
+      ],
+      "search_tags_mizo": "cholesterol, thau sang, triglycerides, thisen thau",
+      "simple_name_en": "High Cholesterol & Triglycerides (Blood Fat)",
+      "layman_explanation_en": "Unhealthy balance of fats in blood (high LDL bad cholesterol and high triglycerides) that clogs arteries.",
+      "symptoms_en": [
+        "Usually silent with no early symptoms",
+        "Yellowish fatty bumps near eyes or tendons",
+        "Shortness of breath and leg pain during exertion"
+      ],
+      "search_tags_en": "cholesterol, high cholesterol, triglycerides, fat, lipid, blood fat, blockage"
     },
     {
       "disease_name": "Diabetic Neuropathy",
@@ -1778,7 +2194,23 @@
         "Loss of sensation or numbness in toes and soles",
         "Sharp burning pains that worsen at night"
       ],
-      "search_tags": "diabetic nerve, numbness in feet, burning feet, tingling, pins and needles, diabetes"
+      "search_tags": "diabetic nerve, numbness in feet, burning feet, tingling, pins and needles, diabetes",
+      "simple_name_mizo": "Zunthlum Vanga Ke Mu, Sa & Na",
+      "layman_explanation_mizo": "Zunthlum sang lutuk avangin kezungṭang leh kepha thazam a chhia a, a sa a, a mu bawk.",
+      "symptoms_mizo": [
+        "Ke sa huam huam leh chhun ang maia na",
+        "Kezungṭang mu chhut / hriatna bo",
+        "Zan mut laia na zual"
+      ],
+      "search_tags_mizo": "ke sa, ke mu, zunthlum thazam, neuropathy",
+      "simple_name_en": "Diabetic Nerve Pain, Burning & Numb Feet",
+      "layman_explanation_en": "Chronic high blood sugar damages delicate nerve fibers, primarily in the feet, toes, and legs.",
+      "symptoms_en": [
+        "Burning, tingling, or needle-like pain in feet",
+        "Loss of sensation or numbness in toes and soles",
+        "Sharp burning pains that worsen at night"
+      ],
+      "search_tags_en": "diabetic nerve, numbness in feet, burning feet, tingling, pins and needles, diabetes"
     },
     {
       "disease_name": "Diabetic Retinopathy",
@@ -1851,7 +2283,23 @@
         "Dark spots or floating webs in eyesight",
         "Impaired night vision and color fading"
       ],
-      "search_tags": "diabetic eye, blurry vision, floaters, eyesight, diabetic retina, vision loss"
+      "search_tags": "diabetic eye, blurry vision, floaters, eyesight, diabetic retina, vision loss",
+      "simple_name_mizo": "Zunthlum Vanga Mit Chhia",
+      "layman_explanation_mizo": "Zunthlum-in mit hnunglam (retina) thisen zam a tichhia a, khawhmuh a tifiahlo a ni.",
+      "symptoms_mizo": [
+        "Khawhmuh fiahlo leh phe ruai",
+        "Mit hmaa thil thim thlawk awm",
+        "Zan lama khawhmuh chhia"
+      ],
+      "search_tags_mizo": "mit chhia, zunthlum mit, mit fiahlo, retinopathy",
+      "simple_name_en": "Diabetic Eye & Retina Damage",
+      "layman_explanation_en": "High blood sugar damages tiny retinal blood vessels, causing swelling, fluid leakage, or vision loss.",
+      "symptoms_en": [
+        "Blurry or fluctuating vision",
+        "Dark spots or floating webs in eyesight",
+        "Impaired night vision and color fading"
+      ],
+      "search_tags_en": "diabetic eye, blurry vision, floaters, eyesight, diabetic retina, vision loss"
     },
     {
       "disease_name": "Diabetic Nephropathy",
@@ -1918,7 +2366,23 @@
         "Foamy or frothy urine",
         "Fatigue, nausea, and worsening blood pressure"
       ],
-      "search_tags": "diabetic kidney, protein in urine, swelling, kidney damage, foamy urine, kidney"
+      "search_tags": "diabetic kidney, protein in urine, swelling, kidney damage, foamy urine, kidney",
+      "simple_name_mizo": "Zunthlum Vanga Kal (Kidney) Chhia",
+      "layman_explanation_mizo": "Zunthlum rei tak awm tawh avangin kal a chhia a, zunah protein a put chhuak a ni.",
+      "symptoms_mizo": [
+        "Ke artui, bawp leh mit vung",
+        "Zun a phuan nasa lutuk",
+        "Chauh leh thisen sang"
+      ],
+      "search_tags_mizo": "kal chhia, zunthlum kal, kidney, zun phuan",
+      "simple_name_en": "Diabetic Kidney Strain & Protein Leakage",
+      "layman_explanation_en": "Kidney filtering units become damaged from long-standing diabetes, causing protein leakage into urine.",
+      "symptoms_en": [
+        "Swelling in feet, ankles, hands, or puffy eyes",
+        "Foamy or frothy urine",
+        "Fatigue, nausea, and worsening blood pressure"
+      ],
+      "search_tags_en": "diabetic kidney, protein in urine, swelling, kidney damage, foamy urine, kidney"
     }
   ],
   "Respiratory": [
@@ -1994,7 +2458,23 @@
         "Severe shortness of breath with simple walking",
         "Chest tightness and wheezing sound"
       ],
-      "search_tags": "copd, breathing problem, lungs, chronic cough, breathlessness, mucus, phlegm"
+      "search_tags": "copd, breathing problem, lungs, chronic cough, breathlessness, mucus, phlegm",
+      "simple_name_mizo": "Chhur Chhia & Thawkchham Nasa (COPD)",
+      "layman_explanation_mizo": "Meizial emaw meikhu vanga chhur (lungs) chhe hlen a ni a, boruak lakluh leh chhuah a harsa.",
+      "symptoms_mizo": [
+        "Khuh khak chhuak reng",
+        "Kal hleka thawkchham nasa lutuk",
+        "Awm tawt leh thaw ri"
+      ],
+      "search_tags_mizo": "copd, chhur chhia, thawkchham, khuh, khak",
+      "simple_name_en": "Chronic Lung Damage & Severe Breathlessness (COPD)",
+      "layman_explanation_en": "Progressive lung disease causing obstructed airflow from the lungs, leading to chronic breathlessness.",
+      "symptoms_en": [
+        "Daily cough with thick mucus/phlegm",
+        "Severe shortness of breath with simple walking",
+        "Chest tightness and wheezing sound"
+      ],
+      "search_tags_en": "copd, breathing problem, lungs, chronic cough, breathlessness, mucus, phlegm"
     },
     {
       "disease_name": "Asthma",
@@ -2078,7 +2558,23 @@
         "Night-time or early morning coughing fits",
         "Sudden chest tightness and breathlessness"
       ],
-      "search_tags": "asthma, breathing problem, wheezing, cough, chest tightness, allergy"
+      "search_tags": "asthma, breathing problem, wheezing, cough, chest tightness, allergy",
+      "simple_name_mizo": "Thawkchham, Khuh & Thaw Ri (Asthma)",
+      "layman_explanation_mizo": "Thawk lakna dawt a vung a, a zim a, hnaphnawm a tam avangin thawk a harsa thin.",
+      "symptoms_mizo": [
+        "Thaw chhuah laia ri (huk/phiak) chhuak",
+        "Zan leh zingkar a khuh nasa zual",
+        "Awm tawt leh thawk harsa"
+      ],
+      "search_tags_mizo": "thawkchham, khuh, asthma, awm tawt, thaw ri",
+      "simple_name_en": "Asthma / Bronchial Allergy & Wheezing",
+      "layman_explanation_en": "Airways swell, narrow, and produce excess mucus in response to triggers like dust, cold air, or pollen.",
+      "symptoms_en": [
+        "Wheezing or whistling sound when breathing out",
+        "Night-time or early morning coughing fits",
+        "Sudden chest tightness and breathlessness"
+      ],
+      "search_tags_en": "asthma, breathing problem, wheezing, cough, chest tightness, allergy"
     },
     {
       "disease_name": "Bronchiectasis",
@@ -2152,7 +2648,23 @@
         "Recurrent chest infections and wheezing",
         "Fatigue and breathlessness"
       ],
-      "search_tags": "phlegm, mucus cough, chest infection, chronic cough, lungs"
+      "search_tags": "phlegm, mucus cough, chest infection, chronic cough, lungs",
+      "simple_name_mizo": "Thawklakna Dawt Zau & Khak Tam",
+      "layman_explanation_mizo": "Thawklakna dawt a lo zau hlen a, khak chhe tam lutuk paih chhuah theih loh a awm a ni.",
+      "symptoms_mizo": [
+        "Nitina khak tam lutuk chhuak",
+        "Awm chhung na leh khuh",
+        "Chauh leh thawkchham"
+      ],
+      "search_tags_mizo": "khak tam, khuh, bronchiectasis, awm na",
+      "simple_name_en": "Widened Airways & Chronic Phlegm Cough",
+      "layman_explanation_en": "Permanent widening and scarring of bronchi that prevents lungs from clearing mucus naturally.",
+      "symptoms_en": [
+        "Daily coughing up large amounts of foul/colored phlegm",
+        "Recurrent chest infections and wheezing",
+        "Fatigue and breathlessness"
+      ],
+      "search_tags_en": "phlegm, mucus cough, chest infection, chronic cough, lungs"
     },
     {
       "disease_name": "Interstitial Lung Disease",
@@ -2232,7 +2744,23 @@
         "Breathlessness even while resting or talking",
         "Fingertip clubbing and chest discomfort"
       ],
-      "search_tags": "lung stiffness, dry cough, breathlessness, lung scarring, lungs"
+      "search_tags": "lung stiffness, dry cough, breathlessness, lung scarring, lungs",
+      "simple_name_mizo": "Chhur Ruh / Khawng & Khuh Ro",
+      "layman_explanation_mizo": "Chhur chhung a thil nem a khawng a, a chhah a, boruak hip luh a harsa a ni.",
+      "symptoms_mizo": [
+        "Khuh ro reh thei reng reng lo",
+        "Tawng laia thawkchham",
+        "Kut zungte hmawr phui lian"
+      ],
+      "search_tags_mizo": "chhur khawng, khuh ro, thawkchham, ild",
+      "simple_name_en": "Stiff Lung Tissue & Dry Cough",
+      "layman_explanation_en": "Broad group of disorders that cause progressive scarring of lung tissue between the air sacs.",
+      "symptoms_en": [
+        "Persistent dry, hacking cough",
+        "Breathlessness even while resting or talking",
+        "Fingertip clubbing and chest discomfort"
+      ],
+      "search_tags_en": "lung stiffness, dry cough, breathlessness, lung scarring, lungs"
     },
     {
       "disease_name": "Pulmonary Fibrosis",
@@ -2306,7 +2834,23 @@
         "Dry cough that does not improve",
         "Aching muscles, joints, and unexplained weight loss"
       ],
-      "search_tags": "lung fibrosis, lung scarring, breathing difficulty, breathlessness, lungs"
+      "search_tags": "lung fibrosis, lung scarring, breathing difficulty, breathlessness, lungs",
+      "simple_name_mizo": "Chhur Ser & Boruak Tlakchham",
+      "layman_explanation_mizo": "Chhur a ser nasa lutuk a, taksa-in oxygen a dawng tawk theilo a ni.",
+      "symptoms_mizo": [
+        "Thawk rang leh thawkchham",
+        "Khuh ro reh theilo",
+        "Ruhseg na leh cher"
+      ],
+      "search_tags_mizo": "chhur ser, pulmonary fibrosis, thawkchham",
+      "simple_name_en": "Lung Tissue Scarring & Low Oxygen",
+      "layman_explanation_en": "Lungs become scarred and thickened over time, severely restricting oxygen delivery to the bloodstream.",
+      "symptoms_en": [
+        "Rapid, shallow breathing and breathlessness",
+        "Dry cough that does not improve",
+        "Aching muscles, joints, and unexplained weight loss"
+      ],
+      "search_tags_en": "lung fibrosis, lung scarring, breathing difficulty, breathlessness, lungs"
     },
     {
       "disease_name": "Chronic Bronchitis",
@@ -2390,7 +2934,23 @@
         "Chest congestion and mild wheezing",
         "Frequent winter respiratory infections"
       ],
-      "search_tags": "chronic bronchitis, cough, phlegm, chest congestion, smoker cough"
+      "search_tags": "chronic bronchitis, cough, phlegm, chest congestion, smoker cough",
+      "simple_name_mizo": "Khuh Khak & Awm Tawt Reh Theilo",
+      "layman_explanation_mizo": "Thawklakna dawt a vung reng a, khak ser ser a siam reng a ni.",
+      "symptoms_mizo": [
+        "Nitina khak eng/hring chhuak",
+        "Awm phui leh thaw ri",
+        "Vawt laia khuh zual"
+      ],
+      "search_tags_mizo": "bronchitis, khuh, khak, awm tawt",
+      "simple_name_en": "Long-Term Chest Cough & Phlegm",
+      "layman_explanation_en": "Ongoing irritation and inflammation of the mucous membranes in the bronchial passages.",
+      "symptoms_en": [
+        "Persistent daily cough producing yellow/green mucus",
+        "Chest congestion and mild wheezing",
+        "Frequent winter respiratory infections"
+      ],
+      "search_tags_en": "chronic bronchitis, cough, phlegm, chest congestion, smoker cough"
     },
     {
       "disease_name": "Emphysema",
@@ -2464,7 +3024,23 @@
         "Inability to exhale fully",
         "Barrel-shaped chest and fatigue"
       ],
-      "search_tags": "emphysema, lungs, breathing problem, breathlessness, lung damage"
+      "search_tags": "emphysema, lungs, breathing problem, breathlessness, lung damage",
+      "simple_name_mizo": "Chhur Boruak Paihna Chhia",
+      "layman_explanation_mizo": "Chhur chhunga boruak paihtu bawmte a kehchhe vek a, boruak tha hip a harsa a ni.",
+      "symptoms_mizo": [
+        "Thawkchham nasa lutuk",
+        "Boruak chhuah theih loh",
+        "Awm lian phui"
+      ],
+      "search_tags_mizo": "emphysema, chhur chhia, thawkchham",
+      "simple_name_en": "Damaged Air Sacs in Lungs",
+      "layman_explanation_en": "The inner walls of the lungs' air sacs (alveoli) weaken and rupture, creating larger air spaces that trap stale air.",
+      "symptoms_en": [
+        "Progressive shortness of breath with mild effort",
+        "Inability to exhale fully",
+        "Barrel-shaped chest and fatigue"
+      ],
+      "search_tags_en": "emphysema, lungs, breathing problem, breathlessness, lung damage"
     },
     {
       "disease_name": "Sleep Apnea",
@@ -2532,7 +3108,23 @@
         "Sudden gasping or choking awakenings at night",
         "Morning dry mouth, headaches, and severe daytime sleepiness"
       ],
-      "search_tags": "sleep apnea, snoring, breathing pauses in sleep, sleep disorder, daytime fatigue"
+      "search_tags": "sleep apnea, snoring, breathing pauses in sleep, sleep disorder, daytime fatigue",
+      "simple_name_mizo": "Mut Laia Hnar & Thawk Tawp Thut",
+      "layman_explanation_mizo": "Mutthilh laia hrawk a inkhar a, thawk a tawp thut thut a, thluak-in oxygen a tlachham thin.",
+      "symptoms_mizo": [
+        "Hnar ring lutuk",
+        "Mut laia thawk tawp thut avanga harh",
+        "Zingkar lu na leh chhun muthlu reng"
+      ],
+      "search_tags_mizo": "hnar ring, mut thalo, sleep apnea, thawk tawp",
+      "simple_name_en": "Night Snoring & Sleep Breathing Interruption",
+      "layman_explanation_en": "Throat muscles relax and temporarily block the airway during sleep, depriving the brain of oxygen.",
+      "symptoms_en": [
+        "Loud, persistent snoring",
+        "Sudden gasping or choking awakenings at night",
+        "Morning dry mouth, headaches, and severe daytime sleepiness"
+      ],
+      "search_tags_en": "sleep apnea, snoring, breathing pauses in sleep, sleep disorder, daytime fatigue"
     },
     {
       "disease_name": "Chronic Sinusitis",
@@ -2612,7 +3204,23 @@
         "Pain, pressure, and swelling around eyes, cheeks, and forehead",
         "Reduced sense of smell and taste"
       ],
-      "search_tags": "sinus, sinusitis, blocked nose, runny nose, headache, facial pressure, nasal congestion"
+      "search_tags": "sinus, sinusitis, blocked nose, runny nose, headache, facial pressure, nasal congestion",
+      "simple_name_mizo": "Sinus / Hnar Ping & Lu Na",
+      "layman_explanation_mizo": "Hnar leh mit vel a kua a vung a, hnaphnawm a tling a, lu a tina a ni.",
+      "symptoms_mizo": [
+        "Hnap tlang eng/hring leh hnar ping",
+        "Mit leh biang vel na leh tawt",
+        "Hnar hnim hriatna bo"
+      ],
+      "search_tags_mizo": "sinus, hnar ping, lu na, biang na, sinusitis",
+      "simple_name_en": "Sinus Infection & Blocked Nose",
+      "layman_explanation_en": "The cavities around nasal passages remain inflamed and blocked for 12 weeks or longer.",
+      "symptoms_en": [
+        "Thick, discolored nasal discharge and blocked nostrils",
+        "Pain, pressure, and swelling around eyes, cheeks, and forehead",
+        "Reduced sense of smell and taste"
+      ],
+      "search_tags_en": "sinus, sinusitis, blocked nose, runny nose, headache, facial pressure, nasal congestion"
     }
   ],
   "Gastrointestinal": [
@@ -2692,7 +3300,23 @@
         "Sour or acidic burps and food regurgitation",
         "Bloating, nausea, and lump sensation in throat"
       ],
-      "search_tags": "acidity, gerd, heartburn, acid reflux, gas, chest burning, sour burps, indigestion"
+      "search_tags": "acidity, gerd, heartburn, acid reflux, gas, chest burning, sour burps, indigestion",
+      "simple_name_mizo": "Pum Thip, Awm Thip & Luakchhuak (GERD / Acidity)",
+      "layman_explanation_mizo": "Pum chhung a thur (acid) chu hrawk lamah a chho a, awm thip leh awm sa huam huam a thlen.",
+      "symptoms_mizo": [
+        "Chaw ei hnu a awm chhung sa huam huam",
+        "Ka chhung thur/khakha leh irhfiak",
+        "Pum puar, luakchhuak, leh hrawk ro"
+      ],
+      "search_tags_mizo": "pum thip, awm thip, pum na, acidity, irhfiak, gerd",
+      "simple_name_en": "Severe Acidity, Heartburn & Acid Reflux",
+      "layman_explanation_en": "Stomach acid and digestive juices frequently flow backward into the food pipe (esophagus).",
+      "symptoms_en": [
+        "Burning sensation in chest after meals (Heartburn)",
+        "Sour or acidic burps and food regurgitation",
+        "Bloating, nausea, and lump sensation in throat"
+      ],
+      "search_tags_en": "acidity, gerd, heartburn, acid reflux, gas, chest burning, sour burps, indigestion"
     },
     {
       "disease_name": "Peptic Ulcer Disease",
@@ -2770,7 +3394,23 @@
         "Feeling uncomfortably full or bloated quickly",
         "Heartburn, nausea, and dark stools"
       ],
-      "search_tags": "stomach ulcer, ulcer, peptic ulcer, acidity, stomach burning, stomach pain"
+      "search_tags": "stomach ulcer, ulcer, peptic ulcer, acidity, stomach burning, stomach pain",
+      "simple_name_mizo": "Pum Pan / Pem & Pum Na Sa",
+      "layman_explanation_mizo": "Pum chhung bangah pan a awm a, rilṭam laia pum na sa vawng vawng a thlen.",
+      "symptoms_mizo": [
+        "Pum ruak laia pum na sa",
+        "Chaw tlem ei pawha puar nghal lutuk",
+        "Awm thip, luakchhuak leh ek dum"
+      ],
+      "search_tags_mizo": "pum pan, ulcer, pum na, peptic ulcer",
+      "simple_name_en": "Stomach Ulcer & Burning Ache",
+      "layman_explanation_en": "Painful sores on the protective lining of the stomach or first part of small intestine.",
+      "symptoms_en": [
+        "Burning stomach pain, especially on empty stomach",
+        "Feeling uncomfortably full or bloated quickly",
+        "Heartburn, nausea, and dark stools"
+      ],
+      "search_tags_en": "stomach ulcer, ulcer, peptic ulcer, acidity, stomach burning, stomach pain"
     },
     {
       "disease_name": "Irritable Bowel Syndrome (IBS)",
@@ -2844,7 +3484,23 @@
         "Alternating bouts of diarrhea and constipation",
         "Excessive gas, bloating, and sudden urge for toilet"
       ],
-      "search_tags": "ibs, irritable bowel, stomach cramps, diarrhea, loose motion, constipation, gas, digestion"
+      "search_tags": "ibs, irritable bowel, stomach cramps, diarrhea, loose motion, constipation, gas, digestion",
+      "simple_name_mizo": "IBS / Pum Na, Kawthalo & Ek Khal Thleng Thleng",
+      "layman_explanation_mizo": "Ril hnathawh a buai a, pum na, ek thiar chhuah ruala ziaawm leh kawthalo/ek khal a thlen.",
+      "symptoms_mizo": [
+        "Pum na leh khawng (ek thiar hnu a zia)",
+        "Kawthalo leh ek khal inchhawk",
+        "Pum puar leh thli tam"
+      ],
+      "search_tags_mizo": "ibs, pum na, kawthalo, ek khal, pum puar",
+      "simple_name_en": "IBS / Spastic Colon & Cramping (Loose Stool / Gas)",
+      "layman_explanation_en": "Functional gut disorder causing abdominal pain, cramping, bloating, and irregular bowel habits.",
+      "symptoms_en": [
+        "Stomach cramps and pain relieved after passing stool",
+        "Alternating bouts of diarrhea and constipation",
+        "Excessive gas, bloating, and sudden urge for toilet"
+      ],
+      "search_tags_en": "ibs, irritable bowel, stomach cramps, diarrhea, loose motion, constipation, gas, digestion"
     },
     {
       "disease_name": "Inflammatory Bowel Disease (IBD)",
@@ -2916,7 +3572,23 @@
         "Abdominal pain and painful cramping",
         "Unintended weight loss and low energy"
       ],
-      "search_tags": "ibd, intestine swelling, diarrhea, intestine inflammation, stomach cramps"
+      "search_tags": "ibd, intestine swelling, diarrhea, intestine inflammation, stomach cramps",
+      "simple_name_mizo": "Ril Vung & Kawthalo Thisen Tel (IBD)",
+      "layman_explanation_mizo": "Ril chhung a vung a, pem a awm a, kawthalo leh thisen a chhuak thin.",
+      "symptoms_mizo": [
+        "Kawthalo tui/thisen tel reng",
+        "Pum na leh khawng",
+        "Cher tial tial leh zawi"
+      ],
+      "search_tags_mizo": "ibd, ril vung, kawthalo, thisen chhuak",
+      "simple_name_en": "Chronic Intestinal Inflammation",
+      "layman_explanation_en": "Chronic, autoimmune-mediated inflammation of parts of the digestive tract.",
+      "symptoms_en": [
+        "Persistent watery or bloody diarrhea",
+        "Abdominal pain and painful cramping",
+        "Unintended weight loss and low energy"
+      ],
+      "search_tags_en": "ibd, intestine swelling, diarrhea, intestine inflammation, stomach cramps"
     },
     {
       "disease_name": "Crohn's Disease",
@@ -2996,7 +3668,23 @@
         "Blood in stool and anal fissures",
         "Weight loss, fever, mouth ulcers, and fatigue"
       ],
-      "search_tags": "crohn, intestine ulcer, blood in stool, stomach cramps, diarrhea"
+      "search_tags": "crohn, intestine ulcer, blood in stool, stomach cramps, diarrhea",
+      "simple_name_mizo": "Ril Pan Thuk & Pum Na Nasa (Crohn's)",
+      "layman_explanation_mizo": "Ril bang chhung thuk tak thleng a vung a, pan a awm a ni.",
+      "symptoms_mizo": [
+        "Pum na nasa leh kawthalo",
+        "Ek-ah thisen tel leh mawng kaw pan",
+        "Cher, khawsik leh chauh"
+      ],
+      "search_tags_mizo": "crohn, ril pan, pum na, kawthalo",
+      "simple_name_en": "Deep Intestinal Ulcers & Chronic Cramping",
+      "layman_explanation_en": "Inflammatory bowel disease that causes deep inflammation affecting all layers of the intestinal wall.",
+      "symptoms_en": [
+        "Severe abdominal pain and frequent diarrhea",
+        "Blood in stool and anal fissures",
+        "Weight loss, fever, mouth ulcers, and fatigue"
+      ],
+      "search_tags_en": "crohn, intestine ulcer, blood in stool, stomach cramps, diarrhea"
     },
     {
       "disease_name": "Ulcerative Colitis",
@@ -3074,7 +3762,23 @@
         "Urgent feeling of needing to pass stool",
         "Left-sided abdominal cramping and rectal pain"
       ],
-      "search_tags": "ulcerative colitis, bloody stool, colitis, stool blood, colon inflammation"
+      "search_tags": "ulcerative colitis, bloody stool, colitis, stool blood, colon inflammation",
+      "simple_name_mizo": "Rilpui Pan & Ek Thisen Chhuak",
+      "layman_explanation_mizo": "Rilpui (colon) bang a pan a, thisen leh hnaphnawm nena ek chhuak a thlen.",
+      "symptoms_mizo": [
+        "Ek nena thisen leh hnap chhuak zing",
+        "Ek thiar hmanhmawh lutuk",
+        "Pum vei lam na leh mawng na"
+      ],
+      "search_tags_mizo": "ulcerative colitis, ek thisen, rilpui pan",
+      "simple_name_en": "Bleeding Colon Ulcers & Severe Diarrhea",
+      "layman_explanation_en": "Long-term inflammation and ulcers on the inner lining of the large intestine (colon) and rectum.",
+      "symptoms_en": [
+        "Frequent bloody diarrhea with pus or mucus",
+        "Urgent feeling of needing to pass stool",
+        "Left-sided abdominal cramping and rectal pain"
+      ],
+      "search_tags_en": "ulcerative colitis, bloody stool, colitis, stool blood, colon inflammation"
     },
     {
       "disease_name": "Non-Alcoholic Fatty Liver Disease (NAFLD)",
@@ -3154,7 +3858,23 @@
         "Dull ache or discomfort in upper right abdomen",
         "Poor digestion, bloating, and loss of appetite"
       ],
-      "search_tags": "fatty liver, liver problem, liver fat, nafld, digestion, liver detox"
+      "search_tags": "fatty liver, liver problem, liver fat, nafld, digestion, liver detox",
+      "simple_name_mizo": "Thin Thau (Fatty Liver)",
+      "layman_explanation_mizo": "Thin (liver) chhungah thau a tling a, thin hnathawh a tichaklo a ni.",
+      "symptoms_mizo": [
+        "Chauh ngawih ngawih leh zawi",
+        "Pum dinglam chung rit/na",
+        "Chaw ei tui lo leh puar"
+      ],
+      "search_tags_mizo": "thin thau, fatty liver, thin na, liver",
+      "simple_name_en": "Fatty Liver (Liver Fat Accumulation)",
+      "layman_explanation_en": "Excess fat accumulates in liver cells, impairing liver metabolism, detoxification, and energy.",
+      "symptoms_en": [
+        "Feeling sluggish, heavy, and constantly fatigued",
+        "Dull ache or discomfort in upper right abdomen",
+        "Poor digestion, bloating, and loss of appetite"
+      ],
+      "search_tags_en": "fatty liver, liver problem, liver fat, nafld, digestion, liver detox"
     },
     {
       "disease_name": "Cirrhosis of Liver",
@@ -3235,7 +3955,23 @@
         "Swelling in belly (Ascites) and swollen legs",
         "Easy bruising, bleeding, and extreme weakness"
       ],
-      "search_tags": "cirrhosis, liver failure, jaundice, yellow eyes, belly swelling, liver damage"
+      "search_tags": "cirrhosis, liver failure, jaundice, yellow eyes, belly swelling, liver damage",
+      "simple_name_mizo": "Thin Ser & Chhia (Cirrhosis)",
+      "layman_explanation_mizo": "Thin a chhia a, a ser vek a, thisen a kal theih tawh loh avanga natna hlauhawm a ni.",
+      "symptoms_mizo": [
+        "Mit leh vun eng (Jaundice)",
+        "Pum puar (Tui tling) leh bawp vung",
+        "Thi chhuak awlsam leh chau"
+      ],
+      "search_tags_mizo": "cirrhosis, thin ser, mit eng, jaundice, liver",
+      "simple_name_en": "Severe Liver Damage & Scarring",
+      "layman_explanation_en": "Extensive scarring of liver tissue that replaces healthy liver cells and blocks internal blood flow.",
+      "symptoms_en": [
+        "Yellowing of eyes and skin (Jaundice)",
+        "Swelling in belly (Ascites) and swollen legs",
+        "Easy bruising, bleeding, and extreme weakness"
+      ],
+      "search_tags_en": "cirrhosis, liver failure, jaundice, yellow eyes, belly swelling, liver damage"
     },
     {
       "disease_name": "Gallstones (Cholelithiasis)",
@@ -3309,7 +4045,23 @@
         "Pain radiating through to right shoulder blade",
         "Nausea, vomiting, and indigestion after fatty meals"
       ],
-      "search_tags": "gallstones, gallbladder stone, stone, upper stomach pain, stomach cramps, gall bladder"
+      "search_tags": "gallstones, gallbladder stone, stone, upper stomach pain, stomach cramps, gall bladder",
+      "simple_name_mizo": "Mit Lung & Pum Dinglam Na (Gallstones)",
+      "layman_explanation_mizo": "Mit (gallbladder) chhungah thau leh cholesterol a khal a, lung ang maiin a awm a, pum dinglam na a thlen.",
+      "symptoms_mizo": [
+        "Pum dinglam chung na zawk zawk",
+        "Darah leh hnungzang thleng a na chho",
+        "Chaw thau ei hnu a luakchhuak leh pum nuamlo"
+      ],
+      "search_tags_mizo": "mit lung, pum na, gallbladder stone, thau lung, gallstones",
+      "simple_name_en": "Gallbladder Stones & Upper Stomach Pain",
+      "layman_explanation_en": "Hardened digestive stone deposits that form inside the gallbladder, causing sudden duct blockage.",
+      "symptoms_en": [
+        "Sudden, sharp pain in upper right abdomen",
+        "Pain radiating through to right shoulder blade",
+        "Nausea, vomiting, and indigestion after fatty meals"
+      ],
+      "search_tags_en": "gallstones, gallbladder stone, stone, upper stomach pain, stomach cramps, gall bladder"
     },
     {
       "disease_name": "Hemorrhoids",
@@ -3387,7 +4139,23 @@
         "Pain, stinging discomfort, or itching in anal region",
         "Hard painful lumps or protruding piles mass"
       ],
-      "search_tags": "piles, hemorrhoids, bleeding in stool, rectal pain, anal lumps, constipation"
+      "search_tags": "piles, hemorrhoids, bleeding in stool, rectal pain, anal lumps, constipation",
+      "simple_name_mizo": "Piles / Mawng Kaw Thil Bawk & Ekchhuak Thisen",
+      "layman_explanation_mizo": "Mawng kaw vela thisen zam a vung a, ek thiar laia na leh thisen chhuak a thlen.",
+      "symptoms_mizo": [
+        "Ek thiar laia thisen sen thianghlim chhuak",
+        "Mawng kaw vel thak, thip leh na",
+        "Mawng kaw vela thil bawk awm"
+      ],
+      "search_tags_mizo": "piles, ek thiar na, thisen chhuak, mawng kaw na, ek khal",
+      "simple_name_en": "Piles & Rectal Pain (Hemorrhoids)",
+      "layman_explanation_en": "Swollen and inflamed veins in the rectum and anus that bleed and ache during bowel movements.",
+      "symptoms_en": [
+        "Bright red blood during bowel movements",
+        "Pain, stinging discomfort, or itching in anal region",
+        "Hard painful lumps or protruding piles mass"
+      ],
+      "search_tags_en": "piles, hemorrhoids, bleeding in stool, rectal pain, anal lumps, constipation"
     }
   ],
   "NEUROLOGICAL": [
@@ -3475,7 +4243,23 @@
         "Getting lost in familiar neighborhood routes",
         "Difficulty managing money or following recipes"
       ],
-      "search_tags": "memory loss, alzheimer, forgetting, brain decline, dementia, memory"
+      "search_tags": "memory loss, alzheimer, forgetting, brain decline, dementia, memory",
+      "simple_name_mizo": "Hriatrengna Bo & Thluak Chhia (Alzheimer's)",
+      "layman_explanation_mizo": "Thluak thazam a chhiat tial tial avanga thil hriatrengna leh thil ngaihtuah theihna bo a ni.",
+      "symptoms_mizo": [
+        "Thil thar theihnghilh leh hming theihnghilh",
+        "In lam kawng bo leh hriatfiah theihlohna",
+        "Sum chhiar leh thil tih pangngai harsa"
+      ],
+      "search_tags_mizo": "theihnghilh, hriatrengna bo, alzheimer, thluak",
+      "simple_name_en": "Memory Loss & Cognitive Decline (Alzheimer's)",
+      "layman_explanation_en": "Progressive brain disorder that destroys brain connections, affecting memory, logic, and daily tasks.",
+      "symptoms_en": [
+        "Forgetting familiar names, recent events, and dates",
+        "Getting lost in familiar neighborhood routes",
+        "Difficulty managing money or following recipes"
+      ],
+      "search_tags_en": "memory loss, alzheimer, forgetting, brain decline, dementia, memory"
     },
     {
       "disease_name": "Parkinson's Disease",
@@ -3561,7 +4345,23 @@
         "Slowness of movement (shuffling footsteps)",
         "Muscle stiffness and soft, monotone voice"
       ],
-      "search_tags": "parkinson, hand tremor, shaking hands, resting tremors, walking difficulty, balance loss"
+      "search_tags": "parkinson, hand tremor, shaking hands, resting tremors, walking difficulty, balance loss",
+      "simple_name_mizo": "Kut Khur & Chetsawn Khawng (Parkinson's)",
+      "layman_explanation_mizo": "Thluaka dopamine siamtu a chhiat avanga kut khur, chet muang leh kal buai a ni.",
+      "symptoms_mizo": [
+        "Kut leh khabe khur cher cher",
+        "Che muang leh ke hnuk chunga kal",
+        "Taksa khawng leh aw zawi"
+      ],
+      "search_tags_mizo": "kut khur, parkinson, che muang, taksa khur",
+      "simple_name_en": "Hand Tremors & Movement Stiffness (Parkinson's)",
+      "layman_explanation_en": "Dopamine-producing brain cells deteriorate, leading to resting tremors, stiffness, and balance loss.",
+      "symptoms_en": [
+        "Rhythmic trembling in hands, fingers, or chin while resting",
+        "Slowness of movement (shuffling footsteps)",
+        "Muscle stiffness and soft, monotone voice"
+      ],
+      "search_tags_en": "parkinson, hand tremor, shaking hands, resting tremors, walking difficulty, balance loss"
     },
     {
       "disease_name": "Epilepsy",
@@ -3635,7 +4435,23 @@
         "Blank staring spells and loss of awareness",
         "Temporary confusion or sudden fall to the ground"
       ],
-      "search_tags": "epilepsy, seizures, fits, convulsions, fainting, brain spasms"
+      "search_tags": "epilepsy, seizures, fits, convulsions, fainting, brain spasms",
+      "simple_name_mizo": "Phun / Zawngte / Tlukphut (Epilepsy)",
+      "layman_explanation_mizo": "Thluak electrical signal a buai thut avanga taksa khur leh nikhawhrelova tluk a ni.",
+      "symptoms_mizo": [
+        "Kut leh ke khur vak vak / phut",
+        "Mit meng reng chunga nikhawhrelo",
+        "Tluk thut leh harh chhuah hnu a buai"
+      ],
+      "search_tags_mizo": "tlukphut, zawngte, phut, epilepsy, seizure",
+      "simple_name_en": "Seizures / Fits / Epilepsy",
+      "layman_explanation_en": "Surges of abnormal electrical activity in the brain that trigger temporary seizures or convulsions.",
+      "symptoms_en": [
+        "Uncontrollable jerking spasms of arms and legs",
+        "Blank staring spells and loss of awareness",
+        "Temporary confusion or sudden fall to the ground"
+      ],
+      "search_tags_en": "epilepsy, seizures, fits, convulsions, fainting, brain spasms"
     },
     {
       "disease_name": "Migraine",
@@ -3703,7 +4519,23 @@
         "Sensitivity to bright light, loud sound, and smells",
         "Nausea, vomiting, and seeing flashes (Aura)"
       ],
-      "search_tags": "migraine, headache, severe headache, one side head pain, throbbing head, vomiting"
+      "search_tags": "migraine, headache, severe headache, one side head pain, throbbing head, vomiting",
+      "simple_name_mizo": "Lu Na Sir / Lu Na Nasa (Migraine)",
+      "layman_explanation_mizo": "Lu sir lehlam na ngut ngut, eng leh thawm ngaithei lo a ni.",
+      "symptoms_mizo": [
+        "Lu sir lehlam na ngut ngut",
+        "Eng leh thawm bengchheng tuar theihlohna",
+        "Luakchhuak leh mit phe"
+      ],
+      "search_tags_mizo": "lu na, migraine, lu na sir, luakchhuak",
+      "simple_name_en": "Severe One-Sided Headache & Light Sensitivity",
+      "layman_explanation_en": "Intense throbbing, pulsating neurological headache, often on one side, aggravated by light and noise.",
+      "symptoms_en": [
+        "Severe pulsating pain on one side of head",
+        "Sensitivity to bright light, loud sound, and smells",
+        "Nausea, vomiting, and seeing flashes (Aura)"
+      ],
+      "search_tags_en": "migraine, headache, severe headache, one side head pain, throbbing head, vomiting"
     },
     {
       "disease_name": "Peripheral Neuropathy",
@@ -3777,7 +4609,23 @@
         "Numbness, loss of feeling, or burning sensation",
         "Weakness in grip or foot drop while walking"
       ],
-      "search_tags": "nerve weakness, tingling, numbness, pins and needles, weak grip, burning feet"
+      "search_tags": "nerve weakness, tingling, numbness, pins and needles, weak grip, burning feet",
+      "simple_name_mizo": "Kut Ke Thazam Chhia, Mu & Sa",
+      "layman_explanation_mizo": "Kut leh ke thazam a chhiat avanga hriatna bo, a sa leh mu a ni.",
+      "symptoms_mizo": [
+        "Kezungṭang leh kut chhun ang maia na",
+        "Mu chhut leh sa huam huam",
+        "Thil chelh theihlohna leh ke zawi"
+      ],
+      "search_tags_mizo": "kut mu, ke mu, ke sa, thazam chhia",
+      "simple_name_en": "Nerve Weakness, Tingling & Numbness in Limbs",
+      "layman_explanation_en": "Damage to the peripheral nerves outside the brain and spine, leading to altered sensations.",
+      "symptoms_en": [
+        "Pins-and-needles tingling in toes and feet",
+        "Numbness, loss of feeling, or burning sensation",
+        "Weakness in grip or foot drop while walking"
+      ],
+      "search_tags_en": "nerve weakness, tingling, numbness, pins and needles, weak grip, burning feet"
     },
     {
       "disease_name": "Dementia",
@@ -3858,7 +4706,23 @@
         "Confusion about day, time, or location",
         "Personality changes, mood swings, and agitation"
       ],
-      "search_tags": "dementia, memory loss, brain decline, confusion, forgetting"
+      "search_tags": "dementia, memory loss, brain decline, confusion, forgetting",
+      "simple_name_mizo": "Upat Vanga Hriatrengna Bo (Dementia)",
+      "layman_explanation_mizo": "Upat vanga thluak hnathawh a tlem a, thil theihnghilh leh buai a thlen a ni.",
+      "symptoms_mizo": [
+        "Tawngkam harsa leh theihnghilh",
+        "Hun leh hmun hriatpawlh",
+        "Mizia inthlak leh thinchhe thut"
+      ],
+      "search_tags_mizo": "dementia, theihnghilh, upa buai, hriatna",
+      "simple_name_en": "Memory Loss & Brain Function Decline",
+      "layman_explanation_en": "General term for progressive decline in memory, problem-solving, and language abilities.",
+      "symptoms_en": [
+        "Difficulty holding conversations or finding words",
+        "Confusion about day, time, or location",
+        "Personality changes, mood swings, and agitation"
+      ],
+      "search_tags_en": "dementia, memory loss, brain decline, confusion, forgetting"
     },
     {
       "disease_name": "Essential Tremor",
@@ -3944,7 +4808,23 @@
         "Nodding head motion ('yes-yes' or 'no-no')",
         "Quivering voice during talking"
       ],
-      "search_tags": "hand shaking, tremor, shaking hands, writing shake, shaky hands"
+      "search_tags": "hand shaking, tremor, shaking hands, writing shake, shaky hands",
+      "simple_name_mizo": "Thil Khawih Laia Kut Khur",
+      "layman_explanation_mizo": "Thil ken, ziah emaw in laia kut khur nasa lutuk a ni.",
+      "symptoms_mizo": [
+        "No ken laia kut khur",
+        "Lu bu buk buk",
+        "Aw khur"
+      ],
+      "search_tags_mizo": "kut khur, khur, kut khur thil khawih lai",
+      "simple_name_en": "Shaking Hands During Daily Activities",
+      "layman_explanation_en": "Involuntary rhythmic shaking that happens when performing voluntary actions like writing or drinking.",
+      "symptoms_en": [
+        "Shaking hands when holding a glass, spoon, or pen",
+        "Nodding head motion ('yes-yes' or 'no-no')",
+        "Quivering voice during talking"
+      ],
+      "search_tags_en": "hand shaking, tremor, shaking hands, writing shake, shaky hands"
     },
     {
       "disease_name": "Restless Legs Syndrome",
@@ -4012,7 +4892,23 @@
         "Symptoms worsen in evening/night during bed rest",
         "Temporary relief only when getting up and walking"
       ],
-      "search_tags": "restless legs, leg ache at night, leg crawling, sleep problem, restless legs"
+      "search_tags": "restless legs, leg ache at night, leg crawling, sleep problem, restless legs",
+      "simple_name_mizo": "Zan Mut Laia Ke Tihtawlh Chak Reng",
+      "layman_explanation_mizo": "Zan mut laia ke chhung na leh za avanga ke tihchet reng ngai a ni.",
+      "symptoms_mizo": [
+        "Chawn chhung za leh na",
+        "Zan mut laia zual",
+        "Ke tihchet laia ziaawm"
+      ],
+      "search_tags_mizo": "ke za, ke na, zan mut laia ke za",
+      "simple_name_en": "Uncontrollable Urge to Move Legs at Night",
+      "layman_explanation_en": "Uncomfortable creeping sensation in legs that creates an overwhelming need to move them during rest.",
+      "symptoms_en": [
+        "Crawling, pulling, or aching feeling deep in calves",
+        "Symptoms worsen in evening/night during bed rest",
+        "Temporary relief only when getting up and walking"
+      ],
+      "search_tags_en": "restless legs, leg ache at night, leg crawling, sleep problem, restless legs"
     }
   ],
   "PSYCHIATRIC": [
@@ -4082,7 +4978,23 @@
         "Loss of interest in work, family, or hobbies",
         "Sleep disruption, exhaustion, and low appetite"
       ],
-      "search_tags": "depression, sadness, low mood, negative thoughts, despair, fatigue"
+      "search_tags": "depression, sadness, low mood, negative thoughts, despair, fatigue",
+      "simple_name_mizo": "Clinical Depression & Low Energy",
+      "layman_explanation_mizo": "Persistent low mood, loss of interest, and lack of mental energy lasting weeks or months.",
+      "symptoms_mizo": [
+        "Overwhelming sadness, emptiness, and hopelessness",
+        "Loss of interest in work, family, or hobbies",
+        "Sleep disruption, exhaustion, and low appetite"
+      ],
+      "search_tags_mizo": "depression, sadness, low mood, negative thoughts, despair, fatigue",
+      "simple_name_en": "Clinical Depression & Low Energy",
+      "layman_explanation_en": "Persistent low mood, loss of interest, and lack of mental energy lasting weeks or months.",
+      "symptoms_en": [
+        "Overwhelming sadness, emptiness, and hopelessness",
+        "Loss of interest in work, family, or hobbies",
+        "Sleep disruption, exhaustion, and low appetite"
+      ],
+      "search_tags_en": "depression, sadness, low mood, negative thoughts, despair, fatigue"
     },
     {
       "disease_name": "Generalized Anxiety Disorder",
@@ -4156,7 +5068,23 @@
         "Rapid pulse, shallow breathing, and sweating",
         "Muscle tension, stomach upset, and racing thoughts"
       ],
-      "search_tags": "anxiety, worry, tension, stress, panic, nervousness, racing thoughts"
+      "search_tags": "anxiety, worry, tension, stress, panic, nervousness, racing thoughts",
+      "simple_name_mizo": "Chronic Anxiety, Worry & Restlessness",
+      "layman_explanation_mizo": "Constant, excessive worry about multiple daily situations, keeping the body in high alert.",
+      "symptoms_mizo": [
+        "Feeling on edge, restless, or jumpy constantly",
+        "Rapid pulse, shallow breathing, and sweating",
+        "Muscle tension, stomach upset, and racing thoughts"
+      ],
+      "search_tags_mizo": "anxiety, worry, tension, stress, panic, nervousness, racing thoughts",
+      "simple_name_en": "Chronic Anxiety, Worry & Restlessness",
+      "layman_explanation_en": "Constant, excessive worry about multiple daily situations, keeping the body in high alert.",
+      "symptoms_en": [
+        "Feeling on edge, restless, or jumpy constantly",
+        "Rapid pulse, shallow breathing, and sweating",
+        "Muscle tension, stomach upset, and racing thoughts"
+      ],
+      "search_tags_en": "anxiety, worry, tension, stress, panic, nervousness, racing thoughts"
     },
     {
       "disease_name": "Bipolar Disorder",
@@ -4224,7 +5152,23 @@
         "Alternating with deep despair, lack of energy, and withdrawal",
         "Impulsive decisions and mood shifts"
       ],
-      "search_tags": "bipolar, mood swings, mania, depression, mood shifts"
+      "search_tags": "bipolar, mood swings, mania, depression, mood shifts",
+      "simple_name_mizo": "Extreme Mood Swings (Bipolar Disorder)",
+      "layman_explanation_mizo": "Episodes of emotional highs (mania/hypomania) alternating with periods of deep depression.",
+      "symptoms_mizo": [
+        "High energy, racing thoughts, and reduced need for sleep",
+        "Alternating with deep despair, lack of energy, and withdrawal",
+        "Impulsive decisions and mood shifts"
+      ],
+      "search_tags_mizo": "bipolar, mood swings, mania, depression, mood shifts",
+      "simple_name_en": "Extreme Mood Swings (Bipolar Disorder)",
+      "layman_explanation_en": "Episodes of emotional highs (mania/hypomania) alternating with periods of deep depression.",
+      "symptoms_en": [
+        "High energy, racing thoughts, and reduced need for sleep",
+        "Alternating with deep despair, lack of energy, and withdrawal",
+        "Impulsive decisions and mood shifts"
+      ],
+      "search_tags_en": "bipolar, mood swings, mania, depression, mood shifts"
     },
     {
       "disease_name": "Schizophrenia",
@@ -4298,7 +5242,23 @@
         "False beliefs not based in reality (Delusions)",
         "Disorganized thinking and emotional withdrawal"
       ],
-      "search_tags": "schizophrenia, mental illness, delusions, hallucinations, mental disorder"
+      "search_tags": "schizophrenia, mental illness, delusions, hallucinations, mental disorder",
+      "simple_name_mizo": "Severe Mental Disorder & Hallucinations",
+      "layman_explanation_mizo": "Brain disorder where thoughts, emotions, and perception of reality become distorted.",
+      "symptoms_mizo": [
+        "Hearing voices or seeing things that aren't there",
+        "False beliefs not based in reality (Delusions)",
+        "Disorganized thinking and emotional withdrawal"
+      ],
+      "search_tags_mizo": "schizophrenia, mental illness, delusions, hallucinations, mental disorder",
+      "simple_name_en": "Severe Mental Disorder & Hallucinations",
+      "layman_explanation_en": "Brain disorder where thoughts, emotions, and perception of reality become distorted.",
+      "symptoms_en": [
+        "Hearing voices or seeing things that aren't there",
+        "False beliefs not based in reality (Delusions)",
+        "Disorganized thinking and emotional withdrawal"
+      ],
+      "search_tags_en": "schizophrenia, mental illness, delusions, hallucinations, mental disorder"
     },
     {
       "disease_name": "Post-Traumatic Stress Disorder (PTSD)",
@@ -4378,7 +5338,23 @@
         "Severe nightmares and sleep disturbances",
         "Avoiding places, people, or thoughts linked to trauma"
       ],
-      "search_tags": "ptsd, trauma, mental shock, nightmares, trauma flashbacks"
+      "search_tags": "ptsd, trauma, mental shock, nightmares, trauma flashbacks",
+      "simple_name_mizo": "Post-Trauma Shock & Nightmare Stress",
+      "layman_explanation_mizo": "Mental health condition triggered by witnessing or experiencing a terrifying traumatic event.",
+      "symptoms_mizo": [
+        "Flashbacks or disturbing recurring memories",
+        "Severe nightmares and sleep disturbances",
+        "Avoiding places, people, or thoughts linked to trauma"
+      ],
+      "search_tags_mizo": "ptsd, trauma, mental shock, nightmares, trauma flashbacks",
+      "simple_name_en": "Post-Trauma Shock & Nightmare Stress",
+      "layman_explanation_en": "Mental health condition triggered by witnessing or experiencing a terrifying traumatic event.",
+      "symptoms_en": [
+        "Flashbacks or disturbing recurring memories",
+        "Severe nightmares and sleep disturbances",
+        "Avoiding places, people, or thoughts linked to trauma"
+      ],
+      "search_tags_en": "ptsd, trauma, mental shock, nightmares, trauma flashbacks"
     },
     {
       "disease_name": "Attention Deficit Hyperactivity Disorder (ADHD)",
@@ -4446,7 +5422,23 @@
         "Restlessness, fidgeting, and constant movement",
         "Impulsive actions and disorganization"
       ],
-      "search_tags": "adhd, focus, concentration, hyperactivity, attention deficit"
+      "search_tags": "adhd, focus, concentration, hyperactivity, attention deficit",
+      "simple_name_mizo": "Hyperactivity & Lack of Focus (ADHD)",
+      "layman_explanation_mizo": "Neurodevelopmental condition affecting attention control, impulse regulation, and focus.",
+      "symptoms_mizo": [
+        "Trouble focusing or completing routine tasks",
+        "Restlessness, fidgeting, and constant movement",
+        "Impulsive actions and disorganization"
+      ],
+      "search_tags_mizo": "adhd, focus, concentration, hyperactivity, attention deficit",
+      "simple_name_en": "Hyperactivity & Lack of Focus (ADHD)",
+      "layman_explanation_en": "Neurodevelopmental condition affecting attention control, impulse regulation, and focus.",
+      "symptoms_en": [
+        "Trouble focusing or completing routine tasks",
+        "Restlessness, fidgeting, and constant movement",
+        "Impulsive actions and disorganization"
+      ],
+      "search_tags_en": "adhd, focus, concentration, hyperactivity, attention deficit"
     },
     {
       "disease_name": "Insomnia",
@@ -4520,7 +5512,23 @@
         "Waking up multiple times through the night",
         "Waking up exhausted, unrefreshed, and irritable"
       ],
-      "search_tags": "insomnia, sleeplessness, sleep problem, poor sleep, night waking"
+      "search_tags": "insomnia, sleeplessness, sleep problem, poor sleep, night waking",
+      "simple_name_mizo": "Sleeplessness & Trouble Sleeping",
+      "layman_explanation_mizo": "Persistent inability to fall asleep or stay asleep through the night, leading to daytime exhaustion.",
+      "symptoms_mizo": [
+        "Lying awake for hours waiting for sleep",
+        "Waking up multiple times through the night",
+        "Waking up exhausted, unrefreshed, and irritable"
+      ],
+      "search_tags_mizo": "insomnia, sleeplessness, sleep problem, poor sleep, night waking",
+      "simple_name_en": "Sleeplessness & Trouble Sleeping",
+      "layman_explanation_en": "Persistent inability to fall asleep or stay asleep through the night, leading to daytime exhaustion.",
+      "symptoms_en": [
+        "Lying awake for hours waiting for sleep",
+        "Waking up multiple times through the night",
+        "Waking up exhausted, unrefreshed, and irritable"
+      ],
+      "search_tags_en": "insomnia, sleeplessness, sleep problem, poor sleep, night waking"
     },
     {
       "disease_name": "Panic Disorder",
@@ -4594,7 +5602,23 @@
         "Feeling unable to breathe or choking sensation",
         "Intense fear of losing control or dying"
       ],
-      "search_tags": "panic attack, fear, chest racing, rapid pulse, sudden panic"
+      "search_tags": "panic attack, fear, chest racing, rapid pulse, sudden panic",
+      "simple_name_mizo": "Sudden Panic Attacks & Heart Racing",
+      "layman_explanation_mizo": "Sudden unexpected attacks of overwhelming terror with severe physical sensations.",
+      "symptoms_mizo": [
+        "Sudden chest pounding, racing pulse, and sweating",
+        "Feeling unable to breathe or choking sensation",
+        "Intense fear of losing control or dying"
+      ],
+      "search_tags_mizo": "panic attack, fear, chest racing, rapid pulse, sudden panic",
+      "simple_name_en": "Sudden Panic Attacks & Heart Racing",
+      "layman_explanation_en": "Sudden unexpected attacks of overwhelming terror with severe physical sensations.",
+      "symptoms_en": [
+        "Sudden chest pounding, racing pulse, and sweating",
+        "Feeling unable to breathe or choking sensation",
+        "Intense fear of losing control or dying"
+      ],
+      "search_tags_en": "panic attack, fear, chest racing, rapid pulse, sudden panic"
     },
     {
       "disease_name": "Obsessive-Compulsive Disorder (OCD)",
@@ -4668,7 +5692,23 @@
         "Repeatedly checking locks, stoves, or switches",
         "Needing items arranged in exact symmetrical order"
       ],
-      "search_tags": "ocd, obsessive, repeated habits, hand washing, compulsive"
+      "search_tags": "ocd, obsessive, repeated habits, hand washing, compulsive",
+      "simple_name_mizo": "Obsessive Thoughts & Repetitive Habits (OCD)",
+      "layman_explanation_mizo": "Unwanted intrusive thoughts (obsessions) that drive repeated behavioral rituals (compulsions).",
+      "symptoms_mizo": [
+        "Excessive fear of germs driving repetitive hand washing",
+        "Repeatedly checking locks, stoves, or switches",
+        "Needing items arranged in exact symmetrical order"
+      ],
+      "search_tags_mizo": "ocd, obsessive, repeated habits, hand washing, compulsive",
+      "simple_name_en": "Obsessive Thoughts & Repetitive Habits (OCD)",
+      "layman_explanation_en": "Unwanted intrusive thoughts (obsessions) that drive repeated behavioral rituals (compulsions).",
+      "symptoms_en": [
+        "Excessive fear of germs driving repetitive hand washing",
+        "Repeatedly checking locks, stoves, or switches",
+        "Needing items arranged in exact symmetrical order"
+      ],
+      "search_tags_en": "ocd, obsessive, repeated habits, hand washing, compulsive"
     }
   ],
   "Musculoskeletal": [
@@ -4735,7 +5775,23 @@
         "Morning joint stiffness lasting 15 to 30 minutes",
         "Crackling/popping sound (crepitus) in knees"
       ],
-      "search_tags": "joint pain, knee pain, osteoarthritis, arthritis, joint stiffness, knee swelling, bone friction"
+      "search_tags": "joint pain, knee pain, osteoarthritis, arthritis, joint stiffness, knee swelling, bone friction",
+      "simple_name_mizo": "Ruhseg Na & Khup Ruh Insub (Osteoarthritis)",
+      "layman_explanation_mizo": "Ruh inzawmna chhung a nem (cartilage) a lo chhiat avangin ruh a inhnawh a, a vung, a khawng a, a na bawk.",
+      "symptoms_mizo": [
+        "Kal emaw kailawn zawh laia khup na",
+        "Zing thawh ruala ruhseg khawng rei tak awm",
+        "Ruh inzawmna atanga ri (krak) chhuak"
+      ],
+      "search_tags_mizo": "ruhseg na, khup na, ruh na, ruh inzawmna, osteoarthritis",
+      "simple_name_en": "Knee & Joint Pain (Arthritis / Joint Wear & Tear)",
+      "layman_explanation_en": "Cushioning cartilage inside joints wears away over time, causing bone friction, stiffness, and aching pain.",
+      "symptoms_en": [
+        "Knee pain when walking, climbing stairs, or sitting down",
+        "Morning joint stiffness lasting 15 to 30 minutes",
+        "Crackling/popping sound (crepitus) in knees"
+      ],
+      "search_tags_en": "joint pain, knee pain, osteoarthritis, arthritis, joint stiffness, knee swelling, bone friction"
     },
     {
       "disease_name": "Osteoporosis",
@@ -4793,7 +5849,23 @@
         "Gradual loss of height and forward stooped posture",
         "Bone fractures from minimal impact"
       ],
-      "search_tags": "osteoporosis, weak bones, brittle bones, bone density, fracture risk, bone pain"
+      "search_tags": "osteoporosis, weak bones, brittle bones, bone density, fracture risk, bone pain",
+      "simple_name_mizo": "Ruh Chaklo & Tliak Awlsam (Osteoporosis)",
+      "layman_explanation_mizo": "Ruh chhung a ruak a, a pan a, tluk hlek pawha tliak awlsam a ni.",
+      "symptoms_mizo": [
+        "Hnungzang na",
+        "Upa tual tual a kûn tual tual",
+        "Ruh tliak awlsam"
+      ],
+      "search_tags_mizo": "ruh chaklo, ruh tliak, osteoporosis, ruh na",
+      "simple_name_en": "Weak & Brittle Bones",
+      "layman_explanation_en": "Bones lose density and mineral structure, becoming porous and prone to fractures from mild falls.",
+      "symptoms_en": [
+        "Back pain from minor vertebral compressions",
+        "Gradual loss of height and forward stooped posture",
+        "Bone fractures from minimal impact"
+      ],
+      "search_tags_en": "osteoporosis, weak bones, brittle bones, bone density, fracture risk, bone pain"
     },
     {
       "disease_name": "Ankylosing Spondylitis",
@@ -4868,7 +5940,23 @@
         "Pain that improves with movement and worsens with rest",
         "Difficulty turning neck or bending back"
       ],
-      "search_tags": "ankylosing spondylitis, spine stiffness, back pain, rigid spine, back arthritis"
+      "search_tags": "ankylosing spondylitis, spine stiffness, back pain, rigid spine, back arthritis",
+      "simple_name_mizo": "Hnungzang Ruh Khawng & Inzawm Hlen",
+      "layman_explanation_mizo": "Hnungzang ruh inzawmna a vung a, hnungzang a khawng vek a ni.",
+      "symptoms_mizo": [
+        "Zingkar kawng leh mawng na khawng",
+        "Chetsawn laia ziaawm, chawlh laia na",
+        "Kûn leh hawi kual theihlohna"
+      ],
+      "search_tags_mizo": "hnungzang khawng, kawng na, ankylosing",
+      "simple_name_en": "Spine Stiffness & Back Arthritis",
+      "layman_explanation_en": "Inflammatory arthritis affecting the spine vertebrae, leading to fusion and rigid posture over time.",
+      "symptoms_en": [
+        "Severe morning lower back and hip stiffness",
+        "Pain that improves with movement and worsens with rest",
+        "Difficulty turning neck or bending back"
+      ],
+      "search_tags_en": "ankylosing spondylitis, spine stiffness, back pain, rigid spine, back arthritis"
     },
     {
       "disease_name": "Fibromyalgia",
@@ -4932,7 +6020,23 @@
         "Tender trigger points on neck, shoulders, hips",
         "Waking up exhausted despite full sleep"
       ],
-      "search_tags": "fibromyalgia, body pain, muscle pain, chronic fatigue, widespread pain, exhaustion"
+      "search_tags": "fibromyalgia, body pain, muscle pain, chronic fatigue, widespread pain, exhaustion",
+      "simple_name_mizo": "Taksa Pumpui Tha Na & Chau Reng",
+      "layman_explanation_mizo": "Taksa thichak pumpui a na a, mut hmu tha chung pawha chau reng a ni.",
+      "symptoms_mizo": [
+        "Taksa pumpui na ngut ngut",
+        "Nghawng, dar leh kawng na hmun bik",
+        "Zing thawh ruala zawi ngawih ngawih"
+      ],
+      "search_tags_mizo": "taksa na, tha na, chauh, fibromyalgia",
+      "simple_name_en": "Full Body Muscle Pain & Chronic Fatigue",
+      "layman_explanation_en": "Disorder characterized by widespread musculoskeletal pain accompanied by fatigue and sleep issues.",
+      "symptoms_en": [
+        "Widespread aching pain across entire body",
+        "Tender trigger points on neck, shoulders, hips",
+        "Waking up exhausted despite full sleep"
+      ],
+      "search_tags_en": "fibromyalgia, body pain, muscle pain, chronic fatigue, widespread pain, exhaustion"
     },
     {
       "disease_name": "Cervical Spondylosis",
@@ -5007,7 +6111,23 @@
         "Tingling, numbness, or weakness in fingers and hands",
         "Dizziness when turning head or looking up/down"
       ],
-      "search_tags": "cervical, neck pain, cervical spondylosis, neck stiffness, arm tingling, dizziness"
+      "search_tags": "cervical, neck pain, cervical spondylosis, neck stiffness, arm tingling, dizziness",
+      "simple_name_mizo": "Nghawng Ruh Na, Khawng & Lu Hai",
+      "layman_explanation_mizo": "Nghawng ruh inzawmna a chhiat avanga nghawng na, dar na leh lu hai a ni.",
+      "symptoms_mizo": [
+        "Nghawng na dar leh ban thleng a na chho",
+        "Kutzungṭang mu leh za",
+        "Hawi kual laia lu hai"
+      ],
+      "search_tags_mizo": "nghawng na, cervical, lu hai, ban mu",
+      "simple_name_en": "Neck Pain, Cervical Stiffness & Dizziness",
+      "layman_explanation_en": "Wear and tear of spinal discs in the neck causing nerve irritation, neck stiffness, and dizzy spells.",
+      "symptoms_en": [
+        "Neck pain radiating down into shoulders and arms",
+        "Tingling, numbness, or weakness in fingers and hands",
+        "Dizziness when turning head or looking up/down"
+      ],
+      "search_tags_en": "cervical, neck pain, cervical spondylosis, neck stiffness, arm tingling, dizziness"
     },
     {
       "disease_name": "Lumbar Spondylosis",
@@ -5070,7 +6190,23 @@
         "Stiffness in lower spine upon getting out of bed",
         "Pain radiating into buttocks and upper thighs"
       ],
-      "search_tags": "lumbar, lower back pain, back pain, spine strain, lower back stiffness"
+      "search_tags": "lumbar, lower back pain, back pain, spine strain, lower back stiffness",
+      "simple_name_mizo": "Kawng Ruh Na & Khawng",
+      "layman_explanation_mizo": "Kawng ruh inzawmna a chhiat avanga kawng na leh thazam nawk a ni.",
+      "symptoms_mizo": [
+        "Thut rei emaw din rei laia kawng na",
+        "Zing thawh laia kawng khawng",
+        "Mawng leh malpui thleng a na"
+      ],
+      "search_tags_mizo": "kawng na, lumbar, kawng khawng",
+      "simple_name_en": "Lower Back Pain & Spine Strain",
+      "layman_explanation_en": "Degeneration of lower spine discs and joints causing chronic lower back ache and nerve pressure.",
+      "symptoms_en": [
+        "Lower back ache that worsens after prolonged sitting/standing",
+        "Stiffness in lower spine upon getting out of bed",
+        "Pain radiating into buttocks and upper thighs"
+      ],
+      "search_tags_en": "lumbar, lower back pain, back pain, spine strain, lower back stiffness"
     },
     {
       "disease_name": "Chronic Low Back Pain",
@@ -5128,7 +6264,23 @@
         "Electric shock-like pain shooting down one leg (Sciatica)",
         "Difficulty standing upright without discomfort"
       ],
-      "search_tags": "back pain, sciatica, lumbar, leg shooting pain, chronic backache"
+      "search_tags": "back pain, sciatica, lumbar, leg shooting pain, chronic backache",
+      "simple_name_mizo": "Kawng Na Rei Tawh & Sciatica (Mal Na)",
+      "layman_explanation_mizo": "Kawng na thla 3 aia rei awm tawh, malpui leh ke thleng a na thla a ni.",
+      "symptoms_mizo": [
+        "Kawng na ngut ngut",
+        "Bawp leh ke thleng a na thla (Sciatica)",
+        "Ding ngil theihlohna"
+      ],
+      "search_tags_mizo": "kawng na, sciatica, mal na, back pain",
+      "simple_name_en": "Long-Term Lower Back Pain & Sciatica",
+      "layman_explanation_en": "Persistent back pain lasting over 3 months, often due to disc bulge, sciatica, or ligament strain.",
+      "symptoms_en": [
+        "Constant dull ache or sharp spasms in lower back",
+        "Electric shock-like pain shooting down one leg (Sciatica)",
+        "Difficulty standing upright without discomfort"
+      ],
+      "search_tags_en": "back pain, sciatica, lumbar, leg shooting pain, chronic backache"
     },
     {
       "disease_name": "Gouty Arthritis",
@@ -5192,7 +6344,23 @@
         "Joint turns bright red, swollen, hot, and tender to touch",
         "Inability to wear shoes or bear weight on foot"
       ],
-      "search_tags": "gout, uric acid, toe pain, joint pain, high uric acid, swollen toe"
+      "search_tags": "gout, uric acid, toe pain, joint pain, high uric acid, swollen toe",
+      "simple_name_mizo": "Uric Acid Sang & Kezungpui Ruhseg Na (Gout)",
+      "layman_explanation_mizo": "Thisen chhungah uric acid a tam lutuk a, kezungpui ruh inzawmna-ah lung angin a khawng a, a na sa vawng vawng.",
+      "symptoms_mizo": [
+        "Zanah kezungpui na thut leh vung sa",
+        "Ruh inzawmna a sen a, khawih theih loh",
+        "Pheikhawk bun theih loh"
+      ],
+      "search_tags_mizo": "gout, uric acid, kezungpui na, ruhseg na",
+      "simple_name_en": "High Uric Acid & Big Toe Joint Pain (Gout)",
+      "layman_explanation_en": "Uric acid crystals accumulate in joint fluids, triggering sudden severe attacks of inflammation.",
+      "symptoms_en": [
+        "Sudden intense throbbing pain in big toe joint (often at night)",
+        "Joint turns bright red, swollen, hot, and tender to touch",
+        "Inability to wear shoes or bear weight on foot"
+      ],
+      "search_tags_en": "gout, uric acid, toe pain, joint pain, high uric acid, swollen toe"
     },
     {
       "disease_name": "Psoriatic Arthritis",
@@ -5278,7 +6446,23 @@
         "Heel and sole of foot pain (Achilles tendon pain)",
         "Joint stiffness combined with scaly red skin patches"
       ],
-      "search_tags": "psoriatic arthritis, psoriasis joint, swelling fingers, skin and joint pain"
+      "search_tags": "psoriatic arthritis, psoriasis joint, swelling fingers, skin and joint pain",
+      "simple_name_mizo": "Ruhseg Na Vun Phun Nena Awm",
+      "layman_explanation_mizo": "Vun phun (Psoriasis) nei ten ruhseg na an neih tel a ni.",
+      "symptoms_mizo": [
+        "Kutzungte leh kezungte vung phui lian",
+        "Ke artui na",
+        "Vun phurh var leh ruh na"
+      ],
+      "search_tags_mizo": "psoriatic arthritis, vun phurh, ruhseg na",
+      "simple_name_en": "Joint Pain with Scaly Skin (Psoriatic Arthritis)",
+      "layman_explanation_en": "Inflammatory arthritis affecting joints in individuals suffering from the skin disease psoriasis.",
+      "symptoms_en": [
+        "Swollen sausage-like fingers and toes (Dactylitis)",
+        "Heel and sole of foot pain (Achilles tendon pain)",
+        "Joint stiffness combined with scaly red skin patches"
+      ],
+      "search_tags_en": "psoriatic arthritis, psoriasis joint, swelling fingers, skin and joint pain"
     }
   ],
   "Autoimmune": [
@@ -5356,7 +6540,23 @@
         "Morning stiffness lasting over 1 hour",
         "Finger joint deformities and chronic fatigue"
       ],
-      "search_tags": "rheumatoid arthritis, severe arthritis, swollen joints, morning stiffness, joint deformity"
+      "search_tags": "rheumatoid arthritis, severe arthritis, swollen joints, morning stiffness, joint deformity",
+      "simple_name_mizo": "Ruhseg Na Nasa (Rheumatoid Arthritis)",
+      "layman_explanation_mizo": "Taksa venhimna-in ruh inzawmna a beih avanga kut ke ruh vung leh khawng a ni.",
+      "symptoms_mizo": [
+        "Kut leh ke ruh inzawmna vung leh na",
+        "Zingkar khawng darkar 1 aia rei",
+        "Kutzungṭang kawi leh chau"
+      ],
+      "search_tags_mizo": "rheumatoid arthritis, ruhseg na nasa, kut vung",
+      "simple_name_en": "Severe Joint Swelling & Pain (Rheumatoid Arthritis)",
+      "layman_explanation_en": "Autoimmune disease where body defenses attack the lining of joints, causing painful swelling on both sides.",
+      "symptoms_en": [
+        "Warm, swollen, tender joints on both hands/feet equally",
+        "Morning stiffness lasting over 1 hour",
+        "Finger joint deformities and chronic fatigue"
+      ],
+      "search_tags_en": "rheumatoid arthritis, severe arthritis, swollen joints, morning stiffness, joint deformity"
     },
     {
       "disease_name": "Systemic Lupus Erythematosus (SLE)",
@@ -5420,7 +6620,23 @@
         "Joint pain, swelling, and chronic fatigue",
         "Sunlight sensitivity, mouth ulcers, and low-grade fevers"
       ],
-      "search_tags": "lupus, sle, butterfly rash, autoimmune, joint pain, facial rash"
+      "search_tags": "lupus, sle, butterfly rash, autoimmune, joint pain, facial rash",
+      "simple_name_mizo": "Lupus (Taksa Pumpui Beitu Natna)",
+      "layman_explanation_mizo": "Taksa venhimna-in taksa chhung peng hrang hrang a beih sual a ni.",
+      "symptoms_mizo": [
+        "Hmai a phengpelep ang rual vung sen (Butterfly rash)",
+        "Ruhseg na leh chauh reng",
+        "Nisa ngaithei lo leh ka chhung pan"
+      ],
+      "search_tags_mizo": "lupus, sle, hmai vung, butterfly rash",
+      "simple_name_en": "Lupus / Full Body Autoimmune Disorder",
+      "layman_explanation_en": "Autoimmune disease where the immune system attacks multiple tissues including skin, joints, and kidneys.",
+      "symptoms_en": [
+        "Butterfly-shaped rash across bridge of nose and cheeks",
+        "Joint pain, swelling, and chronic fatigue",
+        "Sunlight sensitivity, mouth ulcers, and low-grade fevers"
+      ],
+      "search_tags_en": "lupus, sle, butterfly rash, autoimmune, joint pain, facial rash"
     },
     {
       "disease_name": "Sjogren's Syndrome",
@@ -5469,7 +6685,23 @@
         "Dry mouth making swallowing dry food difficult",
         "Swollen salivary glands and joint aches"
       ],
-      "search_tags": "sjogren, dry eyes, dry mouth, eye burning, salivary glands"
+      "search_tags": "sjogren, dry eyes, dry mouth, eye burning, salivary glands",
+      "simple_name_mizo": "Mit Ro & Ka Ro Natna",
+      "layman_explanation_mizo": "Mit tui leh chil siamtu a chhiat avanga mit leh ka ro lutuk a ni.",
+      "symptoms_mizo": [
+        "Mit ro leh sa huam huam",
+        "Ka ro lutuk chaw lem harsa",
+        "Chil bawm vung"
+      ],
+      "search_tags_mizo": "mit ro, ka ro, chil tlem, sjogren",
+      "simple_name_en": "Dry Mouth & Dry Eyes Syndrome",
+      "layman_explanation_en": "Autoimmune disorder that primarily targets moisture-producing tear and saliva glands.",
+      "symptoms_en": [
+        "Severe dry, burning, or gritty feeling in eyes",
+        "Dry mouth making swallowing dry food difficult",
+        "Swollen salivary glands and joint aches"
+      ],
+      "search_tags_en": "sjogren, dry eyes, dry mouth, eye burning, salivary glands"
     },
     {
       "disease_name": "Multiple Sclerosis",
@@ -5535,7 +6767,23 @@
         "Electric-shock sensations occurring with neck movement",
         "Blurred vision, balance issues, and extreme fatigue"
       ],
-      "search_tags": "multiple sclerosis, ms, nerve damage, balance problem, mobility difficulty"
+      "search_tags": "multiple sclerosis, ms, nerve damage, balance problem, mobility difficulty",
+      "simple_name_mizo": "Thazam Tuamtu Chhia & Kal Harsa (MS)",
+      "layman_explanation_mizo": "Thluak leh hnungzang thazam tuamtu a chhiat avanga chetvel leh khawhmuh buai a ni.",
+      "symptoms_mizo": [
+        "Kut leh ke mu, zawi leh che theilo",
+        "Nghawng kûn laia current kal ang maia na",
+        "Khawhmuh phe leh chauh"
+      ],
+      "search_tags_mizo": "ms, multiple sclerosis, thazam, zawi",
+      "simple_name_en": "Nerve Sheath Damage & Mobility Difficulty (MS)",
+      "layman_explanation_en": "Immune system strips the protective myelin coating around nerves in the brain and spinal cord.",
+      "symptoms_en": [
+        "Numbness, weakness, or tingling in one or more limbs",
+        "Electric-shock sensations occurring with neck movement",
+        "Blurred vision, balance issues, and extreme fatigue"
+      ],
+      "search_tags_en": "multiple sclerosis, ms, nerve damage, balance problem, mobility difficulty"
     },
     {
       "disease_name": "Myasthenia Gravis",
@@ -5600,7 +6848,23 @@
         "Double vision and difficulty making facial expressions",
         "Difficulty chewing, swallowing, or holding up the head"
       ],
-      "search_tags": "myasthenia, drooping eyelid, muscle weakness, weakness, facial weakness"
+      "search_tags": "myasthenia, drooping eyelid, muscle weakness, weakness, facial weakness",
+      "simple_name_mizo": "Tha Zawi Thut & Mit Vun Uai",
+      "layman_explanation_mizo": "Thazam leh thichak inbiakpawhna a chhiat avanga mit vun uai leh tha zawi a ni.",
+      "symptoms_mizo": [
+        "Mit vun chunglam uai (Ptosis)",
+        "Thil hmuh pawlh (Double vision)",
+        "Chaw ṭhial leh lem harsa"
+      ],
+      "search_tags_mizo": "myasthenia, mit vun uai, tha zawi",
+      "simple_name_en": "Severe Muscle Fatigue & Drooping Eyelids",
+      "layman_explanation_en": "Breakdown in normal communication between nerves and muscles, causing rapid muscle fatigue.",
+      "symptoms_en": [
+        "Drooping of one or both eyelids (Ptosis)",
+        "Double vision and difficulty making facial expressions",
+        "Difficulty chewing, swallowing, or holding up the head"
+      ],
+      "search_tags_en": "myasthenia, drooping eyelid, muscle weakness, weakness, facial weakness"
     }
   ],
   "Renal & Genitourinary Diseases": [
@@ -5688,7 +6952,23 @@
         "Loss of appetite, nausea, and metallic taste in mouth",
         "High creatinine/urea levels and fatigue"
       ],
-      "search_tags": "kidney failure, ckd, creatinine, urea, kidney problem, leg swelling"
+      "search_tags": "kidney failure, ckd, creatinine, urea, kidney problem, leg swelling",
+      "simple_name_mizo": "Kal (Kidney) Chaklo & Creatinine Sang",
+      "layman_explanation_mizo": "Kal-in tur leh bawlhhlawh a thliarfim theih tawh loh avanga taksa vung leh chau a ni.",
+      "symptoms_mizo": [
+        "Ke artui, bawp leh mit vung",
+        "Chaw ei tui lo, luakchhuak leh ka thur",
+        "Creatinine/urea sang leh chau"
+      ],
+      "search_tags_mizo": "kal chhia, kidney, creatinine, ke vung, ckd",
+      "simple_name_en": "Kidney Weakness & High Creatinine / Urea",
+      "layman_explanation_en": "Gradual long-term decline in kidneys' ability to filter metabolic toxins and excess fluid from blood.",
+      "symptoms_en": [
+        "Swelling in feet, ankles, legs, and puffy morning eyes",
+        "Loss of appetite, nausea, and metallic taste in mouth",
+        "High creatinine/urea levels and fatigue"
+      ],
+      "search_tags_en": "kidney failure, ckd, creatinine, urea, kidney problem, leg swelling"
     },
     {
       "disease_name": "Polycystic Kidney Disease",
@@ -5767,7 +7047,23 @@
         "Blood in urine (hematuria) and kidney stones",
         "Enlarged abdomen and recurring urinary infections"
       ],
-      "search_tags": "polycystic kidney, kidney cysts, flank pain, enlarged kidney"
+      "search_tags": "polycystic kidney, kidney cysts, flank pain, enlarged kidney",
+      "simple_name_mizo": "Kal Chhunga Tui Bawk Awm (PKD)",
+      "layman_explanation_mizo": "Kal chhungah tui bawk tam tak a lo awm a, kal a tilian a ni.",
+      "symptoms_mizo": [
+        "Thisen sang leh nak na",
+        "Zunah thisen tel leh kal lung",
+        "Pum lian"
+      ],
+      "search_tags_mizo": "kal tui bawk, nak na, pkd, kidney",
+      "simple_name_en": "Kidney Cysts & Flank Pain",
+      "layman_explanation_en": "Genetic disorder where numerous fluid-filled non-cancerous cysts develop and enlarge in the kidneys.",
+      "symptoms_en": [
+        "High blood pressure and back or side (flank) pain",
+        "Blood in urine (hematuria) and kidney stones",
+        "Enlarged abdomen and recurring urinary infections"
+      ],
+      "search_tags_en": "polycystic kidney, kidney cysts, flank pain, enlarged kidney"
     },
     {
       "disease_name": "Nephrotic Syndrome",
@@ -5835,7 +7131,23 @@
         "Foamy or bubbly appearance of urine",
         "Weight gain from fluid retention and fatigue"
       ],
-      "search_tags": "nephrotic, protein in urine, swelling, foamy urine, fluid retention"
+      "search_tags": "nephrotic, protein in urine, swelling, foamy urine, fluid retention",
+      "simple_name_mizo": "Zunah Protein Put & Taksa Vung",
+      "layman_explanation_mizo": "Kal-in protein a vawng zo lova, zunah a put chhuah avanga taksa vung a ni.",
+      "symptoms_mizo": [
+        "Mit leh ke vung nasa lutuk",
+        "Zun phuan nasa",
+        "Thau thut tui tlin vangin"
+      ],
+      "search_tags_mizo": "protein put, taksa vung, zun phuan, nephrotic",
+      "simple_name_en": "Protein Leak in Urine & Body Swelling",
+      "layman_explanation_en": "Kidney disorder causing the body to excrete too much protein in the urine, leading to fluid accumulation.",
+      "symptoms_en": [
+        "Severe swelling (edema), especially around eyes and in feet",
+        "Foamy or bubbly appearance of urine",
+        "Weight gain from fluid retention and fatigue"
+      ],
+      "search_tags_en": "nephrotic, protein in urine, swelling, foamy urine, fluid retention"
     },
     {
       "disease_name": "Glomerulonephritis",
@@ -5903,7 +7215,23 @@
         "Foamy urine due to excess protein",
         "High blood pressure and swelling in face/legs"
       ],
-      "search_tags": "glomerulonephritis, kidney inflammation, blood in urine, brown urine"
+      "search_tags": "glomerulonephritis, kidney inflammation, blood in urine, brown urine",
+      "simple_name_mizo": "Kal Thliarfimtu Vung & Zun Thisen",
+      "layman_explanation_mizo": "Kal chhunga thliarfimtu a vung a, zun sen emaw dum a thlen a ni.",
+      "symptoms_mizo": [
+        "Zun rawng a sen/dum (Cola color)",
+        "Zun phuan",
+        "Thisen sang leh hmai vung"
+      ],
+      "search_tags_mizo": "kal vung, zun thisen, zun sen",
+      "simple_name_en": "Kidney Filter Inflammation & Blood in Urine",
+      "layman_explanation_en": "Inflammation of the tiny filters (glomeruli) in the kidneys that clean waste and excess fluid.",
+      "symptoms_en": [
+        "Pink, brown, or cola-colored urine from red blood cells",
+        "Foamy urine due to excess protein",
+        "High blood pressure and swelling in face/legs"
+      ],
+      "search_tags_en": "glomerulonephritis, kidney inflammation, blood in urine, brown urine"
     },
     {
       "disease_name": "Benign Prostatic Hyperplasia (BPH)",
@@ -5972,7 +7300,23 @@
         "Weak, interrupted, or dribbling urine stream",
         "Difficulty starting urination and feeling bladder not empty"
       ],
-      "search_tags": "prostate, bph, urine blockage, night urination, prostate gland, weak urine stream"
+      "search_tags": "prostate, bph, urine blockage, night urination, prostate gland, weak urine stream",
+      "simple_name_mizo": "Prostate Gland Lian & Zun Harsa",
+      "layman_explanation_mizo": "Mipa prostate gland a len avanga zun kawng a ping a, zun harsa a ni.",
+      "symptoms_mizo": [
+        "Zanah zun chhuak zing lutuk",
+        "Zun put ser ser / zun ring theilo",
+        "Zun tan harsa leh zun zo lo ang maia inhriatna"
+      ],
+      "search_tags_mizo": "prostate, zun harsa, bph, zun zing",
+      "simple_name_en": "Enlarged Prostate & Urine Flow Blockage",
+      "layman_explanation_en": "Non-cancerous enlargement of the prostate gland in men that narrows the urethra and slows urine stream.",
+      "symptoms_en": [
+        "Frequent or urgent need to urinate, especially at night",
+        "Weak, interrupted, or dribbling urine stream",
+        "Difficulty starting urination and feeling bladder not empty"
+      ],
+      "search_tags_en": "prostate, bph, urine blockage, night urination, prostate gland, weak urine stream"
     },
     {
       "disease_name": "Chronic Prostatitis",
@@ -6036,7 +7380,23 @@
         "Painful or burning urination and ejaculation",
         "Urgent and frequent need to urinate"
       ],
-      "search_tags": "prostatitis, prostate pain, pelvic pain, burning urine, male discomfort"
+      "search_tags": "prostatitis, prostate pain, pelvic pain, burning urine, male discomfort",
+      "simple_name_mizo": "Prostate Vung & Tai Na",
+      "layman_explanation_mizo": "Prostate gland a vung a, tai, malpui leh zun kawng a tina a ni.",
+      "symptoms_mizo": [
+        "Tai na leh kawng hnuailam na",
+        "Zun thip leh zun na",
+        "Zun chhuak zing lutuk"
+      ],
+      "search_tags_mizo": "prostate vung, tai na, zun thip",
+      "simple_name_en": "Prostate Swelling & Pelvic Pain",
+      "layman_explanation_en": "Ongoing inflammation or infection of the prostate gland causing pelvic and genital discomfort.",
+      "symptoms_en": [
+        "Pain in groin, pelvic area, or lower back",
+        "Painful or burning urination and ejaculation",
+        "Urgent and frequent need to urinate"
+      ],
+      "search_tags_en": "prostatitis, prostate pain, pelvic pain, burning urine, male discomfort"
     },
     {
       "disease_name": "Endometriosis",
@@ -6094,7 +7454,23 @@
         "Chronic lower back and pelvic pain",
         "Pain during intercourse and heavy menstrual bleeding"
       ],
-      "search_tags": "endometriosis, period pain, severe cramps, pelvic pain, heavy periods"
+      "search_tags": "endometriosis, period pain, severe cramps, pelvic pain, heavy periods",
+      "simple_name_mizo": "Period Na Lutuk & Tai Na (Endometriosis)",
+      "layman_explanation_mizo": "Chhul chhung nem chu chhul pawnlamah a to a, period laia na lutuk a thlen a ni.",
+      "symptoms_mizo": [
+        "Period laia tai na tlawk tlawk",
+        "Kawng hnuailam na reng",
+        "Fa neih harsa leh thi chhuak tam"
+      ],
+      "search_tags_mizo": "period na, tai na, endometriosis, thi chhuak",
+      "simple_name_en": "Severe Menstrual Cramps & Pelvic Pain",
+      "layman_explanation_en": "Tissue similar to the lining of the uterus grows outside the uterus on ovaries and pelvic walls.",
+      "symptoms_en": [
+        "Severe, debilitating menstrual cramps",
+        "Chronic lower back and pelvic pain",
+        "Pain during intercourse and heavy menstrual bleeding"
+      ],
+      "search_tags_en": "endometriosis, period pain, severe cramps, pelvic pain, heavy periods"
     },
     {
       "disease_name": "Uterine Fibroids",
@@ -6162,7 +7538,23 @@
         "Pelvic pressure, heaviness, or lower abdominal fullness",
         "Frequent urination and lower backache"
       ],
-      "search_tags": "fibroids, uterus lump, heavy periods, pelvic pressure, menstrual bleeding"
+      "search_tags": "fibroids, uterus lump, heavy periods, pelvic pressure, menstrual bleeding",
+      "simple_name_mizo": "Chhul Bawk & Period Thi Chhuak Tam",
+      "layman_explanation_mizo": "Chhul bangah thil bawk (cancer lo chi) a awm a, thi a chhuak tam a ni.",
+      "symptoms_mizo": [
+        "Period laia thi chhuak tam leh rei lutuk",
+        "Tai tawt leh pum lian",
+        "Zun zing leh kawng na"
+      ],
+      "search_tags_mizo": "chhul bawk, fibroids, thi tam, chhul",
+      "simple_name_en": "Uterine Fibroids (Non-Cancerous Lumps) & Heavy Bleeding",
+      "layman_explanation_en": "Non-cancerous muscular tumors that grow in or on the wall of the uterus in reproductive-age women.",
+      "symptoms_en": [
+        "Heavy or prolonged menstrual bleeding",
+        "Pelvic pressure, heaviness, or lower abdominal fullness",
+        "Frequent urination and lower backache"
+      ],
+      "search_tags_en": "fibroids, uterus lump, heavy periods, pelvic pressure, menstrual bleeding"
     },
     {
       "disease_name": "Chronic Pelvic Pain",
@@ -6230,7 +7622,23 @@
         "Sharp cramps or pressure in lower abdomen",
         "Pain worsened by prolonged sitting or intercourse"
       ],
-      "search_tags": "pelvic pain, lower belly pain, pelvic ache, cramps"
+      "search_tags": "pelvic pain, lower belly pain, pelvic ache, cramps",
+      "simple_name_mizo": "Tai Na Rei Tawh",
+      "layman_explanation_mizo": "Tai leh pum hnuailam thla 6 aia rei na reng a ni.",
+      "symptoms_mizo": [
+        "Tai na ngut ngut",
+        "Pum hnuailam tawt",
+        "Thut rei laia na zual"
+      ],
+      "search_tags_mizo": "tai na, pum hnuai na, pelvic pain",
+      "simple_name_en": "Long-Term Lower Abdominal & Pelvic Pain",
+      "layman_explanation_en": "Persistent pain in the lower abdomen or pelvic area lasting for 6 months or longer.",
+      "symptoms_en": [
+        "Constant or intermittent dull pelvic ache",
+        "Sharp cramps or pressure in lower abdomen",
+        "Pain worsened by prolonged sitting or intercourse"
+      ],
+      "search_tags_en": "pelvic pain, lower belly pain, pelvic ache, cramps"
     },
     {
       "disease_name": "Erectile Dysfunction",
@@ -6303,7 +7711,23 @@
         "Difficulty maintaining an erection through intercourse",
         "Reduced sexual desire, low stamina, and energy"
       ],
-      "search_tags": "erectile dysfunction, ed, male weakness, stamina, male vigor, libido"
+      "search_tags": "erectile dysfunction, ed, male weakness, stamina, male vigor, libido",
+      "simple_name_mizo": "Mipa Chaklohna & Zang Khawng Theilo",
+      "layman_explanation_mizo": "Thisen kal tlem, rilru hah emaw thazam chhiat vanga mipa chakna tlakchham a ni.",
+      "symptoms_mizo": [
+        "Mipa zang khawng theihlohna",
+        "Chakna tlem leh zawi",
+        "Mipat hmeichhiatna a tlin lohna"
+      ],
+      "search_tags_mizo": "mipa chaklo, ed, zang khawng lo, chakna",
+      "simple_name_en": "Male Sexual Weakness & Stamina Loss",
+      "layman_explanation_en": "Inability to achieve or maintain a firm erection, often due to poor circulation, stress, or nerve health.",
+      "symptoms_en": [
+        "Difficulty getting an erection when desired",
+        "Difficulty maintaining an erection through intercourse",
+        "Reduced sexual desire, low stamina, and energy"
+      ],
+      "search_tags_en": "erectile dysfunction, ed, male weakness, stamina, male vigor, libido"
     },
     {
       "disease_name": "Chronic Urinary Tract Infections",
@@ -6377,7 +7801,23 @@
         "Constant urge to urinate with small volume",
         "Cloudy, reddish, or strong-smelling urine"
       ],
-      "search_tags": "uti, urine infection, burning urine, urinary tract, bladder infection"
+      "search_tags": "uti, urine infection, burning urine, urinary tract, bladder infection",
+      "simple_name_mizo": "Zun Kawng Vung / Thip Zing Lutuk (UTI)",
+      "layman_explanation_mizo": "Zun kawngah hrik a luh fo avanga zun thip leh na a ni.",
+      "symptoms_mizo": [
+        "Zun laia thip sa huam huam",
+        "Zun chhuak zing si zun tlem",
+        "Zun rimchhia leh nu"
+      ],
+      "search_tags_mizo": "uti, zun thip, zun kawng, zun na",
+      "simple_name_en": "Frequent Urinary Tract Infections (UTI) & Burning",
+      "layman_explanation_en": "Recurrent bacterial invasion in the bladder or urethra causing burning and painful urination.",
+      "symptoms_en": [
+        "Strong, burning sensation while urinating",
+        "Constant urge to urinate with small volume",
+        "Cloudy, reddish, or strong-smelling urine"
+      ],
+      "search_tags_en": "uti, urine infection, burning urine, urinary tract, bladder infection"
     },
     {
       "disease_name": "Overactive Bladder",
@@ -6435,7 +7875,23 @@
         "Involuntary urine leakage (Urge incontinence)",
         "Frequent urination (8+ times day and 2+ times night)"
       ],
-      "search_tags": "overactive bladder, frequent urine, urine leakage, incontinence, bladder spasms"
+      "search_tags": "overactive bladder, frequent urine, urine leakage, incontinence, bladder spasms",
+      "simple_name_mizo": "Zun Cheh / Zun Hmanhmawh Lutuk",
+      "layman_explanation_mizo": "Zun bawm a che rang lutuk a, zun a cheh thut thut a ni.",
+      "symptoms_mizo": [
+        "Zun cheh thut thut",
+        "Zun hmanhmawh lutuk dawm theih loh",
+        "Zanah zun vawi tam chhuak"
+      ],
+      "search_tags_mizo": "zun cheh, zun zing, overactive bladder",
+      "simple_name_en": "Frequent Sudden Urge to Urinate & Leakage",
+      "layman_explanation_en": "Bladder muscles contract involuntarily, creating sudden urgency to pass urine even when not full.",
+      "symptoms_en": [
+        "Sudden uncontrollable urge to urinate",
+        "Involuntary urine leakage (Urge incontinence)",
+        "Frequent urination (8+ times day and 2+ times night)"
+      ],
+      "search_tags_en": "overactive bladder, frequent urine, urine leakage, incontinence, bladder spasms"
     }
   ],
   "HEMATOLOGICAL": [
@@ -6520,7 +7976,23 @@
         "Pale or yellowish skin and brittle fingernails",
         "Cold hands and feet, dizziness, and breathlessness"
       ],
-      "search_tags": "anemia, low hemoglobin, iron deficiency, low blood, weakness, fatigue, dizziness"
+      "search_tags": "anemia, low hemoglobin, iron deficiency, low blood, weakness, fatigue, dizziness",
+      "simple_name_mizo": "Thisen Tlem & Taksa Chau (Anemia)",
+      "layman_explanation_mizo": "Taksa-in thir (iron) a tlakchham avangin thisen sen (hemoglobin) tawk a siam theilo a, boruak tha a sem kual theilo.",
+      "symptoms_mizo": [
+        "Chauh ngawih ngawih leh zawi reng",
+        "Vun dâng leh tin keh awlsam",
+        "Kut ke vawt, lu hai leh thawkchham"
+      ],
+      "search_tags_mizo": "thisen tlem, anemia, zawi, chauh, hemoglobin tlem, chau",
+      "simple_name_en": "Low Blood / Iron Deficiency Anemia (Weakness & Fatigue)",
+      "layman_explanation_en": "Body lacks sufficient iron to produce hemoglobin, starving cells and muscles of oxygen.",
+      "symptoms_en": [
+        "Extreme fatigue, low energy, and constant tiredness",
+        "Pale or yellowish skin and brittle fingernails",
+        "Cold hands and feet, dizziness, and breathlessness"
+      ],
+      "search_tags_en": "anemia, low hemoglobin, iron deficiency, low blood, weakness, fatigue, dizziness"
     },
     {
       "disease_name": "Thalassemia",
@@ -6593,7 +8065,23 @@
         "Slow growth in children and bone deformities",
         "Enlarged spleen and dark urine"
       ],
-      "search_tags": "thalassemia, low blood, genetic blood, low hemoglobin, red blood cells"
+      "search_tags": "thalassemia, low blood, genetic blood, low hemoglobin, red blood cells",
+      "simple_name_mizo": "Thisen Tlem Pianpui (Thalassemia)",
+      "layman_explanation_mizo": "Pianpui thisen natna a ni a, hemoglobin a siam tlem a ni.",
+      "symptoms_mizo": [
+        "Thisen tlem nasa leh vun dâng",
+        "Naupang thang theilo",
+        "Zun dum"
+      ],
+      "search_tags_mizo": "thalassemia, thisen tlem, pianpui",
+      "simple_name_en": "Thalassemia (Inherited Low Hemoglobin)",
+      "layman_explanation_en": "Genetic blood disorder causing the body to make less hemoglobin and fewer healthy red blood cells.",
+      "symptoms_en": [
+        "Severe fatigue, weakness, and pale skin",
+        "Slow growth in children and bone deformities",
+        "Enlarged spleen and dark urine"
+      ],
+      "search_tags_en": "thalassemia, low blood, genetic blood, low hemoglobin, red blood cells"
     },
     {
       "disease_name": "Sickle Cell Anemia",
@@ -6666,7 +8154,23 @@
         "Frequent infections and delayed growth",
         "Chronic anemia, swelling in hands and feet"
       ],
-      "search_tags": "sickle cell, blood sickle, joint pain crises, blood disorder, anemia"
+      "search_tags": "sickle cell, blood sickle, joint pain crises, blood disorder, anemia",
+      "simple_name_mizo": "Thisen Sen Kawi & Ruhseg Na",
+      "layman_explanation_mizo": "Thisen sen a kawi a, thisen zamah a tang a, na nasa tak a thlen a ni.",
+      "symptoms_mizo": [
+        "Awm leh ruhseg na thut",
+        "Hliam dam theilo",
+        "Kut leh ke vung"
+      ],
+      "search_tags_mizo": "sickle cell, thisen kawi, ruhseg na",
+      "simple_name_en": "Sickle Cell Blood Disorder & Pain Crises",
+      "layman_explanation_en": "Red blood cells become rigid and crescent-shaped, getting stuck in small blood vessels.",
+      "symptoms_en": [
+        "Sudden episodes of severe pain in chest, joints, or abdomen ('pain crises')",
+        "Frequent infections and delayed growth",
+        "Chronic anemia, swelling in hands and feet"
+      ],
+      "search_tags_en": "sickle cell, blood sickle, joint pain crises, blood disorder, anemia"
     },
     {
       "disease_name": "Pernicious Anemia",
@@ -6749,7 +8253,23 @@
         "Smooth, bright red, sore tongue",
         "Memory lapses, unsteadiness while walking, and fatigue"
       ],
-      "search_tags": "b12 deficiency, pernicious anemia, tingling, nerve weakness, vitamin b12"
+      "search_tags": "b12 deficiency, pernicious anemia, tingling, nerve weakness, vitamin b12",
+      "simple_name_mizo": "Vitamin B12 Tlakchham Thisen Tlem",
+      "layman_explanation_mizo": "Taksa-in Vitamin B12 a hip theih loh avanga thisen tlem leh thazam chhia a ni.",
+      "symptoms_mizo": [
+        "Kut leh ke mu leh sa",
+        "Lei sen leh thip",
+        "Kal buai leh theihnghilh"
+      ],
+      "search_tags_mizo": "b12, thisen tlem, kut mu, pernicious anemia",
+      "simple_name_en": "Vitamin B12 Deficiency Anemia & Nerve Tingling",
+      "layman_explanation_en": "Body cannot properly absorb Vitamin B12 from food, leading to faulty red blood cell production.",
+      "symptoms_en": [
+        "Tingling, numbness, or burning in hands and feet",
+        "Smooth, bright red, sore tongue",
+        "Memory lapses, unsteadiness while walking, and fatigue"
+      ],
+      "search_tags_en": "b12 deficiency, pernicious anemia, tingling, nerve weakness, vitamin b12"
     },
     {
       "disease_name": "Aplastic Anemia",
@@ -6817,7 +8337,23 @@
         "Frequent, long-lasting infections from low white cells",
         "Easy bruising, bleeding gums, or nosebleeds from low platelets"
       ],
-      "search_tags": "aplastic anemia, bone marrow, low platelets, bleeding, low blood count"
+      "search_tags": "aplastic anemia, bone marrow, low platelets, bleeding, low blood count",
+      "simple_name_mizo": "Ruh Chhung Thisen Siamtu Chhia",
+      "layman_explanation_mizo": "Ruh chhung (bone marrow)-in thisen a siam theih loh avanga thisen zawng zawng tlem a ni.",
+      "symptoms_mizo": [
+        "Thisen tlem leh dâng",
+        "Khawsik leh hritlang awlsam",
+        "Hnap thisen leh ha thisen chhuak awlsam"
+      ],
+      "search_tags_mizo": "aplastic anemia, thisen siamlo, bone marrow",
+      "simple_name_en": "Bone Marrow Blood Production Deficiency",
+      "layman_explanation_en": "Bone marrow stops producing enough new blood cells (red cells, white cells, and platelets).",
+      "symptoms_en": [
+        "Fatigue and pale complexion from low red cells",
+        "Frequent, long-lasting infections from low white cells",
+        "Easy bruising, bleeding gums, or nosebleeds from low platelets"
+      ],
+      "search_tags_en": "aplastic anemia, bone marrow, low platelets, bleeding, low blood count"
     },
     {
       "disease_name": "Idiopathic Thrombocytopenic Purpura (ITP)",
@@ -6875,7 +8411,23 @@
         "Superficial bleeding into skin appearing as pinpoint red spots (Petechiae)",
         "Bleeding from gums or nose, heavy periods"
       ],
-      "search_tags": "itp, low platelets, bruising, bleeding gums, platelet count, purple spots"
+      "search_tags": "itp, low platelets, bruising, bleeding gums, platelet count, purple spots",
+      "simple_name_mizo": "Platelet Tlem & Vun Duk Awlsam (ITP)",
+      "layman_explanation_mizo": "Thisen tikhaltu (platelet) a tlem avanga vun duk awlsam leh thisen chhuak awlsam a ni.",
+      "symptoms_mizo": [
+        "Vun a duk awlsam lutuk",
+        "Vun a thil sen te te awm",
+        "Ha thisen leh hnap thisen chhuak"
+      ],
+      "search_tags_mizo": "itp, platelet tlem, vun duk, thisen chhuak",
+      "simple_name_en": "Low Platelets & Easy Skin Bruising (ITP)",
+      "layman_explanation_en": "Autoimmune disorder where immune system destroys platelets, raising risk of easy bleeding.",
+      "symptoms_en": [
+        "Easy or excessive bruising (Purpura)",
+        "Superficial bleeding into skin appearing as pinpoint red spots (Petechiae)",
+        "Bleeding from gums or nose, heavy periods"
+      ],
+      "search_tags_en": "itp, low platelets, bruising, bleeding gums, platelet count, purple spots"
     }
   ],
   "DERMATOLOGICAL": [
@@ -6963,7 +8515,23 @@
         "Dry, cracked skin that may bleed or itch",
         "Itching, burning, and soreness on elbows, knees, scalp"
       ],
-      "search_tags": "psoriasis, skin disease, scaly skin, skin itching, red patches, skin scales"
+      "search_tags": "psoriasis, skin disease, scaly skin, skin itching, red patches, skin scales",
+      "simple_name_mizo": "Vun Phun / Phurh Var & Thak (Psoriasis)",
+      "layman_explanation_mizo": "Vun cell a inthlak rang lutuk a, vun a lo sen phurh a, a var a, a thak bawk a ni.",
+      "symptoms_mizo": [
+        "Vun sen phurh var bawh",
+        "Vun ro keh leh thi chhuak",
+        "Khup, kiu leh lu vun thak"
+      ],
+      "search_tags_mizo": "psoriasis, vun phurh, vun thak, vun sen",
+      "simple_name_en": "Scaly Red Skin Patches & Itching (Psoriasis)",
+      "layman_explanation_en": "Skin condition where skin cells multiply too rapidly, forming raised red patches with silvery scales.",
+      "symptoms_en": [
+        "Thick red patches covered with silvery scales",
+        "Dry, cracked skin that may bleed or itch",
+        "Itching, burning, and soreness on elbows, knees, scalp"
+      ],
+      "search_tags_en": "psoriasis, skin disease, scaly skin, skin itching, red patches, skin scales"
     },
     {
       "disease_name": "Eczema (Atopic Dermatitis)",
@@ -7043,7 +8611,23 @@
         "Dry, sensitive, raw, and cracked skin",
         "Small raised bumps that ooze fluid when scratched"
       ],
-      "search_tags": "eczema, skin allergy, itching, dermatitis, dry skin, rash"
+      "search_tags": "eczema, skin allergy, itching, dermatitis, dry skin, rash",
+      "simple_name_mizo": "Vun Thak, Ro & Bawl (Eczema)",
+      "layman_explanation_mizo": "Vun a vung a, a ro a, a thak em em a ni.",
+      "symptoms_mizo": [
+        "Zana thak nasa zual",
+        "Vun ro, chhah leh keh",
+        "Bawl tui hnai chhuak"
+      ],
+      "search_tags_mizo": "eczema, vun thak, vun bawl, dermatitis",
+      "simple_name_en": "Skin Allergy, Dryness & Severe Itching (Eczema)",
+      "layman_explanation_en": "Inflammatory skin condition causing dry, itchy, red, and irritable skin patches.",
+      "symptoms_en": [
+        "Intense itching that worsens at night",
+        "Dry, sensitive, raw, and cracked skin",
+        "Small raised bumps that ooze fluid when scratched"
+      ],
+      "search_tags_en": "eczema, skin allergy, itching, dermatitis, dry skin, rash"
     },
     {
       "disease_name": "Vitiligo",
@@ -7123,7 +8707,23 @@
         "Premature whitening of scalp hair, eyelashes, or eyebrows",
         "Loss of color inside tissues of mouth and nose"
       ],
-      "search_tags": "vitiligo, white patches, leukoderma, skin color loss, skin pigment"
+      "search_tags": "vitiligo, white patches, leukoderma, skin color loss, skin pigment",
+      "simple_name_mizo": "Vun Var / Vun Rawng Bo (Vitiligo)",
+      "layman_explanation_mizo": "Vun rawng siamtu a chhiat avanga vun a var a ni.",
+      "symptoms_mizo": [
+        "Vun rawng bo a lo var",
+        "Sam emaw khabe hmul ṭo var hma",
+        "Ka chhung rawng bo"
+      ],
+      "search_tags_mizo": "vun var, vitiligo, rawng bo",
+      "simple_name_en": "White Skin Patches (Vitiligo / Leukoderma)",
+      "layman_explanation_en": "Autoimmune destruction of melanin-producing skin cells, causing patches of skin to lose color.",
+      "symptoms_en": [
+        "Patchy loss of natural skin pigment",
+        "Premature whitening of scalp hair, eyelashes, or eyebrows",
+        "Loss of color inside tissues of mouth and nose"
+      ],
+      "search_tags_en": "vitiligo, white patches, leukoderma, skin color loss, skin pigment"
     },
     {
       "disease_name": "Acne Vulgaris",
@@ -7203,7 +8803,23 @@
         "Pus-filled pimples (pustules) on face, chest, or back",
         "Painful inflammatory cysts and acne scars"
       ],
-      "search_tags": "acne, pimples, breakouts, spots, facial spots, acne scars, blackheads"
+      "search_tags": "acne, pimples, breakouts, spots, facial spots, acne scars, blackheads",
+      "simple_name_mizo": "Hmai Bawl / Hmai Pan (Pimples / Acne)",
+      "layman_explanation_mizo": "Hmai thau leh bawlhhlawh-in hmul kua a phui avanga hmai bawl a ni.",
+      "symptoms_mizo": [
+        "Hmai bawl sen leh ser",
+        "Hmai bawl hnai pai",
+        "Hmai ser hnutchhiah"
+      ],
+      "search_tags_mizo": "hmai bawl, pimples, acne, hmai ser",
+      "simple_name_en": "Pimples, Acne & Facial Breakouts",
+      "layman_explanation_en": "Hair follicles become plugged with sebum oil and dead skin cells, causing inflammation and breakouts.",
+      "symptoms_en": [
+        "Whiteheads, blackheads, and tender red bumps",
+        "Pus-filled pimples (pustules) on face, chest, or back",
+        "Painful inflammatory cysts and acne scars"
+      ],
+      "search_tags_en": "acne, pimples, breakouts, spots, facial spots, acne scars, blackheads"
     },
     {
       "disease_name": "Rosacea",
@@ -7271,7 +8887,23 @@
         "Small red pus-filled bumps mimicking acne",
         "Enlarged visible blood vessels and eye irritation"
       ],
-      "search_tags": "rosacea, red face, blushing, facial redness, flushed skin"
+      "search_tags": "rosacea, red face, blushing, facial redness, flushed skin",
+      "simple_name_mizo": "Hmai Sen & Thazam Lang (Rosacea)",
+      "layman_explanation_mizo": "Biang leh hnar a sen vung a, thazam a lang chiang a ni.",
+      "symptoms_mizo": [
+        "Biang leh hnar sen reng",
+        "Bawl sen te te",
+        "Mit thip leh sen"
+      ],
+      "search_tags_mizo": "hmai sen, rosacea, biang sen",
+      "simple_name_en": "Facial Redness & Flushing (Rosacea)",
+      "layman_explanation_en": "Chronic skin condition causing blushing, redness, and visible blood vessels across cheeks and nose.",
+      "symptoms_en": [
+        "Persistent facial redness across cheeks and nose",
+        "Small red pus-filled bumps mimicking acne",
+        "Enlarged visible blood vessels and eye irritation"
+      ],
+      "search_tags_en": "rosacea, red face, blushing, facial redness, flushed skin"
     },
     {
       "disease_name": "Chronic Urticaria",
@@ -7351,7 +8983,23 @@
         "Welts that vary in shape and appear/disappear quickly",
         "Severe itching, burning, or stinging on skin"
       ],
-      "search_tags": "hives, urticaria, skin welts, itching, allergic rash, skin bumps"
+      "search_tags": "hives, urticaria, skin welts, itching, allergic rash, skin bumps",
+      "simple_name_mizo": "Vun Vung Phun Thak (Hives / Urticaria)",
+      "layman_explanation_mizo": "Allergy vanga taksa pumpui vung sen phun leh thak thut thut a ni.",
+      "symptoms_mizo": [
+        "Vun vung sen lian tak tak",
+        "Thak nasa lutuk leh sa",
+        "Lo chhuak a bo leh thut"
+      ],
+      "search_tags_mizo": "vun vung, urticaria, hives, allergy thak",
+      "simple_name_en": "Hives / Sudden Itchy Skin Welts & Rashes",
+      "layman_explanation_en": "Allergic skin reaction causing sudden itchy red or skin-colored welts across the body.",
+      "symptoms_en": [
+        "Batches of red or skin-colored itchy raised welts",
+        "Welts that vary in shape and appear/disappear quickly",
+        "Severe itching, burning, or stinging on skin"
+      ],
+      "search_tags_en": "hives, urticaria, skin welts, itching, allergic rash, skin bumps"
     },
     {
       "disease_name": "Alopecia Areata",
@@ -7419,7 +9067,23 @@
         "Sudden excessive hair shedding while brushing",
         "Thinning hair and receding hairline"
       ],
-      "search_tags": "alopecia, hair loss, hair fall, baldness, patchy hair, thinning hair, receding hairline"
+      "search_tags": "alopecia, hair loss, hair fall, baldness, patchy hair, thinning hair, receding hairline",
+      "simple_name_mizo": "Sam Tla & Lu Kawlh (Alopecia)",
+      "layman_explanation_mizo": "Taksa venhimna-in sam zung a beih sual avangin sam a tla kawlh thliah thliah a ni.",
+      "symptoms_mizo": [
+        "Lu emaw khabe hmul a bial a tla kawlh",
+        "Sam khuih laia sam tla nasa lutuk",
+        "Sam pan tial tial leh tlem"
+      ],
+      "search_tags_mizo": "sam tla, lu kawlh, sam to lo, sam, alopecia",
+      "simple_name_en": "Hair Fall & Patchy Baldness (Alopecia)",
+      "layman_explanation_en": "Autoimmune disorder where hair follicles are attacked, causing circular patches of complete hair loss.",
+      "symptoms_en": [
+        "Coin-sized round bald patches on scalp or beard",
+        "Sudden excessive hair shedding while brushing",
+        "Thinning hair and receding hairline"
+      ],
+      "search_tags_en": "alopecia, hair loss, hair fall, baldness, patchy hair, thinning hair, receding hairline"
     },
     {
       "disease_name": "Lichen Planus",
@@ -7500,7 +9164,23 @@
         "Lacy white patches inside cheeks or on tongue",
         "Nail damage and thinning"
       ],
-      "search_tags": "lichen planus, skin bumps, mouth lesions, skin itching, purple bumps"
+      "search_tags": "lichen planus, skin bumps, mouth lesions, skin itching, purple bumps",
+      "simple_name_mizo": "Vun Bawl Sen Duk & Ka Chhung Pan",
+      "layman_explanation_mizo": "Kut leh ke vela vun bawl sen duk leh ka chhung pan awm a ni.",
+      "symptoms_mizo": [
+        "Bawl sen duk thak",
+        "Ka chhung var pan",
+        "Tin chhia"
+      ],
+      "search_tags_mizo": "lichen planus, vun bawl, ka pan",
+      "simple_name_en": "Purple Itchy Skin Bumps & Mouth Lesions",
+      "layman_explanation_en": "Inflammatory autoimmune condition characterized by purplish, flat-topped, itchy skin bumps and mouth lesions.",
+      "symptoms_en": [
+        "Purplish, flat-topped, itchy bumps on wrists, ankles, or back",
+        "Lacy white patches inside cheeks or on tongue",
+        "Nail damage and thinning"
+      ],
+      "search_tags_en": "lichen planus, skin bumps, mouth lesions, skin itching, purple bumps"
     },
     {
       "disease_name": "Seborrheic Dermatitis",
@@ -7575,7 +9255,23 @@
         "Dandruff on scalp, eyebrows, beard, or chest",
         "Redness and itching along hairline and ears"
       ],
-      "search_tags": "dandruff, seborrheic, scalp flakes, itchy scalp, oily dandruff, hair flaking"
+      "search_tags": "dandruff, seborrheic, scalp flakes, itchy scalp, oily dandruff, hair flaking",
+      "simple_name_mizo": "Haukhawlh & Lu Vun Thau Thak",
+      "layman_explanation_mizo": "Lu vun leh hmai vela haukhawlh ro leh thau awm a ni.",
+      "symptoms_mizo": [
+        "Haukhawlh var emaw eng tla",
+        "Lu vun thak leh sen",
+        "Hnar leh biang thau"
+      ],
+      "search_tags_mizo": "haukhawlh, dandruff, lu thak, seborrheic",
+      "simple_name_en": "Severe Dandruff & Oily Scalp Flaking",
+      "layman_explanation_en": "Common skin condition that mainly affects the scalp, causing scaly patches, red skin, and stubborn dandruff.",
+      "symptoms_en": [
+        "Greasy skin covered with flaky white or yellow scales",
+        "Dandruff on scalp, eyebrows, beard, or chest",
+        "Redness and itching along hairline and ears"
+      ],
+      "search_tags_en": "dandruff, seborrheic, scalp flakes, itchy scalp, oily dandruff, hair flaking"
     }
   ],
   "ONCOLOGICAL (supportive/complementary care)": [
@@ -7636,7 +9332,23 @@
         "Change in size, shape, or appearance of breast",
         "Fatigue and weakness"
       ],
-      "search_tags": "breast cancer, breast lump, cancer support, immunity, breast health"
+      "search_tags": "breast cancer, breast lump, cancer support, immunity, breast health",
+      "simple_name_mizo": "Hnute Bawk & Cancer Inenkawlna",
+      "layman_explanation_mizo": "Hnute cancer enkawlna tichak tura taksa venhimna leh chakna siamtu herbal protocol.",
+      "symptoms_mizo": [
+        "Hnute bawk sak awm",
+        "Hnute pianhmang inthlak",
+        "Chauh leh zawi"
+      ],
+      "search_tags_mizo": "hnute cancer, hnute bawk, cancer, breast cancer",
+      "simple_name_en": "Breast Health & Cancer Supportive Care",
+      "layman_explanation_en": "Supportive Ayurvedic care to enhance immunity, reduce treatment side-effects, and support cellular health.",
+      "symptoms_en": [
+        "A breast lump or thickening that feels different from surrounding tissue",
+        "Change in size, shape, or appearance of breast",
+        "Fatigue and weakness"
+      ],
+      "search_tags_en": "breast cancer, breast lump, cancer support, immunity, breast health"
     },
     {
       "disease_name": "Cervical Cancer",
@@ -7701,7 +9413,23 @@
         "Watery, bloody vaginal discharge with foul odor",
         "Pelvic pain or pain during intercourse"
       ],
-      "search_tags": "cervical cancer, cervix, cancer support, pelvic bleeding, immunity"
+      "search_tags": "cervical cancer, cervix, cancer support, pelvic bleeding, immunity",
+      "simple_name_mizo": "Chhul Kawng Cancer Inenkawlna",
+      "layman_explanation_mizo": "Hmeichhe chhul kawng hriselna leh taksa chakna tichak tura herbal enkawlna.",
+      "symptoms_mizo": [
+        "Period inkar a thi chhuak",
+        "Chhul tui rimchhia chhuak",
+        "Tai na"
+      ],
+      "search_tags_mizo": "cervical cancer, chhul cancer, cancer",
+      "simple_name_en": "Cervical Health & Uterine Supportive Care",
+      "layman_explanation_en": "Complementary Ayurvedic protocol to boost pelvic cellular vitality, immunity, and overall strength.",
+      "symptoms_en": [
+        "Abnormal vaginal bleeding between periods",
+        "Watery, bloody vaginal discharge with foul odor",
+        "Pelvic pain or pain during intercourse"
+      ],
+      "search_tags_en": "cervical cancer, cervix, cancer support, pelvic bleeding, immunity"
     },
     {
       "disease_name": "Oral Cancer",
@@ -7760,7 +9488,23 @@
         "White or red patch on gums, tongue, or lining of mouth",
         "Difficulty chewing or swallowing"
       ],
-      "search_tags": "oral cancer, mouth ulcer, non-healing ulcer, mouth cancer, cancer support"
+      "search_tags": "oral cancer, mouth ulcer, non-healing ulcer, mouth cancer, cancer support",
+      "simple_name_mizo": "Ka Chhung Pan & Cancer Inenkawlna",
+      "layman_explanation_mizo": "Ka chhung pan dam theilo enkawlna leh taksa chakna siamtu.",
+      "symptoms_mizo": [
+        "Ka chhung pan dam theilo",
+        "Ka chhung vung sen/var",
+        "Chaw ṭhial leh lem harsa"
+      ],
+      "search_tags_mizo": "ka cancer, oral cancer, ka pan, cancer",
+      "simple_name_en": "Mouth Sores & Oral Cancer Supportive Care",
+      "layman_explanation_en": "Supportive herbal care for long-standing oral ulcers, tissue healing, and mouth cavity immunity.",
+      "symptoms_en": [
+        "A persistent mouth sore that does not heal for weeks",
+        "White or red patch on gums, tongue, or lining of mouth",
+        "Difficulty chewing or swallowing"
+      ],
+      "search_tags_en": "oral cancer, mouth ulcer, non-healing ulcer, mouth cancer, cancer support"
     },
     {
       "disease_name": "Lung Cancer",
@@ -7825,7 +9569,23 @@
         "Coughing up blood, even in small amounts",
         "Shortness of breath, chest pain, and hoarseness"
       ],
-      "search_tags": "lung cancer, lung tumor, coughing blood, breathing difficulty, cancer support"
+      "search_tags": "lung cancer, lung tumor, coughing blood, breathing difficulty, cancer support",
+      "simple_name_mizo": "Chhur Cancer Inenkawlna",
+      "layman_explanation_mizo": "Chhur (lungs) hnathawh tichak tura thawk lak ti awlsamtu herbal enkawlna.",
+      "symptoms_mizo": [
+        "Khuh reh theilo",
+        "Khuh thisen chhuak",
+        "Thawkchham leh awm na"
+      ],
+      "search_tags_mizo": "chhur cancer, lung cancer, khuh thisen, cancer",
+      "simple_name_en": "Lung Health & Respiratory Cancer Support",
+      "layman_explanation_en": "Herbal support to improve respiratory comfort, reduce coughing, and strengthen vital lung capacity.",
+      "symptoms_en": [
+        "Persistent cough that doesn't go away",
+        "Coughing up blood, even in small amounts",
+        "Shortness of breath, chest pain, and hoarseness"
+      ],
+      "search_tags_en": "lung cancer, lung tumor, coughing blood, breathing difficulty, cancer support"
     },
     {
       "disease_name": "Colorectal Cancer",
@@ -7890,7 +9650,23 @@
         "Rectal bleeding or blood in stool",
         "Persistent abdominal discomfort, gas, or cramps"
       ],
-      "search_tags": "colorectal cancer, colon tumor, bowel cancer, stool blood, cancer support"
+      "search_tags": "colorectal cancer, colon tumor, bowel cancer, stool blood, cancer support",
+      "simple_name_mizo": "Rilpui Cancer Inenkawlna",
+      "layman_explanation_mizo": "Rilpui leh mawng kaw cancer enkawlna puitu.",
+      "symptoms_mizo": [
+        "Ek thiar dan inthlak",
+        "Ek thisen chhuak",
+        "Pum na leh puar"
+      ],
+      "search_tags_mizo": "rilpui cancer, colon cancer, ek thisen, cancer",
+      "simple_name_en": "Colon & Rectal Cancer Supportive Care",
+      "layman_explanation_en": "Supportive herbs to promote healthy digestion, protect intestinal mucosa, and aid vitality.",
+      "symptoms_en": [
+        "Persistent change in bowel habits (diarrhea or constipation)",
+        "Rectal bleeding or blood in stool",
+        "Persistent abdominal discomfort, gas, or cramps"
+      ],
+      "search_tags_en": "colorectal cancer, colon tumor, bowel cancer, stool blood, cancer support"
     },
     {
       "disease_name": "Stomach (Gastric) Cancer",
@@ -7949,7 +9725,23 @@
         "Feeling bloated after small meals",
         "Severe stomach pain, nausea, and unintended weight loss"
       ],
-      "search_tags": "stomach cancer, gastric tumor, stomach pain, weight loss, cancer support"
+      "search_tags": "stomach cancer, gastric tumor, stomach pain, weight loss, cancer support",
+      "simple_name_mizo": "Pum Cancer Inenkawlna",
+      "layman_explanation_mizo": "Pum chhung cancer enkawlna puitu leh chaw ei tuitu.",
+      "symptoms_mizo": [
+        "Chaw lem harsa leh pum na",
+        "Chaw tlem ei a puar nghal",
+        "Cher leh luakchhuak"
+      ],
+      "search_tags_mizo": "pum cancer, stomach cancer, cancer",
+      "simple_name_en": "Stomach Cancer Supportive Care & Appetite Aid",
+      "layman_explanation_en": "Supportive Ayurvedic formulations to soothe gastric lining, boost appetite, and combat wasting.",
+      "symptoms_en": [
+        "Difficulty swallowing and persistent indigestion",
+        "Feeling bloated after small meals",
+        "Severe stomach pain, nausea, and unintended weight loss"
+      ],
+      "search_tags_en": "stomach cancer, gastric tumor, stomach pain, weight loss, cancer support"
     },
     {
       "disease_name": "Prostate Cancer",
@@ -8025,7 +9817,23 @@
         "Blood in urine or semen",
         "Bone pain in hips, back, or ribs"
       ],
-      "search_tags": "prostate cancer, prostate tumor, urine difficulty, cancer support"
+      "search_tags": "prostate cancer, prostate tumor, urine difficulty, cancer support",
+      "simple_name_mizo": "Prostate Cancer Inenkawlna",
+      "layman_explanation_mizo": "Prostate gland cancer enkawlna puitu leh zun kawng tichaktu.",
+      "symptoms_mizo": [
+        "Zun harsa lutuk",
+        "Zunah thisen tel",
+        "Kawng leh ruh na"
+      ],
+      "search_tags_mizo": "prostate cancer, zun harsa, cancer",
+      "simple_name_en": "Prostate Health & Cancer Supportive Care",
+      "layman_explanation_en": "Herbal support to manage urinary comfort, prostate cellular health, and male vitality.",
+      "symptoms_en": [
+        "Difficulty starting urination or weak stream",
+        "Blood in urine or semen",
+        "Bone pain in hips, back, or ribs"
+      ],
+      "search_tags_en": "prostate cancer, prostate tumor, urine difficulty, cancer support"
     },
     {
       "disease_name": "Liver Cancer",
@@ -8094,7 +9902,23 @@
         "Upper right abdominal pain and swelling",
         "Yellow discoloration of skin and eyes (Jaundice)"
       ],
-      "search_tags": "liver cancer, liver tumor, jaundice, liver swelling, cancer support"
+      "search_tags": "liver cancer, liver tumor, jaundice, liver swelling, cancer support",
+      "simple_name_mizo": "Thin Cancer Inenkawlna",
+      "layman_explanation_mizo": "Thin (liver) cancer enkawlna puitu leh thin tifai tu.",
+      "symptoms_mizo": [
+        "Chaw ei tui lo leh cher",
+        "Pum dinglam chung vung leh na",
+        "Mit leh vun eng (Jaundice)"
+      ],
+      "search_tags_mizo": "thin cancer, liver cancer, mit eng, cancer",
+      "simple_name_en": "Liver Health & Cancer Supportive Care",
+      "layman_explanation_en": "Supportive Ayurvedic hepatoprotective rasayanas to assist liver detox, energy, and appetite.",
+      "symptoms_en": [
+        "Loss of appetite, nausea, and unexplained weight loss",
+        "Upper right abdominal pain and swelling",
+        "Yellow discoloration of skin and eyes (Jaundice)"
+      ],
+      "search_tags_en": "liver cancer, liver tumor, jaundice, liver swelling, cancer support"
     },
     {
       "disease_name": "Thyroid Cancer",
@@ -8159,7 +9983,23 @@
         "Changes to voice, including increasing hoarseness",
         "Difficulty swallowing or breathing"
       ],
-      "search_tags": "thyroid cancer, thyroid lump, neck nodule, hoarse voice, cancer support"
+      "search_tags": "thyroid cancer, thyroid lump, neck nodule, hoarse voice, cancer support",
+      "simple_name_mizo": "Thyroid Bawk Cancer Inenkawlna",
+      "layman_explanation_mizo": "Thyroid gland bawk enkawlna puitu.",
+      "symptoms_mizo": [
+        "Nghawng hma bawk sak",
+        "Aw thum/chhia",
+        "Lem harsa"
+      ],
+      "search_tags_mizo": "thyroid cancer, nghawng bawk, cancer",
+      "simple_name_en": "Thyroid Nodule & Gland Supportive Care",
+      "layman_explanation_en": "Supportive protocol for thyroid gland cellular rejuvenation, lymph drainage, and hormone balance.",
+      "symptoms_en": [
+        "A lump or nodule in front of neck",
+        "Changes to voice, including increasing hoarseness",
+        "Difficulty swallowing or breathing"
+      ],
+      "search_tags_en": "thyroid cancer, thyroid lump, neck nodule, hoarse voice, cancer support"
     }
   ],
   "INFECTIOUS (CHRONIC)": [
@@ -8248,7 +10088,23 @@
         "Coughing up blood or mucus",
         "Evening fever, night sweats, and severe weight loss"
       ],
-      "search_tags": "tuberculosis, tb, chronic cough, cough with blood, evening fever, weight loss"
+      "search_tags": "tuberculosis, tb, chronic cough, cough with blood, evening fever, weight loss",
+      "simple_name_mizo": "Tibi Khuh & Taksa Cher (TB)",
+      "layman_explanation_mizo": "Hrik vanga chhur chhia a ni a, khuh rei leh zan khawsik a thlen a ni.",
+      "symptoms_mizo": [
+        "Khuh kar 3 aia rei",
+        "Khuh thisen chhuak",
+        "Zan khawsik, thlan tla leh cher"
+      ],
+      "search_tags_mizo": "tibi, tb, khuh, tuberculosis, zan khawsik",
+      "simple_name_en": "Chronic Tuberculosis (TB) & Cough Support",
+      "layman_explanation_en": "Chronic bacterial infection that primarily attacks the lungs, causing long-term weakness and cough.",
+      "symptoms_en": [
+        "Coughing that lasts three or more weeks",
+        "Coughing up blood or mucus",
+        "Evening fever, night sweats, and severe weight loss"
+      ],
+      "search_tags_en": "tuberculosis, tb, chronic cough, cough with blood, evening fever, weight loss"
     },
     {
       "disease_name": "HIV/AIDS (supportive)",
@@ -8307,7 +10163,23 @@
         "Chronic fatigue and rapid weight loss",
         "Frequent mouth ulcers and repeated infections"
       ],
-      "search_tags": "hiv, aids, low immunity, immunity booster, vitality, stamina"
+      "search_tags": "hiv, aids, low immunity, immunity booster, vitality, stamina",
+      "simple_name_mizo": "Taksa Venhimna Chaklo Puitu (HIV/AIDS)",
+      "layman_explanation_mizo": "Taksa venhimna tichak tura Rasayana damdawi protocol.",
+      "symptoms_mizo": [
+        "Khawsik leh thlan tla zing",
+        "Chauh leh cher nasa",
+        "Ka chhung pan zing"
+      ],
+      "search_tags_mizo": "hiv, aids, taksa chaklo, immunity",
+      "simple_name_en": "Immunity Boosting & Vitality Support",
+      "layman_explanation_en": "Ayurvedic Rasayana therapy to enhance CD4 vitality, combat opportunistic fatigue, and strengthen stamina.",
+      "symptoms_en": [
+        "Recurrent long-lasting fevers and night sweats",
+        "Chronic fatigue and rapid weight loss",
+        "Frequent mouth ulcers and repeated infections"
+      ],
+      "search_tags_en": "hiv, aids, low immunity, immunity booster, vitality, stamina"
     },
     {
       "disease_name": "Chronic Hepatitis B",
@@ -8372,7 +10244,23 @@
         "Yellowing of skin and whites of eyes (Jaundice)",
         "Abdominal discomfort, dark urine, and loss of appetite"
       ],
-      "search_tags": "hepatitis b, liver infection, jaundice, liver problem, viral hepatitis"
+      "search_tags": "hepatitis b, liver infection, jaundice, liver problem, viral hepatitis",
+      "simple_name_mizo": "Hepatitis B (Thin Hrik Lût)",
+      "layman_explanation_mizo": "Virus vanga thin vung leh chhia a ni.",
+      "symptoms_mizo": [
+        "Chauh leh khawsik ser ser",
+        "Mit leh vun eng (Jaundice)",
+        "Pum na leh zun dum"
+      ],
+      "search_tags_mizo": "hepatitis b, thin vung, mit eng, jaundice",
+      "simple_name_en": "Hepatitis B (Chronic Liver Viral Infection)",
+      "layman_explanation_en": "Long-term viral infection of the liver that causes chronic inflammation and potential liver damage.",
+      "symptoms_en": [
+        "Chronic fatigue and mild fever",
+        "Yellowing of skin and whites of eyes (Jaundice)",
+        "Abdominal discomfort, dark urine, and loss of appetite"
+      ],
+      "search_tags_en": "hepatitis b, liver infection, jaundice, liver problem, viral hepatitis"
     },
     {
       "disease_name": "Chronic Hepatitis C",
@@ -8437,7 +10325,23 @@
         "Itchy skin and fluid accumulation in belly (Ascites)",
         "Fatigue, poor appetite, and dark-colored urine"
       ],
-      "search_tags": "hepatitis c, liver virus, jaundice, liver swelling, liver detox"
+      "search_tags": "hepatitis c, liver virus, jaundice, liver swelling, liver detox",
+      "simple_name_mizo": "Hepatitis C (Thin Natna)",
+      "layman_explanation_mizo": "Virus vanga thin chhiat tial tialna a ni.",
+      "symptoms_mizo": [
+        "Thi chhuak awlsam",
+        "Vun thak leh pum vung",
+        "Chauh leh zun dum"
+      ],
+      "search_tags_mizo": "hepatitis c, thin natna, liver",
+      "simple_name_en": "Hepatitis C (Chronic Liver Infection)",
+      "layman_explanation_en": "Viral infection causing chronic inflammation of the liver, leading to fatigue and reduced liver function.",
+      "symptoms_en": [
+        "Bleeding easily or bruising easily",
+        "Itchy skin and fluid accumulation in belly (Ascites)",
+        "Fatigue, poor appetite, and dark-colored urine"
+      ],
+      "search_tags_en": "hepatitis c, liver virus, jaundice, liver swelling, liver detox"
     },
     {
       "disease_name": "Post-COVID-19 Condition (Long COVID)",
@@ -8512,7 +10416,23 @@
         "Shortness of breath or coughing on mild exertion",
         "Brain fog, memory lapses, and joint pains"
       ],
-      "search_tags": "long covid, post covid, post viral weakness, breathlessness, fatigue, brain fog"
+      "search_tags": "long covid, post covid, post viral weakness, breathlessness, fatigue, brain fog",
+      "simple_name_mizo": "COVID Hnu Chauh & Thawkchham",
+      "layman_explanation_mizo": "COVID hrik kaih hnu a taksa zawi, chauh leh thawkchham la awm reng a ni.",
+      "symptoms_mizo": [
+        "Chauh ngawih ngawih chet theih loh",
+        "Thawkchham leh khuh",
+        "Thluak chhah leh theihnghilh"
+      ],
+      "search_tags_mizo": "long covid, covid hnu, thawkchham, chauh",
+      "simple_name_en": "Long COVID Fatigue & Breathlessness Support",
+      "layman_explanation_en": "Lingering symptoms following COVID-19 infection, such as chronic exhaustion, brain fog, and lung weakness.",
+      "symptoms_en": [
+        "Exhausting fatigue that worsens after physical effort",
+        "Shortness of breath or coughing on mild exertion",
+        "Brain fog, memory lapses, and joint pains"
+      ],
+      "search_tags_en": "long covid, post covid, post viral weakness, breathlessness, fatigue, brain fog"
     },
     {
       "disease_name": "Chronic Amoebiasis",
@@ -8571,7 +10491,23 @@
         "Abdominal cramps, bloating, and gas",
         "Feeling of incomplete evacuation after passing stool"
       ],
-      "search_tags": "amoebiasis, dysentery, loose motion, diarrhea, stomach cramps, mucus in stool, digestion"
+      "search_tags": "amoebiasis, dysentery, loose motion, diarrhea, stomach cramps, mucus in stool, digestion",
+      "simple_name_mizo": "Santê / Ek Hnap & Pum Khawng",
+      "layman_explanation_mizo": "Ril chhunga hrik luh vanga pum na leh ek hnap chhuak a ni.",
+      "symptoms_mizo": [
+        "Ek hnap emaw thisen tel",
+        "Pum khawng leh na",
+        "Ek thiar zo lo ang maia inhriatna"
+      ],
+      "search_tags_mizo": "sante, ek hnap, pum na, amoebiasis",
+      "simple_name_en": "Amoebic Dysentery, Mucus Stool & Stomach Cramps",
+      "layman_explanation_en": "Persistent parasitic infection of the intestines causing abdominal cramping, mucus in stools, and loose motions.",
+      "symptoms_en": [
+        "Loose stools containing visible mucus or blood",
+        "Abdominal cramps, bloating, and gas",
+        "Feeling of incomplete evacuation after passing stool"
+      ],
+      "search_tags_en": "amoebiasis, dysentery, loose motion, diarrhea, stomach cramps, mucus in stool, digestion"
     },
     {
       "disease_name": "Lymphatic Filariasis",
@@ -8636,7 +10572,23 @@
         "Thickened, hardened, pebble-like skin",
         "Recurring fever episodes and pain in groin lymph nodes"
       ],
-      "search_tags": "filariasis, elephantiasis, limb swelling, swollen leg, lymphatic swelling"
+      "search_tags": "filariasis, elephantiasis, limb swelling, swollen leg, lymphatic swelling",
+      "simple_name_mizo": "Vunrit / Ke Vung Lian (Elephantiasis)",
+      "layman_explanation_mizo": "Thosi seh atanga hrik luh vanga ke vung lian lutuk a ni.",
+      "symptoms_mizo": [
+        "Ke leh bawp vung lian lutuk",
+        "Vun chhah leh sak vek",
+        "Khawsik chhuak zing"
+      ],
+      "search_tags_mizo": "vunrit, ke vung, elephantiasis, filariasis",
+      "simple_name_en": "Elephantiasis (Severe Leg & Limb Swelling)",
+      "layman_explanation_en": "Parasitic mosquito-borne infection that blocks lymphatic drainage, causing massive swelling in legs or arms.",
+      "symptoms_en": [
+        "Severe swelling of legs, feet, or genitals",
+        "Thickened, hardened, pebble-like skin",
+        "Recurring fever episodes and pain in groin lymph nodes"
+      ],
+      "search_tags_en": "filariasis, elephantiasis, limb swelling, swollen leg, lymphatic swelling"
     }
   ],
   "OPHTHALMOLOGICAL": [
@@ -8712,7 +10664,23 @@
         "Difficulty seeing clearly at night or in low light",
         "Seeing 'halos' around bright lights and glare"
       ],
-      "search_tags": "cataract, blurry vision, eye problem, cloudy vision, night glare"
+      "search_tags": "cataract, blurry vision, eye problem, cloudy vision, night glare",
+      "simple_name_mizo": "Mit Khawng / Mit Del (Cataract)",
+      "layman_explanation_mizo": "Mit darthlalang a lo chhah/paw riai a, khawhmuh a tifiahlo a ni.",
+      "symptoms_mizo": [
+        "Khawhmuh paw riai leh fiahlo",
+        "Zana khawhmuh chhia",
+        "Eng lian lutuk hmuh"
+      ],
+      "search_tags_mizo": "mit khawng, cataract, mit fiahlo, mit del",
+      "simple_name_en": "Eye Lens Clouding (Cataract / Foggy Vision)",
+      "layman_explanation_en": "The natural crystalline lens of the eye becomes cloudy, making vision look hazy and colors muted.",
+      "symptoms_en": [
+        "Clouded, blurred, or dim vision",
+        "Difficulty seeing clearly at night or in low light",
+        "Seeing 'halos' around bright lights and glare"
+      ],
+      "search_tags_en": "cataract, blurry vision, eye problem, cloudy vision, night glare"
     },
     {
       "disease_name": "Glaucoma",
@@ -8786,7 +10754,23 @@
         "Severe eye pain, headache, and nausea (in acute angle closure)",
         "Seeing rainbow-colored halos around lights"
       ],
-      "search_tags": "glaucoma, eye pressure, vision loss, eye pain, tunnel vision"
+      "search_tags": "glaucoma, eye pressure, vision loss, eye pain, tunnel vision",
+      "simple_name_mizo": "Mit Thisen Sang / Mit Nawrna (Glaucoma)",
+      "layman_explanation_mizo": "Mit chhung tui nawrna a san avanga mit thazam chhia a ni.",
+      "symptoms_mizo": [
+        "Sir lam khawhmuh bo tial tial",
+        "Mit na, lu na leh luakchhuak",
+        "Eng bula rawng hrang hmuh"
+      ],
+      "search_tags_mizo": "glaucoma, mit na, mit thazam, mit",
+      "simple_name_en": "High Eye Pressure & Optic Nerve Damage",
+      "layman_explanation_en": "Elevated fluid pressure inside the eye damages the optic nerve, gradually narrowing peripheral side vision.",
+      "symptoms_en": [
+        "Gradual loss of peripheral (side) vision ('tunnel vision')",
+        "Severe eye pain, headache, and nausea (in acute angle closure)",
+        "Seeing rainbow-colored halos around lights"
+      ],
+      "search_tags_en": "glaucoma, eye pressure, vision loss, eye pain, tunnel vision"
     },
     {
       "disease_name": "Age-related Macular Degeneration (AMD)",
@@ -8866,7 +10850,23 @@
         "Straight lines appear wavy or bent",
         "Difficulty recognizing familiar faces or reading text"
       ],
-      "search_tags": "amd, macular degeneration, retina, blurred vision, eyesight decline"
+      "search_tags": "amd, macular degeneration, retina, blurred vision, eyesight decline",
+      "simple_name_mizo": "Upat Vanga Mit Laili Fiahlo (AMD)",
+      "layman_explanation_mizo": "Retina laili a chhiat avanga hmai leh lehkha chhiar hmuh theih loh a ni.",
+      "symptoms_mizo": [
+        "Khawhmuh laili a thim/paw",
+        "Thil ngil a kawi a hmuh",
+        "Hmai hriatfiah harsa"
+      ],
+      "search_tags_mizo": "amd, mit fiahlo, upat mit, macular",
+      "simple_name_en": "Central Vision Loss & Retinal Aging",
+      "layman_explanation_en": "Wear and tear of the central area of the retina (macula), distorting central vision needed for reading and faces.",
+      "symptoms_en": [
+        "Blurriness or dark blank spot in central field of view",
+        "Straight lines appear wavy or bent",
+        "Difficulty recognizing familiar faces or reading text"
+      ],
+      "search_tags_en": "amd, macular degeneration, retina, blurred vision, eyesight decline"
     },
     {
       "disease_name": "Dry Eye Syndrome",
@@ -8946,7 +10946,23 @@
         "Redness and sensitivity to light / mobile screens",
         "Feeling like sand or an eyelash is stuck in the eye"
       ],
-      "search_tags": "dry eye, burning eyes, screen strain, eye redness, scratchy eyes"
+      "search_tags": "dry eye, burning eyes, screen strain, eye redness, scratchy eyes",
+      "simple_name_mizo": "Mit Ro, Sa & Thip (Phone En Nasat Vang)",
+      "layman_explanation_mizo": "Mit tui a tlem a, mit a ro, a thip a, screen en a hahthlak a ni.",
+      "symptoms_mizo": [
+        "Mit thip leh sa huam huam",
+        "Mit sen leh eng ngaithei lo",
+        "Tiauvut lut ang maia awm"
+      ],
+      "search_tags_mizo": "mit ro, mit thip, screen strain, dry eye",
+      "simple_name_en": "Dry, Burning & Eye Screen Strain",
+      "layman_explanation_en": "Eyes do not produce enough quality tears, leading to persistent gritty irritation, burning, and screen fatigue.",
+      "symptoms_en": [
+        "Stinging, burning, or scratchy sensation in eyes",
+        "Redness and sensitivity to light / mobile screens",
+        "Feeling like sand or an eyelash is stuck in the eye"
+      ],
+      "search_tags_en": "dry eye, burning eyes, screen strain, eye redness, scratchy eyes"
     },
     {
       "disease_name": "Chronic Conjunctivitis",
@@ -9014,7 +11030,23 @@
         "Itching, burning, and persistent watery discharge",
         "Crusting of eyelids or lashes in the morning"
       ],
-      "search_tags": "conjunctivitis, pink eye, red eyes, eye allergy, watery eyes"
+      "search_tags": "conjunctivitis, pink eye, red eyes, eye allergy, watery eyes",
+      "simple_name_mizo": "Mit Sen & Mit Tui Chhuak Zing",
+      "layman_explanation_mizo": "Mit vung sen reng leh mit tui hnawng reng a ni.",
+      "symptoms_mizo": [
+        "Mit var lai a sen vek",
+        "Mit thak leh mit tui tla",
+        "Zing thawh laia mit charh"
+      ],
+      "search_tags_mizo": "mit sen, conjunctivitis, mit tui, mit thak",
+      "simple_name_en": "Pink Eye / Chronic Eye Allergy & Redness",
+      "layman_explanation_en": "Long-term inflammation of the clear membrane lining the eyelid and eyeball, causing red watery eyes.",
+      "symptoms_en": [
+        "Redness in the white of the eye",
+        "Itching, burning, and persistent watery discharge",
+        "Crusting of eyelids or lashes in the morning"
+      ],
+      "search_tags_en": "conjunctivitis, pink eye, red eyes, eye allergy, watery eyes"
     },
     {
       "disease_name": "Diabetic Retinopathy",
@@ -9088,7 +11120,23 @@
         "Dark spots or floating webs in eyesight",
         "Impaired night vision and color fading"
       ],
-      "search_tags": "diabetic eye, blurry vision, floaters, eyesight, diabetic retina, vision loss"
+      "search_tags": "diabetic eye, blurry vision, floaters, eyesight, diabetic retina, vision loss",
+      "simple_name_mizo": "Zunthlum Vanga Mit Chhia",
+      "layman_explanation_mizo": "Zunthlum-in mit hnunglam (retina) thisen zam a tichhia a, khawhmuh a tifiahlo a ni.",
+      "symptoms_mizo": [
+        "Khawhmuh fiahlo leh phe ruai",
+        "Mit hmaa thil thim thlawk awm",
+        "Zan lama khawhmuh chhia"
+      ],
+      "search_tags_mizo": "mit chhia, zunthlum mit, mit fiahlo, retinopathy",
+      "simple_name_en": "Diabetic Eye & Retina Damage",
+      "layman_explanation_en": "High blood sugar damages tiny retinal blood vessels, causing swelling, fluid leakage, or vision loss.",
+      "symptoms_en": [
+        "Blurry or fluctuating vision",
+        "Dark spots or floating webs in eyesight",
+        "Impaired night vision and color fading"
+      ],
+      "search_tags_en": "diabetic eye, blurry vision, floaters, eyesight, diabetic retina, vision loss"
     },
     {
       "disease_name": "Uveitis",
@@ -9162,7 +11210,23 @@
         "Blurred vision and floaters",
         "Extreme sensitivity to light (Photophobia)"
       ],
-      "search_tags": "uveitis, eye inflammation, eye pain, deep eye ache, light sensitivity"
+      "search_tags": "uveitis, eye inflammation, eye pain, deep eye ache, light sensitivity",
+      "simple_name_mizo": "Mit Chhung Vung & Mit Na Thuk",
+      "layman_explanation_mizo": "Mit chhung lai tak a vung a, mit a na em em a ni.",
+      "symptoms_mizo": [
+        "Mit na thuk leh sen",
+        "Khawhmuh phe",
+        "Eng en theihlohna (Photophobia)"
+      ],
+      "search_tags_mizo": "uveitis, mit na, mit vung",
+      "simple_name_en": "Deep Eye Inflammation & Eye Pain",
+      "layman_explanation_en": "Inflammation of the middle layer of the eye (uvea), which can damage eye tissue and reduce eyesight.",
+      "symptoms_en": [
+        "Eye redness with deep aching pain",
+        "Blurred vision and floaters",
+        "Extreme sensitivity to light (Photophobia)"
+      ],
+      "search_tags_en": "uveitis, eye inflammation, eye pain, deep eye ache, light sensitivity"
     }
   ],
   "OTOLARYNGOLOGICAL": [
@@ -9239,7 +11303,23 @@
         "Hearing loss or muffled hearing in the affected ear",
         "Earache and feeling of fullness inside ear"
       ],
-      "search_tags": "otitis media, ear infection, ear pus, ear discharge, ear pain, earache"
+      "search_tags": "otitis media, ear infection, ear pus, ear discharge, ear pain, earache",
+      "simple_name_mizo": "Beng Pan / Beng Tui & Hnai Chhuak",
+      "layman_explanation_mizo": "Beng chhung a vung a, hnai emaw tui a chhuak reng a ni.",
+      "symptoms_mizo": [
+        "Beng atanga hnai/tui chhuak",
+        "Beng ngawng / hriat fiahlo",
+        "Beng chhung na leh phui"
+      ],
+      "search_tags_mizo": "beng pan, beng tui, beng hnai, beng na",
+      "simple_name_en": "Middle Ear Infection & Ear Pus Discharge",
+      "layman_explanation_en": "Recurrent or persistent infection of the middle ear space, often causing fluid or pus drainage from ear.",
+      "symptoms_en": [
+        "Pus or fluid discharge from the ear",
+        "Hearing loss or muffled hearing in the affected ear",
+        "Earache and feeling of fullness inside ear"
+      ],
+      "search_tags_en": "otitis media, ear infection, ear pus, ear discharge, ear pain, earache"
     },
     {
       "disease_name": "Tinnitus",
@@ -9314,7 +11394,23 @@
         "Noise is louder in quiet environments at bedtime",
         "Difficulty concentrating or sleeping due to ear noise"
       ],
-      "search_tags": "tinnitus, ringing in ear, ear noise, buzzing ear, ear whistling"
+      "search_tags": "tinnitus, ringing in ear, ear noise, buzzing ear, ear whistling",
+      "simple_name_mizo": "Beng Chhung Ri Vung Vung (Tinnitus)",
+      "layman_explanation_mizo": "Beng chhungah thawm ri, vung vung emaw kheng ri awm reng a ni.",
+      "symptoms_mizo": [
+        "Beng chhung ri vung vung / ri cher cher",
+        "Zan reh laia ring zual",
+        "Mutthilh harsa"
+      ],
+      "search_tags_mizo": "beng ri, tinnitus, beng chhung ri",
+      "simple_name_en": "Ringing & Buzzing in Ears (Tinnitus)",
+      "layman_explanation_en": "Perception of noise, buzzing, or whistling sounds in the ears when no external sound is present.",
+      "symptoms_en": [
+        "Ringing, buzzing, roaring, clicking, or hissing in ears",
+        "Noise is louder in quiet environments at bedtime",
+        "Difficulty concentrating or sleeping due to ear noise"
+      ],
+      "search_tags_en": "tinnitus, ringing in ear, ear noise, buzzing ear, ear whistling"
     },
     {
       "disease_name": "Meniere's Disease",
@@ -9383,7 +11479,23 @@
         "Ringing or roaring sound in one ear (Tinnitus)",
         "Feeling of fullness or plugged pressure in the ear"
       ],
-      "search_tags": "meniere, vertigo, dizziness, spinning head, ear pressure, ear ringing"
+      "search_tags": "meniere, vertigo, dizziness, spinning head, ear pressure, ear ringing",
+      "simple_name_mizo": "Lu Hai Vir Muai Muai & Beng Phui (Vertigo)",
+      "layman_explanation_mizo": "Beng chhung tui buai avanga lu hai vir muai muai leh beng ri a ni.",
+      "symptoms_mizo": [
+        "Lu hai vir muai muai darkar tam awh",
+        "Beng chhung ri (Tinnitus)",
+        "Beng phui tlat"
+      ],
+      "search_tags_mizo": "lu hai, vertigo, meniere, beng phui",
+      "simple_name_en": "Severe Spinning Dizziness & Ear Fullness (Vertigo)",
+      "layman_explanation_en": "Inner ear disorder causing sudden episodes of intense spinning dizziness (vertigo), ringing, and hearing fluctuations.",
+      "symptoms_en": [
+        "Sudden severe spinning dizziness (Vertigo) lasting hours",
+        "Ringing or roaring sound in one ear (Tinnitus)",
+        "Feeling of fullness or plugged pressure in the ear"
+      ],
+      "search_tags_en": "meniere, vertigo, dizziness, spinning head, ear pressure, ear ringing"
     },
     {
       "disease_name": "Chronic Sinusitis",
@@ -9458,7 +11570,23 @@
         "Pain, pressure, and swelling around eyes, cheeks, and forehead",
         "Reduced sense of smell and taste"
       ],
-      "search_tags": "sinus, sinusitis, blocked nose, runny nose, headache, facial pressure, nasal congestion"
+      "search_tags": "sinus, sinusitis, blocked nose, runny nose, headache, facial pressure, nasal congestion",
+      "simple_name_mizo": "Sinus / Hnar Ping & Lu Na",
+      "layman_explanation_mizo": "Hnar leh mit vel a kua a vung a, hnaphnawm a tling a, lu a tina a ni.",
+      "symptoms_mizo": [
+        "Hnap tlang eng/hring leh hnar ping",
+        "Mit leh biang vel na leh tawt",
+        "Hnar hnim hriatna bo"
+      ],
+      "search_tags_mizo": "sinus, hnar ping, lu na, biang na, sinusitis",
+      "simple_name_en": "Sinus Infection & Blocked Nose",
+      "layman_explanation_en": "The cavities around nasal passages remain inflamed and blocked for 12 weeks or longer.",
+      "symptoms_en": [
+        "Thick, discolored nasal discharge and blocked nostrils",
+        "Pain, pressure, and swelling around eyes, cheeks, and forehead",
+        "Reduced sense of smell and taste"
+      ],
+      "search_tags_en": "sinus, sinusitis, blocked nose, runny nose, headache, facial pressure, nasal congestion"
     },
     {
       "disease_name": "Allergic Rhinitis",
@@ -9527,7 +11655,23 @@
         "Runny, itchy, or blocked nose",
         "Itchy, watery eyes and scratchy throat"
       ],
-      "search_tags": "allergic rhinitis, sneezing, runny nose, dust allergy, cold allergy, nasal allergy"
+      "search_tags": "allergic rhinitis, sneezing, runny nose, dust allergy, cold allergy, nasal allergy",
+      "simple_name_mizo": "Hritlang / Vaivut Allergy & Hat Zing",
+      "layman_explanation_mizo": "Vaivut, vawt emaw thil rim vanga hritlang, hat leh hnap tui tla a ni.",
+      "symptoms_mizo": [
+        "Zingkar leh vaivut bula hat vak vak",
+        "Hnap tui tla leh hnar ping",
+        "Mit thak leh hrawk thak"
+      ],
+      "search_tags_mizo": "hat zing, hritlang, allergy, hnar ping",
+      "simple_name_en": "Dust & Cold Allergy, Sneezing & Runny Nose",
+      "layman_explanation_en": "Allergic response in nasal passages triggered by dust, pollen, cold weather, or animal dander.",
+      "symptoms_en": [
+        "Repetitive sneezing fits in morning or around dust",
+        "Runny, itchy, or blocked nose",
+        "Itchy, watery eyes and scratchy throat"
+      ],
+      "search_tags_en": "allergic rhinitis, sneezing, runny nose, dust allergy, cold allergy, nasal allergy"
     },
     {
       "disease_name": "Chronic Laryngitis",
@@ -9597,7 +11741,23 @@
         "Tickling sensation and raw soreness in throat",
         "Constant urge to clear throat and dry cough"
       ],
-      "search_tags": "laryngitis, hoarse voice, lost voice, voice strain, throat soreness, vocal cords"
+      "search_tags": "laryngitis, hoarse voice, lost voice, voice strain, throat soreness, vocal cords",
+      "simple_name_mizo": "Aw Chhia / Aw Thum & Hrawk Na",
+      "layman_explanation_mizo": "Aw chhuahna dawt a vung a, aw a chhia a, a thum a ni.",
+      "symptoms_mizo": [
+        "Aw thum, chhia emaw aw bo hlen",
+        "Hrawk thip leh khak",
+        "Khuh ro"
+      ],
+      "search_tags_mizo": "aw chhia, aw thum, laryngitis, hrawk na",
+      "simple_name_en": "Voice Hoarseness & Vocal Cord Strain",
+      "layman_explanation_en": "Long-term inflammation of the voice box (larynx) and vocal cords, causing a raspy or lost voice.",
+      "symptoms_en": [
+        "Hoarseness, raspy voice, or complete loss of voice",
+        "Tickling sensation and raw soreness in throat",
+        "Constant urge to clear throat and dry cough"
+      ],
+      "search_tags_en": "laryngitis, hoarse voice, lost voice, voice strain, throat soreness, vocal cords"
     },
     {
       "disease_name": "Age-related Hearing Loss (Presbycusis)",
@@ -9672,7 +11832,23 @@
         "Asking people to repeat themselves frequently",
         "Turning up TV or radio volume higher than others prefer"
       ],
-      "search_tags": "hearing loss, presbycusis, hard of hearing, ear weakness, muffled hearing"
+      "search_tags": "hearing loss, presbycusis, hard of hearing, ear weakness, muffled hearing",
+      "simple_name_mizo": "Upat Vanga Beng Ngawng / Hriatna Tlem",
+      "layman_explanation_mizo": "Upat tial tial vanga beng hriatna tlem tial tial a ni.",
+      "symptoms_mizo": [
+        "Mipui zinga tawng hriatfiah harsa",
+        "Sawi nawn tir fo",
+        "TV ring taka ngaihthlak ngai"
+      ],
+      "search_tags_mizo": "beng ngawng, beng hriatlo, presbycusis, upa beng",
+      "simple_name_en": "Age-Related Hearing Loss & Ear Weakness",
+      "layman_explanation_en": "Gradual loss of hearing that occurs in both ears as people grow older, especially for high-pitched sounds.",
+      "symptoms_en": [
+        "Difficulty understanding speech in crowded rooms",
+        "Asking people to repeat themselves frequently",
+        "Turning up TV or radio volume higher than others prefer"
+      ],
+      "search_tags_en": "hearing loss, presbycusis, hard of hearing, ear weakness, muffled hearing"
     }
   ]
 }
