@@ -33,10 +33,10 @@
             display: flex;
             min-height: 100vh;
             overflow-x: hidden;
-            animation: fadeInSPA 0.4s ease-out forwards;
+            animation: fadeInSPA 0.3s ease-out forwards;
         }
 
-        @keyframes fadeInSPA { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInSPA { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
         /* Main Layout */
         .main-content {
@@ -49,6 +49,7 @@
             overflow-y: auto;
             box-sizing: border-box;
             position: relative;
+            -webkit-overflow-scrolling: touch;
         }
 
         /* Top Header Bar with Language Switcher */
@@ -65,8 +66,8 @@
             display: inline-flex;
             align-items: center;
             gap: 0.6rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.14);
             padding: 0.35rem 0.5rem 0.35rem 0.85rem;
             border-radius: 30px;
             backdrop-filter: blur(10px);
@@ -98,6 +99,7 @@
             cursor: pointer;
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             font-family: inherit;
+            touch-action: manipulation;
         }
         .lang-btn:hover {
             color: white;
@@ -163,6 +165,7 @@
             padding-bottom: 0.4rem;
             scrollbar-width: thin;
             scrollbar-color: rgba(255,255,255,0.1) transparent;
+            -webkit-overflow-scrolling: touch;
         }
         .quick-chips-wrapper::-webkit-scrollbar { height: 4px; }
         .quick-chips-wrapper::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
@@ -182,6 +185,7 @@
             align-items: center;
             gap: 0.45rem;
             font-family: inherit;
+            touch-action: manipulation;
         }
         .symptom-chip:hover {
             background: rgba(99, 102, 241, 0.2);
@@ -210,7 +214,7 @@
         .search-wrapper {
             position: relative;
             flex: 1;
-            min-width: 320px;
+            min-width: 280px;
         }
         .search-icon {
             position: absolute;
@@ -280,6 +284,7 @@
             scrollbar-width: none;
             scroll-behavior: smooth;
             padding: 4px 2px;
+            -webkit-overflow-scrolling: touch;
         }
         .category-scroll::-webkit-scrollbar { display: none; }
         .cat-btn {
@@ -294,6 +299,7 @@
             white-space: nowrap;
             transition: all 0.25s;
             font-family: inherit;
+            touch-action: manipulation;
         }
         .cat-btn:hover { background: rgba(255,255,255,0.1); color: white; }
         .cat-btn.active {
@@ -315,13 +321,13 @@
         /* Cards Grid */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             gap: 1.5rem;
             margin-top: 0.2rem;
         }
         @keyframes cardFadeUp {
-            from { opacity: 0; transform: translateY(24px) scale(0.97); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .disease-card {
             background: var(--card-bg);
@@ -335,8 +341,7 @@
             overflow: hidden;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0;
-            animation: cardFadeUp 0.45s ease-out forwards;
+            animation: cardFadeUp 0.35s ease-out forwards;
             backdrop-filter: blur(8px);
         }
         .disease-card::before {
@@ -347,7 +352,7 @@
             background: var(--card-accent, var(--accent));
         }
         .disease-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-4px);
             background: rgba(255,255,255,0.07);
             border-color: rgba(255,255,255,0.18);
             box-shadow: 0 16px 36px rgba(0,0,0,0.4), 0 0 24px rgba(var(--card-accent-rgb, 99, 102, 241), 0.18);
@@ -366,7 +371,7 @@
         }
         .card-simple-title {
             margin: 0;
-            font-size: 1.35rem;
+            font-size: 1.3rem;
             font-weight: 700;
             line-height: 1.3;
             color: #ffffff;
@@ -492,6 +497,7 @@
             cursor: pointer;
             display: flex; align-items: center; justify-content: center;
             transition: all 0.2s;
+            touch-action: manipulation;
         }
         .icon-btn:hover { background: rgba(99, 102, 241, 0.25); border-color: var(--accent); color: white; transform: scale(1.06); }
         .btn-whatsapp { color: #25d366; }
@@ -525,6 +531,7 @@
             transform: scale(0.95) translateY(20px);
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7);
+            -webkit-overflow-scrolling: touch;
         }
         .modal-overlay.active .modal-content { transform: scale(1) translateY(0); }
         .modal-header {
@@ -547,6 +554,7 @@
             cursor: pointer;
             display: flex; align-items: center; justify-content: center;
             transition: all 0.2s;
+            touch-action: manipulation;
         }
         .modal-close:hover { background: rgba(255,255,255,0.2); transform: rotate(90deg); }
         .modal-title { font-size: 1.9rem; font-weight: 700; margin: 0.4rem 0 0.3rem; color: white; }
@@ -679,6 +687,7 @@
             box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.25) !important;
         }
 
+        /* Mobile specific responsiveness */
         @media (max-width: 768px) {
             body { flex-direction: column !important; }
             .sidebar {
@@ -694,24 +703,46 @@
                 align-items: center !important;
             }
             .sidebar .logo { padding: 0 !important; margin: 0 !important; border-bottom: none !important; }
-            .sidebar .logo img { max-width: 120px !important; padding: 6px 8px !important; }
+            .sidebar .logo img { max-width: 110px !important; padding: 4px 6px !important; }
             .nav-menu {
                 flex-direction: row !important;
                 flex-wrap: nowrap !important;
                 overflow-x: auto !important;
-                gap: 0.5rem !important;
+                gap: 0.4rem !important;
                 flex: 1 !important;
                 scrollbar-width: none !important;
             }
             .nav-menu::-webkit-scrollbar { display: none !important; }
-            .nav-item { padding: 0.6rem 0.9rem !important; font-size: 0.85rem !important; white-space: nowrap !important; }
-            .main-content { padding: 1.5rem 1rem !important; }
-            .hero h1 { font-size: 2rem !important; }
-            .cards-grid { grid-template-columns: 1fr !important; }
+            .nav-item { padding: 0.5rem 0.8rem !important; font-size: 0.82rem !important; white-space: nowrap !important; }
+            
+            .main-content {
+                padding: 1.2rem 1rem !important;
+                height: auto !important;
+                min-height: calc(100vh - 65px) !important;
+            }
+            .hero h1 { font-size: 1.9rem !important; }
+            .hero p { font-size: 0.95rem !important; }
+            .top-header-row {
+                flex-direction: row !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+            }
+            .lang-switch-container {
+                padding: 0.25rem 0.4rem 0.25rem 0.6rem !important;
+            }
+            .lang-btn {
+                padding: 0.35rem 0.75rem !important;
+                font-size: 0.8rem !important;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.1rem !important;
+            }
             .modal-overlay { padding: 0 !important; align-items: flex-end !important; }
-            .modal-content { max-height: 85vh !important; border-radius: 24px 24px 0 0 !important; }
-            .top-header-row { flex-direction: column; align-items: flex-start; }
-            .lang-switch-container { width: 100%; justify-content: space-between; }
+            .modal-content { max-height: 88vh !important; border-radius: 24px 24px 0 0 !important; }
+            .modal-header { padding: 1.5rem 1.4rem 1.2rem !important; }
+            .modal-body { padding: 1.4rem 1.2rem !important; gap: 1.4rem !important; }
+            .modal-title { font-size: 1.5rem !important; }
         }
     </style>
 </head>
@@ -824,7 +855,7 @@
         </div>
 
         <div class="result-meta" id="resultMeta">
-            <span id="resultsCount">Loading health solutions...</span>
+            <span id="resultsCount">Loading 136 health solutions...</span>
             <span id="activeFilterBadge" style="display:none; color:#818cf8; font-weight:600; cursor:pointer;" onclick="clearAllFilters()">✖ Clear Filter</span>
         </div>
 
@@ -853,6 +884,14 @@
     </div>
 
     <div class="toast" id="toastMsg">Copied to clipboard!</div>
+
+    <!-- Server-Side Pre-Hydration Data (Instant Mobile Loading) -->
+    <script id="serverDataDiseases" type="application/json">
+        {{ initial_diseases | tojson | safe }}
+    </script>
+    <script id="serverDataCategories" type="application/json">
+        {{ initial_categories | tojson | safe }}
+    </script>
 
     <script>
         const CAT_COLORS = {
@@ -984,36 +1023,85 @@
             }
         };
 
-        let currentLang = localStorage.getItem('disease_guide_lang') || 'en';
+        // Safe localStorage reader for Mobile Safari Private Mode
+        function getSavedLang() {
+            try {
+                return localStorage.getItem('disease_guide_lang') || 'en';
+            } catch (e) {
+                return 'en';
+            }
+        }
+        function saveLang(lang) {
+            try {
+                localStorage.setItem('disease_guide_lang', lang);
+            } catch (e) {}
+        }
+
+        let currentLang = getSavedLang();
         let allDiseases = [];
         let currentFilter = '';
         let categoriesList = [];
 
-        async function init() {
+        function init() {
             try {
-                const res = await fetch('/api/disease_guide');
-                const data = await res.json();
-                allDiseases = data.diseases || [];
-                categoriesList = data.categories || [];
+                // 1. First check pre-hydrated server data (Instant, 0ms render)
+                let preDiseases = [];
+                let preCats = [];
+                try {
+                    const dEl = document.getElementById('serverDataDiseases');
+                    const cEl = document.getElementById('serverDataCategories');
+                    if (dEl && dEl.textContent.trim()) preDiseases = JSON.parse(dEl.textContent.trim());
+                    if (cEl && cEl.textContent.trim()) preCats = JSON.parse(cEl.textContent.trim());
+                } catch (pe) {
+                    console.warn("Pre-hydration parse notice:", pe);
+                }
 
-                applyLanguage(currentLang);
+                if (preDiseases && preDiseases.length > 0) {
+                    allDiseases = preDiseases;
+                    categoriesList = preCats || [];
+                    applyLanguage(currentLang);
+                    checkUrlParamAndSearch();
+                }
 
+                // 2. Fetch asynchronously in background (for updates / fallback)
+                fetch('/api/disease_guide')
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data && data.diseases && data.diseases.length > 0) {
+                            allDiseases = data.diseases;
+                            categoriesList = data.categories || [];
+                            applyLanguage(currentLang);
+                            checkUrlParamAndSearch();
+                        }
+                    })
+                    .catch(err => {
+                        console.warn("Async fetch notice:", err);
+                        // If pre-hydrated data exists, we are already rendering!
+                        if (!allDiseases || allDiseases.length === 0) {
+                            document.getElementById('cardsGrid').innerHTML = '<p style="color:#ef4444; padding:2rem;">Could not connect to server. Please check internet connection.</p>';
+                        }
+                    });
+
+            } catch (err) {
+                console.error("Init Error:", err);
+            }
+        }
+
+        function checkUrlParamAndSearch() {
+            try {
                 const urlParams = new URLSearchParams(window.location.search);
                 const q = urlParams.get('q');
                 if (q) {
-                    document.getElementById('searchInput').value = q;
+                    const input = document.getElementById('searchInput');
+                    if (input) input.value = q;
                 }
-
-                handleSearch();
-            } catch (err) {
-                console.error(err);
-                document.getElementById('cardsGrid').innerHTML = '<p style="color:#ef4444; padding:2rem;">Failed to load disease guide. Please ensure server is running.</p>';
-            }
+            } catch (e) {}
+            handleSearch();
         }
 
         function switchLanguage(lang) {
             currentLang = lang;
-            localStorage.setItem('disease_guide_lang', lang);
+            saveLang(lang);
             applyLanguage(lang);
             handleSearch();
         }
@@ -1022,28 +1110,43 @@
             const t = I18N[lang] || I18N.en;
 
             // Update Header Switcher active states
-            document.getElementById('btnLangEn').classList.toggle('active', lang === 'en');
-            document.getElementById('btnLangMizo').classList.toggle('active', lang === 'mizo');
+            const btnEn = document.getElementById('btnLangEn');
+            const btnMizo = document.getElementById('btnLangMizo');
+            if (btnEn) btnEn.classList.toggle('active', lang === 'en');
+            if (btnMizo) btnMizo.classList.toggle('active', lang === 'mizo');
 
             // Update static strings
-            document.getElementById('heroBadge').textContent = t.badge;
-            document.getElementById('heroTitle').textContent = t.heroTitle;
-            document.getElementById('heroSubtitle').textContent = t.heroSubtitle;
-            document.getElementById('langLabel').textContent = t.langLabel;
-            document.getElementById('quickTitleText').textContent = t.quickTitle;
-            document.getElementById('searchInput').placeholder = t.searchPlaceholder;
-            document.getElementById('optSortAz').textContent = t.sortAz;
-            document.getElementById('optSortZa').textContent = t.sortZa;
-            document.getElementById('optSortProds').textContent = t.sortProds;
-            document.getElementById('activeFilterBadge').textContent = t.clearFilter;
+            const badge = document.getElementById('heroBadge');
+            const heroTitle = document.getElementById('heroTitle');
+            const heroSub = document.getElementById('heroSubtitle');
+            const langLbl = document.getElementById('langLabel');
+            const qTitle = document.getElementById('quickTitleText');
+            const sInput = document.getElementById('searchInput');
+            const sAz = document.getElementById('optSortAz');
+            const sZa = document.getElementById('optSortZa');
+            const sProds = document.getElementById('optSortProds');
+            const aBadge = document.getElementById('activeFilterBadge');
+
+            if (badge) badge.textContent = t.badge;
+            if (heroTitle) heroTitle.textContent = t.heroTitle;
+            if (heroSub) heroSub.textContent = t.heroSubtitle;
+            if (langLbl) langLbl.textContent = t.langLabel;
+            if (qTitle) qTitle.textContent = t.quickTitle;
+            if (sInput) sInput.placeholder = t.searchPlaceholder;
+            if (sAz) sAz.textContent = t.sortAz;
+            if (sZa) sZa.textContent = t.sortZa;
+            if (sProds) sProds.textContent = t.sortProds;
+            if (aBadge) aBadge.textContent = t.clearFilter;
 
             // Render Quick Chips
             const chipsWrapper = document.getElementById('quickChips');
-            let chipsHtml = '';
-            t.quickChips.forEach(c => {
-                chipsHtml += `<button class="symptom-chip" onclick="quickFilter('${c.term}', this)">${c.label}</button>`;
-            });
-            chipsWrapper.innerHTML = chipsHtml;
+            if (chipsWrapper) {
+                let chipsHtml = '';
+                t.quickChips.forEach(c => {
+                    chipsHtml += `<button class="symptom-chip" onclick="quickFilter('${c.term}', this)">${c.label}</button>`;
+                });
+                chipsWrapper.innerHTML = chipsHtml;
+            }
 
             // Render Category Pills
             renderCategoryPills(categoriesList);
@@ -1052,6 +1155,7 @@
         function renderCategoryPills(cats) {
             const t = I18N[currentLang] || I18N.en;
             const container = document.getElementById('catScroll');
+            if (!container) return;
             let html = `<button class="cat-btn ${currentFilter === '' ? 'active' : ''}" onclick="setCategory('', this)">${t.allCategories}</button>`;
             cats.forEach(c => {
                 const isActive = (currentFilter === c) ? 'active' : '';
@@ -1071,17 +1175,18 @@
             const input = document.getElementById('searchInput');
             if (chipElem.classList.contains('active')) {
                 chipElem.classList.remove('active');
-                input.value = '';
+                if (input) input.value = '';
             } else {
                 document.querySelectorAll('.symptom-chip').forEach(c => c.classList.remove('active'));
                 chipElem.classList.add('active');
-                input.value = term;
+                if (input) input.value = term;
             }
             handleSearch();
         }
 
         function clearAllFilters() {
-            document.getElementById('searchInput').value = '';
+            const input = document.getElementById('searchInput');
+            if (input) input.value = '';
             currentFilter = '';
             document.querySelectorAll('.symptom-chip').forEach(c => c.classList.remove('active'));
             document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
@@ -1092,8 +1197,10 @@
 
         function handleSearch() {
             const t = I18N[currentLang] || I18N.en;
-            const query = document.getElementById('searchInput').value.toLowerCase().trim();
-            const sortVal = document.getElementById('sortSelect').value;
+            const input = document.getElementById('searchInput');
+            const query = input ? input.value.toLowerCase().trim() : '';
+            const sortEl = document.getElementById('sortSelect');
+            const sortVal = sortEl ? sortEl.value : 'az';
 
             let filtered = [...allDiseases];
 
@@ -1145,16 +1252,15 @@
             const countLabel = document.getElementById('resultsCount');
             const activeFilter = document.getElementById('activeFilterBadge');
 
+            if (!grid) return;
             grid.innerHTML = '';
 
-            if (query || currentFilter) {
-                activeFilter.style.display = 'inline-block';
-            } else {
-                activeFilter.style.display = 'none';
+            if (activeFilter) {
+                activeFilter.style.display = (query || currentFilter) ? 'inline-block' : 'none';
             }
 
             if (list.length === 0) {
-                countLabel.textContent = query ? `${t.noMatchTitle} "${query}"` : t.noMatchTitle;
+                if (countLabel) countLabel.textContent = query ? `${t.noMatchTitle} "${query}"` : t.noMatchTitle;
                 grid.innerHTML = `
                     <div style="grid-column: 1 / -1; padding: 4rem 2rem; text-align: center; color: #94a3b8;">
                         <div style="font-size: 3rem; margin-bottom: 1rem;">🔍</div>
@@ -1166,7 +1272,9 @@
                 return;
             }
 
-            countLabel.textContent = query || currentFilter ? t.showingCount(list.length, allDiseases.length) : t.showingAll(list.length);
+            if (countLabel) {
+                countLabel.textContent = query || currentFilter ? t.showingCount(list.length, allDiseases.length) : t.showingAll(list.length);
+            }
 
             list.forEach((d, idx) => {
                 const simpleTitle = (isMizo ? d.simple_name_mizo : d.simple_name_en) || d.simple_name || d.disease_name || 'Health Condition';
@@ -1207,7 +1315,7 @@
                     `;
                 }
 
-                const delay = Math.min(idx * 0.03, 1.2).toFixed(2);
+                const delay = Math.min(idx * 0.02, 0.8).toFixed(2);
                 const globalIdx = d.id !== undefined ? d.id : idx;
 
                 const cardHtml = `
@@ -1401,6 +1509,7 @@
 
         function showToast(msg) {
             const toast = document.getElementById('toastMsg');
+            if (!toast) return;
             toast.textContent = msg;
             toast.classList.add('show');
             setTimeout(() => toast.classList.remove('show'), 2500);
@@ -1467,15 +1576,17 @@
         }
 
         const catScrollEl = document.getElementById('catScroll');
-        const prevBtn = document.getElementById('catPrev');
-        const nextBtn = document.getElementById('catNext');
-
         function scrollCats(direction) {
             if (!catScrollEl) return;
             catScrollEl.scrollBy({ left: direction * 280, behavior: 'smooth' });
         }
 
-        window.onload = init;
+        // Run instantly when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
     </script>
 </body>
 </html>

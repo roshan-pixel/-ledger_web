@@ -180,7 +180,13 @@ def portal_sync_page():
 
 @app.route('/disease_guide')
 def disease_guide():
-    return render_template('disease_guide.html')
+    try:
+        diseases = _load_disease_cache()
+        slim = [{k: v for k, v in d.items() if k in _LIST_FIELDS} for d in diseases]
+        categories = sorted({d.get('category_name', '') for d in diseases})
+        return render_template('disease_guide.html', initial_diseases=slim, initial_categories=categories)
+    except Exception as e:
+        return render_template('disease_guide.html', initial_diseases=[], initial_categories=[])
 
 @app.route('/mizoram_bronze')
 def mizoram_bronze():
