@@ -1,519 +1,550 @@
-# 🏗️ Deep System Architecture & Technical Specifications
+# 🏗️ Deep System Architecture & How It Works
 
-> **Ledger Web App (God Mode Architecture)**  
-> High-performance ERP, Real-Time Dynamic Inventory Engine, Automated MLM Downline Crawler Grid, and Multi-Cloud Synchronization System.
+> **Ledger God Mode Web App**  
+> A real-time distributor ERP — inventory engine, invoice terminal, automated MLM downline crawler, portal robotics, and Google Sheets cloud sync.  
+> Stack: **Python 3.11 · Flask 3.0.3 · Playwright 1.44 · gspread 6.2.1 · SQLite3 · Gunicorn 22 · Docker**
 
 ---
 
 ## 📑 Table of Contents
 
-1. [High-Level Architectural Overview](#1-high-level-architectural-overview)
-2. [Visual Component Graph (Graphify Topology)](#2-visual-component-graph-graphify-topology)
+1. [High-Level Architecture Overview](#1-high-level-architecture-overview)
+2. [System Topology Graph (Graphify)](#2-system-topology-graph-graphify)
 3. [Core Subsystems & Module Breakdown](#3-core-subsystems--module-breakdown)
-   - [3.1 Web Application & REST API Gateway (`app.py`)](#31-web-application--rest-api-gateway-apppy)
-   - [3.2 Dynamic Multi-Month Inventory Engine (`inventory_engine.py`)](#32-dynamic-multi-month-inventory-engine-inventory_enginepy)
-   - [3.3 Invoice & Strict Stock Depletion API (`invoice_api.py`)](#33-invoice--strict-stock-depletion-api-invoice_apipy)
-   - [3.4 Asclepius Portal Robotic Sync & Auto-Order (`portal_sync.py`, `submit_stock_order.py`)](#34-asclepius-portal-robotic-sync--auto-order-portal_syncpy-submit_stock_orderpy)
-   - [3.5 Multi-Threaded Genealogy Downline Crawler Grid (`Full_Tree_Crawler.py`, `Parallel_Tree_Crawler.py`)](#35-multi-threaded-genealogy-downline-crawler-grid-full_tree_crawlerpy-parallel_tree_crawlerpy)
-   - [3.6 Ayurvedic Clinical Disease Recommendation Engine](#36-ayurvedic-clinical-disease-recommendation-engine)
-   - [3.7 Bi-Directional Cloud Sync (Google Sheets & Excel VBA)](#37-bi-directional-cloud-sync-google-sheets--excel-vba)
-4. [Data Architecture & Database ERD](#4-data-architecture--database-erd)
-5. [End-to-End Data Flow & Sequence Graphs](#5-end-to-end-data-flow--sequence-graphs)
-   - [5.1 Invoice Creation & Inventory Depletion Lifecycle](#51-invoice-creation--inventory-depletion-lifecycle)
-   - [5.2 Multi-Month Rollover & Stock Valuation Math](#52-multi-month-rollover--stock-valuation-math)
-   - [5.3 Headless Portal Authentication & Order Placement](#53-headless-portal-authentication--order-placement)
-   - [5.4 BFS/DFS Genealogy Tree Crawling Algorithm](#54-bfsdfs-genealogy-tree-crawling-algorithm)
-   - [5.5 Ayurvedic Clinical Recommendation Engine Graph](#55-ayurvedic-clinical-recommendation-engine-graph)
-6. [State Machine & Transaction Lifecycle](#6-state-machine--transaction-lifecycle)
-7. [Security, Concurrency & Resiliency](#7-security-concurrency--resiliency)
-8. [API Route Directory & Contracts](#8-api-route-directory--contracts)
+4. [Database Schema & ERD](#4-database-schema--erd)
+5. [Sequence Diagrams & Data Flows](#5-sequence-diagrams--data-flows)
+   - [5.1 Invoice Creation & Strict Stock Depletion](#51-invoice-creation--strict-stock-depletion)
+   - [5.2 Auto-Sync Scheduler — Hourly GSheets + Daily Rollover](#52-auto-sync-scheduler--hourly-gsheets--daily-rollover)
+   - [5.3 Stock Point Order via Headless Portal Bot](#53-stock-point-order-via-headless-portal-bot)
+   - [5.4 BFS Genealogy Downline Tree Crawler](#54-bfs-genealogy-downline-tree-crawler)
+   - [5.5 Customer DS Lookup — DB Cache + Live Portal Fallback](#55-customer-ds-lookup--db-cache--live-portal-fallback)
+   - [5.6 Invoice Cancel & Stock Restoration](#56-invoice-cancel--stock-restoration)
+6. [Invoice State Machine](#6-invoice-state-machine)
+7. [Auto-Sync Background Scheduler](#7-auto-sync-background-scheduler)
+8. [Security, Concurrency & Resiliency](#8-security-concurrency--resiliency)
+9. [Full API Route Directory](#9-full-api-route-directory)
 
 ---
 
-## 1. High-Level Architectural Overview
+## 1. High-Level Architecture Overview
 
-The **Ledger Web App** operates as an enterprise-grade distributed system designed to solve three critical operational bottlenecks in supply chain and multi-level distribution operations:
+The application is a **monolithic Flask server** that exposes both a browser-based multi-page dashboard and a REST API. It manages:
 
-1. **Deterministic Inventory Accounting**: Real-time tracking of product quantities, Sales Points (SP), gross valuation, and multi-week sales buckets across rolling monthly windows.
-2. **Robotic Portal Synchronization & Telemetry**: Headless browser automation and direct ASP.NET form postback execution to bridge legacy enterprise portals (`asclepiuswellness.com`) with local SQLite databases.
-3. **Bi-Directional Cloud & Desktop Synchronization**: Automatic background propagation of ledger entries to Google Sheets API and local Microsoft Excel VBA macro environments.
-
-```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                           CLIENT INTERFACES                             │
-│  ┌───────────────────────┐  ┌─────────────────────┐  ┌───────────────┐  │
-│  │ Web Dashboard (HTML5) │  │ Excel .xlsm (VBA)   │  │ Mobile PWA    │  │
-│  └───────────┬───────────┘  └──────────┬──────────┘  └───────┬───────┘  │
-└──────────────┼─────────────────────────┼─────────────────────┼──────────┘
-               │                         │                     │
-               ▼                         ▼                     ▼
-┌─────────────────────────────────────────────────────────────────────────┐
-│                        FLASK APPLICATION CORE                           │
-│  ┌───────────────────────────────────────────────────────────────────┐  │
-│  │ REST API Gateway • Blueprints • Error Handlers • CORS Controls    │  │
-│  └───────────────────────────────────────────────────────────────────┘  │
-│         │                  │                   │                 │      │
-│         ▼                  ▼                   ▼                 ▼      │
-│  ┌──────────────┐   ┌──────────────┐   ┌──────────────┐   ┌──────────┐  │
-│  │  Inventory   │   │   Invoice    │   │ Disease Guide│   │ Mizoram  │  │
-│  │    Engine    │   │     API      │   │  Rec Engine  │   │  Bronze  │  │
-│  └──────┬───────┘   └──────┬───────┘   └──────┬───────┘   └────┬─────┘  │
-└─────────┼──────────────────┼──────────────────┼────────────────┼────────┘
-          │                  │                  │                │
-          ▼                  ▼                  ▼                  ▼
-┌─────────────────────────────────────────────────────────────────────────┐
-│                      PERSISTENCE & CACHE TIER                           │
-│  ┌───────────────────────────────────────────────────────────────────┐  │
-│  │ SQLite Database (`ledger.db`) • Thread-Safe In-Memory JSON Cache  │  │
-│  └───────────────────────────────────────────────────────────────────┘  │
-└─────────┬───────────────────────────────────────────────────────────────┘
-          │
-          ├──────────────────────────────┬────────────────────────────────┐
-          ▼                              ▼                                ▼
-┌─────────────────────┐       ┌──────────────────────┐       ┌────────────────────┐
-│  ASCLEPIUS PORTAL   │       │  GOOGLE SHEETS SYNC  │       │  GENEALOGY CRAWLER │
-│  ROBOTIC AUTOMATION │       │  BACKGROUND DAEMON   │       │   DISTRIBUTED GRID │
-│  (Playwright / CDP) │       │  (Google Drive API)  │       │ (Async BFS / DFS)  │
-└─────────────────────┘       └──────────────────────┘       └────────────────────┘
-```
+1. **Inventory Accounting** — 220+ product SKUs with 30 dynamic columns, 5 weekly sales buckets per month, and automatic formula recalculation (gross value, remaining qty/value, SP totals).
+2. **Invoice Billing Terminal** — DS code auto-lookup via local DB + live portal fallback (`ds_lookup_api.py`), strict pre-commit stock validation, and automatic order submission to the Asclepius portal (`portal_submit_order.py`).
+3. **Monthly Auto-Rollover** — Background daemon (`_auto_sync_loop`) checks every 5 minutes; rolls inventory column headers to the new month once per calendar day; pushes to GSheets every hour.
+4. **Portal Robotics** — Playwright Chromium (headless) submits franchise restock orders and fetches DS sale reports from `asclepiuswellness.com`.
+5. **MLM Downline Crawler** — Async BFS/DFS traversal of the full genealogy tree starting from root node `62C04A`, with CSV checkpointing.
+6. **Cloud Sync** — Bidirectional Google Sheets (via `gspread` Service Account) at startup + every hour + on every mutation.
 
 ---
 
-## 2. Visual Component Graph (Graphify Topology)
-
-The graph below maps the holistic architecture of the application, showing all UI views, backend controllers, computational engines, persistence stores, and external service links:
+## 2. System Topology Graph (Graphify)
 
 ```mermaid
 graph TB
-    subgraph Client_Layer ["Client & Interface Tier"]
-        UI_Dash["📊 Dashboard (/dashboard)"]
-        UI_Inv["📦 Live Inventory (/inventory)"]
-        UI_Master["📈 Inventory Master (/inventory_master)"]
-        UI_InvForm["🧾 Billing Terminal (/invoice)"]
-        UI_InvHist["📜 Invoice History (/invoice_history)"]
-        UI_PurHist["🚚 Purchase History (/purchase_history)"]
-        UI_Ledger["💰 Financial Ledger (/ledger_report)"]
-        UI_Mizoram["🏆 Mizoram Target Tracker (/mizoram_bronze)"]
-        UI_Disease["🌿 Disease Guide (/disease_guide)"]
-        UI_SPOrder["🛒 Stock Point Order (/stock_point_order)"]
-        UI_Portal["🔄 Portal Sync (/portal_sync)"]
-        Excel_UI["📑 Master Excel .xlsm (VBA Macros)"]
+    subgraph Client_Layer ["🖥️ Client & Interface Tier"]
+        UI_Dash["📊 Dashboard\n/dashboard"]
+        UI_Inv["📦 Live Inventory\n/inventory"]
+        UI_Master["📈 Inventory Master\n/inventory_master"]
+        UI_Invoice["🧾 Billing Terminal\n/invoice"]
+        UI_InvHist["📜 Invoice History\n/invoice_history"]
+        UI_PurHist["🚚 Purchase History\n/purchase_history"]
+        UI_Ledger["💰 Financial Ledger\n/ledger_report"]
+        UI_Mizoram["🏆 Mizoram Bronze\n/mizoram_bronze"]
+        UI_Disease["🌿 Disease Guide\n/disease_guide"]
+        UI_SPOrder["🛒 Stock Point Order\n/stock_point_order"]
+        UI_Portal["🔄 Portal Sync\n/portal_sync"]
     end
 
-    subgraph Backend_Gateway ["Application Server & Routing Layer (app.py)"]
-        Flask_Core["⚙️ Flask Application Core"]
-        BP_Invoice["🔌 Invoice API Blueprint (invoice_api.py)"]
-        Err_Handler["🛡️ Global Exception & Error Handlers"]
-        CORS_Sec["🔒 Security & Headers Middleware"]
+    subgraph Flask_Core ["⚙️ Flask Application Core (app.py)"]
+        Router["REST Router + Blueprints"]
+        AutoSync["🔁 AutoSync Daemon\n_auto_sync_loop\nevery 5-min poll\nhourly GSheets\ndaily rollover"]
+        ErrHandler["🛡️ Error Handlers 400/404/405/500"]
     end
 
-    subgraph Computation_Engines ["Computational & Business Logic Engines"]
-        Inv_Engine["🧮 Dynamic Inventory Engine (inventory_engine.py)"]
-        Month_Roll["📅 Monthly Rollover Engine (monthly_rollover.py)"]
-        Dis_Engine["🩺 Disease Recommendation Cache (_DISEASE_CACHE)"]
-        Stock_Validator["🛑 Strict Stock Policy Validator"]
-        GSheets_Daemon["☁️ Google Sheets Sync Daemon (init_gsheets.py)"]
+    subgraph Blueprints ["🔌 Flask Blueprints"]
+        BP_Invoice["invoice_api.py Blueprint\n/api/invoice/*"]
     end
 
-    subgraph Automation_Crawlers ["Robotic Automation & Crawlers"]
-        Portal_Sync["🤖 Portal Sync Engine (portal_sync.py)"]
-        Order_Submitter["📦 Headless Order Bot (submit_stock_order.py)"]
-        Tree_Crawler["🌲 Multi-Threaded Genealogy Crawler (Full_Tree_Crawler.py)"]
-        DS_Lookup["🔍 Distributor API Lookup (ds_lookup_api.py)"]
+    subgraph Engines ["🧮 Computation & Business Logic"]
+        InvEngine["inventory_engine.py\nDynamic 5-week bucket calc\n220 SKUs × 30 columns"]
+        MonthRoll["monthly_rollover.py\nDetects month change\nZeroes sold-qty cols\nRe-sums TOTAL row"]
+        DisEngine["Disease Guide Cache\n_DISEASE_CACHE\nThread-safe singleton\n100+ conditions"]
+        InvFormulas["update_inventory_formulas()\nGross Value\nRemaining Qty/Value\nSales % · SP Total"]
     end
 
-    subgraph Persistence_Layer ["Data Persistence & Storage Tier"]
-        DB[("🗄️ SQLite Database (ledger.db)")]
-        T_Inv["Table: inventory (30 dynamic cols)"]
-        T_Invoices["Table: invoices"]
-        T_Cust["Table: customers"]
-        T_Mizoram["Table: mizoram_bronze"]
-        T_KPI["Table: kpis"]
-        T_Sync["Table: sync_log"]
-        JSON_Purchases["📄 purchase_orders.json"]
-        JSON_Disease["📄 master_review_data_perfected.json"]
-        JSON_Products["📄 sp_products.json"]
+    subgraph GSheets_Sync ["☁️ Google Sheets Sync (gspread)"]
+        RestoreGS["restore_gsheets.py\nPull: GSheets → SQLite\nCustomers / Inventory\nInvoices / Settings\n60-sec rate-limit"]
+        InitGS["init_gsheets.py\nPush: SQLite → GSheets\nAll tables + headers\nTriggered on every mutation"]
     end
 
-    subgraph External_Cloud ["External Cloud & Upstream Services"]
-        Asclepius_Portal["🌐 Asclepius Portal (asclepiuswellness.com)"]
-        Google_Cloud["☁️ Google Sheets API (v4)"]
-        Render_Cloud["🚀 Render Web Service (dashboard-modern-ledger-4-1)"]
-        Uptime_Robot["⏱️ UptimeRobot Keep-Alive Monitor"]
+    subgraph Portal_Automation ["🤖 Portal Automation (Playwright)"]
+        PortalSubmit["portal_submit_order.py\nSAO/SGO order submit\nto SpdistributorSale.aspx\nAsync thread spawn"]
+        StockOrder["submit_stock_order.py\nFranchise restock order\nFranchiseorderN.aspx\nSubprocess call"]
+        DSLookup["ds_lookup_api.py\nLive DS lookup\nSpdistributorSale.aspx\nFallback if not in DB"]
+        PortalSync["portal_sync.py\nFetch DS Sale Report\nspDSSaleReport.aspx\n(Currently disabled in API)"]
+        LedgerScrape["fetch_ledger_report.py\nScrape wallet ledger\nSubprocess Popen"]
     end
 
-    %% Client to Backend
-    UI_Dash & UI_Inv & UI_Master & UI_InvHist & UI_PurHist & UI_Ledger & UI_Mizoram & UI_Disease & UI_SPOrder & UI_Portal --> Flask_Core
-    UI_InvForm --> BP_Invoice
-    Excel_UI -->|Localhost HTTP API| Flask_Core
+    subgraph Crawlers ["🌲 Downline Crawlers"]
+        FullCrawler["Full_Tree_Crawler.py\nBFS from 62C04A\nAsync Playwright\nCSV checkpoint"]
+        ParallelCrawler["Parallel_Tree_Crawler.py\nMulti-thread BFS\nSAO + SGO trees"]
+        SGOCrawler["SGO_Tree_Crawler.py\nSGO subtree only"]
+    end
 
-    %% Backend to Engines
-    Flask_Core --> Inv_Engine
-    Flask_Core --> Month_Roll
-    Flask_Core --> Dis_Engine
-    Flask_Core --> GSheets_Daemon
-    BP_Invoice --> Stock_Validator
-    BP_Invoice --> Inv_Engine
+    subgraph Persistence ["🗄️ Persistence Layer"]
+        DB[("ledger.db\nSQLite3")]
+        T_Inv["inventory\n220 rows × 30 cols (c1-c30)"]
+        T_Invoices["invoices\n149+ records"]
+        T_Cust["customers\n58 DS codes"]
+        T_Mizoram["mizoram_bronze\nBronze/Silver/Gold/Platinum"]
+        T_KPI["kpis"]
+        T_Settings["settings\ninventory_headers JSON"]
+        T_SyncLog["sync_log"]
+        JSON_PO["purchase_orders.json\nSupplier challan history"]
+        JSON_Disease["master_review_data_perfected.json\nDisease catalog"]
+        JSON_Products["scraped_products.json\nPortal product catalog"]
+        JSON_Ledger["ledger_report.json\nWallet statement cache"]
+    end
 
-    %% Backend to Automation
-    Flask_Core --> Portal_Sync
-    Flask_Core --> Order_Submitter
-    Flask_Core --> Tree_Crawler
-    BP_Invoice --> DS_Lookup
+    subgraph External ["🌐 External Services"]
+        AWPL["asclepiuswellness.com\nASP.NET Portal"]
+        GCloud["Google Sheets API v4\ngspread Service Account"]
+        Render["Render.com\ndashboard-modern-ledger-4-1"]
+        UptimeBot["UptimeRobot\n5-min /ping heartbeat"]
+    end
 
-    %% Engines to DB
-    Inv_Engine --> DB
-    Stock_Validator --> DB
-    Month_Roll --> DB
+    %% Client → Flask
+    UI_Dash & UI_Inv & UI_Master & UI_InvHist & UI_PurHist & UI_Ledger & UI_Mizoram & UI_Disease & UI_SPOrder & UI_Portal --> Router
+    UI_Invoice --> BP_Invoice
+
+    %% Flask → Engines
+    Router --> InvEngine
+    Router --> MonthRoll
+    Router --> DisEngine
+    Router --> InvFormulas
+    Router --> RestoreGS
+    Router --> InitGS
+    Router --> StockOrder
+    Router --> DSLookup
+    Router --> LedgerScrape
+    BP_Invoice --> InvEngine
+    BP_Invoice --> InvFormulas
+    BP_Invoice --> DSLookup
+    BP_Invoice --> PortalSubmit
+    BP_Invoice --> InitGS
+
+    %% AutoSync
+    AutoSync --> MonthRoll
+    AutoSync --> RestoreGS
+    AutoSync --> InitGS
+
+    %% Engines → DB
+    InvEngine --> DB
+    MonthRoll --> DB
+    InvFormulas --> DB
     BP_Invoice --> DB
-    GSheets_Daemon --> DB
+    RestoreGS --> DB
+    InitGS --> DB
+    Router --> DB
 
-    %% DB Tables
-    DB --- T_Inv
-    DB --- T_Invoices
-    DB --- T_Cust
-    DB --- T_Mizoram
-    DB --- T_KPI
-    DB --- T_Sync
+    %% DB tables
+    DB --- T_Inv & T_Invoices & T_Cust & T_Mizoram & T_KPI & T_Settings & T_SyncLog
 
-    %% Automation to External
-    Portal_Sync -->|Playwright / Requests| Asclepius_Portal
-    Order_Submitter -->|Automated Form Fill| Asclepius_Portal
-    Tree_Crawler -->|BFS Downline Extraction| Asclepius_Portal
-    GSheets_Daemon -->|OAuth / Service Account| Google_Cloud
-    Uptime_Robot -->|5-Min Heartbeat Ping| Render_Cloud
+    %% Portal → External
+    PortalSubmit --> AWPL
+    StockOrder --> AWPL
+    DSLookup --> AWPL
+    PortalSync --> AWPL
+    LedgerScrape --> AWPL
+    FullCrawler & ParallelCrawler & SGOCrawler --> AWPL
 
-    classDef client fill:#3b82f6,stroke:#1d4ed8,stroke-width:2px,color:#fff;
-    classDef server fill:#8b5cf6,stroke:#6d28d9,stroke-width:2px,color:#fff;
-    classDef engine fill:#10b981,stroke:#047857,stroke-width:2px,color:#fff;
-    classDef bot fill:#f59e0b,stroke:#d97706,stroke-width:2px,color:#fff;
-    classDef db fill:#ef4444,stroke:#b91c1c,stroke-width:2px,color:#fff;
-    classDef ext fill:#64748b,stroke:#334155,stroke-width:2px,color:#fff;
+    %% GSheets ↔ External
+    RestoreGS <-->|bidirectional| GCloud
+    InitGS --> GCloud
 
-    class UI_Dash,UI_Inv,UI_Master,UI_InvForm,UI_InvHist,UI_PurHist,UI_Ledger,UI_Mizoram,UI_Disease,UI_SPOrder,UI_Portal,Excel_UI client;
-    class Flask_Core,BP_Invoice,Err_Handler,CORS_Sec server;
-    class Inv_Engine,Month_Roll,Dis_Engine,Stock_Validator,GSheets_Daemon engine;
-    class Portal_Sync,Order_Submitter,Tree_Crawler,DS_Lookup bot;
-    class DB,T_Inv,T_Invoices,T_Cust,T_Mizoram,T_KPI,T_Sync,JSON_Purchases,JSON_Disease,JSON_Products db;
-    class Asclepius_Portal,Google_Cloud,Render_Cloud,Uptime_Robot ext;
+    %% Keep-alive
+    UptimeBot -->|GET /ping every 5 min| Render
+
+    classDef ui fill:#3b82f6,stroke:#1d4ed8,color:#fff;
+    classDef server fill:#8b5cf6,stroke:#6d28d9,color:#fff;
+    classDef engine fill:#10b981,stroke:#047857,color:#fff;
+    classDef cloud fill:#06b6d4,stroke:#0891b2,color:#fff;
+    classDef bot fill:#f59e0b,stroke:#d97706,color:#fff;
+    classDef db fill:#ef4444,stroke:#b91c1c,color:#fff;
+    classDef ext fill:#64748b,stroke:#334155,color:#fff;
+
+    class UI_Dash,UI_Inv,UI_Master,UI_Invoice,UI_InvHist,UI_PurHist,UI_Ledger,UI_Mizoram,UI_Disease,UI_SPOrder,UI_Portal ui;
+    class Router,AutoSync,ErrHandler,BP_Invoice server;
+    class InvEngine,MonthRoll,DisEngine,InvFormulas engine;
+    class RestoreGS,InitGS cloud;
+    class PortalSubmit,StockOrder,DSLookup,PortalSync,LedgerScrape,FullCrawler,ParallelCrawler,SGOCrawler bot;
+    class DB,T_Inv,T_Invoices,T_Cust,T_Mizoram,T_KPI,T_Settings,T_SyncLog,JSON_PO,JSON_Disease,JSON_Products,JSON_Ledger db;
+    class AWPL,GCloud,Render,UptimeBot ext;
 ```
 
 ---
 
 ## 3. Core Subsystems & Module Breakdown
 
-### 3.1 Web Application & REST API Gateway (`app.py`)
-- **Framework**: Flask 3.x with Jinja2 Templating, SQLite3 thread-isolated connections (`get_db()`).
-- **Encoding**: Native UTF-8 JSON streaming (`JSON_AS_ASCII = False`) guaranteeing zero escape sequence bloat.
-- **Telemetry & Health**:
-  - `/health` & `/ping`: Real-time health probes monitored by UptimeRobot every 5 minutes to eliminate cold starts on cloud container infrastructure.
-- **Routing Scope**: 42 endpoints handling 12 single-page interactive dashboards, REST endpoints for inventory updates, stock restocking, distributor lookups, and manual ledger reconciliation entries.
+### 3.1 Flask Application Core (`app.py` — 1373 lines)
+- **Framework**: Flask 3.0.3 + Jinja2 · Served by **Gunicorn 22** with `--timeout 300`.
+- **Python**: 3.11.0 (specified in `render.yaml`).
+- **Encoding**: `JSON_AS_ASCII = False` — proper UTF-8 (₹, Devanagari, etc.).
+- **Health endpoints**: `/ping` and `/health` → `{"status":"ok"}` — polled every 5 minutes by UptimeRobot to prevent Render free-tier cold starts.
+- **Blueprint**: `invoice_api.py` registered at startup via `app.register_blueprint(invoice_api)`.
+- **Startup sequence**:
+  1. If `credentials.json` exists → `restore_from_gsheets()` (pull cloud → local).
+  2. `monthly_rollover.check_and_rollover()` — roll headers if month changed.
+  3. Launch perpetual daemon thread `_auto_sync_loop`.
+- **Background scheduler** (`_auto_sync_loop`): polls every **5 minutes**, runs rollover check once per calendar day, pushes/pulls GSheets once per hour.
 
-### 3.2 Dynamic Multi-Month Inventory Engine (`inventory_engine.py`)
-- **Dynamic Header & Bucket Allocation**:
-  Constructs 5 weekly sales columns per month dynamically based on calendar days:
-  - Week 1: `Days 1–7`
-  - Week 2: `Days 8–14`
-  - Week 3: `Days 15–21`
-  - Week 4: `Days 22–28`
-  - Week 5: `Days 29–End of Month` (supports 28, 29, 30, or 31-day months).
-- **Mathematical Ingestion Pipeline**:
-  $$\text{Remaining Qty} = \text{Total Purchased Stock} - \sum \text{Cumulative Sales}$$
-  $$\text{Gross Valuation} = \text{Total Qty} \times \text{Price Per Piece}$$
-  $$\text{Remaining Valuation} = \text{Remaining Qty} \times \text{Price Per Piece}$$
-  $$\text{Sales Percentage} = \left( \frac{\text{Sold Qty}}{\text{Total Qty}} \right) \times 100$$
-  $$\text{Total SP} = \text{Total Qty} \times \text{SP Per Piece}$$
+### 3.2 Dynamic Inventory Engine (`inventory_engine.py`)
+- Builds 5 weekly sales buckets dynamically for **any** target month:
 
-### 3.3 Invoice & Strict Stock Depletion API (`invoice_api.py`)
-- **Strict Stock Policy**: Before committing any invoice to the database, the API aggregates all requested quantities by normalized SKU and compares against live database stock in `c19` (`Remaining Qty`). If $\text{Requested Qty} > \text{Available Stock}$, the entire transaction is rejected with HTTP 400.
-- **Atomic Double-Entry Transactions**:
-  1. Record insertion into `invoices` table.
-  2. Automatic deduction from the respective weekly sales bucket (`c9`, `c11`, `c13`, `c15`, or `c17`).
-  3. Formula recalculation across all inventory rows and totals.
-  4. Asynchronous trigger to `init_google_sheets()` daemon.
+| Week | Day Range |
+|------|-----------|
+| W1 | 1 – 7 |
+| W2 | 8 – 14 |
+| W3 | 15 – 21 |
+| W4 | 22 – 28 |
+| W5 | 29 – (28/29/30/31) |
 
-### 3.4 Asclepius Portal Robotic Sync & Auto-Order (`portal_sync.py`, `submit_stock_order.py`)
-- **Headless Playwright Automation**:
-  - Automates authentication to `https://asclepiuswellness.com/login.aspx?webid=1`.
-  - Ingests DS Sale Reports from `spDSSaleReport.aspx` across custom date filters.
-  - Intercepts and validates ASP.NET `__VIEWSTATE`, `__EVENTVALIDATION`, and postback tokens.
-- **Stock Point Order Dispatcher**:
-  - Automatically selects product dropdowns, types quantities, fires client-side event listeners (`btnadd`), handles JavaScript modal confirmation dialogs, and triggers `ButtonSave1` ("Send For Approval").
+- **Formulas computed**:
+  - `Gross Value = Total Qty × Price/Pc`
+  - `Remaining Qty = Total Purchased − Σ Cumulative Sales`
+  - `Remaining Value = Remaining Qty × Price/Pc`
+  - `Sales % = (Sold Qty / Total Qty) × 100`
+  - `Total SP = Remaining Qty × SP/Pc`
 
-### 3.5 Multi-Threaded Genealogy Downline Crawler Grid (`Full_Tree_Crawler.py`, `Parallel_Tree_Crawler.py`)
-- **Recursive Multi-Node BFS/DFS Tree Traversal**:
-  - Begins from root node `62C04A` (or arbitrary subtree roots).
-  - Traverses both **SAO (Sales Achievement Organization)** and **SGO (Sales Growth Organization)** binary trees.
-  - Automatically extracts: Distributor Name, DS Code, Placement ID, Sponsor ID, Left/Right SP Volume, KYC Status, Joining Date, and Rank.
-  - Implements state checkpointing to `.csv` backups to allow instant recovery upon network interruption.
+- Purchases sourced from `purchase_orders.json`; sales from `invoices` table (excluding `status='cancelled'`).
 
-### 3.6 Ayurvedic Clinical Disease Recommendation Engine
-- **In-Memory Thread-Safe Cache**: Loads and indexes 100+ disease entries from `master_review_data_perfected.json` with categories, therapeutic formulations, single herbs, dietary regimens, yoga/lifestyle recommendations, and contraindications.
-- **Sub-Millisecond Search**: Fast substring and category filtering via `/api/disease_guide?q=...&category=...`.
+### 3.3 Monthly Rollover (`monthly_rollover.py`)
+- Reads the month embedded in the `Sold Qty (Mon DD-DD)` column headers from `settings.inventory_headers`.
+- If the stored month ≠ current month: renames all 5 Sold Qty + Sale Value column headers to the new month, **zeroes** all sold-qty cells for the new month's columns, re-sums the `TOTAL` row.
+- Triggered at startup AND once per calendar day from `_auto_sync_loop`.
 
-### 3.7 Bi-Directional Cloud Sync (Google Sheets & Excel VBA)
-- **Google Sheets API v4**: Real-time sheet backup using Service Account credentials. Mirrors formulas, cell colors, totals, and invoice registers.
-- **Excel VBA Localhost Bridge**: Custom VBA macros embedded in master `.xlsm` connect to `http://localhost:5000` for zero-latency local operations.
+### 3.4 Invoice & Strict Stock Depletion API (`invoice_api.py` — Blueprint)
+**Endpoints registered under `invoice_api` Blueprint:**
+
+| Route | Method | Purpose |
+|---|---|---|
+| `/api/invoice/create` | POST | Create invoice (full validation pipeline) |
+| `/api/invoice/list` | GET | List all invoices with SP recalculation |
+| `/api/invoice/update/<id>` | POST | Update is_dispatched / remark fields |
+| `/api/invoice/next_no` | GET | Auto-generate next DSR/XXXXXX/YY-ZZ invoice number |
+| `/api/invoice/cancel/<id>` | POST | Cancel invoice + restore stock quantities |
+| `/api/invoice/sync_sheets` | POST | Trigger GSheets sync manually |
+
+**Invoice creation pipeline (strict, atomic):**
+1. Duplicate `invoice_no` check → reject if exists.
+2. Aggregate requested SKU quantities by normalized name.
+3. Compare vs. live `c19` (Remaining Qty) → reject if any item exceeds stock.
+4. `INSERT INTO invoices` with all fields.
+5. Find the correct week bucket column for the invoice date via `get_sold_qty_col_idx()`.
+6. `UPDATE inventory` — add to sold qty column.
+7. `update_inventory_formulas()` — recalculate gross, remaining, values, SP.
+8. `update_totals_row()` — resum the TOTAL row (cols 6–20 + col 28).
+9. Spawn daemon thread → `portal_submit_order.submit_order_async()` (SAO/SGO portal order).
+10. Spawn daemon thread → `init_google_sheets()` (cloud backup).
+
+**Invoice cancel restores sold qty** by subtracting from the correct week column (same `get_sold_qty_col_idx()` logic) and re-running formulas.
+
+### 3.5 Customer Lookup — DB Cache + Live Portal Fallback (`/api/customer`)
+- First queries `customers` table by `ds_code`.
+- If not found, calls `ds_lookup_api.fetch_ds_from_portal(ds_code)` — Playwright headless session to `SpdistributorSale.aspx`, scrapes name, mobile, address, shipping details.
+- Auto-saves result to `customers` table for future hits (no repeat scraping).
+
+### 3.6 Portal Robotic Automation
+| Module | Target URL | Purpose |
+|---|---|---|
+| `portal_submit_order.py` | `SpdistributorSale.aspx` | Submit SAO/SGO sale order after billing; supports radio-button SAO/SGO selection |
+| `submit_stock_order.py` | `FranchiseorderN.aspx` | Submit franchise restock purchase order; called as **subprocess** from `/api/place_stock_order` with 3-min timeout |
+| `ds_lookup_api.py` | `SpdistributorSale.aspx` | Live DS code name/address lookup; called when customer not in local DB |
+| `portal_sync.py` | `spDSSaleReport.aspx` | Fetch DS Sale Report for a date range; **NOTE: `/api/portal_sync` is currently disabled** (returns 501, pending SQLite migration) |
+| `fetch_ledger_report.py` | Portal ledger pages | Scrape wallet transaction statements; launched as `subprocess.Popen` |
+
+### 3.7 Google Sheets Bidirectional Sync
+- **Library**: `gspread 6.2.1` with Service Account credentials from `credentials.json` or `/etc/secrets/credentials.json`.
+- **Sheet Name**: `Ledger_Database`.
+- **Worksheets synced**: `Customers`, `Inventory`, `Invoices`, `Settings`.
+- **`restore_from_gsheets()`**: Pulls cloud → SQLite; rate-limited to max once per 60 seconds; logs to `sync_log`.
+- **`init_google_sheets()`**: Pushes SQLite → GSheets; triggered on every create/update/cancel/restock/rollover mutation.
+- **Hourly sync**: Pull then push, managed by `_auto_sync_loop` background daemon.
+
+### 3.8 Genealogy Downline Crawlers
+| Module | Mode | Details |
+|---|---|---|
+| `Full_Tree_Crawler.py` | Async BFS | Root `62C04A`; both SAO + SGO binary subtrees; CSV checkpoint every iteration |
+| `Parallel_Tree_Crawler.py` | Multi-thread BFS | Parallel extraction; faster for large trees |
+| `SGO_Tree_Crawler.py` | Async BFS | SGO subtree only |
+
+All crawlers authenticate to `https://asclepiuswellness.com/userpanel/UserGroupTree.aspx` and extract: DS Code, Name, Rank, Left/Right SP, KYC status, Sponsor ID, Placement ID.
+
+### 3.9 Disease Guide (`/disease_guide` + `/api/disease_guide`)
+- JSON source: `static/master_review_data_perfected.json`.
+- **Thread-safe singleton cache** (`_DISEASE_CACHE` + `threading.Lock`), loaded once on first request.
+- Fields indexed: disease name, category, recommended products, diet, exercise, Ayurvedic tips, things to avoid, disclaimer.
+- API supports: `?q=<term>` (substring search) and `?category=<name>` (exact match).
+
+### 3.10 KPI Dashboard (`/api/kpi`)
+Live-computed KPIs directly from DB + `ledger_report.json`:
+- Total SKUs, Remaining Qty, Remaining Value, Gross Stock Value (= total Dr entries in ledger)
+- Initial Capital (first Cr entry), Sales Recycled (subsequent Cr entries), Wallet Balance
+- Monthly Sales Value (current month), Week Sales Value (last 7 days)
+- Total Invoices, Total Invoice Value, Low Stock Count, Out of Stock Count
 
 ---
 
-## 4. Data Architecture & Database ERD
+## 4. Database Schema & ERD
 
 ```mermaid
 erDiagram
+    SETTINGS {
+        TEXT key PK
+        TEXT value "JSON-encoded; inventory_headers is 30-element array"
+    }
+
     INVENTORY {
-        int row_num PK
-        string c1 "Index"
-        string c2 "S.No"
-        string c3 "Product Name with [Code]"
-        string c4 "HSN Code"
-        real c5 "Price/Pc (DP)"
-        string c6 "Box Size"
-        real c7 "Total Stock Qty (Purchased)"
-        real c8 "Gross Valuation (Rs)"
-        real c9 "Sold Qty (Week 1)"
-        real c10 "Sale Value (Week 1)"
-        real c11 "Sold Qty (Week 2)"
-        real c12 "Sale Value (Week 2)"
-        real c13 "Sold Qty (Week 3)"
-        real c14 "Sale Value (Week 3)"
-        real c15 "Sold Qty (Week 4)"
-        real c16 "Sale Value (Week 4)"
-        real c17 "Sold Qty (Week 5)"
-        real c18 "Sale Value (Week 5)"
-        real c19 "Remaining Qty (Stock Balance)"
-        real c20 "Remaining Value (Rs)"
-        string c21 "Stock Status (In Stock/Out)"
-        string c22 "Sales Percentage"
-        string c23 "Remarks"
-        real c24 "Tie-Breaker Sold Qty"
-        real c25 "Tie-Breaker Sale Value"
-        real c26 "Low Stock Index"
-        real c27 "SP/Pc (Sales Point)"
-        real c28 "Total SP Valuation"
+        INTEGER row_num PK
+        TEXT c1 "Sequential index"
+        TEXT c2 "S.No"
+        TEXT c3 "Product Name [code]"
+        TEXT c4 "HSN Code"
+        TEXT c5 "Price/Pc DP (Rs.)"
+        TEXT c6 "Box size"
+        TEXT c7 "Total Qty (stock in)"
+        TEXT c8 "Gross Value (Rs.)"
+        TEXT c9 "Sold Qty Week-1"
+        TEXT c10 "Sale Value Week-1"
+        TEXT c11 "Sold Qty Week-2"
+        TEXT c12 "Sale Value Week-2"
+        TEXT c13 "Sold Qty Week-3"
+        TEXT c14 "Sale Value Week-3"
+        TEXT c15 "Sold Qty Week-4"
+        TEXT c16 "Sale Value Week-4"
+        TEXT c17 "Sold Qty Week-5"
+        TEXT c18 "Sale Value Week-5"
+        TEXT c19 "Remaining Qty"
+        TEXT c20 "Remaining Value (Rs.)"
+        TEXT c21 "Stock Status"
+        TEXT c22 "Sales %"
+        TEXT c23 "Remarks"
+        TEXT c24 "Tie-Breaker Sold Qty"
+        TEXT c25 "Tie-Breaker Sale Value"
+        TEXT c26 "Low Stock Index"
+        TEXT c27 "SP/Pc"
+        TEXT c28 "Total SP"
+        TEXT c29 "Col 29 (spare)"
+        TEXT c30 "Col 30 (spare)"
     }
 
     CUSTOMERS {
-        string ds_code PK
-        string ds_name
-        string mobile
-        string address
-        string shipping_address
-        string shipping_mobile
-        string shipping_pincode
-        string last_invoice
+        TEXT ds_code PK
+        TEXT ds_name
+        TEXT mobile
+        TEXT address
+        TEXT shipping_address
+        TEXT shipping_mobile
+        TEXT shipping_pincode
+        TEXT last_invoice
     }
 
     INVOICES {
-        int id PK
-        string invoice_no UK
-        string ds_code FK
-        string customer_name
-        real amount
-        string date_created
-        text items "JSON Serialized Array"
-        string status "active | cancelled"
-        real total_sp
-        int is_dispatched
-        string remark
-        string tid
-        string mobile
-        string delivery_date
-        string stock_point
+        INTEGER id PK
+        TEXT invoice_no "Unique e.g. DSR/000067/26-27"
+        TEXT ds_code FK
+        TEXT customer_name
+        REAL amount "Grand total in Rs."
+        TEXT date_created "YYYY-MM-DD"
+        TEXT items "JSON array of line items"
+        TEXT status "active | cancelled"
+        REAL total_sp
+        INTEGER is_dispatched "0 or 1"
+        TEXT remark
+        TEXT tid
+        TEXT mobile
+        TEXT delivery_date
+        TEXT stock_point
     }
 
     MIZORAM_BRONZE {
-        int id PK
-        string ds_id
-        string ds_name
-        string bronze_commission
-        string bronze_achieved
-        string mizoram_bronze_date
-        string silver_commission
-        string silver_achieved
-        string silver_update_date
-        string gold_commission
-        string gold_achieved
-        string gold_update_date
-        string platinum_commission
-        string platinum_achieved
-        string platinum_update_date
-        string phone_no
+        INTEGER id PK
+        TEXT ds_id
+        TEXT ds_name
+        TEXT bronze_commission
+        TEXT bronze_achieved
+        TEXT mizoram_bronze_date
+        TEXT silver_commission
+        TEXT silver_achieved
+        TEXT silver_update_date
+        TEXT gold_commission
+        TEXT gold_achieved
+        TEXT gold_update_date
+        TEXT platinum_commission
+        TEXT platinum_achieved
+        TEXT platinum_update_date
+        TEXT phone_no
     }
 
     KPIS {
-        string key PK
-        string value
-    }
-
-    SETTINGS {
-        string key PK
-        text value "JSON Metadata"
+        TEXT key PK
+        TEXT value
     }
 
     SYNC_LOG {
-        int id PK
-        string sync_type
-        real timestamp
-        string status
+        INTEGER id PK
+        TEXT sync_type "restore | push"
+        REAL timestamp "Unix epoch"
+        TEXT status "success | error"
     }
 
-    CUSTOMERS ||--o{ INVOICES : places
-    INVOICES ||--|{ INVENTORY : decrements
-    SETTINGS ||--o{ INVENTORY : configures
+    SETTINGS ||--o{ INVENTORY : "configures headers"
+    CUSTOMERS ||--o{ INVOICES : "placed by"
+    INVOICES }o--|| INVENTORY : "decrements sold qty"
 ```
 
 ---
 
-## 5. End-to-End Data Flow & Sequence Graphs
+## 5. Sequence Diagrams & Data Flows
 
-### 5.1 Invoice Creation & Inventory Depletion Lifecycle
+### 5.1 Invoice Creation & Strict Stock Depletion
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor User as User / Billing Terminal
-    participant Web as Web Frontend (invoice.html)
-    participant API as Invoice API (/api/invoice/create)
-    participant Val as Strict Stock Validator
-    participant DB as SQLite DB (ledger.db)
-    participant GSheet as Google Sheets Daemon
+    actor User as User (Billing Terminal)
+    participant FE as invoice.html
+    participant API as /api/invoice/create (invoice_api.py)
+    participant DB as ledger.db
+    participant Portal as Asclepius Portal (portal_submit_order.py)
+    participant GS as Google Sheets (init_gsheets.py)
 
-    User->>Web: Input DS Code, Select Products & Qty
-    Web->>API: POST /api/invoice/create (JSON Payload)
-    
-    API->>DB: Check for duplicate invoice_no
-    alt Invoice Number Exists
-        DB-->>API: Duplicate Found
-        API-->>Web: HTTP 400 (Invoice already exists)
-    else Invoice Number Unique
-        API->>Val: Validate Stock for each item
-        Val->>DB: Query c19 (Remaining Qty) for SKUs
-        DB-->>Val: Current Available Stock
-        
-        alt Stock Insufficient
-            Val-->>API: Policy Violation (Requested > Available)
-            API-->>Web: HTTP 400 (Not enough stock for SKU)
-        else Stock Available
-            Val-->>API: Validation Passed
-            API->>DB: INSERT INTO invoices (invoice_no, ds_code, items, amount, total_sp)
-            API->>DB: UPDATE inventory SET sold_qty_col = sold_qty + requested_qty
-            API->>DB: Recalculate Formulas (Remaining, Values, SP, Totals)
-            DB-->>API: Transaction Committed
-            
-            API-->>GSheet: Spawn Thread: init_google_sheets()
-            API-->>Web: HTTP 200 { success: true, invoice_no: ... }
-            Web-->>User: Render Print Receipt & Confirmation Modal
+    User->>FE: Enter DS code, select items & qty
+    FE->>API: POST JSON {dsCode, items, grandTotal, date}
+
+    API->>DB: SELECT id FROM invoices WHERE invoice_no = ?
+    alt Duplicate invoice_no
+        DB-->>API: Row found
+        API-->>FE: HTTP 400 — Invoice number already exists
+    else Unique
+        API->>DB: SELECT c19 (Remaining Qty) per SKU
+        DB-->>API: Current stock levels
+
+        alt Any item exceeds available stock
+            API-->>FE: HTTP 400 — Strict Policy Error (SKU name, requested, available)
+        else All stock available
+            API->>DB: INSERT INTO invoices (…)
+            API->>API: get_sold_qty_col_idx(headers, date) → week column
+            API->>DB: UPDATE inventory SET c{week_col} += qty_sold per SKU
+            API->>DB: update_inventory_formulas() → recalc gross/remaining/SP
+            API->>DB: update_totals_row() → resum cols 6-20 + col 28
+            DB-->>API: Committed
+
+            API-->>Portal: Thread: submit_order_async(ds_code, items, order_type)
+            API-->>GS: Thread: init_google_sheets()
+            API-->>FE: HTTP 200 {success, invoice_id}
+            FE-->>User: Show receipt + confirmation
         end
     end
 ```
 
 ---
 
-### 5.2 Multi-Month Rollover & Stock Valuation Math
+### 5.2 Auto-Sync Scheduler — Hourly GSheets + Daily Rollover
 
 ```mermaid
 flowchart TD
-    Start([Trigger: Month Rollover / Inventory Master View]) --> ScanMonths[Scan all unique dates in Invoices & Purchase Orders]
-    ScanMonths --> MonthSelect{Target Month Selected?}
-    MonthSelect -->|No| DefaultMonth[Set Target Month = Current / Latest Month]
-    MonthSelect -->|Yes| ParseDates[Compute Start Date: YYYY-MM-01 and End Date: YYYY-MM-Days]
-    
-    DefaultMonth --> ParseDates
-    ParseDates --> LoadHeaders[Build Dynamic 5-Week Column Headers for Target Month]
-    LoadHeaders --> FetchPurchases[Aggregate purchase_orders.json where Date <= End Date]
-    FetchPurchases --> FetchSales[Aggregate invoices where Date <= End Date and Status != 'cancelled']
-    
-    FetchSales --> CalcLoop[Iterate through all 220 Inventory SKUs]
-    CalcLoop --> CalcTotalPurchased[Total Purchased = Sum of all historical purchase orders up to End Date]
-    CalcLoop --> CalcSalesBucket[Distribute Month Sales across 5 Weekly Buckets based on Day of Month]
-    CalcLoop --> CalcRemaining[Remaining Qty = Total Purchased - Cumulative Sales]
-    
-    CalcRemaining --> CalcValuations[Compute Gross Value, Remaining Value, Sales % and Total SP]
-    CalcValuations --> GenerateTotals[Compute Global TOTAL Summation Row across all 30 Columns]
-    GenerateTotals --> RenderMaster[Deliver JSON / Render Inventory Master Grid UI]
-    RenderMaster --> End([Complete])
+    Start(["🚀 Startup — _auto_sync_loop daemon thread starts"]) --> Sleep["sleep(300) — 5-minute poll loop"]
+    Sleep --> CheckDay{"now.day ≠ last_rollover_day ?"}
+    CheckDay -->|Yes| Rollover["monthly_rollover.check_and_rollover(conn)"]
+    Rollover --> RolledOver{"Headers changed?"}
+    RolledOver -->|Yes| PushRollover["init_google_sheets()\nPush new headers to GSheets"]
+    RolledOver -->|No| CheckHour
+    PushRollover --> CheckHour
+    CheckDay -->|No| CheckHour{"now.hour ≠ last_push_hour ?"}
+    CheckHour -->|No| Sleep
+    CheckHour -->|Yes| CredsCheck{"credentials.json exists?"}
+    CredsCheck -->|No| Sleep
+    CredsCheck -->|Yes| Pull["restore_from_gsheets()\nPull GSheets → SQLite"]
+    Pull --> Push["init_google_sheets()\nPush SQLite → GSheets"]
+    Push --> Sleep
 
-    style Start fill:#3b82f6,stroke:#1d4ed8,color:#fff
-    style End fill:#10b981,stroke:#047857,color:#fff
+    style Start fill:#8b5cf6,stroke:#6d28d9,color:#fff
 ```
 
 ---
 
-### 5.3 Headless Portal Authentication & Order Placement
+### 5.3 Stock Point Order via Headless Portal Bot
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor Admin as Admin / Franchise Operator
-    participant UI as Stock Order UI (/stock_point_order)
-    participant Bot as Order Submitter Bot (submit_stock_order.py)
-    participant Portal as Asclepius Portal (asclepiuswellness.com)
+    actor Admin as Admin (/stock_point_order UI)
+    participant API as /api/place_stock_order (app.py)
+    participant Sub as submit_stock_order.py (subprocess, 180s timeout)
+    participant Portal as asclepiuswellness.com/shoppingpoint/FranchiseorderN.aspx
 
-    Admin->>UI: Select Restock Items & Quantities
-    UI->>Bot: POST /api/place_stock_order (JSON itemlist)
-    
-    Bot->>Bot: Launch Playwright Chromium (Headless)
-    Bot->>Portal: GET /login.aspx?webid=1
-    Portal-->>Bot: HTML Login Form + ViewState Tokens
-    Bot->>Portal: Fill Username & Password -> Click Login
-    Portal-->>Bot: 302 Redirect / Shopping Point Dashboard
-    
-    Bot->>Portal: GET /shoppingpoint/FranchiseorderN.aspx
-    Portal-->>Bot: Render Order Form (Dropdowns, Hidden Fields)
-    
-    loop For each Product in Order
-        Bot->>Portal: Select Item Dropdown (#ctl00_ContentPlaceHolder1_itemlist)
-        Bot->>Portal: Fill Quantity (#ctl00_ContentPlaceHolder1_txtqty)
-        Bot->>Portal: Click Add Item (#ctl00_ContentPlaceHolder1_btnadd)
-        Portal-->>Bot: AJAX Postback Update (Item Added to Grid)
+    Admin->>API: POST {items: [{name, qty, portal_id}, ...]}
+    API->>Sub: subprocess.run([python, submit_stock_order.py, items_json])
+
+    Sub->>Portal: Playwright Chromium launch (headless)
+    Sub->>Portal: GET /login.aspx?webid=1
+    Portal-->>Sub: Login form + ViewState tokens
+    Sub->>Portal: Fill credentials → Click #btnfranlogin
+    Portal-->>Sub: Redirect to dashboard
+
+    Sub->>Portal: GET /shoppingpoint/FranchiseorderN.aspx
+    Portal-->>Sub: Order form (product dropdown, qty input)
+
+    loop For each item
+        Sub->>Portal: Select #itemlist (by portal_id or name)
+        Sub->>Portal: Fill #txtqty
+        Sub->>Portal: Click #btnadd
+        Portal-->>Sub: AJAX postback — item added to grid
     end
-    
-    Bot->>Bot: Register Dialog Handler (Auto-accept alerts)
-    Bot->>Portal: Click Save Button (#ctl00_ContentPlaceHolder1_ButtonSave1)
-    Portal-->>Bot: Trigger Confirmation Dialog + Submit
-    Portal-->>Bot: Render Order Success Confirmation & Order ID
-    
-    Bot->>Bot: Capture Screenshot & Extract Order Reference
-    Bot-->>UI: Return Order Status & Order Reference JSON
-    UI-->>Admin: Display Green Success Banner with Order ID
+
+    Sub->>Sub: Register dialog handler (auto-accept alerts)
+    Sub->>Portal: Click #ButtonSave1 ("Send For Approval")
+    Portal-->>Sub: JS confirmation dialog → accepted
+    Portal-->>Sub: Order confirmation page + Order ID
+
+    Sub-->>API: JSON stdout {success, log, order_id}
+    API-->>Admin: Return JSON response
 ```
 
 ---
 
-### 5.4 BFS/DFS Genealogy Tree Crawling Algorithm
+### 5.4 BFS Genealogy Downline Tree Crawler
 
 ```mermaid
 flowchart TD
-    Init([Start Genealogy Extraction]) --> Config[Set Root Node = 62C04A, Initialize Queue & Visited Set]
-    Config --> CheckBackup{Backup CSV Exists?}
-    CheckBackup -->|Yes| LoadBackup[Load already visited nodes to avoid duplicate scraping]
-    CheckBackup -->|No| LaunchBrowser[Launch Async Playwright Chromium Instance]
-    LoadBackup --> LaunchBrowser
+    Init(["Start: Full_Tree_Crawler.py"]) --> Config["Root = 62C04A\nInit queue, visited set"]
+    Config --> CheckBackup{"backup .csv exists?"}
+    CheckBackup -->|Yes| LoadBackup["Read CSV → repopulate results & visited set"]
+    CheckBackup -->|No| Launch["async_playwright: launch Chromium"]
+    LoadBackup --> Launch
 
-    LaunchBrowser --> Auth[Authenticate to Asclepius Portal User Panel]
-    Auth --> NavTree[Navigate to UserGroupTree.aspx]
-    
-    NavTree --> QueueCheck{Is Queue Empty?}
-    QueueCheck -->|Yes| SaveFinal[Save Full Tree to Excel & Backup CSV]
-    SaveFinal --> Done([Crawling Finished])
+    Launch --> Login["goto Login.aspx\nFill DS code + password\nWait networkidle"]
+    Login --> NavTree["goto UserGroupTree.aspx\nWait networkidle"]
 
-    QueueCheck -->|No| PopNode[Pop Next Node DS Code from Queue]
-    PopNode --> NodeVisited{Already Visited?}
-    NodeVisited -->|Yes| QueueCheck
-    NodeVisited -->|No| MarkVisited[Add to Visited Set]
+    NavTree --> QueueEmpty{"queue empty?"}
+    QueueEmpty -->|Yes| Save["Write results to Full_Tree_Data.xlsm\n+ Backup CSV"]
+    Save --> Done(["Done"])
 
-    MarkVisited --> SearchNode[Enter DS Code into Tree Search Box and Submit]
-    SearchNode --> ParseDOM[Parse Rendered Tree DOM for Current Node & Direct Children]
-    ParseDOM --> ExtractData[Extract: Name, DS Code, Rank, SAO/SGO Points, KYC, Sponsor ID]
-    ExtractData --> AppendResults[Append Node Record to Results List]
-    
-    AppendResults --> EnqueueChildren[Detect SAO Left Child and SGO Right Child]
-    EnqueueChildren --> EnqueueQueue[Push Child DS Codes into Queue]
-    EnqueueQueue --> Checkpoint{Every 25 Nodes?}
-    Checkpoint -->|Yes| FlushCSV[Write Incremental Checkpoint to Backup CSV]
-    Checkpoint -->|No| QueueCheck
-    FlushCSV --> QueueCheck
+    QueueEmpty -->|No| Pop["current_node = queue.pop(0)"]
+    Pop --> Visited{"in visited?"}
+    Visited -->|Yes| NavTree
+    Visited -->|No| Mark["visited.add(current_node)"]
+
+    Mark --> Search["Enter DS code into tree search → submit"]
+    Search --> Parse["Parse tree DOM: current node + direct children"]
+    Parse --> Extract["Extract: Name, DS Code, Rank, SAO/SGO SP,\nKYC, Sponsor ID, Placement ID"]
+    Extract --> Append["Append record to results"]
+    Append --> Enqueue["Push SAO child + SGO child to queue"]
+    Enqueue --> Checkpoint["Write backup CSV\n(every iteration)"]
+    Checkpoint --> NavTree
 
     style Init fill:#8b5cf6,stroke:#6d28d9,color:#fff
     style Done fill:#10b981,stroke:#047857,color:#fff
@@ -521,103 +552,160 @@ flowchart TD
 
 ---
 
-### 5.5 Ayurvedic Clinical Recommendation Engine Graph
+### 5.5 Customer DS Lookup — DB Cache + Live Portal Fallback
 
 ```mermaid
-graph LR
-    subgraph Disease_Categories ["Disease Categories"]
-        C1["Cardiovascular System"]
-        C2["Digestive & GI Tract"]
-        C3["Joint, Bone & Arthritic"]
-        C4["Respiratory Health"]
-        C5["Immunity & Vitality"]
-        C6["Metabolic & Endocrine"]
-    end
-
-    subgraph Core_Formulations ["Therapeutic Formulations"]
-        P1["CardioDoc Ras"]
-        P2["Triphala & DigestDoc"]
-        P3["OrthoDoc & Joint Curative"]
-        P4["CoughDoc & Curcumin Drops"]
-        P5["ImmunoDoc Ras"]
-        P6["DiaboDoc Ras"]
-    end
-
-    subgraph Clinical_Protocols ["Comprehensive Clinical Protocol"]
-        D1["🥗 Targeted Ayurvedic Diet & Pathya"]
-        E1["🧘 Specific Yoga & Asanas"]
-        T1["💡 Traditional Daily Ayurvedic Tips"]
-        V1["⚠️ Things to Avoid (Apathya)"]
-        W1["⚖️ Dosage & Product Combinations"]
-    end
-
-    C1 --> P1 --> D1 & E1 & T1 & V1 & W1
-    C2 --> P2 --> D1 & E1 & T1 & V1 & W1
-    C3 --> P3 --> D1 & E1 & T1 & V1 & W1
-    C4 --> P4 --> D1 & E1 & T1 & V1 & W1
-    C5 --> P5 --> D1 & E1 & T1 & V1 & W1
-    C6 --> P6 --> D1 & E1 & T1 & V1 & W1
-
-    classDef cat fill:#3b82f6,stroke:#1d4ed8,color:#fff;
-    classDef prod fill:#10b981,stroke:#047857,color:#fff;
-    classDef proto fill:#f59e0b,stroke:#d97706,color:#fff;
-
-    class C1,C2,C3,C4,C5,C6 cat;
-    class P1,P2,P3,P4,P5,P6 prod;
-    class D1,E1,T1,V1,W1 proto;
+flowchart LR
+    A["GET /api/customer?ds_code=XXXX"] --> B["SELECT * FROM customers\nWHERE ds_code = ?"]
+    B --> C{"Found in DB?"}
+    C -->|Yes| D["Return cached customer JSON"]
+    C -->|No| E["ds_lookup_api.fetch_ds_from_portal(ds_code)\nPlaywright → SpdistributorSale.aspx"]
+    E --> F{"Portal returned data?"}
+    F -->|Yes| G["INSERT INTO customers (cache for next time)"]
+    G --> H["Return live customer JSON"]
+    F -->|No| I["HTTP 404 — DS Code not found"]
 ```
 
 ---
 
-## 6. State Machine & Transaction Lifecycle
+### 5.6 Invoice Cancel & Stock Restoration
 
-Every invoice and financial transaction traverses through strict state transitions to ensure auditability and prevent stock desynchronization:
+```mermaid
+sequenceDiagram
+    autonumber
+    participant FE as Frontend
+    participant API as /api/invoice/cancel/<id> (invoice_api.py)
+    participant DB as ledger.db
+    participant GS as Google Sheets
+
+    FE->>API: POST (no body needed)
+    API->>DB: SELECT items, date_created FROM invoices WHERE id = ?
+    DB-->>API: Invoice line items + date
+
+    API->>API: get_sold_qty_col_idx(headers, date_created) → week col
+    loop For each line item
+        API->>DB: SELECT c{col} FROM inventory WHERE c3 matches SKU
+        API->>DB: UPDATE c{col} = MAX(0, current − qty_sold)
+        API->>DB: update_inventory_formulas() per row
+    end
+
+    API->>DB: UPDATE invoices SET status='cancelled' WHERE id=?
+    API->>DB: update_totals_row()
+    DB-->>API: Committed
+
+    API-->>GS: Thread: init_google_sheets()
+    API-->>FE: HTTP 200 {success: true, message: "Invoice cancelled and inventory restored."}
+```
+
+---
+
+## 6. Invoice State Machine
 
 ```mermaid
 stateDiagram-v2
-    [*] --> Draft: User selects customer & products
-    Draft --> Validated: Strict Stock Check Passed
-    Draft --> Rejected: Stock Insufficient / Duplicate Invoice No
+    [*] --> Validated : POST /api/invoice/create\nstock check passed
+    [*] --> Rejected : duplicate invoice_no\nOR stock insufficient
+
     Rejected --> [*]
 
-    Validated --> Active: DB Commit & Stock Decrement
-    Active --> Dispatched: Order Dispatched to Distributor
-    Active --> Cancelled: Cancel Invoice (/api/invoice/cancel)
-    
-    Cancelled --> StockRestored: Quantities Re-credited to Weekly Bucket
-    StockRestored --> [*]
-    Dispatched --> Completed: Delivered & Reconciled
-    Completed --> [*]
+    Validated --> Active : INSERT committed\nstock decremented
+    Active --> Dispatched : PATCH is_dispatched = 1\n(/api/invoice/update)
+    Active --> Cancelled : POST /api/invoice/cancel\nstock qty restored
+
+    Cancelled --> [*]
+    Dispatched --> [*]
 ```
 
 ---
 
-## 7. Security, Concurrency & Resiliency
+## 7. Auto-Sync Background Scheduler
 
-1. **Thread Isolation**: Database connections are created per-request via SQLite `conn = sqlite3.connect(DB_PATH)` with row factory configuration, preventing multi-threaded race conditions.
-2. **Strict Stock Policy Guard**: Zero-tolerance policy on overselling; atomic verification ensures that inventory can never drop below zero.
-3. **Resilient Background Execution**: Long-running crawlers and Google Sheets synchronization jobs execute in detached daemon threads with dedicated error boundaries and retry logic.
-4. **Volume Shadow Copy (VSS) Compatibility**: Filesystem structure is hardened to allow seamless snapshot backups and rollback capabilities without locking the active database file.
+The `_auto_sync_loop` daemon (started at app startup, never stops) implements this schedule:
 
----
-
-## 8. API Route Directory & Contracts
-
-| Endpoint | Method | Component | Purpose |
-|:---|:---|:---|:---|
-| `/health`, `/ping` | `GET` | Health Check | UptimeRobot heartbeat keep-alive (returns `{"status":"ok"}`) |
-| `/api/disease_guide` | `GET` | Disease Engine | Query disease catalog with fuzzy search and category filters |
-| `/api/disease_guide/<idx>` | `GET` | Disease Engine | Fetch complete clinical prescription details for single disease |
-| `/api/inventory` | `GET` | Inventory Core | Returns live inventory matrix with calculated stock values |
-| `/api/inventory/restock` | `POST` | Inventory Core | Adds restock quantities from supplier invoices and triggers sync |
-| `/api/inventory_master` | `GET` | Rollover Engine | Computes dynamic 5-week sales matrix for specified month |
-| `/api/invoice/create` | `POST` | Invoice API | Creates invoice, verifies stock, decrements inventory, updates totals |
-| `/api/invoice/cancel/<id>`| `POST` | Invoice API | Reverts invoice and restores product stock quantities to bucket |
-| `/api/invoice/sync_sheets`| `POST` | Cloud Sync | Triggers full backup synchronization to Google Sheets API |
-| `/api/place_stock_order` | `POST` | Portal Automation| Headless automated purchase order submission on portal |
-| `/api/mizoram_bronze` | `GET` | Downline Tracker | Returns rank achievement tracking and commission logs |
-| `/api/sync_ledger` | `POST` | Financial Ledger | Synchronizes wallet balances and statement debit/credit records |
+| Interval | Action |
+|---|---|
+| Every 5 minutes | Wake up and check day/hour |
+| Once per calendar **day** | `monthly_rollover.check_and_rollover()` — if month changed: rename headers, zero new-month sold cols, resum TOTAL row, then push to GSheets |
+| Once per calendar **hour** | If `credentials.json` present: `restore_from_gsheets()` (pull) then `init_google_sheets()` (push) |
 
 ---
 
-*Authored for the **Ledger God Mode Web App** repository.*
+## 8. Security, Concurrency & Resiliency
+
+| Concern | Implementation |
+|---|---|
+| **Thread safety** | New SQLite connection per request (`get_db()`); no shared connection state |
+| **Stock oversell prevention** | Pre-commit stock check in `create_invoice()` — rejects entire transaction if any SKU is short |
+| **Portal rate limits** | `ds_lookup_api` caches results in `customers` table; `restore_from_gsheets` enforces 60-sec rate limit via `sync_log` |
+| **Subprocess isolation** | `submit_stock_order.py` and `fetch_ledger_report.py` run as subprocesses (Playwright can block Gunicorn workers) |
+| **Auto-recovery** | BFS crawlers checkpoint to CSV every node; resume automatically if interrupted |
+| **Cloud portability** | Credentials loaded from `/etc/secrets/credentials.json` (Render Secret Files) or local `credentials.json` |
+| **Portal sync disabled** | `/api/portal_sync` returns HTTP 501 intentionally — pending SQLite migration of the sync engine |
+
+---
+
+## 9. Full API Route Directory
+
+### `app.py` routes
+
+| Endpoint | Method | Description |
+|---|---|---|
+| `/`, `/dashboard` | GET | Main dashboard SPA |
+| `/inventory` | GET | Live inventory page |
+| `/inventory_master` | GET | Multi-month inventory master |
+| `/invoice` | GET | Invoice creation terminal |
+| `/invoice_history` | GET | Invoice history viewer |
+| `/purchase_history` | GET | Purchase orders log |
+| `/ledger_report` | GET | Financial ledger / wallet |
+| `/stock_point_order` | GET | Franchise restock order UI |
+| `/mizoram_bronze` | GET | Mizoram target tracker |
+| `/disease_guide` | GET | Ayurvedic disease guide |
+| `/portal_sync` | GET | Portal sync management UI |
+| `/health`, `/ping` | GET | Health probe → `{"status":"ok"}` |
+| `/api/disease_guide` | GET | Disease search `?q=` `?category=` |
+| `/api/disease_guide/<idx>` | GET | Full disease detail by index |
+| `/api/kpi` | GET | Live KPI dashboard metrics |
+| `/api/inventory` | GET | Inventory data + headers |
+| `/api/inventory/restock` | POST | Add stock qty to a product |
+| `/api/inventory/add_product` | POST | Add a new product SKU |
+| `/api/stock_point_inventory` | GET | Portal product catalog (scraped_products.json) |
+| `/api/inventory_master/months` | GET | List all available months |
+| `/api/inventory_master` | GET | Compute monthly inventory grid `?month=YYYY-MM` |
+| `/api/inventory_master/update` | POST | Update a single inventory cell |
+| `/api/product/purchases` | GET | Purchase history for a product |
+| `/api/product/sales` | GET | Sales history for a product |
+| `/api/submit_order` | POST | Bulk inventory cell updates |
+| `/api/customer` | GET | DS code lookup (DB cache → portal fallback) |
+| `/api/purchase_orders` | GET | Full purchase_orders.json contents |
+| `/api/kpi` | GET | Live KPIs from DB + ledger |
+| `/api/force_sync` | GET | Force pull from GSheets |
+| `/api/sync_now` | POST/GET | Manual full pull+rollover+push cycle |
+| `/api/fix_sync` | GET | Run robust_sync.sync_all_to_inventory() |
+| `/api/sync_remarks_from_gsheets` | POST | Pull remarks column only from GSheets |
+| `/api/mizoram_bronze` | GET | Get all Mizoram Bronze records |
+| `/api/mizoram_bronze/update` | POST | Update a field in a Mizoram record |
+| `/api/sync_mizoram_now` | POST | Trigger live Mizoram data sync |
+| `/api/fix_historical_buckets` | POST | Run fix_buckets.py as subprocess |
+| `/api/ledger_report` | GET | Return ledger_report.json contents |
+| `/api/ledger_wallet_balance` | GET | Return closing balance only |
+| `/api/sync_ledger` | POST | Launch fetch_ledger_report.py (Popen) |
+| `/api/sync_status` | GET | Check ledger scraper subprocess status |
+| `/api/ledger_manual_entry` | POST | Append a manual debit/credit entry |
+| `/api/place_stock_order` | POST | Run submit_stock_order.py subprocess (3-min timeout) |
+| `/api/sp_order_data` | GET | Fetch live SP order data (25-sec timeout) |
+| `/api/portal_sync` | POST | **Disabled — HTTP 501** (pending SQLite migration) |
+
+### `invoice_api.py` Blueprint routes
+
+| Endpoint | Method | Description |
+|---|---|---|
+| `/api/invoice/create` | POST | Create invoice + validate stock + update inventory |
+| `/api/invoice/list` | GET | List all invoices with SP recalculation |
+| `/api/invoice/update/<id>` | POST | Update dispatch status / remark |
+| `/api/invoice/next_no` | GET | Auto-generate next DSR invoice number |
+| `/api/invoice/cancel/<id>` | POST | Cancel invoice + restore inventory stock |
+| `/api/invoice/sync_sheets` | POST | Trigger init_google_sheets() manually |
+
+---
+
+*Last verified against source: `app.py` (1373 lines), `invoice_api.py` (484 lines), `inventory_engine.py` (363 lines), `monthly_rollover.py` (152 lines).*
