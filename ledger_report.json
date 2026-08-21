@@ -1,7 +1,7 @@
 {
   "success": true,
-  "from_date": "01/06/2026",
-  "to_date": "28/07/2026",
+  "from_date": "01/01/2025",
+  "to_date": "21/08/2026",
   "franchise_value": "960158985",
   "headers": [
     "Sno",
@@ -417,10 +417,191 @@
       "Transaction Amount": "354313.68",
       "Transaction Type": "Dr",
       "Balance": "0.24"
+    },
+    {
+      "Sno": "46",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "31/07/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "50000.00",
+      "Transaction Type": "Cr",
+      "Balance": "50000.24"
+    },
+    {
+      "Sno": "47",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "31/07/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "49975.00",
+      "Transaction Type": "Cr",
+      "Balance": "99975.24"
+    },
+    {
+      "Sno": "48",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "31/07/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "35091.00",
+      "Transaction Type": "Cr",
+      "Balance": "135066.24"
+    },
+    {
+      "Sno": "49",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "31/07/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "37643.00",
+      "Transaction Type": "Cr",
+      "Balance": "172709.24"
+    },
+    {
+      "Sno": "50",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "31/07/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "57291.00",
+      "Transaction Type": "Cr",
+      "Balance": "230000.24"
+    },
+    {
+      "Sno": "51",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "31/07/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "3166.00",
+      "Transaction Type": "Cr",
+      "Balance": "233166.24"
+    },
+    {
+      "Sno": "52",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "31/07/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "1.00",
+      "Transaction Type": "Cr",
+      "Balance": "233167.24"
+    },
+    {
+      "Sno": "53",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "31/07/2026",
+      "Transaction Details": "Amount Debited against Order Approve [Order No : 138005] Bill no : GUW/000198/26-27",
+      "Transaction Amount": "233166.30",
+      "Transaction Type": "Dr",
+      "Balance": "0.94"
+    },
+    {
+      "Sno": "54",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "05/08/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "18287.00",
+      "Transaction Type": "Cr",
+      "Balance": "18287.94"
+    },
+    {
+      "Sno": "55",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "05/08/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "16682.00",
+      "Transaction Type": "Cr",
+      "Balance": "34969.94"
+    },
+    {
+      "Sno": "56",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "05/08/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "10879.00",
+      "Transaction Type": "Cr",
+      "Balance": "45848.94"
+    },
+    {
+      "Sno": "57",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "05/08/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "7524.00",
+      "Transaction Type": "Cr",
+      "Balance": "53372.94"
+    },
+    {
+      "Sno": "58",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "10/08/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "30000.00",
+      "Transaction Type": "Cr",
+      "Balance": "83372.94"
+    },
+    {
+      "Sno": "59",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "11/08/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "5148.00",
+      "Transaction Type": "Cr",
+      "Balance": "88520.94"
+    },
+    {
+      "Sno": "60",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "14/08/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "100000.00",
+      "Transaction Type": "Cr",
+      "Balance": "188520.94"
+    },
+    {
+      "Sno": "61",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "17/08/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "41035.00",
+      "Transaction Type": "Cr",
+      "Balance": "229555.94"
+    },
+    {
+      "Sno": "62",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "17/08/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "100.00",
+      "Transaction Type": "Cr",
+      "Balance": "229655.94"
+    },
+    {
+      "Sno": "63",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "17/08/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "25971.00",
+      "Transaction Type": "Cr",
+      "Balance": "255626.94"
+    },
+    {
+      "Sno": "64",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "17/08/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "59.99",
+      "Transaction Type": "Cr",
+      "Balance": "255686.93"
+    },
+    {
+      "Sno": "65",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "17/08/2026",
+      "Transaction Details": "Amount Debited against Order Approve [Order No : 140719] Bill no : GUW/000216/26-27",
+      "Transaction Amount": "240866.65",
+      "Transaction Type": "Dr",
+      "Balance": "14820.28"
     }
   ],
-  "closing_balance": 0.24,
+  "closing_balance": 14820.28,
   "balance_text": "",
-  "scraped_at": "2026-07-28T13:36:24.950731",
-  "row_count": 45
+  "scraped_at": "2026-08-21T14:56:37.165861",
+  "row_count": 65,
+  "pages_scraped": 2
 }
