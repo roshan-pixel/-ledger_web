@@ -463,11 +463,14 @@ def list_invoices():
 def update_invoice_info(invoice_id):
     from app import get_db
     try:
-        data = request.get_json()
+        data = request.get_json() or {}
         conn = get_db()
         c = conn.cursor()
         
         if 'is_dispatched' in data:
+            if data.get('password') != 'ABC@!234':
+                conn.close()
+                return jsonify({'error': 'Incorrect password! Authorization required to change dispatched status.'}), 403
             val = 1 if data['is_dispatched'] else 0
             c.execute("UPDATE invoices SET is_dispatched = ? WHERE id = ?", (val, invoice_id))
             
@@ -536,6 +539,10 @@ def get_next_invoice_no():
 def cancel_invoice(invoice_id):
     from app import get_db, update_inventory_formulas, update_totals_row
     try:
+        data = request.get_json(silent=True) or {}
+        if data.get('password') != 'ABC@!234':
+            return jsonify({'error': 'Incorrect password! Authorization required to cancel invoice.'}), 403
+
         conn = get_db()
         c = conn.cursor()
         

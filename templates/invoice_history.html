@@ -453,7 +453,7 @@
                     <td class="amt">${parseFloat(inv.amount || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
                     <td class="amt" style="color:#818cf8;font-weight:600;">${parseFloat(inv.grand_total_sp || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
                     <td><span class="status ${inv.status || 'active'}">${inv.status || 'active'}</span></td>
-                    <td style="text-align:center;"><input type="checkbox" style="cursor:pointer; width:1.2rem; height:1.2rem;" ${inv.is_dispatched ? 'checked' : ''} onchange="toggleDispatched(${inv.id}, this.checked)"></td>
+                    <td style="text-align:center;"><input type="checkbox" style="cursor:pointer; width:1.2rem; height:1.2rem;" ${inv.is_dispatched ? 'checked' : ''} onchange="toggleDispatched(${inv.id}, this.checked, this)"></td>
                     <td><button class="btn-view" style="padding:0.3rem 0.6rem; font-size:0.75rem;" onclick="openRemarkModal(${inv.id}, '${safeRemark}')">Remark</button></td>
                     <td><button class="btn-view" onclick="viewOrder(${index})">View Order</button></td>
                 `;
@@ -503,14 +503,24 @@
     async function cancelInvoice(id) {
         if (!confirm('Are you sure you want to cancel this invoice? The items will be returned to inventory.')) return;
         
+        const pwd = prompt('Enter authorization password to cancel invoice:');
+        if (!pwd) {
+            return;
+        }
+        
         try {
-            const res = await fetch(`/api/invoice/cancel/${id}`, { method: 'POST' });
+            const res = await fetch(`/api/invoice/cancel/${id}`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ password: pwd })
+            });
             const data = await res.json();
             if (res.ok) {
                 alert('Invoice cancelled successfully!');
+                closeModal();
                 loadHistory(); // Reload table
             } else {
-                alert('Error: ' + data.error);
+                alert('Error: ' + (data.error || 'Incorrect password'));
             }
         } catch (e) {
             console.error(e);
@@ -518,17 +528,36 @@
         }
     }
 
-    async function toggleDispatched(id, is_checked) {
+    async function toggleDispatched(id, is_checked, checkboxElem) {
+        const pwd = prompt('Enter authorization password to change dispatched status:');
+        if (!pwd) {
+            if (checkboxElem) {
+                checkboxElem.checked = !is_checked; // revert
+            }
+            return;
+        }
+
         try {
-            await fetch('/api/invoice/update/' + id, {
+            const res = await fetch('/api/invoice/update/' + id, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({is_dispatched: is_checked})
+                body: JSON.stringify({is_dispatched: is_checked, password: pwd})
             });
-            showToast('Dispatched status updated', 'success');
+            const data = await res.json();
+            if (res.ok) {
+                showToast('Dispatched status updated', 'success');
+            } else {
+                alert('Error: ' + (data.error || 'Incorrect password'));
+                if (checkboxElem) {
+                    checkboxElem.checked = !is_checked; // revert
+                }
+            }
         } catch(e) {
             console.error(e);
             showToast('Failed to update dispatched status', 'error');
+            if (checkboxElem) {
+                checkboxElem.checked = !is_checked; // revert
+            }
         }
     }
     
