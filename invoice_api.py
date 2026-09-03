@@ -4,6 +4,7 @@ import datetime
 import json
 import threading
 import re
+from pathlib import Path
 from init_gsheets import init_google_sheets
 
 def get_sold_qty_col_idx(all_headers, date_str):
@@ -71,7 +72,107 @@ def get_sold_qty_col_idx(all_headers, date_str):
     return matching_cols[-1]
 
 
+def _get_true_remaining_stock(conn):
+    """
+    Calculate TRUE remaining stock for every product across ALL months.
+
+    Formula:
+        remaining = total_purchased (purchase_orders.json) - cumulative_active_sales (all invoices)
+
+    This is immune to the monthly rollover bug because it does NOT rely on
+    the c19 (Remaining Qty) column, which only reflects current-month sold
+    quantities after the monthly rollover zeroes them out.
+
+    Returns a dict: { normalized_product_key -> remaining_qty }
+    where normalized_product_key = re.sub(r'[^A-Z0-9]', '', product_name.upper())
+    """
+    import inventory_engine as _ie
+
+    c = conn.cursor()
+
+    # ── 1. Build product-code → norm_key map from inventory table ────────────
+    c.execute("SELECT c3 FROM inventory WHERE c3 IS NOT NULL AND c3 != ''")
+    code_to_normkey = {}
+    for row in c.fetchall():
+        raw = str(row[0]).strip()
+        if not raw or raw.upper() == 'TOTAL':
+            continue
+        code = _ie.extract_code(raw)
+        norm_key = re.sub(r'[^A-Z0-9]', '', raw.upper())
+        if code:
+            code_to_normkey[code] = norm_key
+
+    # ── 2. Tally purchases from purchase_orders.json ─────────────────────────
+    purchased = {}  # norm_key -> total qty
+    orders_path = Path(__file__).parent / 'purchase_orders.json'
+    if orders_path.exists():
+        try:
+            with open(orders_path, 'r', encoding='utf-8') as f:
+                orders = json.load(f)
+            for order in orders:
+                for prod in order.get('products', []):
+                    if len(prod) < 5:
+                        continue
+                    code = str(prod[1]).strip()
+                    raw_name = str(prod[2]).replace('\n', ' ').strip().upper()
+                    try:
+                        qty = float(str(prod[4]).replace(',', ''))
+                    except Exception:
+                        qty = 0
+                    if qty <= 0:
+                        continue
+                    nk = code_to_normkey.get(code) or re.sub(r'[^A-Z0-9]', '', raw_name)
+                    purchased[nk] = purchased.get(nk, 0.0) + qty
+        except Exception as e:
+            print(f"[StockCheck] Warning: could not read purchase_orders.json: {e}")
+
+    # Fallback: read c7 (Total Qty) directly from inventory for items not in purchase JSON
+    c.execute("SELECT c3, c7 FROM inventory WHERE c3 IS NOT NULL AND c3 != ''")
+    for row in c.fetchall():
+        raw = str(row[0]).strip()
+        if not raw or raw.upper() == 'TOTAL':
+            continue
+        nk = re.sub(r'[^A-Z0-9]', '', raw.upper())
+        if nk not in purchased:
+            try:
+                purchased[nk] = float(str(row[1] or '0').replace(',', ''))
+            except Exception:
+                purchased[nk] = 0.0
+
+    # ── 3. Tally ALL active invoice sales (across ALL months) ─────────────────
+    sold = {}   # norm_key -> total qty sold
+    c.execute("SELECT items FROM invoices WHERE status != 'cancelled'")
+    for row in c.fetchall():
+        try:
+            items = json.loads(row[0] or '[]')
+        except Exception:
+            continue
+        for item in items:
+            desc = str(item.get('description') or item.get('name') or '').strip()
+            if not desc:
+                continue
+            try:
+                qty = float(str(item.get('qty', 0)).replace(',', ''))
+            except Exception:
+                qty = 0
+            if qty <= 0:
+                continue
+            code = _ie.extract_code(desc)
+            nk = code_to_normkey.get(code) if code else None
+            if nk is None:
+                nk = re.sub(r'[^A-Z0-9]', '', desc.upper())
+            sold[nk] = sold.get(nk, 0.0) + qty
+
+    # ── 4. remaining = purchased - sold ──────────────────────────────────────
+    remaining = {}
+    for nk in set(list(purchased.keys()) + list(sold.keys())):
+        remaining[nk] = purchased.get(nk, 0.0) - sold.get(nk, 0.0)
+
+    return remaining
+
+
 invoice_api = Blueprint('invoice_api', __name__)
+
 
 @invoice_api.route('/api/invoice/sync_sheets', methods=['POST'])
 def sync_sheets_api():
@@ -176,45 +277,59 @@ def create_invoice():
             if c.fetchone():
                 return jsonify({'error': f'Invoice number {invoice_no} already exists!'}), 400
                 
-        # 0.5. Validate Stock (Strict Policy)
-        c.execute("SELECT value FROM settings WHERE key='inventory_headers'")
-        all_headers = json.loads(c.fetchone()[0])
-        rem_qty_idx = next((i for i, h in enumerate(all_headers) if 'Remaining Qty' in h), None)
-        if rem_qty_idx is not None:
-            rem_qty_col = f"c{rem_qty_idx + 1}"
-            
-            # Aggregate requested items by normalized name
-            requested_qty = {}
-            original_names = {}
-            for item in items:
-                desc = str(item.get('description') or item.get('name') or '').strip()
-                try:
-                    qty_req = float(str(item.get('qty', 0)).replace(',', ''))
-                except:
-                    qty_req = 0.0
-                    
-                if desc and qty_req > 0:
-                    import re
+        # 0.5. Validate Stock — STRICT POLICY (true cross-month cumulative check)
+        # ─────────────────────────────────────────────────────────────────────
+        # BUG FIXED: The old check read the `Remaining Qty` column (c19) from the
+        # inventory table. That column is zeroed each month by the monthly rollover,
+        # so it only reflected CURRENT-MONTH sales. This allowed invoices to be
+        # created when real all-time stock was already 0 or negative.
+        #
+        # The new check calls _get_true_remaining_stock() which independently
+        # computes:  purchased (purchase_orders.json) – sold (ALL active invoices)
+        # This is always accurate regardless of which month it is.
+        # ─────────────────────────────────────────────────────────────────────
+        true_stock = _get_true_remaining_stock(conn)
+
+        # Aggregate requested quantities by normalized product key
+        requested_qty = {}
+        original_names = {}
+        import inventory_engine as _ie
+        for item in items:
+            desc = str(item.get('description') or item.get('name') or '').strip()
+            try:
+                qty_req = float(str(item.get('qty', 0)).replace(',', ''))
+            except Exception:
+                qty_req = 0.0
+
+            if desc and qty_req > 0:
+                code = _ie.extract_code(desc)
+                # Build code_to_normkey snapshot just for this request
+                c.execute("SELECT c3 FROM inventory WHERE c3 IS NOT NULL AND c3 != ''")
+                code_to_normkey_local = {}
+                for r_inv in c.fetchall():
+                    raw = str(r_inv[0]).strip()
+                    if raw and raw.upper() != 'TOTAL':
+                        c2 = _ie.extract_code(raw)
+                        if c2:
+                            code_to_normkey_local[c2] = re.sub(r'[^A-Z0-9]', '', raw.upper())
+                norm_desc = code_to_normkey_local.get(code) if code else None
+                if norm_desc is None:
                     norm_desc = re.sub(r'[^A-Z0-9]', '', desc.upper())
-                    requested_qty[norm_desc] = requested_qty.get(norm_desc, 0) + qty_req
-                    original_names[norm_desc] = desc
-                    
-            # Fetch remaining stock from DB
-            c.execute(f"SELECT c3, {rem_qty_col} FROM inventory WHERE c3 IS NOT NULL AND c3 != ''")
-            db_stock = {}
-            for inv_row in c.fetchall():
-                c3_val = re.sub(r'[^A-Z0-9]', '', str(inv_row[0]).upper())
-                try:
-                    rem = float(str(inv_row[1] or '0').replace(',', ''))
-                except:
-                    rem = 0.0
-                db_stock[c3_val] = rem
-                    
-            # Check each requested item
-            for norm_desc, qty_req in requested_qty.items():
-                avail = db_stock.get(norm_desc, 0.0)
-                if qty_req > avail:
-                        return jsonify({'error': f'Strict Policy Error: Not enough stock for {original_names[norm_desc]}. Requested: {qty_req}, Available: {avail}'}), 400
+                requested_qty[norm_desc] = requested_qty.get(norm_desc, 0.0) + qty_req
+                original_names[norm_desc] = desc
+
+        # Check each requested item against the TRUE remaining stock
+        for norm_desc, qty_req in requested_qty.items():
+            avail = true_stock.get(norm_desc, 0.0)
+            if qty_req > avail:
+                return jsonify({
+                    'error': (
+                        f'Strict Policy Error: Not enough stock for '
+                        f'{original_names[norm_desc]}. '
+                        f'Requested: {int(qty_req)}, '
+                        f'Available: {max(0, int(avail))}'
+                    )
+                }), 400
 
         # 1. Save the invoice
         c.execute(

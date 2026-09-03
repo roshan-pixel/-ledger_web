@@ -543,13 +543,22 @@ def api_inventory():
 
 
 def update_inventory_formulas(conn, row_num, headers):
-    """Recalculate formulas for a row."""
+    """Recalculate formulas for a row.
+
+    BUG FIX: The old implementation summed only the current month's 'Sold Qty'
+    columns.  After a monthly rollover those columns are zeroed, causing c19
+    (Remaining Qty) to be inflated and allowing the strict-policy check to be
+    bypassed.
+
+    Fix: use inventory_engine.calculate_inventory() which aggregates ALL
+    active invoice sales across all months to get the true remaining qty.
+    """
     c = conn.cursor()
     c.execute("SELECT * FROM inventory WHERE row_num=?", (row_num,))
     row = c.fetchone()
     if not row or str(row['c3']).upper() == 'TOTAL':
         return
-        
+
     try:
         try:
             dp_idx = headers.index('Price/Pc (Rs.)') + 1
@@ -563,28 +572,60 @@ def update_inventory_formulas(conn, row_num, headers):
             gross_val_idx = 8
             rem_qty_idx = 19
             rem_val_idx = 20
-            
+
         dp = float(str(row[f'c{dp_idx}']).replace(',', '') or 0)
         avail_stock = float(str(row[f'c{tot_qty_idx}']).replace(',', '') or 0)
-        
+
         # update Gross Value
         gross_val = avail_stock * dp
         c.execute(f"UPDATE inventory SET c{gross_val_idx}=? WHERE row_num=?", (gross_val, row_num))
-            
-        # sum sold qtys and update sale values
-        total_sold = 0
+
+        # update sale values for current-month weekly columns (cosmetic display)
         for i, h in enumerate(headers):
             if str(h).startswith("Sold Qty"):
                 qty_col = f"c{i+1}"
-                val_col = f"c{i+2}"
                 qty = float(str(row[qty_col]).replace(',', '') or 0)
-                total_sold += qty
                 sale_val = qty * dp
                 c.execute(f"UPDATE inventory SET c{i+2}=? WHERE row_num=?", (sale_val, row_num))
-                
-        rem_qty = avail_stock - total_sold
+
+        # ── TRUE REMAINING QTY via inventory engine ──────────────────────────
+        # This reads ALL active invoices (not just current-month columns) so
+        # it is correct immediately after a monthly rollover.
+        try:
+            import inventory_engine as _ie
+            import re
+            product_name = str(row['c3']).strip()
+            prod_code = _ie.extract_code(product_name)
+            norm_key = re.sub(r'[^A-Z0-9]', '', product_name.upper())
+
+            engine_result = _ie.calculate_inventory(conn)
+            engine_rows = engine_result.get('data', [])
+
+            rem_qty = avail_stock  # fallback
+            for erow in engine_rows:
+                    # engine rows are plain dicts keyed by column name (e.g. 'Product Name')
+                    ename = str(erow.get('Product Name', '')).strip()
+                    ecode = _ie.extract_code(ename)
+                    enorm = re.sub(r'[^A-Z0-9]', '', ename.upper())
+                    if (prod_code and ecode and prod_code == ecode) or enorm == norm_key:
+                        try:
+                            rem_qty = float(str(erow.get('Remaining Qty', avail_stock) or avail_stock).replace(',', ''))
+                        except Exception:
+                            pass
+                        break
+        except Exception as eng_err:
+            # If engine call fails, fall back to simple subtraction (original behaviour)
+            print(f"[update_inventory_formulas] engine fallback: {eng_err}")
+            total_sold = 0
+            for i, h in enumerate(headers):
+                if str(h).startswith("Sold Qty"):
+                    qty_col = f"c{i+1}"
+                    qty = float(str(row[qty_col]).replace(',', '') or 0)
+                    total_sold += qty
+            rem_qty = avail_stock - total_sold
+
         rem_val = rem_qty * dp
-        
+
         # Calculate Total SP
         try:
             sp_pc_idx = headers.index('SP/Pc') + 1
@@ -593,12 +634,11 @@ def update_inventory_formulas(conn, row_num, headers):
             sp_pc = float(str(sp_val).replace(',', '') if sp_val not in (None, '', 'None') else 0)
             tot_sp = sp_pc * rem_qty
         except ValueError:
-            # If headers not found, fallback to c27 and c28
             sp_val = row['c27']
             sp_pc = float(str(sp_val).replace(',', '') if sp_val not in (None, '', 'None') else 0)
             tot_sp = sp_pc * rem_qty
             tot_sp_idx = 28
-            
+
         c.execute(f"UPDATE inventory SET c{rem_qty_idx}=?, c{rem_val_idx}=?, c{tot_sp_idx}=? WHERE row_num=?",
                   (rem_qty, rem_val, tot_sp, row_num))
     except Exception as e:
