@@ -540,17 +540,21 @@ def cancel_invoice(invoice_id):
     from app import get_db, update_inventory_formulas, update_totals_row
     try:
         data = request.get_json(silent=True) or {}
-        if data.get('password') != 'ABC@!234':
-            return jsonify({'error': 'Incorrect password! Authorization required to cancel invoice.'}), 403
-
         conn = get_db()
         c = conn.cursor()
         
-        # 1. Get the invoice to know what to put back
-        c.execute('SELECT items, date_created FROM invoices WHERE id = ?', (invoice_id,))
+        # 1. Get the invoice to know what to put back & check dispatch status
+        c.execute('SELECT items, date_created, is_dispatched FROM invoices WHERE id = ?', (invoice_id,))
         row = c.fetchone()
         if not row:
+            conn.close()
             return jsonify({'error': 'Invoice not found'}), 404
+            
+        # Password is required ONLY IF the invoice is already marked as dispatched
+        is_dispatched = bool(row['is_dispatched']) if 'is_dispatched' in row.keys() else False
+        if is_dispatched and data.get('password') != 'ABC@!234':
+            conn.close()
+            return jsonify({'error': 'Incorrect password! This invoice is marked as dispatched, password authorization is required to cancel it.'}), 403
             
         items = json.loads(row['items'] or '[]')
         
