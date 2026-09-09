@@ -116,24 +116,45 @@ def submit_order_to_portal(ds_code, items, order_type='sao'):
                 if not desc or qty <= 0:
                     continue
                     
-                # Extract product ID if it exists in brackets, e.g. "JC OIL [41] -" -> "41"
+                # Extract product code from brackets, e.g. "HAIRDOC OIL 200 ML [514] -" -> "514"
                 import re
                 match_id = re.search(r'\[(\d+)\]', desc)
-                target_val = match_id.group(1) if match_id else None
+                target_code = match_id.group(1) if match_id else None
                 
-                # Find matching option
+                # ── Matching strategy ────────────────────────────────────────────
+                # PRIORITY 1: Match the bracket product code against the OPTION TEXT
+                #   (portal option values are sequential row indices, NOT product codes)
+                # PRIORITY 2: Best-score substring match (longest common match wins)
+                #   This prevents "HAIRDOC OIL [512]" from winning over
+                #   "HAIRDOC OIL 200 ML [514]" just because it appears first.
+                # ─────────────────────────────────────────────────────────────────
                 best_match = None
-                for opt in options:
-                    if target_val and opt['val'] == target_val:
-                        best_match = opt['val']
-                        break
-                    
-                    # Fallback to string matching
-                    opt_text = opt['text'].strip().upper()
-                    if desc in opt_text or opt_text in desc:
-                        best_match = opt['val']
-                        break
-                        
+
+                # Priority 1: bracket code match in option TEXT
+                if target_code:
+                    code_pattern = f'[{target_code}]'
+                    for opt in options:
+                        opt_text = opt['text'].strip().upper()
+                        if code_pattern in opt_text:
+                            best_match = opt['val']
+                            print(f"[{ds_code}] Matched by product code [{target_code}]: {opt_text}")
+                            break
+
+                # Priority 2: best-score text match (score = length of common text)
+                if not best_match:
+                    best_score = 0
+                    for opt in options:
+                        opt_text = opt['text'].strip().upper()
+                        # Strip trailing " -" and bracket codes for clean name comparison
+                        clean_desc = re.sub(r'\[\d+\]', '', desc).replace(' -', '').strip()
+                        clean_opt = re.sub(r'\[\d+\]', '', opt_text).replace(' -', '').strip()
+                        if clean_desc in clean_opt or clean_opt in clean_desc:
+                            # Score = length of the shorter side (more specific = higher score)
+                            score = min(len(clean_desc), len(clean_opt))
+                            if score > best_score:
+                                best_score = score
+                                best_match = opt['val']
+                                
                 if not best_match:
                     print(f"[{ds_code}] Could not find matching item for: {desc}")
                     continue
