@@ -32,50 +32,501 @@
             min-height:100vh;
             display:flex;
             animation:fadeInSPA .3s ease-out forwards;
-        }/* ── MAIN ────────────────────────── */
-        .main { flex:1; padding:2.5rem; overflow-y:auto; }.header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:2rem; }.title h1 {
-            margin:0; font-size:2.5rem; font-weight:700; letter-spacing:-1px;
-            background:linear-gradient(135deg,#fff,#94a3b8);
-            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+        }        /* ── MAIN ────────────────────────── */
+        .main {
+            flex: 1;
+            min-width: 0;
+            padding: 2rem 2.5rem;
+            overflow-y: auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            width: 100%;
+        }
+
+        .title h1 {
+            margin: 0;
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             line-height: 1.2;
             padding-bottom: 0.05em;
-        }.title p { margin:.4rem 0 0; color:var(--muted); font-size:1.05rem; }/* ── TABLE ───────────────────────── */
+        }
+
+        .title p {
+            margin: 0.4rem 0 0;
+            color: var(--muted);
+            font-size: 1rem;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        /* ── BUTTONS ──────────────────────── */
+        .btn {
+            padding: 0.65rem 1.25rem;
+            border-radius: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            user-select: none;
+            white-space: nowrap;
+        }
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+        .btn:active {
+            transform: translateY(0);
+        }
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(99, 102, 241, 0.35);
+        }
+        .btn-primary:hover {
+            box-shadow: 0 6px 22px rgba(99, 102, 241, 0.5);
+        }
+        .btn-ghost {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .btn-ghost-primary {
+            background: rgba(99, 102, 241, 0.08);
+            color: #a5b4fc;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+        .btn-ghost-primary:hover {
+            background: rgba(99, 102, 241, 0.18);
+            color: #fff;
+            border-color: var(--primary);
+        }
+
+        /* ── KPI METRICS CARDS ───────────── */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.75rem;
+            width: 100%;
+        }
+        .kpi-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 1.25rem 1.4rem;
+            backdrop-filter: var(--blur);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .kpi-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.18);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+        .kpi-card.kpi-clickable {
+            cursor: pointer;
+        }
+        .kpi-card.warning-card {
+            border-color: rgba(245, 158, 11, 0.35);
+            background: rgba(245, 158, 11, 0.05);
+        }
+        .kpi-card.warning-card:hover {
+            border-color: rgba(245, 158, 11, 0.6);
+            background: rgba(245, 158, 11, 0.1);
+            box-shadow: 0 8px 24px rgba(245, 158, 11, 0.2);
+        }
+        .kpi-title {
+            font-size: 0.78rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 600;
+            margin-bottom: 0.35rem;
+        }
+        .kpi-val {
+            font-size: 1.65rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+        .kpi-sub {
+            font-size: 0.78rem;
+            color: var(--muted);
+            margin-top: 0.3rem;
+        }
+        .kpi-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        /* ── TOOLBAR & CONTROLS ─────────── */
+        .toolbar-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 1.25rem 1.4rem;
+            backdrop-filter: var(--blur);
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .toolbar-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .filter-pills-group {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .filter-pill {
+            padding: 0.45rem 0.95rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--muted);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: inherit;
+        }
+        .filter-pill:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .filter-pill.active {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+            box-shadow: 0 0 14px rgba(99, 102, 241, 0.4);
+            font-weight: 600;
+        }
+        .filter-pill.active-warning {
+            background: #f59e0b;
+            color: #0b0f19;
+            border-color: #f59e0b;
+            box-shadow: 0 0 14px rgba(245, 158, 11, 0.4);
+            font-weight: 700;
+        }
+        .filter-pill.active-success {
+            background: #10b981;
+            color: #fff;
+            border-color: #10b981;
+            box-shadow: 0 0 14px rgba(16, 185, 129, 0.4);
+            font-weight: 600;
+        }
+
+        .search-input-wrap {
+            position: relative;
+            flex: 1;
+            min-width: 280px;
+            max-width: 480px;
+        }
+        .search-input-wrap input {
+            width: 100%;
+            padding: 0.65rem 2.4rem 0.65rem 2.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.92rem;
+            outline: none;
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+        }
+        .search-input-wrap input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+            background: rgba(0, 0, 0, 0.4);
+        }
+        .search-input-wrap input::placeholder {
+            color: var(--muted);
+        }
+        .search-icon {
+            position: absolute;
+            left: 0.9rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted);
+            pointer-events: none;
+            font-size: 1rem;
+        }
+        .search-clear-btn {
+            position: absolute;
+            right: 0.8rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--muted);
+            cursor: pointer;
+            font-size: 1.2rem;
+            line-height: 1;
+            padding: 0;
+            display: none;
+        }
+        .search-clear-btn:hover {
+            color: #fff;
+        }
+
+        /* ── TABLE CARD ──────────────────── */
         .card {
-            background:var(--surface); border:1px solid var(--border);
-            border-radius:20px; backdrop-filter:var(--blur);
-            padding:1.5rem; overflow-x:auto;
-        }table { width:100%; border-collapse:separate; border-spacing:0 .45rem; }thead th {
-            text-align:left; padding:.5rem .75rem;
-            color:var(--muted); font-size:.78rem; font-weight:600;
-            text-transform:uppercase; letter-spacing:1px;
-            border-bottom:1px solid var(--border);
-        }tbody tr { background:var(--surface2); transition:background .2s; }tbody tr:hover { background:rgba(255,255,255,.1); }tbody td { padding:.8rem .75rem; font-size:.92rem; }tbody td:first-child { border-radius:10px 0 0 10px; }tbody td:last-child { border-radius:0 10px 10px 0; }.inv-no { color:var(--primary); font-weight:600; }.amt { font-family:monospace; font-size:1.05rem; }.status {
-            font-size:.75rem; font-weight:600; padding:.25rem .6rem;
-            border-radius:20px; display:inline-block; letter-spacing:.5px; text-transform:uppercase;
-        }.status.active { background:rgba(16,185,129,.15); color:var(--green); border:1px solid rgba(16,185,129,.3); }.status.cancelled { background:rgba(239,68,68,.15); color:var(--red); border:1px solid rgba(239,68,68,.3); }.btn-cancel {
-            background:rgba(239,68,68,.1); color:var(--red); border:1px solid rgba(239,68,68,.3);
-            padding:.4rem .8rem; border-radius:8px; font-family:'Outfit',sans-serif;
-            font-size:.8rem; font-weight:600; cursor:pointer; transition:all .2s;
-        }.btn-cancel:hover { background:var(--red); color:#fff; }.btn-cancel:disabled { opacity:.4; cursor:not-allowed; background:rgba(239,68,68,.1); color:var(--red); }.btn-view {
-            background:rgba(99,102,241,.1); color:var(--primary); border:1px solid rgba(99,102,241,.3);
-            padding:.4rem .8rem; border-radius:8px; font-family:'Outfit',sans-serif;
-            font-size:.8rem; font-weight:600; cursor:pointer; transition:all .2s;
-        }.btn-view:hover { background:var(--primary); color:#fff; }/* ── MODAL ───────────────────────── */
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            backdrop-filter: var(--blur);
+            padding: 1.5rem;
+            width: 100%;
+            box-sizing: border-box;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .table-wrap {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        table {
+            width: 100%;
+            min-width: 980px;
+            border-collapse: separate;
+            border-spacing: 0 0.5rem;
+        }
+        thead th {
+            text-align: left;
+            padding: 0.75rem 0.85rem;
+            color: var(--muted);
+            font-size: 0.76rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.9px;
+            border-bottom: 1px solid var(--border);
+        }
+        tbody tr {
+            background: var(--surface2);
+            transition: all 0.2s ease;
+        }
+        tbody tr:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-1px);
+        }
+        tbody td {
+            padding: 0.85rem 0.85rem;
+            font-size: 0.92rem;
+            vertical-align: middle;
+        }
+        tbody td:first-child {
+            border-radius: 12px 0 0 12px;
+        }
+        tbody td:last-child {
+            border-radius: 0 12px 12px 0;
+        }
+        .inv-no {
+            color: #818cf8;
+            font-weight: 600;
+            font-family: monospace;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+        }
+        .amt {
+            font-family: monospace;
+            font-size: 0.98rem;
+            font-weight: 500;
+        }
+        .badge-sp {
+            color: #a78bfa;
+            font-weight: 600;
+            font-family: monospace;
+            font-size: 0.95rem;
+        }
+        .status {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.65rem;
+            border-radius: 20px;
+            display: inline-block;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .status.active {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--green);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        .status.cancelled {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--red);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .dispatch-cell {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .dispatch-chk {
+            cursor: pointer;
+            width: 1.25rem;
+            height: 1.25rem;
+            accent-color: #10b981;
+        }
+        .badge-dispatch {
+            font-size: 0.72rem;
+            padding: 0.2rem 0.55rem;
+            border-radius: 6px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+            display: inline-block;
+        }
+        .badge-dispatch.unticked {
+            background: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+        .badge-dispatch.ticked {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-action-table {
+            padding: 0.45rem 0.85rem;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            border: 1px solid transparent;
+        }
+        .btn-remark-action {
+            background: rgba(255, 255, 255, 0.05);
+            color: #cbd5e1;
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        .btn-remark-action:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+        .btn-view-order {
+            background: rgba(99, 102, 241, 0.12);
+            color: #818cf8;
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+        .btn-view-order:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+        .remark-trunc {
+            max-width: 140px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 0.82rem;
+            color: #94a3b8;
+        }
+
+        /* ── MODAL ───────────────────────── */
         .modal-overlay {
-            position:fixed; top:0; left:0; right:0; bottom:0;
-            background:rgba(0,0,0,0.6); backdrop-filter:blur(4px);
-            display:none; justify-content:center; align-items:center; z-index:9999;
-        }.modal-overlay.active { display:flex; animation:fadeInSPA 0.2s ease-out forwards; }.modal-content {
-            background:var(--bg); border:1px solid var(--border); border-radius:20px;
-            padding:2rem; width:100%; max-width:600px; max-height:80vh; overflow-y:auto;
-        }.modal-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; }.modal-title { font-size:1.5rem; font-weight:700; }.modal-close { background:none; border:none; color:var(--text); font-size:1.5rem; cursor:pointer; min-width: 44px; min-height: 44px; padding: 0.5rem; display: inline-flex; align-items: center; justify-content: center; }.items-list { width:100%; border-collapse:collapse; margin-top:1rem; }.items-list th, .items-list td { padding:0.75rem; text-align:left; border-bottom:1px solid var(--border); }.items-list th { color:var(--muted); font-size:0.85rem; text-transform:uppercase; }/* ── TOAST ───────────────────────── */
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.65); backdrop-filter: blur(6px);
+            display: none; justify-content: center; align-items: center; z-index: 9999;
+        }
+        .modal-overlay.active { display: flex; animation: fadeInSPA 0.2s ease-out forwards; }
+        .modal-content {
+            background: var(--bg); border: 1px solid var(--border); border-radius: 20px;
+            padding: 2rem; width: 100%; max-width: 650px; max-height: 85vh; overflow-y: auto;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+        }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+        .modal-title { font-size: 1.4rem; font-weight: 700; }
+        .modal-close { background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; min-width: 44px; min-height: 44px; padding: 0.5rem; display: inline-flex; align-items: center; justify-content: center; }
+        .items-list { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        .items-list th, .items-list td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+        .items-list th { color: var(--muted); font-size: 0.8rem; text-transform: uppercase; }
+        .btn-cancel {
+            background: rgba(239, 68, 68, 0.1); color: var(--red); border: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 0.5rem 1rem; border-radius: 8px; font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+        }
+        .btn-cancel:hover { background: var(--red); color: #fff; }
+        .btn-cancel:disabled { opacity: 0.4; cursor: not-allowed; background: rgba(239, 68, 68, 0.1); color: var(--red); }
+
+        /* ── TOAST ───────────────────────── */
         #toast {
-            position:fixed; bottom:2rem; right:2rem;
-            padding:1rem 1.75rem; border-radius:12px;
-            font-weight:600; color:#fff; z-index:9999;
-            opacity:0; transform:translateY(16px);
-            transition:all .3s; pointer-events:none;
-        }#toast.show { opacity:1; transform:translateY(0); }#toast.success { background:linear-gradient(135deg,#10b981,#059669); }#toast.error { background:linear-gradient(135deg,#ef4444,#dc2626); }/* ── MOBILE OPTIMIZATION ───────────────── */
+            position: fixed; bottom: 2rem; right: 2rem;
+            padding: 1rem 1.75rem; border-radius: 12px;
+            font-weight: 600; color: #fff; z-index: 9999;
+            opacity: 0; transform: translateY(16px);
+            transition: all .3s; pointer-events: none;
+        }
+        #toast.show { opacity: 1; transform: translateY(0); }
+        #toast.success { background: linear-gradient(135deg, #10b981, #059669); }
+        #toast.error { background: linear-gradient(135deg, #ef4444, #dc2626); }/* ── MOBILE OPTIMIZATION ───────────────── */
         @media(max-width: 768px) {
             /* Structural Fixes */
             body { flex-direction: column !important; }
@@ -86,7 +537,7 @@
             .nav-item { padding: 0.8rem 1.2rem !important; font-size: 1rem !important; gap: 0.5rem !important; min-height: 44px; flex-shrink: 0; }
             
             /* Container Padding Fixes (covers all classes) */
-            .main, .main-content { padding: 1rem !important; width: 100% !important; overflow-x: hidden !important; box-sizing: border-box !important; }
+            .main, .main-content { padding: 1rem !important; width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; }
             .card, .glass-panel, .sync-card, .results-card, .auto-card, .kpi-card { padding: 1rem !important; border-radius: 16px !important; box-sizing: border-box !important; width: 100% !important; }
             .modal-content { padding: 1rem !important; }
             .modal-header { flex-direction: column !important; align-items: flex-start !important; gap: 1rem !important; }
@@ -94,8 +545,18 @@
             #modalBody { overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; width: 100%; }
             
             /* Header & Layout Fixes */
-            .inv-header, .header-actions, .header { flex-direction: column !important; align-items: flex-start !important; gap: 1rem !important; }
-            .inv-title h1, h1 { font-size: 2rem !important; }
+            .inv-header, .header-actions, .header { flex-direction: column !important; align-items: flex-start !important; gap: 1rem !important; width: 100% !important; }
+            .header-actions { width: 100% !important; }
+            .header-actions .btn { width: 100% !important; justify-content: center !important; }
+            .inv-title h1, h1 { font-size: 1.8rem !important; }
+
+            /* Toolbar Mobile Polish */
+            .toolbar-card { padding: 1rem !important; }
+            .toolbar-row { flex-direction: column !important; align-items: stretch !important; gap: 0.75rem !important; }
+            .filter-pills-group { overflow-x: auto !important; flex-wrap: nowrap !important; padding-bottom: 0.35rem !important; -webkit-overflow-scrolling: touch !important; scrollbar-width: none !important; }
+            .filter-pills-group::-webkit-scrollbar { display: none !important; }
+            .filter-pill { flex-shrink: 0 !important; white-space: nowrap !important; }
+            .search-input-wrap { min-width: 100% !important; max-width: 100% !important; }
             
             /* Forms, Inputs & iOS Zoom Fix */
             .ds-lookup-row, .filters { flex-direction: column !important; align-items: stretch !important; gap: 1rem !important; }
@@ -360,75 +821,125 @@
 
 <!-- ── MAIN ────────────────────────────────── -->
 <main class="main">
+    <!-- Header -->
     <div class="header">
-        <div class="title" style="display:flex; justify-content:space-between; align-items:center; width:100%;">
-            <div>
-                <h1>Recent Invoices</h1>
-                <p>Manage and cancel generated invoices.</p>
-            </div>
-            <div style="display:flex; gap:0.75rem; align-items:center;">
-                <button class="btn btn-ghost" onclick="syncRemarksFromSheets(event)" style="width:auto; padding:0.5rem 1.2rem !important; min-height:0; border:1px solid var(--primary); color:#818cf8; background:rgba(99,102,241,0.06);">
-                    🔄 Sync Remarks from GSheets
-                </button>
-                <button class="btn" onclick="forceSyncSheets(event)" style="width:auto; padding:0.5rem 1rem !important; min-height:0;">
-                    Sync to Google Sheets
-                </button>
-            </div>
+        <div class="title">
+            <h1>Recent Invoices</h1>
+            <p>Manage, track, and verify franchise sales and dispatch records.</p>
         </div>
-    <!-- Filters & Search Toolbar -->
-    <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:1rem; margin-bottom:1.25rem;">
-        <!-- Month Filter Tabs -->
-        <div style="display:flex; flex-wrap:wrap; gap:0.5rem;" id="monthFilters">
-            <button class="filter-tab active" onclick="setMonthFilter('all', this)">All Invoices</button>
-            <button class="filter-tab" onclick="setMonthFilter('2026-06', this)" style="border-color:rgba(99,102,241,0.4); background:rgba(99,102,241,0.08); color:#a5b4fc;">🌟 June 2026 (Franchise Start)</button>
-            <button class="filter-tab" onclick="setMonthFilter('2026-07', this)">July 2026</button>
-            <button class="filter-tab" onclick="setMonthFilter('2026-08', this)">August 2026</button>
-            <button class="filter-tab" onclick="setMonthFilter('2026-09', this)">September 2026</button>
-        </div>
-
-        <!-- Search & Sort Controls -->
-        <div style="display:flex; gap:0.75rem; align-items:center; flex-wrap:wrap;">
-            <div style="position:relative;">
-                <input type="text" id="invoiceSearch" placeholder="🔍 Search invoice, DS, name..." oninput="handleSearch()" style="padding:0.55rem 1rem; border-radius:8px; border:1px solid var(--border); background:rgba(0,0,0,0.25); color:white; font-size:0.9rem; min-width:240px;">
-            </div>
-            <button class="btn btn-ghost" id="sortToggleBtn" onclick="toggleSortOrder()" style="padding:0.55rem 1rem; font-size:0.85rem; border:1px solid var(--border); width:auto; min-height:0;">
-                📅 Newest First ↓
+        <div class="header-actions">
+            <button class="btn btn-ghost-primary" onclick="syncRemarksFromSheets(event)">
+                🔄 Sync Remarks from GSheets
+            </button>
+            <button class="btn btn-primary" onclick="forceSyncSheets(event)">
+                ☁️ Push to Google Sheets
             </button>
         </div>
     </div>
 
-    <!-- Summary Stats Bar -->
-    <div style="display:flex; gap:1.5rem; margin-bottom:1.25rem; font-size:0.9rem; color:var(--muted); background:rgba(255,255,255,0.03); padding:0.6rem 1.2rem; border-radius:8px; border:1px solid rgba(255,255,255,0.05); align-items:center; flex-wrap:wrap;">
-        <span>Showing: <strong id="statCount" style="color:white;">0</strong> invoices</span>
-        <span>Total Amount: <strong id="statAmount" style="color:#22c55e;">₹0.00</strong></span>
-        <span>Total SP: <strong id="statSP" style="color:#818cf8;">0.00 SP</strong></span>
+    <!-- Live KPI Summary Cards -->
+    <div class="kpi-grid">
+        <div class="kpi-card">
+            <div>
+                <div class="kpi-title">Total Invoices</div>
+                <div class="kpi-val" id="statCount">0</div>
+                <div class="kpi-sub" id="statCountSub">Franchise records</div>
+            </div>
+            <div class="kpi-icon">🧾</div>
+        </div>
+
+        <div class="kpi-card">
+            <div>
+                <div class="kpi-title">Total Billed</div>
+                <div class="kpi-val" style="color:#22c55e;" id="statAmount">₹0.00</div>
+                <div class="kpi-sub">Franchise turnover</div>
+            </div>
+            <div class="kpi-icon">💰</div>
+        </div>
+
+        <div class="kpi-card">
+            <div>
+                <div class="kpi-title">Total Volume (SP)</div>
+                <div class="kpi-val" style="color:#818cf8;" id="statSP">0.00 SP</div>
+                <div class="kpi-sub">Sales Points</div>
+            </div>
+            <div class="kpi-icon">⚡</div>
+        </div>
+
+        <div class="kpi-card warning-card kpi-clickable" onclick="toggleUntickedFilter()" title="Click to view pending unticked invoices">
+            <div>
+                <div class="kpi-title">Pending Dispatch</div>
+                <div class="kpi-val" style="color:#f59e0b;" id="statPending">0 Unticked</div>
+                <div class="kpi-sub" id="statPendingSub">Click to filter pending ➔</div>
+            </div>
+            <div class="kpi-icon">⏳</div>
+        </div>
     </div>
 
+    <!-- Toolbar & Filters -->
+    <div class="toolbar-card">
+        <!-- Row 1: Month Filters & Dispatch Pills -->
+        <div class="toolbar-row">
+            <div class="filter-pills-group" id="monthFilters">
+                <span style="font-size:0.8rem; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:0.5px; margin-right:0.25rem;">Month:</span>
+                <button class="filter-pill active" onclick="setMonthFilter('all', this)">All Invoices</button>
+                <button class="filter-pill" onclick="setMonthFilter('2026-06', this)" style="border-color:rgba(99,102,241,0.4); background:rgba(99,102,241,0.08); color:#c7d2fe;">🌟 June 2026 (Franchise Start)</button>
+                <button class="filter-pill" onclick="setMonthFilter('2026-07', this)">July 2026</button>
+                <button class="filter-pill" onclick="setMonthFilter('2026-08', this)">August 2026</button>
+                <button class="filter-pill" onclick="setMonthFilter('2026-09', this)">September 2026</button>
+            </div>
+
+            <div class="filter-pills-group" id="dispatchFilters">
+                <span style="font-size:0.8rem; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:0.5px; margin-right:0.25rem;">Dispatch:</span>
+                <button class="filter-pill active" onclick="setDispatchFilter('all', this)">All</button>
+                <button class="filter-pill" id="pillUnticked" onclick="setDispatchFilter('unticked', this)">⏳ Unticked (<span id="pillUntickedCount">0</span>)</button>
+                <button class="filter-pill" id="pillDispatched" onclick="setDispatchFilter('dispatched', this)">✅ Dispatched (<span id="pillDispatchedCount">0</span>)</button>
+            </div>
+        </div>
+
+        <!-- Row 2: Search & Sort -->
+        <div class="toolbar-row">
+            <div class="search-input-wrap">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="invoiceSearch" placeholder="Search invoice no, DS code, customer, remark..." oninput="handleSearch()">
+                <button class="search-clear-btn" id="searchClearBtn" onclick="clearSearch()" title="Clear search">&times;</button>
+            </div>
+
+            <div style="display:flex; gap:0.75rem; align-items:center;">
+                <button class="btn btn-ghost" id="sortToggleBtn" onclick="toggleSortOrder()">
+                    📅 Newest First ↓
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Invoices Table Card -->
     <div class="card">
         <div class="table-wrap">
             <table>
                 <thead>
                     <tr>
-                        <th>Invoice No</th>
-                        <th>Date</th>
-                        <th>DS Code</th>
+                        <th style="width:145px;">Invoice No</th>
+                        <th style="width:105px;">Date</th>
+                        <th style="width:110px;">DS Code</th>
                         <th>Customer Name</th>
-                        <th>Amount (₹)</th>
-                        <th>Total SP</th>
-                        <th>Status</th>
-                        <th style="text-align:center;">Dispatched</th>
-                        <th>Remark</th>
-                        <th>Action</th>
+                        <th style="text-align:right; width:115px;">Amount (₹)</th>
+                        <th style="text-align:right; width:105px;">Total SP</th>
+                        <th style="text-align:center; width:95px;">Status</th>
+                        <th style="text-align:center; width:140px;">Dispatched</th>
+                        <th style="width:150px;">Remark</th>
+                        <th style="text-align:center; width:105px;">Action</th>
                     </tr>
                 </thead>
                 <tbody id="historyBody">
-                    <tr><td colspan="10" style="text-align:center; color:var(--muted); padding:2rem;">Loading history...</td></tr>
+                    <tr><td colspan="10" style="text-align:center; color:var(--muted); padding:3rem;">Loading invoice records...</td></tr>
                 </tbody>
             </table>
         </div>
     </div>
 </main>
 
+<!-- Order Details Modal -->
 <div class="modal-overlay" id="orderModal" onclick="if(event.target===this) closeModal()">
     <div class="modal-content">
         <div class="modal-header">
@@ -445,23 +956,25 @@
                 </thead>
                 <tbody id="modalItems"></tbody>
             </table>
-            <div style="text-align:right; margin-top:1rem; font-size:1.2rem; font-weight:700;">
-                Grand Total SP: <span id="modalTotalSP" class="amt" style="color:var(--primary);margin-right:1rem;">0.00</span>
-                Grand Total: <span id="modalTotal" class="amt">0.00</span>
+            <div style="text-align:right; margin-top:1.25rem; font-size:1.15rem; font-weight:700;">
+                Grand Total SP: <span id="modalTotalSP" class="amt badge-sp" style="margin-right:1.25rem;">0.00</span>
+                Grand Total: <span id="modalTotal" class="amt" style="color:#22c55e;">0.00</span>
             </div>
         </div>
     </div>
 </div>
 
+<!-- Remark Modal -->
 <div class="modal-overlay" id="remarkModal" onclick="if(event.target===this) closeRemarkModal()">
-    <div class="modal-content" style="max-width:400px;">
+    <div class="modal-content" style="max-width:440px;">
         <div class="modal-header">
             <div class="modal-title" style="margin:0;">Invoice Remark</div>
             <button class="modal-close" onclick="closeRemarkModal()">&times;</button>
         </div>
-        <textarea id="remarkInput" rows="4" style="width:100%; padding:0.8rem; border-radius:8px; border:1px solid var(--border); background:rgba(0,0,0,0.2); color:white; font-family:inherit; margin-bottom:1rem; resize:vertical; font-size:1rem;"></textarea>
-        <div style="text-align:right;">
-            <button class="btn-view" style="width:100%;" onclick="saveRemark()">Save Remark</button>
+        <textarea id="remarkInput" rows="4" placeholder="Enter invoice remarks, delivery notes, or special instructions..." style="width:100%; padding:0.85rem; border-radius:10px; border:1px solid var(--border); background:rgba(0,0,0,0.3); color:white; font-family:inherit; margin-bottom:1.25rem; resize:vertical; font-size:0.95rem; box-sizing:border-box; outline:none;"></textarea>
+        <div style="display:flex; justify-content:flex-end; gap:0.75rem;">
+            <button class="btn btn-ghost" onclick="closeRemarkModal()">Cancel</button>
+            <button class="btn btn-primary" onclick="saveRemark()">Save Remark</button>
         </div>
     </div>
 </div>
@@ -472,6 +985,7 @@
     let allInvoices = [];
     let invoiceData = [];
     let activeMonthFilter = 'all';
+    let activeDispatchFilter = 'all'; // 'all', 'unticked', 'dispatched'
     let searchQuery = '';
     let sortAscending = false;
 
@@ -481,26 +995,81 @@
             const data = await res.json();
             
             if (!data.invoices || data.invoices.length === 0) {
-                document.getElementById('historyBody').innerHTML = '<tr><td colspan="10" style="text-align:center; color:var(--muted); padding:2rem;">No invoices generated yet.</td></tr>';
+                document.getElementById('historyBody').innerHTML = '<tr><td colspan="10" style="text-align:center; color:var(--muted); padding:3rem;">No invoices generated yet.</td></tr>';
                 return;
             }
             
             allInvoices = data.invoices;
+            updateGlobalKpis();
             renderFilteredInvoices();
         } catch (e) {
-            document.getElementById('historyBody').innerHTML = '<tr><td colspan="10" style="text-align:center; color:var(--red); padding:2rem;">Failed to load data.</td></tr>';
+            console.error(e);
+            document.getElementById('historyBody').innerHTML = '<tr><td colspan="10" style="text-align:center; color:var(--red); padding:3rem;">Failed to load data. Please refresh the page.</td></tr>';
+        }
+    }
+
+    function updateGlobalKpis() {
+        const totalUnticked = allInvoices.filter(inv => !inv.is_dispatched || inv.is_dispatched === 0).length;
+        const totalDispatched = allInvoices.filter(inv => inv.is_dispatched == 1).length;
+
+        const pUnticked = document.getElementById('pillUntickedCount');
+        const pDispatched = document.getElementById('pillDispatchedCount');
+        const statPending = document.getElementById('statPending');
+        const statPendingSub = document.getElementById('statPendingSub');
+
+        if (pUnticked) pUnticked.textContent = totalUnticked;
+        if (pDispatched) pDispatched.textContent = totalDispatched;
+        if (statPending) statPending.textContent = `${totalUnticked} Unticked`;
+        if (statPendingSub) {
+            statPendingSub.textContent = activeDispatchFilter === 'unticked' ? 'Showing unticked only ✓' : 'Click to filter pending ➔';
         }
     }
 
     function setMonthFilter(month, btn) {
         activeMonthFilter = month;
-        document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('#monthFilters .filter-pill').forEach(t => t.classList.remove('active'));
         if (btn) btn.classList.add('active');
         renderFilteredInvoices();
     }
 
+    function setDispatchFilter(status, btn) {
+        activeDispatchFilter = status;
+        document.querySelectorAll('#dispatchFilters .filter-pill').forEach(p => {
+            p.classList.remove('active', 'active-warning', 'active-success');
+        });
+        if (btn) {
+            if (status === 'unticked') btn.classList.add('active-warning');
+            else if (status === 'dispatched') btn.classList.add('active-success');
+            else btn.classList.add('active');
+        }
+        updateGlobalKpis();
+        renderFilteredInvoices();
+    }
+
+    function toggleUntickedFilter() {
+        const pill = document.getElementById('pillUnticked');
+        if (activeDispatchFilter === 'unticked') {
+            const allPill = document.querySelector('#dispatchFilters .filter-pill:first-of-type');
+            setDispatchFilter('all', allPill);
+        } else {
+            setDispatchFilter('unticked', pill);
+        }
+    }
+
     function handleSearch() {
-        searchQuery = (document.getElementById('invoiceSearch').value || '').trim().toLowerCase();
+        const val = document.getElementById('invoiceSearch').value || '';
+        searchQuery = val.trim().toLowerCase();
+        const clearBtn = document.getElementById('searchClearBtn');
+        if (clearBtn) clearBtn.style.display = searchQuery ? 'block' : 'none';
+        renderFilteredInvoices();
+    }
+
+    function clearSearch() {
+        const inp = document.getElementById('invoiceSearch');
+        inp.value = '';
+        searchQuery = '';
+        const clearBtn = document.getElementById('searchClearBtn');
+        if (clearBtn) clearBtn.style.display = 'none';
         renderFilteredInvoices();
     }
 
@@ -524,39 +1093,60 @@
         tbody.innerHTML = '';
 
         let filtered = allInvoices.filter(inv => {
+            // Month filter
             if (activeMonthFilter !== 'all') {
                 const d = inv.date_created || '';
                 if (!d.startsWith(activeMonthFilter)) return false;
             }
+            // Dispatch filter
+            if (activeDispatchFilter === 'unticked') {
+                if (inv.is_dispatched && inv.is_dispatched != 0) return false;
+            } else if (activeDispatchFilter === 'dispatched') {
+                if (!inv.is_dispatched || inv.is_dispatched == 0) return false;
+            }
+            // Search query filter
             if (searchQuery) {
                 const no = (inv.invoice_no || '').toLowerCase();
                 const ds = (inv.ds_code || '').toLowerCase();
                 const name = (inv.customer_name || '').toLowerCase();
-                if (!no.includes(searchQuery) && !ds.includes(searchQuery) && !name.includes(searchQuery)) {
+                const rem = (inv.remark || '').toLowerCase();
+                if (!no.includes(searchQuery) && !ds.includes(searchQuery) && !name.includes(searchQuery) && !rem.includes(searchQuery)) {
                     return false;
                 }
             }
             return true;
         });
 
+        // Sort by invoice sequence number
         filtered.sort((a, b) => {
             const numA = parseInt((a.invoice_no || '').replace(/\D/g, '')) || 0;
             const numB = parseInt((b.invoice_no || '').replace(/\D/g, '')) || 0;
             return sortAscending ? numA - numB : numB - numA;
         });
 
+        // Calculate totals for filtered dataset
         let totalAmt = 0;
         let totalSP = 0;
         filtered.forEach(inv => {
             totalAmt += parseFloat(inv.amount || 0);
             totalSP += parseFloat(inv.grand_total_sp || 0);
         });
+
         document.getElementById('statCount').textContent = filtered.length;
-        document.getElementById('statAmount').textContent = '₹' + totalAmt.toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2});
-        document.getElementById('statSP').textContent = totalSP.toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2}) + ' SP';
+        const statCountSub = document.getElementById('statCountSub');
+        if (statCountSub) {
+            if (filtered.length !== allInvoices.length) {
+                statCountSub.textContent = `Filtered from ${allInvoices.length} total`;
+            } else {
+                statCountSub.textContent = 'All franchise records';
+            }
+        }
+
+        document.getElementById('statAmount').textContent = '₹' + totalAmt.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        document.getElementById('statSP').textContent = totalSP.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' SP';
 
         if (filtered.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="10" style="text-align:center; color:var(--muted); padding:2rem;">No matching invoices found.</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="10" style="text-align:center; color:var(--muted); padding:3rem;">No matching invoices found for selected filters.</td></tr>';
             return;
         }
 
@@ -571,18 +1161,42 @@
                 }
             } catch(e) {}
 
+            const isDispatched = (inv.is_dispatched == 1 || inv.is_dispatched === true);
             let safeRemark = (inv.remark || '').replace(/'/g, "\\'").replace(/"/g, '&quot;').replace(/\n/g, '\\n').replace(/\r/g, '\\r');
+            let displayRemark = (inv.remark || '').trim();
+
+            const dispatchBadge = isDispatched 
+                ? `<span class="badge-dispatch ticked">✓ Dispatched</span>`
+                : `<span class="badge-dispatch unticked">⏳ Pending</span>`;
+
+            const remarkBtnContent = displayRemark
+                ? `<span class="remark-trunc" title="${displayRemark}">${displayRemark}</span> <span style="font-size:0.75rem;">✏️</span>`
+                : `<span style="opacity:0.7;">+ Add</span>`;
+
             tr.innerHTML = `
                 <td class="inv-no">${inv.invoice_no || '-'}</td>
-                <td>${dateStr}</td>
-                <td>${inv.ds_code || '-'}</td>
-                <td>${inv.customer_name || '-'}</td>
-                <td class="amt">${parseFloat(inv.amount || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
-                <td class="amt" style="color:#818cf8;font-weight:600;">${parseFloat(inv.grand_total_sp || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
-                <td><span class="status ${inv.status || 'active'}">${inv.status || 'active'}</span></td>
-                <td style="text-align:center;"><input type="checkbox" style="cursor:pointer; width:1.2rem; height:1.2rem;" ${inv.is_dispatched ? 'checked' : ''} onchange="toggleDispatched(${inv.id}, this.checked, this)"></td>
-                <td><button class="btn-view" style="padding:0.3rem 0.6rem; font-size:0.75rem;" onclick="openRemarkModal(${inv.id}, '${safeRemark}')">Remark</button></td>
-                <td><button class="btn-view" onclick="viewOrder(${index})">View Order</button></td>
+                <td style="color:#cbd5e1;">${dateStr}</td>
+                <td><span style="background:rgba(255,255,255,0.06); padding:0.2rem 0.5rem; border-radius:6px; font-family:monospace; font-size:0.85rem;">${inv.ds_code || '-'}</span></td>
+                <td style="font-weight:500;">${inv.customer_name || '-'}</td>
+                <td class="amt" style="text-align:right;">₹${parseFloat(inv.amount || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
+                <td class="amt badge-sp" style="text-align:right;">${parseFloat(inv.grand_total_sp || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
+                <td style="text-align:center;"><span class="status ${inv.status || 'active'}">${inv.status || 'active'}</span></td>
+                <td>
+                    <div class="dispatch-cell">
+                        <input type="checkbox" class="dispatch-chk" ${isDispatched ? 'checked' : ''} onchange="toggleDispatched(${inv.id}, this.checked, this)" title="${isDispatched ? 'Mark as unticked' : 'Mark as dispatched'}">
+                        ${dispatchBadge}
+                    </div>
+                </td>
+                <td>
+                    <button class="btn-action-table btn-remark-action" onclick="openRemarkModal(${inv.id}, '${safeRemark}')" title="Edit remark">
+                        ${remarkBtnContent}
+                    </button>
+                </td>
+                <td style="text-align:center;">
+                    <button class="btn-action-table btn-view-order" onclick="viewOrder(${index})">
+                        👁️ View
+                    </button>
+                </td>
             `;
             tbody.appendChild(tr);
         });
@@ -592,7 +1206,7 @@
         const inv = invoiceData[index];
         document.getElementById('modalTitle').textContent = `Order Details: ${inv.invoice_no}`;
         document.getElementById('modalTotal').textContent = '₹' + parseFloat(inv.amount || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2});
-        document.getElementById('modalTotalSP').textContent = parseFloat(inv.grand_total_sp || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2});
+        document.getElementById('modalTotalSP').textContent = parseFloat(inv.grand_total_sp || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2}) + ' SP';
         
         const tbody = document.getElementById('modalItems');
         tbody.innerHTML = '';
@@ -600,12 +1214,12 @@
         (inv.items || []).forEach(item => {
             tbody.innerHTML += `
                 <tr>
-                    <td>${item.description || item.name}</td>
+                    <td style="font-weight:500;">${item.description || item.name}</td>
                     <td>${item.qty}</td>
-                    <td class="amt">${parseFloat(item.price || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
-                    <td class="amt" style="color:#818cf8;">${parseFloat(item.unit_sp || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
-                    <td class="amt">${parseFloat(item.total || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
-                    <td class="amt" style="color:#818cf8; font-weight:bold;">${parseFloat(item.total_sp || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
+                    <td class="amt">₹${parseFloat(item.price || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
+                    <td class="amt badge-sp">${parseFloat(item.unit_sp || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
+                    <td class="amt">₹${parseFloat(item.total || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
+                    <td class="amt badge-sp" style="font-weight:bold;">${parseFloat(item.total_sp || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
                 </tr>
             `;
         });
@@ -645,7 +1259,7 @@
             if (res.ok) {
                 alert('Invoice cancelled successfully!');
                 closeModal();
-                loadHistory(); // Reload table
+                loadHistory();
             } else {
                 alert('Error: ' + (data.error || 'Incorrect password'));
             }
@@ -673,6 +1287,12 @@
             const data = await res.json();
             if (res.ok) {
                 showToast('Dispatched status updated', 'success');
+                const target = allInvoices.find(i => i.id == id);
+                if (target) {
+                    target.is_dispatched = is_checked ? 1 : 0;
+                }
+                updateGlobalKpis();
+                renderFilteredInvoices();
             } else {
                 alert('Error: ' + (data.error || 'Incorrect password'));
                 if (checkboxElem) {
@@ -693,6 +1313,7 @@
         currentRemarkId = id;
         document.getElementById('remarkInput').value = currentRemark || '';
         document.getElementById('remarkModal').classList.add('active');
+        setTimeout(() => document.getElementById('remarkInput').focus(), 100);
     }
     
     function closeRemarkModal() {
@@ -710,8 +1331,12 @@
                 body: JSON.stringify({remark: text})
             });
             showToast('Remark saved', 'success');
+            const target = allInvoices.find(i => i.id == currentRemarkId);
+            if (target) {
+                target.remark = text;
+            }
             closeRemarkModal();
-            loadHistory(); // reload to update memory state
+            renderFilteredInvoices();
         } catch(e) {
             console.error(e);
             showToast('Failed to save remark', 'error');
@@ -720,9 +1345,9 @@
 
     async function forceSyncSheets(event) {
         if (!confirm('This will force upload all local invoices and inventory to Google Sheets. Continue?')) return;
-        const btn = event.target;
-        const originalText = btn.textContent;
-        btn.textContent = 'Syncing...';
+        const btn = event.currentTarget || event.target;
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '⏳ Syncing...';
         btn.disabled = true;
         try {
             const res = await fetch('/api/invoice/sync_sheets', { method: 'POST' });
@@ -734,13 +1359,13 @@
         } catch(e) {
             alert('Error: ' + e);
         }
-        btn.textContent = originalText;
+        btn.innerHTML = originalText;
         btn.disabled = false;
     }
 
     async function syncRemarksFromSheets(event) {
         const btn = event.currentTarget || event.target;
-        const originalText = btn.textContent;
+        const originalText = btn.innerHTML;
         btn.innerHTML = '🔄 Syncing...';
         btn.disabled = true;
         try {
@@ -748,7 +1373,7 @@
             const data = await res.json();
             if (data.success) {
                 alert(`Remarks synced successfully! Updated ${data.updated_count} invoices.`);
-                loadHistory(); // reload the table with the new remarks!
+                loadHistory();
             } else {
                 alert('Failed to sync remarks: ' + (data.error || 'Unknown error'));
             }
@@ -762,6 +1387,7 @@
     function closeModal() {
         document.getElementById('orderModal').classList.remove('active');
     }
+    
     // ── Toast ──────────────────────────────────────────
     let toastTimer;
     function showToast(msg, type='success') {
