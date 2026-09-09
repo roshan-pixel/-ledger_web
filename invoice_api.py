@@ -416,8 +416,8 @@ def list_invoices():
                     sp_map[norm_k] = float(str(v or '0').replace(',', '').strip())
                 except:
                     pass
-                    
-        c.execute('SELECT * FROM invoices ORDER BY id DESC')
+        # Sort chronologically by date and numeric invoice number descending
+        c.execute('SELECT * FROM invoices ORDER BY date_created DESC, CAST(SUBSTR(invoice_no, 5, 6) AS INTEGER) DESC')
         rows = c.fetchall()
         
         invoices = []

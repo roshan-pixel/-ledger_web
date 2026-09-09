@@ -217,6 +217,29 @@
             stroke: #818cf8 !important;
         }
 
+        .filter-tab {
+            padding: 0.45rem 0.95rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--muted);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .filter-tab:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .filter-tab.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 0 12px rgba(99, 102, 241, 0.35);
+        }
+
         /* Responsive Mobile Styles */
         @media (max-width: 768px) {
             body {
@@ -352,6 +375,33 @@
                 </button>
             </div>
         </div>
+    <!-- Filters & Search Toolbar -->
+    <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:1rem; margin-bottom:1.25rem;">
+        <!-- Month Filter Tabs -->
+        <div style="display:flex; flex-wrap:wrap; gap:0.5rem;" id="monthFilters">
+            <button class="filter-tab active" onclick="setMonthFilter('all', this)">All Invoices</button>
+            <button class="filter-tab" onclick="setMonthFilter('2026-06', this)" style="border-color:rgba(99,102,241,0.4); background:rgba(99,102,241,0.08); color:#a5b4fc;">🌟 June 2026 (Franchise Start)</button>
+            <button class="filter-tab" onclick="setMonthFilter('2026-07', this)">July 2026</button>
+            <button class="filter-tab" onclick="setMonthFilter('2026-08', this)">August 2026</button>
+            <button class="filter-tab" onclick="setMonthFilter('2026-09', this)">September 2026</button>
+        </div>
+
+        <!-- Search & Sort Controls -->
+        <div style="display:flex; gap:0.75rem; align-items:center; flex-wrap:wrap;">
+            <div style="position:relative;">
+                <input type="text" id="invoiceSearch" placeholder="🔍 Search invoice, DS, name..." oninput="handleSearch()" style="padding:0.55rem 1rem; border-radius:8px; border:1px solid var(--border); background:rgba(0,0,0,0.25); color:white; font-size:0.9rem; min-width:240px;">
+            </div>
+            <button class="btn btn-ghost" id="sortToggleBtn" onclick="toggleSortOrder()" style="padding:0.55rem 1rem; font-size:0.85rem; border:1px solid var(--border); width:auto; min-height:0;">
+                📅 Newest First ↓
+            </button>
+        </div>
+    </div>
+
+    <!-- Summary Stats Bar -->
+    <div style="display:flex; gap:1.5rem; margin-bottom:1.25rem; font-size:0.9rem; color:var(--muted); background:rgba(255,255,255,0.03); padding:0.6rem 1.2rem; border-radius:8px; border:1px solid rgba(255,255,255,0.05); align-items:center; flex-wrap:wrap;">
+        <span>Showing: <strong id="statCount" style="color:white;">0</strong> invoices</span>
+        <span>Total Amount: <strong id="statAmount" style="color:#22c55e;">₹0.00</strong></span>
+        <span>Total SP: <strong id="statSP" style="color:#818cf8;">0.00 SP</strong></span>
     </div>
 
     <div class="card">
@@ -419,49 +469,123 @@
 <div id="toast"></div>
 
 <script>
+    let allInvoices = [];
     let invoiceData = [];
+    let activeMonthFilter = 'all';
+    let searchQuery = '';
+    let sortAscending = false;
+
     async function loadHistory() {
         try {
             const res = await fetch('/api/invoice/list');
             const data = await res.json();
-            const tbody = document.getElementById('historyBody');
-            tbody.innerHTML = '';
             
             if (!data.invoices || data.invoices.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="10" style="text-align:center; color:var(--muted); padding:2rem;">No invoices generated yet.</td></tr>';
+                document.getElementById('historyBody').innerHTML = '<tr><td colspan="10" style="text-align:center; color:var(--muted); padding:2rem;">No invoices generated yet.</td></tr>';
                 return;
             }
             
-            invoiceData = data.invoices;
-            data.invoices.forEach((inv, index) => {
-                const tr = document.createElement('tr');
-                const isCancelled = inv.status === 'cancelled';
-                
-                let dateStr = inv.date_created;
-                try {
-                    if (dateStr.includes('T')) {
-                        dateStr = new Date(dateStr).toLocaleDateString('en-IN');
-                    }
-                } catch(e) {}
-                
-                let safeRemark = (inv.remark || '').replace(/'/g, "\\'").replace(/"/g, '&quot;').replace(/\n/g, '\\n').replace(/\r/g, '\\r');
-                tr.innerHTML = `
-                    <td class="inv-no">${inv.invoice_no || '-'}</td>
-                    <td>${dateStr}</td>
-                    <td>${inv.ds_code || '-'}</td>
-                    <td>${inv.customer_name || '-'}</td>
-                    <td class="amt">${parseFloat(inv.amount || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
-                    <td class="amt" style="color:#818cf8;font-weight:600;">${parseFloat(inv.grand_total_sp || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
-                    <td><span class="status ${inv.status || 'active'}">${inv.status || 'active'}</span></td>
-                    <td style="text-align:center;"><input type="checkbox" style="cursor:pointer; width:1.2rem; height:1.2rem;" ${inv.is_dispatched ? 'checked' : ''} onchange="toggleDispatched(${inv.id}, this.checked, this)"></td>
-                    <td><button class="btn-view" style="padding:0.3rem 0.6rem; font-size:0.75rem;" onclick="openRemarkModal(${inv.id}, '${safeRemark}')">Remark</button></td>
-                    <td><button class="btn-view" onclick="viewOrder(${index})">View Order</button></td>
-                `;
-                tbody.appendChild(tr);
-            });
+            allInvoices = data.invoices;
+            renderFilteredInvoices();
         } catch (e) {
-            document.getElementById('historyBody').innerHTML = '<tr><td colspan="7" style="text-align:center; color:var(--red); padding:2rem;">Failed to load data.</td></tr>';
+            document.getElementById('historyBody').innerHTML = '<tr><td colspan="10" style="text-align:center; color:var(--red); padding:2rem;">Failed to load data.</td></tr>';
         }
+    }
+
+    function setMonthFilter(month, btn) {
+        activeMonthFilter = month;
+        document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+        renderFilteredInvoices();
+    }
+
+    function handleSearch() {
+        searchQuery = (document.getElementById('invoiceSearch').value || '').trim().toLowerCase();
+        renderFilteredInvoices();
+    }
+
+    function toggleSortOrder() {
+        sortAscending = !sortAscending;
+        const btn = document.getElementById('sortToggleBtn');
+        if (sortAscending) {
+            btn.innerHTML = '🚀 Oldest First (Franchise Start) ↑';
+            btn.style.color = '#818cf8';
+            btn.style.borderColor = 'var(--primary)';
+        } else {
+            btn.innerHTML = '📅 Newest First ↓';
+            btn.style.color = '';
+            btn.style.borderColor = 'var(--border)';
+        }
+        renderFilteredInvoices();
+    }
+
+    function renderFilteredInvoices() {
+        const tbody = document.getElementById('historyBody');
+        tbody.innerHTML = '';
+
+        let filtered = allInvoices.filter(inv => {
+            if (activeMonthFilter !== 'all') {
+                const d = inv.date_created || '';
+                if (!d.startsWith(activeMonthFilter)) return false;
+            }
+            if (searchQuery) {
+                const no = (inv.invoice_no || '').toLowerCase();
+                const ds = (inv.ds_code || '').toLowerCase();
+                const name = (inv.customer_name || '').toLowerCase();
+                if (!no.includes(searchQuery) && !ds.includes(searchQuery) && !name.includes(searchQuery)) {
+                    return false;
+                }
+            }
+            return true;
+        });
+
+        filtered.sort((a, b) => {
+            const numA = parseInt((a.invoice_no || '').replace(/\D/g, '')) || 0;
+            const numB = parseInt((b.invoice_no || '').replace(/\D/g, '')) || 0;
+            return sortAscending ? numA - numB : numB - numA;
+        });
+
+        let totalAmt = 0;
+        let totalSP = 0;
+        filtered.forEach(inv => {
+            totalAmt += parseFloat(inv.amount || 0);
+            totalSP += parseFloat(inv.grand_total_sp || 0);
+        });
+        document.getElementById('statCount').textContent = filtered.length;
+        document.getElementById('statAmount').textContent = '₹' + totalAmt.toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2});
+        document.getElementById('statSP').textContent = totalSP.toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2}) + ' SP';
+
+        if (filtered.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="10" style="text-align:center; color:var(--muted); padding:2rem;">No matching invoices found.</td></tr>';
+            return;
+        }
+
+        invoiceData = filtered;
+        filtered.forEach((inv, index) => {
+            const tr = document.createElement('tr');
+            let dateStr = inv.date_created || '';
+            try {
+                if (dateStr.includes('-')) {
+                    const parts = dateStr.split('-');
+                    if (parts.length === 3) dateStr = `${parts[2]}/${parts[1]}/${parts[0]}`;
+                }
+            } catch(e) {}
+
+            let safeRemark = (inv.remark || '').replace(/'/g, "\\'").replace(/"/g, '&quot;').replace(/\n/g, '\\n').replace(/\r/g, '\\r');
+            tr.innerHTML = `
+                <td class="inv-no">${inv.invoice_no || '-'}</td>
+                <td>${dateStr}</td>
+                <td>${inv.ds_code || '-'}</td>
+                <td>${inv.customer_name || '-'}</td>
+                <td class="amt">${parseFloat(inv.amount || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
+                <td class="amt" style="color:#818cf8;font-weight:600;">${parseFloat(inv.grand_total_sp || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
+                <td><span class="status ${inv.status || 'active'}">${inv.status || 'active'}</span></td>
+                <td style="text-align:center;"><input type="checkbox" style="cursor:pointer; width:1.2rem; height:1.2rem;" ${inv.is_dispatched ? 'checked' : ''} onchange="toggleDispatched(${inv.id}, this.checked, this)"></td>
+                <td><button class="btn-view" style="padding:0.3rem 0.6rem; font-size:0.75rem;" onclick="openRemarkModal(${inv.id}, '${safeRemark}')">Remark</button></td>
+                <td><button class="btn-view" onclick="viewOrder(${index})">View Order</button></td>
+            `;
+            tbody.appendChild(tr);
+        });
     }
 
     function viewOrder(index) {
