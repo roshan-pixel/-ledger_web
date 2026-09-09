@@ -569,10 +569,31 @@
 
             /* Toolbar Mobile Polish */
             .toolbar-card { padding: 1rem !important; width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; overflow: hidden !important; }
-            .toolbar-row { flex-direction: column !important; align-items: stretch !important; gap: 0.75rem !important; width: 100% !important; }
-            .filter-pills-group { overflow-x: auto !important; flex-wrap: nowrap !important; padding-bottom: 0.35rem !important; -webkit-overflow-scrolling: touch !important; overscroll-behavior-x: contain !important; scrollbar-width: none !important; }
+            .toolbar-row { flex-direction: column !important; align-items: stretch !important; gap: 0.75rem !important; width: 100% !important; min-width: 0 !important; }
+            .filter-pills-group {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+                box-sizing: border-box !important;
+                display: flex !important;
+                overflow-x: auto !important;
+                flex-wrap: nowrap !important;
+                padding-bottom: 0.45rem !important;
+                -webkit-overflow-scrolling: touch !important;
+                touch-action: pan-x !important;
+                overscroll-behavior-x: contain !important;
+                scrollbar-width: none !important;
+                cursor: grab;
+            }
+            .filter-pills-group:active { cursor: grabbing; }
             .filter-pills-group::-webkit-scrollbar { display: none !important; }
-            .filter-pill { flex-shrink: 0 !important; white-space: nowrap !important; }
+            .filter-pill {
+                flex-shrink: 0 !important;
+                white-space: nowrap !important;
+                touch-action: pan-x !important;
+                user-select: none !important;
+                -webkit-tap-highlight-color: transparent !important;
+            }
             .search-input-wrap { min-width: 100% !important; max-width: 100% !important; width: 100% !important; }
             
             /* Forms, Inputs & iOS Zoom Fix */
@@ -898,10 +919,10 @@
         <div class="toolbar-row">
             <!-- Dispatch Status Pills -->
             <div class="filter-pills-group" id="dispatchFilters">
-                <span style="font-size:0.8rem; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:0.5px; margin-right:0.25rem;">Dispatch:</span>
+                <span style="font-size:0.8rem; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:0.5px; margin-right:0.25rem; flex-shrink:0;">Dispatch:</span>
                 <button class="filter-pill active" onclick="setDispatchFilter('all', this)">All Invoices (<span id="pillAllCount">0</span>)</button>
                 <button class="filter-pill" id="pillUnticked" onclick="setDispatchFilter('unticked', this)">⏳ Unticked (<span id="pillUntickedCount">0</span>)</button>
-                <button class="filter-pill" id="pillDispatched" onclick="setDispatchFilter('dispatched', this)">✅ Dispatched (<span id="pillDispatchedCount">0</span>)</button>
+                <button class="filter-pill" id="pillDispatched" onclick="setDispatchFilter('dispatched', this)">📦 Dispatched (<span id="pillDispatchedCount">0</span>)</button>
             </div>
 
             <!-- Search & Sort Controls -->
@@ -1399,7 +1420,31 @@
         document.body.style.transition = 'opacity .25s ease-out';
         setTimeout(() => { window.location.href = url; }, 260);
     }
-    
+
+    // ── Dispatch Filters Smooth Drag / Swipe Slider ───
+    (function initDispatchFiltersSlider() {
+        const slider = document.getElementById('dispatchFilters');
+        if (!slider) return;
+        let isDown = false;
+        let startX, scrollLeftVal;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeftVal = slider.scrollLeft;
+        });
+        window.addEventListener('mouseup', () => {
+            isDown = false;
+        });
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX);
+            slider.scrollLeft = scrollLeftVal - walk;
+        });
+    })();
+
     loadHistory();
 </script>
 </body>
