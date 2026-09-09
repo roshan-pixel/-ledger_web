@@ -1068,7 +1068,7 @@ def api_customer():
                 # Add to DB
                 conn = get_db()
                 c = conn.cursor()
-                c.execute('''INSERT INTO customers 
+                c.execute('''INSERT OR REPLACE INTO customers 
                              (ds_code, ds_name, mobile, address, shipping_address, shipping_mobile, shipping_pincode, last_invoice) 
                              VALUES (?, ?, ?, ?, ?, ?, ?, ?)''', 
                           (portal_data['ds_code'], portal_data['ds_name'], portal_data['mobile'], portal_data['address'], 

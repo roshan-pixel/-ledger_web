@@ -693,8 +693,13 @@
         status.textContent = 'Looking up...';
         box.classList.remove('visible');
 
+        const timer = setTimeout(() => {
+            if (btn.disabled) status.textContent = 'Connecting to AWPL Portal...';
+        }, 1500);
+
         try {
             const res  = await fetch(`/api/customer?ds_code=${encodeURIComponent(code)}`);
+            clearTimeout(timer);
             const data = await res.json();
 
             if (res.ok && !data.error) {
