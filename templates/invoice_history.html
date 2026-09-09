@@ -20,10 +20,14 @@
             --text:      #ffffff;
             --muted:     #94a3b8;
             --blur:      blur(16px);
-        }body {
+        }html, body {
             margin:0; padding:0;
             font-family:'Outfit',sans-serif;
             background-color: var(--bg);
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+        }body {
             background-image:
                 radial-gradient(circle at 15% 50%, rgba(99,102,241,.15), transparent 25%),
                 radial-gradient(circle at 85% 30%, rgba(236,72,153,.15),  transparent 25%);
@@ -38,7 +42,9 @@
             min-width: 0;
             padding: 2rem 2.5rem;
             overflow-y: auto;
+            overflow-x: hidden;
             width: 100%;
+            max-width: 100%;
             box-sizing: border-box;
         }
 
@@ -334,13 +340,18 @@
             backdrop-filter: var(--blur);
             padding: 1.5rem;
             width: 100%;
+            max-width: 100%;
             box-sizing: border-box;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
         }
         .table-wrap {
             width: 100%;
+            max-width: 100%;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
+            overscroll-behavior-x: contain;
+            touch-action: pan-x pan-y;
         }
         table {
             width: 100%;
@@ -529,20 +540,26 @@
         #toast.error { background: linear-gradient(135deg, #ef4444, #dc2626); }/* ── MOBILE OPTIMIZATION ───────────────── */
         @media(max-width: 768px) {
             /* Structural Fixes */
+            html, body {
+                overflow-x: hidden !important;
+                width: 100% !important;
+                max-width: 100vw !important;
+                position: relative;
+            }
             body { flex-direction: column !important; }
-            .sidebar { width: 100% !important; height: auto !important; position: relative !important; padding: 1rem !important; border-right: none !important; border-bottom: 1px solid var(--border) !important; flex-shrink: 0; gap: 1rem !important; }
+            .sidebar { width: 100% !important; max-width: 100vw !important; height: auto !important; position: sticky !important; top: 0 !important; padding: 0.75rem 1rem !important; border-right: none !important; border-bottom: 1px solid var(--border) !important; flex-shrink: 0; gap: 0.75rem !important; box-sizing: border-box !important; overflow-x: hidden !important; }
             
             /* Top Navigation Conversion */
-            .nav-menu { flex-direction: row !important; flex-wrap: nowrap !important; overflow-x: auto !important; justify-content: flex-start !important; padding-bottom: 0.5rem; -webkit-overflow-scrolling: touch; }
+            .nav-menu { flex-direction: row !important; flex-wrap: nowrap !important; overflow-x: auto !important; justify-content: flex-start !important; padding-bottom: 0.5rem; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain !important; }
             .nav-item { padding: 0.8rem 1.2rem !important; font-size: 1rem !important; gap: 0.5rem !important; min-height: 44px; flex-shrink: 0; }
             
             /* Container Padding Fixes (covers all classes) */
-            .main, .main-content { padding: 1rem !important; width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; }
-            .card, .glass-panel, .sync-card, .results-card, .auto-card, .kpi-card { padding: 1rem !important; border-radius: 16px !important; box-sizing: border-box !important; width: 100% !important; }
+            .main, .main-content { padding: 1rem !important; width: 100% !important; max-width: 100vw !important; overflow-x: hidden !important; box-sizing: border-box !important; }
+            .card, .glass-panel, .sync-card, .results-card, .auto-card, .kpi-card { padding: 1rem !important; border-radius: 16px !important; box-sizing: border-box !important; width: 100% !important; max-width: 100% !important; overflow: hidden !important; }
             .modal-content { padding: 1rem !important; }
             .modal-header { flex-direction: column !important; align-items: flex-start !important; gap: 1rem !important; }
             .modal-header > div { width: 100%; display: flex; justify-content: space-between; align-items: center; }
-            #modalBody { overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; width: 100%; }
+            #modalBody { overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; width: 100%; overscroll-behavior-x: contain !important; }
             
             /* Header & Layout Fixes */
             .inv-header, .header-actions, .header { flex-direction: column !important; align-items: flex-start !important; gap: 1rem !important; width: 100% !important; }
@@ -551,12 +568,12 @@
             .inv-title h1, h1 { font-size: 1.8rem !important; }
 
             /* Toolbar Mobile Polish */
-            .toolbar-card { padding: 1rem !important; }
-            .toolbar-row { flex-direction: column !important; align-items: stretch !important; gap: 0.75rem !important; }
-            .filter-pills-group { overflow-x: auto !important; flex-wrap: nowrap !important; padding-bottom: 0.35rem !important; -webkit-overflow-scrolling: touch !important; scrollbar-width: none !important; }
+            .toolbar-card { padding: 1rem !important; width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; overflow: hidden !important; }
+            .toolbar-row { flex-direction: column !important; align-items: stretch !important; gap: 0.75rem !important; width: 100% !important; }
+            .filter-pills-group { overflow-x: auto !important; flex-wrap: nowrap !important; padding-bottom: 0.35rem !important; -webkit-overflow-scrolling: touch !important; overscroll-behavior-x: contain !important; scrollbar-width: none !important; }
             .filter-pills-group::-webkit-scrollbar { display: none !important; }
             .filter-pill { flex-shrink: 0 !important; white-space: nowrap !important; }
-            .search-input-wrap { min-width: 100% !important; max-width: 100% !important; }
+            .search-input-wrap { min-width: 100% !important; max-width: 100% !important; width: 100% !important; }
             
             /* Forms, Inputs & iOS Zoom Fix */
             .ds-lookup-row, .filters { flex-direction: column !important; align-items: stretch !important; gap: 1rem !important; }
@@ -565,7 +582,7 @@
             
             /* Grid & Table Breakpoints */
             .billing-grid, .kpi-grid { grid-template-columns: 1fr !important; }
-            .table-wrap, .table-container { width: 100% !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 1rem; }
+            .table-wrap, .table-container { width: 100% !important; max-width: 100% !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; overscroll-behavior-x: contain !important; padding-bottom: 1rem; }
             table { white-space: nowrap !important; }
             thead th { font-size: 0.85rem !important; }
             /* .total-row width removed for layout fix */
@@ -878,34 +895,23 @@
 
     <!-- Toolbar & Filters -->
     <div class="toolbar-card">
-        <!-- Row 1: Month Filters & Dispatch Pills -->
         <div class="toolbar-row">
-            <div class="filter-pills-group" id="monthFilters">
-                <span style="font-size:0.8rem; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:0.5px; margin-right:0.25rem;">Month:</span>
-                <button class="filter-pill active" onclick="setMonthFilter('all', this)">All Invoices</button>
-                <button class="filter-pill" onclick="setMonthFilter('2026-06', this)" style="border-color:rgba(99,102,241,0.4); background:rgba(99,102,241,0.08); color:#c7d2fe;">🌟 June 2026 (Franchise Start)</button>
-                <button class="filter-pill" onclick="setMonthFilter('2026-07', this)">July 2026</button>
-                <button class="filter-pill" onclick="setMonthFilter('2026-08', this)">August 2026</button>
-                <button class="filter-pill" onclick="setMonthFilter('2026-09', this)">September 2026</button>
-            </div>
-
+            <!-- Dispatch Status Pills -->
             <div class="filter-pills-group" id="dispatchFilters">
                 <span style="font-size:0.8rem; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:0.5px; margin-right:0.25rem;">Dispatch:</span>
-                <button class="filter-pill active" onclick="setDispatchFilter('all', this)">All</button>
+                <button class="filter-pill active" onclick="setDispatchFilter('all', this)">All Invoices (<span id="pillAllCount">0</span>)</button>
                 <button class="filter-pill" id="pillUnticked" onclick="setDispatchFilter('unticked', this)">⏳ Unticked (<span id="pillUntickedCount">0</span>)</button>
                 <button class="filter-pill" id="pillDispatched" onclick="setDispatchFilter('dispatched', this)">✅ Dispatched (<span id="pillDispatchedCount">0</span>)</button>
             </div>
-        </div>
 
-        <!-- Row 2: Search & Sort -->
-        <div class="toolbar-row">
-            <div class="search-input-wrap">
-                <span class="search-icon">🔍</span>
-                <input type="text" id="invoiceSearch" placeholder="Search invoice no, DS code, customer, remark..." oninput="handleSearch()">
-                <button class="search-clear-btn" id="searchClearBtn" onclick="clearSearch()" title="Clear search">&times;</button>
-            </div>
+            <!-- Search & Sort Controls -->
+            <div style="display:flex; gap:0.75rem; align-items:center; flex:1; justify-content:flex-end; flex-wrap:wrap;">
+                <div class="search-input-wrap">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="invoiceSearch" placeholder="Search invoice no, DS code, customer, remark..." oninput="handleSearch()">
+                    <button class="search-clear-btn" id="searchClearBtn" onclick="clearSearch()" title="Clear search">&times;</button>
+                </div>
 
-            <div style="display:flex; gap:0.75rem; align-items:center;">
                 <button class="btn btn-ghost" id="sortToggleBtn" onclick="toggleSortOrder()">
                     📅 Newest First ↓
                 </button>
@@ -984,7 +990,6 @@
 <script>
     let allInvoices = [];
     let invoiceData = [];
-    let activeMonthFilter = 'all';
     let activeDispatchFilter = 'all'; // 'all', 'unticked', 'dispatched'
     let searchQuery = '';
     let sortAscending = false;
@@ -1012,24 +1017,19 @@
         const totalUnticked = allInvoices.filter(inv => !inv.is_dispatched || inv.is_dispatched === 0).length;
         const totalDispatched = allInvoices.filter(inv => inv.is_dispatched == 1).length;
 
+        const pAll = document.getElementById('pillAllCount');
         const pUnticked = document.getElementById('pillUntickedCount');
         const pDispatched = document.getElementById('pillDispatchedCount');
         const statPending = document.getElementById('statPending');
         const statPendingSub = document.getElementById('statPendingSub');
 
+        if (pAll) pAll.textContent = allInvoices.length;
         if (pUnticked) pUnticked.textContent = totalUnticked;
         if (pDispatched) pDispatched.textContent = totalDispatched;
         if (statPending) statPending.textContent = `${totalUnticked} Unticked`;
         if (statPendingSub) {
             statPendingSub.textContent = activeDispatchFilter === 'unticked' ? 'Showing unticked only ✓' : 'Click to filter pending ➔';
         }
-    }
-
-    function setMonthFilter(month, btn) {
-        activeMonthFilter = month;
-        document.querySelectorAll('#monthFilters .filter-pill').forEach(t => t.classList.remove('active'));
-        if (btn) btn.classList.add('active');
-        renderFilteredInvoices();
     }
 
     function setDispatchFilter(status, btn) {
@@ -1093,11 +1093,6 @@
         tbody.innerHTML = '';
 
         let filtered = allInvoices.filter(inv => {
-            // Month filter
-            if (activeMonthFilter !== 'all') {
-                const d = inv.date_created || '';
-                if (!d.startsWith(activeMonthFilter)) return false;
-            }
             // Dispatch filter
             if (activeDispatchFilter === 'unticked') {
                 if (inv.is_dispatched && inv.is_dispatched != 0) return false;
