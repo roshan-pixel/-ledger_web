@@ -1,6 +1,6 @@
 # ⚡ Ledger God Mode Web App
 
-[![Live on Render](https://img.shields.io/badge/Render-Live-success?style=for-the-badge&logo=render)](https://dashboard-modern-ledger-4-1.onrender.com/)
+[![Live on Render](https://img.shields.io/badge/🚀%20Live%20Demo-ledger--web--app.onrender.com-success?style=for-the-badge&logo=render)](https://ledger-web-app.onrender.com/)
 [![Python 3.11](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Flask 3.0.3](https://img.shields.io/badge/Flask-3.0.3-000000?style=for-the-badge&logo=flask&logoColor=white)](https://palletsprojects.com/p/flask/)
 [![Playwright 1.44](https://img.shields.io/badge/Playwright-1.44.0-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)](https://playwright.dev/)
@@ -9,7 +9,39 @@
 
 A real-time distributor ERP covering inventory management, invoice billing, MLM downline crawling, Asclepius portal automation, and bidirectional Google Sheets cloud sync.
 
+## 🌐 Live App
+
+> **[https://ledger-web-app.onrender.com/](https://ledger-web-app.onrender.com/)**
+
 > 📖 **Full deep architecture, data flows, ERD, and sequence diagrams → [`ARCHITECTURE.md`](ARCHITECTURE.md)**
+
+---
+
+## 📸 Screenshots
+
+### 📊 Dashboard
+![Dashboard](docs/screenshots/dashboard.png)
+
+### 📦 Inventory Master
+![Inventory Master](docs/screenshots/inventory_master.png)
+
+### 🧾 Invoice Billing Terminal
+![Invoice Billing](docs/screenshots/invoice_billing.png)
+
+### 🤖 AWPL Portal — Login
+![Portal Login](docs/screenshots/portal_login.png)
+
+### 🤖 AWPL Portal — Order Filled
+![Portal Order Filled](docs/screenshots/portal_filled.png)
+
+### 🤖 AWPL Portal — Bill Detail
+![Portal Bill Detail](docs/screenshots/portal_bill_detail.png)
+
+### 🛒 DS Sale Order
+![DS Sale Order](docs/screenshots/ds_sale_order.png)
+
+### ✅ Portal Order Submitted (Automated)
+![Portal Order Submitted](docs/screenshots/portal_order_submitted.png)
 
 ---
 
