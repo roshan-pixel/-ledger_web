@@ -103,39 +103,53 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-        }.status.in-stock { background: #dcfce7; color: #15803d; }.status.low-stock { background: #fef08a; color: #a16207; }.status.out-of-stock { background: #fee2e2; color: #b91c1c; }.item-name {
-            font-size: 1.35rem;
+        }
+        .status.in-stock { background: #dcfce7; color: #15803d; }
+        .status.low-stock { background: #fef08a; color: #a16207; }
+        .status.out-of-stock { background: #fee2e2; color: #b91c1c; }
+        .item-name {
+            font-size: 1.15rem;
             font-weight: 700;
             margin: 0;
-            margin-right: 5rem;
-            line-height: 1.2;
-        }.item-category {
-            color: #64748b;
-            font-size: 0.875rem;
-            font-weight: 500;
+            margin-right: 4.5rem;
             margin-bottom: 0.5rem;
-            display: inline-block;
+            line-height: 1.3;
+            color: #0f172a;
+            letter-spacing: -0.01em;
+            word-wrap: break-word;
+            overflow-wrap: anywhere;
+        }
+        .item-code {
+            font-size: 0.8rem;
+            color: #64748b;
             background: #f1f5f9;
-            padding: 0.25rem 0.75rem;
-            border-radius: 6px;
-            width: fit-content;
-        }.item-name { font-weight: 700; font-size: 1.15rem; color: #fff; margin-bottom: 0.5rem; letter-spacing: 0.3px; word-wrap: break-word; overflow-wrap: anywhere; }.item-code { font-size: 0.8rem; color: var(--muted); background: rgba(255,255,255,0.1); padding: 0.2rem 0.6rem; border-radius: 4px; display: inline-block; margin-bottom: 1rem; }.item-details {
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+        .item-details {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1rem;
             align-items: end;
             margin-top: auto;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            border-top: 1px solid rgba(0,0,0,0.06);
             padding-top: 1rem;
-        }.item-details > div:nth-child(even) { text-align: right; }.detail-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.2rem; display: block; }.price {
-            font-size: 1.5rem;
+        }
+        .item-details > div:nth-child(even) { text-align: right; }
+        .detail-label { font-size: 0.75rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.2rem; display: block; }
+        .price {
+            font-size: 1.4rem;
             font-weight: 800;
             color: #0f172a;
-        }.stock {
+        }
+        .stock {
             font-size: 1rem;
             font-weight: 600;
             color: #475569;
-        }.empty-state {
+        }
+        .empty-state {
             grid-column: 1 / -1;
             text-align: center;
             padding: 5rem 2rem;
@@ -213,11 +227,486 @@
             .status.low-stock { background: rgba(161, 98, 7, 0.2); color: #fde047; }
             .status.out-of-stock { background: rgba(185, 28, 28, 0.2); color: #f87171; }
             
-            .skeleton-line {
-                background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
-                background-size: 200% 100%;
+        /* ── Category Navigation Bar ───────────────── */
+        .category-nav-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+            position: relative;
+        }
+        .cat-nav-btn {
+            flex-shrink: 0;
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            color: #475569;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+            touch-action: manipulation;
+        }
+        .cat-nav-btn:hover {
+            background: #6366f1;
+            color: #ffffff;
+            border-color: #6366f1;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+        }
+        .category-pills {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            flex: 1;
+            scrollbar-width: none;
+            scroll-behavior: smooth;
+            padding: 4px 2px;
+            -webkit-overflow-scrolling: touch;
+        }
+        .category-pills::-webkit-scrollbar {
+            display: none;
+        }
+        .cat-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.55rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: white;
+            border: 1px solid #e2e8f0;
+            color: #475569;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: inherit;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+            text-decoration: none;
+            user-select: none;
+        }
+        .cat-pill:hover {
+            border-color: #6366f1;
+            color: #6366f1;
+            background: #f5f3ff;
+            transform: translateY(-1px);
+        }
+        .cat-pill.active {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+        }
+        .cat-pill .pill-count {
+            font-size: 0.72rem;
+            padding: 0.12rem 0.45rem;
+            border-radius: 9999px;
+            background: #f1f5f9;
+            color: #64748b;
+            font-weight: 700;
+        }
+        .cat-pill:hover .pill-count {
+            background: #e0e7ff;
+            color: #4338ca;
+        }
+        .cat-pill.active .pill-count {
+            background: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+        }
+
+        /* ── Category Toolbar & Jump Bar ───────────────── */
+        .category-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.75rem;
+            padding: 0.85rem 1.25rem;
+            background: white;
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+        }
+        .cat-toolbar-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .cat-summary-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #334155;
+        }
+        .summary-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10b981;
+            display: inline-block;
+            box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+        }
+        .active-filter-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.3rem 0.65rem;
+            border-radius: 9999px;
+            background: #e0e7ff;
+            color: #4338ca;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .active-filter-badge button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: #4338ca;
+            padding: 0;
+            font-size: 0.85rem;
+            line-height: 1;
+        }
+        .cat-toolbar-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .jump-select-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .jump-label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #64748b;
+        }
+        .jump-select {
+            padding: 0.45rem 0.85rem;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            background: white;
+            color: #334155;
+            font-size: 0.85rem;
+            font-weight: 500;
+            outline: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .jump-select:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+        }
+        .view-mode-group {
+            display: inline-flex;
+            background: #f1f5f9;
+            padding: 0.25rem;
+            border-radius: 10px;
+            gap: 0.25rem;
+        }
+        .mode-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.75rem;
+            border: none;
+            background: transparent;
+            border-radius: 7px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .mode-btn.active {
+            background: white;
+            color: #0f172a;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ── Category Groups & Sticky Section Headers ───────────────── */
+        .category-group {
+            margin-bottom: 3rem;
+            scroll-margin-top: 1.5rem;
+            position: relative;
+        }
+        .cat-anchor-target {
+            display: block;
+            position: relative;
+            top: -100px;
+            visibility: hidden;
+        }
+        .category-group-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.9rem 1.4rem;
+            margin-bottom: 1.25rem;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+            position: sticky;
+            top: 0.5rem;
+            z-index: 15;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .cat-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .cat-group-icon {
+            font-size: 1.35rem;
+        }
+        .cat-group-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0;
+            color: #0f172a;
+            letter-spacing: -0.01em;
+        }
+        .cat-count-badge {
+            background: #f1f5f9;
+            color: #475569;
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            border: 1px solid #e2e8f0;
+        }
+        .cat-focused-tag {
+            background: #dbeafe;
+            color: #1d4ed8;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.2rem 0.55rem;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .cat-group-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .cat-action-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #4f46e5;
+            background: #eef2ff;
+            border: 1px solid #e0e7ff;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+        .cat-action-link:hover {
+            background: #e0e7ff;
+            border-color: #c7d2fe;
+            transform: translateY(-1px);
+        }
+        .cat-action-focus {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #475569;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .cat-action-focus:hover {
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+        .cat-action-clear {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.95rem;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #4338ca;
+            background: #e0e7ff;
+            border: 1px solid #c7d2fe;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .cat-action-clear:hover {
+            background: #c7d2fe;
+        }
+        .highlight-pulse .category-group-header {
+            border-color: #6366f1 !important;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25), 0 8px 24px rgba(99, 102, 241, 0.15) !important;
+            transform: translateY(-2px);
+        }
+
+        /* ── Card Category Badges ───────────────── */
+        .item-category-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.25rem 0.65rem;
+            border-radius: 6px;
+            width: fit-content;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-bottom: 0.4rem;
+        }
+        .item-category-pill:hover {
+            transform: translateY(-1px);
+            filter: brightness(0.95);
+        }
+        .badge-wellness { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+        .badge-makeup-mantra { background: #ffe4e6; color: #be123c; border: 1px solid #fecdd3; }
+        .badge-skin-care { background: #f3e8ff; color: #7e22ce; border: 1px solid #e9d5ff; }
+        .badge-food-spices { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+        .badge-home-care { background: #cffafe; color: #0e7490; border: 1px solid #a5f3fc; }
+        .badge-hair-care { background: #e0e7ff; color: #3730a3; border: 1px solid #c7d2fe; }
+        .badge-agriculture { background: #ecfccb; color: #4d7c0f; border: 1px solid #d9f99d; }
+        .badge-baby-care { background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+        .badge-fragrances { background: #fae8ff; color: #a21caf; border: 1px solid #f5d0fe; }
+        .badge-veterinary { background: #ffedd5; color: #c2410c; border: 1px solid #fed7aa; }
+        .badge-oral-care { background: #ccfbf1; color: #0f766e; border: 1px solid #99f6e4; }
+
+        /* ── Floating Toast Notification ───────────────── */
+        .link-toast {
+            position: fixed;
+            bottom: 4.5rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(30px);
+            background: #0f172a;
+            color: #ffffff;
+            padding: 0.75rem 1.4rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 9999;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .link-toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ── Dark Mode Category Overrides ───────────────── */
+        @media (prefers-color-scheme: dark) {
+            .cat-nav-btn {
+                background: rgba(30, 41, 59, 0.8);
+                border-color: rgba(255, 255, 255, 0.1);
+                color: #cbd5e1;
             }
-        }#inventoryFooter {
+            .cat-nav-btn:hover {
+                background: #6366f1;
+                color: #ffffff;
+            }
+            .cat-pill {
+                background: rgba(30, 41, 59, 0.7);
+                border-color: rgba(255, 255, 255, 0.1);
+                color: #cbd5e1;
+            }
+            .cat-pill:hover {
+                border-color: #818cf8;
+                color: #818cf8;
+                background: rgba(49, 46, 129, 0.3);
+            }
+            .cat-pill .pill-count {
+                background: rgba(255, 255, 255, 0.1);
+                color: #94a3b8;
+            }
+            .category-toolbar {
+                background: rgba(30, 41, 59, 0.7);
+                border-color: rgba(255, 255, 255, 0.1);
+            }
+            .cat-summary-pill {
+                color: #e2e8f0;
+            }
+            .jump-select {
+                background: rgba(15, 23, 42, 0.8);
+                border-color: rgba(255, 255, 255, 0.15);
+                color: #f8fafc;
+            }
+            .view-mode-group {
+                background: rgba(15, 23, 42, 0.6);
+            }
+            .mode-btn.active {
+                background: rgba(30, 41, 59, 0.9);
+                color: #f8fafc;
+            }
+            .category-group-header {
+                background: rgba(15, 23, 42, 0.92);
+                border-color: rgba(255, 255, 255, 0.08);
+            }
+            .cat-group-title {
+                color: #f8fafc;
+            }
+            .cat-count-badge {
+                background: rgba(51, 65, 85, 0.7);
+                color: #cbd5e1;
+                border-color: rgba(255, 255, 255, 0.1);
+            }
+            .cat-action-link {
+                background: rgba(99, 102, 241, 0.15);
+                color: #a5b4fc;
+                border-color: rgba(99, 102, 241, 0.3);
+            }
+            .cat-action-link:hover {
+                background: rgba(99, 102, 241, 0.25);
+            }
+            .cat-action-focus {
+                background: rgba(51, 65, 85, 0.6);
+                color: #cbd5e1;
+                border-color: rgba(255, 255, 255, 0.1);
+            }
+            .cat-action-focus:hover {
+                background: rgba(51, 65, 85, 1);
+                color: #ffffff;
+            }
+            .badge-wellness { background: rgba(16, 185, 129, 0.2); color: #34d399; border-color: rgba(16, 185, 129, 0.3); }
+            .badge-makeup-mantra { background: rgba(244, 63, 94, 0.2); color: #fb7185; border-color: rgba(244, 63, 94, 0.3); }
+            .badge-skin-care { background: rgba(168, 85, 247, 0.2); color: #c084fc; border-color: rgba(168, 85, 247, 0.3); }
+            .badge-food-spices { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border-color: rgba(245, 158, 11, 0.3); }
+            .badge-home-care { background: rgba(6, 182, 212, 0.2); color: #22d3ee; border-color: rgba(6, 182, 212, 0.3); }
+            .badge-hair-care { background: rgba(99, 102, 241, 0.2); color: #818cf8; border-color: rgba(99, 102, 241, 0.3); }
+            .badge-agriculture { background: rgba(132, 204, 22, 0.2); color: #a3e635; border-color: rgba(132, 204, 22, 0.3); }
+            .badge-baby-care { background: rgba(14, 165, 233, 0.2); color: #38bdf8; border-color: rgba(14, 165, 233, 0.3); }
+            .badge-fragrances { background: rgba(217, 70, 239, 0.2); color: #e879f9; border-color: rgba(217, 70, 239, 0.3); }
+            .badge-veterinary { background: rgba(234, 88, 12, 0.2); color: #fb923c; border-color: rgba(234, 88, 12, 0.3); }
+            .badge-oral-care { background: rgba(20, 184, 166, 0.2); color: #2dd4bf; border-color: rgba(20, 184, 166, 0.3); }
+        }
+
+        #inventoryFooter {
             position: fixed; bottom: 0; left: 0; right: 0;
             background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px);
             border-top: 1px solid var(--border);
@@ -484,112 +973,148 @@
             <h1 class="title">Inventory Stock</h1>
         </div>
         <div class="filters">
-            <input type="text" id="searchInput" class="filter-input" placeholder="Search products..." onkeyup="filterGrid()">
-            <select id="categoryFilter" class="filter-select" onchange="filterGrid()">
-                <option value="all">All Categories</option>
-                <option value="electronics">Electronics</option>
-                <option value="furniture">Furniture</option>
-                <option value="office">Office Supplies</option>
-                <option value="peripherals">Peripherals</option>
+            <input type="text" id="searchInput" class="filter-input" placeholder="Search products..." oninput="handleSearchInput()">
+            <select id="categoryFilter" class="filter-select" onchange="onCategorySelectChange(this.value)">
+                <option value="all">All Categories (222)</option>
+                <option value="wellness">🌿 Wellness & Ayurvedic (68)</option>
+                <option value="makeup-mantra">💄 Makeup Mantra (44)</option>
+                <option value="skin-care">✨ Skin Care (39)</option>
+                <option value="food-spices">🍃 Food & Spices (26)</option>
+                <option value="home-care">🧼 Home Care & Bath (19)</option>
+                <option value="hair-care">💆 Hair Care (11)</option>
+                <option value="agriculture">🌾 Agriculture (4)</option>
+                <option value="baby-care">👶 Baby Care (4)</option>
+                <option value="fragrances">🌸 Fragrances (4)</option>
+                <option value="veterinary">🐾 Veterinary (2)</option>
+                <option value="oral-care">🪥 Oral Care (1)</option>
             </select>
             <select id="statusFilter" class="filter-select" onchange="filterGrid()">
                 <option value="all">All Status</option>
-                <option value="in-stock">In Stock</option>
-                <option value="low-stock">Low Stock</option>
-                <option value="out-of-stock">Out of Stock</option>
+                <option value="in-stock">In Stock (&gt;10)</option>
+                <option value="low-stock">Low Stock (&lt;10)</option>
+                <option value="out-of-stock">Out of Stock (0)</option>
             </select>
         </div>
     </div>
 
-    <div class="grid" id="inventoryGrid">
-        <!-- Skeleton Loaders -->
-        <div class="skeleton-card">
-            <div class="skeleton-line skeleton-badge"></div>
-            <div class="skeleton-line skeleton-title"></div>
-            <div class="skeleton-line skeleton-category"></div>
-            <div class="skeleton-details">
-                <div>
-                    <div class="skeleton-line skeleton-price-label"></div>
-                    <div class="skeleton-line skeleton-price"></div>
-                </div>
-                <div style="display: flex; flex-direction: column; align-items: flex-end;">
-                    <div class="skeleton-line skeleton-stock-label"></div>
-                    <div class="skeleton-line skeleton-stock"></div>
-                </div>
+    <!-- Horizontal Category Navigation Bar -->
+    <div class="category-nav-wrapper">
+        <button class="cat-nav-btn cat-prev" onclick="scrollCatNav(-260)" title="Scroll left" aria-label="Scroll left">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <div class="category-pills" id="categoryPills">
+            <!-- Dynamically generated with real counts -->
+        </div>
+        <button class="cat-nav-btn cat-next" onclick="scrollCatNav(260)" title="Scroll right" aria-label="Scroll right">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+    </div>
+
+    <!-- Category Controls & Jump Toolbar -->
+    <div class="category-toolbar">
+        <div class="cat-toolbar-left">
+            <span class="cat-summary-pill" id="catSummaryPill">
+                <span class="summary-dot"></span>
+                <span id="summaryText">Loading inventory stock...</span>
+            </span>
+            <span id="activeFilterBadge" class="active-filter-badge" style="display: none;">
+                <span id="activeFilterName"></span>
+                <button onclick="clearCategoryFilter()" title="Clear filter">✕</button>
+            </span>
+        </div>
+        <div class="cat-toolbar-right">
+            <div class="jump-select-wrap">
+                <label for="jumpSelect" class="jump-label">Jump to Section:</label>
+                <select id="jumpSelect" class="jump-select" onchange="handleJumpSelect(this.value)">
+                    <option value="">Choose Section ▾</option>
+                    <option value="wellness">🌿 Wellness & Ayurvedic</option>
+                    <option value="makeup-mantra">💄 Makeup Mantra</option>
+                    <option value="skin-care">✨ Skin Care</option>
+                    <option value="food-spices">🍃 Food & Spices</option>
+                    <option value="home-care">🧼 Home Care & Bath</option>
+                    <option value="hair-care">💆 Hair Care</option>
+                    <option value="agriculture">🌾 Agriculture</option>
+                    <option value="baby-care">👶 Baby Care</option>
+                    <option value="fragrances">🌸 Fragrances</option>
+                    <option value="veterinary">🐾 Veterinary</option>
+                    <option value="oral-care">🪥 Oral Care</option>
+                </select>
+            </div>
+            <div class="view-mode-group">
+                <button id="viewGroupedBtn" class="mode-btn active" onclick="setViewMode('grouped')" title="Grouped by Category Sections with direct jump links">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                    <span>Sections</span>
+                </button>
+                <button id="viewGridBtn" class="mode-btn" onclick="setViewMode('flat')" title="Flat Grid View">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    <span>Flat Grid</span>
+                </button>
             </div>
         </div>
-        <div class="skeleton-card">
-            <div class="skeleton-line skeleton-badge"></div>
-            <div class="skeleton-line skeleton-title"></div>
-            <div class="skeleton-line skeleton-category"></div>
-            <div class="skeleton-details">
-                <div>
-                    <div class="skeleton-line skeleton-price-label"></div>
-                    <div class="skeleton-line skeleton-price"></div>
-                </div>
-                <div style="display: flex; flex-direction: column; align-items: flex-end;">
-                    <div class="skeleton-line skeleton-stock-label"></div>
-                    <div class="skeleton-line skeleton-stock"></div>
-                </div>
-            </div>
-        </div>
-        <div class="skeleton-card">
-            <div class="skeleton-line skeleton-badge"></div>
-            <div class="skeleton-line skeleton-title"></div>
-            <div class="skeleton-line skeleton-category"></div>
-            <div class="skeleton-details">
-                <div>
-                    <div class="skeleton-line skeleton-price-label"></div>
-                    <div class="skeleton-line skeleton-price"></div>
-                </div>
-                <div style="display: flex; flex-direction: column; align-items: flex-end;">
-                    <div class="skeleton-line skeleton-stock-label"></div>
-                    <div class="skeleton-line skeleton-stock"></div>
+    </div>
+
+    <!-- Main Inventory Container -->
+    <div id="inventoryContainer">
+        <!-- Initial Skeleton Loaders -->
+        <div class="grid" id="inventoryGrid">
+            <div class="skeleton-card">
+                <div class="skeleton-line skeleton-badge"></div>
+                <div class="skeleton-line skeleton-title"></div>
+                <div class="skeleton-line skeleton-category"></div>
+                <div class="skeleton-details">
+                    <div>
+                        <div class="skeleton-line skeleton-price-label"></div>
+                        <div class="skeleton-line skeleton-price"></div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                        <div class="skeleton-line skeleton-stock-label"></div>
+                        <div class="skeleton-line skeleton-stock"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="skeleton-card">
-            <div class="skeleton-line skeleton-badge"></div>
-            <div class="skeleton-line skeleton-title"></div>
-            <div class="skeleton-line skeleton-category"></div>
-            <div class="skeleton-details">
-                <div>
-                    <div class="skeleton-line skeleton-price-label"></div>
-                    <div class="skeleton-line skeleton-price"></div>
-                </div>
-                <div style="display: flex; flex-direction: column; align-items: flex-end;">
-                    <div class="skeleton-line skeleton-stock-label"></div>
-                    <div class="skeleton-line skeleton-stock"></div>
-                </div>
-            </div>
-        </div>
-        <div class="skeleton-card">
-            <div class="skeleton-line skeleton-badge"></div>
-            <div class="skeleton-line skeleton-title"></div>
-            <div class="skeleton-line skeleton-category"></div>
-            <div class="skeleton-details">
-                <div>
-                    <div class="skeleton-line skeleton-price-label"></div>
-                    <div class="skeleton-line skeleton-price"></div>
-                </div>
-                <div style="display: flex; flex-direction: column; align-items: flex-end;">
-                    <div class="skeleton-line skeleton-stock-label"></div>
-                    <div class="skeleton-line skeleton-stock"></div>
+            <div class="skeleton-card">
+                <div class="skeleton-line skeleton-badge"></div>
+                <div class="skeleton-line skeleton-title"></div>
+                <div class="skeleton-line skeleton-category"></div>
+                <div class="skeleton-details">
+                    <div>
+                        <div class="skeleton-line skeleton-price-label"></div>
+                        <div class="skeleton-line skeleton-price"></div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                        <div class="skeleton-line skeleton-stock-label"></div>
+                        <div class="skeleton-line skeleton-stock"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="skeleton-card">
-            <div class="skeleton-line skeleton-badge"></div>
-            <div class="skeleton-line skeleton-title"></div>
-            <div class="skeleton-line skeleton-category"></div>
-            <div class="skeleton-details">
-                <div>
-                    <div class="skeleton-line skeleton-price-label"></div>
-                    <div class="skeleton-line skeleton-price"></div>
+            <div class="skeleton-card">
+                <div class="skeleton-line skeleton-badge"></div>
+                <div class="skeleton-line skeleton-title"></div>
+                <div class="skeleton-line skeleton-category"></div>
+                <div class="skeleton-details">
+                    <div>
+                        <div class="skeleton-line skeleton-price-label"></div>
+                        <div class="skeleton-line skeleton-price"></div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                        <div class="skeleton-line skeleton-stock-label"></div>
+                        <div class="skeleton-line skeleton-stock"></div>
+                    </div>
                 </div>
-                <div style="display: flex; flex-direction: column; align-items: flex-end;">
-                    <div class="skeleton-line skeleton-stock-label"></div>
-                    <div class="skeleton-line skeleton-stock"></div>
+            </div>
+            <div class="skeleton-card">
+                <div class="skeleton-line skeleton-badge"></div>
+                <div class="skeleton-line skeleton-title"></div>
+                <div class="skeleton-line skeleton-category"></div>
+                <div class="skeleton-details">
+                    <div>
+                        <div class="skeleton-line skeleton-price-label"></div>
+                        <div class="skeleton-line skeleton-price"></div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                        <div class="skeleton-line skeleton-stock-label"></div>
+                        <div class="skeleton-line skeleton-stock"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -603,6 +1128,12 @@
         No inventory items found matching your filters.
     </div>
 
+    <!-- Floating Toast for Copied Links -->
+    <div id="linkToast" class="link-toast">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        <span id="toastMsg">Direct link copied to clipboard</span>
+    </div>
+
     <script>
         function navigateTo(url) {
             document.body.style.opacity = '0';
@@ -612,94 +1143,545 @@
             }, 300);
         }
 
+        // Canonical Asclepius Categories definition
+        const CATEGORIES = [
+            { name: 'Wellness & Ayurvedic', slug: 'wellness', icon: '🌿' },
+            { name: 'Makeup Mantra', slug: 'makeup-mantra', icon: '💄' },
+            { name: 'Skin Care', slug: 'skin-care', icon: '✨' },
+            { name: 'Food & Spices', slug: 'food-spices', icon: '🍃' },
+            { name: 'Home Care & Bath', slug: 'home-care', icon: '🧼' },
+            { name: 'Hair Care', slug: 'hair-care', icon: '💆' },
+            { name: 'Agriculture', slug: 'agriculture', icon: '🌾' },
+            { name: 'Baby Care', slug: 'baby-care', icon: '👶' },
+            { name: 'Fragrances', slug: 'fragrances', icon: '🌸' },
+            { name: 'Veterinary', slug: 'veterinary', icon: '🐾' },
+            { name: 'Oral Care', slug: 'oral-care', icon: '🪥' }
+        ];
+
+        // Client-side fallback categorizer (matching server rules exactly)
+        function classifyItem(name) {
+            if (!name) return { name: 'Wellness & Ayurvedic', slug: 'wellness', icon: '🌿' };
+            const n = name.toUpperCase();
+            if (['DENTODOC', 'TOOTH', 'DENTAL'].some(k => n.includes(k))) return { name: 'Oral Care', slug: 'oral-care', icon: '🪥' };
+            if (['LITTLE PIE', 'BABY'].some(k => n.includes(k))) return { name: 'Baby Care', slug: 'baby-care', icon: '👶' };
+            if (['VEDIK AGRO', 'PGPR', 'AGRO 90', 'ECO HARIYALI', 'BHUVITA'].some(k => n.includes(k))) return { name: 'Agriculture', slug: 'agriculture', icon: '🌾' };
+            if (['VETDOC', 'VETERINARY'].some(k => n.includes(k))) return { name: 'Veterinary', slug: 'veterinary', icon: '🐾' };
+            if (['JEEVEDA', 'MASALA', 'CHILLI POWDER', 'TURMERIC POWDER', 'CORIANDER POWDER', 'SEEDS', 'ELAIC', 'ELAIS', 'METHI', 'LAUNG', 'DALCHINI', 'JEERA', 'AJWAIN', 'RICE BRAN OIL', 'SUPERVO', 'HERBAL TEA', 'ECO AROGYAM TEA', 'WAKECHA', 'SHIITAKE SHAKE', 'FIBER COMPLEX'].some(k => n.includes(k))) return { name: 'Food & Spices', slug: 'food-spices', icon: '🍃' };
+            if (['PERFUME', 'ORELLA', 'NEBEL', 'SNISS REVOQUE', 'SNISS LONDON'].some(k => n.includes(k))) return { name: 'Fragrances', slug: 'fragrances', icon: '🌸' };
+            if (['FOUNDATION', 'LIPSTICK', 'LIP GLOSS', 'BLUSH', 'COMPACT POWDER', 'LOOSE POWDER', 'EYELINER', 'EYE LINER', 'KAJAL', 'SKIN TINT', 'PREP-IT', 'LUMITOUCH', 'SILK SHEIN', 'BLURR', 'COLOR DREW'].some(k => n.includes(k))) return { name: 'Makeup Mantra', slug: 'makeup-mantra', icon: '💄' };
+            if (['HAIR', 'SHAMPOO', 'COOL OIL', 'AMLA HAIR OIL', 'HAIRDOC', 'CONDITIONER'].some(k => n.includes(k))) return { name: 'Hair Care', slug: 'hair-care', icon: '💆' };
+            if (['TOILET CLEANER', 'DISH WASH', 'DETERGENT', 'SURFACE CLEANER', 'TOSHINE', 'LIMFRESH', 'POWER FLUSH', 'EASY SWEEP', 'HANDWASH', 'SANITARY PAD', 'ROOM FRESHNER', 'BATHVEDA', 'SHOWER GEL', 'BATH'].some(k => n.includes(k))) return { name: 'Home Care & Bath', slug: 'home-care', icon: '🧼' };
+            if (['FACE WASH', 'FACE SERUM', 'FACE TONER', 'FACE MASK', 'MOISTURIZER', 'MOISTURISING', 'GEL', 'CREAM', 'LOTION', 'SUNSCREEN', 'SUNSREEN', 'UNDER EYE', 'SHEET MASK', 'LIP BALM', 'B-TON', 'HEAL DOC', 'TALCUM', 'V SPLASH', 'SHAVING CREAM', 'PEEL OFF', 'GLOW CREAM', 'SNAIL MU', 'NIACINAMIDE', 'SALICYLIC', 'KOJIC', 'COLLAGEN', 'AHA + BHA', 'VITAMIN C FACE'].some(k => n.includes(k))) return { name: 'Skin Care', slug: 'skin-care', icon: '✨' };
+            return { name: 'Wellness & Ayurvedic', slug: 'wellness', icon: '🌿' };
+        }
+
         let allData = [];
+        let activeCategory = 'all'; // 'all' or slug e.g. 'wellness'
+        let viewMode = 'grouped';   // 'grouped' or 'flat'
+        let searchDebounceTimer = null;
 
         async function fetchInventory() {
             try {
                 const res = await fetch('/api/inventory');
                 const json = await res.json();
-                allData = json.data || [];
+                allData = (json.data || []).map(item => {
+                    const name = (item['Product Name'] || '').toString().trim();
+                    if (!item.Category || !item.CategorySlug) {
+                        const meta = classifyItem(name);
+                        item.Category = meta.name;
+                        item.CategorySlug = meta.slug;
+                        item.CategoryIcon = meta.icon;
+                    }
+                    return item;
+                });
+
+                renderCategoryNav();
                 renderGrid();
+                handleInitialHash();
             } catch (err) {
                 console.error("Error fetching inventory", err);
+                const container = document.getElementById('inventoryContainer');
+                if (container) {
+                    container.innerHTML = '<div class="empty-state">Failed to load inventory stock. Please refresh the page.</div>';
+                }
             }
         }
 
-        function renderGrid() {
-            const grid = document.getElementById('inventoryGrid');
-            const search = document.getElementById('searchInput').value.toLowerCase().trim();
-            const normalizedSearch = search.replace(/hight/g, 'height');
-            const status = document.getElementById('statusFilter').value;
-            
-            grid.innerHTML = '';
-            let visibleItems = [];
+        function renderCategoryNav() {
+            const pillsContainer = document.getElementById('categoryPills');
+            if (!pillsContainer) return;
 
-            allData.forEach((item) => {
-                const name = (item['Product Name'] || '').toString();
-                const stock = parseFloat(item['Remaining Qty']) || 0;
-                
-                let itemStatus = 'in-stock';
-                if (stock <= 0) itemStatus = 'out-of-stock';
-                else if (stock < 10) itemStatus = 'low-stock';
+            // Calculate category counts
+            const counts = { all: allData.length };
+            CATEGORIES.forEach(cat => counts[cat.slug] = 0);
 
-                const nameLower = name.toLowerCase();
-                const matchesSearch = !search || nameLower.includes(search) || nameLower.includes(normalizedSearch);
-
-                if (matchesSearch && (status === 'all' || itemStatus === status)) {
-                    visibleItems.push(item);
+            allData.forEach(item => {
+                const slug = item.CategorySlug || 'wellness';
+                if (counts[slug] !== undefined) {
+                    counts[slug]++;
                 }
             });
 
-            visibleItems.forEach((item, index) => {
-                const name = (item['Product Name'] || '').toString();
-                const price = parseFloat(item['Price/Pc (Rs.)']) || 0;
-                const stock = parseFloat(item['Remaining Qty']) || 0;
-                const spPc = parseFloat(item['SP/Pc']) || 0;
-                const totalSp = parseFloat(item['Total SP']) || 0;
-                
-                let itemStatus = 'in-stock';
-                let itemStatusText = 'In Stock';
-                if (stock <= 0) { itemStatus = 'out-of-stock'; itemStatusText = 'Out of Stock'; }
-                else if (stock < 10) { itemStatus = 'low-stock'; itemStatusText = 'Low Stock'; }
+            let pillsHTML = `
+                <button class="cat-pill ${activeCategory === 'all' ? 'active' : ''}" onclick="onPillClick('all')" data-slug="all">
+                    <span>🌟 All Products</span>
+                    <span class="pill-count">${counts.all || 0}</span>
+                </button>
+            `;
 
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.style.animationDelay = `${(index % 10) * 0.05}s`;
-                card.innerHTML = `
+            CATEGORIES.forEach(cat => {
+                const count = counts[cat.slug] || 0;
+                const isActive = activeCategory === cat.slug;
+                pillsHTML += `
+                    <button class="cat-pill ${isActive ? 'active' : ''}" onclick="onPillClick('${cat.slug}')" data-slug="${cat.slug}" title="View ${cat.name} products">
+                        <span>${cat.icon} ${cat.name}</span>
+                        <span class="pill-count">${count}</span>
+                    </button>
+                `;
+            });
+
+            pillsContainer.innerHTML = pillsHTML;
+
+            // Update dropdown labels with counts
+            const catSelect = document.getElementById('categoryFilter');
+            if (catSelect) {
+                catSelect.innerHTML = `
+                    <option value="all">All Categories (${counts.all || 0})</option>
+                    ${CATEGORIES.map(cat => `<option value="${cat.slug}">${cat.icon} ${cat.name} (${counts[cat.slug] || 0})</option>`).join('')}
+                `;
+                catSelect.value = activeCategory;
+            }
+        }
+
+        function createCardHTML(item, index) {
+            const name = (item['Product Name'] || '').toString();
+            const price = parseFloat(item['Price/Pc (Rs.)']) || 0;
+            const stock = parseFloat(item['Remaining Qty']) || 0;
+            const spPc = parseFloat(item['SP/Pc']) || 0;
+            const totalSp = parseFloat(item['Total SP']) || 0;
+            const category = item.Category || 'Wellness & Ayurvedic';
+            const catSlug = item.CategorySlug || 'wellness';
+            const catIcon = item.CategoryIcon || '🌿';
+
+            let itemStatus = 'in-stock';
+            let itemStatusText = 'In Stock';
+            if (stock <= 0) { itemStatus = 'out-of-stock'; itemStatusText = 'Out of Stock'; }
+            else if (stock < 10) { itemStatus = 'low-stock'; itemStatusText = 'Low Stock'; }
+
+            return `
+                <div class="card" style="animation-delay: ${(index % 10) * 0.04}s">
                     <span class="status ${itemStatus}">${itemStatusText}</span>
-                    <h2 class="item-name">${name}</h2>
-                    <div class="item-category">Product</div>
+                    <h2 class="item-name" title="${name}">${name}</h2>
+                    <div class="item-category-pill badge-${catSlug}" onclick="focusCategory('${catSlug}')" title="Click to filter by ${category}">
+                        <span>${catIcon}</span>
+                        <span>${category}</span>
+                    </div>
                     <div class="item-details">
-                        <div><span class="detail-label">Price/Pc</span><span class="price">₹${price.toLocaleString()}</span></div>
+                        <div><span class="detail-label">Price/Pc</span><span class="price">₹${price.toLocaleString('en-IN')}</span></div>
                         <div><span class="detail-label">Stock</span><span class="stock">${stock}</span></div>
                         <div><span class="detail-label">SP/Pc</span><span class="price">${spPc}</span></div>
                         <div><span class="detail-label">Total SP</span><span class="stock">${totalSp.toFixed(1)}</span></div>
                     </div>
-                `;
-                grid.appendChild(card);
+                </div>
+            `;
+        }
+
+        function renderGrid() {
+            const container = document.getElementById('inventoryContainer');
+            const searchInput = document.getElementById('searchInput');
+            const search = searchInput ? searchInput.value.toLowerCase().trim() : '';
+            const normalizedSearch = search.replace(/hight/g, 'height');
+            const status = document.getElementById('statusFilter') ? document.getElementById('statusFilter').value : 'all';
+
+            // Filter data
+            let visibleItems = allData.filter(item => {
+                const name = (item['Product Name'] || '').toString().toLowerCase();
+                const stock = parseFloat(item['Remaining Qty']) || 0;
+
+                let itemStatus = 'in-stock';
+                if (stock <= 0) itemStatus = 'out-of-stock';
+                else if (stock < 10) itemStatus = 'low-stock';
+
+                const matchesSearch = !search || name.includes(search) || name.includes(normalizedSearch);
+                const matchesStatus = (status === 'all' || itemStatus === status);
+                const matchesCat = (activeCategory === 'all' || item.CategorySlug === activeCategory);
+
+                return matchesSearch && matchesStatus && matchesCat;
             });
-            
-            document.getElementById('emptyState').style.display = visibleItems.length === 0 ? 'block' : 'none';
-            
+
+            // Update Summary Text & Badges
+            updateSummaryToolbar(visibleItems.length, search, status);
+
+            // Empty state check
+            const emptyState = document.getElementById('emptyState');
+            if (visibleItems.length === 0) {
+                container.innerHTML = '';
+                if (emptyState) emptyState.style.display = 'block';
+                updateFooter(0, 0);
+                return;
+            } else {
+                if (emptyState) emptyState.style.display = 'none';
+            }
+
+            // Render Modes
+            if (activeCategory !== 'all') {
+                // Focused category view
+                renderFocusedView(container, visibleItems, activeCategory);
+            } else if (viewMode === 'grouped') {
+                // Grouped by category sections with anchor links
+                renderGroupedSections(container, visibleItems);
+            } else {
+                // Flat grid view
+                renderFlatGridView(container, visibleItems);
+            }
+
+            // Update Sticky Footer
+            const totalStockSp = visibleItems.reduce((sum, item) => sum + (parseFloat(item['Total SP']) || 0), 0);
+            updateFooter(visibleItems.length, totalStockSp);
+        }
+
+        function renderGroupedSections(container, visibleItems) {
+            container.innerHTML = '';
+
+            const grouped = {};
+            CATEGORIES.forEach(cat => grouped[cat.slug] = []);
+
+            visibleItems.forEach(item => {
+                const slug = item.CategorySlug || 'wellness';
+                if (!grouped[slug]) grouped[slug] = [];
+                grouped[slug].push(item);
+            });
+
+            CATEGORIES.forEach(cat => {
+                const items = grouped[cat.slug] || [];
+                if (items.length === 0) return; // Hide sections with 0 matches
+
+                const section = document.createElement('section');
+                section.className = 'category-group';
+                section.id = `cat-${cat.slug}`;
+                section.setAttribute('data-category', cat.slug);
+
+                section.innerHTML = `
+                    <a id="${cat.slug}" class="cat-anchor-target"></a>
+                    <div class="category-group-header">
+                        <div class="cat-title-wrap">
+                            <span class="cat-group-icon">${cat.icon}</span>
+                            <h2 class="cat-group-title">${cat.name}</h2>
+                            <span class="cat-count-badge">${items.length} ${items.length === 1 ? 'Item' : 'Items'}</span>
+                        </div>
+                        <div class="cat-group-actions">
+                            <button class="cat-action-link" onclick="copySectionLink('${cat.slug}', event)" title="Copy direct link to this category section">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                                <span>Direct Link</span>
+                            </button>
+                            <button class="cat-action-focus" onclick="focusCategory('${cat.slug}')" title="Filter view to this category only">
+                                Focus Only
+                            </button>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        ${items.map((item, idx) => createCardHTML(item, idx)).join('')}
+                    </div>
+                `;
+                container.appendChild(section);
+            });
+        }
+
+        function renderFocusedView(container, visibleItems, catSlug) {
+            container.innerHTML = '';
+            const catInfo = CATEGORIES.find(c => c.slug === catSlug) || { name: catSlug, icon: '📦', slug: catSlug };
+
+            const section = document.createElement('section');
+            section.className = 'category-group';
+            section.id = `cat-${catSlug}`;
+
+            section.innerHTML = `
+                <a id="${catSlug}" class="cat-anchor-target"></a>
+                <div class="category-group-header">
+                    <div class="cat-title-wrap">
+                        <span class="cat-group-icon">${catInfo.icon}</span>
+                        <h2 class="cat-group-title">${catInfo.name}</h2>
+                        <span class="cat-count-badge">${visibleItems.length} Items</span>
+                        <span class="cat-focused-tag">Filtered Category</span>
+                    </div>
+                    <div class="cat-group-actions">
+                        <button class="cat-action-link" onclick="copySectionLink('${catSlug}', event)" title="Copy direct link to this category section">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                            <span>Direct Link</span>
+                        </button>
+                        <button class="cat-action-clear" onclick="clearCategoryFilter()" title="View all product categories">
+                            ← Show All Categories
+                        </button>
+                    </div>
+                </div>
+                <div class="grid">
+                    ${visibleItems.map((item, idx) => createCardHTML(item, idx)).join('')}
+                </div>
+            `;
+            container.appendChild(section);
+        }
+
+        function renderFlatGridView(container, visibleItems) {
+            container.innerHTML = `
+                <div class="grid">
+                    ${visibleItems.map((item, idx) => createCardHTML(item, idx)).join('')}
+                </div>
+            `;
+        }
+
+        function updateSummaryToolbar(count, search, status) {
+            const summaryText = document.getElementById('summaryText');
+            if (summaryText) {
+                if (activeCategory === 'all') {
+                    summaryText.textContent = `Showing ${count} Products across 11 Categories`;
+                } else {
+                    const catInfo = CATEGORIES.find(c => c.slug === activeCategory);
+                    const name = catInfo ? catInfo.name : activeCategory;
+                    summaryText.textContent = `Showing ${count} Products in ${name}`;
+                }
+            }
+
+            const activeFilterBadge = document.getElementById('activeFilterBadge');
+            const activeFilterName = document.getElementById('activeFilterName');
+            if (activeFilterBadge && activeFilterName) {
+                if (activeCategory !== 'all') {
+                    const catInfo = CATEGORIES.find(c => c.slug === activeCategory);
+                    activeFilterName.textContent = `${catInfo ? catInfo.icon + ' ' + catInfo.name : activeCategory}`;
+                    activeFilterBadge.style.display = 'inline-flex';
+                } else {
+                    activeFilterBadge.style.display = 'none';
+                }
+            }
+        }
+
+        function updateFooter(count, totalSp) {
             let footer = document.getElementById('inventoryFooter');
             if (!footer) {
                 footer = document.createElement('div');
                 footer.id = 'inventoryFooter';
                 document.body.appendChild(footer);
             }
-            
-            const totalStockSp = visibleItems.reduce((sum, item) => sum + (parseFloat(item['Total SP']) || 0), 0);
             footer.innerHTML = `
-                <div style="font-weight:600">Showing ${visibleItems.length} Items</div>
-                <div style="font-weight:600;color:#3b82f6">Total SP: ${totalStockSp.toFixed(1)}</div>
+                <div style="font-weight:600">Showing ${count} Items</div>
+                <div style="font-weight:600;color:#3b82f6">Total SP: ${totalSp.toFixed(1)}</div>
             `;
+        }
+
+        // Horizontal Category Nav Scroll
+        function scrollCatNav(offset) {
+            const scroll = document.getElementById('categoryPills');
+            if (scroll) {
+                scroll.scrollBy({ left: offset, behavior: 'smooth' });
+            }
+        }
+
+        // Category Selection & Pill Click Handler
+        function onPillClick(slug) {
+            if (slug === 'all') {
+                activeCategory = 'all';
+                updatePillUI('all');
+                syncCategorySelect('all');
+                renderGrid();
+                updateURLHash('');
+                const container = document.getElementById('inventoryContainer');
+                if (container) container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                if (viewMode === 'grouped' && activeCategory === 'all') {
+                    // Already showing all grouped sections: smoothly scroll right to that section!
+                    scrollToSection(slug);
+                    updatePillUI(slug);
+                    updateURLHash(slug);
+                } else {
+                    // Focus on this category or switch to it
+                    selectCategory(slug);
+                }
+            }
+        }
+
+        function selectCategory(slug) {
+            activeCategory = slug;
+            updatePillUI(slug);
+            syncCategorySelect(slug);
+            renderGrid();
+            updateURLHash(slug);
+            scrollToSection(slug);
+        }
+
+        function focusCategory(slug) {
+            activeCategory = slug;
+            updatePillUI(slug);
+            syncCategorySelect(slug);
+            renderGrid();
+            updateURLHash(slug);
+            window.scrollTo({ top: 120, behavior: 'smooth' });
+        }
+
+        function clearCategoryFilter() {
+            activeCategory = 'all';
+            viewMode = 'grouped';
+            updateViewModeButtons();
+            updatePillUI('all');
+            syncCategorySelect('all');
+            renderGrid();
+            updateURLHash('');
+            const container = document.getElementById('inventoryContainer');
+            if (container) container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function onCategorySelectChange(val) {
+            if (val === 'all') {
+                clearCategoryFilter();
+            } else {
+                selectCategory(val);
+            }
+        }
+
+        function handleJumpSelect(slug) {
+            if (!slug) return;
+            if (activeCategory !== 'all' && activeCategory !== slug) {
+                activeCategory = 'all';
+                viewMode = 'grouped';
+                updateViewModeButtons();
+                updatePillUI(slug);
+                syncCategorySelect('all');
+                renderGrid();
+            }
+            scrollToSection(slug);
+            updateURLHash(slug);
+            const jumpEl = document.getElementById('jumpSelect');
+            if (jumpEl) jumpEl.value = '';
+        }
+
+        function scrollToSection(slug) {
+            setTimeout(() => {
+                const target = document.getElementById(`cat-${slug}`) || document.getElementById(slug);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    target.classList.add('highlight-pulse');
+                    setTimeout(() => target.classList.remove('highlight-pulse'), 2200);
+                }
+            }, 60);
+        }
+
+        function copySectionLink(slug, event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            const cleanSlug = slug.replace(/^#?cat-?/, '');
+            const url = `${window.location.origin}${window.location.pathname}#cat-${cleanSlug}`;
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url).then(() => {
+                    showToast(`✓ Direct link copied: #${cleanSlug}`);
+                }).catch(() => {
+                    promptCopy(url, cleanSlug);
+                });
+            } else {
+                promptCopy(url, cleanSlug);
+            }
+
+            updateURLHash(cleanSlug);
+            updatePillUI(cleanSlug);
+        }
+
+        function promptCopy(url, slug) {
+            try {
+                const input = document.createElement('input');
+                input.value = url;
+                document.body.appendChild(input);
+                input.select();
+                document.execCommand('copy');
+                document.body.removeChild(input);
+                showToast(`✓ Direct link copied: #${slug}`);
+            } catch (e) {
+                showToast(`Link: #${slug}`);
+            }
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('linkToast');
+            const toastMsg = document.getElementById('toastMsg');
+            if (!toast || !toastMsg) return;
+            toastMsg.textContent = msg;
+            toast.classList.add('show');
+            clearTimeout(window.toastTimeout);
+            window.toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }
+
+        function updateURLHash(slug) {
+            try {
+                if (slug) {
+                    history.replaceState(null, null, `#cat-${slug}`);
+                } else {
+                    history.replaceState(null, null, window.location.pathname);
+                }
+            } catch (e) {
+                if (slug) window.location.hash = `cat-${slug}`;
+            }
+        }
+
+        function updatePillUI(slug) {
+            document.querySelectorAll('.cat-pill').forEach(pill => {
+                if (pill.getAttribute('data-slug') === slug) {
+                    pill.classList.add('active');
+                    pill.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
+                } else {
+                    pill.classList.remove('active');
+                }
+            });
+        }
+
+        function syncCategorySelect(slug) {
+            const select = document.getElementById('categoryFilter');
+            if (select) select.value = slug;
+        }
+
+        function setViewMode(mode) {
+            viewMode = mode;
+            updateViewModeButtons();
+            renderGrid();
+        }
+
+        function updateViewModeButtons() {
+            const groupedBtn = document.getElementById('viewGroupedBtn');
+            const gridBtn = document.getElementById('viewGridBtn');
+            if (groupedBtn && gridBtn) {
+                groupedBtn.classList.toggle('active', viewMode === 'grouped');
+                gridBtn.classList.toggle('active', viewMode === 'flat');
+            }
+        }
+
+        function handleSearchInput() {
+            clearTimeout(searchDebounceTimer);
+            searchDebounceTimer = setTimeout(() => {
+                renderGrid();
+            }, 120);
         }
 
         function filterGrid() {
             renderGrid();
         }
 
-        // Init
+        function handleInitialHash() {
+            const hash = window.location.hash;
+            if (!hash) return;
+            const clean = hash.replace(/^#?cat-?/, '').toLowerCase();
+            const matched = CATEGORIES.find(c => c.slug === clean || c.slug === clean.replace(/-/g, ''));
+            if (matched) {
+                updatePillUI(matched.slug);
+                syncCategorySelect(matched.slug);
+                scrollToSection(matched.slug);
+            }
+        }
+
+        window.addEventListener('hashchange', () => {
+            handleInitialHash();
+        });
+
+        // Initialize
         fetchInventory();
     </script>
     </main>

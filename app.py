@@ -582,6 +582,67 @@ def api_force_sync():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+def categorize_product(name):
+    """Categorize an Asclepius product into authentic product lines."""
+    if not name:
+        return 'Wellness & Ayurvedic', 'wellness', '🌿'
+    n = str(name).upper()
+    
+    # 1. Oral Care
+    if any(k in n for k in ['DENTODOC', 'TOOTH', 'DENTAL']):
+        return 'Oral Care', 'oral-care', '🪥'
+        
+    # 2. Baby Care
+    if any(k in n for k in ['LITTLE PIE', 'BABY']):
+        return 'Baby Care', 'baby-care', '👶'
+        
+    # 3. Agriculture
+    if any(k in n for k in ['VEDIK AGRO', 'PGPR', 'AGRO 90', 'ECO HARIYALI', 'BHUVITA']):
+        return 'Agriculture', 'agriculture', '🌾'
+        
+    # 4. Veterinary
+    if any(k in n for k in ['VETDOC', 'VETERINARY']):
+        return 'Veterinary', 'veterinary', '🐾'
+        
+    # 5. Food & Spices
+    if any(k in n for k in ['JEEVEDA', 'MASALA', 'CHILLI POWDER', 'TURMERIC POWDER', 'CORIANDER POWDER', 
+                           'SEEDS', 'ELAIC', 'ELAIS', 'METHI', 'LAUNG', 'DALCHINI', 'JEERA', 'AJWAIN',
+                           'RICE BRAN OIL', 'SUPERVO', 'HERBAL TEA', 'ECO AROGYAM TEA', 'WAKECHA', 
+                           'SHIITAKE SHAKE', 'FIBER COMPLEX']):
+        return 'Food & Spices', 'food-spices', '🍃'
+        
+    # 6. Fragrances & Perfumes
+    if any(k in n for k in ['PERFUME', 'ORELLA', 'NEBEL', 'SNISS REVOQUE', 'SNISS LONDON']):
+        return 'Fragrances', 'fragrances', '🌸'
+        
+    # 7. Makeup Mantra & Color Cosmetics
+    if any(k in n for k in ['FOUNDATION', 'LIPSTICK', 'LIP GLOSS', 'BLUSH', 'COMPACT POWDER', 'LOOSE POWDER', 
+                           'EYELINER', 'EYE LINER', 'KAJAL', 'SKIN TINT', 'PREP-IT', 'LUMITOUCH', 
+                           'SILK SHEIN', 'BLURR', 'COLOR DREW']):
+        return 'Makeup Mantra', 'makeup-mantra', '💄'
+        
+    # 8. Hair Care
+    if any(k in n for k in ['HAIR', 'SHAMPOO', 'COOL OIL', 'AMLA HAIR OIL', 'HAIRDOC', 'CONDITIONER']):
+        return 'Hair Care', 'hair-care', '💆'
+        
+    # 9. Home Care & Bath / Hygiene
+    if any(k in n for k in ['TOILET CLEANER', 'DISH WASH', 'DETERGENT', 'SURFACE CLEANER', 'TOSHINE', 
+                           'LIMFRESH', 'POWER FLUSH', 'EASY SWEEP', 'HANDWASH', 'SANITARY PAD', 
+                           'ROOM FRESHNER', 'BATHVEDA', 'SHOWER GEL', 'BATH']):
+        return 'Home Care & Bath', 'home-care', '🧼'
+        
+    # 10. Skin Care & Personal Beauty
+    if any(k in n for k in ['FACE WASH', 'FACE SERUM', 'FACE TONER', 'FACE MASK', 'MOISTURIZER', 'MOISTURISING',
+                           'GEL', 'CREAM', 'LOTION', 'SUNSCREEN', 'SUNSREEN', 'UNDER EYE', 'SHEET MASK',
+                           'LIP BALM', 'B-TON', 'HEAL DOC', 'TALCUM', 'V SPLASH', 'SHAVING CREAM',
+                           'PEEL OFF', 'GLOW CREAM', 'SNAIL MU', 'NIACINAMIDE', 'SALICYLIC', 'KOJIC',
+                           'COLLAGEN', 'AHA + BHA', 'VITAMIN C FACE']):
+        return 'Skin Care', 'skin-care', '✨'
+        
+    # 11. Wellness & Ayurvedic Healthcare
+    return 'Wellness & Ayurvedic', 'wellness', '🌿'
+
+
 @app.route('/api/inventory')
 def api_inventory():
     try:
@@ -616,6 +677,10 @@ def api_inventory():
                     val = val.replace('\n', ' ')
                 row_data[h] = val
             row_data['__row'] = row['row_num']
+            cat_name, cat_slug, cat_icon = categorize_product(prod_name)
+            row_data['Category'] = cat_name
+            row_data['CategorySlug'] = cat_slug
+            row_data['CategoryIcon'] = cat_icon
             data.append(row_data)
             
         conn.close()
