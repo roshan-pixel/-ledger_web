@@ -151,6 +151,88 @@ def restore_from_gsheets():
         except Exception as e:
             print("Error restoring Invoices:", e)
             raise e
+
+        # 5. Ledger Report
+        try:
+            ledger_ws = sheet.worksheet('Ledger_Report')
+            l_data = ledger_ws.get_all_values()
+            if len(l_data) > 1:
+                c.execute("""
+                    CREATE TABLE IF NOT EXISTS ledger_report (
+                        id          INTEGER PRIMARY KEY AUTOINCREMENT,
+                        entry_date  TEXT,
+                        particulars TEXT,
+                        debit       REAL DEFAULT 0,
+                        credit      REAL DEFAULT 0,
+                        balance     REAL DEFAULT 0,
+                        raw_row     TEXT,
+                        scraped_at  TEXT
+                    )
+                """)
+                c.execute("DELETE FROM ledger_report")
+                reconstructed_entries = []
+                for row in l_data[1:]:
+                    while len(row) < 6: row.append('')
+                    dt, particulars, deb_str, cr_str, bal_str, sc_at = row[:6]
+                    try: debit = float(str(deb_str).replace(',', '') or 0)
+                    except: debit = 0.0
+                    try: credit = float(str(cr_str).replace(',', '') or 0)
+                    except: credit = 0.0
+                    try: balance = float(str(bal_str).replace(',', '') or 0)
+                    except: balance = 0.0
+                    
+                    entry_dict = {
+                        "Sno": str(len(reconstructed_entries) + 1),
+                        "C&F Name": "DSR 7 WELLNESS CENTRE",
+                        "Transaction Date": dt,
+                        "Transaction Details": particulars,
+                        "Transaction Amount": f"{debit if debit > 0 else credit:.2f}",
+                        "Transaction Type": "Dr" if debit > 0 else "Cr",
+                        "Balance": f"{balance:.2f}"
+                    }
+                    reconstructed_entries.append(entry_dict)
+                    
+                    c.execute("""
+                        INSERT INTO ledger_report (entry_date, particulars, debit, credit, balance, raw_row, scraped_at)
+                        VALUES (?, ?, ?, ?, ?, ?, ?)
+                    """, (dt, particulars, debit, credit, balance, json.dumps(entry_dict), sc_at))
+                
+                if reconstructed_entries:
+                    closing_bal = float(reconstructed_entries[-1]['Balance'])
+                    c.execute("INSERT OR REPLACE INTO settings (key, value) VALUES ('wallet_balance', ?)", (str(closing_bal),))
+                    c.execute("INSERT OR REPLACE INTO settings (key, value) VALUES ('ledger_closing_balance', ?)", (str(closing_bal),))
+                    c.execute("INSERT OR REPLACE INTO kpis (key, value) VALUES ('Wallet Balance', ?)", (str(round(closing_bal, 2)),))
+                    
+                    # Also refresh ledger_report.json if missing or outdated
+                    json_path = os.path.join(os.path.dirname(__file__), 'ledger_report.json')
+                    need_write = True
+                    if os.path.exists(json_path):
+                        try:
+                            with open(json_path, 'r', encoding='utf-8') as jf:
+                                cur_j = json.load(jf)
+                            if cur_j.get('row_count', 0) >= len(reconstructed_entries):
+                                need_write = False
+                        except Exception:
+                            pass
+                    if need_write:
+                        from datetime import datetime as _dt
+                        out_dict = {
+                            "success": True,
+                            "from_date": "01/01/2025",
+                            "to_date": _dt.now().strftime("%d/%m/%Y"),
+                            "franchise_value": "960158985",
+                            "headers": ["Sno", "C&F Name", "Transaction Date", "Transaction Details", "Transaction Amount", "Transaction Type", "Balance"],
+                            "entries": reconstructed_entries,
+                            "closing_balance": closing_bal,
+                            "balance_text": "",
+                            "scraped_at": l_data[-1][5] if len(l_data[-1]) > 5 and l_data[-1][5] else _dt.now().isoformat(),
+                            "row_count": len(reconstructed_entries),
+                            "pages_scraped": 2
+                        }
+                        with open(json_path, 'w', encoding='utf-8') as jf:
+                            json.dump(out_dict, jf, ensure_ascii=False, indent=2)
+        except Exception as le:
+            print("Note on restoring Ledger Report from GSheets:", le)
             
         conn.commit()
         log_sync(conn, 'restore', 'success')

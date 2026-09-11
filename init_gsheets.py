@@ -110,6 +110,25 @@ def init_google_sheets():
         ])
     inv_ws.clear()
     inv_ws.update(values=sheet_data, range_name='A1')
+
+    # 5. Ledger Report
+    print("Uploading Ledger Report...")
+    try:
+        try:
+            ledger_ws = sheet.worksheet('Ledger_Report')
+        except gspread.exceptions.WorksheetNotFound:
+            ledger_ws = sheet.add_worksheet('Ledger_Report', rows=500, cols=8)
+
+        c.execute("SELECT entry_date, particulars, debit, credit, balance, scraped_at FROM ledger_report ORDER BY id ASC")
+        l_rows = c.fetchall()
+        if l_rows:
+            ledger_sheet_data = [['Date', 'Particulars', 'Debit', 'Credit', 'Balance', 'Scraped At']]
+            for lr in l_rows:
+                ledger_sheet_data.append([lr[0], lr[1], lr[2], lr[3], lr[4], lr[5]])
+            ledger_ws.clear()
+            ledger_ws.update(values=ledger_sheet_data, range_name='A1')
+    except Exception as le:
+        print("Note on uploading Ledger Report:", le)
     
     # Remove default 'Sheet1' if it exists
     try:

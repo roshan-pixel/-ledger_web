@@ -418,6 +418,35 @@ def api_kpi():
         except Exception:
             pass
 
+        # Fallback to SQLite settings / ledger_report table if needed
+        if wallet_balance == 0.0:
+            try:
+                c.execute("SELECT value FROM settings WHERE key='wallet_balance'")
+                r_wb = c.fetchone()
+                if r_wb and r_wb[0]:
+                    wallet_balance = float(r_wb[0])
+            except Exception:
+                pass
+
+        if total_invested == 0.0:
+            try:
+                c.execute("SELECT debit, credit FROM ledger_report ORDER BY id ASC")
+                lr_rows = c.fetchall()
+                f_cr = False
+                for lr in lr_rows:
+                    deb = float(lr[0] or 0)
+                    cred = float(lr[1] or 0)
+                    if deb > 0:
+                        total_invested += deb
+                    elif cred > 0:
+                        if not f_cr:
+                            initial_capital = cred
+                            f_cr = True
+                        else:
+                            sales_recycled += cred
+            except Exception:
+                pass
+
         # Gross stock value = actual money spent purchasing from AWPL
         gross_val = round(total_invested, 2)
         
@@ -485,6 +514,14 @@ def api_kpi():
         kpis['Total Invoice Value'] = str(total_invoice_value)
         kpis['Reporting Period'] = "Live (Syncing from GSheets + Local)"
         
+        # Persist dynamic KPIs into SQLite kpis table
+        try:
+            for k, v in kpis.items():
+                c.execute("INSERT OR REPLACE INTO kpis (key, value) VALUES (?, ?)", (k, str(v)))
+            conn.commit()
+        except Exception:
+            pass
+
         conn.close()
         return jsonify(kpis)
     except Exception as e:
@@ -1109,23 +1146,88 @@ def ledger_report():
 
 @app.route('/api/ledger_report')
 def api_ledger_report():
-    """Return cached ledger entries from ledger_report.json (fast, no scrape)."""
+    """Return cached ledger entries from ledger_report.json or SQLite ledger_report table."""
     import json as _json
     LEDGER_FILE = str(Path(__file__).parent / 'ledger_report.json')
     try:
-        with open(LEDGER_FILE, 'r', encoding='utf-8') as f:
-            data = _json.load(f)
-        return jsonify(data)
-    except FileNotFoundError:
-        return jsonify({'success': False, 'error': 'No ledger data yet. Please sync first.', 'entries': [], 'closing_balance': 0})
+        if os.path.exists(LEDGER_FILE):
+            with open(LEDGER_FILE, 'r', encoding='utf-8') as f:
+                data = _json.load(f)
+            if data.get('entries') and len(data.get('entries')) > 0:
+                return jsonify(data)
+    except Exception:
+        pass
+
+    # Fallback to SQLite table
+    try:
+        conn = get_db()
+        c = conn.cursor()
+        c.execute("SELECT entry_date, particulars, debit, credit, balance, raw_row FROM ledger_report ORDER BY id ASC")
+        rows = c.fetchall()
+        if rows:
+            entries = []
+            for r in rows:
+                if r['raw_row']:
+                    try:
+                        entries.append(_json.loads(r['raw_row']))
+                        continue
+                    except Exception:
+                        pass
+                is_dr = float(r['debit'] or 0) > 0
+                entries.append({
+                    "Sno": str(len(entries) + 1),
+                    "C&F Name": "DSR 7 WELLNESS CENTRE",
+                    "Transaction Date": r['entry_date'],
+                    "Transaction Details": r['particulars'],
+                    "Transaction Amount": f"{r['debit'] if is_dr else r['credit']:.2f}",
+                    "Transaction Type": "Dr" if is_dr else "Cr",
+                    "Balance": f"{float(r['balance'] or 0):.2f}"
+                })
+            closing = float(entries[-1]['Balance']) if entries else 0.0
+            c.execute("SELECT value FROM settings WHERE key='wallet_balance'")
+            wb_row = c.fetchone()
+            if wb_row and wb_row[0]:
+                closing = float(wb_row[0])
+            c.execute("SELECT value FROM settings WHERE key='ledger_scraped_at'")
+            sc_row = c.fetchone()
+            sc_at = sc_row[0] if sc_row else ''
+            conn.close()
+            return jsonify({
+                'success': True,
+                'entries': entries,
+                'closing_balance': closing,
+                'scraped_at': sc_at,
+                'row_count': len(entries)
+            })
+        conn.close()
+        return jsonify({'success': False, 'error': 'No ledger data found', 'entries': [], 'closing_balance': 0})
     except Exception as e:
         return jsonify({'success': False, 'error': str(e), 'entries': [], 'closing_balance': 0}), 500
 
 
 @app.route('/api/ledger_wallet_balance')
 def api_ledger_wallet_balance():
-    """Return just the closing balance for the stock-point-order wallet sync."""
+    """Return closing balance for stock-point-order and dashboard sync."""
     import json as _json
+    # 1. Try SQLite settings first
+    try:
+        conn = get_db()
+        c = conn.cursor()
+        c.execute("SELECT value FROM settings WHERE key='wallet_balance'")
+        wb_row = c.fetchone()
+        c.execute("SELECT value FROM settings WHERE key='ledger_scraped_at'")
+        sc_row = c.fetchone()
+        conn.close()
+        if wb_row and wb_row[0] and float(wb_row[0]) > 0:
+            return jsonify({
+                'success': True,
+                'closing_balance': float(wb_row[0]),
+                'scraped_at': sc_row[0] if sc_row else ''
+            })
+    except Exception:
+        pass
+
+    # 2. Try JSON file
     LEDGER_FILE = str(Path(__file__).parent / 'ledger_report.json')
     try:
         with open(LEDGER_FILE, 'r', encoding='utf-8') as f:
@@ -1133,10 +1235,27 @@ def api_ledger_wallet_balance():
         closing = data.get('closing_balance', 0) or data.get('wallet_balance', 0)
         scraped_at = data.get('scraped_at', '')
         return jsonify({'success': True, 'closing_balance': closing, 'scraped_at': scraped_at})
-    except FileNotFoundError:
-        return jsonify({'success': False, 'closing_balance': 0, 'error': 'Not synced yet'})
     except Exception as e:
         return jsonify({'success': False, 'closing_balance': 0, 'error': str(e)}), 500
+
+
+@app.route('/api/refresh_wallet', methods=['POST'])
+def api_refresh_wallet():
+    """Trigger fast real-time wallet scrape from portal."""
+    import subprocess, sys, json as _json
+    script_path = os.path.join(os.path.dirname(__file__), 'fetch_wallet.py')
+    try:
+        proc = subprocess.run(
+            [sys.executable, script_path, 'AAZFD8117G', 'ABC@1234'],
+            capture_output=True, text=True, timeout=40
+        )
+        if proc.returncode == 0:
+            data = _json.loads(proc.stdout.strip())
+            return jsonify(data)
+        else:
+            return jsonify({'success': False, 'error': proc.stderr or 'Fetch failed'}), 500
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
 
 
 SCRAPER_PROCESS = None
@@ -1333,6 +1452,16 @@ def _auto_sync_loop():
                         print("[AutoSync] ✓ Hourly sync complete.")
                 except Exception as e:
                     print(f"[AutoSync] Hourly sync failed: {e}")
+
+                # Automatically refresh ledger statement and wallet balance every 2 hours
+                try:
+                    print("[AutoSync] Refreshing wallet balance & ledger report in background...")
+                    import subprocess, sys
+                    script_path = os.path.join(os.path.dirname(__file__), 'fetch_ledger_report.py')
+                    subprocess.Popen([sys.executable, script_path, 'AAZFD8117G', 'ABC@1234'])
+                except Exception as e:
+                    print(f"[AutoSync] Background ledger refresh error: {e}")
+
                 last_push_hour = now.hour
 
         except Exception as e:

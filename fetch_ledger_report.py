@@ -280,6 +280,12 @@ def fetch_ledger_report(username: str, password: str, from_date: str = "01/01/20
             with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
                 json.dump(result, f, ensure_ascii=False, indent=2)
 
+            # Persist to SQLite and Google Sheets
+            try:
+                save_ledger_to_db(result)
+            except Exception as dbe:
+                print(f"[warn] Failed to persist ledger to DB: {dbe}", file=sys.stderr)
+
             return result
 
     except Exception as e:
@@ -292,6 +298,92 @@ def fetch_ledger_report(username: str, password: str, from_date: str = "01/01/20
             "entries":         [],
             "closing_balance": 0.0,
         }
+
+
+def save_ledger_to_db(result: dict):
+    """Save scraped ledger report into SQLite database and trigger sync."""
+    import sqlite3
+    db_path = os.path.join(os.path.dirname(__file__), 'ledger.db')
+    conn = sqlite3.connect(db_path)
+    c = conn.cursor()
+
+    c.execute("""
+        CREATE TABLE IF NOT EXISTS ledger_report (
+            id          INTEGER PRIMARY KEY AUTOINCREMENT,
+            entry_date  TEXT,
+            particulars TEXT,
+            debit       REAL DEFAULT 0,
+            credit      REAL DEFAULT 0,
+            balance     REAL DEFAULT 0,
+            raw_row     TEXT,
+            scraped_at  TEXT
+        )
+    """)
+
+    c.execute("CREATE TABLE IF NOT EXISTS settings (key TEXT PRIMARY KEY, value TEXT)")
+    c.execute("CREATE TABLE IF NOT EXISTS kpis (key TEXT PRIMARY KEY, value TEXT)")
+
+    entries = result.get('entries', [])
+    closing_balance = float(result.get('closing_balance', 0.0))
+    scraped_at = result.get('scraped_at', datetime.now().isoformat())
+
+    c.execute("DELETE FROM ledger_report")
+    for e in entries:
+        dt = e.get('Transaction Date') or e.get('Date') or ''
+        particulars = e.get('Transaction Details') or e.get('Particulars') or ''
+        tx_type = (e.get('Transaction Type') or '').strip().upper()
+        amt_str = str(e.get('Transaction Amount') or '0').replace(',', '')
+        bal_str = str(e.get('Balance') or '0').replace(',', '')
+        try: tx_amt = float(amt_str)
+        except: tx_amt = 0.0
+        try: bal = float(bal_str)
+        except: bal = 0.0
+
+        debit = tx_amt if tx_type == 'DR' else 0.0
+        credit = tx_amt if tx_type == 'CR' else 0.0
+
+        c.execute("""
+            INSERT INTO ledger_report (entry_date, particulars, debit, credit, balance, raw_row, scraped_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        """, (dt, particulars, debit, credit, bal, json.dumps(e), scraped_at))
+
+    c.execute("INSERT OR REPLACE INTO settings (key, value) VALUES ('wallet_balance', ?)", (str(closing_balance),))
+    c.execute("INSERT OR REPLACE INTO settings (key, value) VALUES ('ledger_closing_balance', ?)", (str(closing_balance),))
+    c.execute("INSERT OR REPLACE INTO settings (key, value) VALUES ('ledger_scraped_at', ?)", (scraped_at,))
+
+    # Compute KPI totals
+    total_invested = 0.0
+    initial_capital = 0.0
+    sales_recycled = 0.0
+    first_cr_seen = False
+    for e in entries:
+        tx_type = (e.get('Transaction Type') or '').strip().upper()
+        tx_amt = float(str(e.get('Transaction Amount') or '0').replace(',', ''))
+        if tx_type == 'DR':
+            total_invested += tx_amt
+        elif tx_type == 'CR':
+            if not first_cr_seen:
+                initial_capital = tx_amt
+                first_cr_seen = True
+            else:
+                sales_recycled += tx_amt
+
+    c.execute("INSERT OR REPLACE INTO kpis (key, value) VALUES ('Wallet Balance', ?)", (str(round(closing_balance, 2)),))
+    c.execute("INSERT OR REPLACE INTO kpis (key, value) VALUES ('Initial Capital', ?)", (str(round(initial_capital, 2)),))
+    c.execute("INSERT OR REPLACE INTO kpis (key, value) VALUES ('Sales Recycled', ?)", (str(round(sales_recycled, 2)),))
+    c.execute("INSERT OR REPLACE INTO kpis (key, value) VALUES ('Gross Stock Value', ?)", (str(round(total_invested, 2)),))
+
+    conn.commit()
+    conn.close()
+
+    # Trigger background GSheets upload
+    try:
+        from init_gsheets import init_google_sheets
+        import threading
+        t = threading.Thread(target=init_google_sheets, daemon=True)
+        t.start()
+    except Exception:
+        pass
 
 
 if __name__ == "__main__":
