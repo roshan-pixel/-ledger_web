@@ -651,7 +651,8 @@ function buildHeader() {
 
 // ── Render rows ───────────────────────────────────
 function renderTable() {
-    const q   = document.getElementById('searchInput').value.toLowerCase();
+    const q   = document.getElementById('searchInput').value.toLowerCase().trim();
+    const qNorm = q.replace(/hight/g, 'height');
     let rows  = allRows.filter(r => {
         // Status filter
         const status = (r['Stock Status'] || '').toLowerCase();
@@ -663,7 +664,7 @@ function renderTable() {
             const name    = (r['Product Name'] || '').toLowerCase();
             const hsn     = String(r['HSN Code'] || '').toLowerCase();
             const remarks = (r['Remarks'] || '').toLowerCase();
-            if (!name.includes(q) && !hsn.includes(q) && !remarks.includes(q)) return false;
+            if (!name.includes(q) && !name.includes(qNorm) && !hsn.includes(q) && !remarks.includes(q)) return false;
         }
         return true;
     });

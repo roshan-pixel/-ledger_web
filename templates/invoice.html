@@ -596,12 +596,14 @@
         if (!activeAcInput) return;
         globalAcList.innerHTML = '';
         let count = 0;
-        const search = val ? val.toLowerCase() : '';
+        const search = val ? val.toLowerCase().trim() : '';
+        const searchNorm = search.replace(/hight/g, 'height');
         for (let i = 0; i < inventoryData.length; i++) {
             const item = inventoryData[i];
             const name = item['Product Name'] || item.Product || item['Item Name'] || '';
             if (!name) continue;
-            if (showAll || search === '' || name.toLowerCase().includes(search)) {
+            const nameLower = name.toLowerCase();
+            if (showAll || search === '' || nameLower.includes(search) || nameLower.includes(searchNorm)) {
                 const div = document.createElement('div');
                 div.textContent = name;
                 div.className = 'ac-item';

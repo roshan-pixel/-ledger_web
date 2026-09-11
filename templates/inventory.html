@@ -627,7 +627,8 @@
 
         function renderGrid() {
             const grid = document.getElementById('inventoryGrid');
-            const search = document.getElementById('searchInput').value.toLowerCase();
+            const search = document.getElementById('searchInput').value.toLowerCase().trim();
+            const normalizedSearch = search.replace(/hight/g, 'height');
             const status = document.getElementById('statusFilter').value;
             
             grid.innerHTML = '';
@@ -641,7 +642,10 @@
                 if (stock <= 0) itemStatus = 'out-of-stock';
                 else if (stock < 10) itemStatus = 'low-stock';
 
-                if (name.toLowerCase().includes(search) && (status === 'all' || itemStatus === status)) {
+                const nameLower = name.toLowerCase();
+                const matchesSearch = !search || nameLower.includes(search) || nameLower.includes(normalizedSearch);
+
+                if (matchesSearch && (status === 'all' || itemStatus === status)) {
                     visibleItems.push(item);
                 }
             });
