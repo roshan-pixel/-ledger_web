@@ -603,7 +603,8 @@
             const name = item['Product Name'] || item.Product || item['Item Name'] || '';
             if (!name) continue;
             const nameLower = name.toLowerCase();
-            if (showAll || search === '' || nameLower.includes(search) || nameLower.includes(searchNorm)) {
+            const matchesJeeveda = (search.includes('jeev') || searchNorm.includes('jeev')) && (nameLower.includes('rice bran') || nameLower.includes('161') || nameLower.includes('162'));
+            if (showAll || search === '' || nameLower.includes(search) || nameLower.includes(searchNorm) || matchesJeeveda) {
                 const div = document.createElement('div');
                 div.textContent = name;
                 div.className = 'ac-item';
@@ -615,7 +616,7 @@
                 };
                 globalAcList.appendChild(div);
                 count++;
-                if (count > 80) break;
+                if (count > 400) break;
             }
         }
         if (count > 0) {

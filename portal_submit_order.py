@@ -130,12 +130,13 @@ def submit_order_to_portal(ds_code, items, order_type='sao'):
                 # ─────────────────────────────────────────────────────────────────
                 best_match = None
 
-                # Priority 1: bracket code match in option TEXT
+                # Priority 1: product code match in option VAL or option TEXT
                 if target_code:
-                    code_pattern = f'[{target_code}]'
+                    code_patterns = [f'[{target_code}]', f'({target_code})', f'==({target_code})', f'=={target_code}']
                     for opt in options:
-                        opt_text = opt['text'].strip().upper()
-                        if code_pattern in opt_text:
+                        opt_val = str(opt.get('val', '')).strip()
+                        opt_text = opt.get('text', '').strip().upper()
+                        if opt_val == str(target_code) or any(cp in opt_text for cp in code_patterns):
                             best_match = opt['val']
                             print(f"[{ds_code}] Matched by product code [{target_code}]: {opt_text}")
                             break
