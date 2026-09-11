@@ -32,9 +32,9 @@ def restore_from_gsheets():
     try:
         ensure_sync_log_table(conn)
         
-        # Rate limit: 60 seconds
+        # Rate limit: 30 seconds (allows faster manual retries)
         last_sync = get_last_sync_time(conn, 'restore')
-        if time.time() - last_sync < 60:
+        if time.time() - last_sync < 30:
             print("Restore skipped: last restore was less than 60 seconds ago.")
             conn.close()
             return
