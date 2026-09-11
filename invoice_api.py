@@ -535,6 +535,15 @@ def get_next_invoice_no():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+# Set of 65 existing unticked invoice IDs protected from unauthorized cancellation
+PROTECTED_UNTICKED_IDS = {
+    192, 204, 206, 207, 208, 217, 218, 219, 221, 222, 228, 229, 230, 232, 233,
+    234, 235, 236, 239, 240, 242, 243, 244, 245, 249, 250, 251, 252, 253, 254,
+    256, 257, 258, 260, 263, 265, 266, 267, 268, 269, 271, 272, 275, 276, 277,
+    278, 279, 281, 284, 286, 287, 290, 291, 292, 293, 294, 295, 296, 297, 298,
+    299, 300, 301, 302, 303
+}
+
 @invoice_api.route('/api/invoice/cancel/<int:invoice_id>', methods=['POST'])
 def cancel_invoice(invoice_id):
     from app import get_db, update_inventory_formulas, update_totals_row
@@ -550,11 +559,19 @@ def cancel_invoice(invoice_id):
             conn.close()
             return jsonify({'error': 'Invoice not found'}), 404
             
-        # Password authorization is required to cancel any invoice (blocking unticked & dispatched invoices without password)
-        pwd = str(data.get('password') or '').strip()
-        if pwd not in ['ABC!@234', 'ABC@!234']:
-            conn.close()
-            return jsonify({'error': 'Incorrect password! Authorization password is required to cancel this invoice.'}), 403
+        is_dispatched = bool(row['is_dispatched']) if ('is_dispatched' in row.keys() and row['is_dispatched']) else False
+        is_protected_unticked = (invoice_id in PROTECTED_UNTICKED_IDS) or (invoice_id <= 303 and not is_dispatched)
+
+        # Password is required ONLY for:
+        # 1. These 65 existing unticked invoices
+        # 2. Invoices already marked as dispatched
+        # New unticked invoices (id > 303) can be cancelled by end users without password
+        if is_protected_unticked or is_dispatched:
+            pwd = str(data.get('password') or '').strip()
+            if pwd not in ['ABC!@234', 'ABC@!234']:
+                conn.close()
+                reason = "This unticked invoice is protected from cancellation" if is_protected_unticked else "This invoice is marked as dispatched"
+                return jsonify({'error': f'Incorrect password! {reason}, authorization password is required.'}), 403
             
         items = json.loads(row['items'] or '[]')
         
