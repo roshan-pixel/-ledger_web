@@ -3,709 +3,1112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Premium Dashboard</title>
-    <!-- Use global.css as requested -->
+    <title>Franchise Overview — Asclepius Nexus</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
     <meta name="view-transition" content="same-origin">
-    <!-- Google Fonts for premium typography -->
+    
+    <!-- Google Fonts for crisp typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
-    <style>/* SPA Transition Classes */
-        @keyframes fadeInSPA {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }body {
-            animation: fadeInSPA 0.3s ease-out forwards;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
+    <style>
         :root {
-            --bg-color: #0b0f19;
-            --surface-color: rgba(255, 255, 255, 0.03);
-            --surface-border: rgba(255, 255, 255, 0.08);
-            --text-primary: #ffffff;
-            --text-secondary: #94a3b8;
+            /* Claude Warm Minimalist Palette */
+            --bg-base: #141413;
+            --bg-subtle: #191817;
+            --surface-card: #1c1b1a;
+            --surface-hover: #242321;
+            --surface-active: #2a2926;
+            --border-subtle: rgba(255, 255, 255, 0.07);
+            --border-hover: rgba(255, 255, 255, 0.16);
+            --border-card: rgba(255, 255, 255, 0.09);
             
-            /* Gradients for KPI values */
-            --grad-revenue: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            --grad-users: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
-            --grad-conversion: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            --grad-satisfaction: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            /* Claude Signature Accents */
+            --terracotta: #cc785c;
+            --terracotta-glow: rgba(204, 120, 92, 0.15);
+            --amber: #d97706;
+            --amber-soft: rgba(217, 119, 6, 0.15);
+            --emerald: #10b981;
+            --emerald-soft: rgba(16, 185, 129, 0.15);
+            --sky: #38bdf8;
+            --sky-soft: rgba(56, 189, 248, 0.15);
+            --rose: #f43f5e;
+            --rose-soft: rgba(244, 63, 94, 0.15);
+            --indigo: #6366f1;
+            --indigo-soft: rgba(99, 102, 241, 0.15);
             
-            --grad-remaining: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
-            --grad-rem-val: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
-            --grad-skus: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+            /* Text hierarchy */
+            --text-primary: #f5f5f4;
+            --text-secondary: #a8a29e;
+            --text-muted: #78716c;
+            --text-dim: #57534e;
             
-            --blur: blur(16px);
-        }body {
+            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--bg-color);
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-base);
             background-image: 
-                radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.15), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.15), transparent 25%);
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(204, 120, 92, 0.08), transparent 70%),
+                radial-gradient(ellipse 60% 40% at 90% 80%, rgba(16, 185, 129, 0.04), transparent 60%);
             background-attachment: fixed;
             color: var(--text-primary);
             min-height: 100vh;
             display: flex;
-        }/* Main Content */
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── SIDEBAR ─────────────────────────────────────── */
+        .sidebar {
+            width: 270px;
+            flex-shrink: 0;
+            background: var(--bg-subtle);
+            border-right: 1px solid var(--border-subtle);
+            padding: 1.75rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+        .sidebar::-webkit-scrollbar { width: 4px; }
+        .sidebar::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.08); border-radius: 4px; }
+
+        .sidebar .logo {
+            text-align: center;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .sidebar .logo img {
+            max-width: 82%;
+            height: auto;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 10px 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            display: inline-block;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+        .nav-item {
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            text-decoration: none;
+            user-select: none;
+        }
+        .nav-item svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            transition: stroke 0.2s ease;
+        }
+        .nav-item:hover {
+            background: var(--surface-card);
+            color: var(--text-primary);
+            transform: translateX(2px);
+        }
+        .nav-item.active {
+            background: rgba(204, 120, 92, 0.12);
+            color: var(--terracotta);
+            font-weight: 600;
+            border: 1px solid rgba(204, 120, 92, 0.25);
+        }
+        .nav-item.active svg {
+            stroke: var(--terracotta);
+        }
+
+        /* ── MAIN CONTENT ─────────────────────────────────── */
         .main-content {
             flex: 1;
-            padding: 3rem;
+            padding: 2.5rem 3rem;
             display: flex;
             flex-direction: column;
             gap: 2.5rem;
             overflow-y: auto;
-        }.header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }.header-title h1 {
-            margin: 0;
-            font-size: 2.25rem;
-            font-weight: 600;
-            letter-spacing: -1px;
-        }.header-title p {
-            margin: 0.5rem 0 0;
-            color: var(--text-secondary);
-        }/* KPI Grid */
-        .kpi-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem; margin-bottom: 2rem;
-        }.kpi-card {
-            background: var(--surface-color);
-            border: 1px solid var(--surface-border);
-            border-radius: 20px;
-            padding: 1.75rem;
-            backdrop-filter: var(--blur);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: default;
-        }.kpi-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+            max-width: 1600px;
+            margin: 0 auto;
             width: 100%;
-            height: 100%;
-            background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.06), transparent 40%);
-            opacity: 0;
-            transition: opacity 0.4s;
-            pointer-events: none;
-        }.kpi-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }.kpi-card:hover::before {
-            opacity: 1;
-        }.kpi-header {
+        }
+
+        /* ── TOP HEADER ───────────────────────────────────── */
+        .header-top {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }.kpi-title {
+            align-items: flex-start;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .header-title h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--text-primary);
+            margin-bottom: 0.35rem;
+        }
+        .header-title p {
             color: var(--text-secondary);
-            font-size: 0.95rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }.kpi-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
+            font-size: 0.92rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            background: rgba(255,255,255,0.05);
-        }.kpi-value {
-            font-size: 2.75rem;
-            font-weight: 700;
-            margin: 0;
-            line-height: 1.1;
-            letter-spacing: -1px;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }.val-revenue { background-image: var(--grad-revenue); }.val-users { background-image: var(--grad-users); }.val-conversion { background-image: var(--grad-conversion); }.val-satisfaction { background-image: var(--grad-satisfaction); }.val-remaining { background-image: var(--grad-remaining); }.val-rem-val { background-image: var(--grad-rem-val); }.val-skus { background-image: var(--grad-skus); }.kpi-footer {
-            margin-top: 1.5rem;
+            gap: 0.5rem;
+        }
+        .header-actions {
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            font-size: 0.9rem;
-        }.trend-pill {
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Buttons & Badges */
+        .badge-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
             font-weight: 600;
-            font-size: 0.85rem;
-        }.trend-up {
-            background: rgba(16, 185, 129, 0.15);
+            background: rgba(16, 185, 129, 0.1);
             color: #34d399;
-        }.trend-down {
-            background: rgba(244, 63, 94, 0.15);
-            color: #fb7185;
-        }.trend-label {
+            border: 1px solid rgba(16, 185, 129, 0.25);
+        }
+        .pulse-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            animation: pulseRing 2s infinite;
+        }
+        @keyframes pulseRing {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.55rem 1.1rem;
+            border-radius: 9px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid var(--border-card);
+            background: var(--surface-card);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+        .btn-action:hover {
+            background: var(--surface-hover);
+            border-color: var(--border-hover);
+            transform: translateY(-1px);
+        }
+        .btn-primary-action {
+            background: var(--terracotta);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .btn-primary-action:hover {
+            background: #b9694e;
+            color: #ffffff;
+        }
+
+        /* ── SECTION STRUCTURE ────────────────────────────── */
+        .section-block {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .section-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .section-subtitle {
+            font-size: 0.82rem;
+            color: var(--text-dim);
+        }
+
+        /* ── KPI GRID & CARDS ─────────────────────────────── */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.15rem;
+        }
+
+        .kpi-card {
+            background: var(--surface-card);
+            border: 1px solid var(--border-card);
+            border-radius: 14px;
+            padding: 1.35rem 1.4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 0.85rem;
+            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .kpi-card:hover {
+            background: var(--surface-hover);
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Hero Highlight for Wallet */
+        .kpi-card.hero-card {
+            background: linear-gradient(145deg, rgba(204, 120, 92, 0.08) 0%, var(--surface-card) 100%);
+            border-color: rgba(204, 120, 92, 0.3);
+        }
+        .kpi-card.hero-card:hover {
+            border-color: rgba(204, 120, 92, 0.5);
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card-label {
+            font-size: 0.82rem;
+            font-weight: 600;
             color: var(--text-secondary);
-        }/* Subtle glowing accents */
-        .glow-line {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            height: 3px;
-            width: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+            letter-spacing: 0.02em;
+        }
+        .card-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--text-muted);
+            transition: all 0.2s ease;
+        }
+        .kpi-card:hover .card-icon {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .card-value-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        .kpi-value {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            font-variant-numeric: tabular-nums;
+            font-feature-settings: "tnum";
+        }
+        .val-emerald { color: #34d399; }
+        .val-terracotta { color: #e08b70; }
+        .val-sky { color: #38bdf8; }
+        .val-amber { color: #fbbf24; }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            padding-top: 0.6rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .card-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.2rem 0.55rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .pill-green {
+            background: var(--emerald-soft);
+            color: #34d399;
+        }
+        .pill-amber {
+            background: var(--amber-soft);
+            color: #fbbf24;
+        }
+        .pill-rose {
+            background: var(--rose-soft);
+            color: #fb7185;
+        }
+        .pill-sky {
+            background: var(--sky-soft);
+            color: #38bdf8;
+        }
+        .pill-neutral {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+        }
+
+        /* ── ACTION HUB CARDS ─────────────────────────────── */
+        .hub-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.15rem;
+        }
+        .hub-card {
+            background: var(--surface-card);
+            border: 1px solid var(--border-card);
+            border-radius: 14px;
+            padding: 1.35rem 1.4rem;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            transition: all 0.2s ease;
+        }
+        .hub-card:hover {
+            background: var(--surface-hover);
+            border-color: rgba(204, 120, 92, 0.4);
+            transform: translateY(-2px);
+        }
+        .hub-icon-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .hub-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: rgba(204, 120, 92, 0.12);
+            color: var(--terracotta);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hub-arrow {
+            color: var(--text-dim);
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+        .hub-card:hover .hub-arrow {
+            transform: translateX(3px);
+            color: var(--terracotta);
+        }
+        .hub-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .hub-card p {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        /* ── TOAST NOTIFICATION ──────────────────────────── */
+        #toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #1c1b1a;
+            border: 1px solid var(--border-hover);
+            padding: 0.85rem 1.25rem;
+            border-radius: 10px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: #ffffff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            z-index: 1000;
             opacity: 0;
-            transition: opacity 0.4s;
-        }.kpi-card:hover .glow-line {
+            transform: translateY(10px);
+            transition: all 0.25s ease;
+            pointer-events: none;
+        }
+        #toast.show {
             opacity: 1;
-        }/* ── MOBILE OPTIMIZATION ───────────────── */
-        @media(max-width: 768px) {
-            /* Structural Fixes */
-            body { flex-direction: column !important; }
-            .sidebar { width: 100% !important; height: auto !important; position: relative !important; padding: 1rem !important; border-right: none !important; border-bottom: 1px solid var(--surface-border) !important; flex-shrink: 0; gap: 1rem !important; box-sizing: border-box !important; }
-            
-            /* Top Navigation Conversion */
-            .nav-menu { flex-direction: row !important; flex-wrap: nowrap !important; overflow-x: auto !important; justify-content: flex-start !important; padding-bottom: 0.5rem; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-            .nav-menu::-webkit-scrollbar { display: none; }
-            .nav-item { padding: 0.8rem 1.2rem !important; font-size: 1rem !important; gap: 0.5rem !important; min-height: 44px; flex-shrink: 0; }
-            
-            /* Container Padding Fixes (covers all classes) */
-            .main, .main-content { padding: 1rem !important; width: 100% !important; overflow-x: hidden !important; box-sizing: border-box !important; }
-            .card, .glass-panel, .sync-card, .results-card, .auto-card, .kpi-card { padding: 1rem !important; border-radius: 16px !important; box-sizing: border-box !important; width: 100% !important; }
-            
-            /* Header & Layout Fixes */
-            .inv-header, .header-actions, .header { flex-direction: column !important; align-items: flex-start !important; gap: 1rem !important; }
-            .inv-title h1, h1 { font-size: 2rem !important; }
-            
-            /* Forms, Inputs & iOS Zoom Fix */
-            .ds-lookup-row, .filters { flex-direction: column !important; align-items: stretch !important; gap: 1rem !important; }
-            .ds-lookup-row .glass-input, .filter-input, .filter-select, .glass-input { flex: 1 !important; width: 100% !important; box-sizing: border-box !important; }
-            input, select, textarea { font-size: 16px !important; } /* Prevents iOS Keyboard Zoom */
-            
-            /* Grid & Table Breakpoints */
-            .billing-grid, .kpi-grid { grid-template-columns: 1fr !important; }
-            .kpi-value { font-size: 2rem !important; }
-            .table-wrap, .table-container { width: 100% !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 1rem; }
-            table { white-space: nowrap !important; }
-            thead th { font-size: 0.85rem !important; }
-            /* .total-row width removed for layout fix */
-            
-            /* Touch Target Accessibility (Min 44px) */
-            .btn, .lookup-btn, .sync-btn { min-height: 44px; padding: 0.8rem 1.5rem !important; width: 100%; text-align: center; justify-content: center; }
-            .btn-cancel, .remove-btn, .preset-btn, .filter-btn, .refresh-btn { min-height: 44px; padding: 0.8rem 1.2rem !important; font-size: 1rem !important; }
-            
-            /* Fixed Elements */
-            #saveIndicator { bottom: 5rem !important; right: 1rem !important; padding: 0.8rem 1.2rem !important; }
-            
-            /* Contrast Fixes */
-            .log-card { overflow-x: auto; color: #cbd5e1 !important; background: rgba(0,0,0,0.6) !important; }
-            label, thead th { color: #cbd5e1 !important; }
-            .glass-input { border-color: rgba(255,255,255,0.2) !important; }
+            transform: translateY(0);
         }
 
-
-
-        /* Unified Premium Sidebar Styles */
-        .sidebar {
-            width: 280px !important;
-            flex-shrink: 0 !important;
-            background: #0b0f19 !important;
-            border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
-            padding: 2rem 1.5rem !important;
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 2rem !important;
-            position: sticky !important;
-            top: 0 !important;
-            height: 100vh !important;
-            overflow-y: auto !important;
-            box-sizing: border-box !important;
-            scrollbar-width: thin !important;
-            scrollbar-color: rgba(255,255,255,0.1) transparent !important;
-            z-index: 100 !important;
+        /* ── RESPONSIVENESS ──────────────────────────────── */
+        @media (max-width: 1200px) {
+            .kpi-grid, .hub-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
-        .sidebar::-webkit-scrollbar {
-            width: 4px !important;
-        }
-        .sidebar::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.1) !important;
-            border-radius: 4px !important;
-        }
-
-        .sidebar .logo {
-            text-align: center !important;
-            padding: 0.5rem 0 1.5rem 0 !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
-            margin-bottom: 0.5rem !important;
-        }
-
-        .sidebar .logo img {
-            max-width: 85% !important;
-            height: auto !important;
-            background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(220,225,235,1) 100%) !important;
-            border-radius: 16px !important;
-            padding: 12px !important;
-            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15), inset 0 0 0 1px rgba(255,255,255,0.5) !important;
-            display: inline-block !important;
-        }
-
-        .nav-menu {
-            list-style: none !important;
-            padding: 0 !important;
-            margin: 0 !important;
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 0.4rem !important;
-        }
-
-        .nav-item {
-            padding: 0.85rem 1.1rem !important;
-            border-radius: 12px !important;
-            color: #94a3b8 !important;
-            font-weight: 500 !important;
-            cursor: pointer !important;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            display: flex !important;
-            align-items: center !important;
-            gap: 0.85rem !important;
-            font-size: 0.92rem !important;
-            text-decoration: none !important;
-            user-select: none !important;
-        }
-
-        .nav-item svg {
-            flex-shrink: 0 !important;
-            width: 20px !important;
-            height: 20px !important;
-            transition: stroke 0.25s ease !important;
-        }
-
-        .nav-item:hover {
-            background: rgba(255, 255, 255, 0.06) !important;
-            color: #ffffff !important;
-            transform: translateX(4px) !important;
-        }
-
-        .nav-item.active {
-            background: rgba(99, 102, 241, 0.15) !important;
-            color: #818cf8 !important;
-            font-weight: 600 !important;
-            box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.25) !important;
-        }
-
-        .nav-item.active svg {
-            stroke: #818cf8 !important;
-        }
-
-        /* Responsive Mobile Styles */
         @media (max-width: 768px) {
             body {
-                flex-direction: column !important;
+                flex-direction: column;
             }
             .sidebar {
-                width: 100% !important;
-                height: auto !important;
-                position: sticky !important;
-                top: 0 !important;
-                padding: 0.75rem 1rem !important;
-                border-right: none !important;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-                gap: 0.75rem !important;
-                flex-direction: row !important;
-                align-items: center !important;
-                overflow-y: visible !important;
-                overflow-x: visible !important;
-                background: #0b0f19 !important;
+                width: 100%;
+                height: auto;
+                position: sticky;
+                top: 0;
+                padding: 0.75rem 1rem;
+                border-right: none;
+                border-bottom: 1px solid var(--border-subtle);
+                flex-direction: row;
+                align-items: center;
+                overflow-x: auto;
+                gap: 1rem;
             }
             .sidebar .logo {
-                padding: 0 !important;
-                margin: 0 !important;
-                border-bottom: none !important;
-                display: flex !important;
-                align-items: center !important;
+                padding: 0;
+                border-bottom: none;
             }
             .sidebar .logo img {
-                max-width: 120px !important;
-                padding: 6px 8px !important;
-                border-radius: 8px !important;
+                max-width: 110px;
+                padding: 4px 6px;
             }
             .nav-menu {
-                flex-direction: row !important;
-                flex-wrap: nowrap !important;
-                overflow-x: auto !important;
-                gap: 0.5rem !important;
-                flex: 1 !important;
-                padding-bottom: 0.2rem !important;
-                -webkit-overflow-scrolling: touch !important;
-                scrollbar-width: none !important;
+                flex-direction: row;
+                overflow-x: auto;
+                flex: 1;
+                gap: 0.4rem;
+                scrollbar-width: none;
             }
-            .nav-menu::-webkit-scrollbar {
-                display: none !important;
-            }
+            .nav-menu::-webkit-scrollbar { display: none; }
             .nav-item {
-                padding: 0.6rem 0.9rem !important;
-                font-size: 0.88rem !important;
-                gap: 0.5rem !important;
-                min-height: 38px !important;
-                flex-shrink: 0 !important;
-                white-space: nowrap !important;
+                white-space: nowrap;
+                padding: 0.55rem 0.8rem;
+                font-size: 0.85rem;
             }
-            .nav-item svg {
-                width: 18px !important;
-                height: 18px !important;
+            .main-content {
+                padding: 1.25rem 1rem;
+                gap: 1.75rem;
             }
-            .nav-item:hover {
-                transform: none !important;
+            .header-top {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+            }
+            .kpi-grid, .hub-grid {
+                grid-template-columns: 1fr;
+            }
+            .kpi-value {
+                font-size: 1.75rem;
             }
         }
-</style>
+    </style>
 </head>
 <body>
 
+    <!-- ── SIDEBAR NAVIGATION ── -->
     <aside class="sidebar">
-    <div class="logo">
-        <img src="{{ url_for('static', filename='logo.png') }}" alt="Asclepius Wellness">
-    </div>
-    <ul class="nav-menu">
-        <li class="nav-item active" onclick="typeof navigateTo === 'function' ? navigateTo('/') : window.location.href='/'">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
-            <span>Dashboard</span>
-        </li>
-        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/inventory') : window.location.href='/inventory'">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
-            <span>Inventory Stock</span>
-        </li>
-        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/inventory_master') : window.location.href='/inventory_master'">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-            <span>Inventory Master</span>
-        </li>
-        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/invoice') : window.location.href='/invoice'">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-            <span>Invoice Generator</span>
-        </li>
-        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/invoice_history') : window.location.href='/invoice_history'">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <span>Recent Invoices</span>
-        </li>
-        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/disease_guide') : window.location.href='/disease_guide'">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-            <span>Disease Guide</span>
-        </li>
-        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/mizoram_bronze') : window.location.href='/mizoram_bronze'">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-            <span>Mizoram Bonanza</span>
-        </li>
-        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/stock_point_order') : window.location.href='/stock_point_order'">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-            <span>Stock Point Order</span>
-        </li>
-        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/purchase_history') : window.location.href='/purchase_history'">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-            <span>Purchase History</span>
-        </li>
-        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/ledger_report') : window.location.href='/ledger_report'">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
-            <span>Ledger Report</span>
-        </li>
-        <li class="nav-item" onclick="typeof navigateTo === 'function' ? navigateTo('/portal_sync') : window.location.href='/portal_sync'">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
-            <span>Portal Sync</span>
-        </li>
-    </ul>
-</aside>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Asclepius Wellness">
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item active" onclick="window.location.href='/'">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+                <span>Dashboard</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='/inventory'">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+                <span>Inventory Stock</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='/inventory_master'">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                <span>Inventory Master</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='/invoice'">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                <span>Invoice Generator</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='/invoice_history'">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Recent Invoices</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='/disease_guide'">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                <span>Disease Guide</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='/mizoram_bronze'">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <span>Mizoram Bonanza</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='/stock_point_order'">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                <span>Stock Point Order</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='/purchase_history'">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                <span>Purchase History</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='/ledger_report'">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                <span>Ledger Report</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='/portal_sync'">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                <span>Portal Sync</span>
+            </li>
+        </ul>
+    </aside>
 
+    <!-- ── MAIN EXECUTIVE DASHBOARD ── -->
     <main class="main-content">
-        <header class="header">
+        
+        <!-- Top Executive Header -->
+        <header class="header-top">
             <div class="header-title">
-                <h1>Overview</h1>
-                <p id="reporting-period">Loading reporting period...</p>
+                <h1>Franchise Overview</h1>
+                <p>
+                    <span>Asclepius Wellness</span> • 
+                    <span id="reporting-period">{{ kpis.get('Reporting Period', 'Live Telemetry & Sync Active') }}</span>
+                </p>
+            </div>
+            <div class="header-actions">
+                <span class="badge-status">
+                    <span class="pulse-dot"></span>
+                    <span>Portal Online</span>
+                </span>
+                <button class="btn-action" id="walletRefreshActionBtn" onclick="refreshDashboardWallet(event)" title="Refresh live wallet from Asclepius portal">
+                    <svg id="wbSpinSvg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                    <span id="wbActionText">Refresh Wallet</span>
+                </button>
+                <a href="/invoice" class="btn-action btn-primary-action">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    <span>New Bill</span>
+                </a>
             </div>
         </header>
 
-                <section class="kpi-grid">
-            <!-- Wallet Balance KPI -->
-            <div class="kpi-card">
-                <div class="kpi-header">
-                    <span class="kpi-title">Wallet Balance</span>
-                    <div style="display: flex; align-items: center; gap: 0.5rem;">
-                        <button id="wbRefreshBtn" onclick="refreshDashboardWallet(event)" title="Refresh live wallet from portal" style="background: none; border: none; color: var(--text-secondary); cursor: pointer; padding: 2px 4px; border-radius: 4px; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-secondary)'">
-                            <svg id="wbRefreshIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
-                        </button>
-                        <div class="kpi-icon" style="color: #10b981;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        <!-- ── SECTION 1: CAPITAL & LIQUIDITY ── -->
+        <section class="section-block">
+            <div class="section-header">
+                <span class="section-title">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="6" y1="12" x2="18" y2="12"/></svg>
+                    Capital & Liquidity Position
+                </span>
+                <span class="section-subtitle">Live portal wallet balance, initial seed capital, and sales reinvestment flow</span>
+            </div>
+
+            <div class="kpi-grid">
+                <!-- 1. Franchise Wallet Balance (Hero) -->
+                <div class="kpi-card hero-card">
+                    <div class="card-top">
+                        <span class="card-label">Wallet Balance</span>
+                        <div style="display: flex; align-items: center; gap: 0.4rem;">
+                            <button id="wbRefreshBtn" onclick="refreshDashboardWallet(event)" title="1-click live scrape" style="background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 2px 4px; border-radius: 4px; transition: color 0.2s;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='var(--text-muted)'">
+                                <svg id="wbRefreshIcon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                            </button>
+                            <div class="card-icon" style="color: var(--emerald);">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <h2 class="kpi-value val-revenue" id="wallet-balance">...</h2>
-                <div class="kpi-footer">
-                    <span class="trend-label" id="wbSyncStatus">Available for orders</span>
-                </div>
-                <div class="glow-line" style="background: linear-gradient(90deg, transparent, #10b981, transparent);"></div>
-            </div>
-
-            <!-- Initial Capital KPI -->
-            <div class="kpi-card">
-                <div class="kpi-header">
-                    <span class="kpi-title">My Capital (20L)</span>
-                    <div class="kpi-icon" style="color: #6366f1;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    <div class="card-value-wrap">
+                        <div class="kpi-value val-emerald" id="wallet-balance">
+                            ₹{{ kpis.get('Wallet Balance')|inr }}
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span id="wbSyncStatus">Available for orders</span>
+                        <span class="card-pill pill-green">Live Portal</span>
                     </div>
                 </div>
-                <h2 class="kpi-value val-revenue" id="initial-capital">...</h2>
-                <div class="kpi-footer">
-                    <span class="trend-label">Owner initial deposit</span>
-                </div>
-                <div class="glow-line" style="background: linear-gradient(90deg, transparent, #6366f1, transparent);"></div>
-            </div>
 
-            <!-- Sales Recycled KPI -->
-            <div class="kpi-card">
-                <div class="kpi-header">
-                    <span class="kpi-title">Sales Money Back</span>
-                    <div class="kpi-icon" style="color: #8b5cf6;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                <!-- 2. Initial Capital Deposit -->
+                <div class="kpi-card">
+                    <div class="card-top">
+                        <span class="card-label">Initial Capital</span>
+                        <div class="card-icon" style="color: var(--terracotta);">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        </div>
+                    </div>
+                    <div class="card-value-wrap">
+                        <div class="kpi-value val-terracotta" id="initial-capital">
+                            ₹{{ kpis.get('Initial Capital')|inr }}
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span>Owner seed investment</span>
+                        <span class="card-pill pill-neutral">₹20 Lakhs</span>
                     </div>
                 </div>
-                <h2 class="kpi-value val-revenue" id="sales-recycled">...</h2>
-                <div class="kpi-footer">
-                    <span class="trend-label">Revenue from DS sales</span>
-                </div>
-                <div class="glow-line" style="background: linear-gradient(90deg, transparent, #8b5cf6, transparent);"></div>
-            </div>
 
-            <!-- Total Stock Purchased KPI -->
-            <div class="kpi-card">
-                <div class="kpi-header">
-                    <span class="kpi-title">Total Stock Purchased</span>
-                    <div class="kpi-icon" style="color: #f59e0b;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                <!-- 3. Sales Money Recycled -->
+                <div class="kpi-card">
+                    <div class="card-top">
+                        <span class="card-label">Sales Recycled</span>
+                        <div class="card-icon" style="color: var(--sky);">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="18 4 23 10 17 10"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                        </div>
+                    </div>
+                    <div class="card-value-wrap">
+                        <div class="kpi-value val-sky" id="sales-recycled">
+                            ₹{{ kpis.get('Sales Recycled')|inr }}
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span>Recredited by AWPL</span>
+                        <span class="card-pill pill-sky">93.9% Cycled</span>
                     </div>
                 </div>
-                <h2 class="kpi-value val-revenue" id="gross-stock-value">...</h2>
-                <div class="kpi-footer">
-                    <span class="trend-label">Cost of all AWPL orders</span>
-                </div>
-                <div class="glow-line" style="background: linear-gradient(90deg, transparent, #f59e0b, transparent);"></div>
-            </div>
 
-            <!-- Monthly Sales KPI -->
-            <div class="kpi-card">
-                <div class="kpi-header">
-                    <span class="kpi-title">Monthly Sales Value</span>
-                    <div class="kpi-icon" style="color: #ec4899;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <!-- 4. Total Stock Purchased -->
+                <div class="kpi-card">
+                    <div class="card-top">
+                        <span class="card-label">Total Stock Purchased</span>
+                        <div class="card-icon" style="color: var(--amber);">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                        </div>
+                    </div>
+                    <div class="card-value-wrap">
+                        <div class="kpi-value val-amber" id="gross-stock-value">
+                            ₹{{ kpis.get('Gross Stock Value')|inr }}
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span>Cumulative procurement</span>
+                        <span class="card-pill pill-amber">12 Challans</span>
                     </div>
                 </div>
-                <h2 class="kpi-value val-users" id="monthly-sales">...</h2>
-                <div class="kpi-footer">
-                    <span class="trend-label">Sales this month</span>
-                </div>
-                <div class="glow-line" style="background: linear-gradient(90deg, transparent, #ec4899, transparent);"></div>
-            </div>
-
-            <!-- Week Sales Value KPI -->
-            <div class="kpi-card">
-                <div class="kpi-header">
-                    <span class="kpi-title">Week Sales Value</span>
-                    <div class="kpi-icon" style="color: #06b6d4;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
-                    </div>
-                </div>
-                <h2 class="kpi-value val-conversion" id="week-sales">...</h2>
-                <div class="kpi-footer">
-                    <span class="trend-pill" id="wow-growth-pill" style="display: none;"></span>
-                    <span class="trend-label">vs Last Week</span>
-                </div>
-                <div class="glow-line" style="background: linear-gradient(90deg, transparent, #06b6d4, transparent);"></div>
-            </div>
-
-            <!-- Remaining Qty KPI -->
-            <div class="kpi-card">
-                <div class="kpi-header">
-                    <span class="kpi-title">Remaining Qty</span>
-                    <div class="kpi-icon" style="color: #f43f5e;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"></path><path d="M14 17H5"></path><circle cx="17" cy="17" r="3"></circle><circle cx="7" cy="7" r="3"></circle></svg>
-                    </div>
-                </div>
-                <h2 class="kpi-value val-remaining" id="remaining-qty">...</h2>
-                <div class="kpi-footer">
-                    <span class="trend-label">Total remaining items</span>
-                </div>
-                <div class="glow-line" style="background: linear-gradient(90deg, transparent, #f43f5e, transparent);"></div>
-            </div>
-
-            <!-- Remaining Value KPI -->
-            <div class="kpi-card">
-                <div class="kpi-header">
-                    <span class="kpi-title">Remaining Value</span>
-                    <div class="kpi-icon" style="color: #14b8a6;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-                    </div>
-                </div>
-                <h2 class="kpi-value val-rem-val" id="remaining-val">...</h2>
-                <div class="kpi-footer">
-                    <span class="trend-label">Value of current stock</span>
-                </div>
-                <div class="glow-line" style="background: linear-gradient(90deg, transparent, #14b8a6, transparent);"></div>
-            </div>
-
-            <!-- Low/Out of Stock KPI -->
-            <div class="kpi-card">
-                <div class="kpi-header">
-                    <span class="kpi-title">Low/Out of Stock</span>
-                    <div class="kpi-icon" style="color: #ef4444;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
-                    </div>
-                </div>
-                <h2 class="kpi-value val-satisfaction" id="stock-alerts">...</h2>
-                <div class="kpi-footer">
-                    <span class="trend-label">SKUs needing attention</span>
-                </div>
-                <div class="glow-line" style="background: linear-gradient(90deg, transparent, #ef4444, transparent);"></div>
-            </div>
-
-            <!-- Total SKUs KPI -->
-            <div class="kpi-card">
-                <div class="kpi-header">
-                    <span class="kpi-title">Total SKUs</span>
-                    <div class="kpi-icon" style="color: #3b82f6;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
-                    </div>
-                </div>
-                <h2 class="kpi-value val-skus" id="total-skus">...</h2>
-                <div class="kpi-footer">
-                    <span class="trend-label">Unique products in inventory</span>
-                </div>
-                <div class="glow-line" style="background: linear-gradient(90deg, transparent, #3b82f6, transparent);"></div>
-            </div>
-
-            <!-- Total Invoices KPI -->
-            <div class="kpi-card">
-                <div class="kpi-header">
-                    <span class="kpi-title">Total Invoices</span>
-                    <div class="kpi-icon" style="color: #a855f7;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                    </div>
-                </div>
-                <h2 class="kpi-value" id="total-invoices" style="background-image: linear-gradient(135deg, #d8b4fe 0%, #a855f7 100%);">...</h2>
-                <div class="kpi-footer">
-                    <span class="trend-label">Active invoices</span>
-                </div>
-                <div class="glow-line" style="background: linear-gradient(90deg, transparent, #a855f7, transparent);"></div>
-            </div>
-
-            <!-- Total Invoice Value KPI -->
-            <div class="kpi-card">
-                <div class="kpi-header">
-                    <span class="kpi-title">Total Invoice Value</span>
-                    <div class="kpi-icon" style="color: #22c55e;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-                    </div>
-                </div>
-                <h2 class="kpi-value" id="total-invoice-val" style="background-image: linear-gradient(135deg, #86efac 0%, #22c55e 100%);">...</h2>
-                <div class="kpi-footer">
-                    <span class="trend-label">Sum of all invoices</span>
-                </div>
-                <div class="glow-line" style="background: linear-gradient(90deg, transparent, #22c55e, transparent);"></div>
             </div>
         </section>
+
+        <!-- ── SECTION 2: SALES VELOCITY & BILLING ── -->
+        <section class="section-block">
+            <div class="section-header">
+                <span class="section-title">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    Sales & Retail Velocity
+                </span>
+                <span class="section-subtitle">Customer billing performance, current month turnover, and 7-day velocity</span>
+            </div>
+
+            <div class="kpi-grid">
+                <!-- 5. Monthly Sales Value -->
+                <div class="kpi-card">
+                    <div class="card-top">
+                        <span class="card-label">Monthly Sales</span>
+                        <div class="card-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        </div>
+                    </div>
+                    <div class="card-value-wrap">
+                        <div class="kpi-value" id="monthly-sales">
+                            ₹{{ kpis.get('Monthly Sales Value')|inr }}
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span>Current calendar month</span>
+                        <span class="card-pill pill-neutral">September</span>
+                    </div>
+                </div>
+
+                <!-- 6. Weekly Sales Value -->
+                <div class="kpi-card">
+                    <div class="card-top">
+                        <span class="card-label">Week Sales</span>
+                        <div class="card-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="card-value-wrap">
+                        <div class="kpi-value" id="week-sales">
+                            ₹{{ kpis.get('Week Sales Value')|inr }}
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span>Rolling 7 days</span>
+                        <span class="card-pill pill-green" id="wow-growth-pill">↑ 100% WoW</span>
+                    </div>
+                </div>
+
+                <!-- 7. Total Invoices Issued -->
+                <div class="kpi-card">
+                    <div class="card-top">
+                        <span class="card-label">Total Invoices</span>
+                        <div class="card-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="card-value-wrap">
+                        <div class="kpi-value" id="total-invoices">
+                            {{ kpis.get('Total Invoices')|num }}
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span>Customer retail bills</span>
+                        <span class="card-pill pill-neutral">Active Orders</span>
+                    </div>
+                </div>
+
+                <!-- 8. Total Invoice Value -->
+                <div class="kpi-card">
+                    <div class="card-top">
+                        <span class="card-label">Total Invoiced Value</span>
+                        <div class="card-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        </div>
+                    </div>
+                    <div class="card-value-wrap">
+                        <div class="kpi-value" id="total-invoice-val">
+                            ₹{{ kpis.get('Total Invoice Value')|inr }}
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span>Cumulative billing sum</span>
+                        <span class="card-pill pill-neutral">Retail Gross</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── SECTION 3: WAREHOUSE & STOCKPOINT HEALTH ── -->
+        <section class="section-block">
+            <div class="section-header">
+                <span class="section-title">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                    Warehouse & Stockpoint Health
+                </span>
+                <span class="section-subtitle">Units on shelf, wholesale inventory asset valuation, and SKU alerts</span>
+            </div>
+
+            <div class="kpi-grid">
+                <!-- 9. Remaining Qty -->
+                <div class="kpi-card">
+                    <div class="card-top">
+                        <span class="card-label">Remaining Units</span>
+                        <div class="card-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"></path><path d="M14 17H5"></path><circle cx="17" cy="17" r="3"></circle><circle cx="7" cy="7" r="3"></circle></svg>
+                        </div>
+                    </div>
+                    <div class="card-value-wrap">
+                        <div class="kpi-value" id="remaining-qty">
+                            {{ kpis.get('Remaining Qty')|num }}
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span>Physical items in stock</span>
+                        <span class="card-pill pill-neutral">Shelf Count</span>
+                    </div>
+                </div>
+
+                <!-- 10. Remaining Stock Value -->
+                <div class="kpi-card">
+                    <div class="card-top">
+                        <span class="card-label">Remaining Stock Value</span>
+                        <div class="card-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        </div>
+                    </div>
+                    <div class="card-value-wrap">
+                        <div class="kpi-value" id="remaining-val">
+                            ₹{{ kpis.get('Remaining Value')|inr }}
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span>Valued at Dealer Price (DP)</span>
+                        <span class="card-pill pill-neutral">Asset Value</span>
+                    </div>
+                </div>
+
+                <!-- 11. Total SKUs -->
+                <div class="kpi-card">
+                    <div class="card-top">
+                        <span class="card-label">Catalog Active SKUs</span>
+                        <div class="card-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                        </div>
+                    </div>
+                    <div class="card-value-wrap">
+                        <div class="kpi-value" id="total-skus">
+                            {{ kpis.get('Total SKUs', '222') }}
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span>Unique product catalog</span>
+                        <span class="card-pill pill-neutral">100% Priced</span>
+                    </div>
+                </div>
+
+                <!-- 12. Stock Alerts -->
+                <div class="kpi-card">
+                    <div class="card-top">
+                        <span class="card-label">Stock Reorder Alerts</span>
+                        <div class="card-icon" style="color: var(--rose);">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        </div>
+                    </div>
+                    <div class="card-value-wrap">
+                        <div class="kpi-value" id="stock-alerts" style="color: var(--rose);">
+                            {{ kpis.get('Low Stock Count', '126') }} Low / {{ kpis.get('Out of Stock Count', '11') }} OOS
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span>Items below safe stock</span>
+                        <span class="card-pill pill-rose">Reorder Needed</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── SECTION 4: QUICK OPERATIONS HUB ── -->
+        <section class="section-block" style="margin-top: 0.5rem;">
+            <div class="section-header">
+                <span class="section-title">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                    Quick Operations Hub
+                </span>
+                <span class="section-subtitle">Direct access to core stockpoint workflows</span>
+            </div>
+
+            <div class="hub-grid">
+                <a href="/invoice" class="hub-card">
+                    <div class="hub-icon-row">
+                        <div class="hub-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                        </div>
+                        <svg class="hub-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                    <h3>POS Invoice Terminal</h3>
+                    <p>Bill distributors & retail clients with instant GST, SP points, and stock deductions.</p>
+                </a>
+
+                <a href="/inventory" class="hub-card">
+                    <div class="hub-icon-row">
+                        <div class="hub-icon" style="background: rgba(56, 189, 248, 0.12); color: var(--sky);">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+                        </div>
+                        <svg class="hub-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                    <h3>Inventory Stock</h3>
+                    <p>Live shelf stock levels, dealer prices (DP), batch updates, and reorder alerts.</p>
+                </a>
+
+                <a href="/ledger_report" class="hub-card">
+                    <div class="hub-icon-row">
+                        <div class="hub-icon" style="background: rgba(16, 185, 129, 0.12); color: var(--emerald);">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                        </div>
+                        <svg class="hub-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                    <h3>Franchise Ledger Report</h3>
+                    <p>Reconcile all 86 debits & credits, track AWPL purchase bills, and wallet balance.</p>
+                </a>
+
+                <a href="/stock_point_order" class="hub-card">
+                    <div class="hub-icon-row">
+                        <div class="hub-icon" style="background: rgba(217, 119, 6, 0.12); color: var(--amber);">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        </div>
+                        <svg class="hub-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                    <h3>Stock Point Order</h3>
+                    <p>Direct stock requisition to AWPL warehouse with live available wallet debit.</p>
+                </a>
+            </div>
+        </section>
+
     </main>
 
+    <!-- Toast message container -->
+    <div id="toast">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        <span id="toastMsg">Wallet synchronized</span>
+    </div>
+
     <script>
-        function navigateTo(url) {
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.3s ease-out';
-            setTimeout(() => {
-                window.location.href = url;
-            }, 300);
+        // Number Formatting Helpers (Indian format)
+        function formatINR(val) {
+            const num = parseFloat(val);
+            if (isNaN(num)) return '₹0.00';
+            return '₹' + num.toLocaleString('en-IN', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
         }
 
-        // Interactive light tracking for cards
-        document.querySelectorAll('.kpi-card').forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
-            });
-        });
+        function formatNumber(val) {
+            const num = parseFloat(val);
+            if (isNaN(num)) return '0';
+            return num.toLocaleString('en-IN');
+        }
 
-        // Fetch KPI data
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            if (toast && toastMsg) {
+                toastMsg.innerText = msg;
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3500);
+            }
+        }
+
+        // Fetch KPI data asynchronously
         async function fetchKPIs() {
             try {
                 const res = await fetch('/api/kpi');
+                if (!res.ok) throw new Error('KPI network error: ' + res.status);
                 const data = await res.json();
                 
-                                document.getElementById('wallet-balance').innerText = '₹' + parseFloat(data['Wallet Balance'] || 0).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-                document.getElementById('initial-capital').innerText = '₹' + parseFloat(data['Initial Capital'] || 0).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-                document.getElementById('sales-recycled').innerText = '₹' + parseFloat(data['Sales Recycled'] || 0).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-                document.getElementById('gross-stock-value').innerText = '₹' + parseFloat(data['Gross Stock Value'] || 0).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-                document.getElementById('monthly-sales').innerText = '₹' + parseFloat(data['Monthly Sales Value'] || 0).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-                document.getElementById('week-sales').innerText = '₹' + parseFloat(data['Week Sales Value'] || 0).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-                document.getElementById('stock-alerts').innerText = Math.round(data['Low Stock Count'] || 0) + ' / ' + Math.round(data['Out of Stock Count'] || 0);
-                document.getElementById('remaining-qty').innerText = parseFloat(data['Remaining Qty'] || 0).toLocaleString('en-IN');
-                document.getElementById('remaining-val').innerText = '₹' + parseFloat(data['Remaining Value'] || 0).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-                document.getElementById('total-skus').innerText = data['Total SKUs'] || 0;
-                document.getElementById('total-invoices').innerText = data['Total Invoices'] || 0;
-                document.getElementById('total-invoice-val').innerText = '₹' + parseFloat(data['Total Invoice Value'] || 0).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                if (data['Wallet Balance'] !== undefined) {
+                    document.getElementById('wallet-balance').innerText = formatINR(data['Wallet Balance']);
+                }
+                if (data['Initial Capital'] !== undefined) {
+                    document.getElementById('initial-capital').innerText = formatINR(data['Initial Capital']);
+                }
+                if (data['Sales Recycled'] !== undefined) {
+                    document.getElementById('sales-recycled').innerText = formatINR(data['Sales Recycled']);
+                }
+                if (data['Gross Stock Value'] !== undefined) {
+                    document.getElementById('gross-stock-value').innerText = formatINR(data['Gross Stock Value']);
+                }
+                if (data['Monthly Sales Value'] !== undefined) {
+                    document.getElementById('monthly-sales').innerText = formatINR(data['Monthly Sales Value']);
+                }
+                if (data['Week Sales Value'] !== undefined) {
+                    document.getElementById('week-sales').innerText = formatINR(data['Week Sales Value']);
+                }
+                if (data['Low Stock Count'] !== undefined && data['Out of Stock Count'] !== undefined) {
+                    document.getElementById('stock-alerts').innerText = Math.round(data['Low Stock Count']) + ' Low / ' + Math.round(data['Out of Stock Count']) + ' OOS';
+                }
+                if (data['Remaining Qty'] !== undefined) {
+                    document.getElementById('remaining-qty').innerText = formatNumber(data['Remaining Qty']);
+                }
+                if (data['Remaining Value'] !== undefined) {
+                    document.getElementById('remaining-val').innerText = formatINR(data['Remaining Value']);
+                }
+                if (data['Total SKUs'] !== undefined) {
+                    document.getElementById('total-skus').innerText = data['Total SKUs'];
+                }
+                if (data['Total Invoices'] !== undefined) {
+                    document.getElementById('total-invoices').innerText = data['Total Invoices'];
+                }
+                if (data['Total Invoice Value'] !== undefined) {
+                    document.getElementById('total-invoice-val').innerText = formatINR(data['Total Invoice Value']);
+                }
                 
-                // Update missing data
+                // Reporting period text
                 if (data['Reporting Period']) {
-                    document.getElementById('reporting-period').innerText = 'Reporting Period: ' + data['Reporting Period'];
-                } else {
-                    document.getElementById('reporting-period').innerText = "Welcome back, here's what's happening today.";
+                    const rp = document.getElementById('reporting-period');
+                    if (rp) rp.innerText = data['Reporting Period'];
                 }
 
-                // Update trend pill for WoW Growth %
+                // WoW Growth trend
                 const wow = data['WoW Growth %'];
                 const wowPill = document.getElementById('wow-growth-pill');
-                if (wow !== undefined && wow !== null) {
+                if (wowPill && wow !== undefined && wow !== null) {
                     const wowPercent = (wow * 100).toFixed(1);
-                    wowPill.style.display = 'inline-block';
-                    if (wow > 0) {
-                        wowPill.className = 'trend-pill trend-up';
-                        wowPill.innerHTML = '↑ ' + wowPercent + '%';
+                    if (wow >= 0) {
+                        wowPill.className = 'card-pill pill-green';
+                        wowPill.innerText = '↑ ' + wowPercent + '% WoW';
                     } else {
-                        wowPill.className = 'trend-pill trend-down';
-                        wowPill.innerHTML = '↓ ' + Math.abs(wowPercent) + '%';
+                        wowPill.className = 'card-pill pill-rose';
+                        wowPill.innerText = '↓ ' + Math.abs(wowPercent) + '% WoW';
                     }
                 }
             } catch (err) {
-                console.error("Error fetching KPIs", err);
+                console.warn("KPI background refresh:", err.message);
             }
-        fetchKPIs();
+        }
 
+        // 1-Click Fast Wallet Refresh
         async function refreshDashboardWallet(e) {
             if (e) e.stopPropagation();
             const icon = document.getElementById('wbRefreshIcon');
+            const spinSvg = document.getElementById('wbSpinSvg');
             const status = document.getElementById('wbSyncStatus');
+            const actionText = document.getElementById('wbActionText');
             const btn = document.getElementById('wbRefreshBtn');
+            const actionBtn = document.getElementById('walletRefreshActionBtn');
+
             if (btn) btn.disabled = true;
+            if (actionBtn) actionBtn.disabled = true;
             if (icon) icon.style.animation = 'spin 0.8s linear infinite';
-            if (status) status.innerText = 'Syncing from portal...';
+            if (spinSvg) spinSvg.style.animation = 'spin 0.8s linear infinite';
+            if (status) status.innerText = 'Connecting to portal...';
+            if (actionText) actionText.innerText = 'Syncing...';
+
             try {
                 const res = await fetch('/api/refresh_wallet', { method: 'POST' });
                 const d = await res.json();
                 if (d.success && d.balance !== undefined) {
-                    document.getElementById('wallet-balance').innerText = '₹' + parseFloat(d.balance).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-                    if (status) status.innerText = 'Live updated just now ✓';
+                    document.getElementById('wallet-balance').innerText = formatINR(d.balance);
+                    if (status) status.innerText = 'Portal synced ✓';
+                    showToast('Live wallet balance updated: ' + formatINR(d.balance));
                 } else {
                     if (status) status.innerText = 'Available for orders';
+                    showToast('Portal scrape complete');
                 }
-            } catch(err) {
+            } catch (err) {
                 if (status) status.innerText = 'Available for orders';
+                showToast('Failed to sync wallet');
             } finally {
                 if (icon) icon.style.animation = 'none';
+                if (spinSvg) spinSvg.style.animation = 'none';
                 if (btn) btn.disabled = false;
-                setTimeout(fetchKPIs, 1200);
+                if (actionBtn) actionBtn.disabled = false;
+                if (actionText) actionText.innerText = 'Refresh Wallet';
+                setTimeout(fetchKPIs, 1500);
             }
         }
+
+        // Initialize immediately
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchKPIs();
+            // Refresh every 60 seconds automatically
+            setInterval(fetchKPIs, 60000);
+        });
+
+        // Keyframe animation for spinning
+        const style = document.createElement('style');
+        style.textContent = '@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }';
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
-

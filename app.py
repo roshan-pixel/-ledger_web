@@ -16,6 +16,46 @@ from init_gsheets import init_google_sheets
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False   # send Unicode as real UTF-8, not \uXXXX escapes
 
+@app.template_filter('inr')
+def inr_filter(value):
+    try:
+        val_float = float(value or 0)
+        s = f"{val_float:.2f}"
+        parts = s.split('.')
+        whole, dec = parts[0], parts[1]
+        if len(whole) <= 3:
+            return f"{whole}.{dec}"
+        last3 = whole[-3:]
+        rem = whole[:-3]
+        groups = []
+        while len(rem) > 2:
+            groups.insert(0, rem[-2:])
+            rem = rem[:-2]
+        if rem:
+            groups.insert(0, rem)
+        return f"{','.join(groups)},{last3}.{dec}"
+    except Exception:
+        return str(value or '0.00')
+
+@app.template_filter('num')
+def num_filter(value):
+    try:
+        val_int = int(float(value or 0))
+        s = str(val_int)
+        if len(s) <= 3:
+            return s
+        last3 = s[-3:]
+        rem = s[:-3]
+        groups = []
+        while len(rem) > 2:
+            groups.insert(0, rem[-2:])
+            rem = rem[:-2]
+        if rem:
+            groups.insert(0, rem)
+        return f"{','.join(groups)},{last3}"
+    except Exception:
+        return str(value or '0')
+
 @app.route('/ping')
 @app.route('/health')
 def ping():
@@ -152,7 +192,11 @@ def get_db():
 @app.route('/')
 @app.route('/dashboard')
 def dashboard():
-    return render_template('dashboard.html')
+    try:
+        kpis = compute_kpis_data()
+    except Exception:
+        kpis = {}
+    return render_template('dashboard.html', kpis=kpis)
 
 @app.route('/inventory')
 def inventory():
@@ -353,176 +397,177 @@ def api_inventory_add_product():
         return jsonify({'success': True})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+def compute_kpis_data():
+    conn = get_db()
+    c = conn.cursor()
+    
+    # Total SKUs
+    c.execute("SELECT COUNT(*) FROM inventory WHERE c3 != '' AND c3 IS NOT NULL AND UPPER(c3) != 'TOTAL'")
+    total_skus = c.fetchone()[0]
+    
+    # We need to know which columns are what based on headers
+    c.execute("SELECT value FROM settings WHERE key='inventory_headers'")
+    headers = json.loads(c.fetchone()[0])
+    
+    # Find indices (1-based)
+    dp_idx = None
+    rem_qty_idx = None
+    rem_val_idx = None
+    tot_qty_idx = None
+    for i, h in enumerate(headers):
+        if h == 'Price/Pc (Rs.)': dp_idx = i + 1
+        elif h == 'Remaining Qty': rem_qty_idx = i + 1
+        elif h == 'Remaining Value (Rs.)': rem_val_idx = i + 1
+        elif h == 'Total Qty': tot_qty_idx = i + 1
+        
+    if not rem_qty_idx: rem_qty_idx = 19
+    if not rem_val_idx: rem_val_idx = 20
+    if not tot_qty_idx: tot_qty_idx = 7
+    
+    c.execute(f"SELECT SUM(CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL)) FROM inventory WHERE c{rem_qty_idx} != '' AND UPPER(c3) != 'TOTAL'")
+    rem_qty = round(c.fetchone()[0] or 0, 2)
+    
+    c.execute(f"SELECT SUM(CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) * CAST(REPLACE(c{dp_idx}, ',', '') AS REAL)) FROM inventory WHERE c{rem_qty_idx} != '' AND c{dp_idx} != '' AND UPPER(c3) != 'TOTAL'")
+    rem_val = round(c.fetchone()[0] or 0, 2)
+    
+    # ── Ledger-based KPIs ────────────────────────────────────────
+    import json as _json
+    from pathlib import Path
+    LEDGER_FILE = str(Path(__file__).parent / 'ledger_report.json')
+    total_invested   = 0.0   # sum of all Dr entries (money spent on stock orders)
+    initial_capital  = 0.0   # first Cr entry (owner's own money put in)
+    sales_recycled   = 0.0   # subsequent Cr entries (sales revenue coming back)
+    wallet_balance   = 0.0   # current closing balance
+    first_cr_seen    = False
+    try:
+        with open(LEDGER_FILE, 'r', encoding='utf-8') as _f:
+            _ledger = _json.load(_f)
+        wallet_balance = float(_ledger.get('closing_balance', 0.0))
+        for entry in _ledger.get('entries', []):
+            tx_type = (entry.get('Transaction Type') or '').strip().upper()
+            tx_amt  = float((entry.get('Transaction Amount') or '0').replace(',', ''))
+            if tx_type == 'DR':
+                total_invested += tx_amt
+            elif tx_type == 'CR':
+                if not first_cr_seen:
+                    initial_capital = tx_amt   # e.g. Rs.20,00,000
+                    first_cr_seen   = True
+                else:
+                    sales_recycled += tx_amt   # money from your sales coming back
+    except Exception:
+        pass
+
+    # Fallback to SQLite settings / ledger_report table if needed
+    if wallet_balance == 0.0:
+        try:
+            c.execute("SELECT value FROM settings WHERE key='wallet_balance'")
+            r_wb = c.fetchone()
+            if r_wb and r_wb[0]:
+                wallet_balance = float(r_wb[0])
+        except Exception:
+            pass
+
+    if total_invested == 0.0:
+        try:
+            c.execute("SELECT debit, credit FROM ledger_report ORDER BY id ASC")
+            lr_rows = c.fetchall()
+            f_cr = False
+            for lr in lr_rows:
+                deb = float(lr[0] or 0)
+                cred = float(lr[1] or 0)
+                if deb > 0:
+                    total_invested += deb
+                elif cred > 0:
+                    if not f_cr:
+                        initial_capital = cred
+                        f_cr = True
+                    else:
+                        sales_recycled += cred
+        except Exception:
+            pass
+
+    # Gross stock value = actual money spent purchasing from AWPL
+    gross_val = round(total_invested, 2)
+    
+    c.execute(f"SELECT COUNT(*) FROM inventory WHERE CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) <= 10 AND CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) > 0 AND c{rem_qty_idx} != '' AND UPPER(c3) != 'TOTAL'")
+    low_stock = c.fetchone()[0] or 0
+    
+    c.execute(f"SELECT COUNT(*) FROM inventory WHERE CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) <= 0 AND c{rem_qty_idx} != '' AND UPPER(c3) != 'TOTAL'")
+    out_of_stock = c.fetchone()[0] or 0
+    
+    # Calculate Monthly Sales Value, Week Sales Value, Total Invoices directly from the invoices table
+    c.execute("SELECT date_created, amount FROM invoices WHERE status != 'cancelled'")
+    monthly_sales = 0
+    week_sales = 0
+    total_invoices = 0
+    total_invoice_value = 0
+    import datetime
+    now = datetime.datetime.now()
+    
+    for r in c.fetchall():
+        d_str = r[0]
+        amt = float(r[1] or 0)
+        
+        try:
+            if 'T' in d_str:
+                dt = datetime.datetime.fromisoformat(d_str)
+            elif '/' in d_str:
+                dt = datetime.datetime.strptime(d_str[:10], '%d/%m/%Y')
+            else:
+                dt = datetime.datetime.strptime(d_str[:10], '%Y-%m-%d')
+                
+            total_invoices += 1
+            total_invoice_value += amt
+            
+            # Check current month
+            if dt.year == now.year and dt.month == now.month:
+                monthly_sales += amt
+                
+            # Check past 7 days
+            if (now - dt).days <= 7:
+                week_sales += amt
+        except Exception:
+            pass
+            
+    monthly_sales = round(monthly_sales, 2)
+    week_sales = round(week_sales, 2)
+    total_invoice_value = round(total_invoice_value, 2)
+    
+    # Read other static KPIs from DB
+    c.execute("SELECT key, value FROM kpis")
+    kpis = {row['key']: row['value'] for row in c.fetchall()}
+    
+    # Overwrite dynamic ones
+    kpis['Total SKUs'] = str(total_skus)
+    kpis['Remaining Qty'] = f"{rem_qty:g}"
+    kpis['Remaining Value'] = str(rem_val)
+    kpis['Gross Stock Value'] = str(gross_val)          # = total Dr (stock orders)
+    kpis['Wallet Balance']   = str(round(wallet_balance, 2))
+    kpis['Initial Capital']  = str(round(initial_capital, 2))   # first Cr = owner's money
+    kpis['Sales Recycled']   = str(round(sales_recycled, 2))    # subsequent Cr = from sales
+    kpis['Low Stock Count'] = str(low_stock)
+    kpis['Out of Stock Count'] = str(out_of_stock)
+    kpis['Monthly Sales Value'] = str(monthly_sales)
+    kpis['Week Sales Value'] = str(week_sales)
+    kpis['Total Invoices'] = str(total_invoices)
+    kpis['Total Invoice Value'] = str(total_invoice_value)
+    kpis['Reporting Period'] = "Live (Syncing from GSheets + Local)"
+    
+    # Persist dynamic KPIs into SQLite kpis table
+    try:
+        for k, v in kpis.items():
+            c.execute("INSERT OR REPLACE INTO kpis (key, value) VALUES (?, ?)", (k, str(v)))
+        conn.commit()
+    except Exception:
+        pass
+
+    conn.close()
+    return kpis
+
 @app.route('/api/kpi')
 def api_kpi():
     try:
-        conn = get_db()
-        c = conn.cursor()
-        
-        # Total SKUs
-        c.execute("SELECT COUNT(*) FROM inventory WHERE c3 != '' AND c3 IS NOT NULL AND UPPER(c3) != 'TOTAL'")
-        total_skus = c.fetchone()[0]
-        
-        # We need to know which columns are what based on headers
-        c.execute("SELECT value FROM settings WHERE key='inventory_headers'")
-        headers = json.loads(c.fetchone()[0])
-        
-        # Find indices (1-based)
-        dp_idx = None
-        rem_qty_idx = None
-        rem_val_idx = None
-        tot_qty_idx = None
-        for i, h in enumerate(headers):
-            if h == 'Price/Pc (Rs.)': dp_idx = i + 1
-            elif h == 'Remaining Qty': rem_qty_idx = i + 1
-            elif h == 'Remaining Value (Rs.)': rem_val_idx = i + 1
-            elif h == 'Total Qty': tot_qty_idx = i + 1
-            
-        if not rem_qty_idx: rem_qty_idx = 19
-        if not rem_val_idx: rem_val_idx = 20
-        if not tot_qty_idx: tot_qty_idx = 7
-        
-        c.execute(f"SELECT SUM(CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL)) FROM inventory WHERE c{rem_qty_idx} != '' AND UPPER(c3) != 'TOTAL'")
-        rem_qty = round(c.fetchone()[0] or 0, 2)
-        
-        c.execute(f"SELECT SUM(CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) * CAST(REPLACE(c{dp_idx}, ',', '') AS REAL)) FROM inventory WHERE c{rem_qty_idx} != '' AND c{dp_idx} != '' AND UPPER(c3) != 'TOTAL'")
-        rem_val = round(c.fetchone()[0] or 0, 2)
-        
-        # ── Ledger-based KPIs ────────────────────────────────────────
-        # Read from ledger_report.json which is synced from Asclepius portal.
-        # The first Cr entry = initial capital deposit.
-        # All subsequent Cr entries = sales revenue being credited back by AWPL.
-        import json as _json
-        from pathlib import Path
-        LEDGER_FILE = str(Path(__file__).parent / 'ledger_report.json')
-        total_invested   = 0.0   # sum of all Dr entries (money spent on stock orders)
-        initial_capital  = 0.0   # first Cr entry (owner's own money put in)
-        sales_recycled   = 0.0   # subsequent Cr entries (sales revenue coming back)
-        wallet_balance   = 0.0   # current closing balance
-        first_cr_seen    = False
-        try:
-            with open(LEDGER_FILE, 'r', encoding='utf-8') as _f:
-                _ledger = _json.load(_f)
-            wallet_balance = float(_ledger.get('closing_balance', 0.0))
-            for entry in _ledger.get('entries', []):
-                tx_type = (entry.get('Transaction Type') or '').strip().upper()
-                tx_amt  = float((entry.get('Transaction Amount') or '0').replace(',', ''))
-                if tx_type == 'DR':
-                    total_invested += tx_amt
-                elif tx_type == 'CR':
-                    if not first_cr_seen:
-                        initial_capital = tx_amt   # e.g. Rs.20,00,000
-                        first_cr_seen   = True
-                    else:
-                        sales_recycled += tx_amt   # money from your sales coming back
-        except Exception:
-            pass
-
-        # Fallback to SQLite settings / ledger_report table if needed
-        if wallet_balance == 0.0:
-            try:
-                c.execute("SELECT value FROM settings WHERE key='wallet_balance'")
-                r_wb = c.fetchone()
-                if r_wb and r_wb[0]:
-                    wallet_balance = float(r_wb[0])
-            except Exception:
-                pass
-
-        if total_invested == 0.0:
-            try:
-                c.execute("SELECT debit, credit FROM ledger_report ORDER BY id ASC")
-                lr_rows = c.fetchall()
-                f_cr = False
-                for lr in lr_rows:
-                    deb = float(lr[0] or 0)
-                    cred = float(lr[1] or 0)
-                    if deb > 0:
-                        total_invested += deb
-                    elif cred > 0:
-                        if not f_cr:
-                            initial_capital = cred
-                            f_cr = True
-                        else:
-                            sales_recycled += cred
-            except Exception:
-                pass
-
-        # Gross stock value = actual money spent purchasing from AWPL
-        gross_val = round(total_invested, 2)
-        
-        c.execute(f"SELECT COUNT(*) FROM inventory WHERE CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) <= 10 AND CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) > 0 AND c{rem_qty_idx} != '' AND UPPER(c3) != 'TOTAL'")
-        low_stock = c.fetchone()[0] or 0
-        
-        c.execute(f"SELECT COUNT(*) FROM inventory WHERE CAST(REPLACE(c{rem_qty_idx}, ',', '') AS REAL) <= 0 AND c{rem_qty_idx} != '' AND UPPER(c3) != 'TOTAL'")
-        out_of_stock = c.fetchone()[0] or 0
-        
-        # Calculate Monthly Sales Value, Week Sales Value, Total Invoices directly from the invoices table
-        c.execute("SELECT date_created, amount FROM invoices WHERE status != 'cancelled'")
-        monthly_sales = 0
-        week_sales = 0
-        total_invoices = 0
-        total_invoice_value = 0
-        import datetime
-        now = datetime.datetime.now()
-        
-        for r in c.fetchall():
-            d_str = r[0]
-            amt = float(r[1] or 0)
-            
-            try:
-                if 'T' in d_str:
-                    dt = datetime.datetime.fromisoformat(d_str)
-                elif '/' in d_str:
-                    dt = datetime.datetime.strptime(d_str[:10], '%d/%m/%Y')
-                else:
-                    dt = datetime.datetime.strptime(d_str[:10], '%Y-%m-%d')
-                    
-                total_invoices += 1
-                total_invoice_value += amt
-                
-                # Check current month
-                if dt.year == now.year and dt.month == now.month:
-                    monthly_sales += amt
-                    
-                # Check past 7 days
-                if (now - dt).days <= 7:
-                    week_sales += amt
-            except Exception:
-                pass
-                
-        monthly_sales = round(monthly_sales, 2)
-        week_sales = round(week_sales, 2)
-        total_invoice_value = round(total_invoice_value, 2)
-        
-        # Read other static KPIs from DB
-        c.execute("SELECT key, value FROM kpis")
-        kpis = {row['key']: row['value'] for row in c.fetchall()}
-        
-        # Overwrite dynamic ones
-        kpis['Total SKUs'] = str(total_skus)
-        kpis['Remaining Qty'] = f"{rem_qty:g}"
-        kpis['Remaining Value'] = str(rem_val)
-        kpis['Gross Stock Value'] = str(gross_val)          # = total Dr (stock orders)
-        kpis['Wallet Balance']   = str(round(wallet_balance, 2))
-        kpis['Initial Capital']  = str(round(initial_capital, 2))   # first Cr = owner's money
-        kpis['Sales Recycled']   = str(round(sales_recycled, 2))    # subsequent Cr = from sales
-        kpis['Low Stock Count'] = str(low_stock)
-        kpis['Out of Stock Count'] = str(out_of_stock)
-        kpis['Monthly Sales Value'] = str(monthly_sales)
-        kpis['Week Sales Value'] = str(week_sales)
-        kpis['Total Invoices'] = str(total_invoices)
-        kpis['Total Invoice Value'] = str(total_invoice_value)
-        kpis['Reporting Period'] = "Live (Syncing from GSheets + Local)"
-        
-        # Persist dynamic KPIs into SQLite kpis table
-        try:
-            for k, v in kpis.items():
-                c.execute("INSERT OR REPLACE INTO kpis (key, value) VALUES (?, ?)", (k, str(v)))
-            conn.commit()
-        except Exception:
-            pass
-
-        conn.close()
+        kpis = compute_kpis_data()
         return jsonify(kpis)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
