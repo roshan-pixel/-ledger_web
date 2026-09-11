@@ -468,7 +468,7 @@ def update_invoice_info(invoice_id):
         c = conn.cursor()
         
         if 'is_dispatched' in data:
-            if data.get('password') != 'ABC@!234':
+            if data.get('password') not in ['ABC!@234', 'ABC@!234']:
                 conn.close()
                 return jsonify({'error': 'Incorrect password! Authorization required to change dispatched status.'}), 403
             val = 1 if data['is_dispatched'] else 0
@@ -550,11 +550,11 @@ def cancel_invoice(invoice_id):
             conn.close()
             return jsonify({'error': 'Invoice not found'}), 404
             
-        # Password is required ONLY IF the invoice is already marked as dispatched
-        is_dispatched = bool(row['is_dispatched']) if 'is_dispatched' in row.keys() else False
-        if is_dispatched and data.get('password') != 'ABC@!234':
+        # Password authorization is required to cancel any invoice (blocking unticked & dispatched invoices without password)
+        pwd = str(data.get('password') or '').strip()
+        if pwd not in ['ABC!@234', 'ABC@!234']:
             conn.close()
-            return jsonify({'error': 'Incorrect password! This invoice is marked as dispatched, password authorization is required to cancel it.'}), 403
+            return jsonify({'error': 'Incorrect password! Authorization password is required to cancel this invoice.'}), 403
             
         items = json.loads(row['items'] or '[]')
         

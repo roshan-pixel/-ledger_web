@@ -1257,12 +1257,9 @@
     async function cancelInvoice(id, isDispatched) {
         if (!confirm('Are you sure you want to cancel this invoice? The items will be returned to inventory.')) return;
         
-        let pwd = '';
-        if (isDispatched == 1 || isDispatched === true) {
-            pwd = prompt('This invoice is already marked as dispatched. Enter authorization password to cancel:');
-            if (!pwd) {
-                return;
-            }
+        const pwd = prompt('Enter authorization password to cancel this invoice:');
+        if (!pwd) {
+            return;
         }
         
         try {
