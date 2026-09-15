@@ -624,3 +624,18 @@ def cancel_invoice(invoice_id):
     except Exception as e:
         print("Error cancelling invoice:", str(e))
         return jsonify({'error': str(e)}), 500
+
+
+@invoice_api.route('/api/portal_order_log', methods=['GET'])
+def get_portal_order_log():
+    """Returns the last 100 lines of portal_submit.log."""
+    log_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'portal_submit.log')
+    if not os.path.exists(log_file):
+        return jsonify({'log': 'No portal submission logs recorded yet.'}), 200
+    try:
+        with open(log_file, 'r', encoding='utf-8', errors='ignore') as f:
+            lines = f.readlines()
+        return jsonify({'lines': [line.strip() for line in lines[-100:]]}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
