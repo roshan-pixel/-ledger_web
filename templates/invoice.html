@@ -39,7 +39,26 @@
             max-height: 250px; overflow-y: auto; z-index: 999;
             border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);
             display: none; backdrop-filter: var(--blur); margin-top: 4px;
-        }.ac-item { padding: 0.75rem 1rem; cursor: pointer; border-bottom: 1px solid var(--border); font-size: 0.9rem; color: var(--text); }.ac-item:hover { background: rgba(255,255,255,0.1); }.ac-item:last-child { border-bottom: none; }.autocomplete-arrow {
+        }        .ac-item { 
+            padding: 0.75rem 1rem; cursor: pointer; border-bottom: 1px solid var(--border); 
+            font-size: 0.9rem; color: var(--text);
+            display: flex; justify-content: space-between; align-items: center; gap: 8px;
+        }
+        .ac-item:hover { background: rgba(255,255,255,0.1); }
+        .ac-item:last-child { border-bottom: none; }
+        .ac-item.oos { opacity: 0.7; background: rgba(239, 68, 68, 0.05); }
+        .ac-item.oos:hover { opacity: 0.95; background: rgba(239, 68, 68, 0.12); }
+        .stock-badge-oos {
+            font-size: 0.68rem; font-weight: 700; color: #ef4444;
+            background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.35);
+            padding: 2px 7px; border-radius: 4px; white-space: nowrap; text-transform: uppercase;
+        }
+        .stock-badge-low {
+            font-size: 0.68rem; font-weight: 600; color: #f59e0b;
+            background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.35);
+            padding: 2px 7px; border-radius: 4px; white-space: nowrap;
+        }
+        .autocomplete-arrow {
             position: absolute; right: 8px; color: var(--muted); cursor: pointer; padding: 5px; font-size: 0.75rem;
         }/* ── MAIN ────────────────────────── */
         .main { flex:1; padding:2.5rem; overflow-y:auto; }/* ── INVOICE CARD ────────────────── */
@@ -605,11 +624,37 @@
             const nameLower = name.toLowerCase();
             const matchesJeeveda = (search.includes('jeev') || searchNorm.includes('jeev')) && (nameLower.includes('rice bran') || nameLower.includes('161') || nameLower.includes('162'));
             if (showAll || search === '' || nameLower.includes(search) || nameLower.includes(searchNorm) || matchesJeeveda) {
+                const rawStock = item['Remaining Qty'] !== undefined ? item['Remaining Qty'] : (item.Stock !== undefined ? item.Stock : 0);
+                const stock = parseFloat(String(rawStock).replace(/,/g, '') || 0);
+                const isOos = stock <= 0;
+                const isLow = stock > 0 && stock <= 3;
+
                 const div = document.createElement('div');
-                div.textContent = name;
-                div.className = 'ac-item';
+                div.className = 'ac-item' + (isOos ? ' oos' : '');
+
+                const nameSpan = document.createElement('span');
+                nameSpan.textContent = name;
+                nameSpan.style.flex = '1';
+                div.appendChild(nameSpan);
+
+                if (isOos) {
+                    const badge = document.createElement('span');
+                    badge.className = 'stock-badge-oos';
+                    badge.textContent = 'OUT OF STOCK';
+                    div.appendChild(badge);
+                } else if (isLow) {
+                    const badge = document.createElement('span');
+                    badge.className = 'stock-badge-low';
+                    badge.textContent = `${stock} left`;
+                    div.appendChild(badge);
+                }
+
                 div.onmousedown = function(e) {
                     e.preventDefault(); 
+                    if (isOos) {
+                        showToast(`"${name}" is OUT OF STOCK (0 remaining). Cannot bill this item!`, 'error');
+                        return;
+                    }
                     activeAcInput.value = name;
                     globalAcList.style.display = 'none';
                     handleProductSelect(activeAcInput);
@@ -749,6 +794,19 @@
             (p['Product Name'] || p.Product || p['Item Name'] || '') === name
         );
         if (product) {
+            const rawStock = product['Remaining Qty'] !== undefined ? product['Remaining Qty'] : (product.Stock !== undefined ? product.Stock : 0);
+            const stock = parseFloat(String(rawStock).replace(/,/g, '') || 0);
+            if (stock <= 0) {
+                showToast(`Cannot add "${name}" — OUT OF STOCK (0 remaining)!`, 'error');
+                input.value = '';
+                const row = input.closest('tr');
+                row.querySelector('.item-price').value = '0.00';
+                row.querySelector('.item-sp').value = '0.00';
+                row.querySelector('.item-sp').dataset.unitSp = '0';
+                row.querySelector('.item-total').value = '0.00';
+                recalcTotals();
+                return;
+            }
             const row   = input.closest('tr');
             const price = parseFloat(
                 product['Price/Pc (Rs.)'] || product.Price || product.price ||
@@ -756,8 +814,6 @@
             );
             const sp = parseFloat(product['SP/Pc'] || product.sp || 0);
             
-            // Extract remaining stock
-            const stock = parseFloat(product['Remaining Qty'] || product.Stock || 0);
             const qtyInput = row.querySelector('.item-qty');
             qtyInput.dataset.maxStock = stock;
             qtyInput.max = stock;
