@@ -120,11 +120,14 @@ def submit_order_to_portal(ds_code, items, order_type='sao'):
             if mobile:
                 page.fill('#ctl00_ContentPlaceHolder1_ShipMobile', mobile)
 
-            # Extract pincode from address and fill
-            address = page.input_value('#ctl00_ContentPlaceHolder1_txtaddress').strip()
-            if address:
-                m = re.search(r'\b\d{6}\b', address)
-                page.fill('#ctl00_ContentPlaceHolder1_txtshpingpincode', m.group(0) if m else '000000')
+            # Ensure valid 6-digit shipping pincode (portal rejects blank or 000000)
+            pin = page.input_value('#ctl00_ContentPlaceHolder1_txtshpingpincode').strip()
+            if not pin or len(pin) != 6 or pin == '000000':
+                address = page.input_value('#ctl00_ContentPlaceHolder1_txtaddress').strip()
+                m = re.search(r'\b[1-9]\d{5}\b', address)
+                pin = m.group(0) if m else '796001'
+                page.fill('#ctl00_ContentPlaceHolder1_txtshpingpincode', pin)
+            _log(f"[{ds_code}] Shipping pincode: {pin}")
 
             # 4. Get available items from dropdown
             options = page.evaluate('''() => {
