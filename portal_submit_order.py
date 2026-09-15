@@ -2,6 +2,7 @@ from playwright.sync_api import sync_playwright
 import time
 import json
 import sqlite3
+import os
 
 def submit_order_to_portal(ds_code, items, order_type='sao'):
     """
@@ -177,8 +178,14 @@ def submit_order_to_portal(ds_code, items, order_type='sao'):
             page.click('#ctl00_ContentPlaceHolder1_ButtonSave1')
             page.wait_for_timeout(3000)
             
-            # Debug screenshot
-            page.screenshot(path=f'C:/Users/sgarm/Downloads/ledger_web/debug_{ds_code}.png', full_page=True)
+            # Debug screenshot - use path relative to this script (works on Linux/Render too)
+            try:
+                screenshot_dir = os.path.dirname(os.path.abspath(__file__))
+                screenshot_path = os.path.join(screenshot_dir, f'debug_{ds_code}.png')
+                page.screenshot(path=screenshot_path, full_page=True)
+                print(f"[{ds_code}] Screenshot saved to {screenshot_path}")
+            except Exception as ss_err:
+                print(f"[{ds_code}] Screenshot failed (non-fatal): {ss_err}")
             
             print(f"[{ds_code}] Order submitted successfully to portal!")
             browser.close()
@@ -189,7 +196,35 @@ def submit_order_to_portal(ds_code, items, order_type='sao'):
         return False
 
 def submit_order_async(ds_code, items, order_type='sao'):
-    import threading
-    t = threading.Thread(target=submit_order_to_portal, args=(ds_code, items, order_type))
-    t.daemon = True
-    t.start()
+    """
+    Launch portal submission as a separate subprocess so it survives Gunicorn's
+    worker lifecycle. (Daemon threads are killed when the worker returns a response.)
+    """
+    import sys
+    import subprocess
+    try:
+        script_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'portal_submit_order.py')
+        subprocess.Popen(
+            [sys.executable, script_path, ds_code, json.dumps(items), order_type],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL
+        )
+        print(f"[{ds_code}] Portal submission subprocess launched.")
+    except Exception as e:
+        print(f"[{ds_code}] Failed to launch portal subprocess: {e}")
+
+# ── CLI entry-point (called by subprocess.Popen from invoice_api.py) ──────────
+if __name__ == '__main__':
+    import sys
+    if len(sys.argv) < 3:
+        print("Usage: portal_submit_order.py <ds_code> <items_json> [order_type]")
+        sys.exit(1)
+
+    _ds_code   = sys.argv[1]
+    _items     = json.loads(sys.argv[2])
+    _order_type = sys.argv[3] if len(sys.argv) > 3 else 'sao'
+
+    print(f"[SUBPROCESS] Starting portal submission for DS: {_ds_code}, type: {_order_type}")
+    success = submit_order_to_portal(_ds_code, _items, _order_type)
+    print(f"[SUBPROCESS] Portal submission {'SUCCESS' if success else 'FAILED'} for {_ds_code}")
+    sys.exit(0 if success else 1)
