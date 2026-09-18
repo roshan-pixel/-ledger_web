@@ -206,6 +206,61 @@ Thread-safe in-memory cache of 100+ Ayurvedic conditions from `master_review_dat
 
 ---
 
+## 🧠 Knowledge Graph (Graphify)
+
+The entire codebase is mapped into a **GraphRAG-ready knowledge graph** — stored in [`graphify-out/`](graphify-out/) and committed to this repo so you always have it, even on a fresh clone.
+
+### 📊 Graph Stats
+
+| Metric | Value |
+|---|---|
+| **Files mapped** | 286 unique source files |
+| **Nodes** | 692 (functions, classes, templates, config) |
+| **Edges** | 531 (calls, renders, defines, packages) |
+| **Communities** | 270 semantic clusters |
+| **Coverage** | All 12 templates · 2 JS files · schema.sql · Dockerfile · all core Python |
+
+### 🗂️ Generated Files
+
+| File | Description | How to Open |
+|---|---|---|
+| [`graphify-out/graph.html`](graphify-out/graph.html) | Interactive D3 network graph | Open in Chrome / Edge |
+| [`graphify-out/GRAPH_TREE.html`](graphify-out/GRAPH_TREE.html) | Collapsible tree hierarchy | Open in Chrome / Edge |
+| [`graphify-out/GRAPH_REPORT.md`](graphify-out/GRAPH_REPORT.md) | Architecture report + community breakdown | Any Markdown viewer |
+| [`graphify-out/graph.json`](graphify-out/graph.json) | Full GraphRAG-ready dataset | Graph queries / AI tools |
+
+### 🔍 Query Examples
+
+```bash
+# Answer a question about how something works
+graphify query "How does invoice billing work?" --graph graphify-out/graph.json
+
+# Trace the path between two components
+graphify path "dashboard.html" "api_kpi" --graph graphify-out/graph.json
+# → dashboard.html --calls_api--> api_kpi()
+
+graphify path "schema.sql" "get_db" --graph graphify-out/graph.json
+# → schema.sql --defines_schema_for--> get_db()
+
+# Explain any function or file
+graphify explain "restore_from_gsheets" --graph graphify-out/graph.json
+
+# Re-index after editing code (no LLM needed, instant AST)
+graphify update .
+```
+
+### 🔄 After Cloning
+
+The graph is pre-built and committed — no re-extraction needed. If you edit code:
+
+```bash
+graphify update .
+```
+
+> `.graphifyignore` is configured to exclude databases, screenshots, and raw data dumps so the graph stays clean and signal-only.
+
+---
+
 ## 🛠️ Setup
 
 ```bash
