@@ -1,0 +1,63 @@
+# Graphify ignore file — exclude noisy data files from graph indexing
+
+# Large product catalog dumps (inflate communities with ~130 trivial clusters)
+scraped_products.json
+static/master_review_data_perfected.json
+static/sp_products.json
+godown_cross_reference.json
+
+# Raw invoice/order data files (runtime data, not code)
+invoices_live.json
+purchase_orders.json
+purchase_orders.json.bak
+old_purchase.json
+ledger_report.json
+new_invoice_payload.json
+new_pdf_invoice.json
+inv_test.json
+test_items.json
+sp_data.txt
+sp_mismatches.json
+portal_dropdown_dump.json
+output.txt
+all_invoices.txt
+fast_bulk_log.txt
+godown_page_text.txt
+
+# SQLite databases (binary)
+*.db
+data.db
+database.db
+ledger.db
+ledger_head.db
+ledger_head2.db
+invoices.db
+temp.db
+
+# Debug/screenshot artifacts
+*.png
+*.bak
+debug_*.html
+debug_*.txt
+post_*.txt
+post_*.html
+
+# Temporary/scratch HTML captures (not source code)
+approve_page.html
+after_save_html.html
+order_page.html
+sale_order_page.html
+tree_page.html
+tree_rendered.html
+tree_search_*.html
+direct_page.html
+downline_page.html
+printing_page.html
+full_downline.html
+temp.html
+old.html
+older.html
+detail.html
+
+# Python cache
+__pycache__/

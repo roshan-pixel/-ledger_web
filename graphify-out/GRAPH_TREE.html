@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ledger_web — graphify tree viewer</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      margin: 20px 0 0 24px;
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #1e3a56;
+    }
+    .controls {
+      margin: 20px 0 15px 24px;
+    }
+    button {
+      margin-right: 10px;
+      padding: 8px 18px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s ease-in-out;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    button:active {
+      background: #004085;
+    }
+    #tree-container {
+      width: calc(100vw - 48px); /* Adjust for body margin/padding */
+      height: 85vh;
+      overflow: auto;
+      border-radius: 8px;
+      background: #fff;
+      margin-left: 24px;
+      margin-right: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border: 1px solid #ddd;
+    }
+    svg {
+      background: #fff;
+      border-radius: 8px;
+      display: block; /* Important for D3 */
+    }
+    .node circle {
+      stroke-width: 2.5px;
+    }
+    .node text { /* Base style for the <text> container */
+      font: 13px 'Segoe UI', sans-serif;
+      paint-order: stroke fill; /* Ensures text is readable over lines */
+      stroke: #fff; /* White halo */
+      stroke-width: 3px; /* Halo thickness */
+      stroke-linejoin: round;
+      stroke-opacity: 0.85; /* Halo opacity */
+    }
+    .link {
+      fill: none;
+      stroke-opacity: 0.7;
+      stroke-width: 2px;
+    }
+  </style>
+</head>
+<body>
+  <h1>ledger_web — Knowledge Graph</h1>
+  <div class="controls">
+    <button onclick="expandAll()">Expand All</button>
+    <button onclick="collapseAll()">Collapse All</button>
+    <button onclick="resetView()">Reset View</button>
+  </div>
+  <div id="tree-container">
+    <svg id="tree-svg" width="6000" height="8000"></svg>
+  </div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script>
+    const initialJsonData = {"name":"ledger_web","total_count":558,"children":[{"name":"add_new_product.py","total_count":1,"children":[{"name":"add_product()","total_count":1,"children":[]}]},{"name":"add_product.py","total_count":1,"children":[{"name":"add_product()","total_count":1,"children":[]}]},{"name":"app.py","total_count":71,"children":[{"name":"_auto_sync_loop()","total_count":1,"children":[]},{"name":"_load_disease_cache()","total_count":1,"children":[]},{"name":"Add a manual entry to the ledger_report.json file.","total_count":1,"children":[]},{"name":"api_customer()","total_count":1,"children":[]},{"name":"api_disease_guide()","total_count":1,"children":[]},{"name":"api_disease_guide_detail()","total_count":1,"children":[]},{"name":"api_fix_historical_buckets()","total_count":1,"children":[]},{"name":"api_fix_sync()","total_count":1,"children":[]},{"name":"api_force_sync()","total_count":1,"children":[]},{"name":"api_inventory()","total_count":1,"children":[]},{"name":"api_inventory_add_product()","total_count":1,"children":[]},{"name":"api_inventory_master()","total_count":1,"children":[]},{"name":"api_inventory_master_months()","total_count":1,"children":[]},{"name":"api_inventory_master_update()","total_count":1,"children":[]},{"name":"api_inventory_restock()","total_count":1,"children":[]},{"name":"api_kpi()","total_count":1,"children":[]},{"name":"api_ledger_manual_entry()","total_count":1,"children":[]},{"name":"api_ledger_report()","total_count":1,"children":[]},{"name":"api_ledger_wallet_balance()","total_count":1,"children":[]},{"name":"api_mizoram_bronze()","total_count":1,"children":[]},{"name":"api_mizoram_bronze_update()","total_count":1,"children":[]},{"name":"api_place_stock_order()","total_count":1,"children":[]},{"name":"api_portal_sync()","total_count":1,"children":[]},{"name":"api_product_purchases()","total_count":1,"children":[]},{"name":"api_product_sales()","total_count":1,"children":[]},{"name":"api_purchase_orders()","total_count":1,"children":[]},{"name":"api_refresh_wallet()","total_count":1,"children":[]},{"name":"api_sp_order_data()","total_count":1,"children":[]},{"name":"api_sync_ledger()","total_count":1,"children":[]},{"name":"api_sync_mizoram_now()","total_count":1,"children":[]},{"name":"api_sync_now()","total_count":1,"children":[]},{"name":"api_sync_remarks_from_gsheets()","total_count":1,"children":[]},{"name":"api_sync_status()","total_count":1,"children":[]},{"name":"api_update()","total_count":1,"children":[]},{"name":"Categorize an Asclepius product into authentic product lines.","total_count":1,"children":[]},{"name":"categorize_product()","total_count":1,"children":[]},{"name":"compute_kpis_data()","total_count":1,"children":[]},{"name":"dashboard()","total_count":1,"children":[]},{"name":"disease_guide()","total_count":1,"children":[]},{"name":"get_db()","total_count":1,"children":[]},{"name":"get_stock_point_inventory()","total_count":1,"children":[]},{"name":"index()","total_count":1,"children":[]},{"name":"inr_filter()","total_count":1,"children":[]},{"name":"internal_error()","total_count":1,"children":[]},{"name":"inventory()","total_count":1,"children":[]},{"name":"inventory_master()","total_count":1,"children":[]},{"name":"invoice()","total_count":1,"children":[]},{"name":"invoice_history()","total_count":1,"children":[]},{"name":"ledger_report()","total_count":1,"children":[]},{"name":"Load and flatten the disease JSON into the module-level cache.     Thread-safe;","total_count":1,"children":[]},{"name":"Manual trigger: pull from GSheets → check rollover → push back.","total_count":1,"children":[]},{"name":"method_not_allowed_error()","total_count":1,"children":[]},{"name":"mizoram_bronze()","total_count":1,"children":[]},{"name":"not_found_error()","total_count":1,"children":[]},{"name":"num_filter()","total_count":1,"children":[]},{"name":"ping()","total_count":1,"children":[]},{"name":"Places a franchise stock point order on the Asclepius portal.     Expects JSON","total_count":1,"children":[]},{"name":"portal_sync_page()","total_count":1,"children":[]},{"name":"purchase_history()","total_count":1,"children":[]},{"name":"Recalculate formulas for a row.      BUG FIX: The old implementation summed on","total_count":1,"children":[]},{"name":"Recalculate the TOTAL row at the bottom.","total_count":1,"children":[]},{"name":"Return a lightweight list of diseases, optionally filtered.      Query params:","total_count":1,"children":[]},{"name":"Return cached ledger entries from ledger_report.json or SQLite ledger_report tab","total_count":1,"children":[]},{"name":"Return closing balance for stock-point-order and dashboard sync.","total_count":1,"children":[]},{"name":"Return the full record for a single disease by its 0-based index     in the fla","total_count":1,"children":[]},{"name":"Run the portal sync directly to SQLite!","total_count":1,"children":[]},{"name":"stock_point_order()","total_count":1,"children":[]},{"name":"Trigger fast real-time wallet scrape from portal.","total_count":1,"children":[]},{"name":"Trigger one-way remarks pull from GSheets (no push/upload back).","total_count":1,"children":[]},{"name":"update_inventory_formulas()","total_count":1,"children":[]},{"name":"update_totals_row()","total_count":1,"children":[]}]},{"name":"ARCHITECTURE.md","total_count":39,"children":[{"name":"1. High-Level Architecture Overview","total_count":1,"children":[]},{"name":"2. System Topology Graph (Graphify)","total_count":1,"children":[]},{"name":"3. Core Subsystems & Module Breakdown","total_count":1,"children":[]},{"name":"3.1 Flask Application Core (`app.py` — 1373 lines)","total_count":1,"children":[]},{"name":"3.10 KPI Dashboard (`/api/kpi`)","total_count":1,"children":[]},{"name":"3.2 Dynamic Inventory Engine (`inventory_engine.py`)","total_count":1,"children":[]},{"name":"3.3 Monthly Rollover (`monthly_rollover.py`)","total_count":1,"children":[]},{"name":"3.4 Invoice & Strict Stock Depletion API (`invoice_api.py` — Blueprint)","total_count":1,"children":[]},{"name":"3.5 Customer Lookup — DB Cache + Live Portal Fallback (`/api/customer`)","total_count":1,"children":[]},{"name":"3.6 Portal Robotic Automation","total_count":1,"children":[]},{"name":"3.7 Google Sheets Bidirectional Sync","total_count":1,"children":[]},{"name":"3.8 Genealogy Downline Crawlers","total_count":1,"children":[]},{"name":"3.9 Disease Guide (`/disease_guide` + `/api/disease_guide`)","total_count":1,"children":[]},{"name":"4. Database Schema & ERD","total_count":1,"children":[]},{"name":"5. Sequence Diagrams & Data Flows","total_count":1,"children":[]},{"name":"5.1 Invoice Creation & Strict Stock Depletion","total_count":1,"children":[]},{"name":"5.2 Auto-Sync Scheduler — Hourly GSheets + Daily Rollover","total_count":1,"children":[]},{"name":"5.3 Stock Point Order via Headless Portal Bot","total_count":1,"children":[]},{"name":"5.4 BFS Genealogy Downline Tree Crawler","total_count":1,"children":[]},{"name":"5.5 Customer DS Lookup — DB Cache + Live Portal Fallback","total_count":1,"children":[]},{"name":"5.6 Invoice Cancel & Stock Restoration","total_count":1,"children":[]},{"name":"6. Invoice State Machine","total_count":1,"children":[]},{"name":"7. Auto-Sync Background Scheduler","total_count":1,"children":[]},{"name":"8. Security, Concurrency & Resiliency","total_count":1,"children":[]},{"name":"9. Full API Route Directory","total_count":1,"children":[]},{"name":"`app.py` routes","total_count":1,"children":[]},{"name":"`invoice_api.py` Blueprint routes","total_count":1,"children":[]},{"name":"ARCHITECTURE.md","total_count":1,"children":[]},{"name":"code:mermaid (erDiagram)","total_count":1,"children":[]},{"name":"code:mermaid (flowchart LR)","total_count":1,"children":[]},{"name":"code:mermaid (flowchart TD)","total_count":1,"children":[]},{"name":"code:mermaid (flowchart TD)","total_count":1,"children":[]},{"name":"code:mermaid (graph TB)","total_count":1,"children":[]},{"name":"code:mermaid (sequenceDiagram)","total_count":1,"children":[]},{"name":"code:mermaid (sequenceDiagram)","total_count":1,"children":[]},{"name":"code:mermaid (sequenceDiagram)","total_count":1,"children":[]},{"name":"code:mermaid (stateDiagram-v2)","total_count":1,"children":[]},{"name":"🏗️ Deep System Architecture & How It Works","total_count":1,"children":[]},{"name":"📑 Table of Contents","total_count":1,"children":[]}]},{"name":"bulk_push_to_portal.py","total_count":5,"children":[{"name":"bulk_push_to_portal.py ---------------------- Reads all invoices with is_dispatc","total_count":1,"children":[]},{"name":"get_unticked_invoices()","total_count":1,"children":[]},{"name":"main()","total_count":1,"children":[]},{"name":"parse_items()","total_count":1,"children":[]},{"name":"Return list of {description, qty} dicts from the stored JSON.","total_count":1,"children":[]}]},{"name":"check_all_lists.py","total_count":1,"children":[{"name":"check()","total_count":1,"children":[]}]},{"name":"check_all_lists_exhaustive.py","total_count":1,"children":[{"name":"check()","total_count":1,"children":[]}]},{"name":"check_all_pages.py","total_count":1,"children":[{"name":"check()","total_count":1,"children":[]}]},{"name":"check_api.py","total_count":1,"children":[{"name":"api_inventory()","total_count":1,"children":[]}]},{"name":"check_approve.py","total_count":1,"children":[{"name":"check_approval()","total_count":1,"children":[]}]},{"name":"check_approve_list.py","total_count":1,"children":[{"name":"check()","total_count":1,"children":[]}]},{"name":"check_approve_page.py","total_count":1,"children":[{"name":"check()","total_count":1,"children":[]}]},{"name":"check_approve_sale.py","total_count":1,"children":[{"name":"check()","total_count":1,"children":[]}]},{"name":"check_c5106f62.py","total_count":1,"children":[{"name":"test()","total_count":1,"children":[]}]},{"name":"check_ds_portal.py","total_count":2,"children":[{"name":"check()","total_count":1,"children":[]},{"name":"check_ds_portal.py Check the AWPL portal for DS 07B2E5F8 (LALREMSIAMI): 1. Check","total_count":1,"children":[]}]},{"name":"check_force2.py","total_count":1,"children":[{"name":"check()","total_count":1,"children":[]}]},{"name":"check_force_sao.py","total_count":1,"children":[{"name":"check()","total_count":1,"children":[]}]},{"name":"check_force_sgo.py","total_count":1,"children":[{"name":"check()","total_count":1,"children":[]}]},{"name":"check_fsales.py","total_count":1,"children":[{"name":"check()","total_count":1,"children":[]}]},{"name":"check_menus.py","total_count":1,"children":[{"name":"check()","total_count":1,"children":[]}]},{"name":"check_menus2.py","total_count":1,"children":[{"name":"check()","total_count":1,"children":[]}]},{"name":"check_not_kyc.py","total_count":1,"children":[{"name":"check()","total_count":1,"children":[]}]},{"name":"check_portal.py","total_count":1,"children":[{"name":"check()","total_count":1,"children":[]}]},{"name":"check_radios.py","total_count":1,"children":[{"name":"check()","total_count":1,"children":[]}]},{"name":"check_save_behavior.py","total_count":1,"children":[{"name":"check()","total_count":1,"children":[]}]},{"name":"check_save_button.py","total_count":1,"children":[{"name":"check()","total_count":1,"children":[]}]},{"name":"check_save_error.py","total_count":1,"children":[{"name":"check()","total_count":1,"children":[]}]},{"name":"check_save_screenshot.py","total_count":1,"children":[{"name":"check()","total_count":1,"children":[]}]},{"name":"check_status_filter.py","total_count":1,"children":[{"name":"check()","total_count":1,"children":[]}]},{"name":"check_tables.py","total_count":1,"children":[{"name":"run()","total_count":1,"children":[]}]},{"name":"check_values.py","total_count":1,"children":[{"name":"check()","total_count":1,"children":[]}]},{"name":"debug_ledger_page.py","total_count":1,"children":[{"name":"debug_ledger_page.py  –  takes a screenshot + saves HTML to understand the porta","total_count":1,"children":[]}]},{"name":"discover_sp_order.py","total_count":1,"children":[{"name":"Discover fields on FranchiseorderN.aspx (Franchise Purchase Order Form)","total_count":1,"children":[]}]},{"name":"ds_lookup_api.py","total_count":2,"children":[{"name":"fetch_ds_from_portal()","total_count":1,"children":[]},{"name":"High-performance live DS code lookup in the AWPL C&F portal:     1. Reuses authe","total_count":1,"children":[]}]},{"name":"ds_lookup_test.py","total_count":1,"children":[{"name":"lookup_ds_live()","total_count":1,"children":[]}]},{"name":"dump_order_page.py","total_count":1,"children":[{"name":"dump()","total_count":1,"children":[]}]},{"name":"explore_ds.py","total_count":1,"children":[{"name":"run()","total_count":1,"children":[]}]},{"name":"explore_ds2.py","total_count":1,"children":[{"name":"run()","total_count":1,"children":[]}]},{"name":"explore_ds_sale_order.py","total_count":1,"children":[{"name":"run()","total_count":1,"children":[]}]},{"name":"extract_sgo_downline.py","total_count":1,"children":[{"name":"scrape_tree()","total_count":1,"children":[]}]},{"name":"fast_bulk_push.py","total_count":6,"children":[{"name":"fast_bulk_push.py ----------------- Submits ALL unticked invoices to the AWPL po","total_count":1,"children":[]},{"name":"get_unticked_invoices()","total_count":1,"children":[]},{"name":"log()","total_count":1,"children":[]},{"name":"login_and_save_session()","total_count":1,"children":[]},{"name":"main()","total_count":1,"children":[]},{"name":"submit_one()","total_count":1,"children":[]}]},{"name":"fetch_ledger_report.py","total_count":4,"children":[{"name":"fetch_ledger_report()","total_count":1,"children":[]},{"name":"fetch_ledger_report.py  –  Precise multi-page scraper for SpLedgerReport.aspx L","total_count":1,"children":[]},{"name":"Save scraped ledger report into SQLite database and trigger sync.","total_count":1,"children":[]},{"name":"save_ledger_to_db()","total_count":1,"children":[]}]},{"name":"fetch_order_data.py","total_count":1,"children":[{"name":"fetch_order_data()","total_count":1,"children":[]}]},{"name":"fetch_wallet.py","total_count":2,"children":[{"name":"get_wallet_balance()","total_count":1,"children":[]},{"name":"save_wallet_to_db()","total_count":1,"children":[]}]},{"name":"find_cancel.py","total_count":1,"children":[{"name":"cancel_all()","total_count":1,"children":[]}]},{"name":"fix_buckets.py","total_count":4,"children":[{"name":"Recalculate formulas for a row.","total_count":1,"children":[]},{"name":"Recalculate the TOTAL row at the bottom.","total_count":1,"children":[]},{"name":"update_inventory_formulas()","total_count":1,"children":[]},{"name":"update_totals_row()","total_count":1,"children":[]}]},{"name":"fix_encoding2.py","total_count":2,"children":[{"name":"fix_invoice()","total_count":1,"children":[]},{"name":"fix_invoice_history()","total_count":1,"children":[]}]},{"name":"fix_final.py","total_count":1,"children":[{"name":"fix_file()","total_count":1,"children":[]}]},{"name":"fix_invoices_items.py","total_count":3,"children":[{"name":"cells_to_item()","total_count":1,"children":[]},{"name":"main()","total_count":1,"children":[]},{"name":"parse_detail_page()","total_count":1,"children":[]}]},{"name":"fix_mizoram_achieved.py","total_count":1,"children":[{"name":"fix_achieved_status()","total_count":1,"children":[]}]},{"name":"fix_mizoram_page.py","total_count":1,"children":[{"name":"# IMPORTANT: I must make sure that the Mizoram sidebar link is marked 'active'","total_count":1,"children":[]}]},{"name":"fix_mobile_ux.py","total_count":1,"children":[{"name":"process_html_file()","total_count":1,"children":[]}]},{"name":"fix_typo_dccb.py","total_count":1,"children":[{"name":"fix_and_fetch()","total_count":1,"children":[]}]},{"name":"format_mizoram_sheet.py","total_count":1,"children":[{"name":"format_sheet()","total_count":1,"children":[]}]},{"name":"Full_Tree_Crawler.py","total_count":1,"children":[{"name":"crawl_tree()","total_count":1,"children":[]}]},{"name":"godown_cross_reference.json","total_count":6,"children":[{"name":"dispatched_count","total_count":1,"children":[]},{"name":"not_registered_in_portal","total_count":1,"children":[]},{"name":"portal_stock_in_entries","total_count":1,"children":[]},{"name":"portal_stock_out_entries","total_count":1,"children":[]},{"name":"raw_stock_in","total_count":1,"children":[]},{"name":"raw_stock_out","total_count":1,"children":[]}]},{"name":"init_gsheets.py","total_count":1,"children":[{"name":"init_google_sheets()","total_count":1,"children":[]}]},{"name":"init_ledger_table.py","total_count":1,"children":[{"name":"init_ledger_table.py  –  one-time migration Creates the ledger_report table and","total_count":1,"children":[]}]},{"name":"inspect_invoices.py","total_count":1,"children":[{"name":"Inspect FSalesInvoiceList.aspx — form inputs, table structure, links.","total_count":1,"children":[]}]},{"name":"inspect_invoices2.py","total_count":1,"children":[{"name":"Inspect FSalesInvoiceList.aspx after submitting date range 01/01/2026 -> 26/07/2","total_count":1,"children":[]}]},{"name":"inspect_portal.py","total_count":1,"children":[{"name":"Quick inspect: login, go to order page, dump structure.","total_count":1,"children":[]}]},{"name":"inspect_purchase.py","total_count":1,"children":[{"name":"Inspect PurchaseListn.aspx — understand the date filter form and table structure","total_count":1,"children":[]}]},{"name":"inspect_purchase2.py","total_count":4,"children":[{"name":"main()","total_count":1,"children":[]},{"name":"parse_orders_table()","total_count":1,"children":[]},{"name":"Return list of order dicts from the main GV table.","total_count":1,"children":[]},{"name":"Scrape PurchaseListn.aspx for date range 01/06/2026 to 26/07/2026. Also click e","total_count":1,"children":[]}]},{"name":"inventory_engine.py","total_count":8,"children":[{"name":"calculate_inventory()","total_count":1,"children":[]},{"name":"Dynamically computes headers and inventory quantities/values for target_month_st","total_count":1,"children":[]},{"name":"extract_code()","total_count":1,"children":[]},{"name":"get_available_months()","total_count":1,"children":[]},{"name":"get_days_in_month()","total_count":1,"children":[]},{"name":"inventory_engine.py Dynamic inventory calculator for monthly rollover. Replaces","total_count":1,"children":[]},{"name":"parse_date()","total_count":1,"children":[]},{"name":"Scan database invoices and purchase orders to find all unique months.","total_count":1,"children":[]}]},{"name":"invoice_api.py","total_count":13,"children":[{"name":"_get_true_remaining_stock()","total_count":1,"children":[]},{"name":"Calculate TRUE remaining stock for every product across ALL months.      Formu","total_count":1,"children":[]},{"name":"cancel_invoice()","total_count":1,"children":[]},{"name":"create_invoice()","total_count":1,"children":[]},{"name":"get_next_invoice_no()","total_count":1,"children":[]},{"name":"get_portal_order_log()","total_count":1,"children":[]},{"name":"get_sold_qty_col_idx()","total_count":1,"children":[]},{"name":"init_db()","total_count":1,"children":[]},{"name":"list_invoices()","total_count":1,"children":[]},{"name":"Return the column index (1-based) for the Sold Qty column that matches the","total_count":1,"children":[]},{"name":"Returns the last 100 lines of portal_submit.log.","total_count":1,"children":[]},{"name":"sync_sheets_api()","total_count":1,"children":[]},{"name":"update_invoice_info()","total_count":1,"children":[]}]},{"name":"ledger_report.json","total_count":11,"children":[{"name":"balance_text","total_count":1,"children":[]},{"name":"closing_balance","total_count":1,"children":[]},{"name":"entries","total_count":1,"children":[]},{"name":"franchise_value","total_count":1,"children":[]},{"name":"from_date","total_count":1,"children":[]},{"name":"headers","total_count":1,"children":[]},{"name":"pages_scraped","total_count":1,"children":[]},{"name":"row_count","total_count":1,"children":[]},{"name":"scraped_at","total_count":1,"children":[]},{"name":"success","total_count":1,"children":[]},{"name":"to_date","total_count":1,"children":[]}]},{"name":"local_fix_mizoram.py","total_count":2,"children":[{"name":"fix_sheet()","total_count":1,"children":[]},{"name":"get_ds_details()","total_count":1,"children":[]}]},{"name":"migrate_to_sqlite.py","total_count":2,"children":[{"name":"clean_val()","total_count":1,"children":[]},{"name":"migrate()","total_count":1,"children":[]}]},{"name":"monthly_rollover.py","total_count":6,"children":[{"name":"_build_week_ranges()","total_count":1,"children":[]},{"name":"_get_header_month()","total_count":1,"children":[]},{"name":"Check whether the inventory_headers month matches the current calendar     month","total_count":1,"children":[]},{"name":"check_and_rollover()","total_count":1,"children":[]},{"name":"monthly_rollover.py ────────────────────────────────────────────────────────────","total_count":1,"children":[]},{"name":"Read the month that the Sold Qty columns are currently set to.     Returns a (ye","total_count":1,"children":[]}]},{"name":"new_invoice_payload.json","total_count":11,"children":[{"name":"amount","total_count":1,"children":[]},{"name":"billedTo","total_count":1,"children":[]},{"name":"customer_name","total_count":1,"children":[]},{"name":"date","total_count":1,"children":[]},{"name":"ds_code","total_count":1,"children":[]},{"name":"dsCode","total_count":1,"children":[]},{"name":"grandTotal","total_count":1,"children":[]},{"name":"grandTotalSP","total_count":1,"children":[]},{"name":"invoiceNo","total_count":1,"children":[]},{"name":"items","total_count":1,"children":[]},{"name":"total_sp","total_count":1,"children":[]}]},{"name":"new_pdf_invoice.json","total_count":7,"children":[{"name":"billedTo","total_count":1,"children":[]},{"name":"date","total_count":1,"children":[]},{"name":"dsCode","total_count":1,"children":[]},{"name":"grandTotal","total_count":1,"children":[]},{"name":"grandTotalSP","total_count":1,"children":[]},{"name":"invoiceNo","total_count":1,"children":[]},{"name":"items","total_count":1,"children":[]}]},{"name":"Parallel_Tree_Crawler.py","total_count":2,"children":[{"name":"crawl_tree()","total_count":1,"children":[]},{"name":"worker()","total_count":1,"children":[]}]},{"name":"portal_submit_order.py","total_count":5,"children":[{"name":"_log()","total_count":1,"children":[]},{"name":"Launch portal submission as a separate subprocess so it survives Gunicorn's","total_count":1,"children":[]},{"name":"submit_order_async()","total_count":1,"children":[]},{"name":"submit_order_to_portal()","total_count":1,"children":[]},{"name":"Submits an order to the AWPL C&F portal (SpdistributorSale.aspx).     items is a","total_count":1,"children":[]}]},{"name":"PORTAL_SYNC.md","total_count":5,"children":[{"name":"C&F Portal Synchronization Documentation","total_count":1,"children":[]},{"name":"How It Works","total_count":1,"children":[]},{"name":"Overview","total_count":1,"children":[]},{"name":"PORTAL_SYNC.md","total_count":1,"children":[]},{"name":"Running the Sync","total_count":1,"children":[]}]},{"name":"portal_sync.py","total_count":9,"children":[{"name":"Find which 'Sold Qty (Mon DD-DD)' column the sale_date falls into.     Headers","total_count":1,"children":[]},{"name":"get_week_column()","total_count":1,"children":[]},{"name":"Login to portal, fetch DS Sale Report for date range.     Returns list of {prod","total_count":1,"children":[]},{"name":"login_and_get_data()","total_count":1,"children":[]},{"name":"Main entry point for sync.","total_count":1,"children":[]},{"name":"portal_sync.py — Asclepius C&F Portal → Excel Inventory Sync Engine ───────────","total_count":1,"children":[]},{"name":"run_sync()","total_count":1,"children":[]},{"name":"sync_to_excel()","total_count":1,"children":[]},{"name":"Write portal sale quantities into the Excel Inventory_Master sheet.     Matches","total_count":1,"children":[]}]},{"name":"read_grid.py","total_count":1,"children":[{"name":"read_grid()","total_count":1,"children":[]}]},{"name":"README.md","total_count":28,"children":[{"name":"code:bash (docker build -t ledger-web .)","total_count":1,"children":[]},{"name":"code:bash (git clone https://github.com/roshan-pixel/-ledger_web.git)","total_count":1,"children":[]},{"name":"code:mermaid (graph TB)","total_count":1,"children":[]},{"name":"Docker","total_count":1,"children":[]},{"name":"README.md","total_count":1,"children":[]},{"name":"Render Deployment","total_count":1,"children":[]},{"name":"⚡ Ledger God Mode Web App","total_count":1,"children":[]},{"name":"✅ Portal Order Submitted (Automated)","total_count":1,"children":[]},{"name":"🌐 Live App","total_count":1,"children":[]},{"name":"🌲 5. Genealogy Downline Crawler (`Full_Tree_Crawler.py`)","total_count":1,"children":[]},{"name":"🏗️ System Architecture (Graphify)","total_count":1,"children":[]},{"name":"📄 License & Attribution","total_count":1,"children":[]},{"name":"📊 Dashboard","total_count":1,"children":[]},{"name":"📦 Inventory Master","total_count":1,"children":[]},{"name":"📱 Page Directory","total_count":1,"children":[]},{"name":"📸 Screenshots","total_count":1,"children":[]},{"name":"🔄 3. Monthly Auto-Rollover + Hourly GSheets Sync","total_count":1,"children":[]},{"name":"🚀 How It Works — Core Subsystems","total_count":1,"children":[]},{"name":"🛒 DS Sale Order","total_count":1,"children":[]},{"name":"🛠️ Setup","total_count":1,"children":[]},{"name":"🤖 4. Portal Robotics (Playwright 1.44)","total_count":1,"children":[]},{"name":"🤖 AWPL Portal — Bill Detail","total_count":1,"children":[]},{"name":"🤖 AWPL Portal — Login","total_count":1,"children":[]},{"name":"🤖 AWPL Portal — Order Filled","total_count":1,"children":[]},{"name":"🧮 1. Dynamic Monthly Inventory Engine (`inventory_engine.py`)","total_count":1,"children":[]},{"name":"🧾 2. Invoice Billing Terminal (`invoice_api.py` Blueprint)","total_count":1,"children":[]},{"name":"🧾 Invoice Billing Terminal","total_count":1,"children":[]},{"name":"🩺 6. Disease Guide","total_count":1,"children":[]}]},{"name":"restock_pdf.py","total_count":1,"children":[{"name":"do_restock()","total_count":1,"children":[]}]},{"name":"restore_gsheets.py","total_count":5,"children":[{"name":"ensure_sync_log_table()","total_count":1,"children":[]},{"name":"get_last_sync_time()","total_count":1,"children":[]},{"name":"log_sync()","total_count":1,"children":[]},{"name":"restore_from_gsheets()","total_count":1,"children":[]},{"name":"sync_remarks_from_gsheets()","total_count":1,"children":[]}]},{"name":"resubmit_68C626F7.py","total_count":1,"children":[{"name":"Re-submit invoice DSR/000275/26-27 (DS code: 68C626F7) to the AWPL portal. This","total_count":1,"children":[]}]},{"name":"resync_inventory.py","total_count":1,"children":[{"name":"fix_inventory()","total_count":1,"children":[]}]},{"name":"robust_sync.py","total_count":2,"children":[{"name":"extract_code()","total_count":1,"children":[]},{"name":"sync_all_to_inventory()","total_count":1,"children":[]}]},{"name":"sanitize.py","total_count":1,"children":[{"name":"clean_all_mojibake()","total_count":1,"children":[]}]},{"name":"scrape_all_products.py","total_count":1,"children":[{"name":"scrape_all()","total_count":1,"children":[]}]},{"name":"scrape_direct.py","total_count":1,"children":[{"name":"main()","total_count":1,"children":[]}]},{"name":"scrape_downline.py","total_count":1,"children":[{"name":"main()","total_count":1,"children":[]}]},{"name":"scrape_fast_products.py","total_count":5,"children":[{"name":"login_and_open()","total_count":1,"children":[]},{"name":"main()","total_count":1,"children":[]},{"name":"parse_all_grid_rows()","total_count":1,"children":[]},{"name":"Portal product scraper — fast version. Column layout from GridView2:   [0] Sr","total_count":1,"children":[]},{"name":"Return dict {prod_code_str: {name, rate, box_size}} for ALL rows in GridView2.","total_count":1,"children":[]}]},{"name":"scrape_full_downline.py","total_count":1,"children":[{"name":"main()","total_count":1,"children":[]}]},{"name":"scrape_invoices.py","total_count":6,"children":[{"name":"cells_to_item()","total_count":1,"children":[]},{"name":"Convert a detail page row to an invoice item dict.","total_count":1,"children":[]},{"name":"Full FSalesInvoiceList scraper. - Date: 01/01/2026 -> today - Scrapes all rows","total_count":1,"children":[]},{"name":"main()","total_count":1,"children":[]},{"name":"Parse spSalesInvoiceListDetails.aspx — returns list of product dicts.","total_count":1,"children":[]},{"name":"parse_detail_page()","total_count":1,"children":[]}]},{"name":"scrape_printing.py","total_count":1,"children":[{"name":"main()","total_count":1,"children":[]}]},{"name":"scrape_purchase_orders.py","total_count":5,"children":[{"name":"Full purchase history scraper. - Date range: 01/06/2026 → 26/07/2026 - Fetches","total_count":1,"children":[]},{"name":"get_gv_rows()","total_count":1,"children":[]},{"name":"main()","total_count":1,"children":[]},{"name":"Parse product table from the bill detail page.","total_count":1,"children":[]},{"name":"parse_bill_detail()","total_count":1,"children":[]}]},{"name":"scrape_sale_order_html.py","total_count":1,"children":[{"name":"run()","total_count":1,"children":[]}]},{"name":"scrape_test.py","total_count":1,"children":[{"name":"main()","total_count":1,"children":[]}]},{"name":"scrape_tree.py","total_count":1,"children":[{"name":"main()","total_count":1,"children":[]}]},{"name":"scrape_tree_js.py","total_count":1,"children":[{"name":"main()","total_count":1,"children":[]}]},{"name":"scratch","total_count":23,"children":[{"name":"match_pdf_inventory.py","total_count":1,"children":[{"name":"extract_code()","total_count":1,"children":[]}]},{"name":"portal_auth_state.json","total_count":2,"children":[{"name":"cookies","total_count":1,"children":[]},{"name":"origins","total_count":1,"children":[]}]},{"name":"test_optimized_api.py","total_count":2,"children":[{"name":"fetch_ds_from_portal()","total_count":1,"children":[]},{"name":"Look up DS code in the C&F portal with session caching and asset blocking.     R","total_count":1,"children":[]}]},{"name":"test_session_reuse.py","total_count":1,"children":[{"name":"test_lookup()","total_count":1,"children":[]}]},{"name":"verify_stock_update.py","total_count":1,"children":[{"name":"extract_code()","total_count":1,"children":[]}]},{"name":"check_all_sources_for_205.py","total_count":1,"children":[]},{"name":"check_lime_bar.py","total_count":1,"children":[]},{"name":"check_orders_and_inv.py","total_count":1,"children":[]},{"name":"check_orders_detail.py","total_count":1,"children":[]},{"name":"check_portal_invoices.py","total_count":1,"children":[]},{"name":"check_scraped_prods.py","total_count":1,"children":[]},{"name":"compare_portal_invoices.py","total_count":1,"children":[]},{"name":"dedup_and_sync.py","total_count":1,"children":[]},{"name":"fix_205_final.py","total_count":1,"children":[]},{"name":"fix_and_sync_205.py","total_count":1,"children":[]},{"name":"fix_totals.py","total_count":1,"children":[]},{"name":"insert_205_bulletproof.py","total_count":1,"children":[]},{"name":"insert_gsheet_205.py","total_count":1,"children":[]},{"name":"permanent_insert_205.py","total_count":1,"children":[]},{"name":"test_fast_lookup.py","total_count":1,"children":[]},{"name":"update_stock_from_pdf.py","total_count":1,"children":[]}]},{"name":"SGO_Tree_Crawler.py","total_count":1,"children":[{"name":"crawl_tree()","total_count":1,"children":[]}]},{"name":"static","total_count":11,"children":[{"name":"js","total_count":11,"children":[{"name":"inventory.js","total_count":6,"children":[{"name":"currentSort","total_count":1,"children":[]},{"name":"filterInput","total_count":1,"children":[]},{"name":"filterWrapper","total_count":1,"children":[]},{"name":"inventory","total_count":1,"children":[]},{"name":"render()","total_count":1,"children":[]},{"name":"table","total_count":1,"children":[]}]},{"name":"invoice.js","total_count":5,"children":[{"name":"addItemBtn","total_count":1,"children":[]},{"name":"calculateTotals()","total_count":1,"children":[]},{"name":"itemsContainer","total_count":1,"children":[]},{"name":"row","total_count":1,"children":[]},{"name":"taxRateInput","total_count":1,"children":[]}]}]}]},{"name":"submit_295_perfect.py","total_count":1,"children":[{"name":"handle_dialog()","total_count":1,"children":[]}]},{"name":"submit_301_perfect.py","total_count":1,"children":[{"name":"handle_dialog()","total_count":1,"children":[]}]},{"name":"submit_310_fixed.py","total_count":1,"children":[{"name":"handle_dialog()","total_count":1,"children":[]}]},{"name":"submit_inv_310.py","total_count":1,"children":[{"name":"handle_dialog()","total_count":1,"children":[]}]},{"name":"submit_render_invoice.py","total_count":1,"children":[{"name":"Fetch invoice DSR/000301/26-27 from the live Render app and submit to AWPL porta","total_count":1,"children":[]}]},{"name":"submit_stock_order.py","total_count":3,"children":[{"name":"items: list of dicts — { name: str, qty: int, portal_id: str (optional) }     p","total_count":1,"children":[]},{"name":"submit_stock_order()","total_count":1,"children":[]},{"name":"submit_stock_order.py  –  Submits a Stock Point (Franchise) Purchase Order","total_count":1,"children":[]}]},{"name":"submit_stock_order_hack.py","total_count":3,"children":[{"name":"items: list of dicts — { name: str, qty: int, portal_id: str (optional) }     p","total_count":1,"children":[]},{"name":"submit_stock_order()","total_count":1,"children":[]},{"name":"submit_stock_order.py  –  Submits a Stock Point (Franchise) Purchase Order","total_count":1,"children":[]}]},{"name":"sync_and_push_latest.py","total_count":3,"children":[{"name":"main()","total_count":1,"children":[]},{"name":"sync_and_push_latest.py ----------------------- 1. Syncs new invoices from Rende","total_count":1,"children":[]},{"name":"sync_render_invoices_to_local_db()","total_count":1,"children":[]}]},{"name":"sync_full_inventory.py","total_count":1,"children":[{"name":"sync_all_to_inventory()","total_count":1,"children":[]}]},{"name":"sync_mizoram.py","total_count":1,"children":[{"name":"sync_mizoram_data()","total_count":1,"children":[]}]},{"name":"sync_sales_to_inventory.py","total_count":1,"children":[{"name":"sync_sales_to_inventory()","total_count":1,"children":[]}]},{"name":"sync_to_excel.py","total_count":1,"children":[{"name":"sync_to_excel()","total_count":1,"children":[]}]},{"name":"templates","total_count":12,"children":[{"name":"dashboard.html","total_count":1,"children":[]},{"name":"disease_guide.html","total_count":1,"children":[]},{"name":"index.html","total_count":1,"children":[]},{"name":"inventory.html","total_count":1,"children":[]},{"name":"inventory_master.html","total_count":1,"children":[]},{"name":"invoice.html","total_count":1,"children":[]},{"name":"invoice_history.html","total_count":1,"children":[]},{"name":"ledger_report.html","total_count":1,"children":[]},{"name":"mizoram_bronze.html","total_count":1,"children":[]},{"name":"portal_sync.html","total_count":1,"children":[]},{"name":"purchase_history.html","total_count":1,"children":[]},{"name":"stock_point_order.html","total_count":1,"children":[]}]},{"name":"test_add_item.py","total_count":1,"children":[{"name":"test_add_item()","total_count":1,"children":[]}]},{"name":"test_detail.py","total_count":1,"children":[{"name":"parse_detail_page()","total_count":1,"children":[]}]},{"name":"test_dialog_scrape.py","total_count":1,"children":[{"name":"scrape_all()","total_count":1,"children":[]}]},{"name":"test_fast_scrape.py","total_count":3,"children":[{"name":"get_initial_session()","total_count":1,"children":[]},{"name":"parse_page()","total_count":1,"children":[]},{"name":"scrape_recursive()","total_count":1,"children":[]}]},{"name":"test_fill_mobile.py","total_count":1,"children":[{"name":"test()","total_count":1,"children":[]}]},{"name":"test_itemlist.py","total_count":1,"children":[{"name":"run()","total_count":1,"children":[]}]},{"name":"test_nav.py","total_count":1,"children":[{"name":"test()","total_count":1,"children":[]}]},{"name":"test_network.py","total_count":1,"children":[{"name":"test()","total_count":1,"children":[]}]},{"name":"test_no_chkaddr.py","total_count":1,"children":[{"name":"test()","total_count":1,"children":[]}]},{"name":"test_post.py","total_count":1,"children":[{"name":"test()","total_count":1,"children":[]}]},{"name":"test_post2.py","total_count":1,"children":[{"name":"test()","total_count":1,"children":[]}]},{"name":"test_pw.py","total_count":1,"children":[{"name":"test_ui()","total_count":1,"children":[]}]},{"name":"test_red_html.py","total_count":1,"children":[{"name":"test_submit()","total_count":1,"children":[]}]},{"name":"test_red_id.py","total_count":1,"children":[{"name":"test_submit()","total_count":1,"children":[]}]},{"name":"test_requests.py","total_count":1,"children":[{"name":"test_login_and_fetch()","total_count":1,"children":[]}]},{"name":"test_scrape.py","total_count":1,"children":[{"name":"get_options()","total_count":1,"children":[]}]},{"name":"test_screenshot.py","total_count":1,"children":[{"name":"test()","total_count":1,"children":[]}]},{"name":"test_submit_07b2e5f8.py","total_count":2,"children":[{"name":"handle_dialog()","total_count":1,"children":[]},{"name":"test_submit_07b2e5f8.py Submit DSR/000301/26-27 with detailed step-by-step loggi","total_count":1,"children":[]}]},{"name":"test_submit_305.py","total_count":1,"children":[{"name":"handle_dialog()","total_count":1,"children":[]}]},{"name":"tests","total_count":2,"children":[{"name":"e2e.py","total_count":2,"children":[{"name":"Opens the God Mode application and checks that the title is present.","total_count":1,"children":[]},{"name":"test_god_mode_title()","total_count":1,"children":[]}]}]},{"name":".gitignore","total_count":1,"children":[]},{"name":"add_fix_buckets_btn.py","total_count":1,"children":[]},{"name":"add_mobile_css.py","total_count":1,"children":[]},{"name":"add_sync_btn.py","total_count":1,"children":[]},{"name":"backfill_sp.py","total_count":1,"children":[]},{"name":"check_234.py","total_count":1,"children":[]},{"name":"check_25.py","total_count":1,"children":[]},{"name":"check_295.py","total_count":1,"children":[]},{"name":"check_approve_repurchase.py","total_count":1,"children":[]},{"name":"check_bathveda.py","total_count":1,"children":[]},{"name":"check_c7.py","total_count":1,"children":[]},{"name":"check_db.py","total_count":1,"children":[]},{"name":"check_db2.py","total_count":1,"children":[]},{"name":"check_db_integrity.py","total_count":1,"children":[]},{"name":"check_db_tables.py","total_count":1,"children":[]},{"name":"check_h.py","total_count":1,"children":[]},{"name":"check_headers.py","total_count":1,"children":[]},{"name":"check_inv.py","total_count":1,"children":[]},{"name":"check_inv2.py","total_count":1,"children":[]},{"name":"check_inv3.py","total_count":1,"children":[]},{"name":"check_inv4.py","total_count":1,"children":[]},{"name":"check_inv5.py","total_count":1,"children":[]},{"name":"check_inv6.py","total_count":1,"children":[]},{"name":"check_inv7.py","total_count":1,"children":[]},{"name":"check_inv_70_date.py","total_count":1,"children":[]},{"name":"check_inv_amount.py","total_count":1,"children":[]},{"name":"check_inv_dates.py","total_count":1,"children":[]},{"name":"check_invoices.py","total_count":1,"children":[]},{"name":"check_invoices_amount.py","total_count":1,"children":[]},{"name":"check_invoices_schema.py","total_count":1,"children":[]},{"name":"check_items.py","total_count":1,"children":[]},{"name":"check_kpi_vals.py","total_count":1,"children":[]},{"name":"check_ledger_totals.py","total_count":1,"children":[]},{"name":"check_lipstick.py","total_count":1,"children":[]},{"name":"check_map.py","total_count":1,"children":[]},{"name":"check_menu_links.py","total_count":1,"children":[]},{"name":"check_monthly_sales.py","total_count":1,"children":[]},{"name":"check_pager.py","total_count":1,"children":[]},{"name":"check_pdf_halen.py","total_count":1,"children":[]},{"name":"check_pending.py","total_count":1,"children":[]},{"name":"check_po.py","total_count":1,"children":[]},{"name":"check_price.py","total_count":1,"children":[]},{"name":"check_prices.py","total_count":1,"children":[]},{"name":"check_recent_invoices.py","total_count":1,"children":[]},{"name":"check_rem_val.py","total_count":1,"children":[]},{"name":"check_reports_search.py","total_count":1,"children":[]},{"name":"check_row.py","total_count":1,"children":[]},{"name":"check_snail.py","total_count":1,"children":[]},{"name":"check_sold_halen.py","total_count":1,"children":[]},{"name":"check_sums.py","total_count":1,"children":[]},{"name":"check_total_sold_halen.py","total_count":1,"children":[]},{"name":"check_weeks.py","total_count":1,"children":[]},{"name":"clean_orders.py","total_count":1,"children":[]},{"name":"clean_temp_files.py","total_count":1,"children":[]},{"name":"Dockerfile","total_count":1,"children":[]},{"name":"fetch_live_invoices.py","total_count":1,"children":[]},{"name":"fetch_live_invoices2.py","total_count":1,"children":[]},{"name":"find_formulas_def.py","total_count":1,"children":[]},{"name":"find_kpis.py","total_count":1,"children":[]},{"name":"find_snail.py","total_count":1,"children":[]},{"name":"fix_api.py","total_count":1,"children":[]},{"name":"fix_indent.py","total_count":1,"children":[]},{"name":"fix_inventory.py","total_count":1,"children":[]},{"name":"fix_inventory_formulas.py","total_count":1,"children":[]},{"name":"fix_invoice.py","total_count":1,"children":[]},{"name":"fix_invoice2.py","total_count":1,"children":[]},{"name":"fix_invoice3.py","total_count":1,"children":[]},{"name":"fix_invoices.py","total_count":1,"children":[]},{"name":"fix_logo.py","total_count":1,"children":[]},{"name":"fix_sidebars.py","total_count":1,"children":[]},{"name":"fix_sidebars_v2.py","total_count":1,"children":[]},{"name":"fix_sync.py","total_count":1,"children":[]},{"name":"get_headers.py","total_count":1,"children":[]},{"name":"hack_run.py","total_count":1,"children":[]},{"name":"insert_new_invoices.py","total_count":1,"children":[]},{"name":"inspect_07b2e5f8_form.py","total_count":1,"children":[]},{"name":"inspect_invoice.py","total_count":1,"children":[]},{"name":"inv_test.json","total_count":1,"children":[]},{"name":"list_approve_inputs.py","total_count":1,"children":[]},{"name":"parse_html.py","total_count":1,"children":[]},{"name":"parse_html2.py","total_count":1,"children":[]},{"name":"parse_html3.py","total_count":1,"children":[]},{"name":"parse_html4.py","total_count":1,"children":[]},{"name":"parse_html5.py","total_count":1,"children":[]},{"name":"parse_html6.py","total_count":1,"children":[]},{"name":"patch_mobile.py","total_count":1,"children":[]},{"name":"portal_dropdown_dump.json","total_count":1,"children":[]},{"name":"prep_invoice.py","total_count":1,"children":[]},{"name":"print_headers.py","total_count":1,"children":[]},{"name":"print_inv.py","total_count":1,"children":[]},{"name":"query.py","total_count":1,"children":[]},{"name":"read_pdf.py","total_count":1,"children":[]},{"name":"render.yaml","total_count":1,"children":[]},{"name":"requirements.txt","total_count":1,"children":[]},{"name":"safe_fix.py","total_count":1,"children":[]},{"name":"scan_all_pages_for_order.py","total_count":1,"children":[]},{"name":"schema.sql","total_count":1,"children":[]},{"name":"scratch_check_db_sp.py","total_count":1,"children":[]},{"name":"scratch_check_sp.py","total_count":1,"children":[]},{"name":"scratch_find_all_mismatches.py","total_count":1,"children":[]},{"name":"scratch_fix_mismatches.py","total_count":1,"children":[]},{"name":"scratch_process_invoice.py","total_count":1,"children":[]},{"name":"scratch_scan_mismatches.py","total_count":1,"children":[]},{"name":"search_approve_repurchase.py","total_count":1,"children":[]},{"name":"sp_mismatches.json","total_count":1,"children":[]},{"name":"test_items.json","total_count":1,"children":[]},{"name":"test_js.js","total_count":1,"children":[]},{"name":"test_kpi.py","total_count":1,"children":[]},{"name":"test_match.py","total_count":1,"children":[]},{"name":"test_sao_approve.py","total_count":1,"children":[]},{"name":"test_submit.py","total_count":1,"children":[]},{"name":"test_submit_real.py","total_count":1,"children":[]},{"name":"test_submit_real2.py","total_count":1,"children":[]},{"name":"test_sync.py","total_count":1,"children":[]},{"name":"test_sync_debug.py","total_count":1,"children":[]},{"name":"tmp.py","total_count":1,"children":[]},{"name":"trigger_sync.py","total_count":1,"children":[]},{"name":"update_app_route.py","total_count":1,"children":[]},{"name":"update_dashboard.py","total_count":1,"children":[]},{"name":"update_mizoram.py","total_count":1,"children":[]},{"name":"update_nav.py","total_count":1,"children":[]},{"name":"update_robust.py","total_count":1,"children":[]},{"name":"update_sp.py","total_count":1,"children":[]}]};
+
+    function transformData(jsonData) {
+        // Helper function to recursively build the children structure
+        function processNode(node, parentL1StageName) {
+            let displayName = node.name;
+            // Append total_count if it exists and is not already in the name
+            if (node.total_count !== undefined) {
+                if (!/\(Total Count: \d+\)$/.test(displayName)) {
+                    displayName += ` (Total Count: ${node.total_count})`;
+                }
+            }
+
+            const newNode = { name: displayName };
+
+            if (parentL1StageName === "Root") {
+                 newNode.originalStageName = node.name;
+            } else {
+                newNode.originalStageName = parentL1StageName;
+            }
+
+            if (node.children && node.children.length > 0) {
+                const stageNameToPass = (parentL1StageName === "Root") ? node.name : parentL1StageName;
+                newNode.children = node.children.map(child => processNode(child, stageNameToPass));
+            }
+
+            return newNode;
+        }
+
+        let rootDisplayName = jsonData.name;
+        if (jsonData.total_count !== undefined && !/\(Total Count: \d+\)$/.test(rootDisplayName)) {
+            rootDisplayName += ` (Total Count: ${jsonData.total_count})`;
+        }
+
+        return {
+            name: rootDisplayName,
+            originalStageName: "Root",
+            children: (jsonData.children || []).map(child => processNode(child, "Root"))
+        };
+    }
+
+    const treeData = transformData(initialJsonData);
+
+    // Auto-populated phaseColors: every depth-1 child of the root gets
+    // a stable colour from a bigger palette so all top-level dirs are
+    // distinguishable.
+    const PALETTE = [
+      ["#3498DB","#2980B9","#AED6F1"], ["#2ECC71","#27AE60","#A9DFBF"],
+      ["#E74C3C","#C0392B","#F5B7B1"], ["#9B59B6","#8E44AD","#D7BDE2"],
+      ["#F39C12","#D68910","#FAD7A0"], ["#1ABC9C","#117864","#A2D9CE"],
+      ["#34495E","#1B2631","#ABB2B9"], ["#E67E22","#BA4A00","#F5CBA7"],
+      ["#16A085","#0E6655","#A2D9CE"], ["#D35400","#A04000","#EDBB99"],
+      ["#7F8C8D","#566573","#D5DBDB"], ["#C0392B","#7B241C","#F5B7B1"],
+      ["#2E86C1","#1B4F72","#A9CCE3"], ["#28B463","#196F3D","#A9DFBF"],
+      ["#AF7AC5","#6C3483","#D2B4DE"],
+    ];
+    const phaseColors = { "Root": { fill: "#4A4A4A", stroke: "#333333", collapsedFill: "#6C757D" },
+                          "Default": { fill: "#BDC3C7", stroke: "#95A5A6", collapsedFill: "#ECF0F1" } };
+    (initialJsonData.children || []).forEach((c, i) => {
+      const pal = PALETTE[i % PALETTE.length];
+      phaseColors[c.name] = { fill: pal[0], stroke: pal[1], collapsedFill: pal[2] };
+    });
+
+    const levelSpecificPalettes = {
+      0: { fill: "#4A4A4A", stroke: "#333333", collapsedFill: "#6C757D" },
+      2: { fill: "#6ab04c", stroke: "#508a38", collapsedFill: "#a3d391" },
+      3: { fill: "#f0932b", stroke: "#d0730f", collapsedFill: "#f6c07e" },
+      4: { fill: "#be2edd", stroke: "#a01cb3", collapsedFill: "#e08bf2" },
+      5: { fill: "#00a8ff", stroke: "#007ac1", collapsedFill: "#74d2ff" },
+      6: { fill: "#e55039", stroke: "#c23620", collapsedFill: "#f09a8d" },
+      default: { fill: "#747d8c", stroke: "#57606f", collapsedFill: "#a4b0be" }
+    };
+
+    const svgElement = d3.select("#tree-svg");
+    const initialSvgWidth = +svgElement.attr("width");
+    const initialSvgHeight = +svgElement.attr("height");
+    const margin = { top: 40, right: 120, bottom: 80, left: 450 };
+    let width = initialSvgWidth - margin.left - margin.right;
+    let height = initialSvgHeight - margin.top - margin.bottom;
+    const duration = 500;
+    let nodeCounter = 0;
+    const g = svgElement.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+    const treemap = d3.tree().nodeSize([40, 0]);
+    let rootNode = d3.hierarchy(treeData, d => d.children);
+    rootNode.x0 = 0;
+    rootNode.y0 = 0;
+
+    if (rootNode.children) {
+      rootNode.children.forEach(d_child => {
+        if (d_child.children) { collapseBranch(d_child); }
+      });
+    }
+    updateTree(rootNode);
+
+    function collapseBranch(d) { if (d.children) { d._children = d.children; d._children.forEach(collapseBranch); d.children = null; } }
+    function expandBranch(d) { if (d._children) { d.children = d._children; d._children = null; } if (d.children) { d.children.forEach(expandBranch); } }
+    window.expandAll = () => { expandBranch(rootNode); updateTree(rootNode); };
+    window.collapseAll = () => { if (rootNode.children) { rootNode.children.forEach(collapseBranch); } updateTree(rootNode); };
+    window.resetView = () => { if (rootNode.children) { rootNode.children.forEach(d_child => { if (d_child.children || d_child._children) { collapseBranch(d_child); } }); } if (rootNode._children && !rootNode.children) { rootNode.children = rootNode._children; rootNode._children = null; } updateTree(rootNode); };
+
+    function updateTree(source) {
+      const treeLayoutData = treemap(rootNode);
+      let nodes = treeLayoutData.descendants();
+      let links = treeLayoutData.descendants().slice(1);
+
+      let minX = 0;
+      let maxX = 0;
+      if (nodes.length > 0) {
+        minX = d3.min(nodes, d => d.x);
+        maxX = d3.max(nodes, d => d.x);
+      }
+
+      let neededHeight = Math.max(initialSvgHeight, maxX - minX + margin.top + margin.bottom + 100);
+      svgElement.transition().duration(duration / 2).attr("height", neededHeight);
+      g.transition().duration(duration / 2).attr("transform", `translate(${margin.left},${margin.top - minX + 40})`);
+
+      nodes.forEach(d => { d.y = d.depth * 400; }); // Adjust horizontal separation if needed
+
+      const node = g.selectAll('g.node').data(nodes, d => d.id || (d.id = ++nodeCounter));
+      const nodeEnter = node.enter().append('g')
+        .attr('class', d => "node" + (d.children || d._children ? " node--internal" : " node--leaf") + (d._children ? " _children" : ""))
+        .attr('transform', d => `translate(${source.y0},${source.x0})`)
+        .on('click', (event, d) => { if (d.children) { d._children = d.children; d.children = null; } else if (d._children) { d.children = d._children; d._children = null; } updateTree(d); })
+        .style('cursor', d => (d.children || d._children) ? 'pointer' : 'default');
+
+      nodeEnter.append('circle').attr('r', 1e-6);
+
+      nodeEnter.append('text')
+        .attr('dy', '.35em')
+        .attr('x', d => d.children || d._children ? -14 : 14)
+        .attr('text-anchor', d => d.children || d._children ? 'end' : 'start')
+        .style("fill-opacity", 1e-6)
+        .call(wrapText, 380);
+
+      const nodeUpdate = nodeEnter.merge(node);
+      nodeUpdate.transition().duration(duration)
+        .attr('transform', d => `translate(${d.y},${d.x})`)
+        .attr('class', d => "node" + (d.children ? " node--internal" : " node--leaf") + (d._children ? " node--internal _children" : ""));
+
+      nodeUpdate.select('circle').attr('r', 8.5)
+        .style('fill', d => {
+            let palette;
+            if (d.depth === 0) {
+                palette = levelSpecificPalettes[0];
+            } else if (d.depth === 1) {
+                palette = phaseColors[d.data.originalStageName] || phaseColors.Default;
+            } else {
+                palette = levelSpecificPalettes[d.depth] || levelSpecificPalettes.default;
+            }
+            if (d._children) return palette.collapsedFill;
+            if (d.children) return palette.fill;
+            return "#fff";
+        })
+        .style('stroke', d => {
+            let palette;
+            if (d.depth === 0) {
+                palette = levelSpecificPalettes[0];
+            } else if (d.depth === 1) {
+                palette = phaseColors[d.data.originalStageName] || phaseColors.Default;
+            } else {
+                palette = levelSpecificPalettes[d.depth] || levelSpecificPalettes.default;
+            }
+            return palette.stroke;
+        });
+      nodeUpdate.select('text').style("fill-opacity", 1).call(wrapText, 380);
+
+      const nodeExit = node.exit().transition().duration(duration).attr('transform', d => `translate(${source.y},${source.x})`).remove();
+      nodeExit.select('circle').attr('r', 1e-6);
+      nodeExit.select('text').style('fill-opacity', 1e-6);
+
+      const link = g.selectAll('path.link').data(links, d => d.id);
+      const linkEnter = link.enter().insert('path', "g").attr('class', 'link').attr('d', d => { const o = { x: source.x0, y: source.y0 }; return diagonal(o, o); });
+
+      linkEnter.merge(link).transition().duration(duration).attr('d', d => diagonal(d, d.parent))
+        .style('stroke', d => {
+            const sourceNode = d.parent;
+            if (!sourceNode) return phaseColors.Default.stroke;
+            const l1AncestorName = sourceNode.data.originalStageName;
+            const colorPalette = phaseColors[l1AncestorName] || phaseColors.Default;
+            return colorPalette.stroke;
+        });
+      link.exit().transition().duration(duration).attr('d', d => { const o = { x: source.x, y: source.y }; return diagonal(o, o); }).remove();
+      nodes.forEach(d => { d.x0 = d.x; d.y0 = d.y; });
+    }
+
+    function diagonal(s, d) { return `M ${s.y} ${s.x} C ${(s.y + d.y) / 2} ${s.x}, ${(s.y + d.y) / 2} ${d.x}, ${d.y} ${d.x}`; }
+
+    function wrapText(textElements, maxWidth) {
+        const textPartColors = {
+            name: '#343a40',
+            count: '#0056b3'
+        };
+        const countRegex = /(\s\(Total Count: \d+\))$/;
+
+        textElements.each(function () {
+            const textD3 = d3.select(this);
+            const originalNodeText = textD3.datum().data.name;
+            const x = parseFloat(textD3.attr("x") || 0);
+            const initialDy = textD3.attr("dy");
+            const textAnchor = textD3.attr("text-anchor");
+            const lineHeight = 1.1;
+
+            textD3.text(null);
+
+            let namePart = originalNodeText;
+            let countPartText = "";
+
+            const countMatch = originalNodeText.match(countRegex);
+            if (countMatch && originalNodeText.endsWith(countMatch[0])) {
+                namePart = originalNodeText.substring(0, originalNodeText.length - countMatch[0].length).trim();
+                countPartText = countMatch[0].trim();
+            }
+
+            const tokens = [];
+            namePart.split(/\s+/).filter(Boolean).forEach(word => {
+                tokens.push({ text: word, type: 'name' });
+            });
+            if (countPartText) {
+                tokens.push({ text: countPartText, type: 'count' });
+            }
+
+            if (tokens.length === 0 && originalNodeText) {
+                tokens.push({ text: originalNodeText, type: 'name' });
+            }
+
+            let currentTspan = textD3.append("tspan").attr("x", x).attr("dy", initialDy);
+            if (textAnchor === "end") currentTspan.attr("text-anchor", "end");
+
+            let lineTokens = [];
+
+            for (let i = 0; i < tokens.length; i++) {
+                const tokenObj = tokens[i];
+
+                lineTokens.push(tokenObj);
+                currentTspan.text(lineTokens.map(t => t.text).join(" "));
+
+                if (currentTspan.node().getComputedTextLength() > maxWidth && lineTokens.length > 1) {
+                    lineTokens.pop();
+
+                    currentTspan.text(null);
+                    lineTokens.forEach((prevToken, idx) => {
+                        currentTspan.append("tspan")
+                            .text((idx > 0 ? " " : "") + prevToken.text)
+                            .style("fill", textPartColors[prevToken.type] || textPartColors.name)
+                            .style("font-weight", prevToken.type === 'count' ? "bold" : "normal");
+                    });
+
+                    lineTokens = [tokenObj];
+                    currentTspan = textD3.append("tspan").attr("x", x).attr("dy", lineHeight + "em");
+                    if (textAnchor === "end") currentTspan.attr("text-anchor", "end");
+                }
+            }
+
+            currentTspan.text(null);
+            lineTokens.forEach((token, idx) => {
+                currentTspan.append("tspan")
+                    .text((idx > 0 ? " " : "") + token.text)
+                    .style("fill", textPartColors[token.type] || textPartColors.name)
+                    .style("font-weight", token.type === 'count' ? "bold" : "normal");
+            });
+
+            if (textD3.selectAll("tspan > tspan").empty() && textD3.select("tspan").text().length === 0 && originalNodeText) {
+                let t = textD3.select("tspan");
+                let displayText = originalNodeText;
+                t.text(displayText).style("fill", textPartColors.name);
+                if (t.node() && t.node().getComputedTextLength() > maxWidth && displayText.length > 20) {
+                    let estimatedChars = Math.floor(maxWidth / (t.node().getComputedTextLength()/displayText.length) );
+                    displayText = displayText.substring(0, Math.max(0, estimatedChars - 3)) + "...";
+                    t.text(displayText);
+                }
+            }
+        });
+    }
+  </script>
+</body>
+</html>
