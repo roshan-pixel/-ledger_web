@@ -50,7 +50,9 @@ def sync_mizoram_data():
         for row in data[1:]: # Skip header
             while len(row) < 15:
                 row.append('')
-            clean_row = row[:15]
+            clean_row = [str(x).strip() for x in row[:15]]
+            if not clean_row[0] and not clean_row[1]:
+                continue # Skip blank placeholder rows
             
             c.execute('''INSERT INTO mizoram_bronze 
                 (ds_id, ds_name, bronze_commission, bronze_achieved, mizoram_bronze_date, 
