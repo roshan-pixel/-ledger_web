@@ -171,6 +171,7 @@ def calculate_inventory(conn, target_month_str=None):
             'SP/Pc': sp_pc,
             'Remarks': r['c23'] or '',
             'total_purchased': 0.0,
+            'c7_qty': float(str(r['c7']).replace(',', '') or 0) if r['c7'] not in (None, '', 'None') else 0.0,
             'sales_this_month': [0.0] * 5, # 5 weeks
             'cumulative_sales': 0.0,
         }
@@ -204,6 +205,11 @@ def calculate_inventory(conn, target_month_str=None):
                                         prod_data['total_purchased'] += qty
         except Exception as e:
             print("Error parsing purchases in engine:", e)
+
+    # For items where c7 in inventory table is higher (e.g. manual restock/adjustment), respect c7
+    for p in products:
+        if p.get('c7_qty', 0.0) > p['total_purchased']:
+            p['total_purchased'] = p['c7_qty']
 
     # 5. Load sales up to end of selected month (Total Stock OUT)
     c.execute("SELECT * FROM invoices WHERE status != 'cancelled'")

@@ -127,18 +127,18 @@ def _get_true_remaining_stock(conn):
         except Exception as e:
             print(f"[StockCheck] Warning: could not read purchase_orders.json: {e}")
 
-    # Fallback: read c7 (Total Qty) directly from inventory for items not in purchase JSON
+    # Fallback / manual adjustments: read c7 (Total Qty) directly from inventory
     c.execute("SELECT c3, c7 FROM inventory WHERE c3 IS NOT NULL AND c3 != ''")
     for row in c.fetchall():
         raw = str(row[0]).strip()
         if not raw or raw.upper() == 'TOTAL':
             continue
         nk = re.sub(r'[^A-Z0-9]', '', raw.upper())
-        if nk not in purchased:
-            try:
-                purchased[nk] = float(str(row[1] or '0').replace(',', ''))
-            except Exception:
-                purchased[nk] = 0.0
+        try:
+            c7_val = float(str(row[1] or '0').replace(',', ''))
+        except Exception:
+            c7_val = 0.0
+        purchased[nk] = max(purchased.get(nk, 0.0), c7_val)
 
     # ── 3. Tally ALL active invoice sales (across ALL months) ─────────────────
     sold = {}   # norm_key -> total qty sold

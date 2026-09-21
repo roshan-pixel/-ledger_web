@@ -359,7 +359,7 @@
                     `<tr><td colspan="11"><div class="empty-state"><div class="icon">⚠️</div><p>${data.error}</p></div></td></tr>`;
                 return;
             }
-            allOrders = data.orders || [];
+            allOrders = (data.orders || []).filter(o => o.party !== 'Total');
             renderSummary(allOrders);
             renderTable(allOrders);
         } catch (e) {

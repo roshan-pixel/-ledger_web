@@ -25,8 +25,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\Downloads\\ledger_web\\app.py": {
-    "mtime": 1789126724.041765,
-    "ast_hash": "9bc14996f0fadcc8646f848ef48018a2",
+    "mtime": 1789983948.6877022,
+    "ast_hash": "89dd7c87e847675577de21956f32f66d",
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\Downloads\\ledger_web\\backfill_sp.py": {
@@ -680,13 +680,13 @@
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\Downloads\\ledger_web\\inventory_engine.py": {
-    "mtime": 1785763452.645968,
-    "ast_hash": "862319fdeb1f22045afec873268c92cc",
+    "mtime": 1789983922.7835357,
+    "ast_hash": "627cb5151444855440265b79bf5a7cad",
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\Downloads\\ledger_web\\invoice_api.py": {
-    "mtime": 1789468769.4093664,
-    "ast_hash": "9ea25856cc65ecccf83110a4379fbd10",
+    "mtime": 1789983939.6439462,
+    "ast_hash": "8cb9bfe07ebb03dd4d019f61991eb2b9",
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\Downloads\\ledger_web\\list_approve_inputs.py": {
@@ -1305,8 +1305,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\Downloads\\ledger_web\\README.md": {
-    "mtime": 1788943168.4905078,
-    "ast_hash": "4162dfb36a677a9e3d0752cd298c8bae",
+    "mtime": 1789721188.0913374,
+    "ast_hash": "2fb7da1bb14a0a18c5e28438948fc576",
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\Downloads\\ledger_web\\render.yaml": {
@@ -1370,13 +1370,143 @@
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\Downloads\\ledger_web\\templates\\purchase_history.html": {
-    "mtime": 1785761094.0866964,
-    "ast_hash": "cd0ee862087a563bd07a5549705050db",
+    "mtime": 1789983909.5020506,
+    "ast_hash": "d9157f235c94bbff201d3f7f384f710d",
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\Downloads\\ledger_web\\templates\\stock_point_order.html": {
     "mtime": 1785761094.0829897,
     "ast_hash": "6a5616f6a53289320cf2414d507c0304",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\submit_250_perfect.py": {
+    "mtime": 1789979124.8883123,
+    "ast_hash": "c2e905b7f40089fec51fa71e9beb3304",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\scratch\\apply_separated_batches.py": {
+    "mtime": 1789803692.9053614,
+    "ast_hash": "60c06b5e62b434ceb34eaf6d7a88ff98",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\scratch\\calculate_closing_batches.py": {
+    "mtime": 1789803642.5153925,
+    "ast_hash": "d98c9265b868c76dc67a3b2db6bb8b4f",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\scratch\\check_overlap.py": {
+    "mtime": 1789801397.592672,
+    "ast_hash": "4fdba4113862293f3ecc419ae15b2b38",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\scratch\\check_sao_dates.py": {
+    "mtime": 1789803368.7489076,
+    "ast_hash": "38edb82709a40fe35758ef10b3aad188",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\scratch\\compare_detail.py": {
+    "mtime": 1789801461.5992608,
+    "ast_hash": "d8875591b5a6845dc7fa98d7c87c781b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\scratch\\extracted_portal_invoices.json": {
+    "mtime": 1789801372.005887,
+    "ast_hash": "657b69fac2113869efd1ba0e6b2b7000",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\scratch\\extract_table.py": {
+    "mtime": 1789801367.5917225,
+    "ast_hash": "319e5b1956954627afc1f781eeb2b2e3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\scratch\\inspect_mizo_sheet.py": {
+    "mtime": 1789801380.7640836,
+    "ast_hash": "28aa9b6b0feac3921c691d4f958ffafd",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\scratch\\kimi_interact.py": {
+    "mtime": 1789801333.6027565,
+    "ast_hash": "1265cb78739fb0256e0362348955f2d3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\scratch\\portal_current_dropdown.json": {
+    "mtime": 1789979204.5684347,
+    "ast_hash": "69e61b6b14fb430e527328d3d63fe694",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\scratch\\prepare_rows.py": {
+    "mtime": 1789801543.6253965,
+    "ast_hash": "9b86017dd917719f81fd73916523f295",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\scratch\\print_extracted.py": {
+    "mtime": 1789801434.3529496,
+    "ast_hash": "9a5e0d3d85c1a2ad1efed2a5b6b08e65",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\scratch\\simulate_separated.py": {
+    "mtime": 1789803677.6377692,
+    "ast_hash": "1b6641cec75450c34dccd5f92b18179e",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\scratch\\submit_dates.py": {
+    "mtime": 1789801345.1682384,
+    "ast_hash": "e0e4f5a07daa57343fea23e72e2820a1",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\scratch\\test_escape.py": {
+    "mtime": 1789801581.2579682,
+    "ast_hash": "975f65ca585feec54553f94939d19ddf",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\scratch\\update_billing_dates.py": {
+    "mtime": 1789803381.95129,
+    "ast_hash": "6c5533556e2a92da63d22fc0a2d78a69",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\scratch\\update_mizo_sheet.py": {
+    "mtime": 1789801607.4213946,
+    "ast_hash": "4e86dea0bec8c31cce92aeb9d7045a56",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\submit_244_perfect.py": {
+    "mtime": 1789980181.0967703,
+    "ast_hash": "21b8312f992d4d366f7ee08945475f72",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\submit_285_and_276.py": {
+    "mtime": 1789980587.9587295,
+    "ast_hash": "10f2520ffdc87f81a077b70922700104",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\submit_285_perfect.py": {
+    "mtime": 1789980725.1923468,
+    "ast_hash": "9c2f554d2d17da32748035ea5bae52bd",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\submit_276_final.py": {
+    "mtime": 1789981345.7811415,
+    "ast_hash": "d54543a21244e1b2c01fd89d637fe413",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\submit_276_perfect.py": {
+    "mtime": 1789981271.9313667,
+    "ast_hash": "12142fe5f6b07fd0922154a7172d1e24",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\submit_286_perfect.py": {
+    "mtime": 1789982890.6848428,
+    "ast_hash": "8ed382df5f16c4c4b2cbe3c2a4841ef4",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\scratch\\do_restock.py": {
+    "mtime": 1789984044.5567734,
+    "ast_hash": "535ca99f7859e52e6f1661e95f02f6da",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\scratch\\guw_268_products.json": {
+    "mtime": 1789983530.4818249,
+    "ast_hash": "e8eb5ae95f34387072b13897df2d645c",
     "semantic_hash": ""
   }
 }

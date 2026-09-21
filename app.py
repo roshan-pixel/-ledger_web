@@ -303,22 +303,20 @@ def api_inventory_restock():
             
         conn = get_db()
         c = conn.cursor()
-        c.execute("SELECT c7 FROM inventory WHERE UPPER(c3) = ?", (product_name.upper(),))
+        c.execute("SELECT row_num, c7 FROM inventory WHERE UPPER(c3) = ?", (product_name.upper(),))
         row = c.fetchone()
         if not row:
             conn.close()
             return jsonify({'error': 'Product not found'}), 404
             
-        current_qty = float(str(row[0]).replace(',', '') or 0)
+        current_qty = float(str(row['c7']).replace(',', '') or 0)
         new_qty = current_qty + qty_to_add
         
-        c.execute("UPDATE inventory SET c7 = ? WHERE UPPER(c3) = ?", (new_qty, product_name.upper()))
+        c.execute("UPDATE inventory SET c7 = ? WHERE row_num = ?", (new_qty, row['row_num']))
         
         c.execute("SELECT value FROM settings WHERE key='inventory_headers'")
         all_headers = json.loads(c.fetchone()[0])
-        c.execute("SELECT row_num FROM inventory WHERE UPPER(c3) != 'TOTAL'")
-        for r in c.fetchall():
-            update_inventory_formulas(conn, r['row_num'], all_headers)
+        update_inventory_formulas(conn, row['row_num'], all_headers)
         
         update_totals_row(conn)
         conn.commit()
