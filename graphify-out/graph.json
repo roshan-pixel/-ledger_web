@@ -45,7 +45,7 @@
       "source_file": "add_product.py",
       "source_location": "L1",
       "id": "add_product_py",
-      "community": 13,
+      "community": 4,
       "norm_label": "add_product.py"
     },
     {
@@ -54,7 +54,7 @@
       "source_file": "add_product.py",
       "source_location": "L3",
       "id": "ledger_web_add_product_add_product",
-      "community": 13,
+      "community": 4,
       "norm_label": "add_product()"
     },
     {
@@ -162,7 +162,7 @@
       "source_file": "app.py",
       "source_location": "L187",
       "id": "ledger_web_app_get_db",
-      "community": 13,
+      "community": 4,
       "norm_label": "get_db()"
     },
     {
@@ -171,7 +171,7 @@
       "source_file": "app.py",
       "source_location": "L194",
       "id": "ledger_web_app_dashboard",
-      "community": 293,
+      "community": 10,
       "norm_label": "dashboard()"
     },
     {
@@ -270,7 +270,7 @@
       "source_file": "app.py",
       "source_location": "L265",
       "id": "ledger_web_app_api_mizoram_bronze_update",
-      "community": 13,
+      "community": 4,
       "norm_label": "api_mizoram_bronze_update()"
     },
     {
@@ -306,7 +306,7 @@
       "source_file": "app.py",
       "source_location": "L398",
       "id": "ledger_web_app_compute_kpis_data",
-      "community": 293,
+      "community": 10,
       "norm_label": "compute_kpis_data()"
     },
     {
@@ -315,7 +315,7 @@
       "source_file": "app.py",
       "source_location": "L566",
       "id": "ledger_web_app_api_kpi",
-      "community": 293,
+      "community": 10,
       "norm_label": "api_kpi()"
     },
     {
@@ -396,7 +396,7 @@
       "source_file": "app.py",
       "source_location": "L900",
       "id": "ledger_web_app_api_inventory_master_months",
-      "community": 2,
+      "community": 4,
       "norm_label": "api_inventory_master_months()"
     },
     {
@@ -405,7 +405,7 @@
       "source_file": "app.py",
       "source_location": "L911",
       "id": "ledger_web_app_api_inventory_master",
-      "community": 13,
+      "community": 4,
       "norm_label": "api_inventory_master()"
     },
     {
@@ -423,7 +423,7 @@
       "source_file": "app.py",
       "source_location": "L1009",
       "id": "ledger_web_app_api_product_sales",
-      "community": 2,
+      "community": 4,
       "norm_label": "api_product_sales()"
     },
     {
@@ -2709,7 +2709,7 @@
       "source_file": "invoice_api.py",
       "source_location": "L1",
       "id": "invoice_api_py",
-      "community": 13,
+      "community": 0,
       "norm_label": "invoice_api.py"
     },
     {
@@ -2718,7 +2718,7 @@
       "source_file": "invoice_api.py",
       "source_location": "L11",
       "id": "ledger_web_invoice_api_get_sold_qty_col_idx",
-      "community": 13,
+      "community": 0,
       "norm_label": "get_sold_qty_col_idx()"
     },
     {
@@ -2727,7 +2727,7 @@
       "source_file": "invoice_api.py",
       "source_location": "L76",
       "id": "ledger_web_invoice_api_get_true_remaining_stock",
-      "community": 13,
+      "community": 0,
       "norm_label": "_get_true_remaining_stock()"
     },
     {
@@ -2745,61 +2745,70 @@
       "source_file": "invoice_api.py",
       "source_location": "L190",
       "id": "ledger_web_invoice_api_init_db",
-      "community": 13,
+      "community": 0,
       "norm_label": "init_db()"
+    },
+    {
+      "label": "is_complimentary_item()",
+      "file_type": "code",
+      "source_file": "invoice_api.py",
+      "source_location": "L230",
+      "id": "ledger_web_invoice_api_is_complimentary_item",
+      "community": 0,
+      "norm_label": "is_complimentary_item()"
     },
     {
       "label": "create_invoice()",
       "file_type": "code",
       "source_file": "invoice_api.py",
-      "source_location": "L233",
+      "source_location": "L246",
       "id": "ledger_web_invoice_api_create_invoice",
-      "community": 13,
+      "community": 0,
       "norm_label": "create_invoice()"
     },
     {
       "label": "list_invoices()",
       "file_type": "code",
       "source_file": "invoice_api.py",
-      "source_location": "L403",
+      "source_location": "L421",
       "id": "ledger_web_invoice_api_list_invoices",
-      "community": 13,
+      "community": 0,
       "norm_label": "list_invoices()"
     },
     {
       "label": "update_invoice_info()",
       "file_type": "code",
       "source_file": "invoice_api.py",
-      "source_location": "L464",
+      "source_location": "L488",
       "id": "ledger_web_invoice_api_update_invoice_info",
-      "community": 13,
+      "community": 4,
       "norm_label": "update_invoice_info()"
     },
     {
       "label": "get_next_invoice_no()",
       "file_type": "code",
       "source_file": "invoice_api.py",
-      "source_location": "L498",
+      "source_location": "L522",
       "id": "ledger_web_invoice_api_get_next_invoice_no",
-      "community": 13,
+      "community": 0,
       "norm_label": "get_next_invoice_no()"
     },
     {
       "label": "cancel_invoice()",
       "file_type": "code",
       "source_file": "invoice_api.py",
-      "source_location": "L549",
+      "source_location": "L573",
       "id": "ledger_web_invoice_api_cancel_invoice",
-      "community": 13,
+      "community": 0,
       "norm_label": "cancel_invoice()"
     },
     {
       "label": "get_portal_order_log()",
       "file_type": "code",
       "source_file": "invoice_api.py",
-      "source_location": "L631",
+      "source_location": "L655",
       "id": "ledger_web_invoice_api_get_portal_order_log",
-      "community": 13,
+      "community": 0,
       "norm_label": "get_portal_order_log()"
     },
     {
@@ -2808,7 +2817,7 @@
       "source_file": "invoice_api.py",
       "source_location": "L12",
       "id": "ledger_web_invoice_api_rationale_12",
-      "community": 13,
+      "community": 0,
       "norm_label": "return the column index (1-based) for the sold qty column that matches the"
     },
     {
@@ -2817,16 +2826,16 @@
       "source_file": "invoice_api.py",
       "source_location": "L77",
       "id": "ledger_web_invoice_api_rationale_77",
-      "community": 13,
+      "community": 0,
       "norm_label": "calculate true remaining stock for every product across all months.      formu"
     },
     {
       "label": "Returns the last 100 lines of portal_submit.log.",
       "file_type": "rationale",
       "source_file": "invoice_api.py",
-      "source_location": "L632",
-      "id": "ledger_web_invoice_api_rationale_632",
-      "community": 13,
+      "source_location": "L656",
+      "id": "ledger_web_invoice_api_rationale_656",
+      "community": 0,
       "norm_label": "returns the last 100 lines of portal_submit.log."
     },
     {
@@ -3348,7 +3357,7 @@
       "source_file": "resync_inventory.py",
       "source_location": "L1",
       "id": "resync_inventory_py",
-      "community": 13,
+      "community": 0,
       "norm_label": "resync_inventory.py"
     },
     {
@@ -3357,7 +3366,7 @@
       "source_file": "resync_inventory.py",
       "source_location": "L6",
       "id": "ledger_web_resync_inventory_fix_inventory",
-      "community": 13,
+      "community": 0,
       "norm_label": "fix_inventory()"
     },
     {
@@ -4756,6 +4765,24 @@
       "norm_label": "update_sp.py"
     },
     {
+      "label": "analyze_kidgdoc.py",
+      "file_type": "code",
+      "source_file": "scratch/analyze_kidgdoc.py",
+      "source_location": "L1",
+      "id": "scratch_analyze_kidgdoc_py",
+      "community": 297,
+      "norm_label": "analyze_kidgdoc.py"
+    },
+    {
+      "label": "analyze_kidgdoc2.py",
+      "file_type": "code",
+      "source_file": "scratch/analyze_kidgdoc2.py",
+      "source_location": "L1",
+      "id": "scratch_analyze_kidgdoc2_py",
+      "community": 293,
+      "norm_label": "analyze_kidgdoc2.py"
+    },
+    {
       "label": "apply_separated_batches.py",
       "file_type": "code",
       "source_file": "scratch/apply_separated_batches.py",
@@ -4781,6 +4808,15 @@
       "id": "scratch_calculate_closing_batches_py",
       "community": 281,
       "norm_label": "calculate_closing_batches.py"
+    },
+    {
+      "label": "check_all_dbs.py",
+      "file_type": "code",
+      "source_file": "scratch/check_all_dbs.py",
+      "source_location": "L1",
+      "id": "scratch_check_all_dbs_py",
+      "community": 298,
+      "norm_label": "check_all_dbs.py"
     },
     {
       "label": "check_all_sources_for_205.py",
@@ -5125,6 +5161,15 @@
       "norm_label": "insert_gsheet_205.py"
     },
     {
+      "label": "inspect_headers.py",
+      "file_type": "code",
+      "source_file": "scratch/inspect_headers.py",
+      "source_location": "L1",
+      "id": "scratch_inspect_headers_py",
+      "community": 299,
+      "norm_label": "inspect_headers.py"
+    },
+    {
       "label": "inspect_mizo_sheet.py",
       "file_type": "code",
       "source_file": "scratch/inspect_mizo_sheet.py",
@@ -5267,6 +5312,15 @@
       "id": "scratch_simulate_separated_format_row",
       "community": 271,
       "norm_label": "format_row()"
+    },
+    {
+      "label": "simulate_unticked.py",
+      "file_type": "code",
+      "source_file": "scratch/simulate_unticked.py",
+      "source_location": "L1",
+      "id": "scratch_simulate_unticked_py",
+      "community": 300,
+      "norm_label": "simulate_unticked.py"
     },
     {
       "label": "submit_dates.py",
@@ -6268,6 +6322,15 @@
       "norm_label": "\ud83d\udcc4 license & attribution"
     },
     {
+      "label": "Returns the last 100 lines of portal_submit.log.",
+      "file_type": "rationale",
+      "source_file": "invoice_api.py",
+      "source_location": "L632",
+      "community": 0,
+      "norm_label": "returns the last 100 lines of portal_submit.log.",
+      "id": "ledger_web_invoice_api_rationale_632"
+    },
+    {
       "label": "Categorize an Asclepius product into authentic product lines.",
       "file_type": "rationale",
       "source_file": "app.py",
@@ -6758,7 +6821,7 @@
       "file_type": "code",
       "source_file": "templates/dashboard.html",
       "source_location": "L1",
-      "community": 293,
+      "community": 10,
       "norm_label": "dashboard.html",
       "description": "Jinja2 HTML template \u2014 served by Flask app.py",
       "id": "dashboard_html"
@@ -6778,7 +6841,7 @@
       "file_type": "code",
       "source_file": "templates/index.html",
       "source_location": "L1",
-      "community": 293,
+      "community": 10,
       "norm_label": "index.html",
       "description": "Jinja2 HTML template \u2014 served by Flask app.py",
       "id": "index_html"
@@ -6798,7 +6861,7 @@
       "file_type": "code",
       "source_file": "templates/inventory_master.html",
       "source_location": "L1",
-      "community": 2,
+      "community": 4,
       "norm_label": "inventory_master.html",
       "description": "Jinja2 HTML template \u2014 served by Flask app.py",
       "id": "inventory_master_html"
@@ -6858,7 +6921,7 @@
       "file_type": "code",
       "source_file": "templates/purchase_history.html",
       "source_location": "L1",
-      "community": 2,
+      "community": 4,
       "norm_label": "purchase_history.html",
       "description": "Jinja2 HTML template \u2014 served by Flask app.py",
       "id": "purchase_history_html"
@@ -6938,7 +7001,7 @@
       "file_type": "code",
       "source_file": "schema.sql",
       "source_location": "L1",
-      "community": 13,
+      "community": 4,
       "norm_label": "schema.sql",
       "description": "SQLite schema \u2014 CREATE TABLE invoices, purchase_orders, inventory",
       "id": "schema_sql"
@@ -9770,6 +9833,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "invoice_api.py",
+      "source_location": "L230",
+      "weight": 1.0,
+      "source": "invoice_api_py",
+      "target": "ledger_web_invoice_api_is_complimentary_item",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "invoice_api.py",
       "source_location": "L233",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -9926,6 +9999,28 @@
     {
       "relation": "calls",
       "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "invoice_api.py",
+      "source_location": "L256",
+      "weight": 1.0,
+      "source": "ledger_web_invoice_api_create_invoice",
+      "target": "ledger_web_invoice_api_is_complimentary_item",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "invoice_api.py",
+      "source_location": "L462",
+      "weight": 1.0,
+      "source": "ledger_web_invoice_api_list_invoices",
+      "target": "ledger_web_invoice_api_is_complimentary_item",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "invoice_api.py",
@@ -9933,6 +10028,16 @@
       "weight": 1.0,
       "source": "ledger_web_invoice_api_create_invoice",
       "target": "ledger_web_portal_submit_order_submit_order_async"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "invoice_api.py",
+      "source_location": "L656",
+      "weight": 1.0,
+      "source": "ledger_web_invoice_api_rationale_656",
+      "target": "ledger_web_invoice_api_get_portal_order_log",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -12888,5 +12993,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "119ec675a83daf8f6a3ab9f7fc19a3bff40af076"
+  "built_at_commit": "777d5c0d44bad619a0d09398801d65a686033b94"
 }

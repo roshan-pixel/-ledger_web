@@ -426,6 +426,14 @@
             border: 1px solid rgba(239, 68, 68, 0.3);
         }
 
+        tbody tr.has-complimentary-row {
+            background: rgba(16, 185, 129, 0.05);
+            border-left: 3px solid #10b981;
+        }
+        tbody tr.has-complimentary-row:hover {
+            background: rgba(16, 185, 129, 0.12) !important;
+        }
+
         .dispatch-cell {
             display: flex;
             align-items: center;
@@ -1015,6 +1023,15 @@
     let searchQuery = '';
     let sortAscending = false;
 
+    function isComplimentaryProduct(desc) {
+        if (!desc) return false;
+        const d = String(desc).trim().toUpperCase();
+        if (d.includes('COMPLIMENTARY') || d.includes('COMPLEMENTARY')) return true;
+        if (d.includes('HEIGHTDOC') || d.includes('HEIGHT DOC') || /\[494\]|\b494\b/.test(d)) return true;
+        if (d.includes('THUNDERBLAST') || d.includes('THUNDER BLAST') || /\[41\]|\b41\b/.test(d)) return true;
+        return false;
+    }
+
     async function loadHistory() {
         try {
             const res = await fetch('/api/invoice/list');
@@ -1168,7 +1185,17 @@
 
         invoiceData = filtered;
         filtered.forEach((inv, index) => {
+            const hasComp = inv.has_complimentary || (inv.invoice_no && inv.invoice_no.endsWith('*')) || (inv.items || []).some(it => isComplimentaryProduct(it.description || it.name));
+            let displayInvNo = inv.invoice_no || '-';
+            if (hasComp && !displayInvNo.endsWith('*')) {
+                displayInvNo += '*';
+            }
+
             const tr = document.createElement('tr');
+            if (hasComp) {
+                tr.className = 'has-complimentary-row';
+            }
+
             let dateStr = inv.date_created || '';
             try {
                 if (dateStr.includes('-')) {
@@ -1190,7 +1217,7 @@
                 : `<span style="opacity:0.7;">+ Add</span>`;
 
             tr.innerHTML = `
-                <td class="inv-no">${inv.invoice_no || '-'}</td>
+                <td class="inv-no" style="${hasComp ? 'color:#10b981; font-weight:700;' : ''}">${displayInvNo}${hasComp ? ' <span title="Contains Complimentary Product" style="color:#f59e0b; font-size:1.1rem; vertical-align:middle;">⭐</span>' : ''}</td>
                 <td style="color:#cbd5e1;">${dateStr}</td>
                 <td><span style="background:rgba(255,255,255,0.06); padding:0.2rem 0.5rem; border-radius:6px; font-family:monospace; font-size:0.85rem;">${inv.ds_code || '-'}</span></td>
                 <td style="font-weight:500;">${inv.customer_name || '-'}</td>
@@ -1220,7 +1247,13 @@
 
     function viewOrder(index) {
         const inv = invoiceData[index];
-        document.getElementById('modalTitle').textContent = `Order Details: ${inv.invoice_no}`;
+        const hasComp = inv.has_complimentary || (inv.invoice_no && inv.invoice_no.endsWith('*')) || (inv.items || []).some(it => isComplimentaryProduct(it.description || it.name));
+        let displayInvNo = inv.invoice_no || '-';
+        if (hasComp && !displayInvNo.endsWith('*')) {
+            displayInvNo += '*';
+        }
+
+        document.getElementById('modalTitle').innerHTML = `Order Details: <span style="font-family:monospace; color:${hasComp ? '#10b981' : '#818cf8'}; font-weight:700;">${displayInvNo}</span> ${hasComp ? '<span title="Contains Complimentary Product" style="color:#f59e0b; font-size:1.25rem; vertical-align:middle; margin-left:4px;">⭐</span> <span style="background:rgba(16,185,129,0.18); color:#10b981; border:1px solid rgba(16,185,129,0.35); font-size:0.75rem; padding:3px 8px; border-radius:6px; margin-left:6px; font-weight:600; vertical-align:middle;">Complimentary Included</span>' : ''}`;
         document.getElementById('modalTotal').textContent = '₹' + parseFloat(inv.amount || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2});
         document.getElementById('modalTotalSP').textContent = parseFloat(inv.grand_total_sp || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2}) + ' SP';
         
@@ -1228,14 +1261,20 @@
         tbody.innerHTML = '';
         
         (inv.items || []).forEach(item => {
+            const desc = item.description || item.name || '';
+            const isComp = isComplimentaryProduct(desc);
+            const rowStyle = isComp ? 'background: rgba(16, 185, 129, 0.14) !important; border-left: 4px solid #10b981 !important;' : '';
+            const textStyle = isComp ? 'color: #10b981 !important; font-weight: 600 !important;' : '';
+            const badge = isComp ? '<span style="background:rgba(16,185,129,0.2); color:#10b981; border:1px solid rgba(16,185,129,0.4); font-size:0.72rem; padding:2px 7px; border-radius:4px; margin-left:8px; font-weight:700; white-space:nowrap; vertical-align:middle;">🎁 Complimentary</span>' : '';
+
             tbody.innerHTML += `
-                <tr>
-                    <td style="font-weight:500;">${item.description || item.name}</td>
-                    <td>${item.qty}</td>
-                    <td class="amt">₹${parseFloat(item.price || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
-                    <td class="amt badge-sp">${parseFloat(item.unit_sp || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
-                    <td class="amt">₹${parseFloat(item.total || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
-                    <td class="amt badge-sp" style="font-weight:bold;">${parseFloat(item.total_sp || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
+                <tr style="${rowStyle}">
+                    <td style="font-weight:500; ${textStyle}">${desc} ${badge}</td>
+                    <td style="${textStyle}">${item.qty}</td>
+                    <td class="amt" style="${textStyle}">₹${parseFloat(item.price || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
+                    <td class="amt badge-sp" style="${isComp ? 'color:#10b981 !important;' : ''}">${parseFloat(item.unit_sp || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
+                    <td class="amt" style="${textStyle}">₹${parseFloat(item.total || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
+                    <td class="amt badge-sp" style="font-weight:bold; ${isComp ? 'color:#10b981 !important;' : ''}">${parseFloat(item.total_sp || 0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
                 </tr>
             `;
         });

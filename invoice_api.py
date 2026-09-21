@@ -227,6 +227,19 @@ def init_db():
     conn.close()
 
 # Initialize the database table if it doesn't exist
+def is_complimentary_item(desc):
+    if not desc:
+        return False
+    d = str(desc).strip().upper()
+    if 'COMPLIMENTARY' in d or 'COMPLEMENTARY' in d:
+        return True
+    import re
+    if 'HEIGHTDOC' in d or 'HEIGHT DOC' in d or re.search(r'\[494\]|\b494\b', d):
+        return True
+    if 'THUNDERBLAST' in d or 'THUNDER BLAST' in d or re.search(r'\[41\]|\b41\b', d):
+        return True
+    return False
+
 init_db()
 
 @invoice_api.route('/api/invoice/create', methods=['POST'])
@@ -235,9 +248,14 @@ def create_invoice():
     if not data:
         return jsonify({'error': 'No data provided'}), 400
     
-    invoice_no = data.get('invoiceNo', '')
+    invoice_no = data.get('invoiceNo', '').strip()
     ds_code = data.get('dsCode', '')
     customer_name = data.get('billedTo', '')
+    
+    items = data.get('items', [])
+    if any(is_complimentary_item(it.get('description') or it.get('name') or '') for it in items):
+        if not invoice_no.endswith('*'):
+            invoice_no = f"{invoice_no}*"
     
     # Parse grandTotal which might have currency symbols, e.g. "₹1,468.23"
     amount_str = str(data.get('grandTotal', '0')).replace('₹', '').replace(',', '').strip()
@@ -441,9 +459,14 @@ def list_invoices():
                         calc_sp += qty * unit_sp
                 db_sp = calc_sp
                 
+            has_comp = is_complimentary_item(r['invoice_no']) or any(is_complimentary_item(it.get('description') or it.get('name') or '') for it in items_json)
+            inv_no = str(r['invoice_no'] or '').strip()
+            if has_comp and not inv_no.endswith('*'):
+                inv_no = f"{inv_no}*"
+
             invoices.append({
                 'id': r['id'],
-                'invoice_no': r['invoice_no'],
+                'invoice_no': inv_no,
                 'ds_code': r['ds_code'],
                 'customer_name': r['customer_name'],
                 'amount': r['amount'],
@@ -451,6 +474,7 @@ def list_invoices():
                 'status': status_val,
                 'items': items_json,
                 'grand_total_sp': db_sp,
+                'has_complimentary': has_comp,
                 'is_dispatched': r['is_dispatched'] if 'is_dispatched' in keys else 0,
                 'remark': r['remark'] if 'remark' in keys else ''
             })
@@ -505,7 +529,7 @@ def get_next_invoice_no():
         conn.close()
         
         if row and row['invoice_no']:
-            last_no = row['invoice_no']
+            last_no = str(row['invoice_no']).rstrip('*').strip()
             import re
             
             # Match formats like DSR/000067/26-27
@@ -513,7 +537,7 @@ def get_next_invoice_no():
             if match_dsr:
                 prefix = match_dsr.group(1)
                 num_str = match_dsr.group(2)
-                suffix = match_dsr.group(3)
+                suffix = match_dsr.group(3).rstrip('*')
                 next_num = int(num_str) + 1
                 next_no = f"{prefix}{str(next_num).zfill(len(num_str))}{suffix}"
                 return jsonify({'next_no': next_no})
@@ -523,7 +547,7 @@ def get_next_invoice_no():
             if match:
                 num_str = match.group(1)
                 next_num = int(num_str) + 1
-                next_no = last_no[:match.start()] + str(next_num).zfill(len(num_str))
+                next_no = (last_no[:match.start()] + str(next_num).zfill(len(num_str))).rstrip('*')
                 return jsonify({'next_no': next_no})
                 
         import datetime

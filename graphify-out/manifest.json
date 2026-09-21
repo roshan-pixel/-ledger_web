@@ -685,8 +685,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\Downloads\\ledger_web\\invoice_api.py": {
-    "mtime": 1789983939.6439462,
-    "ast_hash": "8cb9bfe07ebb03dd4d019f61991eb2b9",
+    "mtime": 1790009020.716983,
+    "ast_hash": "fa89ae79c72c02ce4c5000e6110634c8",
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\Downloads\\ledger_web\\list_approve_inputs.py": {
@@ -1345,13 +1345,13 @@
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\Downloads\\ledger_web\\templates\\invoice.html": {
-    "mtime": 1789140731.965558,
-    "ast_hash": "9db242217d7c01449cc8e0f8ff865a2c",
+    "mtime": 1790009117.9767911,
+    "ast_hash": "55b34f0397f151834b8919d92589b6f4",
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\Downloads\\ledger_web\\templates\\invoice_history.html": {
-    "mtime": 1789121470.7866676,
-    "ast_hash": "d1e87648ce0034f46c567226e02a6e8d",
+    "mtime": 1790009164.6457,
+    "ast_hash": "9c090e1546b42c121ece7e705a93ca5e",
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\Downloads\\ledger_web\\templates\\ledger_report.html": {
@@ -1512,6 +1512,31 @@
   "C:\\Users\\sgarm\\Downloads\\ledger_web\\scratch\\poll_deploy.py": {
     "mtime": 1789984228.2359118,
     "ast_hash": "8dfa2f60bd8dbb6b0f6d26298e8da7e0",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\scratch\\analyze_kidgdoc.py": {
+    "mtime": 1790008437.254879,
+    "ast_hash": "6eb99709d2077e61edaf6077856a74f0",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\scratch\\analyze_kidgdoc2.py": {
+    "mtime": 1790008591.831123,
+    "ast_hash": "275a69614bd08dc9926d837b73db0c7f",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\scratch\\check_all_dbs.py": {
+    "mtime": 1790008647.0962157,
+    "ast_hash": "6158bf810116470fe38031da51727741",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\scratch\\inspect_headers.py": {
+    "mtime": 1790008701.1576881,
+    "ast_hash": "262d211d8371b6e0325dfef62bffeb32",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\scratch\\simulate_unticked.py": {
+    "mtime": 1790008785.2772253,
+    "ast_hash": "5db97e3611921d69c078ac1548267938",
     "semantic_hash": ""
   }
 }

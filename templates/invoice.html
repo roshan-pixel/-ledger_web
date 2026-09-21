@@ -173,7 +173,38 @@
             background:rgba(239,68,68,.1); color:var(--red); border:1px solid rgba(239,68,68,.3);
             padding:.4rem .8rem; border-radius:8px; font-family:'Outfit',sans-serif;
             font-size:.8rem; font-weight:600; cursor:pointer; transition:all .2s;
-        }.btn-cancel:hover { background:var(--red); color:#fff; }.btn-cancel:disabled { opacity:.4; cursor:not-allowed; background:rgba(239,68,68,.1); color:var(--red); }/* ── PRINT ───────────────────────── */
+        }.btn-cancel:hover { background:var(--red); color:#fff; }.btn-cancel:disabled { opacity:.4; cursor:not-allowed; background:rgba(239,68,68,.1); color:var(--red); }
+        /* ── COMPLIMENTARY STYLES ───────── */
+        tbody tr.complimentary-row {
+            background: rgba(16, 185, 129, 0.12) !important;
+            border-left: 4px solid #10b981 !important;
+        }
+        tbody tr.complimentary-row:hover {
+            background: rgba(16, 185, 129, 0.18) !important;
+        }
+        tbody tr.complimentary-row .item-desc,
+        tbody tr.complimentary-row .item-input {
+            color: #10b981 !important;
+            font-weight: 600 !important;
+        }
+        tbody tr.complimentary-row .item-total {
+            color: #34d399 !important;
+            font-weight: 700 !important;
+        }
+        .comp-badge {
+            position: absolute;
+            right: 28px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #10b981;
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            padding: 2px 7px;
+            border-radius: 4px;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        /* ── PRINT ───────────────────────── */
         @media print {
             body { background:#fff; color:#000; animation:none; }
             .sidebar,.actions,.add-row-btn,.remove-btn,.no-print,.lookup-btn,.ds-lookup-row button { display:none!important; }
@@ -184,6 +215,23 @@
             .cust-box { background:transparent; border:1px solid #ccc; }
             .cust-label,.cust-val { color:#000; }
             tbody tr { background:transparent; }
+            tbody tr.complimentary-row {
+                background-color: #ecfdf5 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                border-left: 4px solid #10b981 !important;
+            }
+            tbody tr.complimentary-row td, tbody tr.complimentary-row input {
+                color: #047857 !important;
+                font-weight: 700 !important;
+            }
+            .comp-badge {
+                color: #047857 !important;
+                border-color: #047857 !important;
+                background: #d1fae5 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
             .tax-badge { color:#059669; border-color:#059669; }
             .totals { border-top:1px solid #ccc; }
             .total-row { color:#333; }
@@ -466,8 +514,8 @@
         </div>
         <div class="inv-meta">
             <div class="field">
-                <label>Invoice No.</label>
-                <input type="text" class="glass-input" id="invoiceNo" value="INV-2026-001" style="width:190px;">
+                <label>Invoice No. <span id="complimentaryStarBadge" style="display:none; color:#10b981; font-weight:700; font-size:0.82rem; margin-left:6px;">⭐ (Complimentary)</span></label>
+                <input type="text" class="glass-input" id="invoiceNo" value="INV-2026-001" style="width:200px;">
             </div>
             <div class="field">
                 <label>Date</label>
@@ -628,9 +676,10 @@
                 const stock = parseFloat(String(rawStock).replace(/,/g, '') || 0);
                 const isOos = stock <= 0;
                 const isLow = stock > 0 && stock <= 3;
+                const isComp = isComplimentaryProduct(name);
 
                 const div = document.createElement('div');
-                div.className = 'ac-item' + (isOos ? ' oos' : '');
+                div.className = 'ac-item' + (isOos ? ' oos' : '') + (isComp ? ' is-comp' : '');
 
                 const nameSpan = document.createElement('span');
                 nameSpan.textContent = name;
@@ -641,6 +690,11 @@
                     const badge = document.createElement('span');
                     badge.className = 'stock-badge-oos';
                     badge.textContent = 'OUT OF STOCK';
+                    div.appendChild(badge);
+                } else if (isComp) {
+                    const badge = document.createElement('span');
+                    badge.style.cssText = 'font-size:0.68rem; font-weight:700; color:#10b981; background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.35); padding:2px 7px; border-radius:4px; white-space:nowrap;';
+                    badge.textContent = '🎁 COMPLIMENTARY';
                     div.appendChild(badge);
                 } else if (isLow) {
                     const badge = document.createElement('span');
@@ -712,6 +766,65 @@
         }
     }, true);
 
+    // ── Complimentary Check Logic ────────────────
+    function isComplimentaryProduct(desc) {
+        if (!desc) return false;
+        const d = String(desc).trim().toUpperCase();
+        if (d.includes('COMPLIMENTARY') || d.includes('COMPLEMENTARY')) return true;
+        if (d.includes('HEIGHTDOC') || d.includes('HEIGHT DOC') || /\[494\]|\b494\b/.test(d)) return true;
+        if (d.includes('THUNDERBLAST') || d.includes('THUNDER BLAST') || /\[41\]|\b41\b/.test(d)) return true;
+        return false;
+    }
+
+    function checkComplimentaryState() {
+        let hasComplimentary = false;
+        const rows = document.querySelectorAll('#itemsBody tr');
+        rows.forEach(row => {
+            const descInput = row.querySelector('.item-desc');
+            const desc = descInput ? descInput.value : '';
+            if (isComplimentaryProduct(desc)) {
+                hasComplimentary = true;
+                row.classList.add('complimentary-row');
+                let badge = row.querySelector('.comp-badge');
+                if (!badge) {
+                    badge = document.createElement('span');
+                    badge.className = 'comp-badge';
+                    badge.textContent = '🎁 Complimentary';
+                    const wrapper = row.querySelector('.autocomplete-wrapper');
+                    if (wrapper) wrapper.appendChild(badge);
+                }
+            } else {
+                row.classList.remove('complimentary-row');
+                const badge = row.querySelector('.comp-badge');
+                if (badge) badge.remove();
+            }
+        });
+
+        const invInput = document.getElementById('invoiceNo');
+        const starBadge = document.getElementById('complimentaryStarBadge');
+        if (invInput) {
+            let currentNo = invInput.value.trim();
+            if (hasComplimentary) {
+                if (!currentNo.endsWith('*')) {
+                    invInput.value = currentNo + '*';
+                }
+                invInput.style.borderColor = '#10b981';
+                invInput.style.color = '#10b981';
+                invInput.style.fontWeight = '700';
+            } else {
+                if (currentNo.endsWith('*')) {
+                    invInput.value = currentNo.replace(/\*+$/, '');
+                }
+                invInput.style.borderColor = '';
+                invInput.style.color = '';
+                invInput.style.fontWeight = '';
+            }
+        }
+        if (starBadge) {
+            starBadge.style.display = hasComplimentary ? 'inline' : 'none';
+        }
+    }
+
     // ── Fetch next invoice number ────────────────
     async function fetchNextInvoiceNo() {
         try {
@@ -719,6 +832,7 @@
             const data = await res.json();
             if (data.next_no) {
                 document.getElementById('invoiceNo').value = data.next_no;
+                checkComplimentaryState();
             }
         } catch(e) {
             console.error('Failed to fetch next invoice number', e);
@@ -823,6 +937,7 @@
             row.querySelector('.item-sp').dataset.unitSp = sp;
             calculateRow(row);
         }
+        checkComplimentaryState();
     }
 
     // ── Row math ───────────────────────────────────────
@@ -856,6 +971,7 @@
         document.getElementById('subtotalAmt').textContent = '₹' + fmt(sub);
         document.getElementById('grandTotal').textContent  = '₹' + fmt(sub);
         document.getElementById('grandTotalSP').textContent  = fmt(totalSp);
+        checkComplimentaryState();
     }
 
     function fmt(n) {
@@ -868,7 +984,7 @@
         tr.innerHTML = `
             <td>
                 <div class="autocomplete-wrapper">
-                    <input type="text" class="item-input item-desc" placeholder="Search product..." autocomplete="off" onfocus="showAutocomplete(this)" oninput="filterAutocomplete(this)" onchange="handleProductSelect(this)">
+                    <input type="text" class="item-input item-desc" placeholder="Search product..." autocomplete="off" onfocus="showAutocomplete(this)" oninput="filterAutocomplete(this); checkComplimentaryState();" onchange="handleProductSelect(this); checkComplimentaryState();">
                     <div class="autocomplete-arrow" onclick="toggleAutocomplete(this)">▼</div>
                 </div>
             </td>
@@ -905,6 +1021,7 @@
             row.querySelector('.item-total').value = '0.00';
             recalcTotals();
         }
+        checkComplimentaryState();
     }
 
     addRow(); // initial row
@@ -921,8 +1038,12 @@
         tbody.innerHTML = '';
         addRow();
         recalcTotals();
+        checkComplimentaryState();
         showToast('Invoice cleared', 'success');
     }
+
+    document.getElementById('invoiceNo').addEventListener('input', checkComplimentaryState);
+    document.getElementById('invoiceNo').addEventListener('blur', checkComplimentaryState);
 
     // ── Save ───────────────────────────────────────────
     let isSaving = false;
