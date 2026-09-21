@@ -1,6 +1,6 @@
 [
   {
-    "sr": "1",
+    "sr": 1,
     "bill_no": "GUW/000091/26-27",
     "party": "ASCLEPIUS WELLNESS PVT LTD (GUWAHATI WAREHOUSE)",
     "date": "03/06/2026",
@@ -2115,7 +2115,7 @@
     ]
   },
   {
-    "sr": "2",
+    "sr": 2,
     "bill_no": "GUW/000095/26-27",
     "party": "ASCLEPIUS WELLNESS PVT LTD (GUWAHATI WAREHOUSE)",
     "date": "05/06/2026",
@@ -2330,7 +2330,7 @@
     ]
   },
   {
-    "sr": "3",
+    "sr": 3,
     "bill_no": "GUW/000105/26-27",
     "party": "ASCLEPIUS WELLNESS PVT LTD (GUWAHATI WAREHOUSE)",
     "date": "10/06/2026",
@@ -2555,7 +2555,7 @@
     ]
   },
   {
-    "sr": "4",
+    "sr": 4,
     "bill_no": "GUW/000112/26-27",
     "party": "ASCLEPIUS WELLNESS PVT LTD (GUWAHATI WAREHOUSE)",
     "date": "16/06/2026",
@@ -2870,7 +2870,7 @@
     ]
   },
   {
-    "sr": "5",
+    "sr": 5,
     "bill_no": "GUW/000132/26-27",
     "party": "ASCLEPIUS WELLNESS PVT LTD (GUWAHATI WAREHOUSE)",
     "date": "24/06/2026",
@@ -3055,7 +3055,7 @@
     ]
   },
   {
-    "sr": "6",
+    "sr": 6,
     "bill_no": "GUW/000145/26-27",
     "party": "ASCLEPIUS WELLNESS PVT LTD (GUWAHATI WAREHOUSE)",
     "date": "30/06/2026",
@@ -3410,7 +3410,7 @@
     ]
   },
   {
-    "sr": "7",
+    "sr": 7,
     "bill_no": "GUW/000168/26-27",
     "party": "ASCLEPIUS WELLNESS PVT LTD (GUWAHATI WAREHOUSE)",
     "date": "14/07/2026",
@@ -3695,7 +3695,7 @@
     ]
   },
   {
-    "sr": "8",
+    "sr": 8,
     "bill_no": "GUW/000189/26-27",
     "party": "ASCLEPIUS WELLNESS PVT LTD (GUWAHATI WAREHOUSE)",
     "date": "28/07/2026",
@@ -3960,7 +3960,7 @@
     ]
   },
   {
-    "sr": "9",
+    "sr": 9,
     "bill_no": "GUW/000198/26-27",
     "party": "ASCLEPIUS WELLNESS PVT LTD (GUWAHATI WAREHOUSE)",
     "date": "31/07/2026",
@@ -4955,389 +4955,14 @@
     ]
   },
   {
-    "sr": 12,
-    "bill_no": "GUW/000268/26-27",
-    "party": "ASCLEPIUS WELLNESS PVT LTD (GUWAHATI WAREHOUSE)",
-    "date": "19/09/2026",
-    "cgst": "0.00",
-    "sgst": "0.00",
-    "igst": "27078.35",
-    "total": "252022.53",
-    "lr_no": "118310",
-    "delivery_date": "19/09/2026",
-    "courier": "INDIA COURIER SERVICE",
-    "products": [
-      [
-        "1",
-        "516",
-        "SLIMDOC POWDER-REAL MANGO FLAVOR",
-        "1609.32",
-        "12",
-        "19311.84",
-        "0.00",
-        "20277.43"
-      ],
-      [
-        "2",
-        "292",
-        "24K GOLD FACE SERUM",
-        "465.25",
-        "24",
-        "11166.00",
-        "0.00",
-        "13175.88"
-      ],
-      [
-        "3",
-        "388",
-        "SHAVING CREAM FOR MEN",
-        "83.90",
-        "24",
-        "2013.60",
-        "0.00",
-        "2114.28"
-      ],
-      [
-        "4",
-        "484",
-        "TURMERIC POWDER -200 GM",
-        "100.95",
-        "54",
-        "5451.30",
-        "0.00",
-        "5723.87"
-      ],
-      [
-        "5",
-        "239",
-        "TOSHINE DETERGENT POWDER",
-        "119.49",
-        "54",
-        "6452.46",
-        "0.00",
-        "7613.90"
-      ],
-      [
-        "6",
-        "264",
-        "ROOM FRESHNER(MUSK)",
-        "196.61",
-        "12",
-        "2359.32",
-        "0.00",
-        "2784.00"
-      ],
-      [
-        "7",
-        "373",
-        "ALOEVERA ORANGE SHOWER GEL",
-        "194.07",
-        "12",
-        "2328.84",
-        "0.00",
-        "2748.03"
-      ],
-      [
-        "8",
-        "236",
-        "BATHVEDA BEAUTY CREAM BAR",
-        "157.04",
-        "24",
-        "3768.96",
-        "0.00",
-        "3957.41"
-      ],
-      [
-        "9",
-        "371",
-        "LITTLE PIE BABY SHAMPOO",
-        "105.93",
-        "24",
-        "2542.32",
-        "0.00",
-        "2669.44"
-      ],
-      [
-        "10",
-        "375",
-        "LITTLE PIE BABY LOTION",
-        "148.31",
-        "12",
-        "1779.72",
-        "0.00",
-        "2100.07"
-      ],
-      [
-        "11",
-        "359",
-        "HAIR SHINE OINT- CONDITIONER",
-        "219.49",
-        "12",
-        "2633.88",
-        "0.00",
-        "3107.98"
-      ],
-      [
-        "12",
-        "50",
-        "DENTODOC CREAM",
-        "195.85",
-        "24",
-        "4700.40",
-        "0.00",
-        "4935.42"
-      ],
-      [
-        "13",
-        "350",
-        "NIGHT CREAM WOMENS",
-        "227.97",
-        "24",
-        "5471.28",
-        "0.00",
-        "6456.11"
-      ],
-      [
-        "14",
-        "283",
-        "ALOEVERA TURMERIC GEL",
-        "224.58",
-        "8",
-        "1796.64",
-        "0.00",
-        "2120.04"
-      ],
-      [
-        "15",
-        "471",
-        "SILK SHEIN LUXE LIP GLOSS- BOSS BABE",
-        "236.44",
-        "8",
-        "1891.52",
-        "0.00",
-        "2231.99"
-      ],
-      [
-        "16",
-        "457",
-        "SKIN TINT LUMINOUS VEIL RADIANT SAND",
-        "846.61",
-        "8",
-        "6772.88",
-        "0.00",
-        "7992.00"
-      ],
-      [
-        "17",
-        "458",
-        "SKIN TINT LUMINOUS VEIL- SOFT MAPLE",
-        "846.61",
-        "8",
-        "6772.88",
-        "0.00",
-        "7992.00"
-      ],
-      [
-        "18",
-        "417",
-        "POWDER BLUSH- COY",
-        "550.00",
-        "8",
-        "4400.00",
-        "0.00",
-        "5192.00"
-      ],
-      [
-        "19",
-        "444",
-        "LUXE MATTE LIQUID LIPSTICK- CORAL KISS",
-        "312.71",
-        "8",
-        "2501.68",
-        "0.00",
-        "2951.98"
-      ],
-      [
-        "20",
-        "443",
-        "LUXE MATTE LIQUID LIPSTICK- DEEP HUE",
-        "312.71",
-        "8",
-        "2501.68",
-        "0.00",
-        "2951.98"
-      ],
-      [
-        "21",
-        "25",
-        "KIDGDOC RAS",
-        "652.42",
-        "24",
-        "15658.08",
-        "0.00",
-        "16440.98"
-      ],
-      [
-        "22",
-        "261",
-        "ASTHMDOC SYRUP",
-        "1367.68",
-        "6",
-        "8206.08",
-        "0.00",
-        "8616.38"
-      ],
-      [
-        "23",
-        "512",
-        "HAIRDOC OIL",
-        "194.05",
-        "12",
-        "2328.60",
-        "0.00",
-        "2445.03"
-      ],
-      [
-        "24",
-        "411",
-        "LUMITOUCH COMPACT POWDER- IVORY TOUCH",
-        "592.37",
-        "8",
-        "4738.96",
-        "0.00",
-        "5591.97"
-      ],
-      [
-        "25",
-        "49",
-        "EXE ALOEVERA SYRUP",
-        "779.95",
-        "6",
-        "4679.70",
-        "0.00",
-        "4913.69"
-      ],
-      [
-        "26",
-        "218",
-        "EXE JC OINT",
-        "348.21",
-        "12",
-        "4178.52",
-        "0.00",
-        "4387.45"
-      ],
-      [
-        "27",
-        "376",
-        "ULTRA SMOOTHING SERUM",
-        "168.64",
-        "6",
-        "1011.84",
-        "0.00",
-        "1193.97"
-      ],
-      [
-        "28",
-        "291",
-        "NIACINAMIDE FACE SERUM",
-        "422.88",
-        "8",
-        "3383.04",
-        "0.00",
-        "3991.99"
-      ],
-      [
-        "29",
-        "234",
-        "LIMFRESH LIQUID DISH WASH",
-        "80.51",
-        "588",
-        "47339.88",
-        "0.00",
-        "55861.06"
-      ],
-      [
-        "30",
-        "369",
-        "DAMAGE REPAIR SHAMPOO",
-        "100.85",
-        "12",
-        "1210.20",
-        "0.00",
-        "1270.71"
-      ],
-      [
-        "31",
-        "453",
-        "LUXE MATTE LIQUID LIPSTICK- MAUVE ATTACK",
-        "312.71",
-        "8",
-        "2501.68",
-        "0.00",
-        "2951.98"
-      ],
-      [
-        "32",
-        "450",
-        "LUXE MATTE LIQUID LIPSTICK- FIERY",
-        "312.71",
-        "8",
-        "2501.68",
-        "0.00",
-        "2951.98"
-      ],
-      [
-        "33",
-        "238",
-        "TOSHINE LIQUID WASH",
-        "163.56",
-        "9",
-        "1472.04",
-        "0.00",
-        "1737.01"
-      ],
-      [
-        "34",
-        "219",
-        "EXE VEINDOC OIL",
-        "210.71",
-        "12",
-        "2528.52",
-        "0.00",
-        "2654.95"
-      ],
-      [
-        "35",
-        "501",
-        "VITAMIN B12 TABLET",
-        "453.39",
-        "18",
-        "8161.02",
-        "0.00",
-        "8569.07"
-      ],
-      [
-        "36",
-        "504",
-        "WOMEN WELLNESS TABLET",
-        "1023.73",
-        "18",
-        "18427.14",
-        "0.00",
-        "19348.50"
-      ]
-    ]
-  },
-  {
     "sr": "",
     "bill_no": "",
     "party": "Total",
     "date": "",
     "cgst": "",
     "sgst": "",
-    "igst": "358195.54",
-    "total": 4084252.4,
+    "igst": "331117.19",
+    "total": 3832229.87,
     "lr_no": "",
     "delivery_date": "",
     "courier": "",

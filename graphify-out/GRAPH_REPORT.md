@@ -1,16 +1,16 @@
 # Graph Report - ledger_web  (2026-09-21)
 
 ## Corpus Check
-- 288 files · ~129,458 words
+- 289 files · ~129,553 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 768 nodes · 584 edges · 296 communities (276 shown, 20 thin omitted)
+- 769 nodes · 584 edges · 297 communities (277 shown, 20 thin omitted)
 - Extraction: 95% EXTRACTED · 5% INFERRED · 0% AMBIGUOUS · INFERRED: 32 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `758c3849`
+- Built from commit: `119ec675`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -100,7 +100,7 @@
 - `get_next_invoice_no()` --calls--> `get_db()`  [INFERRED]
   invoice_api.py → app.py
 
-## Communities (296 total, 20 thin omitted)
+## Communities (297 total, 20 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.10
