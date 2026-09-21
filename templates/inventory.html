@@ -1268,6 +1268,8 @@
             if (stock <= 0) { itemStatus = 'out-of-stock'; itemStatusText = 'Out of Stock'; }
             else if (stock < 10) { itemStatus = 'low-stock'; itemStatusText = 'Low Stock'; }
 
+            const remarks = (item['Remarks'] || '').trim();
+
             return `
                 <div class="card" style="animation-delay: ${(index % 10) * 0.04}s">
                     <span class="status ${itemStatus}">${itemStatusText}</span>
@@ -1282,6 +1284,11 @@
                         <div><span class="detail-label">SP/Pc</span><span class="price">${spPc}</span></div>
                         <div><span class="detail-label">Total SP</span><span class="stock">${totalSp.toFixed(1)}</span></div>
                     </div>
+                    ${remarks ? `
+                    <div style="margin-top:0.6rem; padding:0.3rem 0.6rem; background:rgba(16,185,129,0.12); border:1px solid rgba(16,185,129,0.35); border-radius:6px; font-size:0.75rem; color:#10b981; font-weight:600; display:flex; align-items:center; gap:5px;">
+                        <span>🎁</span>
+                        <span>${remarks}</span>
+                    </div>` : ''}
                 </div>
             `;
         }

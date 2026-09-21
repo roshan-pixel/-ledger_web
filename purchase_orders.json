@@ -4955,14 +4955,49 @@
     ]
   },
   {
+    "sr": 12,
+    "bill_no": "COMPLIMENTARY",
+    "party": "ASCLEPIUS WELLNESS (COMPLIMENTARY FREE STOCK)",
+    "date": "21/09/2026",
+    "cgst": "0.00",
+    "sgst": "0.00",
+    "igst": "3186.26",
+    "total": 66911.49,
+    "lr_no": "COMPLIMENTARY",
+    "delivery_date": "21/09/2026",
+    "courier": "FREE STOCK",
+    "products": [
+      [
+        "1",
+        "494",
+        "HEIGHTDOC POWDER (COMPLIMENTARY)",
+        "2965.25",
+        "19",
+        "56339.75",
+        "0.00",
+        "59156.74"
+      ],
+      [
+        "2",
+        "41",
+        "THUNDERBLAST RAS (COMPLIMENTARY)",
+        "1846.37",
+        "4",
+        "7385.48",
+        "0.00",
+        "7754.75"
+      ]
+    ]
+  },
+  {
     "sr": "",
     "bill_no": "",
     "party": "Total",
     "date": "",
     "cgst": "",
     "sgst": "",
-    "igst": "331117.19",
-    "total": 3832229.87,
+    "igst": "334303.45",
+    "total": 3899141.36,
     "lr_no": "",
     "delivery_date": "",
     "courier": "",
