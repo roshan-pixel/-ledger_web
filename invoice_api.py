@@ -724,6 +724,12 @@ def resubmit_invoice_to_portal(invoice_id):
         if inv_status == 'cancelled':
             return jsonify({'success': False, 'error': 'Cannot resubmit a cancelled invoice.'}), 400
 
+        if row['is_dispatched'] == 1:
+            return jsonify({'success': False, 'error': f'Invoice {row["invoice_no"] or invoice_id} is already dispatched. Only non-ticked invoices can be resubmitted.'}), 400
+
+        if invoice_id <= 303:
+            return jsonify({'success': False, 'error': 'Historical invoices prior to recent ledger batch cannot be resubmitted.'}), 400
+
         inv_no = row['invoice_no'] or f'INV-{invoice_id}'
         ds_code = row['ds_code']
         raw_items = row['items'] or '[]'

@@ -1299,7 +1299,7 @@
                 </td>
                 <td style="text-align:center;">
                     <div style="display:inline-flex; gap:0.4rem; justify-content:center; align-items:center;">
-                        ${(!inv.portal_saved || inv.portal_saved == 0) && inv.status !== 'cancelled' ? `
+                        ${!isDispatched && Number(inv.id) > 303 && inv.status !== 'cancelled' && (!inv.portal_saved || inv.portal_saved == 0) ? `
                             <button class="btn-action-table btn-resubmit-portal" id="resubmit-btn-${inv.id}" onclick="event.stopPropagation(); resubmitToPortal(${inv.id}, '${inv.invoice_no || ''}', this)" title="Push / Resubmit ${inv.invoice_no || ''} to AWPL Portal">
                                 🔄
                             </button>
