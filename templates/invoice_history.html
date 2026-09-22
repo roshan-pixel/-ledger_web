@@ -1247,9 +1247,12 @@
 
         invoiceData = filtered;
         filtered.forEach((inv, index) => {
-            const hasComp = inv.has_complimentary || (inv.invoice_no && inv.invoice_no.endsWith('*')) || (inv.items || []).some(it => isComplimentaryProduct(it.description || it.name));
-            let displayInvNo = inv.invoice_no || '-';
-            if (hasComp && !displayInvNo.endsWith('*')) {
+            const isDispatched = (inv.is_dispatched == 1 || inv.is_dispatched === true);
+            const hasCompItems = inv.has_complimentary || (inv.invoice_no && inv.invoice_no.endsWith('*')) || (inv.items || []).some(it => isComplimentaryProduct(it.description || it.name));
+            // Star on invoice number and badge is strictly for unticked / future invoices, never ticked invoices
+            const hasComp = !isDispatched && hasCompItems;
+            let displayInvNo = (inv.invoice_no || '-').replace(/\*+$/, '');
+            if (hasComp) {
                 displayInvNo += '*';
             }
 
@@ -1265,8 +1268,6 @@
                     if (parts.length === 3) dateStr = `${parts[2]}/${parts[1]}/${parts[0]}`;
                 }
             } catch(e) {}
-
-            const isDispatched = (inv.is_dispatched == 1 || inv.is_dispatched === true);
             let safeRemark = (inv.remark || '').replace(/'/g, "\\'").replace(/"/g, '&quot;').replace(/\n/g, '\\n').replace(/\r/g, '\\r');
             let displayRemark = (inv.remark || '').trim();
 
@@ -1317,9 +1318,11 @@
 
     function viewOrder(index) {
         const inv = invoiceData[index];
-        const hasComp = inv.has_complimentary || (inv.invoice_no && inv.invoice_no.endsWith('*')) || (inv.items || []).some(it => isComplimentaryProduct(it.description || it.name));
-        let displayInvNo = inv.invoice_no || '-';
-        if (hasComp && !displayInvNo.endsWith('*')) {
+        const isDispatched = (inv.is_dispatched == 1 || inv.is_dispatched === true);
+        const hasCompItems = inv.has_complimentary || (inv.invoice_no && inv.invoice_no.endsWith('*')) || (inv.items || []).some(it => isComplimentaryProduct(it.description || it.name));
+        const hasComp = !isDispatched && hasCompItems;
+        let displayInvNo = (inv.invoice_no || '-').replace(/\*+$/, '');
+        if (hasComp) {
             displayInvNo += '*';
         }
 

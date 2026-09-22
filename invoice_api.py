@@ -467,10 +467,19 @@ def list_invoices():
                         calc_sp += qty * unit_sp
                 db_sp = calc_sp
                 
-            has_comp = is_complimentary_item(r['invoice_no']) or any(is_complimentary_item(it.get('description') or it.get('name') or '') for it in items_json)
-            inv_no = str(r['invoice_no'] or '').strip()
-            if has_comp and not inv_no.endswith('*'):
-                inv_no = f"{inv_no}*"
+            is_disp = (r['is_dispatched'] == 1) if 'is_dispatched' in keys else False
+            raw_inv_no = str(r['invoice_no'] or '').strip()
+            has_comp_items = is_complimentary_item(raw_inv_no) or any(is_complimentary_item(it.get('description') or it.get('name') or '') for it in items_json)
+            
+            # Star on invoice number and badge is strictly for unticked / future invoices, never ticked invoices
+            if is_disp:
+                has_comp = False
+                inv_no = raw_inv_no.rstrip('*').strip()
+            else:
+                has_comp = has_comp_items
+                inv_no = raw_inv_no
+                if has_comp and not inv_no.endswith('*'):
+                    inv_no = f"{inv_no}*"
 
             invoices.append({
                 'id': r['id'],
@@ -483,7 +492,7 @@ def list_invoices():
                 'items': items_json,
                 'grand_total_sp': db_sp,
                 'has_complimentary': has_comp,
-                'is_dispatched': r['is_dispatched'] if 'is_dispatched' in keys else 0,
+                'is_dispatched': 1 if is_disp else 0,
                 'portal_saved': r['portal_saved'] if 'portal_saved' in keys else 0,
                 'remark': r['remark'] if 'remark' in keys else ''
             })
@@ -507,6 +516,12 @@ def update_invoice_info(invoice_id):
                 return jsonify({'error': 'Incorrect password! Authorization required to change dispatched status.'}), 403
             val = 1 if data['is_dispatched'] else 0
             c.execute("UPDATE invoices SET is_dispatched = ? WHERE id = ?", (val, invoice_id))
+            if val == 1:
+                # When marking as dispatched (ticked), ensure invoice_no in DB does not end with star
+                c.execute("SELECT invoice_no FROM invoices WHERE id = ?", (invoice_id,))
+                cur_no = c.fetchone()
+                if cur_no and cur_no[0] and cur_no[0].endswith('*'):
+                    c.execute("UPDATE invoices SET invoice_no = ? WHERE id = ?", (cur_no[0].rstrip('*').strip(), invoice_id))
 
         if 'portal_saved' in data:
             val = 1 if data['portal_saved'] else 0
