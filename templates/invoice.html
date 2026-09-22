@@ -1093,10 +1093,11 @@
                 body:JSON.stringify(payload),
             });
             if (res.ok) {
-                showToast('Invoice saved! ✓', 'success');
+                showToast('Invoice created! Syncing to portal in background. If not saved, use 🔄 Resubmit in Recent Invoices.', 'success');
                 clearInvoice(); // Clear form
             } else {
-                showToast('Save failed', 'error');
+                const errData = await res.json().catch(() => ({}));
+                showToast(errData.error || 'Save failed', 'error');
             }
         } catch(e) { 
             showToast('Network error', 'error'); 

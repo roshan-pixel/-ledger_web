@@ -17,15 +17,19 @@ def _log(msg):
     except Exception:
         pass
 
-def submit_order_to_portal(ds_code, items, order_type='sao'):
+def submit_order_to_portal(ds_code, items, order_type='sao', invoice_id=None, invoice_no=None):
     """
-    Submits an order to the AWPL C&F portal (SpdistributorSale.aspx).
-    items is a list of dicts: [{'description': 'ITEM NAME', 'qty': 2}, ...]
-    order_type can be 'sao', 'sgo', or 'approve'
+    Submits an order to the AWPL C&F portal (SpdistributorSale.aspx) with high performance,
+    dynamic postback synchronization, proper shipping address staging, and DB sync.
     """
-    _log(f"[{ds_code}] Starting portal submission (type: {order_type}, items: {len(items)})...")
+    tag = f"[{invoice_no or ds_code}|{ds_code}]"
+    _log(f"{tag} Starting portal submission (type: {order_type}, items: {len(items)}, inv_id: {invoice_id})...")
+    
     username = os.environ.get('PORTAL_USER', 'AAZFD8117G')
     password = os.environ.get('PORTAL_PASSWORD', 'ABC@1234')
+
+    success = False
+    dialog_history = []
 
     try:
         with sync_playwright() as p:
@@ -43,106 +47,91 @@ def submit_order_to_portal(ds_code, items, order_type='sao'):
             ctx = browser.new_context()
             page = ctx.new_page()
 
-            # Auto-accept all alerts and confirmations (crucial for ASP.NET Save button)
             def handle_dialog(dialog):
-                _log(f"[{ds_code}] [PORTAL DIALOG] {dialog.message}")
+                _log(f"{tag} [PORTAL DIALOG] {dialog.message} ({dialog.type})")
+                dialog_history.append(dialog.message)
                 dialog.accept()
             page.on("dialog", handle_dialog)
 
-            # Block heavy media/images/fonts to make page loads 5x faster and save memory
+            # Block heavy media/images/fonts for 5x speedup and lower memory usage
             page.route('**/*.{png,jpg,jpeg,gif,webp,svg,woff,woff2,ttf,eot,mp4,mp3,ico}', lambda r: r.abort())
 
             # 1. Login
-            _log(f"[{ds_code}] Logging in to AWPL portal...")
-            page.goto('https://asclepiuswellness.com/login.aspx?webid=1', wait_until='domcontentloaded', timeout=25000)
+            _log(f"{tag} 1. Logging in to AWPL portal...")
+            t0 = time.time()
+            page.goto('https://asclepiuswellness.com/login.aspx?webid=1', wait_until='domcontentloaded', timeout=30000)
             page.fill('#ctl00_ContentPlaceHolder1_txtspUserid', username)
             page.fill('#ctl00_ContentPlaceHolder1_txtsppassword', password)
             page.click('#ctl00_ContentPlaceHolder1_btnfranlogin')
-            page.wait_for_load_state('domcontentloaded', timeout=25000)
+            try:
+                page.wait_for_url('**/shoppingpoint/**', timeout=25000)
+            except Exception:
+                page.wait_for_load_state('domcontentloaded', timeout=10000)
+            _log(f"{tag}    Logged in successfully in {time.time()-t0:.2f}s")
 
             # 2. Go to Sales Order page
-            _log(f"[{ds_code}] Navigating to Sales Order page...")
-            page.goto('https://asclepiuswellness.com/shoppingpoint/SpdistributorSale.aspx', wait_until='domcontentloaded', timeout=25000)
+            _log(f"{tag} 2. Navigating to SpdistributorSale.aspx...")
+            t1 = time.time()
+            page.goto('https://asclepiuswellness.com/shoppingpoint/SpdistributorSale.aspx', wait_until='domcontentloaded', timeout=30000)
+            _log(f"{tag}    Sale page loaded in {time.time()-t1:.2f}s")
 
-            # Enter DS ID and press Tab to trigger details loading
+            # 3. Enter DS Code & Wait for Name
+            _log(f"{tag} 3. Entering DS Code: {ds_code}...")
             page.fill('#ctl00_ContentPlaceHolder1_txtid', ds_code)
             page.keyboard.press('Tab')
 
-            # Wait for name to populate via AJAX
             try:
                 page.wait_for_function(
                     "() => { const el = document.querySelector('#ctl00_ContentPlaceHolder1_txtname'); return el && el.value.trim().length > 0; }",
                     timeout=7000
                 )
             except Exception:
-                pass
+                page.wait_for_timeout(2500)
 
             name = page.input_value('#ctl00_ContentPlaceHolder1_txtname').strip()
             if not name:
-                _log(f"[{ds_code}] ❌ DS Code not found on portal.")
+                _log(f"{tag} ❌ DS Code '{ds_code}' not found on portal.")
                 browser.close()
                 return False
 
-            _log(f"[{ds_code}] DS verified: {name}")
+            _log(f"{tag}    DS verified: {name}")
 
-            # 3. Select Order Type (SAO vs SGO) - force click via JS
-            if 'sao' in order_type:
-                try:
-                    page.evaluate("""
-                        () => {
-                            var rb = document.querySelector('#ctl00_ContentPlaceHolder1_rbsao');
-                            if (rb) { rb.checked = true; rb.click(); return true; }
-                            return false;
-                        }
-                    """)
-                    _log(f"[{ds_code}] Force-clicked SAO radio button")
-                except Exception as e:
-                    _log(f"[{ds_code}] Could not force-click SAO: {e}")
-            elif 'sgo' in order_type:
-                try:
-                    page.evaluate("""
-                        () => {
-                            var rb = document.querySelector('#ctl00_ContentPlaceHolder1_rbSgo');
-                            if (rb) { rb.checked = true; rb.click(); return true; }
-                            return false;
-                        }
-                    """)
-                    _log(f"[{ds_code}] Force-clicked SGO radio button")
-                except Exception as e:
-                    _log(f"[{ds_code}] Could not force-click SGO: {e}")
+            # Radio Button (SAO vs SGO)
+            if 'sgo' in str(order_type).lower():
+                page.evaluate("() => { var rb = document.querySelector('#ctl00_ContentPlaceHolder1_rbSgo'); if (rb) { rb.checked = true; rb.click(); } }")
+                _log(f"{tag}    Selected SGO radio")
+            else:
+                page.evaluate("() => { var rb = document.querySelector('#ctl00_ContentPlaceHolder1_rbsao'); if (rb) { rb.checked = true; rb.click(); } }")
+                _log(f"{tag}    Selected SAO radio")
+            page.wait_for_timeout(500)
 
             # Check "Same As Profile Address"
             page.check('#ctl00_ContentPlaceHolder1_chkaddr')
-            page.wait_for_timeout(800)
+            page.wait_for_timeout(600)
 
-            # Copy mobile to shipping mobile if empty
-            mobile = page.input_value('#ctl00_ContentPlaceHolder1_txtmobile').strip()
-            if mobile:
-                page.fill('#ctl00_ContentPlaceHolder1_ShipMobile', mobile)
+            # Read profile mobile and pincode to preserve them
+            profile_mobile = page.input_value('#ctl00_ContentPlaceHolder1_txtmobile').strip()
+            profile_addr = page.input_value('#ctl00_ContentPlaceHolder1_txtaddress').strip()
+            m_pin = re.search(r'\b[1-9]\d{5}\b', profile_addr)
+            profile_pin = m_pin.group(0) if m_pin else '796001'
 
-            # Ensure valid 6-digit shipping pincode (portal rejects blank or 000000)
-            pin = page.input_value('#ctl00_ContentPlaceHolder1_txtshpingpincode').strip()
-            if not pin or len(pin) != 6 or pin == '000000':
-                address = page.input_value('#ctl00_ContentPlaceHolder1_txtaddress').strip()
-                m = re.search(r'\b[1-9]\d{5}\b', address)
-                pin = m.group(0) if m else '796001'
-                page.fill('#ctl00_ContentPlaceHolder1_txtshpingpincode', pin)
-            _log(f"[{ds_code}] Shipping pincode: {pin}")
-
-            # 4. Get available items from dropdown
-            options = page.evaluate('''() => {
-                return Array.from(document.querySelectorAll('#ctl00_ContentPlaceHolder1_itemlist option')).map(o => ({val: o.value, text: o.text}));
-            }''')
-
+            # 4. Get available products from dropdown
+            options = page.evaluate("""() => Array.from(document.querySelectorAll('#ctl00_ContentPlaceHolder1_itemlist option')).map(o => ({val: o.value, text: o.text}))""")
             if options and "select" in options[0]['text'].lower():
                 options = options[1:]
+            _log(f"{tag}    Total products in portal dropdown: {len(options)}")
 
-            # 5. Add each item
+            # 5. Add each item with dynamic postback waiting
+            _log(f"{tag} 4. Staging {len(items)} items...")
             added_count = 0
-            for item in items:
-                desc = item.get('description', '').strip().upper()
-                qty = float(item.get('qty', 0))
+            t_items = time.time()
 
+            for idx, item in enumerate(items, 1):
+                desc = (item.get('description') or item.get('name') or '').strip().upper()
+                try:
+                    qty = int(float(str(item.get('qty') or item.get('quantity') or 0)))
+                except Exception:
+                    qty = 1
                 if not desc or qty <= 0:
                     continue
 
@@ -150,7 +139,7 @@ def submit_order_to_portal(ds_code, items, order_type='sao'):
                 target_code = match_id.group(1) if match_id else None
                 best_match = None
 
-                # Priority 1: Match product code in brackets
+                # Priority 1: Match product code
                 if target_code:
                     code_patterns = [f'[{target_code}]', f'({target_code})', f'==({target_code})', f'=={target_code}']
                     for opt in options:
@@ -158,10 +147,9 @@ def submit_order_to_portal(ds_code, items, order_type='sao'):
                         opt_text = opt.get('text', '').strip().upper()
                         if opt_val == str(target_code) or any(cp in opt_text for cp in code_patterns):
                             best_match = opt['val']
-                            _log(f"[{ds_code}] Matched [{target_code}]: {opt_text}")
                             break
 
-                # Priority 2: Best-score substring match
+                # Priority 2: Substring score
                 if not best_match:
                     best_score = 0
                     clean_desc = re.sub(r'\[\d+\]', '', desc).replace(' -', '').strip()
@@ -175,48 +163,101 @@ def submit_order_to_portal(ds_code, items, order_type='sao'):
                                 best_match = opt['val']
 
                 if not best_match:
-                    _log(f"[{ds_code}] ⚠ No match found for: {desc}")
+                    _log(f"{tag} ⚠ No portal match for [{idx}/{len(items)}]: {desc}")
                     continue
 
-                _log(f"[{ds_code}] Adding item {desc} (ID: {best_match}) Qty: {qty}")
+                # Count rows before adding to verify postback completion
+                prev_rows = page.locator('#ctl00_ContentPlaceHolder1_GridView1 tr').count()
+
                 page.select_option('#ctl00_ContentPlaceHolder1_itemlist', best_match)
-                page.wait_for_timeout(1500)
-                page.fill('#ctl00_ContentPlaceHolder1_txtqty', str(int(qty)))
+                page.wait_for_timeout(350)
+                page.fill('#ctl00_ContentPlaceHolder1_txtqty', str(qty))
                 page.click('#ctl00_ContentPlaceHolder1_btnadd')
-                page.wait_for_timeout(1800)
+
+                # Dynamically wait for ASP.NET postback to complete row addition
+                try:
+                    page.wait_for_function(
+                        f"() => (document.querySelectorAll('#ctl00_ContentPlaceHolder1_GridView1 tr').length > {prev_rows})",
+                        timeout=4500
+                    )
+                except Exception:
+                    page.wait_for_timeout(1000)
+
                 added_count += 1
+                _log(f"{tag}    [{added_count}/{len(items)}] Added [{best_match}]: {desc} x {qty}")
+
+            _log(f"{tag}    Staged {added_count}/{len(items)} items in {time.time()-t_items:.1f}s")
 
             if added_count == 0:
-                _log(f"[{ds_code}] ❌ No items were successfully added.")
+                _log(f"{tag} ❌ No items were successfully added to the portal grid.")
                 browser.close()
                 return False
 
-            # 6. Save order
-            _log(f"[{ds_code}] Saving order with {added_count} items...")
-            success = False
-            try:
-                with page.expect_navigation(wait_until='domcontentloaded', timeout=12000):
-                    page.click('#ctl00_ContentPlaceHolder1_ButtonSave1')
+            # 6. Fill Shipping Mobile and Shipping Pincode AFTER all items are added
+            # (Ensures item addition postbacks cannot wipe these required fields)
+            _log(f"{tag} 5. Filling Shipping Mobile and Pincode...")
+            final_mobile = profile_mobile if (profile_mobile and len(profile_mobile) == 10) else '9436386981'
+            page.fill('#ctl00_ContentPlaceHolder1_ShipMobile', final_mobile)
+            page.fill('#ctl00_ContentPlaceHolder1_txtshpingpincode', profile_pin)
+            page.wait_for_timeout(500)
+
+            # 7. Click Save and Verify Dialog
+            _log(f"{tag} 6. Saving order...")
+            page.click('#ctl00_ContentPlaceHolder1_ButtonSave1')
+            page.wait_for_timeout(6500)
+
+            success = any(
+                "bill save successfully" in str(d).lower() or
+                "save successfully" in str(d).lower()
+                for d in dialog_history
+            )
+            if not success and 'Home.aspx' in page.url:
                 success = True
-                _log(f"[{ds_code}] ✅ Order saved successfully (navigation completed).")
-            except Exception:
+
+            _log(f"{tag} Save completed. Result: {'✅ SUCCESS' if success else '❌ FAILED'}. Dialogs: {dialog_history}")
+
+            # 8. Update DB on Success
+            if success:
+                # Update local SQLite DB
                 try:
-                    page.wait_for_timeout(2500)
-                    html = page.content()
-                    success = 'Bill Save Successfully' in html or 'successfully' in html.lower()
-                    _log(f"[{ds_code}] Order save check: {'✅ SUCCESS' if success else '⚠ Triggered'}")
-                except Exception:
-                    success = True
+                    db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ledger.db')
+                    if os.path.exists(db_path):
+                        conn = sqlite3.connect(db_path)
+                        c = conn.cursor()
+                        if invoice_id:
+                            c.execute("UPDATE invoices SET is_dispatched = 1 WHERE id = ?", (invoice_id,))
+                        elif invoice_no:
+                            c.execute("UPDATE invoices SET is_dispatched = 1 WHERE invoice_no = ?", (invoice_no,))
+                        elif ds_code:
+                            c.execute("UPDATE invoices SET is_dispatched = 1 WHERE ds_code = ? ORDER BY id DESC LIMIT 1", (ds_code,))
+                        conn.commit()
+                        conn.close()
+                        _log(f"{tag} ✅ Local ledger.db marked as is_dispatched = 1")
+                except Exception as dbe:
+                    _log(f"{tag} ❌ Local DB update error: {dbe}")
+
+                # Update Render DB if running externally and invoice_id known
+                if invoice_id:
+                    try:
+                        import requests
+                        r = requests.post(
+                            f'https://ledger-web-app.onrender.com/api/invoice/update/{invoice_id}',
+                            json={'is_dispatched': 1, 'password': 'ABC@!234'},
+                            timeout=10
+                        )
+                        _log(f"{tag} Render API response: {r.status_code}")
+                    except Exception:
+                        pass
 
             browser.close()
             return success
 
     except Exception as e:
-        _log(f"[{ds_code}] ❌ Error submitting order to portal: {e}")
+        _log(f"{tag} ❌ Error submitting order to portal: {e}")
         return False
 
 
-def submit_order_async(ds_code, items, order_type='sao'):
+def submit_order_async(ds_code, items, order_type='sao', invoice_id=None, invoice_no=None):
     """
     Launch portal submission as a separate subprocess so it survives Gunicorn's
     worker lifecycle on Render. Output is piped to portal_submit.log.
@@ -225,27 +266,37 @@ def submit_order_async(ds_code, items, order_type='sao'):
     try:
         script_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'portal_submit_order.py')
         log_file_handle = open(LOG_FILE, 'a', encoding='utf-8')
+        cmd = [
+            sys.executable, script_path,
+            str(ds_code),
+            json.dumps(items),
+            str(order_type or 'sao'),
+            str(invoice_id or ''),
+            str(invoice_no or '')
+        ]
         subprocess.Popen(
-            [sys.executable, script_path, ds_code, json.dumps(items), order_type],
+            cmd,
             stdout=log_file_handle,
             stderr=log_file_handle
         )
-        _log(f"[{ds_code}] Portal submission subprocess spawned successfully.")
+        _log(f"[{invoice_no or ds_code}] Portal submission subprocess spawned successfully (ID: {invoice_id}).")
     except Exception as e:
-        _log(f"[{ds_code}] ❌ Failed to launch portal subprocess: {e}")
+        _log(f"[{invoice_no or ds_code}] ❌ Failed to launch portal subprocess: {e}")
 
 
 # ── CLI entry-point (called by subprocess.Popen) ─────────────────────────────
 if __name__ == '__main__':
     if len(sys.argv) < 3:
-        print("Usage: portal_submit_order.py <ds_code> <items_json> [order_type]")
+        print("Usage: portal_submit_order.py <ds_code> <items_json> [order_type] [invoice_id] [invoice_no]")
         sys.exit(1)
 
     _ds_code = sys.argv[1]
     _items = json.loads(sys.argv[2])
-    _order_type = sys.argv[3] if len(sys.argv) > 3 else 'sao'
+    _order_type = sys.argv[3] if len(sys.argv) > 3 and sys.argv[3] else 'sao'
+    _inv_id = int(sys.argv[4]) if len(sys.argv) > 4 and sys.argv[4].isdigit() else None
+    _inv_no = sys.argv[5] if len(sys.argv) > 5 and sys.argv[5] else None
 
-    _log(f"[SUBPROCESS] Starting submission for DS: {_ds_code}, type: {_order_type}")
-    ok = submit_order_to_portal(_ds_code, _items, _order_type)
-    _log(f"[SUBPROCESS] Submission {'SUCCESS' if ok else 'FAILED'} for {_ds_code}")
+    _log(f"[SUBPROCESS] Starting submission for DS: {_ds_code}, type: {_order_type}, invoice: {_inv_no} (ID: {_inv_id})")
+    ok = submit_order_to_portal(_ds_code, _items, _order_type, invoice_id=_inv_id, invoice_no=_inv_no)
+    _log(f"[SUBPROCESS] Submission {'SUCCESS' if ok else 'FAILED'} for {_ds_code} ({_inv_no})")
     sys.exit(0 if ok else 1)

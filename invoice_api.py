@@ -397,7 +397,7 @@ def create_invoice():
             order_type = data.get('orderType', 'sao')
             try:
                 from portal_submit_order import submit_order_async
-                submit_order_async(ds_code, items, order_type)
+                submit_order_async(ds_code, items, order_type, invoice_id=invoice_id, invoice_no=invoice_no)
             except Exception as ex:
                 print("Failed to start portal submission:", ex)
         
@@ -663,4 +663,46 @@ def get_portal_order_log():
         return jsonify({'lines': [line.strip() for line in lines[-100:]]}), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+
+@invoice_api.route('/api/invoice/resubmit/<int:invoice_id>', methods=['POST'])
+def resubmit_invoice_to_portal(invoice_id):
+    """
+    Trigger manual resubmission of an unsaved / undispatched invoice to the AWPL portal.
+    """
+    from app import get_db
+    try:
+        conn = get_db()
+        c = conn.cursor()
+        c.execute('SELECT id, invoice_no, ds_code, items, is_dispatched, status FROM invoices WHERE id = ?', (invoice_id,))
+        row = c.fetchone()
+        conn.close()
+
+        if not row:
+            return jsonify({'success': False, 'error': f'Invoice ID {invoice_id} not found.'}), 404
+
+        inv_status = row['status'] if 'status' in row.keys() else 'active'
+        if inv_status == 'cancelled':
+            return jsonify({'success': False, 'error': 'Cannot resubmit a cancelled invoice.'}), 400
+
+        inv_no = row['invoice_no'] or f'INV-{invoice_id}'
+        ds_code = row['ds_code']
+        raw_items = row['items'] or '[]'
+        items = json.loads(raw_items) if isinstance(raw_items, str) else raw_items
+
+        if not ds_code or not items:
+            return jsonify({'success': False, 'error': f'Invoice {inv_no} has no DS code or items.'}), 400
+
+        from portal_submit_order import submit_order_async
+        submit_order_async(ds_code, items, order_type='sao', invoice_id=invoice_id, invoice_no=inv_no)
+
+        return jsonify({
+            'success': True,
+            'message': f'Resubmission started in background for {inv_no} (DS: {ds_code})!',
+            'invoice_id': invoice_id,
+            'invoice_no': inv_no
+        }), 200
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
 

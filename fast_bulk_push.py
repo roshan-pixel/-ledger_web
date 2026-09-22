@@ -86,7 +86,11 @@ def submit_one(inv):
             # Reuse logged-in session — no re-login!
             ctx  = browser.new_context(storage_state=SESSION_FILE)
             page = ctx.new_page()
-            page.on("dialog", lambda d: d.accept())
+            dialog_messages = []
+            def _handle_dialog(d):
+                dialog_messages.append(d.message)
+                d.accept()
+            page.on("dialog", _handle_dialog)
 
             # Block heavy assets for speed
             page.route('**/*.{png,jpg,jpeg,gif,webp,svg,woff,woff2,ttf,eot,mp4,mp3,ico}',
@@ -138,11 +142,13 @@ def submit_one(inv):
             if mobile:
                 page.fill('#ctl00_ContentPlaceHolder1_ShipMobile', mobile)
 
-            address = page.input_value('#ctl00_ContentPlaceHolder1_txtaddress').strip()
-            if address:
-                m = re.search(r'\b\d{6}\b', address)
-                page.fill('#ctl00_ContentPlaceHolder1_txtshpingpincode',
-                           m.group(0) if m else '000000')
+            # Ensure valid 6-digit shipping pincode (portal rejects blank or 000000)
+            pin = page.input_value('#ctl00_ContentPlaceHolder1_txtshpingpincode').strip()
+            if not pin or len(pin) != 6 or pin == '000000':
+                address = page.input_value('#ctl00_ContentPlaceHolder1_txtaddress').strip()
+                m = re.search(r'\b[1-9]\d{5}\b', address)
+                pin = m.group(0) if m else '796001'
+                page.fill('#ctl00_ContentPlaceHolder1_txtshpingpincode', pin)
 
             # ── Item dropdown ─────────────────────────────────────────────────
             options = page.evaluate("""
@@ -195,7 +201,7 @@ def submit_one(inv):
                 page.wait_for_timeout(1500)
                 page.fill('#ctl00_ContentPlaceHolder1_txtqty', str(int(qty)))
                 page.click('#ctl00_ContentPlaceHolder1_btnadd')
-                page.wait_for_timeout(1800)
+                page.wait_for_timeout(2000)
                 added += 1
 
             if added == 0:
@@ -205,25 +211,29 @@ def submit_one(inv):
 
             # ── Save order ────────────────────────────────────────────────────
             log(f"{tag} Saving ({added} item(s))...")
-            success = False
-            try:
-                # Portal navigates away on success — expect_navigation catches it
-                with page.expect_navigation(wait_until='domcontentloaded', timeout=12000):
-                    page.click('#ctl00_ContentPlaceHolder1_ButtonSave1')
-                success = True   # navigation = portal accepted the save
-            except Exception:
-                # No navigation — check page HTML for success text
+            page.click('#ctl00_ContentPlaceHolder1_ButtonSave1')
+            page.wait_for_timeout(4500)
+
+            save_ok = any('Bill Save Successfully' in m or 'successfully' in m.lower() for m in dialog_messages)
+            if not save_ok:
                 try:
-                    page.wait_for_timeout(3000)
-                    html    = page.content()
-                    success = 'Bill Save Successfully' in html or 'successfully' in html.lower()
+                    html = page.content()
+                    save_ok = 'Bill Save Successfully' in html or 'successfully' in html.lower()
                 except Exception:
-                    success = True  # navigation mid-read also = success
+                    pass
+
+            pincode_error = any('Please fill Shipping Pincode' in m for m in dialog_messages)
             browser.close()
 
-            status_str = "✅ SUCCESS" if success else "⚠ Saved (unconfirmed — check portal)"
-            log(f"{tag} {status_str}")
-            return invoice_no, True, status_str
+            if save_ok:
+                log(f"{tag} ✅ SUCCESS (Portal confirmed: Bill Save Successfully)")
+                return invoice_no, True, "Bill Save Successfully"
+            elif pincode_error:
+                log(f"{tag} ❌ FAILED: Missing shipping pincode")
+                return invoice_no, False, "Missing shipping pincode"
+            else:
+                log(f"{tag} ❌ FAILED: Unconfirmed (dialogs: {dialog_messages})")
+                return invoice_no, False, f"Not confirmed: {dialog_messages}"
 
     except Exception as e:
         log(f"{tag} ❌ ERROR: {e}")
