@@ -4,9 +4,12 @@ import time
 import json
 import sqlite3
 import re
+import tempfile
 from playwright.sync_api import sync_playwright
 
 LOG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'portal_submit.log')
+LOCK_FILE = os.path.join(tempfile.gettempdir(), 'awpl_portal_submission_lock.json')
+SESSION_FILE = os.path.join(tempfile.gettempdir(), 'awpl_portal_session.json')
 
 def _log(msg):
     line = f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] {msg}"
@@ -17,13 +20,104 @@ def _log(msg):
     except Exception:
         pass
 
+def _is_pid_alive(pid):
+    if not pid:
+        return False
+    try:
+        if os.name == 'nt':
+            import ctypes
+            h = ctypes.windll.kernel32.OpenProcess(0x1000, False, pid)
+            if h:
+                ctypes.windll.kernel32.CloseHandle(h)
+                return True
+            return False
+        else:
+            os.kill(pid, 0)
+            return True
+    except Exception:
+        return False
+
+def get_active_submission():
+    """
+    Returns dict of currently active submission if any, or None.
+    Automatically clears stale locks (> 10 mins or deceased PID).
+    """
+    if not os.path.exists(LOCK_FILE):
+        return None
+    try:
+        with open(LOCK_FILE, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        
+        started_at = data.get('started_at', 0)
+        pid = data.get('pid')
+        now = time.time()
+        
+        # If lock is older than 10 minutes (600s), consider stale
+        if now - started_at > 600:
+            _log(f"[LOCK] Stale submission lock detected (age: {now - started_at:.1f}s). Releasing lock.")
+            release_submission_lock()
+            return None
+            
+        # Check if process is still running
+        if pid and not _is_pid_alive(pid):
+            _log(f"[LOCK] Process PID {pid} is no longer alive. Releasing lock.")
+            release_submission_lock()
+            return None
+            
+        data['elapsed_seconds'] = int(now - started_at)
+        return data
+    except Exception as e:
+        _log(f"[LOCK] Error checking lock file: {e}")
+        return None
+
+def acquire_submission_lock(invoice_id, invoice_no, ds_code, pid=None, force=False):
+    """
+    Attempts to acquire the single-submission lock.
+    If force=True, overwrites lock for current worker execution.
+    Returns (True, lock_data) if acquired, (False, active_data) if already locked.
+    """
+    if not force:
+        active = get_active_submission()
+        if active:
+            if active.get('pid') == (pid or os.getpid()):
+                return True, active
+            return False, active
+        
+    lock_data = {
+        'pid': pid or os.getpid(),
+        'invoice_id': invoice_id,
+        'invoice_no': invoice_no,
+        'ds_code': ds_code,
+        'started_at': time.time(),
+        'status': 'running'
+    }
+    try:
+        with open(LOCK_FILE, 'w', encoding='utf-8') as f:
+            json.dump(lock_data, f)
+        return True, lock_data
+    except Exception as e:
+        _log(f"[LOCK] Failed to write lock file: {e}")
+        return False, None
+
+def release_submission_lock():
+    """Releases the submission lock file."""
+    try:
+        if os.path.exists(LOCK_FILE):
+            os.remove(LOCK_FILE)
+    except Exception as e:
+        _log(f"[LOCK] Error removing lock file: {e}")
+
 def submit_order_to_portal(ds_code, items, order_type='sao', invoice_id=None, invoice_no=None):
     """
     Submits an order to the AWPL C&F portal (SpdistributorSale.aspx) with high performance,
     dynamic postback synchronization, proper shipping address staging, and DB sync.
+    Enforces single submission at a time via global lock.
     """
     tag = f"[{invoice_no or ds_code}|{ds_code}]"
     _log(f"{tag} Starting portal submission (type: {order_type}, items: {len(items)}, inv_id: {invoice_id})...")
+    
+    # Claim lock for current process
+    acquire_submission_lock(invoice_id, invoice_no, ds_code, pid=os.getpid(), force=True)
     
     username = os.environ.get('PORTAL_USER', 'AAZFD8117G')
     password = os.environ.get('PORTAL_PASSWORD', 'ABC@1234')
@@ -44,7 +138,25 @@ def submit_order_to_portal(ds_code, items, order_type='sao', invoice_id=None, in
                     '--disable-extensions'
                 ]
             )
-            ctx = browser.new_context()
+            
+            # Check if saved browser session is reusable (< 40 mins old)
+            session_valid = False
+            if os.path.exists(SESSION_FILE):
+                try:
+                    if time.time() - os.path.getmtime(SESSION_FILE) < 2400:
+                        session_valid = True
+                except Exception:
+                    session_valid = False
+
+            if session_valid:
+                try:
+                    ctx = browser.new_context(storage_state=SESSION_FILE)
+                except Exception:
+                    ctx = browser.new_context()
+                    session_valid = False
+            else:
+                ctx = browser.new_context()
+
             page = ctx.new_page()
 
             def handle_dialog(dialog):
@@ -56,24 +168,43 @@ def submit_order_to_portal(ds_code, items, order_type='sao', invoice_id=None, in
             # Block heavy media/images/fonts for 5x speedup and lower memory usage
             page.route('**/*.{png,jpg,jpeg,gif,webp,svg,woff,woff2,ttf,eot,mp4,mp3,ico}', lambda r: r.abort())
 
-            # 1. Login
-            _log(f"{tag} 1. Logging in to AWPL portal...")
+            # 1. Check or Perform Login
             t0 = time.time()
-            page.goto('https://asclepiuswellness.com/login.aspx?webid=1', wait_until='domcontentloaded', timeout=30000)
-            page.fill('#ctl00_ContentPlaceHolder1_txtspUserid', username)
-            page.fill('#ctl00_ContentPlaceHolder1_txtsppassword', password)
-            page.click('#ctl00_ContentPlaceHolder1_btnfranlogin')
-            try:
-                page.wait_for_url('**/shoppingpoint/**', timeout=25000)
-            except Exception:
-                page.wait_for_load_state('domcontentloaded', timeout=10000)
-            _log(f"{tag}    Logged in successfully in {time.time()-t0:.2f}s")
+            logged_in = False
+            if session_valid:
+                _log(f"{tag} Reusing saved session cookies...")
+                try:
+                    page.goto('https://asclepiuswellness.com/shoppingpoint/SpdistributorSale.aspx', wait_until='domcontentloaded', timeout=15000)
+                    if 'login.aspx' not in page.url.lower():
+                        logged_in = True
+                        _log(f"{tag}    Saved session valid! Skipped login step in {time.time()-t0:.2f}s")
+                except Exception as se:
+                    _log(f"{tag}    Saved session navigation failed ({se}); falling back to full login.")
 
-            # 2. Go to Sales Order page
-            _log(f"{tag} 2. Navigating to SpdistributorSale.aspx...")
-            t1 = time.time()
-            page.goto('https://asclepiuswellness.com/shoppingpoint/SpdistributorSale.aspx', wait_until='domcontentloaded', timeout=30000)
-            _log(f"{tag}    Sale page loaded in {time.time()-t1:.2f}s")
+            if not logged_in:
+                _log(f"{tag} 1. Logging in to AWPL portal...")
+                t_login = time.time()
+                page.goto('https://asclepiuswellness.com/login.aspx?webid=1', wait_until='domcontentloaded', timeout=30000)
+                page.fill('#ctl00_ContentPlaceHolder1_txtspUserid', username)
+                page.fill('#ctl00_ContentPlaceHolder1_txtsppassword', password)
+                page.click('#ctl00_ContentPlaceHolder1_btnfranlogin')
+                try:
+                    page.wait_for_url('**/shoppingpoint/**', timeout=25000)
+                except Exception:
+                    page.wait_for_load_state('domcontentloaded', timeout=10000)
+                
+                # Save session state for subsequent orders
+                try:
+                    ctx.storage_state(path=SESSION_FILE)
+                except Exception:
+                    pass
+                _log(f"{tag}    Logged in successfully in {time.time()-t_login:.2f}s")
+
+                # 2. Go to Sales Order page
+                _log(f"{tag} 2. Navigating to SpdistributorSale.aspx...")
+                t1 = time.time()
+                page.goto('https://asclepiuswellness.com/shoppingpoint/SpdistributorSale.aspx', wait_until='domcontentloaded', timeout=30000)
+                _log(f"{tag}    Sale page loaded in {time.time()-t1:.2f}s")
 
             # 3. Enter DS Code & Wait for Name
             _log(f"{tag} 3. Entering DS Code: {ds_code}...")
@@ -255,13 +386,21 @@ def submit_order_to_portal(ds_code, items, order_type='sao', invoice_id=None, in
     except Exception as e:
         _log(f"{tag} ❌ Error submitting order to portal: {e}")
         return False
+    finally:
+        release_submission_lock()
 
 
 def submit_order_async(ds_code, items, order_type='sao', invoice_id=None, invoice_no=None):
     """
     Launch portal submission as a separate subprocess so it survives Gunicorn's
     worker lifecycle on Render. Output is piped to portal_submit.log.
+    Enforces SINGLE SUBMISSION at a time.
     """
+    active = get_active_submission()
+    if active:
+        _log(f"[{invoice_no or ds_code}] ⚠ Cannot launch submission: Already running for {active.get('invoice_no')} (PID {active.get('pid')})")
+        return False, f"Submission already in progress for {active.get('invoice_no')}"
+
     import subprocess
     try:
         script_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'portal_submit_order.py')
@@ -274,14 +413,17 @@ def submit_order_async(ds_code, items, order_type='sao', invoice_id=None, invoic
             str(invoice_id or ''),
             str(invoice_no or '')
         ]
-        subprocess.Popen(
+        proc = subprocess.Popen(
             cmd,
             stdout=log_file_handle,
             stderr=log_file_handle
         )
-        _log(f"[{invoice_no or ds_code}] Portal submission subprocess spawned successfully (ID: {invoice_id}).")
+        acquire_submission_lock(invoice_id, invoice_no, ds_code, pid=proc.pid, force=True)
+        _log(f"[{invoice_no or ds_code}] Portal submission subprocess spawned (PID: {proc.pid}, ID: {invoice_id}).")
+        return True, proc.pid
     except Exception as e:
         _log(f"[{invoice_no or ds_code}] ❌ Failed to launch portal subprocess: {e}")
+        return False, str(e)
 
 
 # ── CLI entry-point (called by subprocess.Popen) ─────────────────────────────

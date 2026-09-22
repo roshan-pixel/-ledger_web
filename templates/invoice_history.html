@@ -517,6 +517,15 @@
             cursor: wait !important;
             animation: pulse 1.5s infinite;
         }
+        .btn-resubmit-portal.btn-portal-disabled {
+            background: rgba(148, 163, 184, 0.08) !important;
+            color: #64748b !important;
+            border-color: rgba(148, 163, 184, 0.2) !important;
+            cursor: not-allowed !important;
+            opacity: 0.55 !important;
+            transform: none !important;
+            box-shadow: none !important;
+        }
         .remark-trunc {
             max-width: 140px;
             overflow: hidden;
@@ -1041,6 +1050,8 @@
     let activeDispatchFilter = 'all'; // 'all', 'unticked', 'dispatched'
     let searchQuery = '';
     let sortAscending = false;
+    let activePortalSubmission = null; // { invoice_id, invoice_no, started_at }
+    let resubmitPollTimer = null;
 
     function isComplimentaryProduct(desc) {
         if (!desc) return false;
@@ -1064,6 +1075,24 @@
             allInvoices = data.invoices;
             updateGlobalKpis();
             renderFilteredInvoices();
+
+            // Check if there is an active submission running in the background
+            try {
+                const statusRes = await fetch('/api/invoice/resubmit/status');
+                if (statusRes.ok) {
+                    const statusData = await statusRes.json();
+                    if (statusData.is_busy && statusData.active_submission) {
+                        activePortalSubmission = statusData.active_submission;
+                        updateResubmitButtonsState();
+                        startResubmitPolling(activePortalSubmission.invoice_id, activePortalSubmission.invoice_no);
+                    } else if (!statusData.is_busy && activePortalSubmission) {
+                        activePortalSubmission = null;
+                        updateResubmitButtonsState();
+                    }
+                }
+            } catch(se) {
+                console.error('Portal submission status check error:', se);
+            }
         } catch (e) {
             console.error(e);
             document.getElementById('historyBody').innerHTML = '<tr><td colspan="10" style="text-align:center; color:var(--red); padding:3rem;">Failed to load data. Please refresh the page.</td></tr>';
@@ -1269,6 +1298,7 @@
             `;
             tbody.appendChild(tr);
         });
+        updateResubmitButtonsState();
     }
 
     function viewOrder(index) {
@@ -1400,16 +1430,47 @@
         }
     }
 
+    function updateResubmitButtonsState() {
+        const buttons = document.querySelectorAll('.btn-resubmit-portal');
+        buttons.forEach(btn => {
+            if (!activePortalSubmission) {
+                btn.disabled = false;
+                btn.classList.remove('submitting', 'btn-portal-disabled');
+                btn.innerHTML = '🔄 Resubmit';
+                btn.title = 'Push / Resubmit this invoice to AWPL Portal';
+            } else {
+                const btnId = btn.id || '';
+                const isCurrent = btnId === `resubmit-btn-${activePortalSubmission.invoice_id}`;
+                if (isCurrent) {
+                    btn.disabled = true;
+                    btn.classList.add('submitting');
+                    btn.classList.remove('btn-portal-disabled');
+                    btn.innerHTML = '⏳ Submitting...';
+                    btn.title = `Submitting ${activePortalSubmission.invoice_no || ''} to AWPL portal...`;
+                } else {
+                    btn.disabled = true;
+                    btn.classList.remove('submitting');
+                    btn.classList.add('btn-portal-disabled');
+                    btn.innerHTML = '⏳ Queued';
+                    btn.title = `Another invoice (${activePortalSubmission.invoice_no || ''}) is currently submitting. Only one submission is allowed at a time.`;
+                }
+            }
+        });
+    }
+
     async function resubmitToPortal(id, invoiceNo, btnElem) {
+        if (activePortalSubmission) {
+            showToast(`Another invoice (${activePortalSubmission.invoice_no || 'submission'}) is currently submitting! Only 1 invoice can be submitted at a time.`, 'warning');
+            return;
+        }
+
         if (!confirm(`Are you sure you want to push / resubmit invoice ${invoiceNo} to the AWPL portal?`)) {
             return;
         }
 
-        if (btnElem) {
-            btnElem.disabled = true;
-            btnElem.classList.add('submitting');
-            btnElem.innerHTML = `⏳ Submitting...`;
-        }
+        // Immediately lock all other resubmit buttons across the UI
+        activePortalSubmission = { invoice_id: id, invoice_no: invoiceNo };
+        updateResubmitButtonsState();
 
         showToast(`Submitting ${invoiceNo} to portal in background...`, 'info');
 
@@ -1420,58 +1481,88 @@
             });
             const data = await res.json();
 
+            if (res.status === 409) {
+                // Server indicated another invoice is submitting
+                showToast(data.error || 'Another submission is already in progress!', 'warning');
+                if (data.active_submission) {
+                    activePortalSubmission = data.active_submission;
+                    updateResubmitButtonsState();
+                    startResubmitPolling(activePortalSubmission.invoice_id, activePortalSubmission.invoice_no);
+                } else {
+                    activePortalSubmission = null;
+                    updateResubmitButtonsState();
+                }
+                return;
+            }
+
             if (res.ok && data.success) {
                 showToast(`✓ Submission started for ${invoiceNo}! Monitoring status...`, 'success');
-
-                // Poll /api/invoice/list until is_dispatched becomes 1
-                let attempts = 0;
-                const pollInterval = setInterval(async () => {
-                    attempts++;
-                    try {
-                        const checkRes = await fetch('/api/invoice/list');
-                        if (checkRes.ok) {
-                            const checkData = await checkRes.json();
-                            const invList = Array.isArray(checkData) ? checkData : (checkData.invoices || []);
-                            const target = invList.find(i => i.id == id);
-                            if (target && (target.is_dispatched == 1 || target.is_dispatched === true)) {
-                                clearInterval(pollInterval);
-                                showToast(`✓ ${invoiceNo} successfully saved & dispatched on portal!`, 'success');
-                                await loadHistory();
-                                return;
-                            }
-                        }
-                    } catch(pe) {
-                        console.error('Polling error:', pe);
-                    }
-
-                    if (attempts >= 50) { // Stop polling after ~3.5 minutes
-                        clearInterval(pollInterval);
-                        if (btnElem) {
-                            btnElem.disabled = false;
-                            btnElem.classList.remove('submitting');
-                            btnElem.innerHTML = `🔄 Resubmit`;
-                        }
-                        showToast(`Submission for ${invoiceNo} still processing. Refresh page shortly to check.`, 'info');
-                    }
-                }, 4000);
-
+                startResubmitPolling(id, invoiceNo);
             } else {
                 showToast('Resubmit failed: ' + (data.error || data.message || 'Unknown error'), 'error');
-                if (btnElem) {
-                    btnElem.disabled = false;
-                    btnElem.classList.remove('submitting');
-                    btnElem.innerHTML = `🔄 Resubmit`;
-                }
+                activePortalSubmission = null;
+                updateResubmitButtonsState();
             }
         } catch (e) {
             console.error(e);
             showToast('Network error during resubmission', 'error');
-            if (btnElem) {
-                btnElem.disabled = false;
-                btnElem.classList.remove('submitting');
-                btnElem.innerHTML = `🔄 Resubmit`;
-            }
+            activePortalSubmission = null;
+            updateResubmitButtonsState();
         }
+    }
+
+    function startResubmitPolling(targetId, targetInvoiceNo) {
+        if (resubmitPollTimer) {
+            clearInterval(resubmitPollTimer);
+        }
+
+        let attempts = 0;
+        resubmitPollTimer = setInterval(async () => {
+            attempts++;
+            try {
+                // Check if target is marked dispatched in database
+                const checkRes = await fetch('/api/invoice/list');
+                if (checkRes.ok) {
+                    const checkData = await checkRes.json();
+                    const invList = Array.isArray(checkData) ? checkData : (checkData.invoices || []);
+                    const target = invList.find(i => i.id == targetId);
+                    if (target && (target.is_dispatched == 1 || target.is_dispatched === true)) {
+                        clearInterval(resubmitPollTimer);
+                        resubmitPollTimer = null;
+                        activePortalSubmission = null;
+                        updateResubmitButtonsState();
+                        showToast(`✓ ${targetInvoiceNo} successfully saved & dispatched on portal!`, 'success');
+                        await loadHistory();
+                        return;
+                    }
+                }
+
+                // Check backend worker lock status
+                const statusRes = await fetch('/api/invoice/resubmit/status');
+                if (statusRes.ok) {
+                    const statusData = await statusRes.json();
+                    if (!statusData.is_busy && attempts >= 2) {
+                        clearInterval(resubmitPollTimer);
+                        resubmitPollTimer = null;
+                        activePortalSubmission = null;
+                        updateResubmitButtonsState();
+                        showToast(`Submission worker finished for ${targetInvoiceNo}. Refreshing list...`, 'info');
+                        await loadHistory();
+                        return;
+                    }
+                }
+            } catch(pe) {
+                console.error('Polling error:', pe);
+            }
+
+            if (attempts >= 60) { // Stop polling after ~4 minutes
+                clearInterval(resubmitPollTimer);
+                resubmitPollTimer = null;
+                activePortalSubmission = null;
+                updateResubmitButtonsState();
+                showToast(`Submission for ${targetInvoiceNo} is still processing. Refresh page shortly to check.`, 'info');
+            }
+        }, 4000);
     }
     
     let currentRemarkId = null;

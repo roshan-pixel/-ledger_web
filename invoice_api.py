@@ -392,12 +392,16 @@ def create_invoice():
         conn.commit()
         conn.close()
         
-        # Automatically submit order to the C&F portal
+        # Automatically submit order to the C&F portal (if not busy)
         if ds_code and items:
             order_type = data.get('orderType', 'sao')
             try:
-                from portal_submit_order import submit_order_async
-                submit_order_async(ds_code, items, order_type, invoice_id=invoice_id, invoice_no=invoice_no)
+                from portal_submit_order import submit_order_async, get_active_submission
+                active = get_active_submission()
+                if active:
+                    print(f"Portal currently busy with {active.get('invoice_no')}; skipped automatic submission for {invoice_no}. User can resubmit from Recent Invoices.")
+                else:
+                    submit_order_async(ds_code, items, order_type, invoice_id=invoice_id, invoice_no=invoice_no)
             except Exception as ex:
                 print("Failed to start portal submission:", ex)
         
@@ -665,13 +669,39 @@ def get_portal_order_log():
         return jsonify({'error': str(e)}), 500
 
 
+@invoice_api.route('/api/invoice/resubmit/status', methods=['GET'])
+def resubmit_status():
+    """
+    Get current portal submission state (is_busy, which invoice is submitting, elapsed time).
+    """
+    try:
+        from portal_submit_order import get_active_submission
+        active = get_active_submission()
+        return jsonify({
+            'is_busy': bool(active),
+            'active_submission': active
+        }), 200
+    except Exception as e:
+        return jsonify({'is_busy': False, 'error': str(e)}), 500
+
+
 @invoice_api.route('/api/invoice/resubmit/<int:invoice_id>', methods=['POST'])
 def resubmit_invoice_to_portal(invoice_id):
     """
     Trigger manual resubmission of an unsaved / undispatched invoice to the AWPL portal.
+    Enforces ONLY ONE INVOICE AT A TIME.
     """
     from app import get_db
     try:
+        from portal_submit_order import get_active_submission, submit_order_async
+        active = get_active_submission()
+        if active:
+            return jsonify({
+                'success': False,
+                'error': f"Another invoice ({active.get('invoice_no', 'INV')}) is currently being submitted to the portal. Only one invoice can be submitted at a time. Please wait!",
+                'active_submission': active
+            }), 409
+
         conn = get_db()
         c = conn.cursor()
         c.execute('SELECT id, invoice_no, ds_code, items, is_dispatched, status FROM invoices WHERE id = ?', (invoice_id,))
@@ -693,8 +723,9 @@ def resubmit_invoice_to_portal(invoice_id):
         if not ds_code or not items:
             return jsonify({'success': False, 'error': f'Invoice {inv_no} has no DS code or items.'}), 400
 
-        from portal_submit_order import submit_order_async
-        submit_order_async(ds_code, items, order_type='sao', invoice_id=invoice_id, invoice_no=inv_no)
+        ok, msg = submit_order_async(ds_code, items, order_type='sao', invoice_id=invoice_id, invoice_no=inv_no)
+        if not ok:
+            return jsonify({'success': False, 'error': str(msg)}), 409
 
         return jsonify({
             'success': True,
