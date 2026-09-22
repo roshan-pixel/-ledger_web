@@ -220,6 +220,10 @@ def init_db():
     except sqlite3.OperationalError:
         pass
     try:
+        c.execute("ALTER TABLE invoices ADD COLUMN portal_saved INTEGER DEFAULT 0")
+    except sqlite3.OperationalError:
+        pass
+    try:
         c.execute("ALTER TABLE invoices ADD COLUMN remark TEXT DEFAULT ''")
     except sqlite3.OperationalError:
         pass
@@ -480,6 +484,7 @@ def list_invoices():
                 'grand_total_sp': db_sp,
                 'has_complimentary': has_comp,
                 'is_dispatched': r['is_dispatched'] if 'is_dispatched' in keys else 0,
+                'portal_saved': r['portal_saved'] if 'portal_saved' in keys else 0,
                 'remark': r['remark'] if 'remark' in keys else ''
             })
             
@@ -502,6 +507,10 @@ def update_invoice_info(invoice_id):
                 return jsonify({'error': 'Incorrect password! Authorization required to change dispatched status.'}), 403
             val = 1 if data['is_dispatched'] else 0
             c.execute("UPDATE invoices SET is_dispatched = ? WHERE id = ?", (val, invoice_id))
+
+        if 'portal_saved' in data:
+            val = 1 if data['portal_saved'] else 0
+            c.execute("UPDATE invoices SET portal_saved = ? WHERE id = ?", (val, invoice_id))
             
         if 'remark' in data:
             c.execute("UPDATE invoices SET remark = ? WHERE id = ?", (data['remark'], invoice_id))

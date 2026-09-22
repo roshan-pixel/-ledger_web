@@ -347,7 +347,7 @@ def submit_order_to_portal(ds_code, items, order_type='sao', invoice_id=None, in
 
             _log(f"{tag} Save completed. Result: {'✅ SUCCESS' if success else '❌ FAILED'}. Dialogs: {dialog_history}")
 
-            # 8. Update DB on Success
+            # 8. Update DB on Success - Mark portal_saved = 1 (DO NOT TOUCH is_dispatched!)
             if success:
                 # Update local SQLite DB
                 try:
@@ -355,15 +355,20 @@ def submit_order_to_portal(ds_code, items, order_type='sao', invoice_id=None, in
                     if os.path.exists(db_path):
                         conn = sqlite3.connect(db_path)
                         c = conn.cursor()
+                        try:
+                            c.execute("ALTER TABLE invoices ADD COLUMN portal_saved INTEGER DEFAULT 0")
+                        except Exception:
+                            pass
+
                         if invoice_id:
-                            c.execute("UPDATE invoices SET is_dispatched = 1 WHERE id = ?", (invoice_id,))
+                            c.execute("UPDATE invoices SET portal_saved = 1 WHERE id = ?", (invoice_id,))
                         elif invoice_no:
-                            c.execute("UPDATE invoices SET is_dispatched = 1 WHERE invoice_no = ?", (invoice_no,))
+                            c.execute("UPDATE invoices SET portal_saved = 1 WHERE invoice_no = ?", (invoice_no,))
                         elif ds_code:
-                            c.execute("UPDATE invoices SET is_dispatched = 1 WHERE ds_code = ? ORDER BY id DESC LIMIT 1", (ds_code,))
+                            c.execute("UPDATE invoices SET portal_saved = 1 WHERE ds_code = ? ORDER BY id DESC LIMIT 1", (ds_code,))
                         conn.commit()
                         conn.close()
-                        _log(f"{tag} ✅ Local ledger.db marked as is_dispatched = 1")
+                        _log(f"{tag} ✅ Local ledger.db marked as portal_saved = 1 (dispatch status untouched)")
                 except Exception as dbe:
                     _log(f"{tag} ❌ Local DB update error: {dbe}")
 
@@ -373,10 +378,10 @@ def submit_order_to_portal(ds_code, items, order_type='sao', invoice_id=None, in
                         import requests
                         r = requests.post(
                             f'https://ledger-web-app.onrender.com/api/invoice/update/{invoice_id}',
-                            json={'is_dispatched': 1, 'password': 'ABC@!234'},
+                            json={'portal_saved': 1, 'password': 'ABC@!234'},
                             timeout=10
                         )
-                        _log(f"{tag} Render API response: {r.status_code}")
+                        _log(f"{tag} Render API response (portal_saved=1): {r.status_code}")
                     except Exception:
                         pass
 
