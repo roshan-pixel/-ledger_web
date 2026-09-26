@@ -25,8 +25,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\Downloads\\ledger_web\\app.py": {
-    "mtime": 1789983948.6877022,
-    "ast_hash": "89dd7c87e847675577de21956f32f66d",
+    "mtime": 1790418407.7703495,
+    "ast_hash": "9f03bfc4c057408bfb2afb3de68f52b5",
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\Downloads\\ledger_web\\backfill_sp.py": {
@@ -1370,8 +1370,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\Downloads\\ledger_web\\templates\\purchase_history.html": {
-    "mtime": 1789983909.5020506,
-    "ast_hash": "d9157f235c94bbff201d3f7f384f710d",
+    "mtime": 1790418445.2929015,
+    "ast_hash": "b351882ecb6806c38310bbca7f148aa5",
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\Downloads\\ledger_web\\templates\\stock_point_order.html": {
@@ -1592,6 +1592,11 @@
   "C:\\Users\\sgarm\\Downloads\\ledger_web\\update_leader_divider_style.py": {
     "mtime": 1790147627.9117494,
     "ast_hash": "1b573d3449c7527cae6d09c3d7022e31",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\Downloads\\ledger_web\\sync_purchase_bill.py": {
+    "mtime": 1790418335.251277,
+    "ast_hash": "9ec359e29f5ed950e8d6dc6d81685f27",
     "semantic_hash": ""
   }
 }

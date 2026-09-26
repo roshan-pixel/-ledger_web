@@ -1245,6 +1245,18 @@ def api_purchase_orders():
     except Exception as e:
         return jsonify({'orders': [], 'error': str(e)}), 500
 
+@app.route('/api/purchase_orders/sync', methods=['POST'])
+def api_sync_purchase_orders():
+    """Trigger automated sync of a new bill or all recent bills from AWPL portal."""
+    import sync_purchase_bill
+    data = request.get_json(silent=True) or {}
+    bill_no = data.get('bill_no', '').strip() or None
+    try:
+        res = sync_purchase_bill.sync_bill(bill_query=bill_no, push_to_git=False)
+        return jsonify(res)
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
 # ── Ledger Report ──────────────────────────────────────────────────────────
 
 @app.route('/ledger_report')

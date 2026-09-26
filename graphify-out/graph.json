@@ -396,7 +396,7 @@
       "source_file": "app.py",
       "source_location": "L900",
       "id": "ledger_web_app_api_inventory_master_months",
-      "community": 2,
+      "community": 4,
       "norm_label": "api_inventory_master_months()"
     },
     {
@@ -423,7 +423,7 @@
       "source_file": "app.py",
       "source_location": "L1009",
       "id": "ledger_web_app_api_product_sales",
-      "community": 4,
+      "community": 2,
       "norm_label": "api_product_sales()"
     },
     {
@@ -463,10 +463,19 @@
       "norm_label": "api_purchase_orders()"
     },
     {
+      "label": "api_sync_purchase_orders()",
+      "file_type": "code",
+      "source_file": "app.py",
+      "source_location": "L1249",
+      "id": "ledger_web_app_api_sync_purchase_orders",
+      "community": 312,
+      "norm_label": "api_sync_purchase_orders()"
+    },
+    {
       "label": "ledger_report()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1251",
+      "source_location": "L1263",
       "id": "ledger_web_app_ledger_report",
       "community": 2,
       "norm_label": "ledger_report()"
@@ -475,7 +484,7 @@
       "label": "api_ledger_report()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1256",
+      "source_location": "L1268",
       "id": "ledger_web_app_api_ledger_report",
       "community": 36,
       "norm_label": "api_ledger_report()"
@@ -484,7 +493,7 @@
       "label": "api_ledger_wallet_balance()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1317",
+      "source_location": "L1329",
       "id": "ledger_web_app_api_ledger_wallet_balance",
       "community": 4,
       "norm_label": "api_ledger_wallet_balance()"
@@ -493,7 +502,7 @@
       "label": "api_refresh_wallet()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1351",
+      "source_location": "L1363",
       "id": "ledger_web_app_api_refresh_wallet",
       "community": 71,
       "norm_label": "api_refresh_wallet()"
@@ -502,7 +511,7 @@
       "label": "api_sync_ledger()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1372",
+      "source_location": "L1384",
       "id": "ledger_web_app_api_sync_ledger",
       "community": 2,
       "norm_label": "api_sync_ledger()"
@@ -511,7 +520,7 @@
       "label": "api_sync_status()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1391",
+      "source_location": "L1403",
       "id": "ledger_web_app_api_sync_status",
       "community": 2,
       "norm_label": "api_sync_status()"
@@ -520,7 +529,7 @@
       "label": "api_ledger_manual_entry()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1407",
+      "source_location": "L1419",
       "id": "ledger_web_app_api_ledger_manual_entry",
       "community": 68,
       "norm_label": "api_ledger_manual_entry()"
@@ -529,7 +538,7 @@
       "label": "stock_point_order()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1453",
+      "source_location": "L1465",
       "id": "ledger_web_app_stock_point_order",
       "community": 2,
       "norm_label": "stock_point_order()"
@@ -538,7 +547,7 @@
       "label": "api_place_stock_order()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1458",
+      "source_location": "L1470",
       "id": "ledger_web_app_api_place_stock_order",
       "community": 69,
       "norm_label": "api_place_stock_order()"
@@ -547,7 +556,7 @@
       "label": "api_sp_order_data()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1496",
+      "source_location": "L1508",
       "id": "ledger_web_app_api_sp_order_data",
       "community": 2,
       "norm_label": "api_sp_order_data()"
@@ -556,7 +565,7 @@
       "label": "_auto_sync_loop()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1523",
+      "source_location": "L1535",
       "id": "ledger_web_app_auto_sync_loop",
       "community": 0,
       "norm_label": "_auto_sync_loop()"
@@ -565,7 +574,7 @@
       "label": "api_fix_sync()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1613",
+      "source_location": "L1625",
       "id": "ledger_web_app_api_fix_sync",
       "community": 2,
       "norm_label": "api_fix_sync()"
@@ -574,7 +583,7 @@
       "label": "api_sync_now()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1623",
+      "source_location": "L1635",
       "id": "ledger_web_app_api_sync_now",
       "community": 0,
       "norm_label": "api_sync_now()"
@@ -583,7 +592,7 @@
       "label": "api_sync_remarks_from_gsheets()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1650",
+      "source_location": "L1662",
       "id": "ledger_web_app_api_sync_remarks_from_gsheets",
       "community": 72,
       "norm_label": "api_sync_remarks_from_gsheets()"
@@ -652,11 +661,20 @@
       "norm_label": "run the portal sync directly to sqlite!"
     },
     {
+      "label": "Trigger automated sync of a new bill or all recent bills from AWPL portal.",
+      "file_type": "rationale",
+      "source_file": "app.py",
+      "source_location": "L1250",
+      "id": "ledger_web_app_rationale_1250",
+      "community": 312,
+      "norm_label": "trigger automated sync of a new bill or all recent bills from awpl portal."
+    },
+    {
       "label": "Return cached ledger entries from ledger_report.json or SQLite ledger_report tab",
       "file_type": "rationale",
       "source_file": "app.py",
-      "source_location": "L1257",
-      "id": "ledger_web_app_rationale_1257",
+      "source_location": "L1269",
+      "id": "ledger_web_app_rationale_1269",
       "community": 36,
       "norm_label": "return cached ledger entries from ledger_report.json or sqlite ledger_report tab"
     },
@@ -664,8 +682,8 @@
       "label": "Return closing balance for stock-point-order and dashboard sync.",
       "file_type": "rationale",
       "source_file": "app.py",
-      "source_location": "L1318",
-      "id": "ledger_web_app_rationale_1318",
+      "source_location": "L1330",
+      "id": "ledger_web_app_rationale_1330",
       "community": 4,
       "norm_label": "return closing balance for stock-point-order and dashboard sync."
     },
@@ -673,8 +691,8 @@
       "label": "Trigger fast real-time wallet scrape from portal.",
       "file_type": "rationale",
       "source_file": "app.py",
-      "source_location": "L1352",
-      "id": "ledger_web_app_rationale_1352",
+      "source_location": "L1364",
+      "id": "ledger_web_app_rationale_1364",
       "community": 71,
       "norm_label": "trigger fast real-time wallet scrape from portal."
     },
@@ -682,8 +700,8 @@
       "label": "Add a manual entry to the ledger_report.json file.",
       "file_type": "rationale",
       "source_file": "app.py",
-      "source_location": "L1408",
-      "id": "ledger_web_app_rationale_1408",
+      "source_location": "L1420",
+      "id": "ledger_web_app_rationale_1420",
       "community": 68,
       "norm_label": "add a manual entry to the ledger_report.json file."
     },
@@ -691,8 +709,8 @@
       "label": "Places a franchise stock point order on the Asclepius portal.     Expects JSON",
       "file_type": "rationale",
       "source_file": "app.py",
-      "source_location": "L1459",
-      "id": "ledger_web_app_rationale_1459",
+      "source_location": "L1471",
+      "id": "ledger_web_app_rationale_1471",
       "community": 69,
       "norm_label": "places a franchise stock point order on the asclepius portal.     expects json"
     },
@@ -700,8 +718,8 @@
       "label": "Manual trigger: pull from GSheets \u2192 check rollover \u2192 push back.",
       "file_type": "rationale",
       "source_file": "app.py",
-      "source_location": "L1624",
-      "id": "ledger_web_app_rationale_1624",
+      "source_location": "L1636",
+      "id": "ledger_web_app_rationale_1636",
       "community": 0,
       "norm_label": "manual trigger: pull from gsheets \u2192 check rollover \u2192 push back."
     },
@@ -709,8 +727,8 @@
       "label": "Trigger one-way remarks pull from GSheets (no push/upload back).",
       "file_type": "rationale",
       "source_file": "app.py",
-      "source_location": "L1651",
-      "id": "ledger_web_app_rationale_1651",
+      "source_location": "L1663",
+      "id": "ledger_web_app_rationale_1663",
       "community": 72,
       "norm_label": "trigger one-way remarks pull from gsheets (no push/upload back)."
     },
@@ -765,7 +783,7 @@
       "source_file": "bulk_push_to_portal.py",
       "source_location": "L1",
       "id": "bulk_push_to_portal_py",
-      "community": 6,
+      "community": 67,
       "norm_label": "bulk_push_to_portal.py"
     },
     {
@@ -774,7 +792,7 @@
       "source_file": "bulk_push_to_portal.py",
       "source_location": "L22",
       "id": "ledger_web_bulk_push_to_portal_get_unticked_invoices",
-      "community": 6,
+      "community": 67,
       "norm_label": "get_unticked_invoices()"
     },
     {
@@ -783,7 +801,7 @@
       "source_file": "bulk_push_to_portal.py",
       "source_location": "L42",
       "id": "ledger_web_bulk_push_to_portal_parse_items",
-      "community": 6,
+      "community": 67,
       "norm_label": "parse_items()"
     },
     {
@@ -792,7 +810,7 @@
       "source_file": "bulk_push_to_portal.py",
       "source_location": "L57",
       "id": "ledger_web_bulk_push_to_portal_main",
-      "community": 6,
+      "community": 67,
       "norm_label": "main()"
     },
     {
@@ -801,7 +819,7 @@
       "source_file": "bulk_push_to_portal.py",
       "source_location": "L1",
       "id": "ledger_web_bulk_push_to_portal_rationale_1",
-      "community": 6,
+      "community": 67,
       "norm_label": "bulk_push_to_portal.py ---------------------- reads all invoices with is_dispatc"
     },
     {
@@ -810,7 +828,7 @@
       "source_file": "bulk_push_to_portal.py",
       "source_location": "L43",
       "id": "ledger_web_bulk_push_to_portal_rationale_43",
-      "community": 6,
+      "community": 67,
       "norm_label": "return list of {description, qty} dicts from the stored json."
     },
     {
@@ -2790,7 +2808,7 @@
       "source_file": "invoice_api.py",
       "source_location": "L1",
       "id": "invoice_api_py",
-      "community": 0,
+      "community": 6,
       "norm_label": "invoice_api.py"
     },
     {
@@ -2799,7 +2817,7 @@
       "source_file": "invoice_api.py",
       "source_location": "L11",
       "id": "ledger_web_invoice_api_get_sold_qty_col_idx",
-      "community": 0,
+      "community": 6,
       "norm_label": "get_sold_qty_col_idx()"
     },
     {
@@ -2808,7 +2826,7 @@
       "source_file": "invoice_api.py",
       "source_location": "L76",
       "id": "ledger_web_invoice_api_get_true_remaining_stock",
-      "community": 0,
+      "community": 6,
       "norm_label": "_get_true_remaining_stock()"
     },
     {
@@ -2826,7 +2844,7 @@
       "source_file": "invoice_api.py",
       "source_location": "L190",
       "id": "ledger_web_invoice_api_init_db",
-      "community": 0,
+      "community": 6,
       "norm_label": "init_db()"
     },
     {
@@ -2835,7 +2853,7 @@
       "source_file": "invoice_api.py",
       "source_location": "L234",
       "id": "ledger_web_invoice_api_is_complimentary_item",
-      "community": 0,
+      "community": 6,
       "norm_label": "is_complimentary_item()"
     },
     {
@@ -2844,7 +2862,7 @@
       "source_file": "invoice_api.py",
       "source_location": "L250",
       "id": "ledger_web_invoice_api_create_invoice",
-      "community": 0,
+      "community": 6,
       "norm_label": "create_invoice()"
     },
     {
@@ -2853,7 +2871,7 @@
       "source_file": "invoice_api.py",
       "source_location": "L429",
       "id": "ledger_web_invoice_api_list_invoices",
-      "community": 0,
+      "community": 6,
       "norm_label": "list_invoices()"
     },
     {
@@ -2862,7 +2880,7 @@
       "source_file": "invoice_api.py",
       "source_location": "L506",
       "id": "ledger_web_invoice_api_update_invoice_info",
-      "community": 4,
+      "community": 6,
       "norm_label": "update_invoice_info()"
     },
     {
@@ -2871,7 +2889,7 @@
       "source_file": "invoice_api.py",
       "source_location": "L550",
       "id": "ledger_web_invoice_api_get_next_invoice_no",
-      "community": 4,
+      "community": 6,
       "norm_label": "get_next_invoice_no()"
     },
     {
@@ -2880,7 +2898,7 @@
       "source_file": "invoice_api.py",
       "source_location": "L601",
       "id": "ledger_web_invoice_api_cancel_invoice",
-      "community": 0,
+      "community": 6,
       "norm_label": "cancel_invoice()"
     },
     {
@@ -2889,7 +2907,7 @@
       "source_file": "invoice_api.py",
       "source_location": "L683",
       "id": "ledger_web_invoice_api_get_portal_order_log",
-      "community": 0,
+      "community": 6,
       "norm_label": "get_portal_order_log()"
     },
     {
@@ -2916,7 +2934,7 @@
       "source_file": "invoice_api.py",
       "source_location": "L12",
       "id": "ledger_web_invoice_api_rationale_12",
-      "community": 0,
+      "community": 6,
       "norm_label": "return the column index (1-based) for the sold qty column that matches the"
     },
     {
@@ -2925,7 +2943,7 @@
       "source_file": "invoice_api.py",
       "source_location": "L77",
       "id": "ledger_web_invoice_api_rationale_77",
-      "community": 0,
+      "community": 6,
       "norm_label": "calculate true remaining stock for every product across all months.      formu"
     },
     {
@@ -2934,7 +2952,7 @@
       "source_file": "invoice_api.py",
       "source_location": "L684",
       "id": "ledger_web_invoice_api_rationale_684",
-      "community": 0,
+      "community": 6,
       "norm_label": "returns the last 100 lines of portal_submit.log."
     },
     {
@@ -3672,7 +3690,7 @@
       "source_file": "resync_inventory.py",
       "source_location": "L1",
       "id": "resync_inventory_py",
-      "community": 0,
+      "community": 6,
       "norm_label": "resync_inventory.py"
     },
     {
@@ -3681,7 +3699,7 @@
       "source_file": "resync_inventory.py",
       "source_location": "L6",
       "id": "ledger_web_resync_inventory_fix_inventory",
-      "community": 0,
+      "community": 6,
       "norm_label": "fix_inventory()"
     },
     {
@@ -4538,6 +4556,42 @@
       "id": "ledger_web_sync_mizoram_sync_mizoram_data",
       "community": 27,
       "norm_label": "sync_mizoram_data()"
+    },
+    {
+      "label": "sync_purchase_bill.py",
+      "file_type": "code",
+      "source_file": "sync_purchase_bill.py",
+      "source_location": "L1",
+      "id": "sync_purchase_bill_py",
+      "community": 311,
+      "norm_label": "sync_purchase_bill.py"
+    },
+    {
+      "label": "get_credentials()",
+      "file_type": "code",
+      "source_file": "sync_purchase_bill.py",
+      "source_location": "L49",
+      "id": "ledger_web_sync_purchase_bill_get_credentials",
+      "community": 311,
+      "norm_label": "get_credentials()"
+    },
+    {
+      "label": "sync_bill()",
+      "file_type": "code",
+      "source_file": "sync_purchase_bill.py",
+      "source_location": "L54",
+      "id": "ledger_web_sync_purchase_bill_sync_bill",
+      "community": 311,
+      "norm_label": "sync_bill()"
+    },
+    {
+      "label": "sync_purchase_bill.py --------------------- Automated AWPL Purchase Bill Scraper",
+      "file_type": "rationale",
+      "source_file": "sync_purchase_bill.py",
+      "source_location": "L1",
+      "id": "ledger_web_sync_purchase_bill_rationale_1",
+      "community": 311,
+      "norm_label": "sync_purchase_bill.py --------------------- automated awpl purchase bill scraper"
     },
     {
       "label": "sync_sales_to_inventory.py",
@@ -6709,11 +6763,74 @@
       "norm_label": "\ud83d\udcc4 license & attribution"
     },
     {
+      "label": "Return cached ledger entries from ledger_report.json or SQLite ledger_report tab",
+      "file_type": "rationale",
+      "source_file": "app.py",
+      "source_location": "L1257",
+      "community": 36,
+      "norm_label": "return cached ledger entries from ledger_report.json or sqlite ledger_report tab",
+      "id": "ledger_web_app_rationale_1257"
+    },
+    {
+      "label": "Return closing balance for stock-point-order and dashboard sync.",
+      "file_type": "rationale",
+      "source_file": "app.py",
+      "source_location": "L1318",
+      "community": 4,
+      "norm_label": "return closing balance for stock-point-order and dashboard sync.",
+      "id": "ledger_web_app_rationale_1318"
+    },
+    {
+      "label": "Trigger fast real-time wallet scrape from portal.",
+      "file_type": "rationale",
+      "source_file": "app.py",
+      "source_location": "L1352",
+      "community": 71,
+      "norm_label": "trigger fast real-time wallet scrape from portal.",
+      "id": "ledger_web_app_rationale_1352"
+    },
+    {
+      "label": "Add a manual entry to the ledger_report.json file.",
+      "file_type": "rationale",
+      "source_file": "app.py",
+      "source_location": "L1408",
+      "community": 68,
+      "norm_label": "add a manual entry to the ledger_report.json file.",
+      "id": "ledger_web_app_rationale_1408"
+    },
+    {
+      "label": "Places a franchise stock point order on the Asclepius portal.     Expects JSON",
+      "file_type": "rationale",
+      "source_file": "app.py",
+      "source_location": "L1459",
+      "community": 69,
+      "norm_label": "places a franchise stock point order on the asclepius portal.     expects json",
+      "id": "ledger_web_app_rationale_1459"
+    },
+    {
+      "label": "Manual trigger: pull from GSheets \u2192 check rollover \u2192 push back.",
+      "file_type": "rationale",
+      "source_file": "app.py",
+      "source_location": "L1624",
+      "community": 0,
+      "norm_label": "manual trigger: pull from gsheets \u2192 check rollover \u2192 push back.",
+      "id": "ledger_web_app_rationale_1624"
+    },
+    {
+      "label": "Trigger one-way remarks pull from GSheets (no push/upload back).",
+      "file_type": "rationale",
+      "source_file": "app.py",
+      "source_location": "L1651",
+      "community": 72,
+      "norm_label": "trigger one-way remarks pull from gsheets (no push/upload back).",
+      "id": "ledger_web_app_rationale_1651"
+    },
+    {
       "label": "Returns the last 100 lines of portal_submit.log.",
       "file_type": "rationale",
       "source_file": "invoice_api.py",
       "source_location": "L656",
-      "community": 0,
+      "community": 6,
       "norm_label": "returns the last 100 lines of portal_submit.log.",
       "id": "ledger_web_invoice_api_rationale_656"
     },
@@ -6740,7 +6857,7 @@
       "file_type": "rationale",
       "source_file": "invoice_api.py",
       "source_location": "L632",
-      "community": 0,
+      "community": 6,
       "norm_label": "returns the last 100 lines of portal_submit.log.",
       "id": "ledger_web_invoice_api_rationale_632"
     },
@@ -7275,7 +7392,7 @@
       "file_type": "code",
       "source_file": "templates/inventory_master.html",
       "source_location": "L1",
-      "community": 2,
+      "community": 4,
       "norm_label": "inventory_master.html",
       "description": "Jinja2 HTML template \u2014 served by Flask app.py",
       "id": "inventory_master_html"
@@ -7335,7 +7452,7 @@
       "file_type": "code",
       "source_file": "templates/purchase_history.html",
       "source_location": "L1",
-      "community": 4,
+      "community": 2,
       "norm_label": "purchase_history.html",
       "description": "Jinja2 HTML template \u2014 served by Flask app.py",
       "id": "purchase_history_html"
@@ -7385,7 +7502,7 @@
       "file_type": "code",
       "source_file": "Dockerfile",
       "source_location": "L1",
-      "community": 67,
+      "community": 2,
       "norm_label": "dockerfile",
       "description": "Container build: python:3.11-slim, gunicorn entrypoint",
       "id": "dockerfile"
@@ -7395,7 +7512,7 @@
       "file_type": "code",
       "source_file": "render.yaml",
       "source_location": "L1",
-      "community": 67,
+      "community": 2,
       "norm_label": "render.yaml",
       "description": "Render.com PaaS deployment config \u2014 web service definition",
       "id": "render_yaml"
@@ -7893,6 +8010,16 @@
       "confidence_score": 1.0,
       "source": "app_py",
       "target": "ledger_web_app_api_purchase_orders"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.py",
+      "source_location": "L1249",
+      "weight": 1.0,
+      "source": "app_py",
+      "target": "ledger_web_app_api_sync_purchase_orders",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -8806,6 +8933,26 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
+      "source_location": "L1250",
+      "weight": 1.0,
+      "source": "ledger_web_app_rationale_1250",
+      "target": "ledger_web_app_api_sync_purchase_orders",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "app.py",
+      "source_location": "L1269",
+      "weight": 1.0,
+      "source": "ledger_web_app_rationale_1269",
+      "target": "ledger_web_app_api_ledger_report",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "app.py",
       "source_location": "L1257",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -8831,6 +8978,16 @@
       "confidence_score": 1.0,
       "source": "ledger_report_html",
       "target": "ledger_web_app_api_ledger_report"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "app.py",
+      "source_location": "L1330",
+      "weight": 1.0,
+      "source": "ledger_web_app_rationale_1330",
+      "target": "ledger_web_app_api_ledger_wallet_balance",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -8866,6 +9023,16 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
+      "source_location": "L1364",
+      "weight": 1.0,
+      "source": "ledger_web_app_rationale_1364",
+      "target": "ledger_web_app_api_refresh_wallet",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "app.py",
       "source_location": "L1352",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -8886,6 +9053,16 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
+      "source_location": "L1420",
+      "weight": 1.0,
+      "source": "ledger_web_app_rationale_1420",
+      "target": "ledger_web_app_api_ledger_manual_entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "app.py",
       "source_location": "L1408",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -8901,6 +9078,16 @@
       "confidence_score": 1.0,
       "source": "ledger_web_app_rationale_1410",
       "target": "ledger_web_app_api_ledger_manual_entry"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "app.py",
+      "source_location": "L1471",
+      "weight": 1.0,
+      "source": "ledger_web_app_rationale_1471",
+      "target": "ledger_web_app_api_place_stock_order",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -8948,11 +9135,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1624",
+      "source_location": "L1636",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "ledger_web_app_rationale_1624",
-      "target": "ledger_web_app_api_sync_now"
+      "source": "ledger_web_app_rationale_1636",
+      "target": "ledger_web_app_api_sync_now",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -8980,11 +9167,31 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
+      "source_location": "L1624",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ledger_web_app_rationale_1624",
+      "target": "ledger_web_app_api_sync_now"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "app.py",
       "source_location": "L1626",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "ledger_web_app_rationale_1626",
       "target": "ledger_web_app_api_sync_now"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "app.py",
+      "source_location": "L1663",
+      "weight": 1.0,
+      "source": "ledger_web_app_rationale_1663",
+      "target": "ledger_web_app_api_sync_remarks_from_gsheets",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -9012,9 +9219,9 @@
       "source_file": "apply_bill_268.py",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "apply_bill_268_py",
-      "target": "ledger_web_apply_bill_268_main",
-      "confidence_score": 1.0
+      "target": "ledger_web_apply_bill_268_main"
     },
     {
       "relation": "contains",
@@ -9022,9 +9229,9 @@
       "source_file": "build_sheets.py",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "build_sheets_py",
-      "target": "ledger_web_build_sheets_hex_to_rgb",
-      "confidence_score": 1.0
+      "target": "ledger_web_build_sheets_hex_to_rgb"
     },
     {
       "relation": "contains",
@@ -9497,9 +9704,9 @@
       "source_file": "extract_full_structure.py",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "extract_full_structure_py",
-      "target": "ledger_web_extract_full_structure_clean_name",
-      "confidence_score": 1.0
+      "target": "ledger_web_extract_full_structure_clean_name"
     },
     {
       "relation": "contains",
@@ -9507,9 +9714,9 @@
       "source_file": "extract_full_structure.py",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "extract_full_structure_py",
-      "target": "ledger_web_extract_full_structure_clean_target",
-      "confidence_score": 1.0
+      "target": "ledger_web_extract_full_structure_clean_target"
     },
     {
       "relation": "contains",
@@ -10370,9 +10577,9 @@
       "source_file": "invoice_api.py",
       "source_location": "L697",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "invoice_api_py",
-      "target": "ledger_web_invoice_api_resubmit_status",
-      "confidence_score": 1.0
+      "target": "ledger_web_invoice_api_resubmit_status"
     },
     {
       "relation": "contains",
@@ -10380,9 +10587,9 @@
       "source_file": "invoice_api.py",
       "source_location": "L713",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "invoice_api_py",
-      "target": "ledger_web_invoice_api_resubmit_invoice_to_portal",
-      "confidence_score": 1.0
+      "target": "ledger_web_invoice_api_resubmit_invoice_to_portal"
     },
     {
       "relation": "calls",
@@ -10531,9 +10738,9 @@
       "source_file": "invoice_api.py",
       "source_location": "L684",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ledger_web_invoice_api_rationale_684",
-      "target": "ledger_web_invoice_api_get_portal_order_log",
-      "confidence_score": 1.0
+      "target": "ledger_web_invoice_api_get_portal_order_log"
     },
     {
       "relation": "rationale_for",
@@ -10561,9 +10768,9 @@
       "source_file": "invoice_api.py",
       "source_location": "L698",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ledger_web_invoice_api_rationale_698",
-      "target": "ledger_web_invoice_api_resubmit_status",
-      "confidence_score": 1.0
+      "target": "ledger_web_invoice_api_resubmit_status"
     },
     {
       "relation": "calls",
@@ -10582,9 +10789,9 @@
       "source_file": "invoice_api.py",
       "source_location": "L714",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ledger_web_invoice_api_rationale_714",
-      "target": "ledger_web_invoice_api_resubmit_invoice_to_portal",
-      "confidence_score": 1.0
+      "target": "ledger_web_invoice_api_resubmit_invoice_to_portal"
     },
     {
       "relation": "calls",
@@ -10614,9 +10821,9 @@
       "source_file": "inv_324.json",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "inv_324_json",
-      "target": "ledger_web_inv_324_amount",
-      "confidence_score": 1.0
+      "target": "ledger_web_inv_324_amount"
     },
     {
       "relation": "contains",
@@ -10624,9 +10831,9 @@
       "source_file": "inv_324.json",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "inv_324_json",
-      "target": "ledger_web_inv_324_customer_name",
-      "confidence_score": 1.0
+      "target": "ledger_web_inv_324_customer_name"
     },
     {
       "relation": "contains",
@@ -10634,9 +10841,9 @@
       "source_file": "inv_324.json",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "inv_324_json",
-      "target": "ledger_web_inv_324_date_created",
-      "confidence_score": 1.0
+      "target": "ledger_web_inv_324_date_created"
     },
     {
       "relation": "contains",
@@ -10644,9 +10851,9 @@
       "source_file": "inv_324.json",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "inv_324_json",
-      "target": "ledger_web_inv_324_ds_code",
-      "confidence_score": 1.0
+      "target": "ledger_web_inv_324_ds_code"
     },
     {
       "relation": "contains",
@@ -10654,9 +10861,9 @@
       "source_file": "inv_324.json",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "inv_324_json",
-      "target": "ledger_web_inv_324_grand_total_sp",
-      "confidence_score": 1.0
+      "target": "ledger_web_inv_324_grand_total_sp"
     },
     {
       "relation": "contains",
@@ -10664,9 +10871,9 @@
       "source_file": "inv_324.json",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "inv_324_json",
-      "target": "ledger_web_inv_324_has_complimentary",
-      "confidence_score": 1.0
+      "target": "ledger_web_inv_324_has_complimentary"
     },
     {
       "relation": "contains",
@@ -10674,9 +10881,9 @@
       "source_file": "inv_324.json",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "inv_324_json",
-      "target": "ledger_web_inv_324_id",
-      "confidence_score": 1.0
+      "target": "ledger_web_inv_324_id"
     },
     {
       "relation": "contains",
@@ -10684,9 +10891,9 @@
       "source_file": "inv_324.json",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "inv_324_json",
-      "target": "ledger_web_inv_324_invoice_no",
-      "confidence_score": 1.0
+      "target": "ledger_web_inv_324_invoice_no"
     },
     {
       "relation": "contains",
@@ -10694,9 +10901,9 @@
       "source_file": "inv_324.json",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "inv_324_json",
-      "target": "ledger_web_inv_324_is_dispatched",
-      "confidence_score": 1.0
+      "target": "ledger_web_inv_324_is_dispatched"
     },
     {
       "relation": "contains",
@@ -10704,9 +10911,9 @@
       "source_file": "inv_324.json",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "inv_324_json",
-      "target": "ledger_web_inv_324_items",
-      "confidence_score": 1.0
+      "target": "ledger_web_inv_324_items"
     },
     {
       "relation": "contains",
@@ -10714,9 +10921,9 @@
       "source_file": "inv_324.json",
       "source_location": "L413",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "inv_324_json",
-      "target": "ledger_web_inv_324_remark",
-      "confidence_score": 1.0
+      "target": "ledger_web_inv_324_remark"
     },
     {
       "relation": "contains",
@@ -10724,9 +10931,9 @@
       "source_file": "inv_324.json",
       "source_location": "L414",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "inv_324_json",
-      "target": "ledger_web_inv_324_status",
-      "confidence_score": 1.0
+      "target": "ledger_web_inv_324_status"
     },
     {
       "relation": "contains",
@@ -10919,9 +11126,9 @@
       "source_file": "portal_submit_order.py",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "portal_submit_order_py",
-      "target": "ledger_web_portal_submit_order_is_pid_alive",
-      "confidence_score": 1.0
+      "target": "ledger_web_portal_submit_order_is_pid_alive"
     },
     {
       "relation": "contains",
@@ -10929,9 +11136,9 @@
       "source_file": "portal_submit_order.py",
       "source_location": "L40",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "portal_submit_order_py",
-      "target": "ledger_web_portal_submit_order_get_active_submission",
-      "confidence_score": 1.0
+      "target": "ledger_web_portal_submit_order_get_active_submission"
     },
     {
       "relation": "contains",
@@ -10939,9 +11146,9 @@
       "source_file": "portal_submit_order.py",
       "source_location": "L73",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "portal_submit_order_py",
-      "target": "ledger_web_portal_submit_order_acquire_submission_lock",
-      "confidence_score": 1.0
+      "target": "ledger_web_portal_submit_order_acquire_submission_lock"
     },
     {
       "relation": "contains",
@@ -10949,9 +11156,9 @@
       "source_file": "portal_submit_order.py",
       "source_location": "L102",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "portal_submit_order_py",
-      "target": "ledger_web_portal_submit_order_release_submission_lock",
-      "confidence_score": 1.0
+      "target": "ledger_web_portal_submit_order_release_submission_lock"
     },
     {
       "relation": "contains",
@@ -10980,9 +11187,9 @@
       "source_file": "portal_submit_order.py",
       "source_location": "L57",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ledger_web_portal_submit_order_get_active_submission",
-      "target": "ledger_web_portal_submit_order_log",
-      "confidence_score": 1.0
+      "target": "ledger_web_portal_submit_order_log"
     },
     {
       "relation": "calls",
@@ -10991,9 +11198,9 @@
       "source_file": "portal_submit_order.py",
       "source_location": "L99",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ledger_web_portal_submit_order_acquire_submission_lock",
-      "target": "ledger_web_portal_submit_order_log",
-      "confidence_score": 1.0
+      "target": "ledger_web_portal_submit_order_log"
     },
     {
       "relation": "calls",
@@ -11002,9 +11209,9 @@
       "source_file": "portal_submit_order.py",
       "source_location": "L108",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ledger_web_portal_submit_order_release_submission_lock",
-      "target": "ledger_web_portal_submit_order_log",
-      "confidence_score": 1.0
+      "target": "ledger_web_portal_submit_order_log"
     },
     {
       "relation": "calls",
@@ -11035,9 +11242,9 @@
       "source_file": "portal_submit_order.py",
       "source_location": "L62",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ledger_web_portal_submit_order_get_active_submission",
-      "target": "ledger_web_portal_submit_order_is_pid_alive",
-      "confidence_score": 1.0
+      "target": "ledger_web_portal_submit_order_is_pid_alive"
     },
     {
       "relation": "calls",
@@ -11046,9 +11253,9 @@
       "source_file": "portal_submit_order.py",
       "source_location": "L58",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ledger_web_portal_submit_order_get_active_submission",
-      "target": "ledger_web_portal_submit_order_release_submission_lock",
-      "confidence_score": 1.0
+      "target": "ledger_web_portal_submit_order_release_submission_lock"
     },
     {
       "relation": "calls",
@@ -11057,9 +11264,9 @@
       "source_file": "portal_submit_order.py",
       "source_location": "L80",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ledger_web_portal_submit_order_acquire_submission_lock",
-      "target": "ledger_web_portal_submit_order_get_active_submission",
-      "confidence_score": 1.0
+      "target": "ledger_web_portal_submit_order_get_active_submission"
     },
     {
       "relation": "calls",
@@ -11068,9 +11275,9 @@
       "source_file": "portal_submit_order.py",
       "source_location": "L404",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ledger_web_portal_submit_order_submit_order_async",
-      "target": "ledger_web_portal_submit_order_get_active_submission",
-      "confidence_score": 1.0
+      "target": "ledger_web_portal_submit_order_get_active_submission"
     },
     {
       "relation": "rationale_for",
@@ -11078,9 +11285,9 @@
       "source_file": "portal_submit_order.py",
       "source_location": "L41",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ledger_web_portal_submit_order_rationale_41",
-      "target": "ledger_web_portal_submit_order_get_active_submission",
-      "confidence_score": 1.0
+      "target": "ledger_web_portal_submit_order_get_active_submission"
     },
     {
       "relation": "calls",
@@ -11089,9 +11296,9 @@
       "source_file": "portal_submit_order.py",
       "source_location": "L120",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ledger_web_portal_submit_order_submit_order_to_portal",
-      "target": "ledger_web_portal_submit_order_acquire_submission_lock",
-      "confidence_score": 1.0
+      "target": "ledger_web_portal_submit_order_acquire_submission_lock"
     },
     {
       "relation": "calls",
@@ -11100,9 +11307,9 @@
       "source_file": "portal_submit_order.py",
       "source_location": "L426",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ledger_web_portal_submit_order_submit_order_async",
-      "target": "ledger_web_portal_submit_order_acquire_submission_lock",
-      "confidence_score": 1.0
+      "target": "ledger_web_portal_submit_order_acquire_submission_lock"
     },
     {
       "relation": "rationale_for",
@@ -11110,9 +11317,9 @@
       "source_file": "portal_submit_order.py",
       "source_location": "L74",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ledger_web_portal_submit_order_rationale_74",
-      "target": "ledger_web_portal_submit_order_acquire_submission_lock",
-      "confidence_score": 1.0
+      "target": "ledger_web_portal_submit_order_acquire_submission_lock"
     },
     {
       "relation": "calls",
@@ -11121,9 +11328,9 @@
       "source_file": "portal_submit_order.py",
       "source_location": "L395",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ledger_web_portal_submit_order_submit_order_to_portal",
-      "target": "ledger_web_portal_submit_order_release_submission_lock",
-      "confidence_score": 1.0
+      "target": "ledger_web_portal_submit_order_release_submission_lock"
     },
     {
       "relation": "rationale_for",
@@ -11131,9 +11338,9 @@
       "source_file": "portal_submit_order.py",
       "source_location": "L103",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ledger_web_portal_submit_order_rationale_103",
-      "target": "ledger_web_portal_submit_order_release_submission_lock",
-      "confidence_score": 1.0
+      "target": "ledger_web_portal_submit_order_release_submission_lock"
     },
     {
       "relation": "rationale_for",
@@ -11141,9 +11348,9 @@
       "source_file": "portal_submit_order.py",
       "source_location": "L111",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ledger_web_portal_submit_order_rationale_111",
-      "target": "ledger_web_portal_submit_order_submit_order_to_portal",
-      "confidence_score": 1.0
+      "target": "ledger_web_portal_submit_order_submit_order_to_portal"
     },
     {
       "relation": "rationale_for",
@@ -11161,9 +11368,9 @@
       "source_file": "portal_submit_order.py",
       "source_location": "L399",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ledger_web_portal_submit_order_rationale_399",
-      "target": "ledger_web_portal_submit_order_submit_order_async",
-      "confidence_score": 1.0
+      "target": "ledger_web_portal_submit_order_submit_order_async"
     },
     {
       "relation": "rationale_for",
@@ -11883,9 +12090,9 @@
       "source_file": "submit_324_perfect.py",
       "source_location": "L53",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "submit_324_perfect_py",
-      "target": "ledger_web_submit_324_perfect_handle_dialog",
-      "confidence_score": 1.0
+      "target": "ledger_web_submit_324_perfect_handle_dialog"
     },
     {
       "relation": "contains",
@@ -12027,6 +12234,47 @@
       "confidence_score": 1.0,
       "source": "sync_mizoram_py",
       "target": "ledger_web_sync_mizoram_sync_mizoram_data"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "sync_purchase_bill.py",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "sync_purchase_bill_py",
+      "target": "ledger_web_sync_purchase_bill_get_credentials",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "sync_purchase_bill.py",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "sync_purchase_bill_py",
+      "target": "ledger_web_sync_purchase_bill_sync_bill",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "sync_purchase_bill.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "ledger_web_sync_purchase_bill_rationale_1",
+      "target": "sync_purchase_bill_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "sync_purchase_bill.py",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "ledger_web_sync_purchase_bill_sync_bill",
+      "target": "ledger_web_sync_purchase_bill_get_credentials",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12195,9 +12443,9 @@
       "source_file": "test_probe_324.py",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "test_probe_324_py",
-      "target": "ledger_web_test_probe_324_handle_dialog",
-      "confidence_score": 1.0
+      "target": "ledger_web_test_probe_324_handle_dialog"
     },
     {
       "relation": "contains",
@@ -12295,9 +12543,9 @@
       "source_file": "update_leader_divider_style.py",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "update_leader_divider_style_py",
-      "target": "ledger_web_update_leader_divider_style_hex_to_rgb",
-      "confidence_score": 1.0
+      "target": "ledger_web_update_leader_divider_style_hex_to_rgb"
     },
     {
       "relation": "contains",
@@ -12305,9 +12553,9 @@
       "source_file": "update_leader_divider_style.py",
       "source_location": "L73",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "update_leader_divider_style_py",
-      "target": "ledger_web_update_leader_divider_style_main",
-      "confidence_score": 1.0
+      "target": "ledger_web_update_leader_divider_style_main"
     },
     {
       "relation": "rationale_for",
@@ -12315,9 +12563,9 @@
       "source_file": "update_leader_divider_style.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ledger_web_update_leader_divider_style_rationale_1",
-      "target": "update_leader_divider_style_py",
-      "confidence_score": 1.0
+      "target": "update_leader_divider_style_py"
     },
     {
       "relation": "calls",
@@ -12326,9 +12574,9 @@
       "source_file": "update_leader_divider_style.py",
       "source_location": "L93",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ledger_web_update_leader_divider_style_main",
-      "target": "ledger_web_update_leader_divider_style_hex_to_rgb",
-      "confidence_score": 1.0
+      "target": "ledger_web_update_leader_divider_style_hex_to_rgb"
     },
     {
       "relation": "contains",
@@ -13933,5 +14181,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "4b85da332808c01d64ee4ffd88f262a7668e9b70"
+  "built_at_commit": "3857c5561656a254318e370cb427e4308cff74ba"
 }

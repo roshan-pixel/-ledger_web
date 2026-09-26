@@ -46,7 +46,24 @@
             padding:.42rem 1rem; border-radius:8px; font-size:.82rem; font-weight:600;
             cursor:pointer; border:none; background:rgba(99,102,241,.18); color:var(--primary);
             transition:all .2s; white-space:nowrap; font-family:inherit;
-        }.btn-view:hover { background:rgba(99,102,241,.35); }/* ── MODAL ───────────────────────────────────── */
+        }.btn-view:hover { background:rgba(99,102,241,.35); }
+        .btn-sync-portal {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.6rem 1.15rem; border-radius: 10px; font-size: 0.88rem; font-weight: 600;
+            cursor: pointer; border: 1px solid rgba(99, 102, 241, 0.4);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.22), rgba(168, 85, 247, 0.22));
+            color: #c7d2fe; transition: all 0.2s ease; font-family: inherit;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
+        }
+        .btn-sync-portal:hover {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.38), rgba(168, 85, 247, 0.38));
+            border-color: #818cf8; color: #ffffff; transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(99, 102, 241, 0.25);
+        }
+        .btn-sync-portal:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .spinning { animation: spin 1s linear infinite; }
+        /* ── MODAL ───────────────────────────────────── */
         .modal-overlay {
             display:none; position:fixed; inset:0; background:rgba(0,0,0,.7);
             backdrop-filter:blur(6px); z-index:1000; align-items:center; justify-content:center; padding:1rem;
@@ -282,7 +299,13 @@
     <div class="page-header">
         <div>
             <h1>Purchase History</h1>
-            <p>Stock Point orders from the portal · 01 Jun 2026 – 26 Jul 2026</p>
+            <p>Stock Point orders from the portal · Real-time AWPL Sync</p>
+        </div>
+        <div style="display:flex; gap:0.75rem; align-items:center;">
+            <button id="syncPortalBtn" class="btn-sync-portal" onclick="triggerSyncPortal()" title="Fetch new bills from AWPL Portal">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="sync-icon"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                <span id="syncBtnText">Sync from Portal</span>
+            </button>
         </div>
     </div>
 
@@ -350,7 +373,7 @@
     }
 
     // Load orders
-    window.onload = async () => {
+    async function loadOrders() {
         try {
             const res  = await fetch('/api/purchase_orders');
             const data = await res.json();
@@ -366,7 +389,46 @@
             document.getElementById('ordersBody').innerHTML =
                 `<tr><td colspan="11"><div class="empty-state"><div class="icon">❌</div><p>Failed to load: ${e.message}</p></div></td></tr>`;
         }
-    };
+    }
+
+    window.onload = loadOrders;
+
+    async function triggerSyncPortal() {
+        const billNo = prompt("Enter specific Bill No (e.g. GUW/000268/26-27), or leave blank to auto-sync all recent bills from AWPL Portal:");
+        if (billNo === null) return;
+
+        const btn = document.getElementById('syncPortalBtn');
+        const btnText = document.getElementById('syncBtnText');
+        const icon = btn.querySelector('.sync-icon');
+
+        btn.disabled = true;
+        if (icon) icon.classList.add('spinning');
+        btnText.textContent = billNo.trim() ? `Syncing ${billNo.trim()}...` : 'Syncing from Portal...';
+
+        try {
+            const res = await fetch('/api/purchase_orders/sync', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ bill_no: billNo.trim() })
+            });
+            const data = await res.json();
+            if (data.success) {
+                const added = data.bills_added && data.bills_added.length 
+                    ? data.bills_added.join(', ') 
+                    : 'All latest bills';
+                alert(`✓ Success! ${added} updated in Purchase History, Inventory Stock, Master & Google Sheets.`);
+                await loadOrders();
+            } else {
+                alert(`⚠️ Sync message: ${data.error || data.message || 'Could not complete sync.'}`);
+            }
+        } catch (err) {
+            alert(`❌ Error connecting to sync endpoint: ${err.message}`);
+        } finally {
+            btn.disabled = false;
+            if (icon) icon.classList.remove('spinning');
+            btnText.textContent = 'Sync from Portal';
+        }
+    }
 
     function renderSummary(orders) {
         const total = orders.reduce((s, o) => s + (parseFloat(o.total) || 0), 0);
