@@ -1,7 +1,7 @@
 {
   "success": true,
   "from_date": "01/01/2025",
-  "to_date": "11/09/2026",
+  "to_date": "21/09/2026",
   "franchise_value": "960158985",
   "headers": [
     "Sno",
@@ -786,11 +786,119 @@
       "Transaction Amount": "23543.00",
       "Transaction Type": "Cr",
       "Balance": "46009.92"
+    },
+    {
+      "Sno": "87",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "14/09/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "12722.60",
+      "Transaction Type": "Cr",
+      "Balance": "58732.52"
+    },
+    {
+      "Sno": "88",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "14/09/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "24384.25",
+      "Transaction Type": "Cr",
+      "Balance": "83116.77"
+    },
+    {
+      "Sno": "89",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "14/09/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "18725.00",
+      "Transaction Type": "Cr",
+      "Balance": "101841.77"
+    },
+    {
+      "Sno": "90",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "14/09/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "3445.00",
+      "Transaction Type": "Cr",
+      "Balance": "105286.77"
+    },
+    {
+      "Sno": "91",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "14/09/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "8242.00",
+      "Transaction Type": "Cr",
+      "Balance": "113528.77"
+    },
+    {
+      "Sno": "92",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "14/09/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "4765.00",
+      "Transaction Type": "Cr",
+      "Balance": "118293.77"
+    },
+    {
+      "Sno": "93",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "14/09/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "4765.00",
+      "Transaction Type": "Cr",
+      "Balance": "123058.77"
+    },
+    {
+      "Sno": "94",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "19/09/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "75000.00",
+      "Transaction Type": "Cr",
+      "Balance": "198058.77"
+    },
+    {
+      "Sno": "95",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "19/09/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "50000.00",
+      "Transaction Type": "Cr",
+      "Balance": "248058.77"
+    },
+    {
+      "Sno": "96",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "19/09/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "1.00",
+      "Transaction Type": "Cr",
+      "Balance": "248059.77"
+    },
+    {
+      "Sno": "97",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "19/09/2026",
+      "Transaction Details": "Amount Credited By AWPL09AAZFD8117G",
+      "Transaction Amount": "3963.00",
+      "Transaction Type": "Cr",
+      "Balance": "252022.77"
+    },
+    {
+      "Sno": "98",
+      "C&F Name": "DSR 7 WELLNESS CENTRE",
+      "Transaction Date": "19/09/2026",
+      "Transaction Details": "Amount Debited against Order Approve [Order No : 146636] Bill no : GUW/000268/26-27",
+      "Transaction Amount": "252022.53",
+      "Transaction Type": "Dr",
+      "Balance": "0.24"
     }
   ],
-  "closing_balance": 46009.92,
+  "closing_balance": 0.24,
   "balance_text": "",
-  "scraped_at": "2026-09-11T16:12:00.292449",
-  "row_count": 86,
+  "scraped_at": "2026-09-21T09:03:58.386819",
+  "row_count": 98,
   "pages_scraped": 2
 }

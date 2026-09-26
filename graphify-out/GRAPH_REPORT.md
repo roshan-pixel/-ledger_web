@@ -1,16 +1,16 @@
-# Graph Report - ledger_web  (2026-09-21)
+# Graph Report - ledger_web  (2026-09-26)
 
 ## Corpus Check
-- 294 files · ~131,037 words
+- 305 files · ~138,035 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 776 nodes · 588 edges · 301 communities (280 shown, 21 thin omitted)
-- Extraction: 95% EXTRACTED · 5% INFERRED · 0% AMBIGUOUS · INFERRED: 32 edges (avg confidence: 0.8)
+- 822 nodes · 639 edges · 311 communities (290 shown, 21 thin omitted)
+- Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 37 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `777d5c0d`
+- Built from commit: `4b85da33`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -74,22 +74,21 @@
 - [[_COMMUNITY_Community 114|Community 114]]
 - [[_COMMUNITY_Community 270|Community 270]]
 - [[_COMMUNITY_Community 271|Community 271]]
+- [[_COMMUNITY_Community 301|Community 301]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `get_db()` - 22 edges
+1. `get_db()` - 23 edges
 2. `🏗️ Deep System Architecture & How It Works` - 11 edges
 3. `3. Core Subsystems & Module Breakdown` - 11 edges
-4. `init_google_sheets()` - 9 edges
-5. `⚡ Ledger God Mode Web App` - 9 edges
-6. `📸 Screenshots` - 9 edges
-7. `update_inventory_formulas()` - 8 edges
-8. `get_sold_qty_col_idx()` - 8 edges
-9. `indices` - 8 edges
-10. `update_totals_row()` - 7 edges
+4. `get_active_submission()` - 10 edges
+5. `init_google_sheets()` - 9 edges
+6. `⚡ Ledger God Mode Web App` - 9 edges
+7. `📸 Screenshots` - 9 edges
+8. `update_inventory_formulas()` - 8 edges
+9. `get_sold_qty_col_idx()` - 8 edges
+10. `submit_order_async()` - 8 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `get_next_invoice_no()` --calls--> `get_db()`  [INFERRED]
-  invoice_api.py → app.py
 - `add_product()` --calls--> `init_google_sheets()`  [INFERRED]
   add_new_product.py → init_gsheets.py
 - `add_product()` --calls--> `get_db()`  [INFERRED]
@@ -98,8 +97,10 @@
   invoice_api.py → app.py
 - `list_invoices()` --calls--> `get_db()`  [INFERRED]
   invoice_api.py → app.py
+- `update_invoice_info()` --calls--> `get_db()`  [INFERRED]
+  invoice_api.py → app.py
 
-## Communities (301 total, 21 thin omitted)
+## Communities (311 total, 21 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.06
@@ -110,20 +111,20 @@ Cohesion: 0.06
 Nodes (34): 🧮 1. Dynamic Monthly Inventory Engine (`inventory_engine.py`), 🧾 2. Invoice Billing Terminal (`invoice_api.py` Blueprint), 🔄 3. Monthly Auto-Rollover + Hourly GSheets Sync, 🤖 4. Portal Robotics (Playwright 1.44), 🌲 5. Genealogy Downline Crawler (`Full_Tree_Crawler.py`), 🩺 6. Disease Guide, 🔄 After Cloning, 🤖 AWPL Portal — Bill Detail (+26 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.08
-Nodes (25): 1. High-Level Architecture Overview, 2. System Topology Graph (Graphify), 3.10 KPI Dashboard (`/api/kpi`), 3.1 Flask Application Core (`app.py` — 1373 lines), 3.2 Dynamic Inventory Engine (`inventory_engine.py`), 3.3 Monthly Rollover (`monthly_rollover.py`), 3.4 Invoice & Strict Stock Depletion API (`invoice_api.py` — Blueprint), 3.5 Customer Lookup — DB Cache + Live Portal Fallback (`/api/customer`) (+17 more)
+Cohesion: 0.05
+Nodes (38): 1. High-Level Architecture Overview, 2. System Topology Graph (Graphify), 3.10 KPI Dashboard (`/api/kpi`), 3.1 Flask Application Core (`app.py` — 1373 lines), 3.2 Dynamic Inventory Engine (`inventory_engine.py`), 3.3 Monthly Rollover (`monthly_rollover.py`), 3.4 Invoice & Strict Stock Depletion API (`invoice_api.py` — Blueprint), 3.5 Customer Lookup — DB Cache + Live Portal Fallback (`/api/customer`) (+30 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.13
-Nodes (10): add_product(), api_inventory_master(), api_inventory_master_months(), api_ledger_report(), api_mizoram_bronze_update(), api_product_sales(), get_db(), Return cached ledger entries from ledger_report.json or SQLite ledger_report tab (+2 more)
+Cohesion: 0.12
+Nodes (11): add_product(), api_inventory_master(), api_ledger_wallet_balance(), api_mizoram_bronze(), api_mizoram_bronze_update(), api_product_sales(), get_db(), Return closing balance for stock-point-order and dashboard sync. (+3 more)
 
 ### Community 5 - "Community 5"
 Cohesion: 0.15
-Nodes (13): 5.1 Invoice Creation & Strict Stock Depletion, 5.2 Auto-Sync Scheduler — Hourly GSheets + Daily Rollover, 5.3 Stock Point Order via Headless Portal Bot, 5.4 BFS Genealogy Downline Tree Crawler, 5.5 Customer DS Lookup — DB Cache + Live Portal Fallback, 5.6 Invoice Cancel & Stock Restoration, 5. Sequence Diagrams & Data Flows, code:mermaid (sequenceDiagram) (+5 more)
+Nodes (12): amount, customer_name, date_created, ds_code, grand_total_sp, has_complimentary, id, invoice_no (+4 more)
 
 ### Community 6 - "Community 6"
-Cohesion: 0.23
-Nodes (10): get_unticked_invoices(), main(), parse_items(), bulk_push_to_portal.py ---------------------- Reads all invoices with is_dispatc, Return list of {description, qty} dicts from the stored JSON., _log(), Submits an order to the AWPL C&F portal (SpdistributorSale.aspx).     items is a, Launch portal submission as a separate subprocess so it survives Gunicorn's (+2 more)
+Cohesion: 0.13
+Nodes (23): get_unticked_invoices(), main(), parse_items(), bulk_push_to_portal.py ---------------------- Reads all invoices with is_dispatc, Return list of {description, qty} dicts from the stored JSON., Get current portal submission state (is_busy, which invoice is submitting, elaps, Trigger manual resubmission of an unsaved / undispatched invoice to the AWPL por, resubmit_invoice_to_portal() (+15 more)
 
 ### Community 7 - "Community 7"
 Cohesion: 0.17
@@ -227,7 +228,7 @@ Nodes (3): submit_stock_order.py  –  Submits a Stock Point (Franchise) Purchas
 
 ### Community 36 - "Community 36"
 Cohesion: 0.50
-Nodes (3): api_ledger_wallet_balance(), Return closing balance for stock-point-order and dashboard sync., Return closing balance for stock-point-order and dashboard sync.
+Nodes (3): api_ledger_report(), Return cached ledger entries from ledger_report.json or SQLite ledger_report tab, Return cached ledger entries from ledger_report.json or SQLite ledger_report tab
 
 ### Community 68 - "Community 68"
 Cohesion: 0.67
@@ -253,25 +254,29 @@ Nodes (3): api_sync_remarks_from_gsheets(), Trigger one-way remarks pull from GS
 Cohesion: 0.12
 Nodes (15): all_data, extracted_count, headers, indices, billNoIdx, dateGreenIdx, dateIdx, dsCodeIdx (+7 more)
 
+### Community 301 - "Community 301"
+Cohesion: 0.67
+Nodes (3): hex_to_rgb(), main(), ================================================================================
+
 ## Knowledge Gaps
-- **111 isolated node(s):** `all_data`, `extracted_count`, `headers`, `billNoIdx`, `dateGreenIdx` (+106 more)
+- **123 isolated node(s):** `amount`, `customer_name`, `date_created`, `ds_code`, `grand_total_sp` (+118 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **21 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `get_db()` connect `Community 4` to `Community 0`, `Community 2`, `Community 36`, `Community 10`, `Community 12`, `Community 13`?**
-  _High betweenness centrality (0.013) - this node is a cross-community bridge._
+- **Why does `get_db()` connect `Community 4` to `Community 0`, `Community 2`, `Community 36`, `Community 6`, `Community 10`, `Community 12`, `Community 13`?**
+  _High betweenness centrality (0.017) - this node is a cross-community bridge._
 - **Why does `create_invoice()` connect `Community 0` to `Community 4`, `Community 6`?**
-  _High betweenness centrality (0.008) - this node is a cross-community bridge._
-- **Are the 6 inferred relationships involving `get_db()` (e.g. with `add_product()` and `create_invoice()`) actually correct?**
-  _`get_db()` has 6 INFERRED edges - model-reasoned connections that need verification._
+  _High betweenness centrality (0.007) - this node is a cross-community bridge._
+- **Why does `get_active_submission()` connect `Community 6` to `Community 0`?**
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
+- **Are the 7 inferred relationships involving `get_db()` (e.g. with `add_product()` and `create_invoice()`) actually correct?**
+  _`get_db()` has 7 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 3 inferred relationships involving `get_active_submission()` (e.g. with `create_invoice()` and `resubmit_status()`) actually correct?**
+  _`get_active_submission()` has 3 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 8 inferred relationships involving `init_google_sheets()` (e.g. with `add_product()` and `_auto_sync_loop()`) actually correct?**
   _`init_google_sheets()` has 8 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `Load and flatten the disease JSON into the module-level cache.     Thread-safe;`, `Return a lightweight list of diseases, optionally filtered.      Query params:`, `Return the full record for a single disease by its 0-based index     in the fla` to the rest of the system?**
-  _189 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.06463414634146342 - nodes in this community are weakly interconnected._
-- **Should `Community 1` be split into smaller, more focused modules?**
-  _Cohesion score 0.06050420168067227 - nodes in this community are weakly interconnected._
+  _210 weakly-connected nodes found - possible documentation gaps or missing edges._

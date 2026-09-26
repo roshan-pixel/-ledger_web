@@ -252,7 +252,7 @@
       "source_file": "app.py",
       "source_location": "L240",
       "id": "ledger_web_app_api_mizoram_bronze",
-      "community": 2,
+      "community": 4,
       "norm_label": "api_mizoram_bronze()"
     },
     {
@@ -396,7 +396,7 @@
       "source_file": "app.py",
       "source_location": "L900",
       "id": "ledger_web_app_api_inventory_master_months",
-      "community": 4,
+      "community": 2,
       "norm_label": "api_inventory_master_months()"
     },
     {
@@ -477,7 +477,7 @@
       "source_file": "app.py",
       "source_location": "L1256",
       "id": "ledger_web_app_api_ledger_report",
-      "community": 4,
+      "community": 36,
       "norm_label": "api_ledger_report()"
     },
     {
@@ -486,7 +486,7 @@
       "source_file": "app.py",
       "source_location": "L1317",
       "id": "ledger_web_app_api_ledger_wallet_balance",
-      "community": 36,
+      "community": 4,
       "norm_label": "api_ledger_wallet_balance()"
     },
     {
@@ -657,7 +657,7 @@
       "source_file": "app.py",
       "source_location": "L1257",
       "id": "ledger_web_app_rationale_1257",
-      "community": 4,
+      "community": 36,
       "norm_label": "return cached ledger entries from ledger_report.json or sqlite ledger_report tab"
     },
     {
@@ -666,7 +666,7 @@
       "source_file": "app.py",
       "source_location": "L1318",
       "id": "ledger_web_app_rationale_1318",
-      "community": 36,
+      "community": 4,
       "norm_label": "return closing balance for stock-point-order and dashboard sync."
     },
     {
@@ -715,6 +715,24 @@
       "norm_label": "trigger one-way remarks pull from gsheets (no push/upload back)."
     },
     {
+      "label": "apply_bill_268.py",
+      "file_type": "code",
+      "source_file": "apply_bill_268.py",
+      "source_location": "L1",
+      "id": "apply_bill_268_py",
+      "community": 303,
+      "norm_label": "apply_bill_268.py"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "apply_bill_268.py",
+      "source_location": "L8",
+      "id": "ledger_web_apply_bill_268_main",
+      "community": 303,
+      "norm_label": "main()"
+    },
+    {
       "label": "backfill_sp.py",
       "file_type": "code",
       "source_file": "backfill_sp.py",
@@ -722,6 +740,24 @@
       "id": "backfill_sp_py",
       "community": 136,
       "norm_label": "backfill_sp.py"
+    },
+    {
+      "label": "build_sheets.py",
+      "file_type": "code",
+      "source_file": "build_sheets.py",
+      "source_location": "L1",
+      "id": "build_sheets_py",
+      "community": 304,
+      "norm_label": "build_sheets.py"
+    },
+    {
+      "label": "hex_to_rgb()",
+      "file_type": "code",
+      "source_file": "build_sheets.py",
+      "source_location": "L14",
+      "id": "ledger_web_build_sheets_hex_to_rgb",
+      "community": 304,
+      "norm_label": "hex_to_rgb()"
     },
     {
       "label": "bulk_push_to_portal.py",
@@ -1480,6 +1516,15 @@
       "norm_label": "check_recent_invoices.py"
     },
     {
+      "label": "check_recent_sales.py",
+      "file_type": "code",
+      "source_file": "check_recent_sales.py",
+      "source_location": "L1",
+      "id": "check_recent_sales_py",
+      "community": 307,
+      "norm_label": "check_recent_sales.py"
+    },
+    {
       "label": "check_rem_val.py",
       "file_type": "code",
       "source_file": "check_rem_val.py",
@@ -1847,6 +1892,33 @@
       "id": "ledger_web_explore_ds_sale_order_run",
       "community": 87,
       "norm_label": "run()"
+    },
+    {
+      "label": "extract_full_structure.py",
+      "file_type": "code",
+      "source_file": "extract_full_structure.py",
+      "source_location": "L1",
+      "id": "extract_full_structure_py",
+      "community": 302,
+      "norm_label": "extract_full_structure.py"
+    },
+    {
+      "label": "clean_name()",
+      "file_type": "code",
+      "source_file": "extract_full_structure.py",
+      "source_location": "L10",
+      "id": "ledger_web_extract_full_structure_clean_name",
+      "community": 302,
+      "norm_label": "clean_name()"
+    },
+    {
+      "label": "clean_target()",
+      "file_type": "code",
+      "source_file": "extract_full_structure.py",
+      "source_location": "L18",
+      "id": "ledger_web_extract_full_structure_clean_target",
+      "community": 302,
+      "norm_label": "clean_target()"
     },
     {
       "label": "extract_sgo_downline.py",
@@ -2497,6 +2569,15 @@
       "norm_label": "inspect_07b2e5f8_form.py"
     },
     {
+      "label": "inspect_324.py",
+      "file_type": "code",
+      "source_file": "inspect_324.py",
+      "source_location": "L1",
+      "id": "inspect_324_py",
+      "community": 308,
+      "norm_label": "inspect_324.py"
+    },
+    {
       "label": "inspect_invoice.py",
       "file_type": "code",
       "source_file": "inspect_invoice.py",
@@ -2752,7 +2833,7 @@
       "label": "is_complimentary_item()",
       "file_type": "code",
       "source_file": "invoice_api.py",
-      "source_location": "L230",
+      "source_location": "L234",
       "id": "ledger_web_invoice_api_is_complimentary_item",
       "community": 0,
       "norm_label": "is_complimentary_item()"
@@ -2761,7 +2842,7 @@
       "label": "create_invoice()",
       "file_type": "code",
       "source_file": "invoice_api.py",
-      "source_location": "L246",
+      "source_location": "L250",
       "id": "ledger_web_invoice_api_create_invoice",
       "community": 0,
       "norm_label": "create_invoice()"
@@ -2770,7 +2851,7 @@
       "label": "list_invoices()",
       "file_type": "code",
       "source_file": "invoice_api.py",
-      "source_location": "L421",
+      "source_location": "L429",
       "id": "ledger_web_invoice_api_list_invoices",
       "community": 0,
       "norm_label": "list_invoices()"
@@ -2779,7 +2860,7 @@
       "label": "update_invoice_info()",
       "file_type": "code",
       "source_file": "invoice_api.py",
-      "source_location": "L488",
+      "source_location": "L506",
       "id": "ledger_web_invoice_api_update_invoice_info",
       "community": 4,
       "norm_label": "update_invoice_info()"
@@ -2788,16 +2869,16 @@
       "label": "get_next_invoice_no()",
       "file_type": "code",
       "source_file": "invoice_api.py",
-      "source_location": "L522",
+      "source_location": "L550",
       "id": "ledger_web_invoice_api_get_next_invoice_no",
-      "community": 0,
+      "community": 4,
       "norm_label": "get_next_invoice_no()"
     },
     {
       "label": "cancel_invoice()",
       "file_type": "code",
       "source_file": "invoice_api.py",
-      "source_location": "L573",
+      "source_location": "L601",
       "id": "ledger_web_invoice_api_cancel_invoice",
       "community": 0,
       "norm_label": "cancel_invoice()"
@@ -2806,10 +2887,28 @@
       "label": "get_portal_order_log()",
       "file_type": "code",
       "source_file": "invoice_api.py",
-      "source_location": "L655",
+      "source_location": "L683",
       "id": "ledger_web_invoice_api_get_portal_order_log",
       "community": 0,
       "norm_label": "get_portal_order_log()"
+    },
+    {
+      "label": "resubmit_status()",
+      "file_type": "code",
+      "source_file": "invoice_api.py",
+      "source_location": "L697",
+      "id": "ledger_web_invoice_api_resubmit_status",
+      "community": 6,
+      "norm_label": "resubmit_status()"
+    },
+    {
+      "label": "resubmit_invoice_to_portal()",
+      "file_type": "code",
+      "source_file": "invoice_api.py",
+      "source_location": "L713",
+      "id": "ledger_web_invoice_api_resubmit_invoice_to_portal",
+      "community": 6,
+      "norm_label": "resubmit_invoice_to_portal()"
     },
     {
       "label": "Return the column index (1-based) for the Sold Qty column that matches the",
@@ -2833,10 +2932,145 @@
       "label": "Returns the last 100 lines of portal_submit.log.",
       "file_type": "rationale",
       "source_file": "invoice_api.py",
-      "source_location": "L656",
-      "id": "ledger_web_invoice_api_rationale_656",
+      "source_location": "L684",
+      "id": "ledger_web_invoice_api_rationale_684",
       "community": 0,
       "norm_label": "returns the last 100 lines of portal_submit.log."
+    },
+    {
+      "label": "Get current portal submission state (is_busy, which invoice is submitting, elaps",
+      "file_type": "rationale",
+      "source_file": "invoice_api.py",
+      "source_location": "L698",
+      "id": "ledger_web_invoice_api_rationale_698",
+      "community": 6,
+      "norm_label": "get current portal submission state (is_busy, which invoice is submitting, elaps"
+    },
+    {
+      "label": "Trigger manual resubmission of an unsaved / undispatched invoice to the AWPL por",
+      "file_type": "rationale",
+      "source_file": "invoice_api.py",
+      "source_location": "L714",
+      "id": "ledger_web_invoice_api_rationale_714",
+      "community": 6,
+      "norm_label": "trigger manual resubmission of an unsaved / undispatched invoice to the awpl por"
+    },
+    {
+      "label": "inv_324.json",
+      "file_type": "code",
+      "source_file": "inv_324.json",
+      "source_location": "L1",
+      "id": "inv_324_json",
+      "community": 5,
+      "norm_label": "inv_324.json"
+    },
+    {
+      "label": "amount",
+      "file_type": "code",
+      "source_file": "inv_324.json",
+      "source_location": "L2",
+      "id": "ledger_web_inv_324_amount",
+      "community": 5,
+      "norm_label": "amount"
+    },
+    {
+      "label": "customer_name",
+      "file_type": "code",
+      "source_file": "inv_324.json",
+      "source_location": "L3",
+      "id": "ledger_web_inv_324_customer_name",
+      "community": 5,
+      "norm_label": "customer_name"
+    },
+    {
+      "label": "date_created",
+      "file_type": "code",
+      "source_file": "inv_324.json",
+      "source_location": "L4",
+      "id": "ledger_web_inv_324_date_created",
+      "community": 5,
+      "norm_label": "date_created"
+    },
+    {
+      "label": "ds_code",
+      "file_type": "code",
+      "source_file": "inv_324.json",
+      "source_location": "L5",
+      "id": "ledger_web_inv_324_ds_code",
+      "community": 5,
+      "norm_label": "ds_code"
+    },
+    {
+      "label": "grand_total_sp",
+      "file_type": "code",
+      "source_file": "inv_324.json",
+      "source_location": "L6",
+      "id": "ledger_web_inv_324_grand_total_sp",
+      "community": 5,
+      "norm_label": "grand_total_sp"
+    },
+    {
+      "label": "has_complimentary",
+      "file_type": "code",
+      "source_file": "inv_324.json",
+      "source_location": "L7",
+      "id": "ledger_web_inv_324_has_complimentary",
+      "community": 5,
+      "norm_label": "has_complimentary"
+    },
+    {
+      "label": "id",
+      "file_type": "code",
+      "source_file": "inv_324.json",
+      "source_location": "L8",
+      "id": "ledger_web_inv_324_id",
+      "community": 5,
+      "norm_label": "id"
+    },
+    {
+      "label": "invoice_no",
+      "file_type": "code",
+      "source_file": "inv_324.json",
+      "source_location": "L9",
+      "id": "ledger_web_inv_324_invoice_no",
+      "community": 5,
+      "norm_label": "invoice_no"
+    },
+    {
+      "label": "is_dispatched",
+      "file_type": "code",
+      "source_file": "inv_324.json",
+      "source_location": "L10",
+      "id": "ledger_web_inv_324_is_dispatched",
+      "community": 5,
+      "norm_label": "is_dispatched"
+    },
+    {
+      "label": "items",
+      "file_type": "code",
+      "source_file": "inv_324.json",
+      "source_location": "L11",
+      "id": "ledger_web_inv_324_items",
+      "community": 5,
+      "norm_label": "items"
+    },
+    {
+      "label": "remark",
+      "file_type": "code",
+      "source_file": "inv_324.json",
+      "source_location": "L413",
+      "id": "ledger_web_inv_324_remark",
+      "community": 5,
+      "norm_label": "remark"
+    },
+    {
+      "label": "status",
+      "file_type": "code",
+      "source_file": "inv_324.json",
+      "source_location": "L414",
+      "id": "ledger_web_inv_324_status",
+      "community": 5,
+      "norm_label": "status"
     },
     {
       "label": "list_approve_inputs.py",
@@ -2992,6 +3226,15 @@
       "norm_label": "crawl_tree()"
     },
     {
+      "label": "parse_data.py",
+      "file_type": "code",
+      "source_file": "parse_data.py",
+      "source_location": "L1",
+      "id": "parse_data_py",
+      "community": 309,
+      "norm_label": "parse_data.py"
+    },
+    {
       "label": "parse_html.py",
       "file_type": "code",
       "source_file": "parse_html.py",
@@ -3067,16 +3310,52 @@
       "label": "_log()",
       "file_type": "code",
       "source_file": "portal_submit_order.py",
-      "source_location": "L11",
+      "source_location": "L14",
       "id": "ledger_web_portal_submit_order_log",
       "community": 6,
       "norm_label": "_log()"
     },
     {
+      "label": "_is_pid_alive()",
+      "file_type": "code",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L23",
+      "id": "ledger_web_portal_submit_order_is_pid_alive",
+      "community": 6,
+      "norm_label": "_is_pid_alive()"
+    },
+    {
+      "label": "get_active_submission()",
+      "file_type": "code",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L40",
+      "id": "ledger_web_portal_submit_order_get_active_submission",
+      "community": 6,
+      "norm_label": "get_active_submission()"
+    },
+    {
+      "label": "acquire_submission_lock()",
+      "file_type": "code",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L73",
+      "id": "ledger_web_portal_submit_order_acquire_submission_lock",
+      "community": 6,
+      "norm_label": "acquire_submission_lock()"
+    },
+    {
+      "label": "release_submission_lock()",
+      "file_type": "code",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L102",
+      "id": "ledger_web_portal_submit_order_release_submission_lock",
+      "community": 6,
+      "norm_label": "release_submission_lock()"
+    },
+    {
       "label": "submit_order_to_portal()",
       "file_type": "code",
       "source_file": "portal_submit_order.py",
-      "source_location": "L20",
+      "source_location": "L110",
       "id": "ledger_web_portal_submit_order_submit_order_to_portal",
       "community": 6,
       "norm_label": "submit_order_to_portal()"
@@ -3085,26 +3364,53 @@
       "label": "submit_order_async()",
       "file_type": "code",
       "source_file": "portal_submit_order.py",
-      "source_location": "L219",
+      "source_location": "L398",
       "id": "ledger_web_portal_submit_order_submit_order_async",
       "community": 6,
       "norm_label": "submit_order_async()"
     },
     {
-      "label": "Submits an order to the AWPL C&F portal (SpdistributorSale.aspx).     items is a",
+      "label": "Returns dict of currently active submission if any, or None.     Automatically c",
       "file_type": "rationale",
       "source_file": "portal_submit_order.py",
-      "source_location": "L21",
-      "id": "ledger_web_portal_submit_order_rationale_21",
+      "source_location": "L41",
+      "id": "ledger_web_portal_submit_order_rationale_41",
       "community": 6,
-      "norm_label": "submits an order to the awpl c&f portal (spdistributorsale.aspx).     items is a"
+      "norm_label": "returns dict of currently active submission if any, or none.     automatically c"
+    },
+    {
+      "label": "Attempts to acquire the single-submission lock.     If force=True, overwrites lo",
+      "file_type": "rationale",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L74",
+      "id": "ledger_web_portal_submit_order_rationale_74",
+      "community": 6,
+      "norm_label": "attempts to acquire the single-submission lock.     if force=true, overwrites lo"
+    },
+    {
+      "label": "Releases the submission lock file.",
+      "file_type": "rationale",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L103",
+      "id": "ledger_web_portal_submit_order_rationale_103",
+      "community": 6,
+      "norm_label": "releases the submission lock file."
+    },
+    {
+      "label": "Submits an order to the AWPL C&F portal (SpdistributorSale.aspx) with high perfo",
+      "file_type": "rationale",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L111",
+      "id": "ledger_web_portal_submit_order_rationale_111",
+      "community": 6,
+      "norm_label": "submits an order to the awpl c&f portal (spdistributorsale.aspx) with high perfo"
     },
     {
       "label": "Launch portal submission as a separate subprocess so it survives Gunicorn's",
       "file_type": "rationale",
       "source_file": "portal_submit_order.py",
-      "source_location": "L220",
-      "id": "ledger_web_portal_submit_order_rationale_220",
+      "source_location": "L399",
+      "id": "ledger_web_portal_submit_order_rationale_399",
       "community": 6,
       "norm_label": "launch portal submission as a separate subprocess so it survives gunicorn's"
     },
@@ -3233,6 +3539,15 @@
       "id": "query_py",
       "community": 219,
       "norm_label": "query.py"
+    },
+    {
+      "label": "reactivate_327.py",
+      "file_type": "code",
+      "source_file": "reactivate_327.py",
+      "source_location": "L1",
+      "id": "reactivate_327_py",
+      "community": 310,
+      "norm_label": "reactivate_327.py"
     },
     {
       "label": "read_grid.py",
@@ -4027,6 +4342,24 @@
       "norm_label": "handle_dialog()"
     },
     {
+      "label": "submit_324_perfect.py",
+      "file_type": "code",
+      "source_file": "submit_324_perfect.py",
+      "source_location": "L1",
+      "id": "submit_324_perfect_py",
+      "community": 305,
+      "norm_label": "submit_324_perfect.py"
+    },
+    {
+      "label": "handle_dialog()",
+      "file_type": "code",
+      "source_file": "submit_324_perfect.py",
+      "source_location": "L53",
+      "id": "ledger_web_submit_324_perfect_handle_dialog",
+      "community": 305,
+      "norm_label": "handle_dialog()"
+    },
+    {
       "label": "submit_inv_310.py",
       "file_type": "code",
       "source_file": "submit_inv_310.py",
@@ -4486,6 +4819,24 @@
       "norm_label": "test()"
     },
     {
+      "label": "test_probe_324.py",
+      "file_type": "code",
+      "source_file": "test_probe_324.py",
+      "source_location": "L1",
+      "id": "test_probe_324_py",
+      "community": 306,
+      "norm_label": "test_probe_324.py"
+    },
+    {
+      "label": "handle_dialog()",
+      "file_type": "code",
+      "source_file": "test_probe_324.py",
+      "source_location": "L27",
+      "id": "ledger_web_test_probe_324_handle_dialog",
+      "community": 306,
+      "norm_label": "handle_dialog()"
+    },
+    {
       "label": "test_pw.py",
       "file_type": "code",
       "source_file": "test_pw.py",
@@ -4727,6 +5078,42 @@
       "id": "update_dashboard_py",
       "community": 242,
       "norm_label": "update_dashboard.py"
+    },
+    {
+      "label": "update_leader_divider_style.py",
+      "file_type": "code",
+      "source_file": "update_leader_divider_style.py",
+      "source_location": "L1",
+      "id": "update_leader_divider_style_py",
+      "community": 301,
+      "norm_label": "update_leader_divider_style.py"
+    },
+    {
+      "label": "hex_to_rgb()",
+      "file_type": "code",
+      "source_file": "update_leader_divider_style.py",
+      "source_location": "L21",
+      "id": "ledger_web_update_leader_divider_style_hex_to_rgb",
+      "community": 301,
+      "norm_label": "hex_to_rgb()"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "update_leader_divider_style.py",
+      "source_location": "L73",
+      "id": "ledger_web_update_leader_divider_style_main",
+      "community": 301,
+      "norm_label": "main()"
+    },
+    {
+      "label": "================================================================================",
+      "file_type": "rationale",
+      "source_file": "update_leader_divider_style.py",
+      "source_location": "L1",
+      "id": "ledger_web_update_leader_divider_style_rationale_1",
+      "community": 301,
+      "norm_label": "================================================================================"
     },
     {
       "label": "update_mizoram.py",
@@ -5787,7 +6174,7 @@
       "source_file": "ARCHITECTURE.md",
       "source_location": "L410",
       "id": "ledger_web_architecture_5_sequence_diagrams_data_flows",
-      "community": 5,
+      "community": 3,
       "norm_label": "5. sequence diagrams & data flows"
     },
     {
@@ -5796,7 +6183,7 @@
       "source_file": "ARCHITECTURE.md",
       "source_location": "L412",
       "id": "ledger_web_architecture_5_1_invoice_creation_strict_stock_depletion",
-      "community": 5,
+      "community": 3,
       "norm_label": "5.1 invoice creation & strict stock depletion"
     },
     {
@@ -5805,7 +6192,7 @@
       "source_file": "ARCHITECTURE.md",
       "source_location": "L414",
       "id": "ledger_web_architecture_codeblock_3",
-      "community": 5,
+      "community": 3,
       "norm_label": "code:mermaid (sequencediagram)"
     },
     {
@@ -5814,7 +6201,7 @@
       "source_file": "ARCHITECTURE.md",
       "source_location": "L455",
       "id": "ledger_web_architecture_5_2_auto_sync_scheduler_hourly_gsheets_daily_rollover",
-      "community": 5,
+      "community": 3,
       "norm_label": "5.2 auto-sync scheduler \u2014 hourly gsheets + daily rollover"
     },
     {
@@ -5823,7 +6210,7 @@
       "source_file": "ARCHITECTURE.md",
       "source_location": "L457",
       "id": "ledger_web_architecture_codeblock_4",
-      "community": 5,
+      "community": 3,
       "norm_label": "code:mermaid (flowchart td)"
     },
     {
@@ -5832,7 +6219,7 @@
       "source_file": "ARCHITECTURE.md",
       "source_location": "L479",
       "id": "ledger_web_architecture_5_3_stock_point_order_via_headless_portal_bot",
-      "community": 5,
+      "community": 3,
       "norm_label": "5.3 stock point order via headless portal bot"
     },
     {
@@ -5841,7 +6228,7 @@
       "source_file": "ARCHITECTURE.md",
       "source_location": "L481",
       "id": "ledger_web_architecture_codeblock_5",
-      "community": 5,
+      "community": 3,
       "norm_label": "code:mermaid (sequencediagram)"
     },
     {
@@ -5850,7 +6237,7 @@
       "source_file": "ARCHITECTURE.md",
       "source_location": "L519",
       "id": "ledger_web_architecture_5_4_bfs_genealogy_downline_tree_crawler",
-      "community": 5,
+      "community": 3,
       "norm_label": "5.4 bfs genealogy downline tree crawler"
     },
     {
@@ -5859,7 +6246,7 @@
       "source_file": "ARCHITECTURE.md",
       "source_location": "L521",
       "id": "ledger_web_architecture_codeblock_6",
-      "community": 5,
+      "community": 3,
       "norm_label": "code:mermaid (flowchart td)"
     },
     {
@@ -5868,7 +6255,7 @@
       "source_file": "ARCHITECTURE.md",
       "source_location": "L555",
       "id": "ledger_web_architecture_5_5_customer_ds_lookup_db_cache_live_portal_fallback",
-      "community": 5,
+      "community": 3,
       "norm_label": "5.5 customer ds lookup \u2014 db cache + live portal fallback"
     },
     {
@@ -5877,7 +6264,7 @@
       "source_file": "ARCHITECTURE.md",
       "source_location": "L557",
       "id": "ledger_web_architecture_codeblock_7",
-      "community": 5,
+      "community": 3,
       "norm_label": "code:mermaid (flowchart lr)"
     },
     {
@@ -5886,7 +6273,7 @@
       "source_file": "ARCHITECTURE.md",
       "source_location": "L571",
       "id": "ledger_web_architecture_5_6_invoice_cancel_stock_restoration",
-      "community": 5,
+      "community": 3,
       "norm_label": "5.6 invoice cancel & stock restoration"
     },
     {
@@ -5895,7 +6282,7 @@
       "source_file": "ARCHITECTURE.md",
       "source_location": "L573",
       "id": "ledger_web_architecture_codeblock_8",
-      "community": 5,
+      "community": 3,
       "norm_label": "code:mermaid (sequencediagram)"
     },
     {
@@ -6325,6 +6712,33 @@
       "label": "Returns the last 100 lines of portal_submit.log.",
       "file_type": "rationale",
       "source_file": "invoice_api.py",
+      "source_location": "L656",
+      "community": 0,
+      "norm_label": "returns the last 100 lines of portal_submit.log.",
+      "id": "ledger_web_invoice_api_rationale_656"
+    },
+    {
+      "label": "Submits an order to the AWPL C&F portal (SpdistributorSale.aspx).     items is a",
+      "file_type": "rationale",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L21",
+      "community": 6,
+      "norm_label": "submits an order to the awpl c&f portal (spdistributorsale.aspx).     items is a",
+      "id": "ledger_web_portal_submit_order_rationale_21"
+    },
+    {
+      "label": "Launch portal submission as a separate subprocess so it survives Gunicorn's",
+      "file_type": "rationale",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L220",
+      "community": 6,
+      "norm_label": "launch portal submission as a separate subprocess so it survives gunicorn's",
+      "id": "ledger_web_portal_submit_order_rationale_220"
+    },
+    {
+      "label": "Returns the last 100 lines of portal_submit.log.",
+      "file_type": "rationale",
+      "source_file": "invoice_api.py",
       "source_location": "L632",
       "community": 0,
       "norm_label": "returns the last 100 lines of portal_submit.log.",
@@ -6371,7 +6785,7 @@
       "file_type": "rationale",
       "source_file": "app.py",
       "source_location": "L1259",
-      "community": 4,
+      "community": 36,
       "norm_label": "return cached ledger entries from ledger_report.json or sqlite ledger_report tab",
       "id": "ledger_web_app_rationale_1259"
     },
@@ -6380,7 +6794,7 @@
       "file_type": "rationale",
       "source_file": "app.py",
       "source_location": "L1320",
-      "community": 36,
+      "community": 4,
       "norm_label": "return closing balance for stock-point-order and dashboard sync.",
       "id": "ledger_web_app_rationale_1320"
     },
@@ -6861,7 +7275,7 @@
       "file_type": "code",
       "source_file": "templates/inventory_master.html",
       "source_location": "L1",
-      "community": 4,
+      "community": 2,
       "norm_label": "inventory_master.html",
       "description": "Jinja2 HTML template \u2014 served by Flask app.py",
       "id": "inventory_master_html"
@@ -6891,7 +7305,7 @@
       "file_type": "code",
       "source_file": "templates/ledger_report.html",
       "source_location": "L1",
-      "community": 4,
+      "community": 36,
       "norm_label": "ledger_report.html",
       "description": "Jinja2 HTML template \u2014 served by Flask app.py",
       "id": "ledger_report_html"
@@ -6901,7 +7315,7 @@
       "file_type": "code",
       "source_file": "templates/mizoram_bronze.html",
       "source_location": "L1",
-      "community": 2,
+      "community": 4,
       "norm_label": "mizoram_bronze.html",
       "description": "Jinja2 HTML template \u2014 served by Flask app.py",
       "id": "mizoram_bronze_html"
@@ -6931,7 +7345,7 @@
       "file_type": "code",
       "source_file": "templates/stock_point_order.html",
       "source_location": "L1",
-      "community": 36,
+      "community": 4,
       "norm_label": "stock_point_order.html",
       "description": "Jinja2 HTML template \u2014 served by Flask app.py",
       "id": "stock_point_order_html"
@@ -8043,6 +8457,17 @@
       "target": "ledger_web_app_get_db"
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "invoice_api.py",
+      "source_location": "L729",
+      "weight": 1.0,
+      "source": "ledger_web_invoice_api_resubmit_invoice_to_portal",
+      "target": "ledger_web_app_get_db"
+    },
+    {
       "relation": "defines_schema_for",
       "confidence": "EXTRACTED",
       "source_file": "schema.sql",
@@ -8584,6 +9009,26 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "apply_bill_268.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "apply_bill_268_py",
+      "target": "ledger_web_apply_bill_268_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "build_sheets.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "build_sheets_py",
+      "target": "ledger_web_build_sheets_hex_to_rgb",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "bulk_push_to_portal.py",
       "source_location": "L22",
       "weight": 1.0,
@@ -9045,6 +9490,26 @@
       "confidence_score": 1.0,
       "source": "explore_ds_sale_order_py",
       "target": "ledger_web_explore_ds_sale_order_run"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "extract_full_structure.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "extract_full_structure_py",
+      "target": "ledger_web_extract_full_structure_clean_name",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "extract_full_structure.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "extract_full_structure_py",
+      "target": "ledger_web_extract_full_structure_clean_target",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -9835,9 +10300,9 @@
       "source_file": "invoice_api.py",
       "source_location": "L230",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "invoice_api_py",
-      "target": "ledger_web_invoice_api_is_complimentary_item",
-      "confidence_score": 1.0
+      "target": "ledger_web_invoice_api_is_complimentary_item"
     },
     {
       "relation": "contains",
@@ -9898,6 +10363,26 @@
       "confidence_score": 1.0,
       "source": "invoice_api_py",
       "target": "ledger_web_invoice_api_get_portal_order_log"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "invoice_api.py",
+      "source_location": "L697",
+      "weight": 1.0,
+      "source": "invoice_api_py",
+      "target": "ledger_web_invoice_api_resubmit_status",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "invoice_api.py",
+      "source_location": "L713",
+      "weight": 1.0,
+      "source": "invoice_api_py",
+      "target": "ledger_web_invoice_api_resubmit_invoice_to_portal",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -10003,9 +10488,9 @@
       "source_file": "invoice_api.py",
       "source_location": "L256",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ledger_web_invoice_api_create_invoice",
-      "target": "ledger_web_invoice_api_is_complimentary_item",
-      "confidence_score": 1.0
+      "target": "ledger_web_invoice_api_is_complimentary_item"
     },
     {
       "relation": "calls",
@@ -10014,9 +10499,20 @@
       "source_file": "invoice_api.py",
       "source_location": "L462",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ledger_web_invoice_api_list_invoices",
-      "target": "ledger_web_invoice_api_is_complimentary_item",
-      "confidence_score": 1.0
+      "target": "ledger_web_invoice_api_is_complimentary_item"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "invoice_api.py",
+      "source_location": "L404",
+      "weight": 1.0,
+      "source": "ledger_web_invoice_api_create_invoice",
+      "target": "ledger_web_portal_submit_order_get_active_submission"
     },
     {
       "relation": "calls",
@@ -10033,11 +10529,21 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "invoice_api.py",
-      "source_location": "L656",
+      "source_location": "L684",
       "weight": 1.0,
-      "source": "ledger_web_invoice_api_rationale_656",
+      "source": "ledger_web_invoice_api_rationale_684",
       "target": "ledger_web_invoice_api_get_portal_order_log",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "invoice_api.py",
+      "source_location": "L656",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ledger_web_invoice_api_rationale_656",
+      "target": "ledger_web_invoice_api_get_portal_order_log"
     },
     {
       "relation": "rationale_for",
@@ -10048,6 +10554,179 @@
       "confidence_score": 1.0,
       "source": "ledger_web_invoice_api_rationale_632",
       "target": "ledger_web_invoice_api_get_portal_order_log"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "invoice_api.py",
+      "source_location": "L698",
+      "weight": 1.0,
+      "source": "ledger_web_invoice_api_rationale_698",
+      "target": "ledger_web_invoice_api_resubmit_status",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "invoice_api.py",
+      "source_location": "L703",
+      "weight": 1.0,
+      "source": "ledger_web_invoice_api_resubmit_status",
+      "target": "ledger_web_portal_submit_order_get_active_submission"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "invoice_api.py",
+      "source_location": "L714",
+      "weight": 1.0,
+      "source": "ledger_web_invoice_api_rationale_714",
+      "target": "ledger_web_invoice_api_resubmit_invoice_to_portal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "invoice_api.py",
+      "source_location": "L721",
+      "weight": 1.0,
+      "source": "ledger_web_invoice_api_resubmit_invoice_to_portal",
+      "target": "ledger_web_portal_submit_order_get_active_submission"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "invoice_api.py",
+      "source_location": "L756",
+      "weight": 1.0,
+      "source": "ledger_web_invoice_api_resubmit_invoice_to_portal",
+      "target": "ledger_web_portal_submit_order_submit_order_async"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "inv_324.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "inv_324_json",
+      "target": "ledger_web_inv_324_amount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "inv_324.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "inv_324_json",
+      "target": "ledger_web_inv_324_customer_name",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "inv_324.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "inv_324_json",
+      "target": "ledger_web_inv_324_date_created",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "inv_324.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "inv_324_json",
+      "target": "ledger_web_inv_324_ds_code",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "inv_324.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "inv_324_json",
+      "target": "ledger_web_inv_324_grand_total_sp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "inv_324.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "inv_324_json",
+      "target": "ledger_web_inv_324_has_complimentary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "inv_324.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "inv_324_json",
+      "target": "ledger_web_inv_324_id",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "inv_324.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "inv_324_json",
+      "target": "ledger_web_inv_324_invoice_no",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "inv_324.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "inv_324_json",
+      "target": "ledger_web_inv_324_is_dispatched",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "inv_324.json",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "inv_324_json",
+      "target": "ledger_web_inv_324_items",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "inv_324.json",
+      "source_location": "L413",
+      "weight": 1.0,
+      "source": "inv_324_json",
+      "target": "ledger_web_inv_324_remark",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "inv_324.json",
+      "source_location": "L414",
+      "weight": 1.0,
+      "source": "inv_324_json",
+      "target": "ledger_web_inv_324_status",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10238,6 +10917,46 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "portal_submit_order.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "portal_submit_order_py",
+      "target": "ledger_web_portal_submit_order_is_pid_alive",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "portal_submit_order_py",
+      "target": "ledger_web_portal_submit_order_get_active_submission",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L73",
+      "weight": 1.0,
+      "source": "portal_submit_order_py",
+      "target": "ledger_web_portal_submit_order_acquire_submission_lock",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L102",
+      "weight": 1.0,
+      "source": "portal_submit_order_py",
+      "target": "ledger_web_portal_submit_order_release_submission_lock",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "portal_submit_order.py",
       "source_location": "L20",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -10253,6 +10972,39 @@
       "confidence_score": 1.0,
       "source": "portal_submit_order_py",
       "target": "ledger_web_portal_submit_order_submit_order_async"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "ledger_web_portal_submit_order_get_active_submission",
+      "target": "ledger_web_portal_submit_order_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L99",
+      "weight": 1.0,
+      "source": "ledger_web_portal_submit_order_acquire_submission_lock",
+      "target": "ledger_web_portal_submit_order_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L108",
+      "weight": 1.0,
+      "source": "ledger_web_portal_submit_order_release_submission_lock",
+      "target": "ledger_web_portal_submit_order_log",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -10277,6 +11029,123 @@
       "target": "ledger_web_portal_submit_order_log"
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "ledger_web_portal_submit_order_get_active_submission",
+      "target": "ledger_web_portal_submit_order_is_pid_alive",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "ledger_web_portal_submit_order_get_active_submission",
+      "target": "ledger_web_portal_submit_order_release_submission_lock",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "ledger_web_portal_submit_order_acquire_submission_lock",
+      "target": "ledger_web_portal_submit_order_get_active_submission",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L404",
+      "weight": 1.0,
+      "source": "ledger_web_portal_submit_order_submit_order_async",
+      "target": "ledger_web_portal_submit_order_get_active_submission",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "ledger_web_portal_submit_order_rationale_41",
+      "target": "ledger_web_portal_submit_order_get_active_submission",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L120",
+      "weight": 1.0,
+      "source": "ledger_web_portal_submit_order_submit_order_to_portal",
+      "target": "ledger_web_portal_submit_order_acquire_submission_lock",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L426",
+      "weight": 1.0,
+      "source": "ledger_web_portal_submit_order_submit_order_async",
+      "target": "ledger_web_portal_submit_order_acquire_submission_lock",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "ledger_web_portal_submit_order_rationale_74",
+      "target": "ledger_web_portal_submit_order_acquire_submission_lock",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L395",
+      "weight": 1.0,
+      "source": "ledger_web_portal_submit_order_submit_order_to_portal",
+      "target": "ledger_web_portal_submit_order_release_submission_lock",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L103",
+      "weight": 1.0,
+      "source": "ledger_web_portal_submit_order_rationale_103",
+      "target": "ledger_web_portal_submit_order_release_submission_lock",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L111",
+      "weight": 1.0,
+      "source": "ledger_web_portal_submit_order_rationale_111",
+      "target": "ledger_web_portal_submit_order_submit_order_to_portal",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "portal_submit_order.py",
@@ -10285,6 +11154,16 @@
       "confidence_score": 1.0,
       "source": "ledger_web_portal_submit_order_rationale_21",
       "target": "ledger_web_portal_submit_order_submit_order_to_portal"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L399",
+      "weight": 1.0,
+      "source": "ledger_web_portal_submit_order_rationale_399",
+      "target": "ledger_web_portal_submit_order_submit_order_async",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -11001,6 +11880,16 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "submit_324_perfect.py",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "submit_324_perfect_py",
+      "target": "ledger_web_submit_324_perfect_handle_dialog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "submit_inv_310.py",
       "source_location": "L8",
       "weight": 1.0,
@@ -11303,6 +12192,16 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "test_probe_324.py",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "test_probe_324_py",
+      "target": "ledger_web_test_probe_324_handle_dialog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "test_pw.py",
       "source_location": "L6",
       "weight": 1.0,
@@ -11389,6 +12288,47 @@
       "confidence_score": 1.0,
       "source": "test_submit_305_py",
       "target": "ledger_web_test_submit_305_handle_dialog"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "update_leader_divider_style.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "update_leader_divider_style_py",
+      "target": "ledger_web_update_leader_divider_style_hex_to_rgb",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "update_leader_divider_style.py",
+      "source_location": "L73",
+      "weight": 1.0,
+      "source": "update_leader_divider_style_py",
+      "target": "ledger_web_update_leader_divider_style_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "update_leader_divider_style.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "ledger_web_update_leader_divider_style_rationale_1",
+      "target": "update_leader_divider_style_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "update_leader_divider_style.py",
+      "source_location": "L93",
+      "weight": 1.0,
+      "source": "ledger_web_update_leader_divider_style_main",
+      "target": "ledger_web_update_leader_divider_style_hex_to_rgb",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12993,5 +13933,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "777d5c0d44bad619a0d09398801d65a686033b94"
+  "built_at_commit": "4b85da332808c01d64ee4ffd88f262a7668e9b70"
 }
