@@ -60,7 +60,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 <div class="container">
 
 <h1>ledger_web — Complete Call Flow &amp; Architecture Documentation</h1>
-<p class="subtitle">Generated from graphify knowledge graph: 890 nodes, 789 edges, 314 communities. Commit: 0a2668f</p>
+<p class="subtitle">Generated from graphify knowledge graph: 891 nodes, 790 edges, 313 communities. Commit: 85199eb</p>
 
 <div class="nav">
     <a href="#overview">Architecture Overview</a>
@@ -94,13 +94,13 @@ flowchart LR
     class BUILD_GRAPH_321CBB04 module;
     ANALYSIS_CLUSTERING_C79796DA("Analysis &amp; Clustering<br/><small>3 nodes</small>")
     class ANALYSIS_CLUSTERING_C79796DA module;
-    OUTPUTS_DOCS_ED82387C("Outputs &amp; Docs<br/><small>82 nodes</small>")
+    OUTPUTS_DOCS_ED82387C("Outputs &amp; Docs<br/><small>66 nodes</small>")
     class OUTPUTS_DOCS_ED82387C module;
     CLI_SKILLS_9964CBB8("CLI &amp; Skill Installers<br/><small>16 nodes</small>")
     class CLI_SKILLS_9964CBB8 module;
-    INGEST_CACHE_UPDATE_FF457338("Ingestion &amp; Updates<br/><small>48 nodes</small>")
+    INGEST_CACHE_UPDATE_FF457338("Ingestion &amp; Updates<br/><small>64 nodes</small>")
     class INGEST_CACHE_UPDATE_FF457338 module;
-    SERVE_API_35EC8E86("Serving API<br/><small>95 nodes</small>")
+    SERVE_API_35EC8E86("Serving API<br/><small>102 nodes</small>")
     class SERVE_API_35EC8E86 module;
     SECURITY_GLOBAL_5B9C6A04("Security &amp; Global Graph<br/><small>1 nodes</small>")
     class SECURITY_GLOBAL_5B9C6A04 module;
@@ -116,14 +116,14 @@ flowchart LR
     class COMMUNITY_20_C86C0F59 module;
     COMMUNITY_19_9462A0B9("Community 19<br/><small>7 nodes</small>")
     class COMMUNITY_19_9462A0B9 module;
-    OTHER_D0941E68("Other<br/><small>366 nodes</small>")
+    OTHER_D0941E68("Other<br/><small>360 nodes</small>")
     class OTHER_D0941E68 module;
-    SERVE_API_35EC8E86 -->|contains x21| OUTPUTS_DOCS_ED82387C
-    OUTPUTS_DOCS_ED82387C -->|contains x14| SERVE_API_35EC8E86
-    SERVE_API_35EC8E86 -->|contains x12| INGEST_CACHE_UPDATE_FF457338
-    INGEST_CACHE_UPDATE_FF457338 -->|contains x11| SERVE_API_35EC8E86
-    OUTPUTS_DOCS_ED82387C -->|calls x4| INGEST_CACHE_UPDATE_FF457338
+    SERVE_API_35EC8E86 -->|contains x22| INGEST_CACHE_UPDATE_FF457338
+    INGEST_CACHE_UPDATE_FF457338 -->|contains x19| SERVE_API_35EC8E86
+    SERVE_API_35EC8E86 -->|contains x11| OUTPUTS_DOCS_ED82387C
+    OUTPUTS_DOCS_ED82387C -->|contains x6| SERVE_API_35EC8E86
     SERVE_API_35EC8E86 -->|contains x3| OTHER_D0941E68
+    INGEST_CACHE_UPDATE_FF457338 -->|calls x3| OUTPUTS_DOCS_ED82387C
     SERVE_API_35EC8E86 -->|contains x2| BUILD_GRAPH_321CBB04
     OTHER_D0941E68 -->|contains x2| SERVE_API_35EC8E86
     BUILD_GRAPH_321CBB04 -->|contains x2| SERVE_API_35EC8E86
@@ -145,19 +145,19 @@ flowchart LR
     <h4>Architecture Layers</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>Layer</th><th>Nodes</th><th>Communities</th></tr>
-      <tr><td>Extraction Pipeline</td><td>18</td><td><code>45, 49, 104, 123, 124, 127, 69, 99</code></td></tr><tr><td>Graph Build</td><td>125</td><td><code>2, 5, 7, 8, 9, 17, 18, 32, 33, 50, 78, 183, 288, 293, 299, 306, 307, 308, 309</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>3</td><td><code>247, 276, 277</code></td></tr><tr><td>Outputs &amp; Docs</td><td>82</td><td><code>0, 6, 10, 28, 26, 121, 237</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>16</td><td><code>12, 30</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>48</td><td><code>11, 16, 29, 40, 46, 133, 134, 135, 70, 212, 213, 270, 271, 272, 273, 274, 275, 305</code></td></tr><tr><td>Serving API</td><td>95</td><td><code>1, 3, 15, 34, 51, 81, 203, 217, 258</code></td></tr><tr><td>Security &amp; Global Graph</td><td>1</td><td><code>250</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>76</td><td><code>39, 112, 113, 114, 145, 146, 147, 148, 149, 150, 153, 154, 156, 52, 53, 94, 122, 132, 143, 144, 151, 152, 155, 157, 259, 260, 261, 262, 263, 264, 265, 266, 267, 303, 304</code></td></tr><tr><td>Community 4</td><td>25</td><td><code>4</code></td></tr><tr><td>Community 13</td><td>11</td><td><code>13</code></td></tr><tr><td>Community 14</td><td>9</td><td><code>14</code></td></tr><tr><td>Community 20</td><td>8</td><td><code>20</code></td></tr><tr><td>Community 19</td><td>7</td><td><code>19</code></td></tr><tr><td>Other</td><td>366</td><td><code>21, 24, 22, 23, 25, 27, 31, 42, 35, 36, 37, 38, 41, 43, 44, 47, 48, 56, 57, 58, 59, 60, 61, 62, 63, 65, 68, 71, 79, 80, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 96, 97, 100, 101, 102, 103, 105, 106, 107, 108, 109, 110, 111, 115, 116, 117, 118, 119, 120, 125, 126, 128, 129, 130, 131, 136, 137, 138, 139, 140, 141, 142, 54, 55, 64, 66, 67, 72, 73, 74, 75, 76, 77, 95, 98, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 204, 205, 206, 207, 208, 209, 210, 211, 214, 215, 216, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 238, 239, 240, 241, 242, 243, 244, 245, 246, 248, 249, 251, 252, 253, 254, 255, 256, 257, 268, 269, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 289, 290, 291, 292, 294, 295, 296, 297, 298, 300, 301, 302, 310, 311, 312, 313</code></td></tr>
+      <tr><td>Extraction Pipeline</td><td>18</td><td><code>45, 49, 104, 123, 124, 127, 69, 99</code></td></tr><tr><td>Graph Build</td><td>125</td><td><code>2, 5, 7, 8, 9, 17, 18, 32, 33, 50, 78, 183, 288, 293, 299, 306, 307, 308, 309</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>3</td><td><code>247, 276, 277</code></td></tr><tr><td>Outputs &amp; Docs</td><td>66</td><td><code>0, 10, 28, 22, 121, 237</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>16</td><td><code>12, 30</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>64</td><td><code>6, 11, 16, 29, 40, 46, 133, 134, 135, 70, 212, 213, 270, 271, 272, 273, 274, 275, 305</code></td></tr><tr><td>Serving API</td><td>102</td><td><code>1, 3, 15, 34, 51, 81, 203, 217, 258</code></td></tr><tr><td>Security &amp; Global Graph</td><td>1</td><td><code>250</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>76</td><td><code>39, 112, 113, 114, 145, 146, 147, 148, 149, 150, 153, 154, 156, 52, 53, 94, 122, 132, 143, 144, 151, 152, 155, 157, 259, 260, 261, 262, 263, 264, 265, 266, 267, 303, 304</code></td></tr><tr><td>Community 4</td><td>25</td><td><code>4</code></td></tr><tr><td>Community 13</td><td>11</td><td><code>13</code></td></tr><tr><td>Community 14</td><td>9</td><td><code>14</code></td></tr><tr><td>Community 20</td><td>8</td><td><code>20</code></td></tr><tr><td>Community 19</td><td>7</td><td><code>19</code></td></tr><tr><td>Other</td><td>360</td><td><code>21, 24, 23, 25, 27, 31, 42, 35, 36, 37, 38, 41, 43, 44, 47, 48, 56, 57, 58, 59, 60, 61, 62, 63, 65, 68, 71, 79, 80, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 96, 97, 100, 101, 102, 103, 105, 106, 107, 108, 109, 110, 111, 115, 116, 117, 118, 119, 120, 125, 126, 128, 129, 130, 131, 136, 137, 138, 139, 140, 141, 142, 54, 55, 64, 66, 67, 72, 73, 74, 75, 76, 77, 95, 98, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 204, 205, 206, 207, 208, 209, 210, 211, 214, 215, 216, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 238, 239, 240, 241, 242, 243, 244, 245, 246, 248, 249, 251, 252, 253, 254, 255, 256, 257, 268, 269, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 289, 290, 291, 292, 294, 295, 296, 297, 298, 300, 301, 302, 310, 311, 312, 313</code></td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Core Flow</h4>
-    <div class="arrow-chain">Extraction Pipeline -&gt; Graph Build -&gt; Serving API -&gt; Outputs &amp; Docs -&gt; Ingestion &amp; Updates -&gt; Analysis &amp; Clustering -&gt; CLI &amp; Skill Installers</div>
+    <div class="arrow-chain">Extraction Pipeline -&gt; Graph Build -&gt; Serving API -&gt; Ingestion &amp; Updates -&gt; Outputs &amp; Docs -&gt; Analysis &amp; Clustering -&gt; CLI &amp; Skill Installers</div>
   </div>
 </div>
 <div class="grid">
   <div class="card">
     <h4>Graph Report Highlights</h4>
     <ul>
-      <li>890 nodes · 789 edges · 314 communities (252 shown, 62 thin omitted)</li>
+      <li>891 nodes · 790 edges · 313 communities (251 shown, 62 thin omitted)</li>
       <li>Extraction: 95% EXTRACTED · 5% INFERRED · 0% AMBIGUOUS · INFERRED: 37 edges (avg confidence: 0.8)</li>
       <li>Token cost: 0 input · 0 output</li>
       <li>1. `get_db()` - 24 edges</li>
@@ -845,26 +845,19 @@ flowchart LR
 
 <!-- ====== 5. Outputs & Docs ====== -->
 <h2 id="outputs-docs">5. Outputs &amp; Docs</h2>
-<p>Outputs &amp; Docs groups implementation around ledger, users, sgarm, downloads, mostly in Downloads/ledger_web/ARCHITECTURE.md, Downloads/ledger_web/app.py, app.py. This section covers 82 nodes and 81 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Outputs &amp; Docs groups implementation around ledger, users, sgarm, downloads, mostly in Downloads/ledger_web/ARCHITECTURE.md, Downloads/ledger_web/app.py, Downloads/ledger_web/fetch_ledger_report.py. This section covers 66 nodes and 63 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Outputs &amp; Docs (82 nodes, 81 edges)
+    %% Section: Outputs &amp; Docs (66 nodes, 63 edges)
     subgraph outputs_docs_Downloads_ledger_web_app_py_b3ab333d["Downloads/ledger_web/app.py"]
-        ledger_web_app_get_db_eeea2221("get_db()<br/><small>Downloads/ledger_web/app.py</small>")
         ledger_web_app_categorize_product_1875cce3("categorize_product()<br/><small>Downloads/ledger_web/app.py</small>")
         ledger_web_app_dashboard_325e604a("dashboard()<br/><small>Downloads/ledger_web/app.py</small>")
-        ledger_web_app_api_mizoram_bronze_update_23b5d0eb("api_mizoram_bronze_update()<br/><small>Downloads/ledger_web/app.py</small>")
         ledger_web_app_compute_kpis_data_9299871a("compute_kpis_data()<br/><small>Downloads/ledger_web/app.py</small>")
-        ledger_web_app_api_inventory_c781946d("api_inventory()<br/><small>Downloads/ledger_web/app.py</small>")
-        ledger_web_app_api_inventory_master_months_d428fdd2("inventory master months()<br/><small>Downloads/ledger_web/app.py</small>")
-        ledger_web_app_api_inventory_master_7efe8bd3("api_inventory_master()<br/><small>Downloads/ledger_web/app.py</small>")
-        ledger_web_app_api_product_sales_bfcc3a98("api_product_sales()<br/><small>Downloads/ledger_web/app.py</small>")
-        ledger_web_app_api_customer_326ba09b("api_customer()<br/><small>Downloads/ledger_web/app.py</small>")
-        ledger_web_app_api_ledger_report_05b0b414("api_ledger_report()<br/><small>Downloads/ledger_web/app.py</small>")
-        ledger_web_app_api_ledger_wallet_balance_2d7d1f41("api_ledger_wallet_balance()<br/><small>Downloads/ledger_web/app.py</small>")
         ledger_web_app_api_kpi_fe714029("api_kpi()<br/><small>Downloads/ledger_web/app.py</small>")
+        ledger_web_app_api_inventory_c781946d("api_inventory()<br/><small>Downloads/ledger_web/app.py</small>")
+        ledger_web_app_api_ledger_report_05b0b414("api_ledger_report()<br/><small>Downloads/ledger_web/app.py</small>")
     end
     subgraph outputs_docs_Downloads_ledger_web_fetch_ledger_r_1d32d5ff["Downloads/ledger_web/fetch_ledger_report.py"]
         ledger_web_fetch_ledger_report_fetch_ledger_repo_f8a3c4bc("fetch_ledger_report()<br/><small>Downloads/ledger_web/fetch_ledger_report.py</small>")
@@ -875,38 +868,36 @@ flowchart LR
         ledger_web_scrape_sale_order_html_run_4ad979a4("run()<br/><small>Downloads/ledger_web/scrape_sale_order_html.py</small>")
         c_users_sgarm_downloads_ledger_web_scrape_sale_o_3c682070("scrape_sale_order_html.py")
     end
-    ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_mizoram_bronze_update_23b5d0eb
-    ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_compute_kpis_data_9299871a
-    ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_inventory_c781946d
-    ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_inventory_master_months_d428fdd2
-    ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_inventory_master_7efe8bd3
-    ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_product_sales_bfcc3a98
-    ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_customer_326ba09b
-    ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_ledger_report_05b0b414
-    ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_ledger_wallet_balance_2d7d1f41
+    fetch_ledger_report_py_b84736c8("fetch_ledger_report.py")
+    parse_html_py_d84179f1("parse_html.py")
+    scrape_sale_order_html_py_8890aa3d("scrape_sale_order_html.py")
+    dashboard_html_7ee058ad("dashboard.html")
+    index_html_acc39d30("index.html")
+    inventory_html_99333e83("inventory.html")
+    invoice_html_cb70814d("invoice.html")
     ledger_web_app_dashboard_325e604a -->|calls| ledger_web_app_compute_kpis_data_9299871a
     ledger_web_app_compute_kpis_data_9299871a -->|calls| ledger_web_app_api_kpi_fe714029
     ledger_web_app_categorize_product_1875cce3 -->|calls| ledger_web_app_api_inventory_c781946d
     ledger_web_fetch_ledger_report_fetch_ledger_repo_f8a3c4bc -->|calls| ledger_web_fetch_ledger_report_save_ledger_to_db_c218ae7b
-    %% Omitted for readability: 64 nodes, 0 edges
-    class ledger_web_app_get_db_eeea2221 function;
+    %% Omitted for readability: 48 nodes, 0 edges
     class ledger_web_app_categorize_product_1875cce3 function;
     class ledger_web_app_dashboard_325e604a function;
-    class ledger_web_app_api_mizoram_bronze_update_23b5d0eb api;
     class ledger_web_app_compute_kpis_data_9299871a function;
-    class ledger_web_app_api_inventory_c781946d api;
-    class ledger_web_app_api_inventory_master_months_d428fdd2 api;
-    class ledger_web_app_api_inventory_master_7efe8bd3 api;
-    class ledger_web_app_api_product_sales_bfcc3a98 api;
-    class ledger_web_app_api_customer_326ba09b api;
-    class ledger_web_app_api_ledger_report_05b0b414 api;
-    class ledger_web_app_api_ledger_wallet_balance_2d7d1f41 api;
     class ledger_web_app_api_kpi_fe714029 api;
+    class ledger_web_app_api_inventory_c781946d api;
+    class ledger_web_app_api_ledger_report_05b0b414 api;
     class ledger_web_fetch_ledger_report_fetch_ledger_repo_f8a3c4bc function;
     class ledger_web_fetch_ledger_report_save_ledger_to_db_c218ae7b function;
     class c_users_sgarm_downloads_ledger_web_fetch_ledger_196b1c61 module;
     class ledger_web_scrape_sale_order_html_run_4ad979a4 function;
     class c_users_sgarm_downloads_ledger_web_scrape_sale_o_3c682070 module;
+    class fetch_ledger_report_py_b84736c8 module;
+    class parse_html_py_d84179f1 module;
+    class scrape_sale_order_html_py_8890aa3d module;
+    class dashboard_html_7ee058ad function;
+    class index_html_acc39d30 function;
+    class inventory_html_99333e83 function;
+    class invoice_html_cb70814d function;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -1176,18 +1167,18 @@ flowchart LR
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
       <tr><td><code>Downloads/ledger_web/ARCHITECTURE.md</code></td><td>39 nodes</td></tr>
-<tr><td><code>Downloads/ledger_web/app.py</code></td><td>16 nodes</td></tr>
+<tr><td><code>Downloads/ledger_web/app.py</code></td><td>8 nodes</td></tr>
 <tr><td><code>Downloads/ledger_web/fetch_ledger_report.py</code></td><td>5 nodes</td></tr>
-<tr><td><code>app.py</code></td><td>5 nodes</td></tr>
+<tr><td><code>app.py</code></td><td>3 nodes</td></tr>
 <tr><td><code>Downloads/ledger_web/scrape_sale_order_html.py</code></td><td>2 nodes</td></tr>
-<tr><td><code>add_product.py</code></td><td>2 nodes</td></tr>
 <tr><td><code>ARCHITECTURE.md</code></td><td>1 nodes</td></tr>
 <tr><td><code>fetch_ledger_report.py</code></td><td>1 nodes</td></tr>
+<tr><td><code>parse_html.py</code></td><td>1 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x46, calls x13, explains x11, calls api x9. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x45, explains x8, calls api x6, calls x4. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -1278,7 +1269,7 @@ flowchart LR
   <td><code>log()</code><br><small style="color:var(--muted)">fast_bulk_push.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
-  <td><code>login_and_save_session()</code><br><small style="color:var(--muted)">fast_bulk_push.py</small><br><code>main()</code><br><small style="color:var(--muted)">fast_bulk_push.py</small><br><code>main()</code><br><small style="color:var(--muted)">sync_and_push_latest.py</small><br>+2 more</td>
+  <td><code>login_and_save_session()</code><br><small style="color:var(--muted)">fast_bulk_push.py</small><br><code>main()</code><br><small style="color:var(--muted)">sync_and_push_latest.py</small><br><code>main()</code><br><small style="color:var(--muted)">fast_bulk_push.py</small><br>+2 more</td>
   <td>log() node in fast_bulk_push.py.</td>
 </tr>
 <tr>
@@ -1286,7 +1277,7 @@ flowchart LR
   <td><code>login_and_save_session()</code><br><small style="color:var(--muted)">fast_bulk_push.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>log()</code><br><small style="color:var(--muted)">fast_bulk_push.py</small></td>
-  <td><code>main()</code><br><small style="color:var(--muted)">fast_bulk_push.py</small><br><code>main()</code><br><small style="color:var(--muted)">sync_and_push_latest.py</small></td>
+  <td><code>main()</code><br><small style="color:var(--muted)">sync_and_push_latest.py</small><br><code>main()</code><br><small style="color:var(--muted)">fast_bulk_push.py</small></td>
   <td>login_and_save_session() node in fast_bulk_push.py.</td>
 </tr>
 <tr>
@@ -1414,13 +1405,14 @@ flowchart LR
 
 <!-- ====== 7. Ingestion & Updates ====== -->
 <h2 id="ingest-cache-update">7. Ingestion &amp; Updates</h2>
-<p>Ingestion &amp; Updates groups implementation around update, apppy, users, sgarm, mostly in Downloads/ledger_web/app.py, fix_buckets.py, update_leader_divider_style.py. This section covers 48 nodes and 35 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Ingestion &amp; Updates groups implementation around update, apppy, ledger, users, mostly in Downloads/ledger_web/app.py, fix_buckets.py, app.py. This section covers 64 nodes and 54 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Ingestion &amp; Updates (48 nodes, 35 edges)
+    %% Section: Ingestion &amp; Updates (64 nodes, 54 edges)
     subgraph ingest_cache_update_Downloads_ledger_web_app_py_c2a6a3d4["Downloads/ledger_web/app.py"]
+        ledger_web_app_get_db_eeea2221("get_db()<br/><small>Downloads/ledger_web/app.py</small>")
         ledger_web_app_load_disease_cache_5ce30609("_load_disease_cache()<br/><small>Downloads/ledger_web/app.py</small>")
         ledger_web_app_api_inventory_add_product_94b8e18e("api_inventory_add_product()<br/><small>Downloads/ledger_web/app.py</small>")
         ledger_web_app_api_inventory_restock_cf4711a0("api_inventory_restock()<br/><small>Downloads/ledger_web/app.py</small>")
@@ -1428,37 +1420,37 @@ flowchart LR
         ledger_web_app_api_disease_guide_24cc4168("api_disease_guide()<br/><small>Downloads/ledger_web/app.py</small>")
         ledger_web_app_api_disease_guide_detail_fcf02b7c("api_disease_guide_detail()<br/><small>Downloads/ledger_web/app.py</small>")
         ledger_web_app_disease_guide_cdeacba2("disease_guide()<br/><small>Downloads/ledger_web/app.py</small>")
-        ledger_web_app_update_inventory_formulas_62c5df51("update_inventory_formulas()<br/><small>Downloads/ledger_web/app.py</small>")
-        ledger_web_app_update_totals_row_1f39fbf2("update_totals_row()<br/><small>Downloads/ledger_web/app.py</small>")
+        ledger_web_app_api_mizoram_bronze_bf52adfd("api_mizoram_bronze()<br/><small>Downloads/ledger_web/app.py</small>")
+        ledger_web_app_api_mizoram_bronze_update_23b5d0eb("api_mizoram_bronze_update()<br/><small>Downloads/ledger_web/app.py</small>")
         ledger_web_app_api_update_78d189de("api_update()<br/><small>Downloads/ledger_web/app.py</small>")
+        ledger_web_app_api_inventory_master_7efe8bd3("api_inventory_master()<br/><small>Downloads/ledger_web/app.py</small>")
+        ledger_web_app_api_product_sales_bfcc3a98("api_product_sales()<br/><small>Downloads/ledger_web/app.py</small>")
         ledger_web_app_api_inventory_master_update_550ff49f("inventory master update()<br/><small>Downloads/ledger_web/app.py</small>")
+        ledger_web_app_api_customer_326ba09b("api_customer()<br/><small>Downloads/ledger_web/app.py</small>")
+        ledger_web_app_api_ledger_wallet_balance_2d7d1f41("api_ledger_wallet_balance()<br/><small>Downloads/ledger_web/app.py</small>")
+        ledger_web_app_update_inventory_formulas_62c5df51("update_inventory_formulas()<br/><small>Downloads/ledger_web/app.py</small>")
     end
-    subgraph ingest_cache_update_fetch_wallet_py_e1c05d6d["fetch_wallet.py"]
-        ledger_web_fetch_wallet_get_wallet_balance_ad02ef45("get_wallet_balance()<br/><small>fetch_wallet.py</small>")
-        ledger_web_fetch_wallet_save_wallet_to_db_dec76dec("save_wallet_to_db()<br/><small>fetch_wallet.py</small>")
-    end
-    subgraph ingest_cache_update_update_leader_divider_style_826f786b["update_leader_divider_style.py"]
-        ledger_web_update_leader_divider_style_hex_to_rg_a2375fab("hex_to_rgb()<br/><small>update_leader_divider_style.py</small>")
-        ledger_web_update_leader_divider_style_main_ea347d0a("main()<br/><small>update_leader_divider_style.py</small>")
-    end
-    fetch_live_invoices_py_235b8186("fetch_live_invoices.py")
-    fetch_live_invoices2_py_492d5ccb("fetch_live_invoices2.py")
-    ledger_web_fetch_order_data_fetch_order_data_84d1e66b("fetch_order_data()<br/><small>fetch_order_data.py</small>")
+    ledger_web_fetch_wallet_get_wallet_balance_ad02ef45("get_wallet_balance()<br/><small>fetch_wallet.py</small>")
     ledger_web_app_load_disease_cache_5ce30609 -->|calls| ledger_web_app_api_disease_guide_24cc4168
     ledger_web_app_load_disease_cache_5ce30609 -->|calls| ledger_web_app_api_disease_guide_detail_fcf02b7c
     ledger_web_app_load_disease_cache_5ce30609 -->|calls| ledger_web_app_disease_guide_cdeacba2
+    ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_mizoram_bronze_bf52adfd
+    ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_mizoram_bronze_update_23b5d0eb
+    ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_inventory_restock_cf4711a0
+    ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_inventory_add_product_94b8e18e
+    ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_update_78d189de
+    ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_inventory_master_7efe8bd3
+    ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_product_sales_bfcc3a98
+    ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_inventory_master_update_550ff49f
+    ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_customer_326ba09b
+    ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_ledger_wallet_balance_2d7d1f41
     ledger_web_app_index_af5e7f92 -->|calls| ledger_web_app_update_inventory_formulas_62c5df51
     ledger_web_app_api_inventory_restock_cf4711a0 -->|calls| ledger_web_app_update_inventory_formulas_62c5df51
-    ledger_web_app_api_inventory_restock_cf4711a0 -->|calls| ledger_web_app_update_totals_row_1f39fbf2
     ledger_web_app_api_inventory_add_product_94b8e18e -->|calls| ledger_web_app_update_inventory_formulas_62c5df51
-    ledger_web_app_api_inventory_add_product_94b8e18e -->|calls| ledger_web_app_update_totals_row_1f39fbf2
     ledger_web_app_update_inventory_formulas_62c5df51 -->|calls| ledger_web_app_api_update_78d189de
     ledger_web_app_update_inventory_formulas_62c5df51 -->|calls| ledger_web_app_api_inventory_master_update_550ff49f
-    ledger_web_app_update_totals_row_1f39fbf2 -->|calls| ledger_web_app_api_update_78d189de
-    ledger_web_app_update_totals_row_1f39fbf2 -->|calls| ledger_web_app_api_inventory_master_update_550ff49f
-    ledger_web_fetch_wallet_get_wallet_balance_ad02ef45 -->|calls| ledger_web_fetch_wallet_save_wallet_to_db_dec76dec
-    ledger_web_update_leader_divider_style_hex_to_rg_a2375fab -->|calls| ledger_web_update_leader_divider_style_main_ea347d0a
-    %% Omitted for readability: 30 nodes, 0 edges
+    %% Omitted for readability: 46 nodes, 0 edges
+    class ledger_web_app_get_db_eeea2221 function;
     class ledger_web_app_load_disease_cache_5ce30609 function;
     class ledger_web_app_api_inventory_add_product_94b8e18e api;
     class ledger_web_app_api_inventory_restock_cf4711a0 api;
@@ -1466,17 +1458,16 @@ flowchart LR
     class ledger_web_app_api_disease_guide_24cc4168 api;
     class ledger_web_app_api_disease_guide_detail_fcf02b7c api;
     class ledger_web_app_disease_guide_cdeacba2 function;
-    class ledger_web_app_update_inventory_formulas_62c5df51 function;
-    class ledger_web_app_update_totals_row_1f39fbf2 function;
+    class ledger_web_app_api_mizoram_bronze_bf52adfd api;
+    class ledger_web_app_api_mizoram_bronze_update_23b5d0eb api;
     class ledger_web_app_api_update_78d189de api;
+    class ledger_web_app_api_inventory_master_7efe8bd3 api;
+    class ledger_web_app_api_product_sales_bfcc3a98 api;
     class ledger_web_app_api_inventory_master_update_550ff49f api;
+    class ledger_web_app_api_customer_326ba09b api;
+    class ledger_web_app_api_ledger_wallet_balance_2d7d1f41 api;
+    class ledger_web_app_update_inventory_formulas_62c5df51 function;
     class ledger_web_fetch_wallet_get_wallet_balance_ad02ef45 function;
-    class ledger_web_fetch_wallet_save_wallet_to_db_dec76dec function;
-    class ledger_web_update_leader_divider_style_hex_to_rg_a2375fab function;
-    class ledger_web_update_leader_divider_style_main_ea347d0a function;
-    class fetch_live_invoices_py_235b8186 module;
-    class fetch_live_invoices2_py_492d5ccb module;
-    class ledger_web_fetch_order_data_fetch_order_data_84d1e66b function;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -1500,6 +1491,134 @@ flowchart LR
 </tr>
 <tr>
   <td>1</td>
+  <td><code>add_product.py</code><br><small style="color:var(--muted)">add_product.py</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Module file in add_product.py.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><code>add_product()</code><br><small style="color:var(--muted)">add_product.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>get_db()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
+  <td>add_product() node in add_product.py.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><code>get_db()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>add_product()</code><br><small style="color:var(--muted)">add_product.py</small></td>
+  <td><code>api_customer()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small><br><code>api_inventory_add_product()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small><br><code>api_inventory_master()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small><br>+7 more</td>
+  <td>get_db() node in Downloads/ledger_web/app.py.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><code>api_mizoram_bronze()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
+  <td><span class="tag tag-endpoint">API</span></td>
+  <td><code>get_db()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>api_mizoram_bronze() node in Downloads/ledger_web/app.py.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><code>api_mizoram_bronze_update()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
+  <td><span class="tag tag-endpoint">API</span></td>
+  <td><code>get_db()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>api_mizoram_bronze_update() node in Downloads/ledger_web/app.py.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><code>api_inventory_master()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
+  <td><span class="tag tag-endpoint">API</span></td>
+  <td><code>get_db()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>api_inventory_master() node in Downloads/ledger_web/app.py.</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><code>api_product_sales()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
+  <td><span class="tag tag-endpoint">API</span></td>
+  <td><code>get_db()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>api_product_sales() node in Downloads/ledger_web/app.py.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><code>api_customer()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
+  <td><span class="tag tag-endpoint">API</span></td>
+  <td><code>get_db()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>api_customer() node in Downloads/ledger_web/app.py.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><code>api_ledger_wallet_balance()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
+  <td><span class="tag tag-endpoint">API</span></td>
+  <td><code>get_db()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>api_ledger_wallet_balance() node in Downloads/ledger_web/app.py.</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><code>Return closing balance for stock-point-order and dashboard sync.</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Design note for Return closing balance for stock-point-order and dashboard sync..</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td><code>Return closing balance for stock-point-order and dashboard sync.</code><br><small style="color:var(--muted)">app.py</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Design note for Return closing balance for stock-point-order and dashboard sync..</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td><code>Return closing balance for stock-point-order and dashboard sync.</code><br><small style="color:var(--muted)">app.py</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Design note for Return closing balance for stock-point-order and dashboard sync..</td>
+</tr>
+<tr>
+  <td>13</td>
+  <td><code>mizoram_bronze.html</code><br><small style="color:var(--muted)">templates/mizoram_bronze.html</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Exports documentation data to a target format.</td>
+</tr>
+<tr>
+  <td>14</td>
+  <td><code>purchase_history.html</code><br><small style="color:var(--muted)">templates/purchase_history.html</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Exports documentation data to a target format.</td>
+</tr>
+<tr>
+  <td>15</td>
+  <td><code>stock_point_order.html</code><br><small style="color:var(--muted)">templates/stock_point_order.html</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Exports documentation data to a target format.</td>
+</tr>
+<tr>
+  <td>16</td>
+  <td><code>schema.sql</code><br><small style="color:var(--muted)">schema.sql</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>schema.sql node in schema.sql.</td>
+</tr>
+<tr>
+  <td>17</td>
   <td><code>index()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -1507,23 +1626,23 @@ flowchart LR
   <td>index() node in Downloads/ledger_web/app.py.</td>
 </tr>
 <tr>
-  <td>2</td>
+  <td>18</td>
   <td><code>api_inventory_restock()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
   <td><span class="tag tag-endpoint">API</span></td>
-  <td>External entry / no inbound edge</td>
+  <td><code>get_db()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
   <td><code>update_inventory_formulas()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small><br><code>update_totals_row()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
   <td>api_inventory_restock() node in Downloads/ledger_web/app.py.</td>
 </tr>
 <tr>
-  <td>3</td>
+  <td>19</td>
   <td><code>api_inventory_add_product()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
   <td><span class="tag tag-endpoint">API</span></td>
-  <td>External entry / no inbound edge</td>
+  <td><code>get_db()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
   <td><code>update_inventory_formulas()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small><br><code>update_totals_row()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
   <td>api_inventory_add_product() node in Downloads/ledger_web/app.py.</td>
 </tr>
 <tr>
-  <td>4</td>
+  <td>20</td>
   <td><code>update_inventory_formulas()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>api_inventory_add_product()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small><br><code>api_inventory_restock()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small><br><code>index()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
@@ -1531,7 +1650,7 @@ flowchart LR
   <td>update_inventory_formulas() node in Downloads/ledger_web/app.py.</td>
 </tr>
 <tr>
-  <td>5</td>
+  <td>21</td>
   <td><code>update_totals_row()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>api_inventory_add_product()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small><br><code>api_inventory_restock()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
@@ -1539,23 +1658,23 @@ flowchart LR
   <td>update_totals_row() node in Downloads/ledger_web/app.py.</td>
 </tr>
 <tr>
-  <td>6</td>
+  <td>22</td>
   <td><code>api_update()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
   <td><span class="tag tag-endpoint">API</span></td>
-  <td><code>update_inventory_formulas()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small><br><code>update_totals_row()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
+  <td><code>get_db()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small><br><code>update_inventory_formulas()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small><br><code>update_totals_row()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
   <td>No direct outbound edge</td>
   <td>api_update() node in Downloads/ledger_web/app.py.</td>
 </tr>
 <tr>
-  <td>7</td>
+  <td>23</td>
   <td><code>api_inventory_master_update()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
   <td><span class="tag tag-endpoint">API</span></td>
-  <td><code>update_inventory_formulas()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small><br><code>update_totals_row()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
+  <td><code>get_db()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small><br><code>update_inventory_formulas()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small><br><code>update_totals_row()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
   <td>No direct outbound edge</td>
   <td>api_inventory_master_update() node in Downloads/ledger_web/app.py.</td>
 </tr>
 <tr>
-  <td>8</td>
+  <td>24</td>
   <td><code>Recalculate formulas for a row.      BUG FIX: The old implementation summed on</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -1563,7 +1682,7 @@ flowchart LR
   <td>Design note for Recalculate formulas for a row.      BUG FIX: The old implementation summed on.</td>
 </tr>
 <tr>
-  <td>9</td>
+  <td>25</td>
   <td><code>Recalculate the TOTAL row at the bottom.</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -1571,7 +1690,7 @@ flowchart LR
   <td>Design note for Recalculate the TOTAL row at the bottom..</td>
 </tr>
 <tr>
-  <td>10</td>
+  <td>26</td>
   <td><code>Recalculate formulas for a row.      BUG FIX: The old implementation summed on</code><br><small style="color:var(--muted)">app.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -1579,7 +1698,7 @@ flowchart LR
   <td>Design note for Recalculate formulas for a row.      BUG FIX: The old implementation summed on.</td>
 </tr>
 <tr>
-  <td>11</td>
+  <td>27</td>
   <td><code>Recalculate the TOTAL row at the bottom.</code><br><small style="color:var(--muted)">app.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -1587,7 +1706,7 @@ flowchart LR
   <td>Design note for Recalculate the TOTAL row at the bottom..</td>
 </tr>
 <tr>
-  <td>12</td>
+  <td>28</td>
   <td><code>_load_disease_cache()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -1595,7 +1714,7 @@ flowchart LR
   <td>Caches analysis results or computes cache keys.</td>
 </tr>
 <tr>
-  <td>13</td>
+  <td>29</td>
   <td><code>api_disease_guide()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
   <td><span class="tag tag-endpoint">API</span></td>
   <td><code>_load_disease_cache()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
@@ -1603,140 +1722,12 @@ flowchart LR
   <td>api_disease_guide() node in Downloads/ledger_web/app.py.</td>
 </tr>
 <tr>
-  <td>14</td>
+  <td>30</td>
   <td><code>api_disease_guide_detail()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
   <td><span class="tag tag-endpoint">API</span></td>
   <td><code>_load_disease_cache()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
   <td>No direct outbound edge</td>
   <td>api_disease_guide_detail() node in Downloads/ledger_web/app.py.</td>
-</tr>
-<tr>
-  <td>15</td>
-  <td><code>disease_guide()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>_load_disease_cache()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>disease_guide() node in Downloads/ledger_web/app.py.</td>
-</tr>
-<tr>
-  <td>16</td>
-  <td><code>Load and flatten the disease JSON into the module-level cache.     Thread-safe;</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Design note for Load and flatten the disease JSON into the module-level cache.     Thread-safe;.</td>
-</tr>
-<tr>
-  <td>17</td>
-  <td><code>Return a lightweight list of diseases, optionally filtered.      Query params:</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Design note for Return a lightweight list of diseases, optionally filtered.      Query params:.</td>
-</tr>
-<tr>
-  <td>18</td>
-  <td><code>Return the full record for a single disease by its 0-based index     in the fla</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Design note for Return the full record for a single disease by its 0-based index     in the fla.</td>
-</tr>
-<tr>
-  <td>19</td>
-  <td><code>disease_guide.html</code><br><small style="color:var(--muted)">templates/disease_guide.html</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Exports documentation data to a target format.</td>
-</tr>
-<tr>
-  <td>20</td>
-  <td><code>fix_buckets.py</code><br><small style="color:var(--muted)">fix_buckets.py</small></td>
-  <td><span class="tag tag-class">Module</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Module file in fix_buckets.py.</td>
-</tr>
-<tr>
-  <td>21</td>
-  <td><code>update_inventory_formulas()</code><br><small style="color:var(--muted)">fix_buckets.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>update_inventory_formulas() node in fix_buckets.py.</td>
-</tr>
-<tr>
-  <td>22</td>
-  <td><code>update_totals_row()</code><br><small style="color:var(--muted)">fix_buckets.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>update_totals_row() node in fix_buckets.py.</td>
-</tr>
-<tr>
-  <td>23</td>
-  <td><code>Recalculate formulas for a row.</code><br><small style="color:var(--muted)">fix_buckets.py</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Design note for Recalculate formulas for a row..</td>
-</tr>
-<tr>
-  <td>24</td>
-  <td><code>Recalculate the TOTAL row at the bottom.</code><br><small style="color:var(--muted)">fix_buckets.py</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Design note for Recalculate the TOTAL row at the bottom..</td>
-</tr>
-<tr>
-  <td>25</td>
-  <td><code>update_leader_divider_style.py</code><br><small style="color:var(--muted)">update_leader_divider_style.py</small></td>
-  <td><span class="tag tag-class">Module</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Module file in update_leader_divider_style.py.</td>
-</tr>
-<tr>
-  <td>26</td>
-  <td><code>hex_to_rgb()</code><br><small style="color:var(--muted)">update_leader_divider_style.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>main()</code><br><small style="color:var(--muted)">update_leader_divider_style.py</small></td>
-  <td>hex_to_rgb() node in update_leader_divider_style.py.</td>
-</tr>
-<tr>
-  <td>27</td>
-  <td><code>main()</code><br><small style="color:var(--muted)">update_leader_divider_style.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>hex_to_rgb()</code><br><small style="color:var(--muted)">update_leader_divider_style.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>main() node in update_leader_divider_style.py.</td>
-</tr>
-<tr>
-  <td>28</td>
-  <td><code>================================================================================</code><br><small style="color:var(--muted)">update_leader_divider_style.py</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Design note for ================================================================================.</td>
-</tr>
-<tr>
-  <td>29</td>
-  <td><code>fetch_wallet.py</code><br><small style="color:var(--muted)">fetch_wallet.py</small></td>
-  <td><span class="tag tag-class">Module</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Module file in fetch_wallet.py.</td>
-</tr>
-<tr>
-  <td>30</td>
-  <td><code>get_wallet_balance()</code><br><small style="color:var(--muted)">fetch_wallet.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>save_wallet_to_db()</code><br><small style="color:var(--muted)">fetch_wallet.py</small></td>
-  <td>get_wallet_balance() node in fetch_wallet.py.</td>
 </tr>
 </table>
 
@@ -1745,31 +1736,31 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>Downloads/ledger_web/app.py</code></td><td>16 nodes</td></tr>
+      <tr><td><code>Downloads/ledger_web/app.py</code></td><td>24 nodes</td></tr>
 <tr><td><code>fix_buckets.py</code></td><td>5 nodes</td></tr>
+<tr><td><code>app.py</code></td><td>4 nodes</td></tr>
 <tr><td><code>update_leader_divider_style.py</code></td><td>4 nodes</td></tr>
 <tr><td><code>fetch_wallet.py</code></td><td>3 nodes</td></tr>
-<tr><td><code>app.py</code></td><td>2 nodes</td></tr>
+<tr><td><code>add_product.py</code></td><td>2 nodes</td></tr>
 <tr><td><code>fetch_order_data.py</code></td><td>2 nodes</td></tr>
 <tr><td><code>scratch/update_billing_dates.py</code></td><td>2 nodes</td></tr>
-<tr><td><code>scratch/update_mizo_sheet.py</code></td><td>2 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: calls x14, explains x10, contains x10, calls api x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: calls x24, explains x13, contains x11, calls api x4. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
 <!-- ====== 8. Serving API ====== -->
 <h2 id="serve-api">8. Serving API</h2>
-<p>Serving API groups implementation around ledger, users, sgarm, downloads, mostly in Downloads/ledger_web/app.py, Downloads/ledger_web/invoice_api.py, portal_submit_order.py. This section covers 95 nodes and 150 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Serving API groups implementation around ledger, users, sgarm, downloads, mostly in Downloads/ledger_web/app.py, Downloads/ledger_web/invoice_api.py, portal_submit_order.py. This section covers 102 nodes and 159 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Serving API (95 nodes, 150 edges)
+    %% Section: Serving API (102 nodes, 159 edges)
     subgraph serve_api_portal_submit_order_py_dd415b06["portal_submit_order.py"]
         ledger_web_portal_submit_order_log_fd53b7bb("_log()<br/><small>portal_submit_order.py</small>")
         ledger_web_portal_submit_order_get_active_submis_2891af4a("get_active_submission()<br/><small>portal_submit_order.py</small>")
@@ -1782,15 +1773,15 @@ flowchart LR
     subgraph serve_api_Downloads_ledger_web_invoice_api_py_a8ba9d83["Downloads/ledger_web/invoice_api.py"]
         ledger_web_invoice_api_get_sold_qty_col_idx_acebd877("get_sold_qty_col_idx()<br/><small>Downloads/ledger_web/invoice_api.py</small>")
         ledger_web_invoice_api_is_complimentary_item_d5b27983("is_complimentary_item()<br/><small>Downloads/ledger_web/invoice_api.py</small>")
-        ledger_web_invoice_api_get_true_remaining_stock_7c007ae5("_get_true_remaining_stock()<br/><small>Downloads/ledger_web/invoice_api.py</small>")
         ledger_web_invoice_api_create_invoice_2e30bd9f("create_invoice()<br/><small>Downloads/ledger_web/invoice_api.py</small>")
         ledger_web_invoice_api_cancel_invoice_9cd7d415("cancel_invoice()<br/><small>Downloads/ledger_web/invoice_api.py</small>")
+        ledger_web_invoice_api_get_true_remaining_stock_7c007ae5("_get_true_remaining_stock()<br/><small>Downloads/ledger_web/invoice_api.py</small>")
         ledger_web_invoice_api_list_invoices_5ea23348("list_invoices()<br/><small>Downloads/ledger_web/invoice_api.py</small>")
     end
-    subgraph serve_api_Downloads_ledger_web_app_py_f0659b70["Downloads/ledger_web/app.py"]
-        ledger_web_app_auto_sync_loop_4b016628("_auto_sync_loop()<br/><small>Downloads/ledger_web/app.py</small>")
-        ledger_web_app_api_fix_historical_buckets_1dc3ba0b("api_fix_historical_buckets()<br/><small>Downloads/ledger_web/app.py</small>")
-        ledger_web_app_api_fix_sync_c390ff24("api_fix_sync()<br/><small>Downloads/ledger_web/app.py</small>")
+    subgraph serve_api_bulk_push_to_portal_py_e5213554["bulk_push_to_portal.py"]
+        ledger_web_bulk_push_to_portal_get_unticked_invo_60c973ff("get_unticked_invoices()<br/><small>bulk_push_to_portal.py</small>")
+        ledger_web_bulk_push_to_portal_parse_items_e6a27543("parse_items()<br/><small>bulk_push_to_portal.py</small>")
+        ledger_web_bulk_push_to_portal_main_8e09901c("main()<br/><small>bulk_push_to_portal.py</small>")
     end
     subgraph serve_api_local_fix_mizoram_py_853edd1e["local_fix_mizoram.py"]
         ledger_web_local_fix_mizoram_get_ds_details_9e8e57aa("get_ds_details()<br/><small>local_fix_mizoram.py</small>")
@@ -1814,7 +1805,9 @@ flowchart LR
     ledger_web_portal_submit_order_acquire_submissio_ddcb0a11 -->|calls| ledger_web_portal_submit_order_submit_order_to_p_aa60677d
     ledger_web_portal_submit_order_acquire_submissio_ddcb0a11 -->|calls| ledger_web_portal_submit_order_submit_order_asyn_c31ac63d
     ledger_web_portal_submit_order_release_submissio_7988a535 -->|calls| ledger_web_portal_submit_order_submit_order_to_p_aa60677d
-    %% Omitted for readability: 77 nodes, 0 edges
+    ledger_web_bulk_push_to_portal_get_unticked_invo_60c973ff -->|calls| ledger_web_bulk_push_to_portal_main_8e09901c
+    ledger_web_bulk_push_to_portal_parse_items_e6a27543 -->|calls| ledger_web_bulk_push_to_portal_main_8e09901c
+    %% Omitted for readability: 84 nodes, 0 edges
     class ledger_web_portal_submit_order_log_fd53b7bb function;
     class ledger_web_portal_submit_order_get_active_submis_2891af4a function;
     class ledger_web_portal_submit_order_acquire_submissio_ddcb0a11 function;
@@ -1824,13 +1817,13 @@ flowchart LR
     class ledger_web_portal_submit_order_is_pid_alive_437c7381 function;
     class ledger_web_invoice_api_get_sold_qty_col_idx_acebd877 function;
     class ledger_web_invoice_api_is_complimentary_item_d5b27983 function;
-    class ledger_web_invoice_api_get_true_remaining_stock_7c007ae5 function;
     class ledger_web_invoice_api_create_invoice_2e30bd9f function;
     class ledger_web_invoice_api_cancel_invoice_9cd7d415 function;
+    class ledger_web_invoice_api_get_true_remaining_stock_7c007ae5 function;
     class ledger_web_invoice_api_list_invoices_5ea23348 function;
-    class ledger_web_app_auto_sync_loop_4b016628 function;
-    class ledger_web_app_api_fix_historical_buckets_1dc3ba0b api;
-    class ledger_web_app_api_fix_sync_c390ff24 api;
+    class ledger_web_bulk_push_to_portal_get_unticked_invo_60c973ff function;
+    class ledger_web_bulk_push_to_portal_parse_items_e6a27543 function;
+    class ledger_web_bulk_push_to_portal_main_8e09901c function;
     class ledger_web_local_fix_mizoram_get_ds_details_9e8e57aa function;
     class ledger_web_local_fix_mizoram_fix_sheet_1348d22f function;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
@@ -2059,7 +2052,7 @@ flowchart LR
   <td><code>submit_order_to_portal()</code><br><small style="color:var(--muted)">portal_submit_order.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>_log()</code><br><small style="color:var(--muted)">portal_submit_order.py</small><br><code>acquire_submission_lock()</code><br><small style="color:var(--muted)">portal_submit_order.py</small><br><code>release_submission_lock()</code><br><small style="color:var(--muted)">portal_submit_order.py</small></td>
-  <td>No direct outbound edge</td>
+  <td><code>main()</code><br><small style="color:var(--muted)">bulk_push_to_portal.py</small></td>
   <td>submit_order_to_portal() node in portal_submit_order.py.</td>
 </tr>
 <tr>
@@ -2103,17 +2096,17 @@ flowchart LR
       <tr><th>File</th><th>Coverage</th></tr>
       <tr><td><code>Downloads/ledger_web/app.py</code></td><td>32 nodes</td></tr>
 <tr><td><code>Downloads/ledger_web/invoice_api.py</code></td><td>19 nodes</td></tr>
-<tr><td><code>portal_submit_order.py</code></td><td>16 nodes</td></tr>
+<tr><td><code>portal_submit_order.py</code></td><td>17 nodes</td></tr>
+<tr><td><code>bulk_push_to_portal.py</code></td><td>6 nodes</td></tr>
 <tr><td><code>app.py</code></td><td>3 nodes</td></tr>
 <tr><td><code>ds_lookup_api.py</code></td><td>3 nodes</td></tr>
 <tr><td><code>invoice_api.py</code></td><td>3 nodes</td></tr>
 <tr><td><code>local_fix_mizoram.py</code></td><td>3 nodes</td></tr>
-<tr><td><code>scratch/test_optimized_api.py</code></td><td>3 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x98, explains x21, calls x18, rendered by x3. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x101, explains x24, calls x20, rendered by x3. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -2650,7 +2643,7 @@ flowchart LR
   <td><code>init_google_sheets()</code><br><small style="color:var(--muted)">init_gsheets.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>add_product()</code><br><small style="color:var(--muted)">add_new_product.py</small><br><code>api_sync_now()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
-  <td><code>do_restock()</code><br><small style="color:var(--muted)">restock_pdf.py</small><br><code>sync_all_to_inventory()</code><br><small style="color:var(--muted)">Downloads/ledger_web/robust_sync.py</small><br><code>sync_all_to_inventory()</code><br><small style="color:var(--muted)">sync_full_inventory.py</small><br>+1 more</td>
+  <td><code>do_restock()</code><br><small style="color:var(--muted)">restock_pdf.py</small><br><code>sync_all_to_inventory()</code><br><small style="color:var(--muted)">sync_full_inventory.py</small><br><code>sync_all_to_inventory()</code><br><small style="color:var(--muted)">Downloads/ledger_web/robust_sync.py</small><br>+1 more</td>
   <td>init_google_sheets() node in init_gsheets.py.</td>
 </tr>
 <tr>
@@ -3383,26 +3376,25 @@ flowchart LR
 
 <!-- ====== 16. Other ====== -->
 <h2 id="other">16. Other</h2>
-<p>Other groups implementation around check, ledger, users, sgarm, mostly in static/js/inventory.js, static/js/invoice.js, Downloads/ledger_web/scrape_purchase_orders.py. This section covers 366 nodes and 172 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Other groups implementation around check, ledger, users, sgarm, mostly in static/js/inventory.js, static/js/invoice.js, Downloads/ledger_web/scrape_purchase_orders.py. This section covers 360 nodes and 165 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Other (366 nodes, 172 edges)
-    subgraph other_bulk_push_to_portal_py_e05493ac["bulk_push_to_portal.py"]
-        ledger_web_bulk_push_to_portal_get_unticked_invo_60c973ff("get_unticked_invoices()<br/><small>bulk_push_to_portal.py</small>")
-        ledger_web_bulk_push_to_portal_parse_items_e6a27543("parse_items()<br/><small>bulk_push_to_portal.py</small>")
-        ledger_web_bulk_push_to_portal_main_8e09901c("main()<br/><small>bulk_push_to_portal.py</small>")
-    end
+    %% Section: Other (360 nodes, 165 edges)
     subgraph other_fix_invoices_items_py_e7885a0a["fix_invoices_items.py"]
         ledger_web_fix_invoices_items_cells_to_item_d19cedf5("cells_to_item()<br/><small>fix_invoices_items.py</small>")
         ledger_web_fix_invoices_items_parse_detail_page_c62c1f20("parse_detail_page()<br/><small>fix_invoices_items.py</small>")
         ledger_web_fix_invoices_items_main_4be7745d("main()<br/><small>fix_invoices_items.py</small>")
     end
     subgraph other_scrape_fast_products_py_66ad0893["scrape_fast_products.py"]
+        ledger_web_scrape_fast_products_login_and_open_9e05879b("login_and_open()<br/><small>scrape_fast_products.py</small>")
         ledger_web_scrape_fast_products_parse_all_grid_r_382a5136("parse_all_grid_rows()<br/><small>scrape_fast_products.py</small>")
         ledger_web_scrape_fast_products_main_153aba2c("main()<br/><small>scrape_fast_products.py</small>")
-        ledger_web_scrape_fast_products_login_and_open_9e05879b("login_and_open()<br/><small>scrape_fast_products.py</small>")
+    end
+    subgraph other_Downloads_ledger_web_app_py_ebbbaa76["Downloads/ledger_web/app.py"]
+        ledger_web_app_api_portal_sync_8a0f1525("api_portal_sync()<br/><small>Downloads/ledger_web/app.py</small>")
+        ledger_web_app_api_refresh_wallet_72860039("api_refresh_wallet()<br/><small>Downloads/ledger_web/app.py</small>")
     end
     subgraph other_Downloads_ledger_web_scrape_purchase_order_740ffa4f["Downloads/ledger_web/scrape_purchase_orders.py"]
         ledger_web_scrape_purchase_orders_parse_bill_det_13d95e9c("parse_bill_detail()<br/><small>Downloads/ledger_web/scrape_purchase_orders.py</small>")
@@ -3418,27 +3410,25 @@ flowchart LR
     end
     gitignore_0585d98c(".gitignore")
     dockerfile_558c49b6("Dockerfile")
+    ledger_web_check_all_lists_check_ea0feab6("check()<br/><small>Downloads/ledger_web/check_all_lists.py</small>")
     render_yaml_4aaeffe9("render.yaml")
     ledger_web_migrate_to_sqlite_clean_val_02579661 -->|calls| ledger_web_migrate_to_sqlite_migrate_240c1750
     ledger_web_scrape_purchase_orders_parse_bill_det_13d95e9c -->|calls| ledger_web_scrape_purchase_orders_main_23b71e52
     ledger_web_sync_purchase_bill_get_credentials_1e733f9e -->|calls| ledger_web_sync_purchase_bill_sync_bill_a1052b6c
-    ledger_web_bulk_push_to_portal_get_unticked_invo_60c973ff -->|calls| ledger_web_bulk_push_to_portal_main_8e09901c
-    ledger_web_bulk_push_to_portal_parse_items_e6a27543 -->|calls| ledger_web_bulk_push_to_portal_main_8e09901c
     ledger_web_fix_invoices_items_parse_detail_page_c62c1f20 -->|calls| ledger_web_fix_invoices_items_main_4be7745d
     ledger_web_fix_invoices_items_cells_to_item_d19cedf5 -->|calls| ledger_web_fix_invoices_items_main_4be7745d
     ledger_web_scrape_fast_products_parse_all_grid_r_382a5136 -->|calls| ledger_web_scrape_fast_products_main_153aba2c
     ledger_web_scrape_fast_products_login_and_open_9e05879b -->|calls| ledger_web_scrape_fast_products_main_153aba2c
     dockerfile_558c49b6 -->|uses| render_yaml_4aaeffe9
-    %% Omitted for readability: 348 nodes, 0 edges
-    class ledger_web_bulk_push_to_portal_get_unticked_invo_60c973ff function;
-    class ledger_web_bulk_push_to_portal_parse_items_e6a27543 function;
-    class ledger_web_bulk_push_to_portal_main_8e09901c function;
+    %% Omitted for readability: 342 nodes, 0 edges
     class ledger_web_fix_invoices_items_cells_to_item_d19cedf5 function;
     class ledger_web_fix_invoices_items_parse_detail_page_c62c1f20 function;
     class ledger_web_fix_invoices_items_main_4be7745d function;
+    class ledger_web_scrape_fast_products_login_and_open_9e05879b function;
     class ledger_web_scrape_fast_products_parse_all_grid_r_382a5136 function;
     class ledger_web_scrape_fast_products_main_153aba2c function;
-    class ledger_web_scrape_fast_products_login_and_open_9e05879b function;
+    class ledger_web_app_api_portal_sync_8a0f1525 api;
+    class ledger_web_app_api_refresh_wallet_72860039 api;
     class ledger_web_scrape_purchase_orders_parse_bill_det_13d95e9c function;
     class ledger_web_scrape_purchase_orders_main_23b71e52 function;
     class ledger_web_migrate_to_sqlite_clean_val_02579661 function;
@@ -3447,6 +3437,7 @@ flowchart LR
     class ledger_web_sync_purchase_bill_sync_bill_a1052b6c function;
     class gitignore_0585d98c function;
     class dockerfile_558c49b6 klass;
+    class ledger_web_check_all_lists_check_ea0feab6 function;
     class render_yaml_4aaeffe9 function;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
@@ -3583,54 +3574,6 @@ flowchart LR
 </tr>
 <tr>
   <td>15</td>
-  <td><code>bulk_push_to_portal.py</code><br><small style="color:var(--muted)">bulk_push_to_portal.py</small></td>
-  <td><span class="tag tag-class">Module</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Module file in bulk_push_to_portal.py.</td>
-</tr>
-<tr>
-  <td>16</td>
-  <td><code>get_unticked_invoices()</code><br><small style="color:var(--muted)">bulk_push_to_portal.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>main()</code><br><small style="color:var(--muted)">bulk_push_to_portal.py</small></td>
-  <td>get_unticked_invoices() node in bulk_push_to_portal.py.</td>
-</tr>
-<tr>
-  <td>17</td>
-  <td><code>parse_items()</code><br><small style="color:var(--muted)">bulk_push_to_portal.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>main()</code><br><small style="color:var(--muted)">bulk_push_to_portal.py</small></td>
-  <td>parse_items() node in bulk_push_to_portal.py.</td>
-</tr>
-<tr>
-  <td>18</td>
-  <td><code>main()</code><br><small style="color:var(--muted)">bulk_push_to_portal.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>get_unticked_invoices()</code><br><small style="color:var(--muted)">bulk_push_to_portal.py</small><br><code>parse_items()</code><br><small style="color:var(--muted)">bulk_push_to_portal.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>main() node in bulk_push_to_portal.py.</td>
-</tr>
-<tr>
-  <td>19</td>
-  <td><code>bulk_push_to_portal.py ---------------------- Reads all invoices with is_dispatc</code><br><small style="color:var(--muted)">bulk_push_to_portal.py</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Design note for bulk_push_to_portal.py ---------------------- Reads all invoices with is_dispatc.</td>
-</tr>
-<tr>
-  <td>20</td>
-  <td><code>Return list of {description, qty} dicts from the stored JSON.</code><br><small style="color:var(--muted)">bulk_push_to_portal.py</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Design note for Return list of {description, qty} dicts from the stored JSON..</td>
-</tr>
-<tr>
-  <td>21</td>
   <td><code>scrape_fast_products.py</code><br><small style="color:var(--muted)">scrape_fast_products.py</small></td>
   <td><span class="tag tag-class">Module</span></td>
   <td>External entry / no inbound edge</td>
@@ -3638,7 +3581,7 @@ flowchart LR
   <td>Module file in scrape_fast_products.py.</td>
 </tr>
 <tr>
-  <td>22</td>
+  <td>16</td>
   <td><code>parse_all_grid_rows()</code><br><small style="color:var(--muted)">scrape_fast_products.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3646,7 +3589,7 @@ flowchart LR
   <td>parse_all_grid_rows() node in scrape_fast_products.py.</td>
 </tr>
 <tr>
-  <td>23</td>
+  <td>17</td>
   <td><code>login_and_open()</code><br><small style="color:var(--muted)">scrape_fast_products.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3654,7 +3597,7 @@ flowchart LR
   <td>login_and_open() node in scrape_fast_products.py.</td>
 </tr>
 <tr>
-  <td>24</td>
+  <td>18</td>
   <td><code>main()</code><br><small style="color:var(--muted)">scrape_fast_products.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>login_and_open()</code><br><small style="color:var(--muted)">scrape_fast_products.py</small><br><code>parse_all_grid_rows()</code><br><small style="color:var(--muted)">scrape_fast_products.py</small></td>
@@ -3662,7 +3605,7 @@ flowchart LR
   <td>main() node in scrape_fast_products.py.</td>
 </tr>
 <tr>
-  <td>25</td>
+  <td>19</td>
   <td><code>Portal product scraper — fast version. Column layout from GridView2:   [0] Sr</code><br><small style="color:var(--muted)">scrape_fast_products.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -3670,7 +3613,7 @@ flowchart LR
   <td>Design note for Portal product scraper — fast version. Column layout from GridView2:   [0] Sr.</td>
 </tr>
 <tr>
-  <td>26</td>
+  <td>20</td>
   <td><code>Return dict {prod_code_str: {name, rate, box_size}} for ALL rows in GridView2.</code><br><small style="color:var(--muted)">scrape_fast_products.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -3678,7 +3621,7 @@ flowchart LR
   <td>Design note for Return dict {prod_code_str: {name, rate, box_size}} for ALL rows in GridView2..</td>
 </tr>
 <tr>
-  <td>27</td>
+  <td>21</td>
   <td><code>invoice.js</code><br><small style="color:var(--muted)">static/js/invoice.js</small></td>
   <td><span class="tag tag-class">Module</span></td>
   <td>External entry / no inbound edge</td>
@@ -3686,7 +3629,7 @@ flowchart LR
   <td>invoice.js node in static/js/invoice.js.</td>
 </tr>
 <tr>
-  <td>28</td>
+  <td>22</td>
   <td><code>addItemBtn</code><br><small style="color:var(--muted)">static/js/invoice.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3694,7 +3637,7 @@ flowchart LR
   <td>addItemBtn node in static/js/invoice.js.</td>
 </tr>
 <tr>
-  <td>29</td>
+  <td>23</td>
   <td><code>itemsContainer</code><br><small style="color:var(--muted)">static/js/invoice.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3702,12 +3645,60 @@ flowchart LR
   <td>itemsContainer node in static/js/invoice.js.</td>
 </tr>
 <tr>
-  <td>30</td>
+  <td>24</td>
   <td><code>calculateTotals()</code><br><small style="color:var(--muted)">static/js/invoice.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
   <td>calculateTotals() node in static/js/invoice.js.</td>
+</tr>
+<tr>
+  <td>25</td>
+  <td><code>row</code><br><small style="color:var(--muted)">static/js/invoice.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>row node in static/js/invoice.js.</td>
+</tr>
+<tr>
+  <td>26</td>
+  <td><code>taxRateInput</code><br><small style="color:var(--muted)">static/js/invoice.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>taxRateInput node in static/js/invoice.js.</td>
+</tr>
+<tr>
+  <td>27</td>
+  <td><code>fix_mizoram_achieved.py</code><br><small style="color:var(--muted)">fix_mizoram_achieved.py</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Module file in fix_mizoram_achieved.py.</td>
+</tr>
+<tr>
+  <td>28</td>
+  <td><code>fix_achieved_status()</code><br><small style="color:var(--muted)">fix_mizoram_achieved.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>sync_mizoram_data()</code><br><small style="color:var(--muted)">Downloads/ledger_web/sync_mizoram.py</small></td>
+  <td>fix_achieved_status() node in fix_mizoram_achieved.py.</td>
+</tr>
+<tr>
+  <td>29</td>
+  <td><code>sync_mizoram.py</code><br><small style="color:var(--muted)">Downloads/ledger_web/sync_mizoram.py</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Module file in Downloads/ledger_web/sync_mizoram.py.</td>
+</tr>
+<tr>
+  <td>30</td>
+  <td><code>sync_mizoram_data()</code><br><small style="color:var(--muted)">Downloads/ledger_web/sync_mizoram.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>fix_achieved_status()</code><br><small style="color:var(--muted)">fix_mizoram_achieved.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>sync_mizoram_data() node in Downloads/ledger_web/sync_mizoram.py.</td>
 </tr>
 </table>
 
@@ -3719,16 +3710,16 @@ flowchart LR
       <tr><td><code>static/js/inventory.js</code></td><td>8 nodes</td></tr>
 <tr><td><code>static/js/invoice.js</code></td><td>7 nodes</td></tr>
 <tr><td><code>Downloads/ledger_web/scrape_purchase_orders.py</code></td><td>6 nodes</td></tr>
-<tr><td><code>bulk_push_to_portal.py</code></td><td>6 nodes</td></tr>
 <tr><td><code>scrape_fast_products.py</code></td><td>6 nodes</td></tr>
 <tr><td><code>PORTAL_SYNC.md</code></td><td>5 nodes</td></tr>
 <tr><td><code>Downloads/ledger_web/app.py</code></td><td>4 nodes</td></tr>
 <tr><td><code>Downloads/ledger_web/submit_stock_order.py</code></td><td>4 nodes</td></tr>
+<tr><td><code>fix_invoices_items.py</code></td><td>4 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x131, explains x29, calls x9, uses x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x128, explains x27, calls x7, uses x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -3739,17 +3730,17 @@ flowchart LR
   <div class="card">
     <h4>Graph</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>Nodes</td><td>890</td></tr>
-      <tr><td>Edges</td><td>789</td></tr>
+      <tr><td>Nodes</td><td>891</td></tr>
+      <tr><td>Edges</td><td>790</td></tr>
       <tr><td>Hyperedges</td><td>0</td></tr>
-      <tr><td>Communities</td><td>314</td></tr>
+      <tr><td>Communities</td><td>313</td></tr>
       <tr><td>Documented Sections</td><td>15</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Edge Confidence</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>EXTRACTED</td><td>752</td></tr>
+      <tr><td>EXTRACTED</td><td>753</td></tr>
       <tr><td>INFERRED</td><td>37</td></tr>
       <tr><td>AMBIGUOUS</td><td>0</td></tr>
     </table>
@@ -3758,7 +3749,7 @@ flowchart LR
 
 <div style="text-align:center; padding:40px 0; color: var(--muted); font-size:0.9rem;">
   <p>ledger_web — Architecture Documentation</p>
-  <p>Generated: 2026-09-29 16:16 UTC · graphify callflow-html</p>
+  <p>Generated: 2026-09-29 16:48 UTC · graphify callflow-html</p>
 </div>
 
 </div><!-- .container -->

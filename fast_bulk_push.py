@@ -141,21 +141,9 @@ def submit_one(inv):
             except Exception:
                 page.wait_for_timeout(2000)
 
-            mobile = page.input_value('#ctl00_ContentPlaceHolder1_txtmobile').strip()
-            if mobile:
-                page.fill('#ctl00_ContentPlaceHolder1_ShipMobile', mobile)
-
-            # Ensure valid 6-digit shipping pincode (portal rejects blank or 000000)
-            pin = page.input_value('#ctl00_ContentPlaceHolder1_txtshpingpincode').strip()
-            if not pin or len(pin) != 6 or pin == '000000':
-                address = page.input_value('#ctl00_ContentPlaceHolder1_txtaddress').strip()
-                m = re.search(r'\b[1-9]\d{5}\b', address)
-                pin = m.group(0) if m else '796001'
-                page.fill('#ctl00_ContentPlaceHolder1_txtshpingpincode', pin)
-
             # ── Item dropdown ─────────────────────────────────────────────────
             try:
-                page.wait_for_selector('#ctl00_ContentPlaceHolder1_itemlist option', timeout=10000)
+                page.wait_for_selector('#ctl00_ContentPlaceHolder1_itemlist option', state='attached', timeout=8000)
             except Exception:
                 pass
             options = page.evaluate("""
@@ -166,14 +154,19 @@ def submit_one(inv):
             if options and 'select' in options[0]['text'].lower():
                 options = options[1:]
 
-            # ── Add items ─────────────────────────────────────────────────────
-            added = 0
+            # ── Add items with all-or-nothing verification ─────────────────────
+            valid_items = []
             for item in items:
-                desc = item['description'].strip().upper()
-                qty  = float(item['qty'])
-                if not desc or qty <= 0:
-                    continue
+                desc = item.get('description', '').strip().upper()
+                try:
+                    qty = int(float(str(item.get('qty', 0))))
+                except Exception:
+                    qty = 1
+                if desc and qty > 0:
+                    valid_items.append((desc, qty, item))
 
+            added = 0
+            for idx, (desc, qty, item) in enumerate(valid_items, 1):
                 match_id    = re.search(r'\[(\d+)\]', desc)
                 target_code = match_id.group(1) if match_id else None
                 best_match  = None
@@ -201,13 +194,14 @@ def submit_one(inv):
                                 best_match = opt['val']
 
                 if not best_match:
-                    log(f"{tag} ⚠ No portal match for: {desc}")
-                    continue
+                    log(f"{tag} ❌ No portal match for [{idx}/{len(valid_items)}]: {desc}. Aborting order to prevent partial bill!")
+                    browser.close()
+                    return invoice_no, False, f"no match for {desc}"
 
-                prev_rows = page.locator('#ctl00_ContentPlaceHolder1_GridView2 tr, #ctl00_ContentPlaceHolder1_GridView1 tr').count()
+                prev_rows = page.locator('#ctl00_ContentPlaceHolder1_GridView2 tr').count()
 
                 page.select_option('#ctl00_ContentPlaceHolder1_itemlist', str(best_match))
-                page.wait_for_timeout(400)
+                page.wait_for_timeout(350)
                 cur_val = page.input_value('#ctl00_ContentPlaceHolder1_itemlist')
                 if str(cur_val) != str(best_match):
                     log(f"{tag} ⚠ Dropdown reverted to {cur_val}, forcing re-selection of {best_match}...")
@@ -215,30 +209,67 @@ def submit_one(inv):
                     page.wait_for_timeout(500)
                     cur_val = page.input_value('#ctl00_ContentPlaceHolder1_itemlist')
                     if str(cur_val) != str(best_match):
-                        page.evaluate(f"() => {{ var el = document.querySelector('#ctl00_ContentPlaceHolder1_itemlist'); if (el) {{ el.value = '{best_match}'; el.dispatchEvent(new Event('change', {{ bubbles: true }})); }} }}")
+                        page.evaluate("(val) => { var el = document.querySelector('#ctl00_ContentPlaceHolder1_itemlist'); if (el) { el.value = val; el.dispatchEvent(new Event('change', { bubbles: true })); } }", str(best_match))
                         page.wait_for_timeout(400)
 
                 cur_val = page.input_value('#ctl00_ContentPlaceHolder1_itemlist')
                 if str(cur_val) != str(best_match):
-                    log(f"{tag} ❌ CRITICAL: Failed to select {best_match} ({desc}), currently on {cur_val}. Skipping item.")
-                    continue
+                    log(f"{tag} ❌ CRITICAL: Failed to select {best_match} ({desc}), currently on {cur_val}. Aborting order!")
+                    browser.close()
+                    return invoice_no, False, f"failed to select {best_match}"
 
-                page.fill('#ctl00_ContentPlaceHolder1_txtqty', str(int(qty)))
-                page.wait_for_timeout(200)
+                page.fill('#ctl00_ContentPlaceHolder1_txtqty', str(qty))
+                page.wait_for_timeout(150)
+
+                if str(page.input_value('#ctl00_ContentPlaceHolder1_itemlist')) != str(best_match):
+                    log(f"{tag} ❌ Dropdown changed before click! Aborting order!")
+                    browser.close()
+                    return invoice_no, False, "dropdown race detected"
+
                 page.click('#ctl00_ContentPlaceHolder1_btnadd')
+                row_added = False
                 try:
                     page.wait_for_function(
-                        f"() => (document.querySelectorAll('#ctl00_ContentPlaceHolder1_GridView2 tr, #ctl00_ContentPlaceHolder1_GridView1 tr').length > {prev_rows})",
+                        f"() => (document.querySelectorAll('#ctl00_ContentPlaceHolder1_GridView2 tr').length > {prev_rows})",
                         timeout=5000
                     )
+                    row_added = True
                 except Exception:
-                    page.wait_for_timeout(1500)
+                    page.wait_for_timeout(1200)
+                    if page.locator('#ctl00_ContentPlaceHolder1_GridView2 tr').count() > prev_rows:
+                        row_added = True
+
+                if not row_added:
+                    log(f"{tag} ❌ Grid row count did not increase for {desc}. Aborting order!")
+                    browser.close()
+                    return invoice_no, False, f"grid add failed for {desc}"
+
+                last_row_text = page.locator('#ctl00_ContentPlaceHolder1_GridView2 tr').last.text_content() or ''
+                expected_id = target_code or str(best_match)
+                if expected_id not in last_row_text:
+                    log(f"{tag} ❌ Row verification failed: expected {expected_id}, found: {last_row_text.strip()[:100]}. Aborting!")
+                    browser.close()
+                    return invoice_no, False, f"row mismatch for {desc}"
+
                 added += 1
 
-            if added == 0:
-                log(f"{tag} ❌ No items matched. Skipping.")
+            if added != len(valid_items) or added == 0:
+                log(f"{tag} ❌ Incomplete staging ({added}/{len(valid_items)}). Aborting order.")
                 browser.close()
-                return invoice_no, False, "no items matched"
+                return invoice_no, False, "incomplete staging"
+
+            # ── Shipping (Filled AFTER items so postbacks cannot wipe them) ───
+            mobile = page.input_value('#ctl00_ContentPlaceHolder1_txtmobile').strip()
+            if mobile:
+                page.fill('#ctl00_ContentPlaceHolder1_ShipMobile', mobile)
+
+            pin = page.input_value('#ctl00_ContentPlaceHolder1_txtshpingpincode').strip()
+            if not pin or len(pin) != 6 or pin == '000000':
+                address = page.input_value('#ctl00_ContentPlaceHolder1_txtaddress').strip()
+                m = re.search(r'\b[1-9]\d{5}\b', address)
+                pin = m.group(0) if m else '796001'
+                page.fill('#ctl00_ContentPlaceHolder1_txtshpingpincode', pin)
+            page.wait_for_timeout(300)
 
             # ── Save order ────────────────────────────────────────────────────
             log(f"{tag} Saving ({added} item(s))...")

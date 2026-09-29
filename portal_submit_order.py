@@ -253,7 +253,7 @@ def submit_order_to_portal(ds_code, items, order_type='sao', invoice_id=None, in
 
             # 4. Get available products from dropdown AFTER all initial postbacks finish
             try:
-                page.wait_for_selector('#ctl00_ContentPlaceHolder1_itemlist option', timeout=10000)
+                page.wait_for_selector('#ctl00_ContentPlaceHolder1_itemlist option', state='attached', timeout=8000)
             except Exception:
                 pass
             options = page.evaluate("""() => Array.from(document.querySelectorAll('#ctl00_ContentPlaceHolder1_itemlist option')).map(o => ({val: o.value, text: o.text}))""")
@@ -261,20 +261,22 @@ def submit_order_to_portal(ds_code, items, order_type='sao', invoice_id=None, in
                 options = options[1:]
             _log(f"{tag}    Total products in portal dropdown: {len(options)}")
 
-            # 5. Add each item with dynamic postback waiting
-            _log(f"{tag} 4. Staging {len(items)} items...")
-            added_count = 0
-            t_items = time.time()
-
-            for idx, item in enumerate(items, 1):
+            # 5. Filter valid items and stage with strict all-or-nothing verification
+            valid_items = []
+            for item in items:
                 desc = (item.get('description') or item.get('name') or '').strip().upper()
                 try:
                     qty = int(float(str(item.get('qty') or item.get('quantity') or 0)))
                 except Exception:
                     qty = 1
-                if not desc or qty <= 0:
-                    continue
+                if desc and qty > 0:
+                    valid_items.append((desc, qty, item))
 
+            _log(f"{tag} 4. Staging {len(valid_items)} items...")
+            added_count = 0
+            t_items = time.time()
+
+            for idx, (desc, qty, item) in enumerate(valid_items, 1):
                 match_id = re.search(r'\[(\d+)\]', desc)
                 target_code = match_id.group(1) if match_id else None
                 best_match = None
@@ -303,15 +305,16 @@ def submit_order_to_portal(ds_code, items, order_type='sao', invoice_id=None, in
                                 best_match = opt['val']
 
                 if not best_match:
-                    _log(f"{tag} ⚠ No portal match for [{idx}/{len(items)}]: {desc}")
-                    continue
+                    _log(f"{tag} ❌ No portal match for [{idx}/{len(valid_items)}]: {desc}. Aborting order to prevent saving incomplete bill!")
+                    browser.close()
+                    return False
 
-                # Count rows before adding to verify postback completion (Note: Grid table is GridView2 on SpdistributorSale.aspx)
-                prev_rows = page.locator('#ctl00_ContentPlaceHolder1_GridView2 tr, #ctl00_ContentPlaceHolder1_GridView1 tr').count()
+                # Count rows before adding (Item grid is GridView2 on SpdistributorSale.aspx)
+                prev_rows = page.locator('#ctl00_ContentPlaceHolder1_GridView2 tr').count()
 
                 # Select target product and ensure selection stuck (prevent postback reverting to Option 0 / 286)
                 page.select_option('#ctl00_ContentPlaceHolder1_itemlist', str(best_match))
-                page.wait_for_timeout(400)
+                page.wait_for_timeout(350)
 
                 cur_val = page.input_value('#ctl00_ContentPlaceHolder1_itemlist')
                 if str(cur_val) != str(best_match):
@@ -320,34 +323,61 @@ def submit_order_to_portal(ds_code, items, order_type='sao', invoice_id=None, in
                     page.wait_for_timeout(500)
                     cur_val = page.input_value('#ctl00_ContentPlaceHolder1_itemlist')
                     if str(cur_val) != str(best_match):
-                        page.evaluate(f"() => {{ var el = document.querySelector('#ctl00_ContentPlaceHolder1_itemlist'); if (el) {{ el.value = '{best_match}'; el.dispatchEvent(new Event('change', {{ bubbles: true }})); }} }}")
+                        page.evaluate("(val) => { var el = document.querySelector('#ctl00_ContentPlaceHolder1_itemlist'); if (el) { el.value = val; el.dispatchEvent(new Event('change', { bubbles: true })); } }", str(best_match))
                         page.wait_for_timeout(400)
 
+                # Re-verify immediately before entering quantity
                 cur_val = page.input_value('#ctl00_ContentPlaceHolder1_itemlist')
                 if str(cur_val) != str(best_match):
-                    _log(f"{tag} ❌ CRITICAL: Failed to select {best_match} ({desc}), currently on {cur_val}. Aborting item to prevent billing wrong product!")
-                    continue
+                    _log(f"{tag} ❌ CRITICAL: Failed to select {best_match} ({desc}), currently on {cur_val}. Aborting order to prevent billing wrong product!")
+                    browser.close()
+                    return False
 
                 page.fill('#ctl00_ContentPlaceHolder1_txtqty', str(qty))
-                page.wait_for_timeout(200)
+                page.wait_for_timeout(150)
+
+                # Final pre-click check: ensure still on correct item
+                if str(page.input_value('#ctl00_ContentPlaceHolder1_itemlist')) != str(best_match):
+                    _log(f"{tag} ❌ Dropdown changed before click! Aborting order!")
+                    browser.close()
+                    return False
+
                 page.click('#ctl00_ContentPlaceHolder1_btnadd')
 
                 # Dynamically wait for ASP.NET postback to complete row addition
+                row_added = False
                 try:
                     page.wait_for_function(
-                        f"() => (document.querySelectorAll('#ctl00_ContentPlaceHolder1_GridView2 tr, #ctl00_ContentPlaceHolder1_GridView1 tr').length > {prev_rows})",
+                        f"() => (document.querySelectorAll('#ctl00_ContentPlaceHolder1_GridView2 tr').length > {prev_rows})",
                         timeout=5000
                     )
+                    row_added = True
                 except Exception:
-                    page.wait_for_timeout(1500)
+                    page.wait_for_timeout(1200)
+                    if page.locator('#ctl00_ContentPlaceHolder1_GridView2 tr').count() > prev_rows:
+                        row_added = True
+
+                if not row_added:
+                    _log(f"{tag} ❌ Grid row count did not increase after adding {desc}. Aborting order!")
+                    browser.close()
+                    return False
+
+                # Verify newly added row in grid contains expected product code
+                last_row_text = page.locator('#ctl00_ContentPlaceHolder1_GridView2 tr').last.text_content() or ''
+                expected_id = target_code or str(best_match)
+                if expected_id not in last_row_text:
+                    _log(f"{tag} ❌ Row verification failed: expected {expected_id} in row text, found: {last_row_text.strip()[:100]}. Aborting!")
+                    browser.close()
+                    return False
 
                 added_count += 1
-                _log(f"{tag}    [{added_count}/{len(items)}] Added [{best_match}]: {desc} x {qty}")
+                _log(f"{tag}    [{added_count}/{len(valid_items)}] Verified Added [{best_match}]: {desc} x {qty}")
 
-            _log(f"{tag}    Staged {added_count}/{len(items)} items in {time.time()-t_items:.1f}s")
+            _log(f"{tag}    Staged {added_count}/{len(valid_items)} items in {time.time()-t_items:.1f}s")
 
-            if added_count == 0:
-                _log(f"{tag} ❌ No items were successfully added to the portal grid.")
+            # Strict all-or-nothing guard
+            if added_count != len(valid_items) or added_count == 0:
+                _log(f"{tag} ❌ Item count mismatch (staged {added_count} of {len(valid_items)}). Aborting order to prevent saving incomplete bill.")
                 browser.close()
                 return False
 
