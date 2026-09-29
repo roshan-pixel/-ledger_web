@@ -136,7 +136,10 @@ def submit_one(inv):
 
             # ── Shipping ──────────────────────────────────────────────────────
             page.check('#ctl00_ContentPlaceHolder1_chkaddr')
-            page.wait_for_timeout(800)
+            try:
+                page.wait_for_load_state('networkidle', timeout=5000)
+            except Exception:
+                page.wait_for_timeout(2000)
 
             mobile = page.input_value('#ctl00_ContentPlaceHolder1_txtmobile').strip()
             if mobile:
@@ -151,6 +154,10 @@ def submit_one(inv):
                 page.fill('#ctl00_ContentPlaceHolder1_txtshpingpincode', pin)
 
             # ── Item dropdown ─────────────────────────────────────────────────
+            try:
+                page.wait_for_selector('#ctl00_ContentPlaceHolder1_itemlist option', timeout=10000)
+            except Exception:
+                pass
             options = page.evaluate("""
                 () => Array.from(
                     document.querySelectorAll('#ctl00_ContentPlaceHolder1_itemlist option')
@@ -197,11 +204,35 @@ def submit_one(inv):
                     log(f"{tag} ⚠ No portal match for: {desc}")
                     continue
 
-                page.select_option('#ctl00_ContentPlaceHolder1_itemlist', best_match)
-                page.wait_for_timeout(1500)
+                prev_rows = page.locator('#ctl00_ContentPlaceHolder1_GridView2 tr, #ctl00_ContentPlaceHolder1_GridView1 tr').count()
+
+                page.select_option('#ctl00_ContentPlaceHolder1_itemlist', str(best_match))
+                page.wait_for_timeout(400)
+                cur_val = page.input_value('#ctl00_ContentPlaceHolder1_itemlist')
+                if str(cur_val) != str(best_match):
+                    log(f"{tag} ⚠ Dropdown reverted to {cur_val}, forcing re-selection of {best_match}...")
+                    page.select_option('#ctl00_ContentPlaceHolder1_itemlist', str(best_match))
+                    page.wait_for_timeout(500)
+                    cur_val = page.input_value('#ctl00_ContentPlaceHolder1_itemlist')
+                    if str(cur_val) != str(best_match):
+                        page.evaluate(f"() => {{ var el = document.querySelector('#ctl00_ContentPlaceHolder1_itemlist'); if (el) {{ el.value = '{best_match}'; el.dispatchEvent(new Event('change', {{ bubbles: true }})); }} }}")
+                        page.wait_for_timeout(400)
+
+                cur_val = page.input_value('#ctl00_ContentPlaceHolder1_itemlist')
+                if str(cur_val) != str(best_match):
+                    log(f"{tag} ❌ CRITICAL: Failed to select {best_match} ({desc}), currently on {cur_val}. Skipping item.")
+                    continue
+
                 page.fill('#ctl00_ContentPlaceHolder1_txtqty', str(int(qty)))
+                page.wait_for_timeout(200)
                 page.click('#ctl00_ContentPlaceHolder1_btnadd')
-                page.wait_for_timeout(2000)
+                try:
+                    page.wait_for_function(
+                        f"() => (document.querySelectorAll('#ctl00_ContentPlaceHolder1_GridView2 tr, #ctl00_ContentPlaceHolder1_GridView1 tr').length > {prev_rows})",
+                        timeout=5000
+                    )
+                except Exception:
+                    page.wait_for_timeout(1500)
                 added += 1
 
             if added == 0:

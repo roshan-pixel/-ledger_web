@@ -238,7 +238,12 @@ def submit_order_to_portal(ds_code, items, order_type='sao', invoice_id=None, in
 
             # Check "Same As Profile Address"
             page.check('#ctl00_ContentPlaceHolder1_chkaddr')
-            page.wait_for_timeout(600)
+            # chkaddr triggers an asynchronous __doPostBack('ctl00$ContentPlaceHolder1$chkaddr', '')
+            # We MUST wait for the network to settle or ASP.NET postback to complete before touching the itemlist dropdown
+            try:
+                page.wait_for_load_state('networkidle', timeout=5000)
+            except Exception:
+                page.wait_for_timeout(2000)
 
             # Read profile mobile and pincode to preserve them
             profile_mobile = page.input_value('#ctl00_ContentPlaceHolder1_txtmobile').strip()
@@ -246,7 +251,11 @@ def submit_order_to_portal(ds_code, items, order_type='sao', invoice_id=None, in
             m_pin = re.search(r'\b[1-9]\d{5}\b', profile_addr)
             profile_pin = m_pin.group(0) if m_pin else '796001'
 
-            # 4. Get available products from dropdown
+            # 4. Get available products from dropdown AFTER all initial postbacks finish
+            try:
+                page.wait_for_selector('#ctl00_ContentPlaceHolder1_itemlist option', timeout=10000)
+            except Exception:
+                pass
             options = page.evaluate("""() => Array.from(document.querySelectorAll('#ctl00_ContentPlaceHolder1_itemlist option')).map(o => ({val: o.value, text: o.text}))""")
             if options and "select" in options[0]['text'].lower():
                 options = options[1:]
@@ -297,22 +306,40 @@ def submit_order_to_portal(ds_code, items, order_type='sao', invoice_id=None, in
                     _log(f"{tag} ⚠ No portal match for [{idx}/{len(items)}]: {desc}")
                     continue
 
-                # Count rows before adding to verify postback completion
-                prev_rows = page.locator('#ctl00_ContentPlaceHolder1_GridView1 tr').count()
+                # Count rows before adding to verify postback completion (Note: Grid table is GridView2 on SpdistributorSale.aspx)
+                prev_rows = page.locator('#ctl00_ContentPlaceHolder1_GridView2 tr, #ctl00_ContentPlaceHolder1_GridView1 tr').count()
 
-                page.select_option('#ctl00_ContentPlaceHolder1_itemlist', best_match)
-                page.wait_for_timeout(350)
+                # Select target product and ensure selection stuck (prevent postback reverting to Option 0 / 286)
+                page.select_option('#ctl00_ContentPlaceHolder1_itemlist', str(best_match))
+                page.wait_for_timeout(400)
+
+                cur_val = page.input_value('#ctl00_ContentPlaceHolder1_itemlist')
+                if str(cur_val) != str(best_match):
+                    _log(f"{tag} ⚠ Dropdown reverted to {cur_val}, forcing re-selection of {best_match}...")
+                    page.select_option('#ctl00_ContentPlaceHolder1_itemlist', str(best_match))
+                    page.wait_for_timeout(500)
+                    cur_val = page.input_value('#ctl00_ContentPlaceHolder1_itemlist')
+                    if str(cur_val) != str(best_match):
+                        page.evaluate(f"() => {{ var el = document.querySelector('#ctl00_ContentPlaceHolder1_itemlist'); if (el) {{ el.value = '{best_match}'; el.dispatchEvent(new Event('change', {{ bubbles: true }})); }} }}")
+                        page.wait_for_timeout(400)
+
+                cur_val = page.input_value('#ctl00_ContentPlaceHolder1_itemlist')
+                if str(cur_val) != str(best_match):
+                    _log(f"{tag} ❌ CRITICAL: Failed to select {best_match} ({desc}), currently on {cur_val}. Aborting item to prevent billing wrong product!")
+                    continue
+
                 page.fill('#ctl00_ContentPlaceHolder1_txtqty', str(qty))
+                page.wait_for_timeout(200)
                 page.click('#ctl00_ContentPlaceHolder1_btnadd')
 
                 # Dynamically wait for ASP.NET postback to complete row addition
                 try:
                     page.wait_for_function(
-                        f"() => (document.querySelectorAll('#ctl00_ContentPlaceHolder1_GridView1 tr').length > {prev_rows})",
-                        timeout=4500
+                        f"() => (document.querySelectorAll('#ctl00_ContentPlaceHolder1_GridView2 tr, #ctl00_ContentPlaceHolder1_GridView1 tr').length > {prev_rows})",
+                        timeout=5000
                     )
                 except Exception:
-                    page.wait_for_timeout(1000)
+                    page.wait_for_timeout(1500)
 
                 added_count += 1
                 _log(f"{tag}    [{added_count}/{len(items)}] Added [{best_match}]: {desc} x {qty}")
