@@ -459,10 +459,16 @@ def list_invoices():
                 calc_sp = 0.0
                 for item in items_json:
                     if 'total_sp' in item:
-                        calc_sp += float(str(item.get('total_sp', '0')).replace(',', ''))
+                        try:
+                            calc_sp += float(str(item.get('total_sp', '0')).replace(',', '').strip() or 0)
+                        except Exception:
+                            pass
                     else:
                         name = str(item.get('name') or item.get('description') or '').replace(' -', '').strip().upper()
-                        qty = float(str(item.get('qty', 0)))
+                        try:
+                            qty = float(str(item.get('qty', 0)).replace(',', '').strip() or 0)
+                        except Exception:
+                            qty = 0.0
                         unit_sp = sp_map.get(name, 0.0)
                         calc_sp += qty * unit_sp
                 db_sp = calc_sp
@@ -606,11 +612,16 @@ def cancel_invoice(invoice_id):
         c = conn.cursor()
         
         # 1. Get the invoice to know what to put back & check dispatch status
-        c.execute('SELECT items, date_created, is_dispatched FROM invoices WHERE id = ?', (invoice_id,))
+        c.execute('SELECT items, date_created, is_dispatched, status FROM invoices WHERE id = ?', (invoice_id,))
         row = c.fetchone()
         if not row:
             conn.close()
             return jsonify({'error': 'Invoice not found'}), 404
+
+        cur_status = str(row['status'] if 'status' in row.keys() and row['status'] else '').strip().lower()
+        if cur_status == 'cancelled':
+            conn.close()
+            return jsonify({'error': 'Invoice is already cancelled!'}), 400
             
         is_dispatched = bool(row['is_dispatched']) if ('is_dispatched' in row.keys() and row['is_dispatched']) else False
         is_protected_unticked = (invoice_id in PROTECTED_UNTICKED_IDS) or (invoice_id <= 303 and not is_dispatched)

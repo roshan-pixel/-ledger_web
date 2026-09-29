@@ -291,8 +291,8 @@ def submit_order_to_portal(ds_code, items, order_type='sao', invoice_id=None, in
                             best_match = opt['val']
                             break
 
-                # Priority 2: Substring score
-                if not best_match:
+                # Priority 2: Substring score (ONLY for items without an explicit [code])
+                if not best_match and not target_code:
                     best_score = 0
                     clean_desc = re.sub(r'\[\d+\]', '', desc).replace(' -', '').strip()
                     for opt in options:
@@ -362,11 +362,25 @@ def submit_order_to_portal(ds_code, items, order_type='sao', invoice_id=None, in
                     browser.close()
                     return False
 
-                # Verify newly added row in grid contains expected product code
-                last_row_text = page.locator('#ctl00_ContentPlaceHolder1_GridView2 tr').last.text_content() or ''
-                expected_id = target_code or str(best_match)
-                if expected_id not in last_row_text:
-                    _log(f"{tag} ❌ Row verification failed: expected {expected_id} in row text, found: {last_row_text.strip()[:100]}. Aborting!")
+                # Verify newly added row in grid: inspect data row cells for exact product code and quantity
+                expected_code = str(target_code or best_match).strip()
+                row_verified = page.evaluate("""({code, qty}) => {
+                    const rows = Array.from(document.querySelectorAll('#ctl00_ContentPlaceHolder1_GridView2 tr'));
+                    return rows.some(r => {
+                        const tds = r.querySelectorAll('td');
+                        if (tds.length >= 7) {
+                            const prodCode = tds[1].textContent.trim();
+                            const prodQty = tds[6].textContent.trim();
+                            if (prodCode === String(code).trim() && Number(prodQty) === Number(qty)) {
+                                return true;
+                            }
+                        }
+                        return false;
+                    });
+                }""", {"code": expected_code, "qty": qty})
+
+                if not row_verified:
+                    _log(f"{tag} ❌ Row verification failed: Product code {expected_code} (qty {qty}) not found in staged table cells. Aborting!")
                     browser.close()
                     return False
 

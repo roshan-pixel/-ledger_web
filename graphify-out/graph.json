@@ -396,7 +396,7 @@
       "source_file": "C:/Users/sgarm/Downloads/ledger_web/app.py",
       "source_location": "L900",
       "id": "ledger_web_app_api_inventory_master_months",
-      "community": 3,
+      "community": 6,
       "norm_label": "api_inventory_master_months()"
     },
     {
@@ -423,7 +423,7 @@
       "source_file": "C:/Users/sgarm/Downloads/ledger_web/app.py",
       "source_location": "L1009",
       "id": "ledger_web_app_api_product_sales",
-      "community": 6,
+      "community": 3,
       "norm_label": "api_product_sales()"
     },
     {
@@ -585,7 +585,7 @@
       "source_file": "C:/Users/sgarm/Downloads/ledger_web/app.py",
       "source_location": "L1635",
       "id": "ledger_web_app_api_sync_now",
-      "community": 4,
+      "community": 26,
       "norm_label": "api_sync_now()"
     },
     {
@@ -720,7 +720,7 @@
       "source_file": "C:/Users/sgarm/Downloads/ledger_web/app.py",
       "source_location": "L1636",
       "id": "ledger_web_app_rationale_1636",
-      "community": 4,
+      "community": 26,
       "norm_label": "manual trigger: pull from gsheets \u2192 check rollover \u2192 push back."
     },
     {
@@ -1663,7 +1663,7 @@
       "label": "get_unticked_invoices()",
       "file_type": "code",
       "source_file": "fast_bulk_push.py",
-      "source_location": "L308",
+      "source_location": "L323",
       "id": "ledger_web_fast_bulk_push_get_unticked_invoices",
       "community": 12,
       "norm_label": "get_unticked_invoices()"
@@ -1672,7 +1672,7 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "fast_bulk_push.py",
-      "source_location": "L339",
+      "source_location": "L354",
       "id": "ledger_web_fast_bulk_push_main",
       "community": 12,
       "norm_label": "main()"
@@ -2211,125 +2211,125 @@
     {
       "label": "invoice_api.py",
       "file_type": "code",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_file": "invoice_api.py",
       "source_location": "L1",
-      "id": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
-      "community": 1,
+      "id": "invoice_api_py",
+      "community": 4,
       "norm_label": "invoice_api.py"
     },
     {
       "label": "get_sold_qty_col_idx()",
       "file_type": "code",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_file": "invoice_api.py",
       "source_location": "L11",
       "id": "ledger_web_invoice_api_get_sold_qty_col_idx",
-      "community": 1,
+      "community": 4,
       "norm_label": "get_sold_qty_col_idx()"
     },
     {
       "label": "_get_true_remaining_stock()",
       "file_type": "code",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_file": "invoice_api.py",
       "source_location": "L76",
       "id": "ledger_web_invoice_api_get_true_remaining_stock",
-      "community": 1,
+      "community": 4,
       "norm_label": "_get_true_remaining_stock()"
     },
     {
       "label": "sync_sheets_api()",
       "file_type": "code",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_file": "invoice_api.py",
       "source_location": "L179",
       "id": "ledger_web_invoice_api_sync_sheets_api",
-      "community": 1,
+      "community": 4,
       "norm_label": "sync_sheets_api()"
     },
     {
       "label": "init_db()",
       "file_type": "code",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_file": "invoice_api.py",
       "source_location": "L190",
       "id": "ledger_web_invoice_api_init_db",
-      "community": 1,
+      "community": 4,
       "norm_label": "init_db()"
     },
     {
       "label": "is_complimentary_item()",
       "file_type": "code",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_file": "invoice_api.py",
       "source_location": "L234",
       "id": "ledger_web_invoice_api_is_complimentary_item",
-      "community": 1,
+      "community": 4,
       "norm_label": "is_complimentary_item()"
     },
     {
       "label": "create_invoice()",
       "file_type": "code",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_file": "invoice_api.py",
       "source_location": "L250",
       "id": "ledger_web_invoice_api_create_invoice",
-      "community": 1,
+      "community": 4,
       "norm_label": "create_invoice()"
     },
     {
       "label": "list_invoices()",
       "file_type": "code",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_file": "invoice_api.py",
       "source_location": "L429",
       "id": "ledger_web_invoice_api_list_invoices",
-      "community": 1,
+      "community": 4,
       "norm_label": "list_invoices()"
     },
     {
       "label": "update_invoice_info()",
       "file_type": "code",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
-      "source_location": "L506",
+      "source_file": "invoice_api.py",
+      "source_location": "L512",
       "id": "ledger_web_invoice_api_update_invoice_info",
-      "community": 1,
+      "community": 4,
       "norm_label": "update_invoice_info()"
     },
     {
       "label": "get_next_invoice_no()",
       "file_type": "code",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
-      "source_location": "L550",
+      "source_file": "invoice_api.py",
+      "source_location": "L556",
       "id": "ledger_web_invoice_api_get_next_invoice_no",
-      "community": 1,
+      "community": 4,
       "norm_label": "get_next_invoice_no()"
     },
     {
       "label": "cancel_invoice()",
       "file_type": "code",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
-      "source_location": "L601",
+      "source_file": "invoice_api.py",
+      "source_location": "L607",
       "id": "ledger_web_invoice_api_cancel_invoice",
-      "community": 1,
+      "community": 4,
       "norm_label": "cancel_invoice()"
     },
     {
       "label": "get_portal_order_log()",
       "file_type": "code",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
-      "source_location": "L683",
+      "source_file": "invoice_api.py",
+      "source_location": "L694",
       "id": "ledger_web_invoice_api_get_portal_order_log",
-      "community": 1,
+      "community": 4,
       "norm_label": "get_portal_order_log()"
     },
     {
       "label": "resubmit_status()",
       "file_type": "code",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
-      "source_location": "L697",
+      "source_file": "invoice_api.py",
+      "source_location": "L708",
       "id": "ledger_web_invoice_api_resubmit_status",
-      "community": 1,
+      "community": 4,
       "norm_label": "resubmit_status()"
     },
     {
       "label": "resubmit_invoice_to_portal()",
       "file_type": "code",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
-      "source_location": "L713",
+      "source_file": "invoice_api.py",
+      "source_location": "L724",
       "id": "ledger_web_invoice_api_resubmit_invoice_to_portal",
       "community": 1,
       "norm_label": "resubmit_invoice_to_portal()"
@@ -2337,45 +2337,45 @@
     {
       "label": "Return the column index (1-based) for the Sold Qty column that matches the",
       "file_type": "rationale",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_file": "invoice_api.py",
       "source_location": "L12",
       "id": "ledger_web_invoice_api_rationale_12",
-      "community": 1,
+      "community": 4,
       "norm_label": "return the column index (1-based) for the sold qty column that matches the"
     },
     {
       "label": "Calculate TRUE remaining stock for every product across ALL months.      Formu",
       "file_type": "rationale",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_file": "invoice_api.py",
       "source_location": "L77",
       "id": "ledger_web_invoice_api_rationale_77",
-      "community": 1,
+      "community": 4,
       "norm_label": "calculate true remaining stock for every product across all months.      formu"
     },
     {
       "label": "Returns the last 100 lines of portal_submit.log.",
       "file_type": "rationale",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
-      "source_location": "L684",
-      "id": "ledger_web_invoice_api_rationale_684",
-      "community": 1,
+      "source_file": "invoice_api.py",
+      "source_location": "L695",
+      "id": "ledger_web_invoice_api_rationale_695",
+      "community": 4,
       "norm_label": "returns the last 100 lines of portal_submit.log."
     },
     {
       "label": "Get current portal submission state (is_busy, which invoice is submitting, elaps",
       "file_type": "rationale",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
-      "source_location": "L698",
-      "id": "ledger_web_invoice_api_rationale_698",
-      "community": 1,
+      "source_file": "invoice_api.py",
+      "source_location": "L709",
+      "id": "ledger_web_invoice_api_rationale_709",
+      "community": 4,
       "norm_label": "get current portal submission state (is_busy, which invoice is submitting, elaps"
     },
     {
       "label": "Trigger manual resubmission of an unsaved / undispatched invoice to the AWPL por",
       "file_type": "rationale",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
-      "source_location": "L714",
-      "id": "ledger_web_invoice_api_rationale_714",
+      "source_file": "invoice_api.py",
+      "source_location": "L725",
+      "id": "ledger_web_invoice_api_rationale_725",
       "community": 1,
       "norm_label": "trigger manual resubmission of an unsaved / undispatched invoice to the awpl por"
     },
@@ -2653,7 +2653,7 @@
       "label": "submit_order_async()",
       "file_type": "code",
       "source_file": "portal_submit_order.py",
-      "source_location": "L455",
+      "source_location": "L469",
       "id": "ledger_web_portal_submit_order_submit_order_async",
       "community": 1,
       "norm_label": "submit_order_async()"
@@ -2698,8 +2698,8 @@
       "label": "Launch portal submission as a separate subprocess so it survives Gunicorn's",
       "file_type": "rationale",
       "source_file": "portal_submit_order.py",
-      "source_location": "L456",
-      "id": "ledger_web_portal_submit_order_rationale_456",
+      "source_location": "L470",
+      "id": "ledger_web_portal_submit_order_rationale_470",
       "community": 1,
       "norm_label": "launch portal submission as a separate subprocess so it survives gunicorn's"
     },
@@ -2844,7 +2844,7 @@
       "source_file": "restore_gsheets.py",
       "source_location": "L1",
       "id": "restore_gsheets_py",
-      "community": 4,
+      "community": 26,
       "norm_label": "restore_gsheets.py"
     },
     {
@@ -2853,7 +2853,7 @@
       "source_file": "restore_gsheets.py",
       "source_location": "L7",
       "id": "ledger_web_restore_gsheets_ensure_sync_log_table",
-      "community": 4,
+      "community": 26,
       "norm_label": "ensure_sync_log_table()"
     },
     {
@@ -2862,7 +2862,7 @@
       "source_file": "restore_gsheets.py",
       "source_location": "L17",
       "id": "ledger_web_restore_gsheets_get_last_sync_time",
-      "community": 4,
+      "community": 26,
       "norm_label": "get_last_sync_time()"
     },
     {
@@ -2871,7 +2871,7 @@
       "source_file": "restore_gsheets.py",
       "source_location": "L23",
       "id": "ledger_web_restore_gsheets_log_sync",
-      "community": 4,
+      "community": 26,
       "norm_label": "log_sync()"
     },
     {
@@ -2880,7 +2880,7 @@
       "source_file": "restore_gsheets.py",
       "source_location": "L28",
       "id": "ledger_web_restore_gsheets_restore_from_gsheets",
-      "community": 4,
+      "community": 26,
       "norm_label": "restore_from_gsheets()"
     },
     {
@@ -2889,7 +2889,7 @@
       "source_file": "restore_gsheets.py",
       "source_location": "L260",
       "id": "ledger_web_restore_gsheets_sync_remarks_from_gsheets",
-      "community": 4,
+      "community": 26,
       "norm_label": "sync_remarks_from_gsheets()"
     },
     {
@@ -2898,7 +2898,7 @@
       "source_file": "resync_inventory.py",
       "source_location": "L1",
       "id": "resync_inventory_py",
-      "community": 1,
+      "community": 4,
       "norm_label": "resync_inventory.py"
     },
     {
@@ -2907,7 +2907,7 @@
       "source_file": "resync_inventory.py",
       "source_location": "L6",
       "id": "ledger_web_resync_inventory_fix_inventory",
-      "community": 1,
+      "community": 4,
       "norm_label": "fix_inventory()"
     },
     {
@@ -4630,6 +4630,51 @@
       "norm_label": "\ud83d\udcc4 license & attribution"
     },
     {
+      "label": "invoice_api.py",
+      "file_type": "code",
+      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_location": "L1",
+      "community": 4,
+      "norm_label": "invoice_api.py",
+      "id": "c_users_sgarm_downloads_ledger_web_invoice_api_py"
+    },
+    {
+      "label": "Returns the last 100 lines of portal_submit.log.",
+      "file_type": "rationale",
+      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_location": "L684",
+      "community": 4,
+      "norm_label": "returns the last 100 lines of portal_submit.log.",
+      "id": "ledger_web_invoice_api_rationale_684"
+    },
+    {
+      "label": "Get current portal submission state (is_busy, which invoice is submitting, elaps",
+      "file_type": "rationale",
+      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_location": "L698",
+      "community": 4,
+      "norm_label": "get current portal submission state (is_busy, which invoice is submitting, elaps",
+      "id": "ledger_web_invoice_api_rationale_698"
+    },
+    {
+      "label": "Trigger manual resubmission of an unsaved / undispatched invoice to the AWPL por",
+      "file_type": "rationale",
+      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_location": "L714",
+      "community": 1,
+      "norm_label": "trigger manual resubmission of an unsaved / undispatched invoice to the awpl por",
+      "id": "ledger_web_invoice_api_rationale_714"
+    },
+    {
+      "label": "Launch portal submission as a separate subprocess so it survives Gunicorn's",
+      "file_type": "rationale",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L456",
+      "community": 1,
+      "norm_label": "launch portal submission as a separate subprocess so it survives gunicorn's",
+      "id": "ledger_web_portal_submit_order_rationale_456"
+    },
+    {
       "label": "Launch portal submission as a separate subprocess so it survives Gunicorn's",
       "file_type": "rationale",
       "source_file": "portal_submit_order.py",
@@ -5510,15 +5555,6 @@
       "community": 30,
       "norm_label": "return list of order dicts from the main gv table.",
       "id": "ledger_web_inspect_purchase2_rationale_25"
-    },
-    {
-      "label": "invoice_api.py",
-      "file_type": "code",
-      "source_file": "invoice_api.py",
-      "source_location": "L1",
-      "community": 1,
-      "norm_label": "invoice_api.py",
-      "id": "invoice_api_py"
     },
     {
       "label": "inv_324.json",
@@ -7316,7 +7352,7 @@
       "file_type": "rationale",
       "source_file": "app.py",
       "source_location": "L1624",
-      "community": 4,
+      "community": 26,
       "norm_label": "manual trigger: pull from gsheets \u2192 check rollover \u2192 push back.",
       "id": "ledger_web_app_rationale_1624"
     },
@@ -7334,7 +7370,7 @@
       "file_type": "rationale",
       "source_file": "invoice_api.py",
       "source_location": "L656",
-      "community": 1,
+      "community": 4,
       "norm_label": "returns the last 100 lines of portal_submit.log.",
       "id": "ledger_web_invoice_api_rationale_656"
     },
@@ -7361,7 +7397,7 @@
       "file_type": "rationale",
       "source_file": "invoice_api.py",
       "source_location": "L632",
-      "community": 1,
+      "community": 4,
       "norm_label": "returns the last 100 lines of portal_submit.log.",
       "id": "ledger_web_invoice_api_rationale_632"
     },
@@ -7451,7 +7487,7 @@
       "file_type": "rationale",
       "source_file": "app.py",
       "source_location": "L1626",
-      "community": 4,
+      "community": 26,
       "norm_label": "manual trigger: pull from gsheets \u2192 check rollover \u2192 push back.",
       "id": "ledger_web_app_rationale_1626"
     },
@@ -7896,7 +7932,7 @@
       "file_type": "code",
       "source_file": "templates/inventory_master.html",
       "source_location": "L1",
-      "community": 3,
+      "community": 6,
       "norm_label": "inventory_master.html",
       "description": "Jinja2 HTML template \u2014 served by Flask app.py",
       "id": "inventory_master_html"
@@ -7956,7 +7992,7 @@
       "file_type": "code",
       "source_file": "templates/purchase_history.html",
       "source_location": "L1",
-      "community": 6,
+      "community": 3,
       "norm_label": "purchase_history.html",
       "description": "Jinja2 HTML template \u2014 served by Flask app.py",
       "id": "purchase_history_html"
@@ -11413,131 +11449,131 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_file": "invoice_api.py",
       "source_location": "L11",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
+      "source": "invoice_api_py",
       "target": "ledger_web_invoice_api_get_sold_qty_col_idx"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_file": "invoice_api.py",
       "source_location": "L76",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
+      "source": "invoice_api_py",
       "target": "ledger_web_invoice_api_get_true_remaining_stock"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_file": "invoice_api.py",
       "source_location": "L179",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
+      "source": "invoice_api_py",
       "target": "ledger_web_invoice_api_sync_sheets_api"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_file": "invoice_api.py",
       "source_location": "L190",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
+      "source": "invoice_api_py",
       "target": "ledger_web_invoice_api_init_db"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
-      "source_location": "L234",
+      "source_file": "invoice_api.py",
+      "source_location": "L230",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
+      "source": "invoice_api_py",
       "target": "ledger_web_invoice_api_is_complimentary_item"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
-      "source_location": "L250",
+      "source_file": "invoice_api.py",
+      "source_location": "L233",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
+      "source": "invoice_api_py",
       "target": "ledger_web_invoice_api_create_invoice"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
-      "source_location": "L429",
+      "source_file": "invoice_api.py",
+      "source_location": "L403",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
+      "source": "invoice_api_py",
       "target": "ledger_web_invoice_api_list_invoices"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
-      "source_location": "L506",
+      "source_file": "invoice_api.py",
+      "source_location": "L464",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
+      "source": "invoice_api_py",
       "target": "ledger_web_invoice_api_update_invoice_info"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
-      "source_location": "L550",
+      "source_file": "invoice_api.py",
+      "source_location": "L498",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
+      "source": "invoice_api_py",
       "target": "ledger_web_invoice_api_get_next_invoice_no"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
-      "source_location": "L601",
+      "source_file": "invoice_api.py",
+      "source_location": "L549",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
+      "source": "invoice_api_py",
       "target": "ledger_web_invoice_api_cancel_invoice"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
-      "source_location": "L683",
+      "source_file": "invoice_api.py",
+      "source_location": "L631",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
+      "source": "invoice_api_py",
       "target": "ledger_web_invoice_api_get_portal_order_log"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_file": "invoice_api.py",
       "source_location": "L697",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
+      "source": "invoice_api_py",
       "target": "ledger_web_invoice_api_resubmit_status"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_file": "invoice_api.py",
       "source_location": "L713",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
+      "source": "invoice_api_py",
       "target": "ledger_web_invoice_api_resubmit_invoice_to_portal"
     },
     {
@@ -11619,11 +11655,11 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "invoice_api.py",
+      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
       "source_location": "L11",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "invoice_api_py",
+      "source": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
       "target": "ledger_web_invoice_api_get_sold_qty_col_idx"
     },
     {
@@ -11650,31 +11686,31 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "invoice_api.py",
+      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
       "source_location": "L76",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "invoice_api_py",
+      "source": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
       "target": "ledger_web_invoice_api_get_true_remaining_stock"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "invoice_api.py",
+      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
       "source_location": "L179",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "invoice_api_py",
+      "source": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
       "target": "ledger_web_invoice_api_sync_sheets_api"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "invoice_api.py",
+      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
       "source_location": "L190",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "invoice_api_py",
+      "source": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
       "target": "ledger_web_invoice_api_init_db"
     },
     {
@@ -11702,11 +11738,11 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "invoice_api.py",
-      "source_location": "L230",
+      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_location": "L234",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "invoice_api_py",
+      "source": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
       "target": "ledger_web_invoice_api_is_complimentary_item"
     },
     {
@@ -11734,52 +11770,72 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "invoice_api.py",
-      "source_location": "L233",
+      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_location": "L250",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "invoice_api_py",
+      "source": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
       "target": "ledger_web_invoice_api_create_invoice"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "invoice_api.py",
-      "source_location": "L403",
+      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_location": "L429",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "invoice_api_py",
+      "source": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
       "target": "ledger_web_invoice_api_list_invoices"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "invoice_api.py",
-      "source_location": "L464",
+      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_location": "L506",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "invoice_api_py",
+      "source": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
       "target": "ledger_web_invoice_api_update_invoice_info"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "invoice_api.py",
-      "source_location": "L498",
+      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_location": "L550",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "invoice_api_py",
+      "source": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
       "target": "ledger_web_invoice_api_get_next_invoice_no"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "invoice_api.py",
-      "source_location": "L549",
+      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_location": "L601",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "invoice_api_py",
+      "source": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
       "target": "ledger_web_invoice_api_cancel_invoice"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "invoice_api.py",
+      "source_location": "L695",
+      "weight": 1.0,
+      "source": "ledger_web_invoice_api_rationale_695",
+      "target": "ledger_web_invoice_api_get_portal_order_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
+      "source_location": "L683",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
+      "target": "ledger_web_invoice_api_get_portal_order_log"
     },
     {
       "relation": "rationale_for",
@@ -11789,16 +11845,6 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "ledger_web_invoice_api_rationale_684",
-      "target": "ledger_web_invoice_api_get_portal_order_log"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "invoice_api.py",
-      "source_location": "L631",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "invoice_api_py",
       "target": "ledger_web_invoice_api_get_portal_order_log"
     },
     {
@@ -11825,11 +11871,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "invoice_api.py",
-      "source_location": "L698",
+      "source_location": "L709",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "ledger_web_invoice_api_rationale_698",
-      "target": "ledger_web_invoice_api_resubmit_status"
+      "source": "ledger_web_invoice_api_rationale_709",
+      "target": "ledger_web_invoice_api_resubmit_status",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -11845,22 +11891,32 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "invoice_api.py",
+      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
       "source_location": "L697",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "invoice_api_py",
+      "source": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
       "target": "ledger_web_invoice_api_resubmit_status"
     },
     {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "invoice_api.py",
-      "source_location": "L714",
+      "source_location": "L698",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "ledger_web_invoice_api_rationale_714",
-      "target": "ledger_web_invoice_api_resubmit_invoice_to_portal"
+      "source": "ledger_web_invoice_api_rationale_698",
+      "target": "ledger_web_invoice_api_resubmit_status"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "invoice_api.py",
+      "source_location": "L725",
+      "weight": 1.0,
+      "source": "ledger_web_invoice_api_rationale_725",
+      "target": "ledger_web_invoice_api_resubmit_invoice_to_portal",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -11887,11 +11943,21 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "invoice_api.py",
+      "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
       "source_location": "L713",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "invoice_api_py",
+      "source": "c_users_sgarm_downloads_ledger_web_invoice_api_py",
+      "target": "ledger_web_invoice_api_resubmit_invoice_to_portal"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "invoice_api.py",
+      "source_location": "L714",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ledger_web_invoice_api_rationale_714",
       "target": "ledger_web_invoice_api_resubmit_invoice_to_portal"
     },
     {
@@ -12336,11 +12402,21 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "portal_submit_order.py",
-      "source_location": "L456",
+      "source_location": "L470",
       "weight": 1.0,
-      "source": "ledger_web_portal_submit_order_rationale_456",
+      "source": "ledger_web_portal_submit_order_rationale_470",
       "target": "ledger_web_portal_submit_order_submit_order_async",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "portal_submit_order.py",
+      "source_location": "L456",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ledger_web_portal_submit_order_rationale_456",
+      "target": "ledger_web_portal_submit_order_submit_order_async"
     },
     {
       "relation": "rationale_for",
@@ -16065,5 +16141,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "85199eb69a0130dbb5b70ba389360dc0301d4031"
+  "built_at_commit": "f19b5832d98577067389cb93948c24bd61d5c5b3"
 }
