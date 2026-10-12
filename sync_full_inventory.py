@@ -117,7 +117,10 @@ def sync_all_to_inventory():
     conn.close()
 
     print("Sync to Google Sheets...")
-    init_google_sheets()
+    try:
+        init_google_sheets()
+    except Exception as e:
+        print(f"Google Sheets sync skipped: {e}")
     print("Full Sync Complete!")
 
 if __name__ == "__main__":

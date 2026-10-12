@@ -60,7 +60,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 <div class="container">
 
 <h1>ledger_web — Complete Call Flow &amp; Architecture Documentation</h1>
-<p class="subtitle">Generated from graphify knowledge graph: 895 nodes, 794 edges, 314 communities. Commit: f19b583</p>
+<p class="subtitle">Generated from graphify knowledge graph: 900 nodes, 799 edges, 316 communities. Commit: 712c883</p>
 
 <div class="nav">
     <a href="#overview">Architecture Overview</a>
@@ -74,10 +74,10 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
     <a href="#security-global">Security &amp; Global Graph</a>
     <a href="#tests-fixtures">Tests &amp; Fixtures</a>
     <a href="#community-13">Community 13</a>
-    <a href="#community-26">Community 26</a>
     <a href="#community-14">Community 14</a>
     <a href="#community-20">Community 20</a>
     <a href="#community-19">Community 19</a>
+    <a href="#community-21">Community 21</a>
     <a href="#other">Other</a>
 </div>
 
@@ -94,7 +94,7 @@ flowchart LR
     class BUILD_GRAPH_321CBB04 module;
     ANALYSIS_CLUSTERING_C79796DA("Analysis &amp; Clustering<br/><small>3 nodes</small>")
     class ANALYSIS_CLUSTERING_C79796DA module;
-    OUTPUTS_DOCS_ED82387C("Outputs &amp; Docs<br/><small>66 nodes</small>")
+    OUTPUTS_DOCS_ED82387C("Outputs &amp; Docs<br/><small>67 nodes</small>")
     class OUTPUTS_DOCS_ED82387C module;
     CLI_SKILLS_9964CBB8("CLI &amp; Skill Installers<br/><small>16 nodes</small>")
     class CLI_SKILLS_9964CBB8 module;
@@ -108,27 +108,25 @@ flowchart LR
     class TESTS_FIXTURES_B84B1DCC module;
     COMMUNITY_13_E329587C("Community 13<br/><small>11 nodes</small>")
     class COMMUNITY_13_E329587C module;
-    COMMUNITY_26_029F571A("Community 26<br/><small>10 nodes</small>")
-    class COMMUNITY_26_029F571A module;
     COMMUNITY_14_21BC55C3("Community 14<br/><small>9 nodes</small>")
     class COMMUNITY_14_21BC55C3 module;
     COMMUNITY_20_C86C0F59("Community 20<br/><small>8 nodes</small>")
     class COMMUNITY_20_C86C0F59 module;
     COMMUNITY_19_9462A0B9("Community 19<br/><small>7 nodes</small>")
     class COMMUNITY_19_9462A0B9 module;
-    OTHER_D0941E68("Other<br/><small>360 nodes</small>")
+    COMMUNITY_21_47BA4108("Community 21<br/><small>7 nodes</small>")
+    class COMMUNITY_21_47BA4108 module;
+    OTHER_D0941E68("Other<br/><small>367 nodes</small>")
     class OTHER_D0941E68 module;
     SERVE_API_35EC8E86 -->|contains x22| INGEST_CACHE_UPDATE_FF457338
     INGEST_CACHE_UPDATE_FF457338 -->|contains x19| SERVE_API_35EC8E86
     SERVE_API_35EC8E86 -->|contains x11| OUTPUTS_DOCS_ED82387C
     OUTPUTS_DOCS_ED82387C -->|contains x6| SERVE_API_35EC8E86
-    SERVE_API_35EC8E86 -->|contains x3| OTHER_D0941E68
+    SERVE_API_35EC8E86 -->|contains x4| OTHER_D0941E68
     INGEST_CACHE_UPDATE_FF457338 -->|calls x3| OUTPUTS_DOCS_ED82387C
+    OTHER_D0941E68 -->|contains x3| SERVE_API_35EC8E86
     SERVE_API_35EC8E86 -->|contains x2| BUILD_GRAPH_321CBB04
-    OTHER_D0941E68 -->|contains x2| SERVE_API_35EC8E86
     BUILD_GRAPH_321CBB04 -->|contains x2| SERVE_API_35EC8E86
-    SERVE_API_35EC8E86 -->|contains| COMMUNITY_26_029F571A
-    COMMUNITY_26_029F571A -->|contains| SERVE_API_35EC8E86
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -145,7 +143,7 @@ flowchart LR
     <h4>Architecture Layers</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>Layer</th><th>Nodes</th><th>Communities</th></tr>
-      <tr><td>Extraction Pipeline</td><td>18</td><td><code>45, 49, 104, 123, 124, 127, 69, 99</code></td></tr><tr><td>Graph Build</td><td>125</td><td><code>2, 5, 7, 8, 9, 17, 18, 32, 33, 50, 78, 183, 288, 293, 299, 306, 307, 308, 309</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>3</td><td><code>247, 276, 277</code></td></tr><tr><td>Outputs &amp; Docs</td><td>66</td><td><code>0, 10, 28, 22, 121, 237</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>16</td><td><code>12, 30</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>64</td><td><code>6, 11, 16, 29, 40, 46, 133, 134, 135, 70, 212, 213, 270, 271, 272, 273, 274, 275, 305</code></td></tr><tr><td>Serving API</td><td>121</td><td><code>4, 3, 1, 15, 34, 51, 81, 203, 217, 258</code></td></tr><tr><td>Security &amp; Global Graph</td><td>1</td><td><code>250</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>76</td><td><code>39, 112, 113, 114, 145, 146, 147, 148, 149, 150, 153, 154, 156, 52, 53, 94, 122, 132, 143, 144, 151, 152, 155, 157, 259, 260, 261, 262, 263, 264, 265, 266, 267, 303, 304</code></td></tr><tr><td>Community 13</td><td>11</td><td><code>13</code></td></tr><tr><td>Community 26</td><td>10</td><td><code>26</code></td></tr><tr><td>Community 14</td><td>9</td><td><code>14</code></td></tr><tr><td>Community 20</td><td>8</td><td><code>20</code></td></tr><tr><td>Community 19</td><td>7</td><td><code>19</code></td></tr><tr><td>Other</td><td>360</td><td><code>21, 24, 23, 25, 27, 31, 42, 35, 36, 37, 38, 41, 43, 44, 47, 48, 56, 57, 58, 59, 60, 61, 62, 63, 65, 68, 71, 79, 80, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 96, 97, 100, 101, 102, 103, 105, 106, 107, 108, 109, 110, 111, 115, 116, 117, 118, 119, 120, 125, 126, 128, 129, 130, 131, 136, 137, 138, 139, 140, 141, 142, 54, 55, 64, 66, 67, 72, 73, 74, 75, 76, 77, 95, 98, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 204, 205, 206, 207, 208, 209, 210, 211, 214, 215, 216, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 238, 239, 240, 241, 242, 243, 244, 245, 246, 248, 249, 251, 252, 253, 254, 255, 256, 257, 268, 269, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 289, 290, 291, 292, 294, 295, 296, 297, 298, 300, 301, 302, 310, 311, 312, 313</code></td></tr>
+      <tr><td>Extraction Pipeline</td><td>18</td><td><code>45, 49, 104, 123, 124, 127, 69, 99</code></td></tr><tr><td>Graph Build</td><td>125</td><td><code>2, 5, 7, 8, 9, 17, 18, 32, 33, 50, 78, 183, 288, 293, 299, 306, 307, 308, 309</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>3</td><td><code>247, 276, 277</code></td></tr><tr><td>Outputs &amp; Docs</td><td>67</td><td><code>0, 10, 28, 314, 121, 237</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>16</td><td><code>12, 30</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>64</td><td><code>6, 11, 16, 29, 40, 46, 133, 134, 135, 70, 212, 213, 270, 271, 272, 273, 274, 275, 305</code></td></tr><tr><td>Serving API</td><td>121</td><td><code>4, 3, 1, 15, 34, 51, 81, 203, 217, 258</code></td></tr><tr><td>Security &amp; Global Graph</td><td>1</td><td><code>250</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>76</td><td><code>39, 112, 113, 114, 145, 146, 147, 148, 149, 150, 153, 154, 156, 52, 53, 94, 122, 132, 143, 144, 151, 152, 155, 157, 259, 260, 261, 262, 263, 264, 265, 266, 267, 303, 304</code></td></tr><tr><td>Community 13</td><td>11</td><td><code>13</code></td></tr><tr><td>Community 14</td><td>9</td><td><code>14</code></td></tr><tr><td>Community 20</td><td>8</td><td><code>20</code></td></tr><tr><td>Community 19</td><td>7</td><td><code>19</code></td></tr><tr><td>Community 21</td><td>7</td><td><code>21</code></td></tr><tr><td>Other</td><td>367</td><td><code>24, 22, 23, 25, 27, 31, 42, 26, 315, 35, 36, 37, 38, 41, 43, 44, 47, 48, 56, 57, 58, 59, 60, 61, 62, 63, 65, 68, 71, 79, 80, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 96, 97, 100, 101, 102, 103, 105, 106, 107, 108, 109, 110, 111, 115, 116, 117, 118, 119, 120, 125, 126, 128, 129, 130, 131, 136, 137, 138, 139, 140, 141, 142, 54, 55, 64, 66, 67, 72, 73, 74, 75, 76, 77, 95, 98, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 204, 205, 206, 207, 208, 209, 210, 211, 214, 215, 216, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 238, 239, 240, 241, 242, 243, 244, 245, 246, 248, 249, 251, 252, 253, 254, 255, 256, 257, 268, 269, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 289, 290, 291, 292, 294, 295, 296, 297, 298, 300, 301, 302, 310, 311, 312, 313</code></td></tr>
     </table>
   </div>
   <div class="card">
@@ -157,7 +155,7 @@ flowchart LR
   <div class="card">
     <h4>Graph Report Highlights</h4>
     <ul>
-      <li>895 nodes · 794 edges · 314 communities (252 shown, 62 thin omitted)</li>
+      <li>900 nodes · 799 edges · 316 communities (254 shown, 62 thin omitted)</li>
       <li>Extraction: 95% EXTRACTED · 5% INFERRED · 0% AMBIGUOUS · INFERRED: 37 edges (avg confidence: 0.8)</li>
       <li>Token cost: 0 input · 0 output</li>
       <li>1. `get_db()` - 24 edges</li>
@@ -845,12 +843,12 @@ flowchart LR
 
 <!-- ====== 5. Outputs & Docs ====== -->
 <h2 id="outputs-docs">5. Outputs &amp; Docs</h2>
-<p>Outputs &amp; Docs groups implementation around ledger, users, sgarm, downloads, mostly in Downloads/ledger_web/ARCHITECTURE.md, Downloads/ledger_web/app.py, Downloads/ledger_web/fetch_ledger_report.py. This section covers 66 nodes and 63 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Outputs &amp; Docs groups implementation around ledger, users, sgarm, downloads, mostly in Downloads/ledger_web/ARCHITECTURE.md, Downloads/ledger_web/app.py, fetch_ledger_report.py. This section covers 67 nodes and 64 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Outputs &amp; Docs (66 nodes, 63 edges)
+    %% Section: Outputs &amp; Docs (67 nodes, 64 edges)
     subgraph outputs_docs_Downloads_ledger_web_app_py_b3ab333d["Downloads/ledger_web/app.py"]
         ledger_web_app_categorize_product_1875cce3("categorize_product()<br/><small>Downloads/ledger_web/app.py</small>")
         ledger_web_app_dashboard_325e604a("dashboard()<br/><small>Downloads/ledger_web/app.py</small>")
@@ -859,16 +857,16 @@ flowchart LR
         ledger_web_app_api_inventory_c781946d("api_inventory()<br/><small>Downloads/ledger_web/app.py</small>")
         ledger_web_app_api_ledger_report_05b0b414("api_ledger_report()<br/><small>Downloads/ledger_web/app.py</small>")
     end
-    subgraph outputs_docs_Downloads_ledger_web_fetch_ledger_r_1d32d5ff["Downloads/ledger_web/fetch_ledger_report.py"]
-        ledger_web_fetch_ledger_report_fetch_ledger_repo_f8a3c4bc("fetch_ledger_report()<br/><small>Downloads/ledger_web/fetch_ledger_report.py</small>")
-        ledger_web_fetch_ledger_report_save_ledger_to_db_c218ae7b("save_ledger_to_db()<br/><small>Downloads/ledger_web/fetch_ledger_report.py</small>")
-        c_users_sgarm_downloads_ledger_web_fetch_ledger_196b1c61("fetch_ledger_report.py")
+    subgraph outputs_docs_fetch_ledger_report_py_c4c4b34b["fetch_ledger_report.py"]
+        ledger_web_fetch_ledger_report_fetch_ledger_repo_f8a3c4bc("fetch_ledger_report()<br/><small>fetch_ledger_report.py</small>")
+        ledger_web_fetch_ledger_report_save_ledger_to_db_c218ae7b("save_ledger_to_db()<br/><small>fetch_ledger_report.py</small>")
+        fetch_ledger_report_py_b84736c8("fetch_ledger_report.py")
     end
     subgraph outputs_docs_Downloads_ledger_web_scrape_sale_or_367b4a09["Downloads/ledger_web/scrape_sale_order_html.py"]
         ledger_web_scrape_sale_order_html_run_4ad979a4("run()<br/><small>Downloads/ledger_web/scrape_sale_order_html.py</small>")
         c_users_sgarm_downloads_ledger_web_scrape_sale_o_3c682070("scrape_sale_order_html.py")
     end
-    fetch_ledger_report_py_b84736c8("fetch_ledger_report.py")
+    c_users_sgarm_downloads_ledger_web_fetch_ledger_196b1c61("fetch_ledger_report.py")
     parse_html_py_d84179f1("parse_html.py")
     scrape_sale_order_html_py_8890aa3d("scrape_sale_order_html.py")
     dashboard_html_7ee058ad("dashboard.html")
@@ -879,7 +877,7 @@ flowchart LR
     ledger_web_app_compute_kpis_data_9299871a -->|calls| ledger_web_app_api_kpi_fe714029
     ledger_web_app_categorize_product_1875cce3 -->|calls| ledger_web_app_api_inventory_c781946d
     ledger_web_fetch_ledger_report_fetch_ledger_repo_f8a3c4bc -->|calls| ledger_web_fetch_ledger_report_save_ledger_to_db_c218ae7b
-    %% Omitted for readability: 48 nodes, 0 edges
+    %% Omitted for readability: 49 nodes, 0 edges
     class ledger_web_app_categorize_product_1875cce3 function;
     class ledger_web_app_dashboard_325e604a function;
     class ledger_web_app_compute_kpis_data_9299871a function;
@@ -888,10 +886,10 @@ flowchart LR
     class ledger_web_app_api_ledger_report_05b0b414 api;
     class ledger_web_fetch_ledger_report_fetch_ledger_repo_f8a3c4bc function;
     class ledger_web_fetch_ledger_report_save_ledger_to_db_c218ae7b function;
-    class c_users_sgarm_downloads_ledger_web_fetch_ledger_196b1c61 module;
+    class fetch_ledger_report_py_b84736c8 module;
     class ledger_web_scrape_sale_order_html_run_4ad979a4 function;
     class c_users_sgarm_downloads_ledger_web_scrape_sale_o_3c682070 module;
-    class fetch_ledger_report_py_b84736c8 module;
+    class c_users_sgarm_downloads_ledger_web_fetch_ledger_196b1c61 module;
     class parse_html_py_d84179f1 module;
     class scrape_sale_order_html_py_8890aa3d module;
     class dashboard_html_7ee058ad function;
@@ -1168,17 +1166,17 @@ flowchart LR
       <tr><th>File</th><th>Coverage</th></tr>
       <tr><td><code>Downloads/ledger_web/ARCHITECTURE.md</code></td><td>39 nodes</td></tr>
 <tr><td><code>Downloads/ledger_web/app.py</code></td><td>8 nodes</td></tr>
-<tr><td><code>Downloads/ledger_web/fetch_ledger_report.py</code></td><td>5 nodes</td></tr>
+<tr><td><code>fetch_ledger_report.py</code></td><td>5 nodes</td></tr>
 <tr><td><code>app.py</code></td><td>3 nodes</td></tr>
+<tr><td><code>Downloads/ledger_web/fetch_ledger_report.py</code></td><td>2 nodes</td></tr>
 <tr><td><code>Downloads/ledger_web/scrape_sale_order_html.py</code></td><td>2 nodes</td></tr>
 <tr><td><code>ARCHITECTURE.md</code></td><td>1 nodes</td></tr>
-<tr><td><code>fetch_ledger_report.py</code></td><td>1 nodes</td></tr>
 <tr><td><code>parse_html.py</code></td><td>1 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x45, explains x8, calls api x6, calls x4. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x45, explains x9, calls api x6, calls x4. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -1423,8 +1421,8 @@ flowchart LR
         ledger_web_app_api_mizoram_bronze_bf52adfd("api_mizoram_bronze()<br/><small>Downloads/ledger_web/app.py</small>")
         ledger_web_app_api_mizoram_bronze_update_23b5d0eb("api_mizoram_bronze_update()<br/><small>Downloads/ledger_web/app.py</small>")
         ledger_web_app_api_update_78d189de("api_update()<br/><small>Downloads/ledger_web/app.py</small>")
-        ledger_web_app_api_inventory_master_months_d428fdd2("inventory master months()<br/><small>Downloads/ledger_web/app.py</small>")
         ledger_web_app_api_inventory_master_7efe8bd3("api_inventory_master()<br/><small>Downloads/ledger_web/app.py</small>")
+        ledger_web_app_api_product_sales_bfcc3a98("api_product_sales()<br/><small>Downloads/ledger_web/app.py</small>")
         ledger_web_app_api_inventory_master_update_550ff49f("inventory master update()<br/><small>Downloads/ledger_web/app.py</small>")
         ledger_web_app_api_customer_326ba09b("api_customer()<br/><small>Downloads/ledger_web/app.py</small>")
         ledger_web_app_api_ledger_wallet_balance_2d7d1f41("api_ledger_wallet_balance()<br/><small>Downloads/ledger_web/app.py</small>")
@@ -1439,8 +1437,8 @@ flowchart LR
     ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_inventory_restock_cf4711a0
     ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_inventory_add_product_94b8e18e
     ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_update_78d189de
-    ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_inventory_master_months_d428fdd2
     ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_inventory_master_7efe8bd3
+    ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_product_sales_bfcc3a98
     ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_inventory_master_update_550ff49f
     ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_customer_326ba09b
     ledger_web_app_get_db_eeea2221 -->|calls| ledger_web_app_api_ledger_wallet_balance_2d7d1f41
@@ -1461,8 +1459,8 @@ flowchart LR
     class ledger_web_app_api_mizoram_bronze_bf52adfd api;
     class ledger_web_app_api_mizoram_bronze_update_23b5d0eb api;
     class ledger_web_app_api_update_78d189de api;
-    class ledger_web_app_api_inventory_master_months_d428fdd2 api;
     class ledger_web_app_api_inventory_master_7efe8bd3 api;
+    class ledger_web_app_api_product_sales_bfcc3a98 api;
     class ledger_web_app_api_inventory_master_update_550ff49f api;
     class ledger_web_app_api_customer_326ba09b api;
     class ledger_web_app_api_ledger_wallet_balance_2d7d1f41 api;
@@ -1531,19 +1529,19 @@ flowchart LR
 </tr>
 <tr>
   <td>6</td>
-  <td><code>api_inventory_master_months()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
-  <td><span class="tag tag-endpoint">API</span></td>
-  <td><code>get_db()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>api_inventory_master_months() node in Downloads/ledger_web/app.py.</td>
-</tr>
-<tr>
-  <td>7</td>
   <td><code>api_inventory_master()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
   <td><span class="tag tag-endpoint">API</span></td>
   <td><code>get_db()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
   <td>No direct outbound edge</td>
   <td>api_inventory_master() node in Downloads/ledger_web/app.py.</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><code>api_product_sales()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
+  <td><span class="tag tag-endpoint">API</span></td>
+  <td><code>get_db()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>api_product_sales() node in Downloads/ledger_web/app.py.</td>
 </tr>
 <tr>
   <td>8</td>
@@ -1587,7 +1585,7 @@ flowchart LR
 </tr>
 <tr>
   <td>13</td>
-  <td><code>inventory_master.html</code><br><small style="color:var(--muted)">templates/inventory_master.html</small></td>
+  <td><code>mizoram_bronze.html</code><br><small style="color:var(--muted)">templates/mizoram_bronze.html</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
@@ -1595,7 +1593,7 @@ flowchart LR
 </tr>
 <tr>
   <td>14</td>
-  <td><code>mizoram_bronze.html</code><br><small style="color:var(--muted)">templates/mizoram_bronze.html</small></td>
+  <td><code>purchase_history.html</code><br><small style="color:var(--muted)">templates/purchase_history.html</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
@@ -1874,7 +1872,7 @@ flowchart LR
   <td><code>init_google_sheets()</code><br><small style="color:var(--muted)">init_gsheets.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>_auto_sync_loop()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small><br><code>add_product()</code><br><small style="color:var(--muted)">add_new_product.py</small></td>
-  <td><code>do_restock()</code><br><small style="color:var(--muted)">restock_pdf.py</small><br><code>sync_all_to_inventory()</code><br><small style="color:var(--muted)">Downloads/ledger_web/robust_sync.py</small><br><code>sync_all_to_inventory()</code><br><small style="color:var(--muted)">sync_full_inventory.py</small><br>+2 more</td>
+  <td><code>do_restock()</code><br><small style="color:var(--muted)">restock_pdf.py</small><br><code>sync_all_to_inventory()</code><br><small style="color:var(--muted)">sync_full_inventory.py</small><br><code>sync_all_to_inventory()</code><br><small style="color:var(--muted)">Downloads/ledger_web/robust_sync.py</small><br>+2 more</td>
   <td>init_google_sheets() node in init_gsheets.py.</td>
 </tr>
 <tr>
@@ -2676,165 +2674,8 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 12. Community 26 ====== -->
-<h2 id="community-26">12. Community 26</h2>
-<p>Community 26 groups implementation around restore, gsheetspy, sync, gsheets, mostly in restore_gsheets.py, Downloads/ledger_web/app.py, app.py. This section covers 10 nodes and 12 internal edges; the diagram shows only representative relationships to stay readable.</p>
-
-<div class="mermaid">
-%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
-flowchart LR
-    %% Section: Community 26 (10 nodes, 12 edges)
-    subgraph community_26_restore_gsheets_py_7ab143aa["restore_gsheets.py"]
-        ledger_web_restore_gsheets_ensure_sync_log_table_c191095a("ensure_sync_log_table()<br/><small>restore_gsheets.py</small>")
-        ledger_web_restore_gsheets_get_last_sync_time_3285b619("get_last_sync_time()<br/><small>restore_gsheets.py</small>")
-        ledger_web_restore_gsheets_log_sync_bfc2e7ef("log_sync()<br/><small>restore_gsheets.py</small>")
-        ledger_web_restore_gsheets_restore_from_gsheets_13a31104("restore_from_gsheets()<br/><small>restore_gsheets.py</small>")
-        restore_gsheets_py_8b2a1ad0("restore_gsheets.py")
-        ledger_web_restore_gsheets_sync_remarks_from_gsh_63758e3b("sync_remarks_from_gsheets()<br/><small>restore_gsheets.py</small>")
-    end
-    subgraph community_26_Downloads_ledger_web_app_py_44b65f5e["Downloads/ledger_web/app.py"]
-        ledger_web_app_api_sync_now_9a4bff4f("api_sync_now()<br/><small>Downloads/ledger_web/app.py</small>")
-        ledger_web_app_rationale_1636_72d1a8d4("Manual trigger: pull from GSheets → che...<br/><small>Downloads/ledger_web/app.py</small>")
-    end
-    subgraph community_26_app_py_ce453d4a["app.py"]
-        ledger_web_app_rationale_1624_3d721619("Manual trigger: pull from GSheets → che...<br/><small>app.py</small>")
-        ledger_web_app_rationale_1626_45431c41("Manual trigger: pull from GSheets → che...<br/><small>app.py</small>")
-    end
-    ledger_web_restore_gsheets_ensure_sync_log_table_c191095a -->|calls| ledger_web_restore_gsheets_restore_from_gsheets_13a31104
-    ledger_web_restore_gsheets_get_last_sync_time_3285b619 -->|calls| ledger_web_restore_gsheets_restore_from_gsheets_13a31104
-    ledger_web_restore_gsheets_log_sync_bfc2e7ef -->|calls| ledger_web_restore_gsheets_restore_from_gsheets_13a31104
-    class ledger_web_restore_gsheets_ensure_sync_log_table_c191095a function;
-    class ledger_web_restore_gsheets_get_last_sync_time_3285b619 function;
-    class ledger_web_restore_gsheets_log_sync_bfc2e7ef function;
-    class ledger_web_restore_gsheets_restore_from_gsheets_13a31104 ui;
-    class restore_gsheets_py_8b2a1ad0 ui;
-    class ledger_web_restore_gsheets_sync_remarks_from_gsh_63758e3b function;
-    class ledger_web_app_api_sync_now_9a4bff4f api;
-    class ledger_web_app_rationale_1636_72d1a8d4 concept;
-    class ledger_web_app_rationale_1624_3d721619 concept;
-    class ledger_web_app_rationale_1626_45431c41 concept;
-    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
-    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
-    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
-    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
-    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
-    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
-    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
-    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
-    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
-</div>
-
-<h3>Call Details</h3>
-<table class="call-table">
-<tr>
-  <th style="width:5%">#</th>
-  <th style="width:28%">Node</th>
-  <th style="width:10%">Type</th>
-  <th style="width:17%">Caller</th>
-  <th style="width:20%">Callees</th>
-  <th style="width:20%">Description</th>
-</tr>
-<tr>
-  <td>1</td>
-  <td><code>api_sync_now()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
-  <td><span class="tag tag-endpoint">API</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>restore_from_gsheets()</code><br><small style="color:var(--muted)">restore_gsheets.py</small></td>
-  <td>api_sync_now() node in Downloads/ledger_web/app.py.</td>
-</tr>
-<tr>
-  <td>2</td>
-  <td><code>Manual trigger: pull from GSheets → check rollover → push back.</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Design note for Manual trigger: pull from GSheets → check rollover → push back..</td>
-</tr>
-<tr>
-  <td>3</td>
-  <td><code>restore_gsheets.py</code><br><small style="color:var(--muted)">restore_gsheets.py</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Module file in restore_gsheets.py.</td>
-</tr>
-<tr>
-  <td>4</td>
-  <td><code>ensure_sync_log_table()</code><br><small style="color:var(--muted)">restore_gsheets.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>restore_from_gsheets()</code><br><small style="color:var(--muted)">restore_gsheets.py</small></td>
-  <td>ensure_sync_log_table() node in restore_gsheets.py.</td>
-</tr>
-<tr>
-  <td>5</td>
-  <td><code>get_last_sync_time()</code><br><small style="color:var(--muted)">restore_gsheets.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>restore_from_gsheets()</code><br><small style="color:var(--muted)">restore_gsheets.py</small></td>
-  <td>get_last_sync_time() node in restore_gsheets.py.</td>
-</tr>
-<tr>
-  <td>6</td>
-  <td><code>log_sync()</code><br><small style="color:var(--muted)">restore_gsheets.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>restore_from_gsheets()</code><br><small style="color:var(--muted)">restore_gsheets.py</small></td>
-  <td>log_sync() node in restore_gsheets.py.</td>
-</tr>
-<tr>
-  <td>7</td>
-  <td><code>restore_from_gsheets()</code><br><small style="color:var(--muted)">restore_gsheets.py</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>api_sync_now()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small><br><code>ensure_sync_log_table()</code><br><small style="color:var(--muted)">restore_gsheets.py</small><br><code>get_last_sync_time()</code><br><small style="color:var(--muted)">restore_gsheets.py</small><br>+1 more</td>
-  <td>No direct outbound edge</td>
-  <td>restore_from_gsheets() node in restore_gsheets.py.</td>
-</tr>
-<tr>
-  <td>8</td>
-  <td><code>sync_remarks_from_gsheets()</code><br><small style="color:var(--muted)">restore_gsheets.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>sync_remarks_from_gsheets() node in restore_gsheets.py.</td>
-</tr>
-<tr>
-  <td>9</td>
-  <td><code>Manual trigger: pull from GSheets → check rollover → push back.</code><br><small style="color:var(--muted)">app.py</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Design note for Manual trigger: pull from GSheets → check rollover → push back..</td>
-</tr>
-<tr>
-  <td>10</td>
-  <td><code>Manual trigger: pull from GSheets → check rollover → push back.</code><br><small style="color:var(--muted)">app.py</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Design note for Manual trigger: pull from GSheets → check rollover → push back..</td>
-</tr>
-</table>
-
-<div class="grid">
-  <div class="card">
-    <h4>Key Files</h4>
-    <table style="width:100%;font-size:0.85rem;">
-      <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>restore_gsheets.py</code></td><td>6 nodes</td></tr>
-<tr><td><code>Downloads/ledger_web/app.py</code></td><td>2 nodes</td></tr>
-<tr><td><code>app.py</code></td><td>2 nodes</td></tr>
-    </table>
-  </div>
-  <div class="card">
-    <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x5, explains x3, calls x3. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
-  </div>
-</div>
-<hr>
-
-<!-- ====== 13. Community 14 ====== -->
-<h2 id="community-14">13. Community 14</h2>
+<!-- ====== 12. Community 14 ====== -->
+<h2 id="community-14">12. Community 14</h2>
 <p>Community 14 groups implementation around inventory, enginepy, get, month, mostly in inventory_engine.py. This section covers 9 nodes and 13 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -2974,8 +2815,8 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 14. Community 20 ====== -->
-<h2 id="community-20">14. Community 20</h2>
+<!-- ====== 13. Community 20 ====== -->
+<h2 id="community-20">13. Community 20</h2>
 <p>Community 20 groups implementation around scrape, invoicespy, users, sgarm, mostly in Downloads/ledger_web/scrape_invoices.py, scrape_invoices.py. This section covers 8 nodes and 12 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -3105,8 +2946,8 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 15. Community 19 ====== -->
-<h2 id="community-19">15. Community 19</h2>
+<!-- ====== 14. Community 19 ====== -->
+<h2 id="community-19">14. Community 19</h2>
 <p>Community 19 groups implementation around monthly, rolloverpy, month, check, mostly in monthly_rollover.py. This section covers 7 nodes and 8 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -3223,71 +3064,34 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 16. Other ====== -->
-<h2 id="other">16. Other</h2>
-<p>Other groups implementation around check, ledger, users, sgarm, mostly in static/js/inventory.js, static/js/invoice.js, Downloads/ledger_web/scrape_purchase_orders.py. This section covers 360 nodes and 165 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<!-- ====== 15. Community 21 ====== -->
+<h2 id="community-21">15. Community 21</h2>
+<p>Community 21 groups implementation around inventoryjs, static, inventory, currentsort, mostly in static/js/inventory.js. This section covers 7 nodes and 6 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Other (360 nodes, 165 edges)
-    subgraph other_fix_invoices_items_py_e7885a0a["fix_invoices_items.py"]
-        ledger_web_fix_invoices_items_cells_to_item_d19cedf5("cells_to_item()<br/><small>fix_invoices_items.py</small>")
-        ledger_web_fix_invoices_items_parse_detail_page_c62c1f20("parse_detail_page()<br/><small>fix_invoices_items.py</small>")
-        ledger_web_fix_invoices_items_main_4be7745d("main()<br/><small>fix_invoices_items.py</small>")
-    end
-    subgraph other_scrape_fast_products_py_66ad0893["scrape_fast_products.py"]
-        ledger_web_scrape_fast_products_login_and_open_9e05879b("login_and_open()<br/><small>scrape_fast_products.py</small>")
-        ledger_web_scrape_fast_products_parse_all_grid_r_382a5136("parse_all_grid_rows()<br/><small>scrape_fast_products.py</small>")
-        ledger_web_scrape_fast_products_main_153aba2c("main()<br/><small>scrape_fast_products.py</small>")
-    end
-    subgraph other_Downloads_ledger_web_app_py_ebbbaa76["Downloads/ledger_web/app.py"]
-        ledger_web_app_api_portal_sync_8a0f1525("api_portal_sync()<br/><small>Downloads/ledger_web/app.py</small>")
-        ledger_web_app_api_refresh_wallet_72860039("api_refresh_wallet()<br/><small>Downloads/ledger_web/app.py</small>")
-    end
-    subgraph other_Downloads_ledger_web_scrape_purchase_order_740ffa4f["Downloads/ledger_web/scrape_purchase_orders.py"]
-        ledger_web_scrape_purchase_orders_parse_bill_det_13d95e9c("parse_bill_detail()<br/><small>Downloads/ledger_web/scrape_purchase_orders.py</small>")
-        ledger_web_scrape_purchase_orders_main_23b71e52("main()<br/><small>Downloads/ledger_web/scrape_purchase_orders.py</small>")
-    end
-    subgraph other_migrate_to_sqlite_py_fda0cb02["migrate_to_sqlite.py"]
-        ledger_web_migrate_to_sqlite_clean_val_02579661("clean_val()<br/><small>migrate_to_sqlite.py</small>")
-        ledger_web_migrate_to_sqlite_migrate_240c1750("migrate()<br/><small>migrate_to_sqlite.py</small>")
-    end
-    subgraph other_sync_purchase_bill_py_07a7e081["sync_purchase_bill.py"]
-        ledger_web_sync_purchase_bill_get_credentials_1e733f9e("get_credentials()<br/><small>sync_purchase_bill.py</small>")
-        ledger_web_sync_purchase_bill_sync_bill_a1052b6c("sync_bill()<br/><small>sync_purchase_bill.py</small>")
-    end
-    gitignore_0585d98c(".gitignore")
-    dockerfile_558c49b6("Dockerfile")
-    ledger_web_check_all_lists_check_ea0feab6("check()<br/><small>Downloads/ledger_web/check_all_lists.py</small>")
-    render_yaml_4aaeffe9("render.yaml")
-    ledger_web_migrate_to_sqlite_clean_val_02579661 -->|calls| ledger_web_migrate_to_sqlite_migrate_240c1750
-    ledger_web_scrape_purchase_orders_parse_bill_det_13d95e9c -->|calls| ledger_web_scrape_purchase_orders_main_23b71e52
-    ledger_web_sync_purchase_bill_get_credentials_1e733f9e -->|calls| ledger_web_sync_purchase_bill_sync_bill_a1052b6c
-    ledger_web_fix_invoices_items_parse_detail_page_c62c1f20 -->|calls| ledger_web_fix_invoices_items_main_4be7745d
-    ledger_web_fix_invoices_items_cells_to_item_d19cedf5 -->|calls| ledger_web_fix_invoices_items_main_4be7745d
-    ledger_web_scrape_fast_products_parse_all_grid_r_382a5136 -->|calls| ledger_web_scrape_fast_products_main_153aba2c
-    ledger_web_scrape_fast_products_login_and_open_9e05879b -->|calls| ledger_web_scrape_fast_products_main_153aba2c
-    dockerfile_558c49b6 -->|uses| render_yaml_4aaeffe9
-    %% Omitted for readability: 342 nodes, 0 edges
-    class ledger_web_fix_invoices_items_cells_to_item_d19cedf5 function;
-    class ledger_web_fix_invoices_items_parse_detail_page_c62c1f20 function;
-    class ledger_web_fix_invoices_items_main_4be7745d function;
-    class ledger_web_scrape_fast_products_login_and_open_9e05879b function;
-    class ledger_web_scrape_fast_products_parse_all_grid_r_382a5136 function;
-    class ledger_web_scrape_fast_products_main_153aba2c function;
-    class ledger_web_app_api_portal_sync_8a0f1525 api;
-    class ledger_web_app_api_refresh_wallet_72860039 api;
-    class ledger_web_scrape_purchase_orders_parse_bill_det_13d95e9c function;
-    class ledger_web_scrape_purchase_orders_main_23b71e52 function;
-    class ledger_web_migrate_to_sqlite_clean_val_02579661 function;
-    class ledger_web_migrate_to_sqlite_migrate_240c1750 function;
-    class ledger_web_sync_purchase_bill_get_credentials_1e733f9e function;
-    class ledger_web_sync_purchase_bill_sync_bill_a1052b6c function;
-    class gitignore_0585d98c function;
-    class dockerfile_558c49b6 klass;
-    class ledger_web_check_all_lists_check_ea0feab6 function;
-    class render_yaml_4aaeffe9 function;
+    %% Section: Community 21 (7 nodes, 6 edges)
+    static_js_inventory_js_eaec8679("inventory.js")
+    js_inventory_inventory_2996aa6c("inventory<br/><small>static/js/inventory.js</small>")
+    js_inventory_currentsort_ffe40e99("currentSort<br/><small>static/js/inventory.js</small>")
+    js_inventory_filterinput_7ec452b3("filterInput<br/><small>static/js/inventory.js</small>")
+    js_inventory_filterwrapper_e62d83ff("filterWrapper<br/><small>static/js/inventory.js</small>")
+    js_inventory_table_7395572b("table<br/><small>static/js/inventory.js</small>")
+    js_inventory_render_7c7fa8b3("render()<br/><small>static/js/inventory.js</small>")
+    static_js_inventory_js_eaec8679 -->|contains| js_inventory_inventory_2996aa6c
+    static_js_inventory_js_eaec8679 -->|contains| js_inventory_currentsort_ffe40e99
+    static_js_inventory_js_eaec8679 -->|contains| js_inventory_filterinput_7ec452b3
+    static_js_inventory_js_eaec8679 -->|contains| js_inventory_filterwrapper_e62d83ff
+    static_js_inventory_js_eaec8679 -->|contains| js_inventory_table_7395572b
+    static_js_inventory_js_eaec8679 -->|contains| js_inventory_render_7c7fa8b3
+    class static_js_inventory_js_eaec8679 module;
+    class js_inventory_inventory_2996aa6c function;
+    class js_inventory_currentsort_ffe40e99 function;
+    class js_inventory_filterinput_7ec452b3 function;
+    class js_inventory_filterwrapper_e62d83ff function;
+    class js_inventory_table_7395572b function;
+    class js_inventory_render_7c7fa8b3 function;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -3365,8 +3169,115 @@ flowchart LR
   <td>No direct outbound edge</td>
   <td>render() node in static/js/inventory.js.</td>
 </tr>
+</table>
+
+<div class="grid">
+  <div class="card">
+    <h4>Key Files</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>File</th><th>Coverage</th></tr>
+      <tr><td><code>static/js/inventory.js</code></td><td>7 nodes</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Design Notes</h4>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x6. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+  </div>
+</div>
+<hr>
+
+<!-- ====== 16. Other ====== -->
+<h2 id="other">16. Other</h2>
+<p>Other groups implementation around check, ledger, users, sgarm, mostly in static/js/invoice.js, Downloads/ledger_web/scrape_purchase_orders.py, restore_gsheets.py. This section covers 367 nodes and 175 internal edges; the diagram shows only representative relationships to stay readable.</p>
+
+<div class="mermaid">
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    %% Section: Other (367 nodes, 175 edges)
+    subgraph other_restore_gsheets_py_64dc75b6["restore_gsheets.py"]
+        ledger_web_restore_gsheets_ensure_sync_log_table_c191095a("ensure_sync_log_table()<br/><small>restore_gsheets.py</small>")
+        ledger_web_restore_gsheets_restore_from_gsheets_13a31104("restore_from_gsheets()<br/><small>restore_gsheets.py</small>")
+        ledger_web_restore_gsheets_get_last_sync_time_3285b619("get_last_sync_time()<br/><small>restore_gsheets.py</small>")
+        ledger_web_restore_gsheets_log_sync_bfc2e7ef("log_sync()<br/><small>restore_gsheets.py</small>")
+    end
+    subgraph other_fix_invoices_items_py_e7885a0a["fix_invoices_items.py"]
+        ledger_web_fix_invoices_items_cells_to_item_d19cedf5("cells_to_item()<br/><small>fix_invoices_items.py</small>")
+        ledger_web_fix_invoices_items_parse_detail_page_c62c1f20("parse_detail_page()<br/><small>fix_invoices_items.py</small>")
+        ledger_web_fix_invoices_items_main_4be7745d("main()<br/><small>fix_invoices_items.py</small>")
+    end
+    subgraph other_Downloads_ledger_web_scrape_purchase_order_740ffa4f["Downloads/ledger_web/scrape_purchase_orders.py"]
+        ledger_web_scrape_purchase_orders_parse_bill_det_13d95e9c("parse_bill_detail()<br/><small>Downloads/ledger_web/scrape_purchase_orders.py</small>")
+        ledger_web_scrape_purchase_orders_main_23b71e52("main()<br/><small>Downloads/ledger_web/scrape_purchase_orders.py</small>")
+    end
+    subgraph other_apply_bill_292_py_7cc67327["apply_bill_292.py"]
+        ledger_web_apply_bill_292_parse_challan_pdf_ba30ab46("parse_challan_pdf()<br/><small>apply_bill_292.py</small>")
+        ledger_web_apply_bill_292_apply_order_ddcff428("apply_order()<br/><small>apply_bill_292.py</small>")
+    end
+    subgraph other_migrate_to_sqlite_py_fda0cb02["migrate_to_sqlite.py"]
+        ledger_web_migrate_to_sqlite_clean_val_02579661("clean_val()<br/><small>migrate_to_sqlite.py</small>")
+        ledger_web_migrate_to_sqlite_migrate_240c1750("migrate()<br/><small>migrate_to_sqlite.py</small>")
+    end
+    subgraph other_scrape_fast_products_py_66ad0893["scrape_fast_products.py"]
+        ledger_web_scrape_fast_products_parse_all_grid_r_382a5136("parse_all_grid_rows()<br/><small>scrape_fast_products.py</small>")
+        ledger_web_scrape_fast_products_main_153aba2c("main()<br/><small>scrape_fast_products.py</small>")
+    end
+    subgraph other_sync_purchase_bill_py_07a7e081["sync_purchase_bill.py"]
+        ledger_web_sync_purchase_bill_get_credentials_1e733f9e("get_credentials()<br/><small>sync_purchase_bill.py</small>")
+        ledger_web_sync_purchase_bill_sync_bill_a1052b6c("sync_bill()<br/><small>sync_purchase_bill.py</small>")
+    end
+    dockerfile_558c49b6("Dockerfile")
+    ledger_web_apply_bill_292_parse_challan_pdf_ba30ab46 -->|calls| ledger_web_apply_bill_292_apply_order_ddcff428
+    ledger_web_migrate_to_sqlite_clean_val_02579661 -->|calls| ledger_web_migrate_to_sqlite_migrate_240c1750
+    ledger_web_restore_gsheets_ensure_sync_log_table_c191095a -->|calls| ledger_web_restore_gsheets_restore_from_gsheets_13a31104
+    ledger_web_restore_gsheets_get_last_sync_time_3285b619 -->|calls| ledger_web_restore_gsheets_restore_from_gsheets_13a31104
+    ledger_web_restore_gsheets_log_sync_bfc2e7ef -->|calls| ledger_web_restore_gsheets_restore_from_gsheets_13a31104
+    ledger_web_scrape_purchase_orders_parse_bill_det_13d95e9c -->|calls| ledger_web_scrape_purchase_orders_main_23b71e52
+    ledger_web_sync_purchase_bill_get_credentials_1e733f9e -->|calls| ledger_web_sync_purchase_bill_sync_bill_a1052b6c
+    ledger_web_fix_invoices_items_parse_detail_page_c62c1f20 -->|calls| ledger_web_fix_invoices_items_main_4be7745d
+    ledger_web_fix_invoices_items_cells_to_item_d19cedf5 -->|calls| ledger_web_fix_invoices_items_main_4be7745d
+    ledger_web_scrape_fast_products_parse_all_grid_r_382a5136 -->|calls| ledger_web_scrape_fast_products_main_153aba2c
+    %% Omitted for readability: 349 nodes, 0 edges
+    class ledger_web_restore_gsheets_ensure_sync_log_table_c191095a function;
+    class ledger_web_restore_gsheets_restore_from_gsheets_13a31104 ui;
+    class ledger_web_restore_gsheets_get_last_sync_time_3285b619 function;
+    class ledger_web_restore_gsheets_log_sync_bfc2e7ef function;
+    class ledger_web_fix_invoices_items_cells_to_item_d19cedf5 function;
+    class ledger_web_fix_invoices_items_parse_detail_page_c62c1f20 function;
+    class ledger_web_fix_invoices_items_main_4be7745d function;
+    class ledger_web_scrape_purchase_orders_parse_bill_det_13d95e9c function;
+    class ledger_web_scrape_purchase_orders_main_23b71e52 function;
+    class ledger_web_apply_bill_292_parse_challan_pdf_ba30ab46 function;
+    class ledger_web_apply_bill_292_apply_order_ddcff428 function;
+    class ledger_web_migrate_to_sqlite_clean_val_02579661 function;
+    class ledger_web_migrate_to_sqlite_migrate_240c1750 function;
+    class ledger_web_scrape_fast_products_parse_all_grid_r_382a5136 function;
+    class ledger_web_scrape_fast_products_main_153aba2c function;
+    class ledger_web_sync_purchase_bill_get_credentials_1e733f9e function;
+    class ledger_web_sync_purchase_bill_sync_bill_a1052b6c function;
+    class dockerfile_558c49b6 klass;
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<h3>Call Details</h3>
+<table class="call-table">
 <tr>
-  <td>8</td>
+  <th style="width:5%">#</th>
+  <th style="width:28%">Node</th>
+  <th style="width:10%">Type</th>
+  <th style="width:17%">Caller</th>
+  <th style="width:20%">Callees</th>
+  <th style="width:20%">Description</th>
+</tr>
+<tr>
+  <td>1</td>
   <td><code>scrape_purchase_orders.py</code><br><small style="color:var(--muted)">Downloads/ledger_web/scrape_purchase_orders.py</small></td>
   <td><span class="tag tag-class">Module</span></td>
   <td>External entry / no inbound edge</td>
@@ -3374,7 +3285,7 @@ flowchart LR
   <td>Module file in Downloads/ledger_web/scrape_purchase_orders.py.</td>
 </tr>
 <tr>
-  <td>9</td>
+  <td>2</td>
   <td><code>get_gv_rows()</code><br><small style="color:var(--muted)">Downloads/ledger_web/scrape_purchase_orders.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3382,7 +3293,7 @@ flowchart LR
   <td>get_gv_rows() node in Downloads/ledger_web/scrape_purchase_orders.py.</td>
 </tr>
 <tr>
-  <td>10</td>
+  <td>3</td>
   <td><code>parse_bill_detail()</code><br><small style="color:var(--muted)">Downloads/ledger_web/scrape_purchase_orders.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3390,7 +3301,7 @@ flowchart LR
   <td>parse_bill_detail() node in Downloads/ledger_web/scrape_purchase_orders.py.</td>
 </tr>
 <tr>
-  <td>11</td>
+  <td>4</td>
   <td><code>main()</code><br><small style="color:var(--muted)">Downloads/ledger_web/scrape_purchase_orders.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>parse_bill_detail()</code><br><small style="color:var(--muted)">Downloads/ledger_web/scrape_purchase_orders.py</small></td>
@@ -3398,7 +3309,7 @@ flowchart LR
   <td>main() node in Downloads/ledger_web/scrape_purchase_orders.py.</td>
 </tr>
 <tr>
-  <td>12</td>
+  <td>5</td>
   <td><code>Full purchase history scraper. - Date range: 01/06/2026 → 26/07/2026 - Fetches</code><br><small style="color:var(--muted)">Downloads/ledger_web/scrape_purchase_orders.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -3406,7 +3317,7 @@ flowchart LR
   <td>Design note for Full purchase history scraper. - Date range: 01/06/2026 → 26/07/2026 - Fetches.</td>
 </tr>
 <tr>
-  <td>13</td>
+  <td>6</td>
   <td><code>Parse product table from the bill detail page.</code><br><small style="color:var(--muted)">Downloads/ledger_web/scrape_purchase_orders.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -3414,7 +3325,7 @@ flowchart LR
   <td>Design note for Parse product table from the bill detail page..</td>
 </tr>
 <tr>
-  <td>14</td>
+  <td>7</td>
   <td><code>scrape_purchase_orders.py</code><br><small style="color:var(--muted)">scrape_purchase_orders.py</small></td>
   <td><span class="tag tag-class">Module</span></td>
   <td>External entry / no inbound edge</td>
@@ -3422,7 +3333,55 @@ flowchart LR
   <td>Module file in scrape_purchase_orders.py.</td>
 </tr>
 <tr>
-  <td>15</td>
+  <td>8</td>
+  <td><code>restore_gsheets.py</code><br><small style="color:var(--muted)">restore_gsheets.py</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Module file in restore_gsheets.py.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><code>ensure_sync_log_table()</code><br><small style="color:var(--muted)">restore_gsheets.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>restore_from_gsheets()</code><br><small style="color:var(--muted)">restore_gsheets.py</small></td>
+  <td>ensure_sync_log_table() node in restore_gsheets.py.</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><code>get_last_sync_time()</code><br><small style="color:var(--muted)">restore_gsheets.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>restore_from_gsheets()</code><br><small style="color:var(--muted)">restore_gsheets.py</small></td>
+  <td>get_last_sync_time() node in restore_gsheets.py.</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td><code>log_sync()</code><br><small style="color:var(--muted)">restore_gsheets.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>restore_from_gsheets()</code><br><small style="color:var(--muted)">restore_gsheets.py</small></td>
+  <td>log_sync() node in restore_gsheets.py.</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td><code>restore_from_gsheets()</code><br><small style="color:var(--muted)">restore_gsheets.py</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td><code>api_sync_now()</code><br><small style="color:var(--muted)">Downloads/ledger_web/app.py</small><br><code>ensure_sync_log_table()</code><br><small style="color:var(--muted)">restore_gsheets.py</small><br><code>get_last_sync_time()</code><br><small style="color:var(--muted)">restore_gsheets.py</small><br>+1 more</td>
+  <td>No direct outbound edge</td>
+  <td>restore_from_gsheets() node in restore_gsheets.py.</td>
+</tr>
+<tr>
+  <td>13</td>
+  <td><code>sync_remarks_from_gsheets()</code><br><small style="color:var(--muted)">restore_gsheets.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>sync_remarks_from_gsheets() node in restore_gsheets.py.</td>
+</tr>
+<tr>
+  <td>14</td>
   <td><code>scrape_fast_products.py</code><br><small style="color:var(--muted)">scrape_fast_products.py</small></td>
   <td><span class="tag tag-class">Module</span></td>
   <td>External entry / no inbound edge</td>
@@ -3430,7 +3389,7 @@ flowchart LR
   <td>Module file in scrape_fast_products.py.</td>
 </tr>
 <tr>
-  <td>16</td>
+  <td>15</td>
   <td><code>parse_all_grid_rows()</code><br><small style="color:var(--muted)">scrape_fast_products.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3438,7 +3397,7 @@ flowchart LR
   <td>parse_all_grid_rows() node in scrape_fast_products.py.</td>
 </tr>
 <tr>
-  <td>17</td>
+  <td>16</td>
   <td><code>login_and_open()</code><br><small style="color:var(--muted)">scrape_fast_products.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3446,7 +3405,7 @@ flowchart LR
   <td>login_and_open() node in scrape_fast_products.py.</td>
 </tr>
 <tr>
-  <td>18</td>
+  <td>17</td>
   <td><code>main()</code><br><small style="color:var(--muted)">scrape_fast_products.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>login_and_open()</code><br><small style="color:var(--muted)">scrape_fast_products.py</small><br><code>parse_all_grid_rows()</code><br><small style="color:var(--muted)">scrape_fast_products.py</small></td>
@@ -3454,7 +3413,7 @@ flowchart LR
   <td>main() node in scrape_fast_products.py.</td>
 </tr>
 <tr>
-  <td>19</td>
+  <td>18</td>
   <td><code>Portal product scraper — fast version. Column layout from GridView2:   [0] Sr</code><br><small style="color:var(--muted)">scrape_fast_products.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -3462,7 +3421,7 @@ flowchart LR
   <td>Design note for Portal product scraper — fast version. Column layout from GridView2:   [0] Sr.</td>
 </tr>
 <tr>
-  <td>20</td>
+  <td>19</td>
   <td><code>Return dict {prod_code_str: {name, rate, box_size}} for ALL rows in GridView2.</code><br><small style="color:var(--muted)">scrape_fast_products.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -3470,7 +3429,7 @@ flowchart LR
   <td>Design note for Return dict {prod_code_str: {name, rate, box_size}} for ALL rows in GridView2..</td>
 </tr>
 <tr>
-  <td>21</td>
+  <td>20</td>
   <td><code>invoice.js</code><br><small style="color:var(--muted)">static/js/invoice.js</small></td>
   <td><span class="tag tag-class">Module</span></td>
   <td>External entry / no inbound edge</td>
@@ -3478,7 +3437,7 @@ flowchart LR
   <td>invoice.js node in static/js/invoice.js.</td>
 </tr>
 <tr>
-  <td>22</td>
+  <td>21</td>
   <td><code>addItemBtn</code><br><small style="color:var(--muted)">static/js/invoice.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3486,7 +3445,7 @@ flowchart LR
   <td>addItemBtn node in static/js/invoice.js.</td>
 </tr>
 <tr>
-  <td>23</td>
+  <td>22</td>
   <td><code>itemsContainer</code><br><small style="color:var(--muted)">static/js/invoice.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3494,7 +3453,7 @@ flowchart LR
   <td>itemsContainer node in static/js/invoice.js.</td>
 </tr>
 <tr>
-  <td>24</td>
+  <td>23</td>
   <td><code>calculateTotals()</code><br><small style="color:var(--muted)">static/js/invoice.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3502,7 +3461,7 @@ flowchart LR
   <td>calculateTotals() node in static/js/invoice.js.</td>
 </tr>
 <tr>
-  <td>25</td>
+  <td>24</td>
   <td><code>row</code><br><small style="color:var(--muted)">static/js/invoice.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3510,7 +3469,7 @@ flowchart LR
   <td>row node in static/js/invoice.js.</td>
 </tr>
 <tr>
-  <td>26</td>
+  <td>25</td>
   <td><code>taxRateInput</code><br><small style="color:var(--muted)">static/js/invoice.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3518,7 +3477,7 @@ flowchart LR
   <td>taxRateInput node in static/js/invoice.js.</td>
 </tr>
 <tr>
-  <td>27</td>
+  <td>26</td>
   <td><code>fix_mizoram_achieved.py</code><br><small style="color:var(--muted)">fix_mizoram_achieved.py</small></td>
   <td><span class="tag tag-class">Module</span></td>
   <td>External entry / no inbound edge</td>
@@ -3526,7 +3485,7 @@ flowchart LR
   <td>Module file in fix_mizoram_achieved.py.</td>
 </tr>
 <tr>
-  <td>28</td>
+  <td>27</td>
   <td><code>fix_achieved_status()</code><br><small style="color:var(--muted)">fix_mizoram_achieved.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3534,7 +3493,7 @@ flowchart LR
   <td>fix_achieved_status() node in fix_mizoram_achieved.py.</td>
 </tr>
 <tr>
-  <td>29</td>
+  <td>28</td>
   <td><code>sync_mizoram.py</code><br><small style="color:var(--muted)">Downloads/ledger_web/sync_mizoram.py</small></td>
   <td><span class="tag tag-class">Module</span></td>
   <td>External entry / no inbound edge</td>
@@ -3542,12 +3501,20 @@ flowchart LR
   <td>Module file in Downloads/ledger_web/sync_mizoram.py.</td>
 </tr>
 <tr>
-  <td>30</td>
+  <td>29</td>
   <td><code>sync_mizoram_data()</code><br><small style="color:var(--muted)">Downloads/ledger_web/sync_mizoram.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>fix_achieved_status()</code><br><small style="color:var(--muted)">fix_mizoram_achieved.py</small></td>
   <td>No direct outbound edge</td>
   <td>sync_mizoram_data() node in Downloads/ledger_web/sync_mizoram.py.</td>
+</tr>
+<tr>
+  <td>30</td>
+  <td><code>sync_mizoram.py</code><br><small style="color:var(--muted)">sync_mizoram.py</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Module file in sync_mizoram.py.</td>
 </tr>
 </table>
 
@@ -3556,19 +3523,19 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>static/js/inventory.js</code></td><td>8 nodes</td></tr>
-<tr><td><code>static/js/invoice.js</code></td><td>7 nodes</td></tr>
+      <tr><td><code>static/js/invoice.js</code></td><td>7 nodes</td></tr>
+<tr><td><code>Downloads/ledger_web/app.py</code></td><td>6 nodes</td></tr>
 <tr><td><code>Downloads/ledger_web/scrape_purchase_orders.py</code></td><td>6 nodes</td></tr>
+<tr><td><code>restore_gsheets.py</code></td><td>6 nodes</td></tr>
 <tr><td><code>scrape_fast_products.py</code></td><td>6 nodes</td></tr>
 <tr><td><code>PORTAL_SYNC.md</code></td><td>5 nodes</td></tr>
-<tr><td><code>Downloads/ledger_web/app.py</code></td><td>4 nodes</td></tr>
+<tr><td><code>app.py</code></td><td>5 nodes</td></tr>
 <tr><td><code>Downloads/ledger_web/submit_stock_order.py</code></td><td>4 nodes</td></tr>
-<tr><td><code>fix_invoices_items.py</code></td><td>4 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x128, explains x27, calls x7, uses x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x129, explains x31, calls x11, uses x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -3579,17 +3546,17 @@ flowchart LR
   <div class="card">
     <h4>Graph</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>Nodes</td><td>895</td></tr>
-      <tr><td>Edges</td><td>794</td></tr>
+      <tr><td>Nodes</td><td>900</td></tr>
+      <tr><td>Edges</td><td>799</td></tr>
       <tr><td>Hyperedges</td><td>0</td></tr>
-      <tr><td>Communities</td><td>314</td></tr>
+      <tr><td>Communities</td><td>316</td></tr>
       <tr><td>Documented Sections</td><td>15</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Edge Confidence</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>EXTRACTED</td><td>757</td></tr>
+      <tr><td>EXTRACTED</td><td>762</td></tr>
       <tr><td>INFERRED</td><td>37</td></tr>
       <tr><td>AMBIGUOUS</td><td>0</td></tr>
     </table>
@@ -3598,7 +3565,7 @@ flowchart LR
 
 <div style="text-align:center; padding:40px 0; color: var(--muted); font-size:0.9rem;">
   <p>ledger_web — Architecture Documentation</p>
-  <p>Generated: 2026-09-29 17:35 UTC · graphify callflow-html</p>
+  <p>Generated: 2026-10-12 03:38 UTC · graphify callflow-html</p>
 </div>
 
 </div><!-- .container -->

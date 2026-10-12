@@ -277,8 +277,11 @@ def fetch_ledger_report(username: str, password: str, from_date: str = "01/01/20
                 "pages_scraped":   len(visited_pages)
             }
 
-            with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-                json.dump(result, f, ensure_ascii=False, indent=2)
+            if deduped_entries or not os.path.exists(OUTPUT_FILE):
+                with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+                    json.dump(result, f, ensure_ascii=False, indent=2)
+            else:
+                print(f"[warn] Scraped 0 entries; preserving existing {OUTPUT_FILE}", file=sys.stderr)
 
             # Persist to SQLite and Google Sheets
             try:

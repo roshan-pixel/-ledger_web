@@ -5331,6 +5331,151 @@
   },
   {
     "sr": 13,
+    "bill_no": "GUW/000292/26-27",
+    "party": "ASCLEPIUS WELLNESS PVT LTD (GUWAHATI WAREHOUSE)",
+    "date": "03/10/2026",
+    "cgst": "0.00",
+    "sgst": "0.00",
+    "igst": "19273.29",
+    "total": "235358.97",
+    "lr_no": "841748937799",
+    "delivery_date": "03/10/2026",
+    "courier": "INDIA COURIER SERVICE",
+    "products": [
+      [
+        "1",
+        "161",
+        "JEEVEDA RICE BRAN OIL (2 LTR)",
+        "475.24",
+        "80",
+        "38019.20",
+        "1900.96",
+        "39920.16"
+      ],
+      [
+        "2",
+        "162",
+        "JEEVEDA RICE BRAN OIL (5 LTR)",
+        "1185.71",
+        "20",
+        "23714.20",
+        "1185.71",
+        "24899.91"
+      ],
+      [
+        "3",
+        "299",
+        "SUNSCREEN SPF50 PA++++ GEL",
+        "244.92",
+        "80",
+        "19593.60",
+        "3526.85",
+        "23120.45"
+      ],
+      [
+        "4",
+        "389",
+        "ULTRA SMOOTH FOUNDATION FOR RADIANT GLOW-PURE IVORY",
+        "634.75",
+        "8",
+        "5078.00",
+        "914.04",
+        "5992.04"
+      ],
+      [
+        "5",
+        "390",
+        "ULTRA SMOOTH FOUNDATION FOR RADIANT GLOW-CREAMY VANILLA",
+        "634.75",
+        "8",
+        "5078.00",
+        "914.04",
+        "5992.04"
+      ],
+      [
+        "6",
+        "391",
+        "ULTRA SMOOTH FOUNDATION FOR RADIANT GLOW-SOFT BEIGE",
+        "634.75",
+        "16",
+        "10156.00",
+        "1828.08",
+        "11984.08"
+      ],
+      [
+        "7",
+        "392",
+        "ULTRA SMOOTH FOUNDATION FOR RADIANT GLOW-SILK ALMOND",
+        "634.75",
+        "16",
+        "10156.00",
+        "1828.08",
+        "11984.08"
+      ],
+      [
+        "8",
+        "393",
+        "ULTRA SMOOTH FOUNDATION FOR RADIANT GLOW-WARM CHESTNUT",
+        "634.75",
+        "8",
+        "5078.00",
+        "914.04",
+        "5992.04"
+      ],
+      [
+        "9",
+        "442",
+        "LUXE MATTE LIQUID LIPSTICK- FINE WINE",
+        "312.71",
+        "8",
+        "2501.68",
+        "450.30",
+        "2951.98"
+      ],
+      [
+        "10",
+        "451",
+        "LUXE MATTE LIQUID LIPSTICK- HALEN",
+        "312.71",
+        "8",
+        "2501.68",
+        "450.30",
+        "2951.98"
+      ],
+      [
+        "11",
+        "452",
+        "LUXE MATTE LIQUID LIPSTICK- CHOCO DELIGHT",
+        "312.71",
+        "16",
+        "5003.36",
+        "900.60",
+        "5903.96"
+      ],
+      [
+        "12",
+        "490",
+        "BERRYDOC JUICE",
+        "1930.46",
+        "18",
+        "34748.28",
+        "1737.41",
+        "36485.69"
+      ],
+      [
+        "13",
+        "495",
+        "SHOTS MORE",
+        "4538.14",
+        "12",
+        "54457.68",
+        "2722.88",
+        "57180.56"
+      ]
+    ]
+  },
+  {
+    "sr": 14,
     "bill_no": "COMPLIMENTARY",
     "party": "ASCLEPIUS WELLNESS (COMPLIMENTARY FREE STOCK)",
     "date": "21/09/2026",
@@ -5371,8 +5516,8 @@
     "date": "",
     "cgst": "",
     "sgst": "",
-    "igst": "361381.80",
-    "total": 4151163.89,
+    "igst": "380655.09",
+    "total": 4386522.86,
     "lr_no": "",
     "delivery_date": "",
     "courier": "",
