@@ -489,6 +489,26 @@
             color: #fff;
             border-color: rgba(255, 255, 255, 0.25);
         }
+        /* Remark written automatically by the Hermes WhatsApp bot: yellow box as the "done" sign */
+        .btn-remark-action.remark-auto {
+            background: rgba(250, 204, 21, 0.16);
+            color: #fde68a;
+            border-color: rgba(250, 204, 21, 0.75);
+        }
+        .btn-remark-action.remark-auto:hover {
+            background: rgba(250, 204, 21, 0.28);
+            color: #fef3c7;
+            border-color: #facc15;
+        }
+        .remark-auto-sign {
+            font-size: 0.7rem;
+            font-weight: 700;
+            background: #facc15;
+            color: #1f2937;
+            border-radius: 4px;
+            padding: 0.05rem 0.3rem;
+            white-space: nowrap;
+        }
         .btn-view-order {
             background: rgba(99, 102, 241, 0.12);
             color: #818cf8;
@@ -1270,13 +1290,14 @@
             } catch(e) {}
             let safeRemark = (inv.remark || '').replace(/'/g, "\\'").replace(/"/g, '&quot;').replace(/\n/g, '\\n').replace(/\r/g, '\\r');
             let displayRemark = (inv.remark || '').trim();
+            const isAutoRemark = /Auto-updated via WhatsApp/i.test(displayRemark);
 
             const dispatchBadge = isDispatched 
                 ? `<span class="badge-dispatch ticked">✓ Dispatched</span>`
                 : `<span class="badge-dispatch unticked">⏳ Pending</span>`;
 
             const remarkBtnContent = displayRemark
-                ? `<span class="remark-trunc" title="${displayRemark}">${displayRemark}</span> <span style="font-size:0.75rem;">✏️</span>`
+                ? `${isAutoRemark ? '<span class="remark-auto-sign" title="Updated automatically after the WhatsApp payment slip">✅ WA</span> ' : ''}<span class="remark-trunc" title="${displayRemark}">${displayRemark}</span> <span style="font-size:0.75rem;">✏️</span>`
                 : `<span style="opacity:0.7;">+ Add</span>`;
 
             tr.innerHTML = `
@@ -1294,7 +1315,7 @@
                     </div>
                 </td>
                 <td>
-                    <button class="btn-action-table btn-remark-action" onclick="openRemarkModal(${inv.id}, '${safeRemark}')" title="Edit remark">
+                    <button class="btn-action-table btn-remark-action${isAutoRemark ? ' remark-auto' : ''}" onclick="openRemarkModal(${inv.id}, '${safeRemark}')" title="Edit remark">
                         ${remarkBtnContent}
                     </button>
                 </td>
