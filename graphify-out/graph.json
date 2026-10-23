@@ -252,7 +252,7 @@
       "source_file": "C:/Users/sgarm/Downloads/ledger_web/app.py",
       "source_location": "L240",
       "id": "ledger_web_app_api_mizoram_bronze",
-      "community": 6,
+      "community": 3,
       "norm_label": "api_mizoram_bronze()"
     },
     {
@@ -396,7 +396,7 @@
       "source_file": "C:/Users/sgarm/Downloads/ledger_web/app.py",
       "source_location": "L900",
       "id": "ledger_web_app_api_inventory_master_months",
-      "community": 3,
+      "community": 6,
       "norm_label": "api_inventory_master_months()"
     },
     {
@@ -486,7 +486,7 @@
       "source_file": "C:/Users/sgarm/Downloads/ledger_web/app.py",
       "source_location": "L1268",
       "id": "ledger_web_app_api_ledger_report",
-      "community": 314,
+      "community": 6,
       "norm_label": "api_ledger_report()"
     },
     {
@@ -495,7 +495,7 @@
       "source_file": "C:/Users/sgarm/Downloads/ledger_web/app.py",
       "source_location": "L1329",
       "id": "ledger_web_app_api_ledger_wallet_balance",
-      "community": 6,
+      "community": 314,
       "norm_label": "api_ledger_wallet_balance()"
     },
     {
@@ -675,7 +675,7 @@
       "source_file": "C:/Users/sgarm/Downloads/ledger_web/app.py",
       "source_location": "L1269",
       "id": "ledger_web_app_rationale_1269",
-      "community": 314,
+      "community": 6,
       "norm_label": "return cached ledger entries from ledger_report.json or sqlite ledger_report tab"
     },
     {
@@ -684,7 +684,7 @@
       "source_file": "C:/Users/sgarm/Downloads/ledger_web/app.py",
       "source_location": "L1330",
       "id": "ledger_web_app_rationale_1330",
-      "community": 6,
+      "community": 314,
       "norm_label": "return closing balance for stock-point-order and dashboard sync."
     },
     {
@@ -805,13 +805,49 @@
       "norm_label": "apply_order()"
     },
     {
-      "label": "apply_bill_295.py ----------------- Applies new purchase order (GUW/000295/26-27",
+      "label": "apply_bill_295.py ----------------- Applies new purchase order (GUW/000295/26-",
       "file_type": "rationale",
       "source_file": "apply_bill_295.py",
       "source_location": "L1",
       "id": "ledger_web_apply_bill_295_rationale_1",
       "community": 315,
-      "norm_label": "apply_bill_295.py ----------------- applies new purchase order (guw/000295/26-27"
+      "norm_label": "apply_bill_295.py ----------------- applies new purchase order (guw/000295/26-"
+    },
+    {
+      "label": "apply_bill_314.py",
+      "file_type": "code",
+      "source_file": "apply_bill_314.py",
+      "source_location": "L1",
+      "id": "apply_bill_314_py",
+      "community": 316,
+      "norm_label": "apply_bill_314.py"
+    },
+    {
+      "label": "parse_challan_pdf()",
+      "file_type": "code",
+      "source_file": "apply_bill_314.py",
+      "source_location": "L48",
+      "id": "ledger_web_apply_bill_314_parse_challan_pdf",
+      "community": 316,
+      "norm_label": "parse_challan_pdf()"
+    },
+    {
+      "label": "apply_order()",
+      "file_type": "code",
+      "source_file": "apply_bill_314.py",
+      "source_location": "L137",
+      "id": "ledger_web_apply_bill_314_apply_order",
+      "community": 316,
+      "norm_label": "apply_order()"
+    },
+    {
+      "label": "apply_bill_314.py ----------------- Parses and applies Sales Challan / Stock Tra",
+      "file_type": "rationale",
+      "source_file": "apply_bill_314.py",
+      "source_location": "L1",
+      "id": "ledger_web_apply_bill_314_rationale_1",
+      "community": 316,
+      "norm_label": "apply_bill_314.py ----------------- parses and applies sales challan / stock tra"
     },
     {
       "label": "backfill_sp.py",
@@ -2394,7 +2430,7 @@
       "source_file": "invoice_api.py",
       "source_location": "L724",
       "id": "ledger_web_invoice_api_resubmit_invoice_to_portal",
-      "community": 4,
+      "community": 1,
       "norm_label": "resubmit_invoice_to_portal()"
     },
     {
@@ -2439,7 +2475,7 @@
       "source_file": "invoice_api.py",
       "source_location": "L725",
       "id": "ledger_web_invoice_api_rationale_725",
-      "community": 4,
+      "community": 1,
       "norm_label": "trigger manual resubmission of an unsaved / undispatched invoice to the awpl por"
     },
     {
@@ -2585,6 +2621,15 @@
       "id": "ledger_web_parallel_tree_crawler_crawl_tree",
       "community": 49,
       "norm_label": "crawl_tree()"
+    },
+    {
+      "label": "parse_challan_11649584.py",
+      "file_type": "code",
+      "source_file": "parse_challan_11649584.py",
+      "source_location": "L1",
+      "id": "parse_challan_11649584_py",
+      "community": 317,
+      "norm_label": "parse_challan_11649584.py"
     },
     {
       "label": "parse_html.py",
@@ -2855,6 +2900,15 @@
       "id": "ledger_web_portal_sync_rationale_251",
       "community": 13,
       "norm_label": "main entry point for sync."
+    },
+    {
+      "label": "print_headers.py",
+      "file_type": "code",
+      "source_file": "print_headers.py",
+      "source_location": "L1",
+      "id": "print_headers_py",
+      "community": 245,
+      "norm_label": "print_headers.py"
     },
     {
       "label": "query.py",
@@ -4684,15 +4738,6 @@
       "norm_label": "\ud83d\udcc4 license & attribution"
     },
     {
-      "label": "print_headers.py",
-      "file_type": "code",
-      "source_file": "print_headers.py",
-      "source_location": "L1",
-      "community": 245,
-      "norm_label": "print_headers.py",
-      "id": "print_headers_py"
-    },
-    {
       "label": "fetch_ledger_report.py",
       "file_type": "code",
       "source_file": "C:/Users/sgarm/Downloads/ledger_web/fetch_ledger_report.py",
@@ -4742,7 +4787,7 @@
       "file_type": "rationale",
       "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
       "source_location": "L714",
-      "community": 4,
+      "community": 1,
       "norm_label": "trigger manual resubmission of an unsaved / undispatched invoice to the awpl por",
       "id": "ledger_web_invoice_api_rationale_714"
     },
@@ -7379,7 +7424,7 @@
       "file_type": "rationale",
       "source_file": "app.py",
       "source_location": "L1257",
-      "community": 314,
+      "community": 6,
       "norm_label": "return cached ledger entries from ledger_report.json or sqlite ledger_report tab",
       "id": "ledger_web_app_rationale_1257"
     },
@@ -7388,7 +7433,7 @@
       "file_type": "rationale",
       "source_file": "app.py",
       "source_location": "L1318",
-      "community": 6,
+      "community": 314,
       "norm_label": "return closing balance for stock-point-order and dashboard sync.",
       "id": "ledger_web_app_rationale_1318"
     },
@@ -7514,7 +7559,7 @@
       "file_type": "rationale",
       "source_file": "app.py",
       "source_location": "L1259",
-      "community": 314,
+      "community": 6,
       "norm_label": "return cached ledger entries from ledger_report.json or sqlite ledger_report tab",
       "id": "ledger_web_app_rationale_1259"
     },
@@ -7523,7 +7568,7 @@
       "file_type": "rationale",
       "source_file": "app.py",
       "source_location": "L1320",
-      "community": 6,
+      "community": 314,
       "norm_label": "return closing balance for stock-point-order and dashboard sync.",
       "id": "ledger_web_app_rationale_1320"
     },
@@ -8004,7 +8049,7 @@
       "file_type": "code",
       "source_file": "templates/inventory_master.html",
       "source_location": "L1",
-      "community": 3,
+      "community": 6,
       "norm_label": "inventory_master.html",
       "description": "Jinja2 HTML template \u2014 served by Flask app.py",
       "id": "inventory_master_html"
@@ -8034,7 +8079,7 @@
       "file_type": "code",
       "source_file": "templates/ledger_report.html",
       "source_location": "L1",
-      "community": 314,
+      "community": 6,
       "norm_label": "ledger_report.html",
       "description": "Jinja2 HTML template \u2014 served by Flask app.py",
       "id": "ledger_report_html"
@@ -8044,7 +8089,7 @@
       "file_type": "code",
       "source_file": "templates/mizoram_bronze.html",
       "source_location": "L1",
-      "community": 6,
+      "community": 3,
       "norm_label": "mizoram_bronze.html",
       "description": "Jinja2 HTML template \u2014 served by Flask app.py",
       "id": "mizoram_bronze_html"
@@ -8074,7 +8119,7 @@
       "file_type": "code",
       "source_file": "templates/stock_point_order.html",
       "source_location": "L1",
-      "community": 6,
+      "community": 314,
       "norm_label": "stock_point_order.html",
       "description": "Jinja2 HTML template \u2014 served by Flask app.py",
       "id": "stock_point_order_html"
@@ -10322,9 +10367,9 @@
       "source_file": "apply_bill_295.py",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "apply_bill_295_py",
-      "target": "ledger_web_apply_bill_295_apply_order",
-      "confidence_score": 1.0
+      "target": "ledger_web_apply_bill_295_apply_order"
     },
     {
       "relation": "rationale_for",
@@ -10332,8 +10377,49 @@
       "source_file": "apply_bill_295.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ledger_web_apply_bill_295_rationale_1",
-      "target": "apply_bill_295_py",
+      "target": "apply_bill_295_py"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apply_bill_314.py",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "apply_bill_314_py",
+      "target": "ledger_web_apply_bill_314_parse_challan_pdf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apply_bill_314.py",
+      "source_location": "L137",
+      "weight": 1.0,
+      "source": "apply_bill_314_py",
+      "target": "ledger_web_apply_bill_314_apply_order",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "apply_bill_314.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "ledger_web_apply_bill_314_rationale_1",
+      "target": "apply_bill_314_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apply_bill_314.py",
+      "source_location": "L143",
+      "weight": 1.0,
+      "source": "ledger_web_apply_bill_314_apply_order",
+      "target": "ledger_web_apply_bill_314_parse_challan_pdf",
       "confidence_score": 1.0
     },
     {
@@ -16284,5 +16370,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "21b048d6c94c9680bf141a465d2dfd11fa2800da"
+  "built_at_commit": "d74fc45b5b61b499655d2a965096cd72dac4544d"
 }
