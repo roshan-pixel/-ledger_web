@@ -585,7 +585,7 @@
       "source_file": "C:/Users/sgarm/Downloads/ledger_web/app.py",
       "source_location": "L1635",
       "id": "ledger_web_app_api_sync_now",
-      "community": 315,
+      "community": 22,
       "norm_label": "api_sync_now()"
     },
     {
@@ -720,7 +720,7 @@
       "source_file": "C:/Users/sgarm/Downloads/ledger_web/app.py",
       "source_location": "L1636",
       "id": "ledger_web_app_rationale_1636",
-      "community": 315,
+      "community": 22,
       "norm_label": "manual trigger: pull from gsheets \u2192 check rollover \u2192 push back."
     },
     {
@@ -785,6 +785,33 @@
       "id": "ledger_web_apply_bill_292_rationale_1",
       "community": 26,
       "norm_label": "apply_bill_292.py ----------------- parses sales challan / stock transfer gst in"
+    },
+    {
+      "label": "apply_bill_295.py",
+      "file_type": "code",
+      "source_file": "apply_bill_295.py",
+      "source_location": "L1",
+      "id": "apply_bill_295_py",
+      "community": 315,
+      "norm_label": "apply_bill_295.py"
+    },
+    {
+      "label": "apply_order()",
+      "file_type": "code",
+      "source_file": "apply_bill_295.py",
+      "source_location": "L20",
+      "id": "ledger_web_apply_bill_295_apply_order",
+      "community": 315,
+      "norm_label": "apply_order()"
+    },
+    {
+      "label": "apply_bill_295.py ----------------- Applies new purchase order (GUW/000295/26-27",
+      "file_type": "rationale",
+      "source_file": "apply_bill_295.py",
+      "source_location": "L1",
+      "id": "ledger_web_apply_bill_295_rationale_1",
+      "community": 315,
+      "norm_label": "apply_bill_295.py ----------------- applies new purchase order (guw/000295/26-27"
     },
     {
       "label": "backfill_sp.py",
@@ -2367,7 +2394,7 @@
       "source_file": "invoice_api.py",
       "source_location": "L724",
       "id": "ledger_web_invoice_api_resubmit_invoice_to_portal",
-      "community": 1,
+      "community": 4,
       "norm_label": "resubmit_invoice_to_portal()"
     },
     {
@@ -2412,7 +2439,7 @@
       "source_file": "invoice_api.py",
       "source_location": "L725",
       "id": "ledger_web_invoice_api_rationale_725",
-      "community": 1,
+      "community": 4,
       "norm_label": "trigger manual resubmission of an unsaved / undispatched invoice to the awpl por"
     },
     {
@@ -2828,15 +2855,6 @@
       "id": "ledger_web_portal_sync_rationale_251",
       "community": 13,
       "norm_label": "main entry point for sync."
-    },
-    {
-      "label": "print_headers.py",
-      "file_type": "code",
-      "source_file": "print_headers.py",
-      "source_location": "L1",
-      "id": "print_headers_py",
-      "community": 245,
-      "norm_label": "print_headers.py"
     },
     {
       "label": "query.py",
@@ -4666,6 +4684,15 @@
       "norm_label": "\ud83d\udcc4 license & attribution"
     },
     {
+      "label": "print_headers.py",
+      "file_type": "code",
+      "source_file": "print_headers.py",
+      "source_location": "L1",
+      "community": 245,
+      "norm_label": "print_headers.py",
+      "id": "print_headers_py"
+    },
+    {
       "label": "fetch_ledger_report.py",
       "file_type": "code",
       "source_file": "C:/Users/sgarm/Downloads/ledger_web/fetch_ledger_report.py",
@@ -4715,7 +4742,7 @@
       "file_type": "rationale",
       "source_file": "C:/Users/sgarm/Downloads/ledger_web/invoice_api.py",
       "source_location": "L714",
-      "community": 1,
+      "community": 4,
       "norm_label": "trigger manual resubmission of an unsaved / undispatched invoice to the awpl por",
       "id": "ledger_web_invoice_api_rationale_714"
     },
@@ -7397,7 +7424,7 @@
       "file_type": "rationale",
       "source_file": "app.py",
       "source_location": "L1624",
-      "community": 315,
+      "community": 22,
       "norm_label": "manual trigger: pull from gsheets \u2192 check rollover \u2192 push back.",
       "id": "ledger_web_app_rationale_1624"
     },
@@ -7532,7 +7559,7 @@
       "file_type": "rationale",
       "source_file": "app.py",
       "source_location": "L1626",
-      "community": 315,
+      "community": 22,
       "norm_label": "manual trigger: pull from gsheets \u2192 check rollover \u2192 push back.",
       "id": "ledger_web_app_rationale_1626"
     },
@@ -10292,6 +10319,26 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "apply_bill_295.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "apply_bill_295_py",
+      "target": "ledger_web_apply_bill_295_apply_order",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "apply_bill_295.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "ledger_web_apply_bill_295_rationale_1",
+      "target": "apply_bill_295_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "C:/Users/sgarm/Downloads/ledger_web/check_all_lists.py",
       "source_location": "L3",
       "weight": 1.0,
@@ -11096,9 +11143,9 @@
       "source_file": "fetch_ledger_report.py",
       "source_location": "L307",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ledger_web_fetch_ledger_report_rationale_307",
-      "target": "ledger_web_fetch_ledger_report_save_ledger_to_db",
-      "confidence_score": 1.0
+      "target": "ledger_web_fetch_ledger_report_save_ledger_to_db"
     },
     {
       "relation": "contains",
@@ -16237,5 +16284,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "712c883959628ba249665e8227ee56302f7db354"
+  "built_at_commit": "21b048d6c94c9680bf141a465d2dfd11fa2800da"
 }

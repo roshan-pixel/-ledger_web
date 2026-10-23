@@ -2174,11 +2174,6 @@
     "ast_hash": "7cfad03e148b1616e7a330165597774e",
     "semantic_hash": ""
   },
-  "C:\\Users\\sgarm\\ledger_web\\print_headers.py": {
-    "mtime": 1790507730.632138,
-    "ast_hash": "963374f040891548a50b49ac793aeeae",
-    "semantic_hash": ""
-  },
   "C:\\Users\\sgarm\\ledger_web\\query.py": {
     "mtime": 1790507730.6368344,
     "ast_hash": "ee32831414e766b3644a9cdfe02041ab",
@@ -2532,6 +2527,11 @@
   "C:\\Users\\sgarm\\ledger_web\\apply_bill_292.py": {
     "mtime": 1791776099.719484,
     "ast_hash": "7eb7e0107547b3f5d543ad9e3e277a49",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\ledger_web\\apply_bill_295.py": {
+    "mtime": 1792755723.8530612,
+    "ast_hash": "e06fce0c1a9645c2f2a2f9cdb8ab492a",
     "semantic_hash": ""
   }
 }
