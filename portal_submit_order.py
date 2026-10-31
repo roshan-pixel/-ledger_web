@@ -175,11 +175,13 @@ def submit_order_to_portal(ds_code, items, order_type='sao', invoice_id=None, in
                 _log(f"{tag} Reusing saved session cookies...")
                 try:
                     page.goto('https://asclepiuswellness.com/shoppingpoint/SpdistributorSale.aspx', wait_until='domcontentloaded', timeout=15000)
+                    # A stale session can land on a non-login page without the sale form: only trust it if the DS Code box exists
                     if 'login.aspx' not in page.url.lower():
+                        page.wait_for_selector('#ctl00_ContentPlaceHolder1_txtid', state='visible', timeout=10000)
                         logged_in = True
                         _log(f"{tag}    Saved session valid! Skipped login step in {time.time()-t0:.2f}s")
                 except Exception as se:
-                    _log(f"{tag}    Saved session navigation failed ({se}); falling back to full login.")
+                    _log(f"{tag}    Saved session unusable ({se}); falling back to full login.")
 
             if not logged_in:
                 _log(f"{tag} 1. Logging in to AWPL portal...")
