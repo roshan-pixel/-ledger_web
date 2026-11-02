@@ -56,6 +56,8 @@ def sync_bill(bill_query=None, push_to_git=False):
     today_str = datetime.date.today().strftime('%d/%m/%Y')
     # Default date range: start of current FY or 90 days ago
     from_date = '01/06/2026'
+    from_iso = '2026-06-01'  # portal date inputs are type=date (ISO)
+    today_iso = datetime.date.today().isoformat()
 
     print("=" * 65)
     print(f"AWPL BILL SYNCHRONIZER: Query='{bill_query or 'ALL_RECENT'}'")
@@ -120,8 +122,8 @@ def sync_bill(bill_query=None, push_to_git=False):
         page.goto(PURCHASE_URL, wait_until='domcontentloaded', timeout=25000)
         page.wait_for_timeout(2000)
 
-        page.fill('input[name="ctl00$ContentPlaceHolder1$txtFrom"]', from_date)
-        page.fill('input[name="ctl00$ContentPlaceHolder1$txtTo"]', today_str)
+        page.fill('input[name="ctl00$ContentPlaceHolder1$txtFrom"]', from_iso)
+        page.fill('input[name="ctl00$ContentPlaceHolder1$txtTo"]', today_iso)
         page.click('input[id="ctl00_ContentPlaceHolder1_btnshow"]')
         page.wait_for_timeout(3500)
 
@@ -231,8 +233,8 @@ def sync_bill(bill_query=None, push_to_git=False):
             if len(target_indices) > 1:
                 page.goto(PURCHASE_URL, wait_until='domcontentloaded')
                 page.wait_for_timeout(1500)
-                page.fill('input[name="ctl00$ContentPlaceHolder1$txtFrom"]', from_date)
-                page.fill('input[name="ctl00$ContentPlaceHolder1$txtTo"]', today_str)
+                page.fill('input[name="ctl00$ContentPlaceHolder1$txtFrom"]', from_iso)
+                page.fill('input[name="ctl00$ContentPlaceHolder1$txtTo"]', today_iso)
                 page.click('input[id="ctl00_ContentPlaceHolder1_btnshow"]')
                 page.wait_for_timeout(2500)
 
