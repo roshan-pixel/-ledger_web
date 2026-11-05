@@ -1,16 +1,16 @@
-# Graph Report - ledger_web  (2026-10-23)
+# Graph Report - LEDGER WEB  (2026-11-05)
 
 ## Corpus Check
-- 176 files · ~101,333 words
+- 178 files · ~170,646 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 908 nodes · 805 edges · 318 communities (255 shown, 63 thin omitted)
-- Extraction: 95% EXTRACTED · 5% INFERRED · 0% AMBIGUOUS · INFERRED: 37 edges (avg confidence: 0.8)
+- 1089 nodes · 965 edges · 391 communities (309 shown, 82 thin omitted)
+- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 37 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `d74fc45b`
+- Built from commit: `94788e33`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -61,12 +61,14 @@
 - [[_COMMUNITY_Community 43|Community 43]]
 - [[_COMMUNITY_Community 44|Community 44]]
 - [[_COMMUNITY_Community 46|Community 46]]
+- [[_COMMUNITY_Community 47|Community 47]]
 - [[_COMMUNITY_Community 48|Community 48]]
 - [[_COMMUNITY_Community 49|Community 49]]
 - [[_COMMUNITY_Community 50|Community 50]]
 - [[_COMMUNITY_Community 51|Community 51]]
 - [[_COMMUNITY_Community 52|Community 52]]
 - [[_COMMUNITY_Community 53|Community 53]]
+- [[_COMMUNITY_Community 55|Community 55]]
 - [[_COMMUNITY_Community 56|Community 56]]
 - [[_COMMUNITY_Community 57|Community 57]]
 - [[_COMMUNITY_Community 58|Community 58]]
@@ -79,12 +81,18 @@
 - [[_COMMUNITY_Community 66|Community 66]]
 - [[_COMMUNITY_Community 67|Community 67]]
 - [[_COMMUNITY_Community 68|Community 68]]
+- [[_COMMUNITY_Community 69|Community 69]]
+- [[_COMMUNITY_Community 70|Community 70]]
 - [[_COMMUNITY_Community 71|Community 71]]
+- [[_COMMUNITY_Community 72|Community 72]]
+- [[_COMMUNITY_Community 73|Community 73]]
+- [[_COMMUNITY_Community 74|Community 74]]
 - [[_COMMUNITY_Community 75|Community 75]]
 - [[_COMMUNITY_Community 76|Community 76]]
 - [[_COMMUNITY_Community 77|Community 77]]
 - [[_COMMUNITY_Community 79|Community 79]]
 - [[_COMMUNITY_Community 80|Community 80]]
+- [[_COMMUNITY_Community 81|Community 81]]
 - [[_COMMUNITY_Community 82|Community 82]]
 - [[_COMMUNITY_Community 83|Community 83]]
 - [[_COMMUNITY_Community 84|Community 84]]
@@ -101,13 +109,24 @@
 - [[_COMMUNITY_Community 96|Community 96]]
 - [[_COMMUNITY_Community 97|Community 97]]
 - [[_COMMUNITY_Community 98|Community 98]]
+- [[_COMMUNITY_Community 99|Community 99]]
 - [[_COMMUNITY_Community 100|Community 100]]
 - [[_COMMUNITY_Community 101|Community 101]]
+- [[_COMMUNITY_Community 103|Community 103]]
+- [[_COMMUNITY_Community 104|Community 104]]
+- [[_COMMUNITY_Community 111|Community 111]]
 - [[_COMMUNITY_Community 112|Community 112]]
 - [[_COMMUNITY_Community 113|Community 113]]
 - [[_COMMUNITY_Community 114|Community 114]]
 - [[_COMMUNITY_Community 116|Community 116]]
+- [[_COMMUNITY_Community 117|Community 117]]
+- [[_COMMUNITY_Community 118|Community 118]]
+- [[_COMMUNITY_Community 119|Community 119]]
+- [[_COMMUNITY_Community 120|Community 120]]
 - [[_COMMUNITY_Community 121|Community 121]]
+- [[_COMMUNITY_Community 122|Community 122]]
+- [[_COMMUNITY_Community 123|Community 123]]
+- [[_COMMUNITY_Community 124|Community 124]]
 - [[_COMMUNITY_Community 142|Community 142]]
 - [[_COMMUNITY_Community 145|Community 145]]
 - [[_COMMUNITY_Community 146|Community 146]]
@@ -115,46 +134,51 @@
 - [[_COMMUNITY_Community 148|Community 148]]
 - [[_COMMUNITY_Community 149|Community 149]]
 - [[_COMMUNITY_Community 150|Community 150]]
+- [[_COMMUNITY_Community 152|Community 152]]
 - [[_COMMUNITY_Community 153|Community 153]]
 - [[_COMMUNITY_Community 154|Community 154]]
 - [[_COMMUNITY_Community 156|Community 156]]
 - [[_COMMUNITY_Community 314|Community 314]]
 - [[_COMMUNITY_Community 315|Community 315]]
 - [[_COMMUNITY_Community 316|Community 316]]
+- [[_COMMUNITY_Community 318|Community 318]]
+- [[_COMMUNITY_Community 319|Community 319]]
+- [[_COMMUNITY_Community 320|Community 320]]
+- [[_COMMUNITY_Community 390|Community 390]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `get_db()` - 24 edges
-2. `🏗️ Deep System Architecture & How It Works` - 12 edges
-3. `submit_order_async()` - 11 edges
-4. `3. Core Subsystems & Module Breakdown` - 11 edges
-5. `get_active_submission()` - 10 edges
-6. `⚡ Ledger God Mode Web App` - 10 edges
-7. `update_inventory_formulas()` - 9 edges
-8. `init_google_sheets()` - 9 edges
-9. `get_sold_qty_col_idx()` - 9 edges
-10. `📸 Screenshots` - 9 edges
+1. `Communities (316 total, 62 thin omitted)` - 44 edges
+2. `get_db()` - 24 edges
+3. `submit_order_async()` - 12 edges
+4. `🏗️ Deep System Architecture & How It Works` - 12 edges
+5. `3. Core Subsystems & Module Breakdown` - 11 edges
+6. `init_google_sheets()` - 10 edges
+7. `get_sold_qty_col_idx()` - 10 edges
+8. `get_active_submission()` - 10 edges
+9. `Graph Report - ledger_web  (2026-10-12)` - 10 edges
+10. `⚡ Ledger God Mode Web App` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `add_product()` --calls--> `init_google_sheets()`  [INFERRED]
-  add_new_product.py → init_gsheets.py
-- `add_product()` --calls--> `get_db()`  [INFERRED]
-  add_product.py → C:/Users/sgarm/Downloads/ledger_web/app.py
-- `create_invoice()` --calls--> `get_db()`  [INFERRED]
-  invoice_api.py → C:/Users/sgarm/Downloads/ledger_web/app.py
-- `list_invoices()` --calls--> `get_db()`  [INFERRED]
-  invoice_api.py → C:/Users/sgarm/Downloads/ledger_web/app.py
-- `update_invoice_info()` --calls--> `get_db()`  [INFERRED]
-  invoice_api.py → C:/Users/sgarm/Downloads/ledger_web/app.py
+- `create_invoice()` --calls--> `get_active_submission()`  [INFERRED]
+  C:/Users/sgarm/ledger_web/invoice_api.py → portal_submit_order.py
+- `create_invoice()` --calls--> `submit_order_async()`  [INFERRED]
+  C:/Users/sgarm/ledger_web/invoice_api.py → portal_submit_order.py
+- `resubmit_status()` --calls--> `get_active_submission()`  [INFERRED]
+  C:/Users/sgarm/ledger_web/invoice_api.py → portal_submit_order.py
+- `resubmit_invoice_to_portal()` --calls--> `get_active_submission()`  [INFERRED]
+  C:/Users/sgarm/ledger_web/invoice_api.py → portal_submit_order.py
+- `resubmit_invoice_to_portal()` --calls--> `submit_order_async()`  [INFERRED]
+  C:/Users/sgarm/ledger_web/invoice_api.py → portal_submit_order.py
 
-## Communities (318 total, 63 thin omitted)
+## Communities (391 total, 82 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.05
 Nodes (38): 1. High-Level Architecture Overview, 2. System Topology Graph (Graphify), 3.10 KPI Dashboard (`/api/kpi`), 3.1 Flask Application Core (`app.py` — 1373 lines), 3.2 Dynamic Inventory Engine (`inventory_engine.py`), 3.3 Monthly Rollover (`monthly_rollover.py`), 3.4 Invoice & Strict Stock Depletion API (`invoice_api.py` — Blueprint), 3.5 Customer Lookup — DB Cache + Live Portal Fallback (`/api/customer`) (+30 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.12
-Nodes (25): get_unticked_invoices(), main(), parse_items(), bulk_push_to_portal.py ---------------------- Reads all invoices with is_dispatc, Return list of {description, qty} dicts from the stored JSON., Trigger manual resubmission of an unsaved / undispatched invoice to the AWPL por, Trigger manual resubmission of an unsaved / undispatched invoice to the AWPL por, resubmit_invoice_to_portal() (+17 more)
+Cohesion: 0.13
+Nodes (23): get_unticked_invoices(), main(), parse_items(), bulk_push_to_portal.py ---------------------- Reads all invoices with is_dispatc, Return list of {description, qty} dicts from the stored JSON., acquire_submission_lock(), get_active_submission(), _is_pid_alive() (+15 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.06
@@ -162,19 +186,19 @@ Nodes (34): 🧮 1. Dynamic Monthly Inventory Engine (`inventory_engine.py`), �
 
 ### Community 3 - "Community 3"
 Cohesion: 0.10
-Nodes (29): api_fix_historical_buckets(), api_fix_sync(), api_force_sync(), api_mizoram_bronze(), api_product_purchases(), api_purchase_orders(), api_sp_order_data(), api_sync_ledger() (+21 more)
+Nodes (29): api_fix_historical_buckets(), api_fix_sync(), api_force_sync(), api_inventory_master_months(), api_product_purchases(), api_purchase_orders(), api_sp_order_data(), api_sync_ledger() (+21 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.08
-Nodes (28): add_product(), init_google_sheets(), cancel_invoice(), create_invoice(), get_next_invoice_no(), get_portal_order_log(), get_sold_qty_col_idx(), _get_true_remaining_stock() (+20 more)
+Cohesion: 0.07
+Nodes (31): add_product(), init_google_sheets(), cancel_invoice(), create_invoice(), get_next_invoice_no(), get_portal_order_log(), get_sold_qty_col_idx(), _get_true_remaining_stock() (+23 more)
 
 ### Community 5 - "Community 5"
 Cohesion: 0.12
 Nodes (15): all_data, extracted_count, headers, indices, billNoIdx, dateGreenIdx, dateIdx, dsCodeIdx (+7 more)
 
 ### Community 6 - "Community 6"
-Cohesion: 0.12
-Nodes (11): add_product(), api_customer(), api_inventory_master(), api_inventory_master_months(), api_ledger_report(), api_mizoram_bronze_update(), api_product_sales(), get_db() (+3 more)
+Cohesion: 0.40
+Nodes (4): api_ledger_report(), Return cached ledger entries from ledger_report.json or SQLite ledger_report tab, Return cached ledger entries from ledger_report.json or SQLite ledger_report tab, Return cached ledger entries from ledger_report.json or SQLite ledger_report tab
 
 ### Community 7 - "Community 7"
 Cohesion: 0.15
@@ -197,7 +221,7 @@ Cohesion: 0.24
 Nodes (11): api_inventory_add_product(), api_inventory_master_update(), api_inventory_restock(), api_update(), index(), Recalculate formulas for a row.      BUG FIX: The old implementation summed on, Recalculate formulas for a row.      BUG FIX: The old implementation summed on, Recalculate the TOTAL row at the bottom. (+3 more)
 
 ### Community 12 - "Community 12"
-Cohesion: 0.33
+Cohesion: 0.35
 Nodes (9): get_unticked_invoices(), log(), login_and_save_session(), main(), fast_bulk_push.py ----------------- Submits ALL unticked invoices to the AWPL, submit_one(), main(), sync_and_push_latest.py ----------------------- 1. Syncs new invoices from Ren (+1 more)
 
 ### Community 13 - "Community 13"
@@ -205,11 +229,11 @@ Cohesion: 0.31
 Nodes (9): get_week_column(), login_and_get_data(), portal_sync.py — Asclepius C&F Portal → Excel Inventory Sync Engine ───────────, Write portal sale quantities into the Excel Inventory_Master sheet.     Matches, Login to portal, fetch DS Sale Report for date range.     Returns list of {prod, Main entry point for sync., Find which 'Sold Qty (Mon DD-DD)' column the sale_date falls into.     Headers, run_sync() (+1 more)
 
 ### Community 14 - "Community 14"
-Cohesion: 0.36
+Cohesion: 0.42
 Nodes (8): calculate_inventory(), extract_code(), get_available_months(), get_days_in_month(), parse_date(), inventory_engine.py Dynamic inventory calculator for monthly rollover. Replace, Scan database invoices and purchase orders to find all unique months., Dynamically computes headers and inventory quantities/values for target_month_st
 
 ### Community 15 - "Community 15"
-Cohesion: 0.29
+Cohesion: 0.22
 Nodes (5): fetch_ds_from_portal(), High-performance live DS code lookup in the AWPL C&F portal:     1. Reuses auth, fix_and_fetch(), fix_sheet(), get_ds_details()
 
 ### Community 16 - "Community 16"
@@ -225,7 +249,7 @@ Cohesion: 0.29
 Nodes (6): dispatched_count, not_registered_in_portal, portal_stock_in_entries, portal_stock_out_entries, raw_stock_in, raw_stock_out
 
 ### Community 19 - "Community 19"
-Cohesion: 0.38
+Cohesion: 0.43
 Nodes (6): _build_week_ranges(), check_and_rollover(), _get_header_month(), monthly_rollover.py ───────────────────────────────────────────────────────────, Read the month that the Sold Qty columns are currently set to.     Returns a (y, Check whether the inventory_headers month matches the current calendar     mont
 
 ### Community 20 - "Community 20"
@@ -233,12 +257,12 @@ Cohesion: 0.43
 Nodes (6): cells_to_item(), main(), parse_detail_page(), Full FSalesInvoiceList scraper. - Date: 01/01/2026 -> today - Scrapes all rows, Parse spSalesInvoiceListDetails.aspx — returns list of product dicts., Convert a detail page row to an invoice item dict.
 
 ### Community 21 - "Community 21"
-Cohesion: 0.29
-Nodes (5): currentSort, filterInput, filterWrapper, inventory, table
+Cohesion: 0.43
+Nodes (6): currentSort, filterInput, filterWrapper, inventory, render(), table
 
 ### Community 22 - "Community 22"
-Cohesion: 0.27
-Nodes (8): api_sync_now(), Manual trigger: pull from GSheets → check rollover → push back., Manual trigger: pull from GSheets → check rollover → push back., Manual trigger: pull from GSheets → check rollover → push back., ensure_sync_log_table(), get_last_sync_time(), log_sync(), restore_from_gsheets()
+Cohesion: 0.31
+Nodes (9): api_sync_now(), Manual trigger: pull from GSheets → check rollover → push back., Manual trigger: pull from GSheets → check rollover → push back., Manual trigger: pull from GSheets → check rollover → push back., ensure_sync_log_table(), get_last_sync_time(), log_sync(), restore_from_gsheets() (+1 more)
 
 ### Community 23 - "Community 23"
 Cohesion: 0.47
@@ -249,12 +273,12 @@ Cohesion: 0.48
 Nodes (5): get_gv_rows(), main(), parse_bill_detail(), Full purchase history scraper. - Date range: 01/06/2026 → 26/07/2026 - Fetches, Parse product table from the bill detail page.
 
 ### Community 25 - "Community 25"
-Cohesion: 0.33
-Nodes (4): addItemBtn, itemsContainer, row, taxRateInput
+Cohesion: 0.48
+Nodes (5): addItemBtn, calculateTotals(), itemsContainer, row, taxRateInput
 
 ### Community 26 - "Community 26"
 Cohesion: 0.67
-Nodes (3): apply_order(), parse_challan_pdf(), apply_bill_292.py ----------------- Parses Sales Challan / Stock Transfer GST In
+Nodes (3): apply_order(), parse_challan_pdf(), apply_bill_292.py ----------------- Parses Sales Challan / Stock Transfer GST
 
 ### Community 28 - "Community 28"
 Cohesion: 0.43
@@ -269,7 +293,7 @@ Cohesion: 0.40
 Nodes (3): parse_orders_table(), Scrape PurchaseListn.aspx for date range 01/06/2026 to 26/07/2026. Also click e, Return list of order dicts from the main GV table.
 
 ### Community 31 - "Community 31"
-Cohesion: 0.40
+Cohesion: 0.33
 Nodes (4): C&F Portal Synchronization Documentation, How It Works, Overview, Running the Sync
 
 ### Community 32 - "Community 32"
@@ -300,6 +324,10 @@ Nodes (3): submit_stock_order.py  –  Submits a Stock Point (Franchise) Purchas
 Cohesion: 0.67
 Nodes (3): get_credentials(), sync_purchase_bill.py --------------------- Automated AWPL Purchase Bill Scrap, sync_bill()
 
+### Community 39 - "Community 39"
+Cohesion: 0.70
+Nodes (3): get_initial_session(), parse_page(), scrape_recursive()
+
 ### Community 40 - "Community 40"
 Cohesion: 0.67
 Nodes (3): hex_to_rgb(), main(), ================================================================================
@@ -313,32 +341,48 @@ Cohesion: 0.67
 Nodes (3): api_portal_sync(), Run the portal sync directly to SQLite!, Run the portal sync directly to SQLite!
 
 ### Community 314 - "Community 314"
-Cohesion: 0.40
-Nodes (4): api_ledger_wallet_balance(), Return closing balance for stock-point-order and dashboard sync., Return closing balance for stock-point-order and dashboard sync., Return closing balance for stock-point-order and dashboard sync.
+Cohesion: 0.12
+Nodes (11): add_product(), api_customer(), api_inventory_master(), api_ledger_wallet_balance(), api_mizoram_bronze(), api_mizoram_bronze_update(), api_product_sales(), get_db() (+3 more)
 
 ### Community 316 - "Community 316"
 Cohesion: 0.67
-Nodes (3): apply_order(), parse_challan_pdf(), apply_bill_314.py ----------------- Parses and applies Sales Challan / Stock Tra
+Nodes (3): apply_order(), parse_challan_pdf(), apply_bill_314.py ----------------- Parses and applies Sales Challan / Stock T
+
+### Community 318 - "Community 318"
+Cohesion: 0.05
+Nodes (44): Communities (316 total, 62 thin omitted), Community 0 - "Community 0", Community 10 - "Community 10", Community 11 - "Community 11", Community 12 - "Community 12", Community 13 - "Community 13", Community 14 - "Community 14", Community 15 - "Community 15" (+36 more)
+
+### Community 319 - "Community 319"
+Cohesion: 0.20
+Nodes (9): Community Hubs (Navigation), Corpus Check, God Nodes (most connected - your core abstractions), Graph Freshness, Graph Report - ledger_web  (2026-10-12), Knowledge Gaps, Suggested Questions, Summary (+1 more)
+
+### Community 320 - "Community 320"
+Cohesion: 0.50
+Nodes (3): Answer, Q: What stock was added for bill GUW/000341/26-27 and is the Remaining Stock Value KPI currently accurate?, Source Nodes
+
+### Community 390 - "Community 390"
+Cohesion: 0.50
+Nodes (3): Answer, Q: Why does the live ledger-web-app.onrender.com show different invoice/dispatch counts than the local ledger.db in this repo, and what is the risk of pushing local ledger.db changes?, Source Nodes
 
 ## Knowledge Gaps
-- **123 isolated node(s):** `inventory`, `currentSort`, `filterInput`, `filterWrapper`, `table` (+118 more)
+- **169 isolated node(s):** `📑 Table of Contents`, `1. High-Level Architecture Overview`, `code:mermaid (graph TB)`, `3.1 Flask Application Core (`app.py` — 1373 lines)`, `3.2 Dynamic Inventory Engine (`inventory_engine.py`)` (+164 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **63 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **82 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `get_db()` connect `Community 6` to `Community 1`, `Community 3`, `Community 4`, `Community 10`, `Community 11`, `Community 314`?**
-  _High betweenness centrality (0.017) - this node is a cross-community bridge._
-- **Why does `create_invoice()` connect `Community 4` to `Community 1`, `Community 6`?**
-  _High betweenness centrality (0.007) - this node is a cross-community bridge._
-- **Why does `resubmit_invoice_to_portal()` connect `Community 1` to `Community 4`, `Community 6`?**
-  _High betweenness centrality (0.006) - this node is a cross-community bridge._
+- **Why does `get_db()` connect `Community 314` to `Community 3`, `Community 4`, `Community 6`, `Community 10`, `Community 11`?**
+  _High betweenness centrality (0.008) - this node is a cross-community bridge._
+- **Why does `api_sync_now()` connect `Community 22` to `Community 3`, `Community 4`?**
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
+- **Why does `fetch_ds_from_portal()` connect `Community 15` to `Community 314`?**
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
 - **Are the 7 inferred relationships involving `get_db()` (e.g. with `add_product()` and `create_invoice()`) actually correct?**
   _`get_db()` has 7 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 2 inferred relationships involving `submit_order_async()` (e.g. with `create_invoice()` and `resubmit_invoice_to_portal()`) actually correct?**
   _`submit_order_async()` has 2 INFERRED edges - model-reasoned connections that need verification._
-- **Are the 3 inferred relationships involving `get_active_submission()` (e.g. with `create_invoice()` and `resubmit_status()`) actually correct?**
-  _`get_active_submission()` has 3 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `Load and flatten the disease JSON into the module-level cache.     Thread-safe;`, `Return a lightweight list of diseases, optionally filtered.      Query params:`, `Return the full record for a single disease by its 0-based index     in the fla` to the rest of the system?**
-  _224 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _264 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `Community 0` be split into smaller, more focused modules?**
+  _Cohesion score 0.05 - nodes in this community are weakly interconnected._
