@@ -1,22 +1,99 @@
 {
   "_comment": "Manual tier overrides applied after every Google Sheet sync. Add new batches here.",
   "updates": [
-    {"ds_id": "D56441B2", "achieved_field": "gold_achieved",     "date_field": "gold_update_date",     "date": "09/11/2026"},
-    {"ds_id": "F2173FCD", "achieved_field": "silver_achieved",   "date_field": "silver_update_date",   "date": "09/11/2026"},
-    {"ds_id": "6CFF75DF", "achieved_field": "gold_achieved",     "date_field": "gold_update_date",     "date": "09/11/2026"},
-    {"ds_id": "B0C20139", "achieved_field": "gold_achieved",     "date_field": "gold_update_date",     "date": "09/11/2026"},
-    {"ds_id": "810041D0", "achieved_field": "emerald_achieved",  "date_field": "emerald_update_date",  "date": "09/11/2026"},
-    {"ds_id": "01B78751", "achieved_field": "silver_achieved",   "date_field": "silver_update_date",   "date": "09/11/2026"},
-    {"ds_id": "605AD63A", "achieved_field": "silver_achieved",   "date_field": "silver_update_date",   "date": "09/11/2026"}
+    {
+      "ds_id": "D56441B2",
+      "achieved_field": "gold_achieved",
+      "date_field": "gold_update_date",
+      "date": "09/11/2026"
+    },
+    {
+      "ds_id": "F2173FCD",
+      "achieved_field": "silver_achieved",
+      "date_field": "silver_update_date",
+      "date": "09/11/2026"
+    },
+    {
+      "ds_id": "6CFF75DF",
+      "achieved_field": "gold_achieved",
+      "date_field": "gold_update_date",
+      "date": "09/11/2026"
+    },
+    {
+      "ds_id": "B0C20139",
+      "achieved_field": "gold_achieved",
+      "date_field": "gold_update_date",
+      "date": "09/11/2026"
+    },
+    {
+      "ds_id": "810041D0",
+      "achieved_field": "emerald_achieved",
+      "date_field": "emerald_update_date",
+      "date": "09/11/2026"
+    },
+    {
+      "ds_id": "01B78751",
+      "achieved_field": "silver_achieved",
+      "date_field": "silver_update_date",
+      "date": "09/11/2026"
+    },
+    {
+      "ds_id": "605AD63A",
+      "achieved_field": "silver_achieved",
+      "date_field": "silver_update_date",
+      "date": "09/11/2026"
+    }
   ],
   "inserts": [
-    {"ds_id": "A264CDAD", "ds_name": "", "bronze_achieved": "YES", "mizoram_bronze_date": "09/11/2026", "silver_achieved": "YES", "silver_update_date": "09/11/2026"},
-    {"ds_id": "602AC270", "ds_name": "", "bronze_achieved": "YES", "mizoram_bronze_date": "09/11/2026"},
-    {"ds_id": "8DCB54A2", "ds_name": "", "bronze_achieved": "YES", "mizoram_bronze_date": "09/11/2026"},
-    {"ds_id": "693D79ED", "ds_name": "", "bronze_achieved": "YES", "mizoram_bronze_date": "09/11/2026"},
-    {"ds_id": "F404350F", "ds_name": "", "bronze_achieved": "YES", "mizoram_bronze_date": "09/11/2026"},
-    {"ds_id": "5BA1FD63", "ds_name": "", "bronze_achieved": "YES", "mizoram_bronze_date": "09/11/2026"},
-    {"ds_id": "52B025F5", "ds_name": "", "bronze_achieved": "YES", "mizoram_bronze_date": "09/11/2026"},
-    {"ds_id": "5F4CC2AC", "ds_name": "", "bronze_achieved": "YES", "mizoram_bronze_date": "09/11/2026"}
+    {
+      "ds_id": "A264CDAD",
+      "ds_name": "B LALZAIPUII",
+      "bronze_achieved": "YES",
+      "mizoram_bronze_date": "09/11/2026",
+      "silver_achieved": "YES",
+      "silver_update_date": "09/11/2026"
+    },
+    {
+      "ds_id": "602AC270",
+      "ds_name": "LALCHAWIMAWII",
+      "bronze_achieved": "YES",
+      "mizoram_bronze_date": "09/11/2026"
+    },
+    {
+      "ds_id": "8DCB54A2",
+      "ds_name": "K BIAKTHANSANGI",
+      "bronze_achieved": "YES",
+      "mizoram_bronze_date": "09/11/2026"
+    },
+    {
+      "ds_id": "693D79ED",
+      "ds_name": "LALREMRUATI SAILO",
+      "bronze_achieved": "YES",
+      "mizoram_bronze_date": "09/11/2026"
+    },
+    {
+      "ds_id": "F404350F",
+      "ds_name": "ZOSANGZUALI",
+      "bronze_achieved": "YES",
+      "mizoram_bronze_date": "09/11/2026"
+    },
+    {
+      "ds_id": "5BA1FD63",
+      "ds_name": "LALTANPUII",
+      "bronze_achieved": "YES",
+      "mizoram_bronze_date": "09/11/2026"
+    },
+    {
+      "ds_id": "52B025F5",
+      "ds_name": "LALPEKHLUA",
+      "bronze_achieved": "YES",
+      "mizoram_bronze_date": "09/11/2026"
+    },
+    {
+      "ds_id": "5F4CC2AC",
+      "ds_name": "LALRINHLUI",
+      "bronze_achieved": "YES",
+      "mizoram_bronze_date": "09/11/2026"
+    }
   ]
 }
