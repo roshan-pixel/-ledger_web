@@ -750,7 +750,7 @@
 
         const TODAY = '09/11/2026';
         const rows = data.map((r, i) => {
-            const isNew = (r.mizoram_bronze_date || '').trim() === TODAY;
+            const isNew = ['mizoram_bronze_date','silver_update_date','gold_update_date','platinum_update_date','emerald_update_date'].some(k => (r[k]||'').trim() === TODAY);
             const trClass = isNew ? 'tr-new-payment' : '';
             return `
             <tr class="${trClass}" style="animation-delay:${Math.min(i*18,300)}ms">
