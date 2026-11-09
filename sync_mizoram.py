@@ -40,8 +40,17 @@ def sync_mizoram_data():
             platinum_commission TEXT,
             platinum_achieved TEXT,
             platinum_update_date TEXT,
-            phone_no TEXT
+            phone_no TEXT,
+            emerald_commission TEXT DEFAULT "",
+            emerald_achieved TEXT DEFAULT "",
+            emerald_update_date TEXT DEFAULT ""
         )''')
+        # Migrate existing tables that predate Emerald columns
+        for col in ('emerald_commission', 'emerald_achieved', 'emerald_update_date'):
+            try:
+                c.execute(f'ALTER TABLE mizoram_bronze ADD COLUMN {col} TEXT DEFAULT ""')
+            except Exception:
+                pass
         
         # Clear existing data
         c.execute('DELETE FROM mizoram_bronze')

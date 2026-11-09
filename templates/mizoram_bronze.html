@@ -36,6 +36,9 @@
             --plat:      #e2e8f0;
             --plat-bg:   rgba(226,232,240,0.10);
             --plat-glow: rgba(226,232,240,0.2);
+            --emerald:    #10b981;
+            --emerald-bg: rgba(16,185,129,0.10);
+            --emerald-glow: rgba(16,185,129,0.22);
         }html, body { height: 100%; }body {
             font-family: 'Outfit', sans-serif;
             background: var(--bg);
@@ -76,7 +79,7 @@
             box-shadow: 0 4px 16px var(--pglow); transition: all .2s;
         }.sync-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 24px var(--pglow); }.sync-btn:disabled { opacity: .6; cursor: not-allowed; transform: none; }/* ── TIER KPI CARDS ──────────────────── */
         .tier-cards {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: .9rem;
+            display: grid; grid-template-columns: repeat(5, 1fr); gap: .9rem;
         }.tier-card {
             border-radius: 14px; padding: 1.1rem 1.2rem;
             border: 1px solid var(--border);
@@ -535,6 +538,15 @@
             <div class="tier-sub">Commission on achievement</div>
             <div class="tier-achieved" id="platCount"><span class="spinner"></span></div>
         </div>
+        <div class="tier-card" style="background:var(--emerald-bg);border-color:rgba(16,185,129,.25);box-shadow:0 4px 24px rgba(16,185,129,.08);">
+            <div class="tier-top">
+                <span class="tier-label" style="color:var(--emerald);">💚 Emerald</span>
+                <span class="tier-icon" style="background:var(--emerald-bg);border:1px solid rgba(16,185,129,.3);">💚</span>
+            </div>
+            <div class="tier-amount" style="color:var(--emerald);text-shadow:0 0 20px var(--emerald-glow);">₹30,000</div>
+            <div class="tier-sub">Commission on achievement</div>
+            <div class="tier-achieved" id="emeraldCount"><span class="spinner"></span></div>
+        </div>
     </div>
 
     <!-- Toolbar -->
@@ -548,6 +560,7 @@
         <button class="filter-btn"        id="f-silver"  onclick="setFilter('silver')">🥈 Silver ✓</button>
         <button class="filter-btn"        id="f-gold"    onclick="setFilter('gold')">🥇 Gold ✓</button>
         <button class="filter-btn"        id="f-plat"    onclick="setFilter('plat')">💎 Platinum ✓</button>
+        <button class="filter-btn"        id="f-emerald" onclick="setFilter('emerald')">💚 Emerald ✓</button>
         <span id="rowCount2" style="font-size:.82rem; color:var(--muted); margin-left:.25rem;"></span>
     </div>
 
@@ -562,11 +575,15 @@
                     <th class="th-silver sep" colspan="3">🥈 Silver — ₹2,500</th>
                     <th class="th-gold sep" colspan="3">🥇 Gold — ₹4,690</th>
                     <th class="th-plat sep" colspan="3">💎 Platinum — ₹15,000</th>
+                    <th class="th-base sep" colspan="3" style="background:rgba(10,120,80,.45);color:#6ee7b7;border-left:2px solid rgba(16,185,129,.5);border-right:2px solid rgba(16,185,129,.3);">💚 Emerald — ₹30,000</th>
                     <th class="th-base"></th>
                 </tr>
                 <tr class="header-row">
                     <th class="col-id">DS ID</th>
                     <th class="col-name">DS Name</th>
+                    <th class="col-tier sep">Commission</th>
+                    <th class="col-ach">Achieved?</th>
+                    <th class="col-date">Date</th>
                     <th class="col-tier sep">Commission</th>
                     <th class="col-ach">Achieved?</th>
                     <th class="col-date">Date</th>
@@ -608,6 +625,7 @@
         { key: 'silver', comm: '₹2,500', achKey: 'silver_achieved',  dateKey: 'silver_update_date',  cls: 'c-silver' },
         { key: 'gold',   comm: '₹4,690', achKey: 'gold_achieved',    dateKey: 'gold_update_date',    cls: 'c-gold'   },
         { key: 'plat',   comm: '₹15,000',achKey: 'platinum_achieved',dateKey: 'platinum_update_date',cls: 'c-plat'   },
+        { key: 'emerald', comm: '₹30,000', achKey: 'emerald_achieved',  dateKey: 'emerald_update_date',  cls: 'c-emerald' },
     ];
 
     function badge(val, rowId, field) {
@@ -750,6 +768,9 @@
                 <td class="td-comm c-plat sep">₹15,000</td>
                 <td class="td-ach">${badge(r.platinum_achieved, r.id, 'platinum_achieved')}</td>
                 <td class="td-date editable" style="position:relative">${editableDate(r.platinum_update_date, r.id, 'platinum_update_date')}</td>
+                <td class="td-comm sep" style="color:var(--emerald)">₹30,000</td>
+                <td class="td-ach">${badge(r.emerald_achieved, r.id, 'emerald_achieved')}</td>
+                <td class="td-date editable" style="position:relative">${editableDate(r.emerald_update_date, r.id, 'emerald_update_date')}</td>
                 <td class="td-phone">${editablePhone(r.phone_no, r.id)}</td>
             </tr>`}).join('');
 
@@ -768,6 +789,8 @@
         document.getElementById('silverCount').innerHTML = `✓ ${silverC} achieved`;
         document.getElementById('goldCount').innerHTML   = `✓ ${goldC} achieved`;
         document.getElementById('platCount').innerHTML   = `✓ ${platC} achieved`;
+        const emeraldC = count('emerald_achieved');
+        document.getElementById('emeraldCount').innerHTML = `✓ ${emeraldC} achieved`;
         document.getElementById('rowCount').textContent  = `${data.length} total leaders`;
     }
 
@@ -783,13 +806,14 @@
         if (activeFilter === 'silver') filtered = filtered.filter(r => (r.silver_achieved||'').toUpperCase() === 'YES');
         if (activeFilter === 'gold')   filtered = filtered.filter(r => (r.gold_achieved||'').toUpperCase() === 'YES');
         if (activeFilter === 'plat')   filtered = filtered.filter(r => (r.platinum_achieved||'').toUpperCase() === 'YES');
+        if (activeFilter === 'emerald') filtered = filtered.filter(r => (r.emerald_achieved||'').toUpperCase() === 'YES');
 
         renderRows(filtered);
     }
 
     function setFilter(f) {
         activeFilter = f;
-        ['all','bronze','silver','gold','plat'].forEach(id => {
+        ['all','bronze','silver','gold','plat','emerald'].forEach(id => {
             document.getElementById('f-'+id).classList.toggle('active', id === f);
         });
         applyFilter();

@@ -187,6 +187,14 @@ def api_disease_guide_detail(idx):
 def get_db():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
+    # Add Emerald tier columns if they don't exist yet
+    try:
+        conn.execute('ALTER TABLE mizoram_bronze ADD COLUMN emerald_commission TEXT DEFAULT ""')
+        conn.execute('ALTER TABLE mizoram_bronze ADD COLUMN emerald_achieved TEXT DEFAULT ""')
+        conn.execute('ALTER TABLE mizoram_bronze ADD COLUMN emerald_update_date TEXT DEFAULT ""')
+        conn.commit()
+    except Exception:
+        pass  # Columns already exist
     return conn
 
 @app.route('/')
@@ -270,7 +278,8 @@ def api_mizoram_bronze_update():
         value  = data.get('value', '').strip()
         allowed = ['ds_name','mizoram_bronze_date','bronze_achieved','silver_achieved',
                    'silver_update_date','gold_achieved','gold_update_date',
-                   'platinum_achieved','platinum_update_date','phone_no']
+                   'platinum_achieved','platinum_update_date','phone_no',
+                   'emerald_achieved','emerald_update_date','emerald_commission']
         if field not in allowed:
             return jsonify({'error': 'Field not allowed'}), 400
         conn = get_db()
