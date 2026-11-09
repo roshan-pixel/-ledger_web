@@ -179,6 +179,12 @@
             transition: all .3s; pointer-events: none;
             box-shadow: 0 8px 32px rgba(0,0,0,.4);
         }#toast.show-success { opacity: 1; transform: translateY(0); background: linear-gradient(135deg,#10b981,#059669); }#toast.show-error { opacity: 1; transform: translateY(0); background: linear-gradient(135deg,#ef4444,#dc2626); }#toast.show-info { opacity: 1; transform: translateY(0); background: linear-gradient(135deg,#6366f1,#4f46e5); }/* ── SPINNER ─────────────────────────── */
+        
+        /* -- NEW PAYMENT ROW -- */
+        tr.tr-new-payment td { background: rgba(239,68,68,0.07) !important; }
+        tr.tr-new-payment { border-left: 3px solid rgba(239,68,68,0.6); }
+        tr.tr-new-payment td.td-id { color: var(--red) !important; font-weight:800; }
+        .badge-new-date { display:inline-flex;align-items:center;gap:.3rem;padding:.2rem .55rem;border-radius:20px;font-size:.72rem;font-weight:700;background:rgba(239,68,68,.18);color:var(--red);border:1px solid rgba(239,68,68,.35); }
         .spinner { width: 15px; height: 15px; border: 2px solid rgba(255,255,255,.3); border-top-color: #fff; border-radius: 50%; animation: spin .7s linear infinite; }/* ── MOBILE ───────────────────────────── */
         @media(max-width:768px) {
             html, body { height: auto; overflow-y: auto; }
@@ -724,8 +730,12 @@
             return;
         }
 
-        const rows = data.map((r, i) => `
-            <tr style="animation-delay:${Math.min(i*18,300)}ms">
+        const TODAY = '09/11/2026';
+        const rows = data.map((r, i) => {
+            const isNew = (r.mizoram_bronze_date || '').trim() === TODAY;
+            const trClass = isNew ? 'tr-new-payment' : '';
+            return `
+            <tr class="${trClass}" style="animation-delay:${Math.min(i*18,300)}ms">
                 <td class="td-id">${r.ds_id || '—'}</td>
                 <td class="td-name">${r.ds_name || '—'}</td>
                 <td class="td-comm c-bronze sep">₹1,399</td>
@@ -741,7 +751,7 @@
                 <td class="td-ach">${badge(r.platinum_achieved, r.id, 'platinum_achieved')}</td>
                 <td class="td-date editable" style="position:relative">${editableDate(r.platinum_update_date, r.id, 'platinum_update_date')}</td>
                 <td class="td-phone">${editablePhone(r.phone_no, r.id)}</td>
-            </tr>`).join('');
+            </tr>`}).join('');
 
         document.getElementById('tableBody').innerHTML = rows;
         document.getElementById('rowCount2').textContent = `${data.length} leader${data.length !== 1 ? 's' : ''}`;

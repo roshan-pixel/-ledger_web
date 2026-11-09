@@ -282,6 +282,43 @@ def api_mizoram_bronze_update():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@app.route('/api/mizoram_bronze/insert', methods=['POST'])
+def api_mizoram_bronze_insert():
+    try:
+        data = request.get_json()
+        ds_id    = (data.get('ds_id') or '').strip().upper()
+        ds_name  = (data.get('ds_name') or '').strip()
+        date_val = (data.get('mizoram_bronze_date') or '').strip()
+        achieved = (data.get('bronze_achieved') or 'YES').strip()
+        if not ds_id:
+            return jsonify({'error': 'ds_id required'}), 400
+        conn = get_db()
+        c = conn.cursor()
+        # Skip if DS ID already exists
+        c.execute('SELECT id FROM mizoram_bronze WHERE ds_id=?', (ds_id,))
+        existing = c.fetchone()
+        if existing:
+            # Update the date instead
+            c.execute('UPDATE mizoram_bronze SET mizoram_bronze_date=?, bronze_achieved=? WHERE ds_id=?',
+                      (date_val, achieved, ds_id))
+            conn.commit()
+            conn.close()
+            return jsonify({'success': True, 'action': 'updated', 'id': existing[0]})
+        c.execute('''INSERT INTO mizoram_bronze
+            (ds_id, ds_name, bronze_commission, bronze_achieved, mizoram_bronze_date,
+             silver_commission, silver_achieved, silver_update_date, gold_commission,
+             gold_achieved, gold_update_date, platinum_commission, platinum_achieved,
+             platinum_update_date, phone_no)
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)''',
+            (ds_id, ds_name, '1399', achieved, date_val,
+             '', '', '', '', '', '', '', '', '', ''))
+        new_id = c.lastrowid
+        conn.commit()
+        conn.close()
+        return jsonify({'success': True, 'action': 'inserted', 'id': new_id})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 from sync_mizoram import sync_mizoram_data
 
 @app.route('/api/sync_mizoram_now', methods=['POST'])
