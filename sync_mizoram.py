@@ -102,7 +102,10 @@ def sync_mizoram_data():
                         VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)''',
                         (ds_id, ins.get('ds_name',''), ins.get('bronze_commission','1399'),
                          ins.get('bronze_achieved','YES'), ins.get('mizoram_bronze_date',''),
-                         '','','','','','','','','','',
+                         ins.get('silver_commission',''), ins.get('silver_achieved',''), ins.get('silver_update_date',''),
+                         ins.get('gold_commission',''),   ins.get('gold_achieved',''),   ins.get('gold_update_date',''),
+                         ins.get('platinum_commission',''),ins.get('platinum_achieved',''),ins.get('platinum_update_date',''),
+                         ins.get('phone_no',''),
                          ins.get('emerald_commission',''), ins.get('emerald_achieved',''), ins.get('emerald_update_date','')))
 
             conn.commit()
