@@ -596,6 +596,14 @@ def compute_kpis_data():
     kpis['Total Invoices'] = str(total_invoices)
     kpis['Total Invoice Value'] = str(total_invoice_value)
     kpis['Reporting Period'] = "Live (Syncing from GSheets + Local)"
+
+    try:
+        po_path = Path(__file__).parent / 'purchase_orders.json'
+        with open(po_path, 'r', encoding='utf-8') as f:
+            po = __import__('json').load(f)
+        kpis['Challan Count'] = str(sum(1 for o in po if o.get('bill_no', '').startswith('GUW/')))
+    except Exception:
+        pass
     
     # Persist dynamic KPIs into SQLite kpis table
     try:
