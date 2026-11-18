@@ -58,7 +58,17 @@ def init_google_sheets():
         kpi_ws = sheet.worksheet('KPIs')
     except gspread.exceptions.WorksheetNotFound:
         kpi_ws = sheet.add_worksheet('KPIs', rows=50, cols=2)
-        
+
+    # The kpis table is only refreshed when /api/kpi is hit, so recompute before
+    # uploading; use the already-loaded app module to avoid a circular import.
+    import sys
+    app_mod = sys.modules.get('app')
+    if app_mod is not None and hasattr(app_mod, 'compute_kpis_data'):
+        try:
+            app_mod.compute_kpis_data()
+        except Exception as e:
+            print(f"KPI recompute before upload failed: {e}")
+
     c.execute("SELECT key, value FROM kpis")
     rows = c.fetchall()
     sheet_data = [['Key', 'Value']]
