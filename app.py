@@ -417,13 +417,13 @@ def api_inventory_add_product():
         col_str = ",".join(cols)
         
         c.execute(f"INSERT INTO inventory ({col_str}) VALUES ({placeholders})", vals)
-        
+        new_row = c.lastrowid
+
         c.execute("SELECT value FROM settings WHERE key='inventory_headers'")
         all_headers = json.loads(c.fetchone()[0])
-        c.execute("SELECT row_num FROM inventory WHERE UPPER(c3) != 'TOTAL'")
-        for r in c.fetchall():
-            update_inventory_formulas(conn, r['row_num'], all_headers)
-            
+        # Only the new row needs formulas; recalculating all rows exceeds the gunicorn timeout on Render.
+        update_inventory_formulas(conn, new_row, all_headers)
+
         update_totals_row(conn)
         conn.commit()
         conn.close()
