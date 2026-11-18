@@ -552,6 +552,91 @@ def update_invoice_info(invoice_id):
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@invoice_api.route('/api/invoice/split/<int:invoice_id>', methods=['POST'])
+def split_invoice(invoice_id):
+    """Move items (or part quantities) from an invoice into a new invoice for another DS.
+
+    Stock is unchanged (same items, same sale date) and nothing is sent to the portal;
+    the new invoice can be pushed later with the normal Resubmit button.
+    Body: {password, ds_code, customer_name, move: [{code, qty}]}
+    """
+    from app import get_db
+    import inventory_engine as _ie
+    data = request.get_json() or {}
+    if data.get('password') not in ['ABC!@234', 'ABC@!234']:
+        return jsonify({'error': 'Incorrect password! Authorization required to split an invoice.'}), 403
+    ds_code = str(data.get('ds_code') or '').strip()
+    customer_name = str(data.get('customer_name') or '').strip()
+    moves = data.get('move') or []
+    if not ds_code or not customer_name or not moves:
+        return jsonify({'error': 'ds_code, customer_name and move are required'}), 400
+
+    conn = get_db()
+    try:
+        c = conn.cursor()
+        c.execute('SELECT * FROM invoices WHERE id = ?', (invoice_id,))
+        src = c.fetchone()
+        if not src:
+            return jsonify({'error': 'Invoice not found'}), 404
+        if str(src['status'] or '').lower() == 'cancelled':
+            return jsonify({'error': 'Invoice is cancelled'}), 400
+
+        items = json.loads(src['items'] or '[]')
+        moved = []
+        for mv in moves:
+            code = str(mv.get('code') or '').strip()
+            qty = float(mv.get('qty') or 0)
+            match = [it for it in items if _ie.extract_code(str(it.get('description') or it.get('name') or '')) == code]
+            if not match:
+                return jsonify({'error': f'Item [{code}] not on invoice'}), 400
+            it = match[0]
+            have = float(str(it.get('qty', 0)))
+            if qty <= 0 or qty > have:
+                return jsonify({'error': f'Item [{code}]: cannot move {qty}, invoice has {have:g}'}), 400
+            price = float(str(it.get('price', 0)))
+            unit_sp = float(str(it.get('unit_sp', 0) or 0))
+            new_it = dict(it, qty=f'{qty:g}', total=f'{price * qty:.2f}', total_sp=f'{unit_sp * qty:.2f}')
+            moved.append(new_it)
+            left = have - qty
+            if left > 0:
+                it.update(qty=f'{left:g}', total=f'{price * left:.2f}', total_sp=f'{unit_sp * left:.2f}')
+            else:
+                items.remove(it)
+
+        moved_amt = round(sum(float(m['total']) for m in moved), 2)
+        moved_sp = round(sum(float(m['total_sp']) for m in moved), 2)
+        new_src_amt = round(float(src['amount'] or 0) - moved_amt, 2)
+        new_src_sp = round(float(src['total_sp'] or 0) - moved_sp, 2)
+
+        c.execute('SELECT invoice_no FROM invoices ORDER BY id DESC LIMIT 1')
+        last_no = str(c.fetchone()['invoice_no']).rstrip('*').strip()
+        m = re.search(r'(DSR/)(\d+)(/.*)', last_no)
+        if not m:
+            return jsonify({'error': f'Cannot derive next invoice number from {last_no}'}), 500
+        new_no = f"{m.group(1)}{str(int(m.group(2)) + 1).zfill(len(m.group(2)))}{m.group(3)}"
+
+        c.execute('UPDATE invoices SET items = ?, amount = ?, total_sp = ? WHERE id = ?',
+                  (json.dumps(items), new_src_amt, new_src_sp, invoice_id))
+        c.execute('INSERT INTO invoices (invoice_no, ds_code, customer_name, amount, date_created, items, total_sp) VALUES (?, ?, ?, ?, ?, ?, ?)',
+                  (new_no, ds_code, customer_name, moved_amt, src['date_created'], json.dumps(moved), moved_sp))
+        new_id = c.lastrowid
+        conn.commit()
+    except Exception as e:
+        conn.rollback()
+        return jsonify({'error': str(e)}), 500
+    finally:
+        conn.close()
+
+    try:
+        t = threading.Thread(target=init_google_sheets)
+        t.daemon = True
+        t.start()
+    except Exception as e:
+        print("Failed to start gsheets sync:", e)
+
+    return jsonify({'success': True, 'source_invoice': src['invoice_no'], 'source_amount': new_src_amt, 'source_sp': new_src_sp,
+                    'new_invoice_id': new_id, 'new_invoice_no': new_no, 'new_amount': moved_amt, 'new_sp': moved_sp})
+
 @invoice_api.route('/api/invoice/next_no', methods=['GET'])
 def get_next_invoice_no():
     from app import get_db
