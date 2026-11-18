@@ -1625,8 +1625,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\ledger_web\\app.py": {
-    "mtime": 1790507730.232203,
-    "ast_hash": "9f03bfc4c057408bfb2afb3de68f52b5",
+    "mtime": 1794999770.0062153,
+    "ast_hash": "a14cc2ce05ed6ab1ece54195daea2f30",
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\ledger_web\\apply_bill_268.py": {
@@ -2165,8 +2165,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\ledger_web\\portal_submit_order.py": {
-    "mtime": 1790703082.180423,
-    "ast_hash": "e2522723257bec30bf3687c51fd84039",
+    "mtime": 1794999770.0442765,
+    "ast_hash": "3936a6880ecbcc2783f971a3c14a9b7c",
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\ledger_web\\portal_sync.py": {
@@ -2290,13 +2290,13 @@
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\ledger_web\\sync_mizoram.py": {
-    "mtime": 1790507730.6607924,
-    "ast_hash": "d4fac90144069863805c48010af68167",
+    "mtime": 1794999770.0442765,
+    "ast_hash": "9c263609cd2c0886bf6f9d81a681c1f9",
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\ledger_web\\sync_purchase_bill.py": {
-    "mtime": 1790507730.6607924,
-    "ast_hash": "0aa4026fccbe8572ac6e834a162deb3d",
+    "mtime": 1794999770.0479243,
+    "ast_hash": "38818933a24fea9aabe10170d6f0659f",
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\ledger_web\\sync_sales_to_inventory.py": {
@@ -2480,8 +2480,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\ledger_web\\templates\\inventory.html": {
-    "mtime": 1790507730.670686,
-    "ast_hash": "065a2a547f269eff624d189086152b6a",
+    "mtime": 1794999770.0479243,
+    "ast_hash": "cfe8d162309d939777eb8109966ac404",
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\ledger_web\\templates\\inventory_master.html": {
@@ -2505,8 +2505,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\ledger_web\\templates\\mizoram_bronze.html": {
-    "mtime": 1790507730.6754465,
-    "ast_hash": "ade0ecd14b3f48b4564289e56c8cc154",
+    "mtime": 1794999770.0479243,
+    "ast_hash": "7e00f03c7ef4f77593d0940568e1065e",
     "semantic_hash": ""
   },
   "C:\\Users\\sgarm\\ledger_web\\templates\\portal_sync.html": {
@@ -3516,6 +3516,31 @@
   },
   "C:\\Users\\sgarm\\Desktop\\LEDGER WEB\\graphify-out\\memory\\query_20261105_080124_why_does_the_live_ledger_web_app_onrender_com_show.md": {
     "mtime": 1793865684.440847,
+    "ast_hash": "e380812a6f0684cd882133c474099dea",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\ledger_web\\apply_bill_350.py": {
+    "mtime": 1794999774.6228468,
+    "ast_hash": "bce0a797bf629ef96cab38907790033a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\ledger_web\\data\\mizoram_overrides.json": {
+    "mtime": 1794999770.0062153,
+    "ast_hash": "0b784e3045001db63f83d85340e9eca2",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\ledger_web\\graph.html": {
+    "mtime": 1794999770.010907,
+    "ast_hash": "4ad5f68c2688c609566ea6683b5542ef",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\ledger_web\\graphify-out\\memory\\query_20261105_080113_what_stock_was_added_for_bill_guw_000341_26_27_and.md": {
+    "mtime": 1794999770.0354054,
+    "ast_hash": "1e26d712a6eeb51cf5694cea8287bc56",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\sgarm\\ledger_web\\graphify-out\\memory\\query_20261105_080124_why_does_the_live_ledger_web_app_onrender_com_show.md": {
+    "mtime": 1794999770.0354054,
     "ast_hash": "e380812a6f0684cd882133c474099dea",
     "semantic_hash": ""
   }
