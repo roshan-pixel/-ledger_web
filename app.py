@@ -1669,7 +1669,17 @@ try:
 except Exception as e:
     print(f"[Startup] Rollover check failed: {e}")
 
-# 3. Start the perpetual background sync scheduler
+# 3. Re-sync inventory from purchase_orders.json + invoices so a new bill
+#    pushed to git is reflected immediately after Render redeploys.
+try:
+    import robust_sync
+    print("[Startup] Syncing inventory from purchase history + invoices...")
+    robust_sync.sync_all_to_inventory()
+    print("[Startup] ✓ Inventory sync complete.")
+except Exception as e:
+    print(f"[Startup] Inventory sync failed: {e}")
+
+# 4. Start the perpetual background sync scheduler
 _scheduler_thread = threading.Thread(target=_auto_sync_loop, daemon=True, name="AutoSyncScheduler")
 _scheduler_thread.start()
 print("[Startup] ✓ Auto-sync scheduler running (hourly GSheets push + daily rollover).")
