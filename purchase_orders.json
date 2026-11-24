@@ -6990,14 +6990,39 @@
     ]
   },
   {
+    "sr": 21,
+    "bill_no": "COMPLIMENTARY",
+    "party": "ASCLEPIUS WELLNESS (COMPLIMENTARY FREE STOCK)",
+    "date": "10/06/2026",
+    "cgst": "0.00",
+    "sgst": "0.00",
+    "igst": "80.47",
+    "total": 1689.79,
+    "lr_no": "COMPLIMENTARY",
+    "delivery_date": "10/06/2026",
+    "courier": "FREE STOCK",
+    "products": [
+      [
+        "1",
+        "515",
+        "SLIMDOC POWDER RICH CHOCLATE FLAVOR (COMPLIMENTARY)",
+        "1609.32",
+        "1",
+        "1609.32",
+        "0.00",
+        "1689.79"
+      ]
+    ]
+  },
+  {
     "sr": "",
     "bill_no": "",
     "party": "Total",
     "date": "",
     "cgst": "",
     "sgst": "",
-    "igst": "487273.51",
-    "total": 5664441.54,
+    "igst": "487353.98",
+    "total": 5666131.33,
     "lr_no": "",
     "delivery_date": "",
     "courier": "",
